@@ -159,18 +159,33 @@
 }
 
 \definecolor{mathLabelColor}{HTML}{FF87CA}
-\NewDocumentCommand{\labelmath}{m m O{mathLabelColor!80!gray} O{red!10}}{
+\NewDocumentCommand{\labelmath}{O{mathLabelColor!80!gray} O{red!10} m m}{
   \tcboxmath[
     enhanced,
     frame hidden,
-    colback={#4},
+    colback={#2},
     opacityback=0.6,
-    title={#2},
-    coltitle={#3},
+    title={#4},
+    coltitle={#1},
     fonttitle=\bfseries,
     attach boxed title to top right={yshift=-0.5mm},
     boxed title style={empty, top=0mm, bottom=0mm}
-  ]{#1}
+  ]{#3}
+}
+% 余白少なめバージョン
+\NewDocumentCommand{\fitLabelMath}{O{mathLabelColor!80!gray} O{red!10} O{0.6} m m}{
+  \tcboxmath[
+    enhanced,
+    frame hidden,
+    colback={#2},
+    opacityback={#3},
+    title={#5},
+    coltitle={#1},
+    fonttitle=\bfseries,
+    left=1pt, right=1pt, top=1pt, bottom=1pt,
+    attach boxed title to top center={yshift=-0.5mm},
+    boxed title style={empty, top=0mm, bottom=0mm}
+  ]{#4}
 }
 
 \definecolor{reviewBgColor}{HTML}{F9F9F9}
@@ -190,6 +205,17 @@
 frame code={
   \draw[decorate, reviewFgColor!50,decoration={random steps,segment length=2mm,amplitude=0.6pt}] (frame.north east) rectangle (frame.south west);
 },
+}
+
+% === shotcut ===
+
+% 偶関数に背景色とラベルをつける
+\NewDocumentCommand{\evenFn}{O{0.6} m}{
+  \fitLabelMath[pink][pink][#1]{#2}{偶}
+}
+% 奇関数に背景色とラベルをつける
+\NewDocumentCommand{\oddFn}{O{0.6} m}{
+  \fitLabelMath[cyan][cyan!30][#1]{#2}{奇}
 }
 
 % ---
@@ -1368,6 +1394,62 @@ $k$が大きくなるほど、$s_k$は元の矩形波$f(t)$に近づいている
 \end{theorem}
 
 このフーリエ係数の式は、区間$-\dfrac{T}{2} \leq t \leq \dfrac{T}{2}$の場合の式を平行移動＋置換積分することで示される。
+
+\subsection{奇関数のフーリエ級数（フーリエ正弦級数）}
+
+$f(t)$が奇関数の場合、それを表現するフーリエ級数には、奇関数しか入らない。
+
+奇関数と奇関数の和が奇関数になることから、そう予想できる。
+
+偶関数$\cos$の項が消え、奇関数$\sin$の項だけが残ることを確かめるため、各フーリエ係数を計算してみよう。
+
+\subsubsection{定数項$a_0$}
+
+原点に対して対称な範囲での奇関数の積分は$0$になるから、
+
+\begin{align}
+  a_0 & = \dfrac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \oddFn{f(t)} dt \\
+      & = 0
+\end{align}
+
+\subsubsection{$\cos$の項の係数$a_n$}
+
+$\int$の中身を見ると、奇関数と偶関数の積は奇関数になるので、積分結果は$0$になる。
+
+\begin{align}
+  a_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \oddFn[0.4]{\oddFn{f(t)} \evenFn{\cos\left(\dfrac{2\pi nt}{T}\right)}} dt \\
+      & = 0
+\end{align}
+
+\subsubsection{$\sin$の項の係数$b_n$}
+
+$\int$の中身を見ると、奇関数と奇関数の積は偶関数になるので、偶関数の積分公式$\int_{-a}^{a}f(x)dx = 2\int_{0}^{a}f(x)dx$を使って計算する。
+
+\begin{align}
+  b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \evenFn[0.4]{\oddFn{f(t)} \oddFn{\sin\left(\dfrac{2\pi nt}{T}\right)}} dt \\
+      & = \dfrac{2}{T} \cdot 2 \int_{0}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt                                  \\
+      & = \dfrac{4}{T} \int_{0}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+\end{align}
+
+\subsubsection{まとめ：フーリエ正弦級数}
+
+以上より、$a_0$、$a_n$は$0$になるため、奇関数のフーリエ級数は、$\sin$の項だけで表現される。
+
+奇関数のフーリエ級数は、フーリエ正弦級数と呼ばれる。
+\begin{theorem}{フーリエ正弦級数}
+  \newline
+  周期$T$の周期関数$f(t)$が奇関数であり、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{\sum_{n=1}^{\infty} b_n\sin\left(\dfrac{2\pi nt}{T}\right)}{\normalsize フーリエ正弦級数}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$b_n$は次のようになる。
+  \Large
+  \begin{align}
+    b_n & = \dfrac{4}{T} \int_{0}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
 
 \chapter{線形システム}
 
