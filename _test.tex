@@ -4,6 +4,12 @@
 
 \usepackage{xparse}%オプション（省略可能引数）をもつコマンド作成
 
+% === color ===
+
+\usepackage[dvipsnames]{xcolor}
+
+\definecolor{myPurple}{HTML}{CDC1FF}
+
 % === math ===
 
 \usepackage{mathtools}
@@ -28,7 +34,7 @@
 \usepackage{setspace} % 行間調整用
 
 \usepackage[margin=15mm]{geometry} % 余白
-\renewcommand{\baselinestretch}{1.25} % 行間
+\renewcommand{\baselinestretch}{1.5} % 行間
 
 \setlength{\parindent}{0pt} % 段落始めでの字下げをしない
 
@@ -49,7 +55,9 @@
   3d,
   decorations.pathmorphing,
   decorations.pathreplacing,
-  shadows
+  shadows,
+  shapes.geometric,
+  spy
 }
 \tikzstyle{axis}=[->, >=Stealth]
 \tikzstyle{vector}=[->,>=Stealth,very thick, line cap=round]
@@ -219,6 +227,7 @@ frame code={
 
 \begin{document}
 
+\tableofcontents
 
 
 \end{document}
