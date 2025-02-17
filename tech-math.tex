@@ -41,6 +41,8 @@
 
 \setlength{\parindent}{0pt} % 段落始めでの字下げをしない
 
+\usepackage{here} % figure環境のHオプション（画像を強制的にその場に表示する）を提供
+
 % === tikz ===
 
 \usepackage[dvipdfmx]{graphicx}
@@ -534,6 +536,194 @@ $x \to 0$とした後の$\Delta x$を$dx$と書くことにして、$\displaysty
     f(x + dx)= f(x) + f'(x)dx
   \end{equation}
 \end{theorem}
+
+\subsection{不連続点と微分可能性}
+
+点$x$において連続な関数であれば、幅$\Delta x$を小さくすれば、その間の変化量$\Delta y$も小さくなるはずである。
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{1};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0.1) [below right, scale=0.5]{$\strut x + \Delta x$};
+      \node (X1) at (\xi,0.1) [below, scale=0.5, baseline = (X2.base)]{$\strut x$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x + \Delta x)$};
+
+      % x軸からの補助線
+      \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+      \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+      % y軸からの補助線
+      \draw[auxline, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[auxline, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % \Delta xを表す矢印
+      \draw[<->] ($(A)-(0,0.1)$) -- ($(B)-(0,0.1)$) node [midway, below]{$\Delta x$};
+      % \Delta yを表す矢印
+      \draw[<->] ($(A)+(-0.1,0)$) -- ($(D)+(-0.1, 0)$) node [midway, left]{$\Delta y$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+しかし、不連続な点について考える場合は、そうはいかない。
+
+下の図を見ると、$\Delta x$の幅を小さくしても、$\Delta y$は不連続点での関数の値の差の分までしか小さくならない。
+
+\begin{figure}[H]
+  \begin{minipage}{0.5\hsize}
+    \centering
+    \scalebox{1.5}{\begin{tikzpicture}
+        \def\xmin{-1};
+        \def\xmax{3};
+        \def\ymin{-1};
+        \def\ymax{3};
+        \def\fnA#1{0.5*sin(deg(0.5*pi*#1))+1};
+        \def\fnB#1{-0.5*cos(deg(0.5*pi*#1+0.25))+2};
+        \def\xi{1};
+        \def\xj{1.5};
+
+        % よく使う点の座標
+        \coordinate (O) at (0,0);
+        \coordinate (A) at (\xi, {\fnA{\xi}});
+        \coordinate (B) at (\xj, {\fnB{\xj}});
+        \coordinate (C) at (\xj, {\fnA{\xi}});
+        \coordinate (D) at (A |- B);
+
+        % 原点
+        \node at (O) [below left]{$O$};
+
+        % 座標軸
+        \draw[axis] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+        \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+
+        % 関数の描画
+        \draw[domain=\xmin:\xi, samples=100, magenta,thick, smooth] plot (\x, {\fnA{\x}});
+        \draw[domain=\xi:\xmax, samples=100, magenta,thick, smooth] plot (\x, {\fnB{\x}});
+
+        % x軸上の目盛り
+        \node (X2) at (\xj,0.15) [below right, scale=0.75]{$\strut x + \Delta x$};
+        \node (X1) at (\xi,0.15) [below left, scale=0.75, baseline = (X2.base)]{$\strut x$};
+
+        % y軸上の目盛り
+        \node at (0,{\fnA{\xi}}) [left, scale=0.75]{$f(x)$};
+        \node at (0,{\fnB{\xj}}) [left, scale=0.75]{$f(x + \Delta x)$};
+
+        % x軸からの補助線
+        \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+        \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+        % y軸からの補助線
+        \draw[auxline, thin, lightgray] (0,{\fnA{\xi}}) -- (A);
+        \draw[auxline, thin, lightgray] (0,{\fnB{\xj}}) --(B);
+
+        % \Delta xを表す矢印
+        \draw[<->] ($(A)-(0,0.1)$) -- ($(C)-(0,0.1)$) node [midway, below]{$\Delta x$};
+        % \Delta yを表す矢印
+        \draw[<->] ($(A)+(-0.1,0)$) -- ($(D)+(-0.1, 0)$) node [midway, left]{$\Delta y$};
+      \end{tikzpicture}
+    }
+  \end{minipage}%
+  \begin{minipage}{0.5\hsize}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{-1};
+        \def\xmax{3};
+        \def\ymin{-1};
+        \def\ymax{3};
+        \def\fnA#1{0.5*sin(deg(0.5*pi*#1))+1};
+        \def\fnB#1{-0.5*cos(deg(0.5*pi*#1+0.25))+2};
+        \def\xi{1};
+        \def\xj{1};
+
+        % よく使う点の座標
+        \coordinate (O) at (0,0);
+        \coordinate (A) at (\xi, {\fnA{\xi}});
+        \coordinate (B) at (\xj, {\fnB{\xj}});
+        \coordinate (C) at (\xj, {\fnA{\xi}});
+        \coordinate (D) at (A |- B);
+
+        % 原点
+        \node at (O) [below left]{$O$};
+
+        % 座標軸
+        \draw[axis] (\xmin,0) -- (\xmax,0) node[right] {$x$};
+        \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+
+        % 関数の描画
+        \draw[domain=\xmin:\xi, samples=100, magenta,thick, smooth] plot (\x, {\fnA{\x}});
+        \draw[domain=\xi:\xmax, samples=100, magenta,thick, smooth] plot (\x, {\fnB{\x}});
+
+        % x軸上の目盛り
+        \node (X2) at (\xj,0) [below, scale=0.6]{$ (x+ \Delta x) \simeq x$};
+
+        % y軸上の目盛り
+        \node at (0,{\fnA{\xi}}) [left, scale=0.75]{$f(x)$};
+        \node at (0,{\fnB{\xj}}) [left, scale=0.75]{$f(x + \Delta x)$};
+
+        % x軸からの補助線
+        \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+        \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+        % y軸からの補助線
+        \draw[auxline, thin, lightgray] (0,{\fnA{\xi}}) -- (A);
+        \draw[auxline, thin, lightgray] (0,{\fnB{\xj}}) --(B);
+
+        % \Delta xを表す矢印
+        \draw ($(A)-(0,0.1)$) -- ($(C)-(0,0.1)$) node [midway, below]{$\Delta x$};
+        % \Delta yを表す矢印
+        \draw[<->] ($(A)+(-0.1,0)$) -- ($(D)+(-0.1, 0)$) node [midway, left]{$\Delta y$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+\end{figure}
+
+このような不連続点においては、どんなに拡大しても、関数のグラフが直線にぴったりと重なることはない。
+
+「拡大すれば直線に近似できる」というのが微分の考え方だが、不連続点ではこの考え方を適用できないのだ。
+
+\vskip\baselineskip
+
+関数の不連続点においては、微分という計算を考えることがそもそもできない。
+
+ある点での関数のグラフが直線に重なる（微分可能である）ためには、$\Delta x \to 0$としたときに$\Delta y \to 0$となる必要がある。
 
 \subsection{三角関数の微分}
 
