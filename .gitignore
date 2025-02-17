@@ -1,3 +1,4 @@
 out/*
 !*.pdf
+out/_test.pdf
 .DS_Store
