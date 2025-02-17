@@ -3,6 +3,12 @@
 \title{画像処理・AIのための数学ノート}
 \author{tomixy}
 
+% === color ===
+
+\usepackage[dvipsnames]{xcolor}
+
+\definecolor{myPurple}{HTML}{CDC1FF}
+
 % === extend ===
 
 \usepackage{xparse}%オプション（省略可能引数）をもつコマンド作成
@@ -52,7 +58,9 @@
   3d,
   decorations.pathmorphing,
   decorations.pathreplacing,
-  shadows
+  shadows,
+  shapes.geometric,
+  spy
 }
 \tikzstyle{axis}=[->, >=Stealth]
 \tikzstyle{vector}=[->,>=Stealth,very thick, line cap=round]
@@ -224,6 +232,371 @@ frame code={
 
 \maketitle
 \tableofcontents
+
+\chapter{微分と積分}
+
+\section{1変数関数の微分}
+
+微分とは、複雑な問題も「拡大して見たら簡単に見える（かもしれない）」という発想で、わずかな変化に着目して入力と出力の関係（関数）を調べる手法といえる。
+
+\subsection{接線：拡大したら直線に近似できる}
+
+関数$y=f(x)$について、引数の値を$x=x_0$からわずかに増加させて、$x=x_0+\Delta x$にした場合の出力の変化を考える。
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{1.5};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0) [below, scale=0.5]{$\strut x_0 + \Delta x$};
+      \node (X1) at (\xi,0) [below, scale=0.5, baseline = (X2.base)]{$\strut x_0$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x_0)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x_0 + \Delta x)$};
+
+      % x軸からの補助線
+      \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+      \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+      % y軸からの補助線
+      \draw[auxline, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[auxline, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % \Delta xを表す矢印
+      \draw[<->] ($(A)-(0,0.1)$) -- ($(B)-(0,0.1)$) node [midway, below]{$\Delta x$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+このとき、増分の幅$\Delta x$を狭くしていく（$\Delta x$の値を小さくしていく）と、$x=x_0$付近において、関数$y=f(x)$のグラフは直線にほとんど重なるようになる。
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}[spy using outlines={circle, magnification=4, size=2cm, connect spies}]
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{0.95};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % x軸からの補助線
+      \draw[dotted, thin, lightgray] (\xi,0) -- (A);
+      \draw[dotted, thin, lightgray] (\xj,0) -- (B);
+      % y軸からの補助線
+      \draw[dotted, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[dotted, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0) [below right, scale=0.5]{$\strut x_0 + \Delta x$};
+      \node (X1) at (\xi,0) [below, scale=0.5, baseline = (X2.base)]{$\strut x_0$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x_0)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x_0 + \Delta x)$};
+
+      \spy [Aquamarine] on ($(A)!.5!(C)$) in node [left] at (3.5,-1.25);
+    \end{tikzpicture}
+  }
+\end{center}
+
+このように、関数$f(x)$は、ある点$x_0$の付近では、
+
+\begin{equation}
+  f(x) \simeq a(x - x_0) +b
+\end{equation}
+
+という直線に近似することができる。
+
+\vskip\baselineskip
+
+ここで、$f(x_0)$の値を考えると、
+
+\begin{align}
+  f(x_0) & = a(x_0 - x_0) + b \\
+         & = a\cdot 0 + b     \\
+         & = b
+\end{align}
+
+であるから、実は$b=f(x_0)$である。
+
+\vskip\baselineskip
+
+一方、$a$はこの直線の傾きを表す。
+
+そもそも、傾きとは、$x$が増加したとき、$y$がどれだけ急に（速く）増加するかを表す量である。
+
+関数のグラフを見ると、急激に上下する箇所もあれば、なだらかに変化する箇所もある。
+
+つまり、ある点でグラフにぴったりと沿う直線（接線）を見つけたとしても、その傾きは場所によって異なる。
+
+そこで、「傾きは位置$x$の関数」とみなして、次のように表現しよう。
+
+\begin{equation}
+  a = f'(x)
+\end{equation}
+
+これで、先ほどの直線の式を完成させることができる。
+
+\begin{theorem}{関数の各点の接線}
+  \newline
+  関数$f(x)$は、ある点$x_0$の付近では、
+  \Large
+  \begin{equation}
+    f(x) \simeq f(x_0) + f'(x)(x - x_0)
+  \end{equation}
+  \normalsize
+  という傾き$f'(x)$の直線に近似できる。
+\end{theorem}
+
+\subsection{接線の傾きとしての導関数}
+
+傾きは位置$x$の関数$f'(x)$としたが、この関数がどのような関数なのか、結局傾きを計算する方法がわかっていない。
+
+直線の傾きは$x$と$y$の増加率の比として定義されているから、まずはそれぞれの増加率を数式で表現しよう。
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{1.5};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0) [below, scale=0.5]{$\strut x + \Delta x$};
+      \node (X1) at (\xi,0) [below, scale=0.5, baseline = (X2.base)]{$\strut x$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x + \Delta x)$};
+
+      % x軸からの補助線
+      \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+      \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+      % y軸からの補助線
+      \draw[auxline, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[auxline, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % \Delta xを表す矢印
+      \draw[<->] ($(A)-(0,0.1)$) -- ($(B)-(0,0.1)$) node [midway, below]{$\Delta x$};
+      % \Delta yを表す矢印
+      \draw[<->] ($(A)+(-0.1,0)$) -- ($(D)+(-0.1, 0)$) node [midway, left]{$\Delta y$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+この図から、$y$の増加率$\Delta y$は次のように表せることがわかる。
+
+\begin{equation}
+  \Delta y = f(x + \Delta x) - f(x)
+\end{equation}
+
+この両辺を$\Delta x$で割ると、$x$の増加率$\Delta x$と$y$の増加率$\Delta y$の比率が表せる。
+
+\begin{equation}
+  \frac{\Delta y}{\Delta x} = \frac{f(x + \Delta x) - f(x)}{\Delta x}
+\end{equation}
+
+図では$\Delta x$には幅があるが、この幅を限りなく$0$に近づけると、幅というより点になる。
+
+つまり、$\Delta x \rightarrow 0$とすれば、$\dfrac{\Delta y}{\Delta x}$は任意の点$x$での接線の傾きとなる。
+
+「任意の点$x$での傾き」も$x$の関数であり、この関数を導関数と呼ぶ。
+
+\begin{definition}{導関数}
+  \newline
+  関数$f(x)$の任意の点$x$における接線の傾き（増加の速さ）を表す関数を導関数といい、次のように定義する。
+  \Large
+  \begin{equation}
+    f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+  \end{equation}
+  \normalsize
+  また、導関数を表す記号には、いくつか種類がある。
+  \Large
+  \begin{equation}
+    f'(x) = \frac{df}{dx} = \frac{dy}{dx} = \frac{d}{dx}f(x)
+  \end{equation}
+\end{definition}
+
+\subsection{微分とその関係式}
+
+\begin{definition}{微分}
+  関数$f(x)$から、その導関数$f'(x)$を求める操作を微分という。
+\end{definition}
+
+関数のグラフから離れて、微分という「計算」を考えるにあたって、先ほどの導関数の定義式よりも都合の良い表現式がある。
+
+$x \to 0$とした後の$\Delta x$を$dx$と書くことにして、$\displaystyle\lim_{\Delta x \to 0}$を取り払ってしまおう。
+
+\begin{equation}
+  \begin{WithArrows}
+    f'(x) & = \dfrac{f(x + dx) - f(x)}{dx} \Arrow{両辺$\times dx$} \\
+    f'(x)dx & = f(x + dx) - f(x) \Arrow{$f(x)$を移項} \\
+    f'(x)dx + f(x) & = f(x + dx)
+  \end{WithArrows}
+\end{equation}
+
+\begin{theorem}{微分の関係式}
+  \Large
+  \begin{equation}
+    f(x + dx)= f(x) + f'(x)dx
+  \end{equation}
+\end{theorem}
+
+\subsection{三角関数の微分}
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}[scale=3]
+      \coordinate (A) at (1,0);
+      \coordinate (O) at (0,0);
+      \coordinate (C1) at (30:1cm);
+      \coordinate (C2) at (40:1cm);
+      \coordinate (H) at (C1 |- O);
+      % Hのx座標とC2のy座標を持つ点
+      \coordinate (H2) at (C2 -| H);
+
+      % OとAを結ぶ線
+      \draw (O) -- (A);
+      % OとC1を結ぶ線
+      \draw (O) -- (C1);
+      % OとC2を結ぶ線
+      \draw (O) -- (C2);
+
+      % 三角形O-H-C1
+      \draw[fill=myPurple, opacity=0.6] (O) -- (H) -- (C1) -- cycle;
+      % 三角形C1-H-C2
+      \draw[fill=myPurple, opacity=0.6] (C2) -- (H2) -- (C1) -- cycle;
+
+      % 角A-O-C1を表す扇形
+      \draw (A) -- (O) -- (C1) pic [fill=cyan!50, angle radius=9mm, "$\theta$"] {angle = A--O--C1};
+      % 角C1-O-C2を表す扇形
+      \draw (C1) -- (O) -- (C2) pic [fill=magenta!40, angle radius=9mm] {angle = C1--O--C2};
+      % 角C1-H-C2を表す扇形
+      \draw (H2) -- (C1) -- (C2) pic [fill=cyan!60, angle radius=2mm] {angle = H2--C1--C2};
+
+      % 直角O-H-C1
+      \draw (O) -- (H) -- (C1) pic [fill=lightgray, angle radius=1.25mm] {right angle = O--H--C1};
+      % 直角O-C1-C2
+      \draw (O) -- (C1) --(C2) pic [fill=lightgray, angle radius=0.9mm] {right angle = O--C1--C2};
+      % 直角C1-H2-C2
+      \draw (C1) -- (H2) -- (C2) pic [fill=lightgray, angle radius=0.75mm] {right angle = C1--H2--C2};
+
+      % AからC1を結ぶ円弧
+      \draw[cyan, thick] (A) arc (0:30:1cm) node [midway, above, right] {$\theta$};
+      % C1からC2を結ぶ円弧
+      \draw[magenta, thick] (C1) arc (30:40:1cm) node [midway,sloped, below] {$d\theta$};
+
+      % C1からH2の高さを表すベクトル
+      \draw[<->] ($(C1)+ (0.05, 0)$) -- ($(H2)+(0.05,0)$) node [midway, right] {$d\theta\cos \theta$};
+      % C2からH2の幅を表すベクトル
+      \draw[<->] ($(C2)+ (0, 0.05)$) -- ($(H2)+(0,0.05)$) node [midway, above] {$d\theta\sin \theta$};
+
+      % OからC2の長さを表すベクトル
+      \draw [<->, orange] to ($(O)!0.05!90:(C2)$) -- ($(C2)!-0.05!90:(O)$) node [midway, above, orange] { $1$ };
+      % OからAの長さを表すベクトル
+      \draw [<->, orange] to ($(O)-(0,0.05)$) -- ($(A)-(0,0.05)$) node [midway, below, orange] { $1$ };
+
+      % % sin\thetaを表すベクトル
+      % \draw [<->] to ($(C1)+(0.05,0)$) -- ($(H)+(0.05,0)$) node [midway, left] { $\sin \theta$ };
+      % % cos\thetaを表すベクトル
+      % \draw [<->] to ($(H)-(0,0.05)$) -- ($(O)-(0,0.05)$) node [midway, below] { $\cos \theta$ };
+    \end{tikzpicture}
+  }
+\end{center}
+
 
 \chapter{複素数と複素関数}
 
