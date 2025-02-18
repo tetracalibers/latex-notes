@@ -1119,6 +1119,8 @@ $y=f(x)=x^2$において、$x$を$dx$だけ微小変化させると、$y$は$dy$
 
 各辺$dx$の立方体は、$dx$を小さくすると、ほぼ点にしか見えないほど小さくなる。
 
+つまり、各辺$dx$の立方体の体積$dx^3$は、考慮する必要がない。
+
 \begin{center}
   \tdplotsetmaincoords{60}{125}
   \begin{tikzpicture}[
@@ -1454,6 +1456,70 @@ $y=x^{-n}$を、$x^ny = 1$として、
 \begin{theorem}{整数の冪を持つ冪関数の導関数}
   \newline
   $n$が整数のとき、$y=x^n$の導関数は次のようになる。
+  \Large
+  \begin{equation}
+    \frac{dy}{dx} = nx^{n-1}
+  \end{equation}
+\end{theorem}
+
+\subsubsection{$y=x^n$の微分（$n$が実数の場合）}
+
+$n$が有理数の場合はどうだろうか。実はこれも、指数法則によって拡張することができる。
+
+$m$と$n$はどちらも自然数として、$y=x^{\frac{m}{n}}$の微分を考える。
+
+\vskip\baselineskip
+
+まず、$y=x^{\frac{m}{n}}$は、$y^n = x^m$とまったく同じ式である。
+
+\begin{equation}
+  \begin{WithArrows}
+    y^n & = x^m \Arrow{両辺$\dfrac{1}{n}$乗} \\
+    y & = x^{\frac{m}{n}}
+  \end{WithArrows}
+\end{equation}
+
+というわけで、$y^n = x^m$を微小変化させて、展開してみよう。
+
+\begin{equation}
+  \underbrace{(y+dy)(y+dy) \cdots (y+dy)}_{n\text{個}} = \underbrace{(x+dx)(x+dx) \cdots (x+dx)}_{m\text{個}}
+\end{equation}
+
+ここで、$n$と$m$は自然数なのだから、自然数冪のときと同じように考えて、次のような式が残ることになる。
+
+\begin{equation}
+  ny^{n-1}dy = mx^{m-1}dx
+\end{equation}
+
+よって、$\dfrac{dy}{dx}$の式の$y$を含まない形を目指すと、
+
+\begin{equation}
+  \begin{WithArrows}
+    \dfrac{dy}{dx} &= \dfrac{mx^{m-1}}{ny^{n-1}} \Arrow{$y=x^{\frac{m}{n}}$} \\
+    &= \dfrac{mx^{m-1}}{nx^{\frac{m}{n}(n-1)}} \\
+    &= \dfrac{mx^{m-1}}{nx^{m - \frac{m}{n}}} \Arrow{指数法則$x^{a+b} = x^a x^b$} \\
+    &= \dfrac{mx^m x^{-1}}{nx^mx^{-\frac{m}{n}}} \Arrow{$x^m$で約分} \\
+    &= \dfrac{mx^{-1}}{n x^{-\frac{m}{n}}} \\
+    &= \dfrac{m}{n}\cdot\dfrac{x^{-1}}{x^{-\frac{m}{n}}} \Arrow{指数法則$\dfrac{a^m}{a^n}=a^{m-n}$} \\
+    &= \dfrac{m}{n}\cdot x^{-1-\left(-\frac{m}{n}\right)} \\
+    &= \dfrac{m}{n}\cdot x^{-1 + \frac{m}{n}} \\
+    &= \dfrac{m}{n}x^{\frac{m}{n}-1}
+  \end{WithArrows}
+\end{equation}
+
+これは、冪が自然数の場合の冪関数の微分$\dfrac{dy}{dx} = nx^{n-1}$において、$n$を$\dfrac{m}{n}$に置き換えたものになっている。
+
+つまり、整数だけでなく、有理数に対しても同様の導関数の式が成り立つ。
+
+\vskip\baselineskip
+
+ここまで来ると、無理数はどうだろうか？という疑問が生まれるが、無理数への拡張は指数法則では対応できない。
+
+無理数に対しては、極限操作によって同様の導関数の式を導くことができ、実数全体に対して同じ導関数の式が成り立つことが示される。
+
+\begin{theorem}{冪関数の導関数}
+  \newline
+  $n$が実数のとき、$y=x^n$の導関数は次のようになる。
   \Large
   \begin{equation}
     \frac{dy}{dx} = nx^{n-1}
