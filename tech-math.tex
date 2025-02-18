@@ -72,7 +72,10 @@
 \tikzstyle{xz-plane}=[canvas is xz plane at y=0]
 \tikzstyle{xy-plane}=[canvas is xy plane at z=0]
 
+\usepackage{tikz-3dplot}
+
 \usepackage{witharrows} % 数式の間に矢印で説明を入れる
+\usepackage{annotate-equations}
 
 \usepackage[outline]{contour} % 文字の縁取り
 
@@ -943,6 +946,426 @@ $\fitLabelMath[BlueGreen][BlueGreen!40]{f'(x)g'(x)dx^2}{\footnotesize 2次以上
   \Large
   \begin{equation}
     \left( f(x) g(x) \right)' = f'(x) g(x) + f(x) g'(x)
+  \end{equation}
+\end{theorem}
+
+\subsection{冪関数の微分}
+
+具体的な関数の導関数も、微分の関係式をもとに考えることができる。
+
+まずは、簡単な例として、冪関数$y=x^n$の微分を考えてみよう。
+
+\subsubsection{$y=x^2$の微分}
+
+$y=f(x)=x^2$において、$x$を$dx$だけ微小変化させると、$y$は$dy$だけ変化するとする。
+
+すると、微分の関係式は$y + dy = f(x + dx) = (x+dx)^2$となるが、これを次のように展開して考える。
+
+\begin{equation}
+  y + dy = (x + dx)(x + dx)
+\end{equation}
+
+右辺の$(x+dx)(x+dx)$からは、
+
+\begin{itemize}
+  \item $x^2$の項が1つ
+  \item $xdx$の項が2つ
+  \item $dx^2$の項が1つ
+\end{itemize}
+
+現れることになる。
+
+数式で表すと、
+
+\begin{equation}
+  \eqnmarkbox[magenta]{Y1}{y} + dy = \eqnmarkbox[magenta]{Y2}{x^2} + 2xdx + dx^2
+\end{equation}
+\annotatetwo{below}{Y1}{Y2}{\bfseries 同じ}
+
+ここで$y=x^2$なので、左辺の$y$と右辺の$x^2$は相殺される。
+
+\begin{equation}
+  dy = 2xdx + \fitLabelMath[BlueGreen][BlueGreen!40]{dx^2}{高次の微小量}
+\end{equation}
+
+さらに、$dx^2$の項は無視することができる。
+
+なぜなら、$dx$を小さくすると、$dx^2$は$dx$とは比べ物にならないくらい小さくなってしまうからだ。
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}[local bounding box=left]
+      \def\width{4}
+      \def\dx{0.6}
+
+      % 座標
+      \coordinate (A) at (0,0);
+      \coordinate (B) at (\width,0);
+      \coordinate (C) at (\width,\width);
+      \coordinate (D) at (0,\width);
+      \coordinate (Cx) at ($(C)+(\dx,0)$);
+      \coordinate (Cy) at ($(C)+(0,\dx)$);
+      \coordinate (Cxy) at ($(C)+(\dx,\dx)$);
+      \coordinate (Bx) at ($(B)+(\dx,0)$);
+      \coordinate (Dy) at ($(D)+(0,\dx)$);
+
+      % % 点（デバッグ用）
+      % \fill (A) circle[radius=2pt] node[below left] {A};
+      % \fill (B) circle[radius=2pt] node[below right] {B};
+      % \fill (C) circle[radius=2pt] node[above right] {C};
+      % \fill (D) circle[radius=2pt] node[above left] {D};
+      % \fill (Cx) circle[radius=2pt] node[above right] {Cx};
+      % \fill (Cy) circle[radius=2pt] node[above right] {Cy};
+      % \fill (Cxy) circle[radius=2pt] node[above right] {Cxy};
+      % \fill (Bx) circle[radius=2pt] node[below right] {Bx};
+      % \fill (Dy) circle[radius=2pt] node[above left] {Dy};
+
+      % 長方形
+      \draw [fill=lightgray!20, draw=lightgray!80!gray] (A) rectangle (C) node[pos=.5] {$x^2$};
+      \draw [fill=magenta!30, draw=magenta!70!gray] (B) rectangle (Cx) node[pos=.5, rotate=-90] {$xdx$};
+      \draw [fill=magenta!30, draw=magenta!70!gray] (D) rectangle (Cy) node[pos=.5] {$xdx$};
+      \draw [fill=BlueGreen!30, draw=BlueGreen!70!gray] (C) rectangle (Cxy) node[pos=.5] {$dx^2$};
+
+      % 辺の長さを表す矢印
+      \def\s{1em} % 辺と矢印の隙間
+      \def\h{0.01} % 矢印の矢同士の隙間
+      \draw[<->, thick, gray] ($(A)+(\h,-\s)$) -- ($(B)-(\h,\s)$) node[midway,below] {$x$};
+      \draw[<->, thick, gray] ($(A)+(-\s,\h)$) -- ($(D)-(\s,\h)$) node[midway,left] {$x$};
+      \draw[<->, thick, magenta!80] ($(B)+(\h,-\s)$) -- ($(Bx)-(\h,\s)$) node[midway,below] {$dx$};
+      \draw[<->, thick, magenta!80] ($(D)+(-\s,\h)$) -- ($(Dy)-(\s,\h)$) node[midway,left] {$dx$};
+    \end{scope}
+
+    \begin{scope}[xshift=0.5\textwidth, local bounding box=right]
+      \def\width{4}
+      \def\dx{0.1}
+
+      % 座標
+      \coordinate (A) at (0,0);
+      \coordinate (B) at (\width,0);
+      \coordinate (C) at (\width,\width);
+      \coordinate (D) at (0,\width);
+      \coordinate (Cx) at ($(C)+(\dx,0)$);
+      \coordinate (Cy) at ($(C)+(0,\dx)$);
+      \coordinate (Cxy) at ($(C)+(\dx,\dx)$);
+      \coordinate (Bx) at ($(B)+(\dx,0)$);
+      \coordinate (Dy) at ($(D)+(0,\dx)$);
+
+      % % 点（デバッグ用）
+      % \fill (A) circle[radius=2pt] node[below left] {A};
+      % \fill (B) circle[radius=2pt] node[below right] {B};
+      % \fill (C) circle[radius=2pt] node[above right] {C};
+      % \fill (D) circle[radius=2pt] node[above left] {D};
+      % \fill (Cx) circle[radius=2pt] node[above right] {Cx};
+      % \fill (Cy) circle[radius=2pt] node[above right] {Cy};
+      % \fill (Cxy) circle[radius=2pt] node[above right] {Cxy};
+      % \fill (Bx) circle[radius=2pt] node[below right] {Bx};
+      % \fill (Dy) circle[radius=2pt] node[above left] {Dy};
+
+      % 長方形
+      \draw [fill=lightgray!20, draw=lightgray!80!gray] (A) rectangle (C) node[pos=.5] {$x^2$};
+      \draw [fill=magenta!30, draw=magenta!70!gray] (B) rectangle (Cx);
+      \draw [fill=magenta!30, draw=magenta!70!gray] (D) rectangle (Cy);
+      \draw [fill=BlueGreen!30, draw=BlueGreen!70!gray] (C) rectangle (Cxy);
+    \end{scope}
+
+    \draw[->, thick] ($(left.east)+(1em, 0)$) -- ($(left-|right.west)-(1em,0)$) node[pos=.5, above] {$dx \to 0$};
+  \end{tikzpicture}
+\end{center}
+
+というわけで、次のような式が得られる。
+
+\begin{equation}
+  dy = 2xdx
+\end{equation}
+
+よって、$y=x^2$の導関数は、$y'=2x$となることがわかった。
+
+\begin{equation}
+  \frac{dy}{dx} = 2x
+\end{equation}
+
+\subsubsection{$y=x^3$の微分}
+
+同じように、$y=x^3$の微分を考えてみよう。
+
+\begin{equation}
+  y + dy = (x + dx)(x + dx)(x + dx)
+\end{equation}
+
+右辺の$(x+dx)(x+dx)(x+dx)$からは、
+
+\begin{itemize}
+  \item $x^3$の項が1つ
+  \item $x^2dx$の項が3つ
+  \item $dx^3$の項が1つ
+\end{itemize}
+
+現れることになる。
+
+\begin{equation}
+  \eqnmarkbox[magenta]{Y1}{y} + dy = \eqnmarkbox[magenta]{Y2}{x^3} + 3x^2dx + dx^3
+\end{equation}
+\annotatetwo{below}{Y1}{Y2}{\bfseries 同じ}
+
+ここで$y=x^3$なので、左辺の$y$と右辺の$x^3$は相殺される。
+
+\begin{equation}
+  dy = 3x^2dx + \fitLabelMath[BlueGreen][BlueGreen!40]{dx^3}{高次の微小量}
+\end{equation}
+
+さらにここでは、$dx^3$の項を無視することができる。
+
+次の図を見てみよう。
+
+各辺$dx$の立方体は、$dx$を小さくすると、ほぼ点にしか見えないほど小さくなる。
+
+\begin{center}
+  \tdplotsetmaincoords{60}{125}
+  \begin{tikzpicture}[
+      tdplot_main_coords,
+      grid/.style={very thin,gray},
+      axis/.style={->,blue,thick},
+      cube/.style={very thick,fill=lightgray!20, draw=lightgray!80!gray},
+      cube_dx/.style={very thick,fill=magenta!30, draw=magenta!70!gray, opacity=0.6},
+      cube_dx3/.style={very thick,fill=BlueGreen!30, draw=BlueGreen!70!gray, opacity=0.6},
+      cube hidden/.style={thick, dashed, draw=lightgray!80!gray}
+    ]
+    \begin{scope}[local bounding box=left]
+      \def\size{3}
+      \def\dx{0.6}
+
+      % 頂点の座標
+      \coordinate (O) at (0,0,0);
+      \coordinate (Axy) at (\size, 0, 0);
+      \coordinate (Bxy) at (\size, \size, 0);
+      \coordinate (Cxy) at (0, \size, 0);
+      \coordinate (Ayz) at (0, 0, \size);
+      \coordinate (Byz) at (0, \size, \size);
+      \coordinate (Axz) at (\size, 0, \size);
+      \coordinate (Axyz) at (\size, \size, \size);
+
+      %%% 元の立方体
+      % draw the front-right of the cube
+      \draw[cube] (Axy) -- (Bxy) -- (Axyz) -- (Axz) -- cycle;
+      % draw the front-left of the cube
+      \draw[cube] (Cxy) -- (Bxy) -- (Axyz) -- (Byz) -- cycle;
+      % draw the top of the cube
+      \draw[cube] (Ayz) -- (Byz) -- (Axyz) -- (Axz) -- cycle;
+
+      %%% x軸方向にdxだけ拡張
+      % 底面
+      \draw[cube_dx] (Axy) -- ($(Axy)+(\dx,0,0)$) -- ($(Bxy)+(\dx,0,0)$) -- (Bxy) -- cycle;
+      % 後ろの面
+      \draw[cube_dx] (Axz) -- (Axy) -- ($(Axy)+(\dx,0,0)$) -- ($(Axz)+(\dx,0,0)$) -- cycle;
+      % 前面
+      \draw[cube_dx] (Axyz) -- (Bxy) -- ($(Bxy)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,0)$) -- cycle;
+      % 上面
+      \draw[cube_dx] (Axz) -- ($(Axz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,0)$) -- (Axyz) -- cycle;
+      % 正方形
+      \draw[cube_dx] ($(Axy)+(\dx,0,0)$) -- ($(Bxy)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,0)$) -- ($(Axz)+(\dx,0,0)$) -- cycle;
+
+      %%% y軸方向にdxだけ拡張
+      % 底面
+      \draw[cube_dx] (Bxy) -- ($(Bxy)+(0,\dx,0)$) -- ($(Cxy)+(0,\dx,0)$) -- (Cxy) -- cycle;
+      % 後ろの面
+      \draw[cube_dx] (Cxy) -- ($(Cxy)+(0,\dx,0)$) -- ($(Byz)+(0,\dx,0)$) -- (Byz) -- cycle;
+      % 前面
+      \draw[cube_dx] (Axyz) -- ($(Axyz)+(0,\dx,0)$) -- ($(Bxy)+(0,\dx,0)$) -- (Bxy) -- cycle;
+      % 上面
+      \draw[cube_dx] (Axyz) -- ($(Axyz)+(0,\dx,0)$) -- ($(Byz)+(0,\dx,0)$) -- (Byz) -- cycle;
+      % 正方形
+      \draw[cube_dx] ($(Axyz)+(0,\dx,0)$) -- ($(Bxy)+(0,\dx,0)$) -- ($(Cxy)+(0,\dx,0)$) -- ($(Byz)+(0,\dx,0)$) -- cycle;
+
+      %%% z軸方向にdxだけ拡張
+      % 後ろの面
+      \draw[cube_dx] (Ayz) -- ($(Ayz)+(0,0,\dx)$) -- ($(Byz)+(0,0,\dx)$) -- (Byz) -- cycle;
+      % 左の面
+      \draw[cube_dx] (Ayz) -- ($(Ayz)+(0,0,\dx)$) -- ($(Axz)+(0,0,\dx)$) -- (Axz) -- cycle;
+      % 右の面
+      \draw[cube_dx] (Byz) -- ($(Byz)+(0,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- (Axyz) -- cycle;
+      % 前の面
+      \draw[cube_dx] (Axz) -- ($(Axz)+(0,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- (Axyz) -- cycle;
+      % 正方形
+      \draw[cube_dx] ($(Ayz)+(0,0,\dx)$) -- ($(Byz)+(0,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- ($(Axz)+(0,0,\dx)$) -- cycle;
+
+      %%% 高次の微小量
+      \draw[cube_dx3] (Axyz) -- ($(Axyz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- cycle;
+      \draw[cube_dx3] (Axyz) -- ($(Axyz)+(0,\dx,0)$) -- ($(Axyz)+(0,\dx,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- cycle;
+      \draw[cube_dx3] (Axyz) -- ($(Axyz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,\dx,0)$) -- ($(Axyz)+(0,\dx,0)$) -- cycle; % 底面
+      \draw[cube_dx3] ($(Axyz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,\dx,0)$) -- ($(Axyz)+(\dx,\dx,\dx)$) -- ($(Axyz)+(\dx,0,\dx)$) -- cycle;
+      \draw[cube_dx3] ($(Axyz)+(0,\dx,0)$) -- ($(Axyz)+(\dx,\dx,0)$) -- ($(Axyz)+(\dx,\dx,\dx)$) -- ($(Axyz)+(0,\dx,\dx)$) -- cycle;
+      \draw[cube_dx3] ($(Axyz)+(0,0,\dx)$) -- ($(Axyz)+(\dx,0,\dx)$) -- ($(Axyz)+(\dx,\dx,\dx)$) -- ($(Axyz)+(0,\dx,\dx)$) -- cycle; % 上面
+
+      %%% 辺の長さを表す矢印
+      % 辺と矢印の隙間
+      \def\s{0.4}
+      % dxを表す矢印
+      \draw[<->, thick, magenta!80] ($(Axz)+(\s,0,0.15)$) -- ($(Axz)+(\s,0,\dx + 0.15)$) node[midway,left] {$dx$};
+      % xを表す矢印
+      \draw[<->, thick, gray] ($(Axy)+(\dx + \s,0,0.1)$) -- ($(Axz)+(\dx + \s,0,0.1)$) node[midway,left] {$x$};
+
+      % draw dashed lines to represent hidden edges
+      \draw[cube hidden] (O) -- (Axy);
+      \draw[cube hidden] (O) -- (Cxy);
+      \draw[cube hidden] (O) -- (Ayz);
+
+      % % 座標軸（デバッグ用）
+      % \draw[axis] (0,0,0) -- (3,0,0) node[anchor=west]{$x$};
+      % \draw[axis] (0,0,0) -- (0,3,0) node[anchor=west]{$y$};
+      % \draw[axis] (0,0,0) -- (0,0,3) node[anchor=west]{$z$};
+      % % 点（デバッグ用）
+      % \fill (O) circle[radius=2pt] node[above left] {O};
+      % \fill (Axy) circle[radius=2pt] node[below left] {Axy};
+      % \fill (Bxy) circle[radius=2pt] node[below right] {Bxy};
+      % \fill (Cxy) circle[radius=2pt] node[above right] {Cxy};
+      % \fill (Ayz) circle[radius=2pt] node[above left] {Ayz};
+      % \fill (Byz) circle[radius=2pt] node[above right] {Byz};
+      % \fill (Axz) circle[radius=2pt] node[above left] {Axz};
+      % \fill (Axyz) circle[radius=2pt] node[above right] {Axyz};
+    \end{scope}
+
+    \begin{scope}[xshift=0.5\textwidth, local bounding box=right]
+      \def\size{3}
+      \def\dx{0.15}
+
+      % 頂点の座標
+      \coordinate (O) at (0,0,0);
+      \coordinate (Axy) at (\size, 0, 0);
+      \coordinate (Bxy) at (\size, \size, 0);
+      \coordinate (Cxy) at (0, \size, 0);
+      \coordinate (Ayz) at (0, 0, \size);
+      \coordinate (Byz) at (0, \size, \size);
+      \coordinate (Axz) at (\size, 0, \size);
+      \coordinate (Axyz) at (\size, \size, \size);
+
+      %%% 元の立方体
+      % draw the front-right of the cube
+      \draw[cube] (Axy) -- (Bxy) -- (Axyz) -- (Axz) -- cycle;
+      % draw the front-left of the cube
+      \draw[cube] (Cxy) -- (Bxy) -- (Axyz) -- (Byz) -- cycle;
+      % draw the top of the cube
+      \draw[cube] (Ayz) -- (Byz) -- (Axyz) -- (Axz) -- cycle;
+
+      %%% x軸方向にdxだけ拡張
+      % 底面
+      \draw[cube_dx] (Axy) -- ($(Axy)+(\dx,0,0)$) -- ($(Bxy)+(\dx,0,0)$) -- (Bxy) -- cycle;
+      % 後ろの面
+      \draw[cube_dx] (Axz) -- (Axy) -- ($(Axy)+(\dx,0,0)$) -- ($(Axz)+(\dx,0,0)$) -- cycle;
+      % 前面
+      \draw[cube_dx] (Axyz) -- (Bxy) -- ($(Bxy)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,0)$) -- cycle;
+      % 上面
+      \draw[cube_dx] (Axz) -- ($(Axz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,0)$) -- (Axyz) -- cycle;
+      % 正方形
+      \draw[cube_dx] ($(Axy)+(\dx,0,0)$) -- ($(Bxy)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,0)$) -- ($(Axz)+(\dx,0,0)$) -- cycle;
+
+      %%% y軸方向にdxだけ拡張
+      % 底面
+      \draw[cube_dx] (Bxy) -- ($(Bxy)+(0,\dx,0)$) -- ($(Cxy)+(0,\dx,0)$) -- (Cxy) -- cycle;
+      % 後ろの面
+      \draw[cube_dx] (Cxy) -- ($(Cxy)+(0,\dx,0)$) -- ($(Byz)+(0,\dx,0)$) -- (Byz) -- cycle;
+      % 前面
+      \draw[cube_dx] (Axyz) -- ($(Axyz)+(0,\dx,0)$) -- ($(Bxy)+(0,\dx,0)$) -- (Bxy) -- cycle;
+      % 上面
+      \draw[cube_dx] (Axyz) -- ($(Axyz)+(0,\dx,0)$) -- ($(Byz)+(0,\dx,0)$) -- (Byz) -- cycle;
+      % 正方形
+      \draw[cube_dx] ($(Axyz)+(0,\dx,0)$) -- ($(Bxy)+(0,\dx,0)$) -- ($(Cxy)+(0,\dx,0)$) -- ($(Byz)+(0,\dx,0)$) -- cycle;
+
+      %%% z軸方向にdxだけ拡張
+      % 後ろの面
+      \draw[cube_dx] (Ayz) -- ($(Ayz)+(0,0,\dx)$) -- ($(Byz)+(0,0,\dx)$) -- (Byz) -- cycle;
+      % 左の面
+      \draw[cube_dx] (Ayz) -- ($(Ayz)+(0,0,\dx)$) -- ($(Axz)+(0,0,\dx)$) -- (Axz) -- cycle;
+      % 右の面
+      \draw[cube_dx] (Byz) -- ($(Byz)+(0,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- (Axyz) -- cycle;
+      % 前の面
+      \draw[cube_dx] (Axz) -- ($(Axz)+(0,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- (Axyz) -- cycle;
+      % 正方形
+      \draw[cube_dx] ($(Ayz)+(0,0,\dx)$) -- ($(Byz)+(0,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- ($(Axz)+(0,0,\dx)$) -- cycle;
+
+      %%% 高次の微小量
+      \draw[cube_dx3] (Axyz) -- ($(Axyz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,0,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- cycle;
+      \draw[cube_dx3] (Axyz) -- ($(Axyz)+(0,\dx,0)$) -- ($(Axyz)+(0,\dx,\dx)$) -- ($(Axyz)+(0,0,\dx)$) -- cycle;
+      \draw[cube_dx3] (Axyz) -- ($(Axyz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,\dx,0)$) -- ($(Axyz)+(0,\dx,0)$) -- cycle; % 底面
+      \draw[cube_dx3] ($(Axyz)+(\dx,0,0)$) -- ($(Axyz)+(\dx,\dx,0)$) -- ($(Axyz)+(\dx,\dx,\dx)$) -- ($(Axyz)+(\dx,0,\dx)$) -- cycle;
+      \draw[cube_dx3] ($(Axyz)+(0,\dx,0)$) -- ($(Axyz)+(\dx,\dx,0)$) -- ($(Axyz)+(\dx,\dx,\dx)$) -- ($(Axyz)+(0,\dx,\dx)$) -- cycle;
+      \draw[cube_dx3] ($(Axyz)+(0,0,\dx)$) -- ($(Axyz)+(\dx,0,\dx)$) -- ($(Axyz)+(\dx,\dx,\dx)$) -- ($(Axyz)+(0,\dx,\dx)$) -- cycle; % 上面
+
+      % draw dashed lines to represent hidden edges
+      \draw[cube hidden] (O) -- (Axy);
+      \draw[cube hidden] (O) -- (Cxy);
+      \draw[cube hidden] (O) -- (Ayz);
+
+      % % 座標軸（デバッグ用）
+      % \draw[axis] (0,0,0) -- (3,0,0) node[anchor=west]{$x$};
+      % \draw[axis] (0,0,0) -- (0,3,0) node[anchor=west]{$y$};
+      % \draw[axis] (0,0,0) -- (0,0,3) node[anchor=west]{$z$};
+      % % 点（デバッグ用）
+      % \fill (O) circle[radius=2pt] node[above left] {O};
+      % \fill (Axy) circle[radius=2pt] node[below left] {Axy};
+      % \fill (Bxy) circle[radius=2pt] node[below right] {Bxy};
+      % \fill (Cxy) circle[radius=2pt] node[above right] {Cxy};
+      % \fill (Ayz) circle[radius=2pt] node[above left] {Ayz};
+      % \fill (Byz) circle[radius=2pt] node[above right] {Byz};
+      % \fill (Axz) circle[radius=2pt] node[above left] {Axz};
+      % \fill (Axyz) circle[radius=2pt] node[above right] {Axyz};
+    \end{scope}
+
+    \draw[->, thick] ($(left.east)+(1em, 0)$) -- ($(left-|right.west)-(1em,0)$) node[pos=.5, above] {$dx \to 0$};
+  \end{tikzpicture}
+\end{center}
+
+というわけで、$y=x^3$の導関数は、$y'=3x^2$となることがわかった。
+
+\begin{equation}
+  \frac{dy}{dx} = 3x^2
+\end{equation}
+
+\subsubsection{$y=x^n$の微分}
+
+$n$が自然数だとすると、$y=x^n$の微分は、$y=x^2$や$y=x^3$の場合と同じように考えられる。
+
+\begin{equation}
+  y + dy = \underbrace{(x+dx)(x+dx) \cdots (x+dx)}_{n\text{個}}
+\end{equation}
+
+右辺の$(x+dx)(x+dx) \cdots (x+dx)$を展開しようすると、次のような3種類のかけ算が発生する。
+
+\begin{itemize}
+  \item $x$どうしのかけ算
+  \item $x$と$dx$のかけ算
+  \item $dx$どうしのかけ算
+\end{itemize}
+
+つまり、右辺からは、
+
+\begin{itemize}
+  \item $x^n$の項が1つ
+  \item $x^{n-1}dx$の項が$n$個
+  \item $dx^n$の項が1つ
+\end{itemize}
+
+という項が現れることになる。
+
+そして、$x^n$は左辺の$y$と相殺され、$dx^n$の項は高次の微小量として無視できる。
+
+すると、残るのは次のような式になるだろう。
+
+\begin{equation}
+  dy = nx^{n-1}dx
+\end{equation}
+
+この式は、$y=\alpha x$という直線の式によく似ている。
+
+高次の$dx$の項$dx^n$を無視し、1次の$dx$の項だけ残したのは、微分という計算が微小範囲における直線での近似であるからだ。
+
+あくまでも微小範囲での直線の式であることを表すために、$x, y$を$dx, dy$として、$dy=\alpha dx$という形の式になっていると考えればよい。
+
+\begin{theorem}{自然数の冪を持つ冪関数の導関数}
+  \newline
+  $n$が自然数のとき、$y=x^n$の導関数は次のようになる。
+  \Large
+  \begin{equation}
+    \frac{dy}{dx} = nx^{n-1}
   \end{equation}
 \end{theorem}
 
