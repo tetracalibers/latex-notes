@@ -228,6 +228,14 @@ frame code={
   \fitLabelMath[cyan][cyan!30][#1]{#2}{奇}
 }
 
+% 元の関数と導関数の区別をつける
+\NewDocumentCommand{\origFn}{O{0.6} m}{
+  \fitLabelMath[cyan][cyan!30][#1]{#2}{元の関数}
+}
+\NewDocumentCommand{\derivFn}{O{0.6} m}{
+  \fitLabelMath[magenta!70][magenta!30][#1]{#2}{導関数}
+}
+
 % ---
 
 \begin{document}
@@ -774,6 +782,169 @@ $\Delta x$を$x \to 0$としたものを$dx$、同様に$\Delta y$を$y \to 0$�
 この記法は、「$f$という関数から導出された関数が$f'$である」ことを表現している。
 
 導関数はあくまでも関数$f$から派生したものであるから、$f$という文字はそのまま、加工されたことを表すために$'$をつけたものと解釈できる。
+
+\subsection{微分の性質}
+
+微分の関係式を使うことで、微分に関する有用な性質を導くことができる。
+
+\begin{review}
+  微分の関係式
+  \begin{equation}
+    f(x + dx)= \origFn{f(x)} + \derivFn{f'(x)} dx
+  \end{equation}
+\end{review}
+
+\subsubsection{関数の一次結合の微分}
+
+$\alpha f(x) + \beta g(x)$において、$x$を$dx$だけ微小変化させてみる。
+\begin{align}
+  \alpha f(x+dx) + \beta g(x+dx)
+   & = \alpha \left\{ f(x) + f'(x) dx \right\} + \beta \left\{ g(x) + g'(x) dx \right\}    \\
+   & = \origFn{ \alpha f(x) + \beta g(x) }+ \{ \derivFn{ \alpha f'(x) + \beta g'(x)} \} dx
+\end{align}
+
+\begin{theorem}{微分の線形性}
+  \Large
+  \begin{equation}
+    \left( \alpha f(x) + \beta g(x) \right)' = \alpha f'(x) + \beta g'(x)
+  \end{equation}
+\end{theorem}
+
+\subsubsection{関数の積の微分}
+
+$f(x)g(x)$において、$x$を$dx$だけ微小変化させてみる。
+
+\begin{align}
+  f(x+dx)g(x+dx)
+   & = \left\{ f(x) + f'(x) dx \right\} \left\{ g(x) + g'(x) dx \right\}                                            \\
+   & = f(x)g(x) + f'(x)g(x)dx + f(x)g'(x)dx +  f'(x)g'(x)dx^2                                                       \\
+   & = f(x)g(x) + \{ f'(x)g(x) + f(x)g'(x) \}dx + \fitLabelMath[BlueGreen][BlueGreen!40]{ f'(x)g'(x)dx^2}{2次以上の微小量}
+\end{align}
+
+ここで、$dx^2$は、$dx$より速く$0$に近づくので無視できる。
+
+荒く言ってしまえば、$dx$でさえ微小量なのだから、$dx^2$なんて存在しないも同然だと考えてよい。
+
+このことは、次の図を見るとイメージできる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\width{6}
+    \def\height{4}
+    \def\dx{2.25}
+
+    % 座標
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\width,0);
+    \coordinate (C) at (\width,\height);
+    \coordinate (D) at (0,\height);
+    \coordinate (Cx) at ($(C)+(\dx,0)$);
+    \coordinate (Cy) at ($(C)+(0,\dx)$);
+    \coordinate (Cxy) at ($(C)+(\dx,\dx)$);
+    \coordinate (Bx) at ($(B)+(\dx,0)$);
+    \coordinate (Dy) at ($(D)+(0,\dx)$);
+
+    % % 点（デバッグ用）
+    % \fill (A) circle[radius=2pt] node[below left] {A};
+    % \fill (B) circle[radius=2pt] node[below right] {B};
+    % \fill (C) circle[radius=2pt] node[above right] {C};
+    % \fill (D) circle[radius=2pt] node[above left] {D};
+    % \fill (Cx) circle[radius=2pt] node[above right] {Cx};
+    % \fill (Cy) circle[radius=2pt] node[above right] {Cy};
+    % \fill (Cxy) circle[radius=2pt] node[above right] {Cxy};
+    % \fill (Bx) circle[radius=2pt] node[below right] {Bx};
+    % \fill (Dy) circle[radius=2pt] node[above left] {Dy};
+
+    % 長方形
+    \draw [fill=lightgray!20, draw=lightgray!80!gray] (A) rectangle (C) node[pos=.5] {$f(x)g(x)$};
+    \draw [fill=magenta!30, draw=magenta!70!gray] (B) rectangle (Cx) node[pos=.5] {$f'(x)g(x)dx$};
+    \draw [fill=magenta!30, draw=magenta!70!gray] (D) rectangle (Cy) node[pos=.5] {$f(x)g'(x)dx$};
+    \draw [fill=BlueGreen!30, draw=BlueGreen!70!gray] (C) rectangle (Cxy) node[pos=.5] {$f'(x)g'(x)dx^2$};
+
+    % 補助線
+    \def\l{1} % 補助線の長さ
+    \draw[auxline] (B) -- ++(0, -\l) node[below] {$f(x)$};
+    \draw[auxline] (Bx) -- ++(0, -\l) node[below] {$f(x+dx)$};
+    \draw[auxline] (D) -- ++(-\l, 0) node[left] {$g(x)$};
+    \draw[auxline] (Dy) -- ++(-\l, 0) node[left] {$g(x+dx)$};
+
+    % 辺の長さを表す矢印
+    \def\s{1em} % 辺と矢印の隙間
+    \def\h{0.1} % 矢印の矢同士の隙間
+    \draw[<->, thick, gray] ($(A)+(\h,-\s)$) -- ($(B)-(\h,\s)$) node[midway,below] {$f(x)$};
+    \draw[<->, thick, gray] ($(A)+(-\s,\h)$) -- ($(D)-(\s,\h)$) node[midway,left] {$g(x)$};
+    \draw[<->, thick, magenta!80] ($(B)+(\h,-\s)$) -- ($(Bx)-(\h,\s)$) node[midway,below] {$f'(x)dx$};
+    \draw[<->, thick, magenta!80] ($(D)+(-\s,\h)$) -- ($(Dy)-(\s,\h)$) node[midway,left] {$g'(x)dx$};
+  \end{tikzpicture}
+\end{center}
+
+$dx \to 0$のとき$dy \to 0$となる場合に微分という計算を定義するのだから、$dx$を小さくしていくと、$dy$にあたる$f(x + dx) - f(x)$（これは$f'(x)dx$と等しい）も小さくなっていく。
+
+同様にして、$g(x + dx) - g(x)$（これは$g'(x)dx$と等しい）も小さくなっていく。
+
+\begin{review}
+  微分の関係式$f(x + dx)= f(x) + f'(x) dx$より、
+  \large
+  \begin{equation}
+    \textcolor{magenta!80}{f'(x)dx} = f(x + dx) - f(x)
+  \end{equation}
+\end{review}
+
+$dx$を小さくした場合を図示すると、
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\width{6}
+    \def\height{4}
+    \def\dx{0.15}
+
+    % 座標
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\width,0);
+    \coordinate (C) at (\width,\height);
+    \coordinate (D) at (0,\height);
+    \coordinate (Cx) at ($(C)+(\dx,0)$);
+    \coordinate (Cy) at ($(C)+(0,\dx)$);
+    \coordinate (Cxy) at ($(C)+(\dx,\dx)$);
+    \coordinate (Bx) at ($(B)+(\dx,0)$);
+    \coordinate (Dy) at ($(D)+(0,\dx)$);
+
+    % % 点（デバッグ用）
+    % \fill (A) circle[radius=2pt] node[below left] {A};
+    % \fill (B) circle[radius=2pt] node[below right] {B};
+    % \fill (C) circle[radius=2pt] node[above right] {C};
+    % \fill (D) circle[radius=2pt] node[above left] {D};
+    % \fill (Cx) circle[radius=2pt] node[above right] {Cx};
+    % \fill (Cy) circle[radius=2pt] node[above right] {Cy};
+    % \fill (Cxy) circle[radius=2pt] node[above right] {Cxy};
+    % \fill (Bx) circle[radius=2pt] node[below right] {Bx};
+    % \fill (Dy) circle[radius=2pt] node[above left] {Dy};
+
+    % 長方形
+    \draw [fill=lightgray!20, draw=lightgray!80!gray] (A) rectangle (C) node[pos=.5] {$f(x)g(x)$};
+    \draw [fill=magenta!30, draw=magenta!70!gray] (B) rectangle (Cx);
+    \draw [fill=magenta!30, draw=magenta!70!gray] (D) rectangle (Cy);
+    \draw [fill=BlueGreen!40, draw=BlueGreen!70!gray] (C) rectangle (Cxy);
+  \end{tikzpicture}
+\end{center}
+
+$\fitLabelMath[BlueGreen][BlueGreen!40]{f'(x)g'(x)dx^2}{\footnotesize 2次以上の微小量}$に相当する左上の領域は、ほとんど点になってしまうことがわかる。
+
+\vskip\baselineskip
+
+このように、$dx^2$の項は無視してもよいものとして、先ほどの計算式は次のようになる。
+
+\begin{align}
+  f(x+dx)g(x+dx)
+   & = \origFn{f(x)g(x)} + \{ \derivFn{f'(x)g(x) + f(x)g'(x)} \}dx
+\end{align}
+
+\begin{theorem}{微分のライプニッツ則}
+  \Large
+  \begin{equation}
+    \left( f(x) g(x) \right)' = f'(x) g(x) + f(x) g'(x)
+  \end{equation}
+\end{theorem}
 
 \subsection{三角関数の微分}
 
