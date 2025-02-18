@@ -1320,7 +1320,7 @@ $y=f(x)=x^2$において、$x$を$dx$だけ微小変化させると、$y$は$dy$
   \frac{dy}{dx} = 3x^2
 \end{equation}
 
-\subsubsection{$y=x^n$の微分}
+\subsubsection{$y=x^n$の微分（$n$が自然数の場合）}
 
 $n$が自然数だとすると、$y=x^n$の微分は、$y=x^2$や$y=x^3$の場合と同じように考えられる。
 
@@ -1366,6 +1366,106 @@ $n$が自然数だとすると、$y=x^n$の微分は、$y=x^2$や$y=x^3$の場�
   \Large
   \begin{equation}
     \frac{dy}{dx} = nx^{n-1}
+  \end{equation}
+\end{theorem}
+
+\subsubsection{$y=x^n$の微分（$n$が整数の場合）}
+
+指数法則を使うことで、$n$が負の整数の場合にも拡張することができる。
+
+\vskip\baselineskip
+
+まずは、$y=x^{-1}$の微分を考えてみよう。
+
+指数法則より、$y=x^{-1}$は次のように変形できる。
+
+\begin{equation}
+  \begin{WithArrows}
+    y  & = \frac{1}{x} \Arrow{両辺$\times x$} \\
+    xy & = 1
+  \end{WithArrows}
+\end{equation}
+
+微小変化を加えた微分の関係式を作って、次のように展開していく。
+
+\begin{align}
+  (x +dx)(y+dy)                                                                                   & = 1                           \\
+  \eqnmarkbox[magenta]{Y1}{xy} + xdy + ydx + \fitLabelMath[BlueGreen][BlueGreen!40]{dydx}{高次の微小量} & = \eqnmarkbox[magenta]{Y2}{1}
+\end{align}
+\annotatetwo{below}{Y1}{Y2}{\bfseries 同じ}
+
+ここで、微小量の掛け合わせである$dydx$は無視できるほど小さい。
+
+また、$y=\dfrac{1}{x}$より、$xy=1$なので、左辺の$xy$と右辺の$1$は相殺される。
+
+すると、残った式は、
+
+\begin{equation}
+  \begin{WithArrows}
+    xdy + ydx       & = 0            \Arrow{$ydx$を移項} \\
+    xdy             & = -ydx         \Arrow{両辺$\div dx$} \\
+    x\dfrac{dy}{dx} & = -y           \Arrow{両辺$\div x$} \\
+    \dfrac{dy}{dx}  & = -\dfrac{y}{x}
+  \end{WithArrows}
+\end{equation}
+
+$y$が残ってしまっているので、$y=\dfrac{1}{x}$を代入すると、
+
+\begin{align}
+  \dfrac{dy}{dx} & = -\dfrac{1}{x^2} \\
+                 & = -x^{-2}
+\end{align}
+
+これは、冪が自然数の場合の冪関数の微分$\dfrac{dy}{dx} = nx^{n-1}$において、$n = -1$を代入したものになっている。
+
+\vskip\baselineskip
+
+$n$が任意の負の整数の場合も、同様に考えられる。
+
+$y=x^{-n}$を、$x^ny = 1$として、
+
+\begin{equation}
+  \begin{WithArrows}
+    \underbrace{(x+dx)(x+dx) \cdots (x+dx)}_{n\text{個}}\times(y+dy)                           & = 1 \\
+    ( x^n + nx^{n-1}dx + \fitLabelMath[BlueGreen][BlueGreen!40]{dx^n}{高次の微小量} ) \times (y+dy) & = 1 \Arrow{高次の微小量を無視} \\
+    ( x^n + nx^{n-1}dx ) \times (y+dy)                                                        & = 1 \\
+    \eqnmarkbox[magenta]{Y1}{x^ny} + x^ndy + nx^{n-1}ydx + \fitLabelMath[BlueGreen][BlueGreen!40]{nx^{n-1}dxdy}{高次の微小量}                                           & = \eqnmarkbox[magenta]{Y2}{1} \Arrow[jump=2]{相殺＆無視}\\\\
+    x^ndy + nx^{n-1}ydx & = 0
+  \end{WithArrows}
+\end{equation}
+\annotatetwo{below}{Y1}{Y2}{\bfseries 同じ}
+
+移項してさらに整理すると、
+
+\begin{equation}
+  \begin{WithArrows}
+    x^ndy & = -nx^{n-1}ydx \Arrow{両辺$\div dx$} \\
+    x^n\dfrac{dy}{dx} & = -nx^{n-1}y \Arrow{両辺$\times x^{-n}$} \\
+    \dfrac{dy}{dx} & = -nx^{n-1}x^{-n}y \Arrow{$y=x^{-n}$} \\
+    &= -nx^{n-1}x^{-n}x^{-n} \Arrow{指数法則$x^mx^n=x^{m+n}$} \\
+    &= -nx^{-n-1}
+  \end{WithArrows}
+\end{equation}
+
+これもやはり、冪が自然数の場合の冪関数の微分$\dfrac{dy}{dx} = nx^{n-1}$において、$n$を$-n$に置き換えたものになっている。
+
+つまり、自然数（正の整数）だけでなく、負の整数も許容して、次のことがいえる。
+
+\begin{theorem}{整数の冪を持つ冪関数の導関数}
+  \newline
+  $n$が整数のとき、$y=x^n$の導関数は次のようになる。
+  \Large
+  \begin{equation}
+    \frac{dy}{dx} = nx^{n-1}
+  \end{equation}
+\end{theorem}
+
+\subsection{合成関数の微分}
+
+\begin{theorem}{合成関数の微分}
+  \Large
+  \begin{equation}
+    \left( g(f(x)) \right)' = f'(x)g'(f(x))
   \end{equation}
 \end{theorem}
 
