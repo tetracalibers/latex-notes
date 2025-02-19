@@ -79,6 +79,9 @@
 
 \usepackage[outline]{contour} % 文字の縁取り
 
+\usepackage{froufrou} % セクションを区切る装飾
+\setfroufrou{dinkus}
+
 % === tcolorbox ===
 
 \usepackage{tcolorbox}
@@ -2046,6 +2049,303 @@ $m$と$n$はどちらも自然数として、$y=x^{\frac{m}{n}}$の微分を考�
     \dfrac{d}{dx}e^x = e^x
   \end{equation}
 \end{theorem}
+
+\section{1変数関数の積分}
+
+積分とは、「部分を積み重ねる」演算である。
+
+微小部分を調べる微分と、微小部分を積み重ねる積分は、互いに逆の操作になっている。
+
+\subsection{区分求積法：面積の再定義}
+
+長方形の面積は、なぜ「縦$\times$横」で求められるのだろうか？
+
+そこには、長方形の横幅分の長さを持つ線分を、長方形の高さに達するまで積み重ねるという発想がある。
+
+\vskip\baselineskip
+
+面積の計算を「線を積み重ねる」という発想で捉えると、あらゆる形状の面積を考えることができる。
+
+長方形では、積み重ねる線の長さは一定だが、他の形状では、積み重ねる線の長さが変化する。
+
+積み重ねるべき線の長さを、関数で表すことができたら…
+
+\froufrou
+
+関数$y=f(x)$が与えられたとき、高さ$f(x)$の線分を$a$から$b$までの区間で積み重ねることで、$x$軸とグラフに挟まれた部分の面積を求めることを考える。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    % 積分区間全体を塗りつぶす
+    \draw[fill=cyan!30, draw=cyan!70!gray] plot[domain=1:5,samples=167,variable=\x] ({\x},{f(\x)}) -- (5,0) -| cycle;
+
+    % 積分区間の下端のラベル
+    \node [anchor=north,lnode] at (1,0) {$a$};
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+この考え方は、面積を求めたい部分を長方形に分割し、長方形の幅を限りなく$0$に近づけるという操作で表現できる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \begin{scope}[scale=0.9, local bounding box=left]
+      \def\N{5}
+      \pgfmathtruncatemacro{\M}{\N/4}
+
+      \coordinate (start) at (.8,{f(.8)});
+
+      \ifnum\N<22
+        \foreach \X [remember=\X as \LastX (initially 0)] in {1,...,\N}
+          {
+            % 矩形
+            \draw[fill=cyan!30, draw=cyan!70!gray] (1+\LastX*4/\N,0) rectangle (1+\X*4/\N,{f(1+\LastX*4/\N)});
+            % 矩形の左上の頂点
+            \draw[fill=cyan, draw=cyan] (1+\LastX*4/\N,{f(1+\LastX*4/\N)}) circle (2pt) ;
+
+            % x軸上のラベル
+            \path (1+\LastX*4/\N,0pt) coordinate (x\X);
+            \ifnum\X=1
+              % 積分区間の下端のラベル
+              \node[anchor=north east,xshift=0.75em,lnode] at (1+\LastX*4/\N,0pt) {$a=x_{\X}$};
+            \else
+              % 積分区間内の各点のラベル
+              \pgfmathtruncatemacro{\itest}{mod(\X,\M)}
+              % 4等分した点のみラベルをつける
+              \ifnum\itest=0
+                \pgfmathsetmacro{\dist}{4-\LastX*4/\N}
+                % 5pt以上離れている場合のみラベルをつける
+                \ifdim\dist cm>5pt
+                  \node [anchor=north,lnode] at (1+\LastX*4/\N,0pt) {$x_{\X}$};
+                \fi
+              \fi
+            \fi
+          }
+
+        % \Delta x の幅を示す矢印
+        \draw[<->] (x2|- 0,-1)--(x3|- 0,-1) node[above,midway] {$\Delta x$};
+      \else
+        % 22個以上の場合は積分区間全体を塗りつぶす
+        \draw[fill=cyan!30, draw=cyan!70!gray] plot[domain=1:5,samples=167,variable=\x] ({\x},{f(\x)}) -- (5,0) -| cycle;
+
+        % 積分区間の下端のラベル
+        \node [anchor=north,lnode] at (1,0) {$a$};
+      \fi
+
+      \coordinate (end) at (5.05,{f(5.05)});
+
+      % 積分区間の上端のラベル
+      \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+      % 積分区間の上端におけるグラフの高さを示す線
+      \draw [draw=cyan!70!gray] (5,0)--(5,{f(5)});
+
+      % x軸とy軸
+      \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+      \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+      % 原点
+      \node [below left] at (0,0) {$O$};
+
+      % 関数のグラフ
+      \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)});
+    \end{scope}
+
+    \begin{scope}[scale=0.9, xshift=0.6\textwidth, local bounding box=right]
+      \def\N{14}
+      \pgfmathtruncatemacro{\M}{\N/4}
+
+      \coordinate (start) at (.8,{f(.8)});
+
+      \ifnum\N<22
+        \foreach \X [remember=\X as \LastX (initially 0)] in {1,...,\N}
+          {
+            % 矩形
+            \draw[fill=cyan!30, draw=cyan!70!gray] (1+\LastX*4/\N,0) rectangle (1+\X*4/\N,{f(1+\LastX*4/\N)});
+            % 矩形の左上の頂点
+            \draw[fill=cyan, draw=cyan] (1+\LastX*4/\N,{f(1+\LastX*4/\N)}) circle (2pt) ;
+
+            % x軸上のラベル
+            \path (1+\LastX*4/\N,0pt) coordinate (x\X);
+            \ifnum\X=1
+              % 積分区間の下端のラベル
+              \node[anchor=north east,xshift=0.75em,lnode] at (1+\LastX*4/\N,0pt) {$a=x_{\X}$};
+            \else
+              % 積分区間内の各点のラベル
+              \pgfmathtruncatemacro{\itest}{mod(\X,\M)}
+              % 4等分した点のみラベルをつける
+              \ifnum\itest=0
+                \pgfmathsetmacro{\dist}{4-\LastX*4/\N}
+                % 5pt以上離れている場合のみラベルをつける
+                \ifdim\dist cm>5pt
+                  \node [anchor=north,lnode] at (1+\LastX*4/\N,0pt) {$x_{\X}$};
+                \fi
+              \fi
+            \fi
+          }
+
+        % \Delta x の幅を示す矢印
+        \draw[<->] (x2|- 0,-1)--(x3|- 0,-1) node[above,midway] {$\Delta x$};
+      \else
+        % 22個以上の場合は積分区間全体を塗りつぶす
+        \draw[fill=cyan!30, draw=cyan!70!gray] plot[domain=1:5,samples=167,variable=\x] ({\x},{f(\x)}) -- (5,0) -| cycle;
+
+        % 積分区間の下端のラベル
+        \node [anchor=north,lnode] at (1,0) {$a$};
+      \fi
+
+      \coordinate (end) at (5.05,{f(5.05)});
+
+      % 積分区間の上端のラベル
+      \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+      % 積分区間の上端におけるグラフの高さを示す線
+      \draw [draw=cyan!70!gray] (5,0)--(5,{f(5)});
+
+      % x軸とy軸
+      \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+      \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+      % 原点
+      \node [below left] at (0,0) {$O$};
+
+      % 関数のグラフ
+      \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)});
+    \end{scope}
+
+    \draw[->, thick] ($(left.east)+(1em, 0)$) -- ($(left-|right.west)-(1em,0)$) node[pos=.5, above] {$\Delta x$小};
+  \end{tikzpicture}
+\end{center}
+
+$a \leq x \leq b$の区間を$n$等分して、$x_1, x_2, \ldots, x_n$とする。
+
+分割された各長方形は、幅が$\Delta x$で、高さが$f(x)$であるので、各長方形の面積は次のように表せる。
+
+\begin{equation}
+  \Delta S = f(x) \cdot \Delta x
+\end{equation}
+
+どんどん$\Delta x$を小さくしていくと、細かい長方形分割で、面積を求めたい図形を近似できる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=1.2,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \def\N{40}
+    \pgfmathtruncatemacro{\M}{\N/4}
+
+    \coordinate (start) at (.8,{f(.8)});
+
+    \foreach \X [remember=\X as \LastX (initially 0)] in {1,...,\N}
+    {
+    % 矩形
+    \draw[fill=cyan!30, draw=cyan!70!gray] (1+\LastX*4/\N,0) rectangle (1+\X*4/\N,{f(1+\LastX*4/\N)});
+    % 矩形の左上の頂点
+    \draw[fill=cyan, draw=cyan] (1+\LastX*4/\N,{f(1+\LastX*4/\N)}) circle (1pt) ;
+
+    % x軸上のラベル
+    \path (1+\LastX*4/\N,0pt) coordinate (x\X);
+    \ifnum\X=1
+      % 積分区間の下端のラベル
+      \node[anchor=north east,xshift=0.75em,lnode] at (1+\LastX*4/\N,0pt) {$a=x_{\X}$};
+    \else
+      % 積分区間内の各点のラベル
+      \pgfmathtruncatemacro{\itest}{mod(\X,\M)}
+      % 4等分した点のみラベルをつける
+      \ifnum\itest=0
+        \pgfmathsetmacro{\dist}{4-\LastX*4/\N}
+        % 5pt以上離れている場合のみラベルをつける
+        \ifdim\dist cm>5pt
+          \node [anchor=north,lnode] at (1+\LastX*4/\N,0pt) {$x_{\X}$};
+        \fi
+      \fi
+    \fi
+    }
+
+    \coordinate (end) at (5.05,{f(5.05)});
+
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+    % 積分区間の上端におけるグラフの高さを示す線
+    \draw [draw=cyan!70!gray] (5,0)--(5,{f(5)});
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+つまり、求めたい面積は、分割した長方形の面積をすべて足し合わせることで近似できる。
+
+\begin{equation}
+  S \approx \sum_{i=1}^{n} f(x_i) \cdot \Delta x
+\end{equation}
+
+$\Delta x \to 0$の果てでは、幅を持たなくなった長方形は線分とみなせるので、もはや近似ですらなくなるだろう。
+
+\begin{equation}
+  S = \lim_{\Delta x \to 0} \sum_{i=1}^{n} f(x_i) \cdot \Delta x
+\end{equation}
+
+このような考え方は、区分求積法と呼ばれる。
+
+\subsection{定積分}
+
+ここで、区間$a \leq x \leq b$における関数$y=f(x)$と$x$軸の間の面積$S$を求める式を、次のように表記する。
+
+\begin{equation}
+  S = \int_{a}^{b} f(x) \, dx
+\end{equation}
+
+$\sum$は離散的な和を表す記号であり、例えば$\displaystyle\sum_{i=0}^n$であれば、$i$を$1$ずつ増やして$n$に達するまで足し合わせることを意味する。
+
+一方、ここで新たに導入した$\int$は連続的な和を表す記号であり、微小変化を繰り返しながら足し合わせることを意味する。
+
+\vskip\baselineskip
+
+$\sum$は間隔を取って足し合わせるのに対し、$\int$は間隔を限りなく小さくして足し合わせる。
+
+足し合わせる間隔を限りなく小さくするという操作は、極限を取る操作に相当するので、$\sum$の極限を取ったもの$\displaystyle \lim \sum$をまとめて$\int$という記号で表記したと捉えることができる。
+
+さらに、$\displaystyle\lim_{\Delta x \to 0}$とした果ての$\Delta x$は、微小変化を意味する$dx$と書き換えられている。
+
+\begin{definition}{定積分}
+  \newline
+  $a \leq x \leq b$の区間内における関数$f(x)$のグラフと$x$軸の間の領域の符号付き面積を求める演算を定積分と定義し、次のように表記する。
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x) dx
+  \end{equation}
+  \normalsize
+  このとき、$f(x)$を被積分関数と呼ぶ。
+\end{definition}
 
 \chapter{複素数と複素関数}
 
