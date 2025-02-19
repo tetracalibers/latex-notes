@@ -248,7 +248,7 @@ frame code={
 
 \chapter{基本的な関数}
 
-\section{指数関数と対数関数}
+\section{指数関数}
 
 \subsection{同じ数のかけ算の指数による表記}
 
@@ -510,7 +510,124 @@ $(a^m)^n = a^{mn}$において、$m$を$\dfrac{m}{n}$に置き換えたものを
 
 ここで重要なのは、指数関数の底を変換するには、「$a$は$b$の何乗か？」がわかっている必要があるということだ。
 
-次節では、$a = b^c$となるような$c$を表す道具として、対数を導入する。
+次章では、$a = b^c$となるような$c$を表す道具として、対数を導入する。
+
+\section{対数関数}
+
+\subsection{対数：指数部分を関数で表す}
+
+指数関数は、「$a$を$x$乗したら$y$になる」という関係を表現するものだった。
+
+ここで、逆に「$y$は$a$の何乗か？」という関係を表現するものとして、対数関数を定義する。
+
+これは、$y$から$x$を導き出す関数であるから、指数関数$y=a^x$の逆関数といえる。
+
+\begin{definition}{対数}
+  \newline
+  $a^y = x$を満たす$y$を、$a$を底とする$x$の対数といい、次のように表す。
+  \LARGE
+  \begin{equation}
+    y = \log_a x
+  \end{equation}
+  \normalsize
+  ここで、$x$は真数、$a$は底と呼ばれる。
+\end{definition}
+
+\begin{definition}{対数関数は指数関数の逆関数}
+  \newline
+  対数関数$y=\log_a x$は、指数関数$x = a^y$の逆関数である。
+  \LARGE
+  \begin{equation}
+    \log_a x = y \quad \Longleftrightarrow  \quad a^y = x
+  \end{equation}
+\end{definition}
+
+対数は、指数関数の指数部分を表す。
+
+$a^y = x$の$y$に、$y=\log_a x$を代入することで、次のような式にまとめることもできる。
+
+\begin{theorem}{指数部分は対数で書き換えられる}
+  \LARGE
+  \begin{equation}
+    a^{\log_a x} = x
+  \end{equation}
+\end{theorem}
+
+\subsection{対数の性質}
+
+指数法則を対数に翻訳することで、対数の性質を導くことができる。
+
+\subsubsection{真数のかけ算は$\log$の足し算}
+
+$x_1 = a^m, x_2 = a^n$として、指数法則$a^m \times a^n = a^{m+n}$を考える。
+
+\begin{align}
+  x_1  x_2 & = a^m \times a^n \\
+           & = a^{m+n}
+\end{align}
+
+対数は指数部分を表すので、$m+n = \log_a (x_1x_2)$がいえる。
+
+また、$x_1 = a^m$より$m = \log_a x_1$、$x_2 = a^n$より$n = \log_a x_2$と表せるから、
+
+\begin{equation}
+  m + n = \log_a x_1 + \log_a x_2 = \log_a (x_1x_2)
+\end{equation}
+
+\begin{theorem}{積の対数は対数の和}
+  \LARGE
+  \begin{equation}
+    \log_a (x_1x_2) = \log_a x_1 + \log_a x_2
+  \end{equation}
+\end{theorem}
+
+\subsubsection{真数の割り算は$\log$の引き算}
+
+$x_1 = a^m, x_2 = a^n$として、指数法則$\dfrac{a^m}{a^n} = a^{m-n}$を考える。
+
+\begin{align}
+  \dfrac{x_1}{x_2} & = \dfrac{a^m}{a^n} \\
+                   & = a^{m-n}
+\end{align}
+
+対数は指数部分を表すので、$m-n = \log_a \left( \dfrac{x_1}{x_2} \right)$がいえる。
+
+また、$x_1 = a^m$より$m = \log_a x_1$、$x_2 = a^n$より$n = \log_a x_2$と表せるから、
+
+\begin{equation}
+  m - n = \log_a x_1 - \log_a x_2 = \log_a \left( \dfrac{x_1}{x_2} \right)
+\end{equation}
+
+\begin{theorem}{商の対数は対数の差}
+  \LARGE
+  \begin{equation}
+    \log_a \left( \dfrac{x_1}{x_2} \right) = \log_a x_1 - \log_a x_2
+  \end{equation}
+\end{theorem}
+
+\subsubsection{真数の冪乗は$\log$の指数倍}
+
+$x = a^m$として、指数法則$(a^m)^n = a^{mn}$を考える。
+
+\begin{align}
+  x^n & = (a^m)^n \\
+      & = a^{mn}
+\end{align}
+
+対数は指数部分を表すので、$mn = \log_a x^n$がいえる。
+
+また、$x = a^m$より$m = \log_a x$と表せるから、
+
+\begin{equation}
+  mn = n \log_a x \log_a x^n
+\end{equation}
+
+\begin{theorem}{冪の対数は対数の指数倍}
+  \LARGE
+  \begin{equation}
+    \log_a x^n = n \log_a x
+  \end{equation}
+\end{theorem}
 
 \chapter{微分と積分}
 
