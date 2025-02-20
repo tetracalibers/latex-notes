@@ -1,0 +1,6 @@
+{
+  "files.watcherExclude": {
+    "**/out/**": true,
+    "**/.tex_intermediates/**": true
+  }
+}
