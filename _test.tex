@@ -1,4 +1,4 @@
-\documentclass[16pt,b5paper]{book}
+\documentclass[b5paper]{book}
 
 % === extend ===
 
@@ -43,7 +43,11 @@
 % === tikz ===
 
 \usepackage[dvipdfmx]{graphicx}
+
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+
 \usepackage{tikz} %図を描く
 \usetikzlibrary{
   positioning,
@@ -57,6 +61,7 @@
   3d,
   decorations.pathmorphing,
   decorations.pathreplacing,
+  patterns,
   shadows,
   shapes.geometric,
   spy
