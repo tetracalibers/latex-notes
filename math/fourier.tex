@@ -1,0 +1,914 @@
+\documentclass[../math-imaging]{subfiles}
+
+\begin{document}
+
+\chapter{フーリエ解析}
+
+\section{波の2つの捉え方}
+
+波は2つの捉え方ができる。
+
+\begin{itemize}
+  \item 空間的に捉える波：波の形そのもの
+  \item 時間的に捉える波：波の振動
+\end{itemize}
+
+\subsection{空間的に捉える波}
+
+波とは、一定の間隔で同じ形が繰り返されるものである。
+
+空間的に捉える波は、まさにその波の形そのもので、波の形を位置$x$の関数として表す。
+
+\begin{definition}{波長}
+  波を構成する最小パターンの幅を波長と呼び、$\lambda$で表す。
+\end{definition}
+
+\begin{definition}{周期関数}
+  次の式を満たす関数$f(x)$を、周期$\lambda$の周期関数という。
+  \LARGE
+  \begin{equation}
+    f(x+\lambda) = f(x)
+  \end{equation}
+\end{definition}
+
+\begin{definition}{波数}
+  $2\pi$の長さに含まれる、波の最小パターンの数を波数という。
+  \LARGE
+  \begin{equation}
+    k = \dfrac{2\pi}{\lambda}
+  \end{equation}
+\end{definition}
+
+\subsection{時間的に捉える波}
+
+波を時間軸から見たとき、波を構成する最小パターンは幅ではなく時間である。
+
+その最小パターンを周期と呼ぶ。
+
+周期は、波を時間軸から見たときの「波長」の言い換えともいえる。
+
+\begin{definition}{周期}
+  波が1回振動するのにかかる時間を周期と呼び、$T$で表す。
+\end{definition}
+
+\begin{definition}{周期関数}
+  次の式を満たす関数$f(t)$を、周期$T$の周期関数という。
+  \LARGE
+  \begin{equation}
+    f(t+T) = f(t)
+  \end{equation}
+\end{definition}
+
+\begin{definition}{周波数（振動数）}
+  \newline
+  単位時間に含まれる、波の最小パターンの数を周波数という。
+  \LARGE
+  \begin{equation}
+    \nu = \dfrac{1}{T}
+  \end{equation}
+  \normalsize
+  これは、単位時間に何回振動するかを表すため、振動数とも呼ばれる。
+\end{definition}
+
+\section{角周波数と正弦波}
+
+\begin{definition}{角周波数}
+  動径が単位時間内に進む角を角周波数と呼び、$\omega$で表す。
+\end{definition}
+
+\begin{theorem}{任意の時間における動径}
+  \newline
+  時間が$t$だけ経過したときの動径$\theta$は、角周波数$\omega$を使って次のように表すことができる。
+  \LARGE
+  \begin{equation}
+    \theta = \omega t
+  \end{equation}
+\end{theorem}
+
+$\sin\theta$や$\cos\theta$は、$\theta=\omega t$の関係を用いると、動径$\theta$ではなく角周波数$\omega$の関数とみることができる。
+
+\begin{definition}{正弦波}
+  $\sin\omega t$や$\cos\omega t$を、角周波数$\omega$の正弦波と呼ぶ。
+\end{definition}
+
+\subsection{角周波数と振動数の関係}
+
+円の1周は$2\pi$であり、単位時間あたりに進む円周は角周波数$\omega$である。
+
+\footnotesize
+（角周波数は「角」の大きさとして定義したが、弧度法のおかげで、「円周」の長さとしても捉えられる。）
+\normalsize
+
+ここで、単位時間あたりに進む円周$\omega$は、1周$2\pi$のうちのどれくらいだろうか？
+
+その答えは、$\omega$を「1周あたりの量」$2\pi$で割ったものになる。
+
+\begin{theorem}{角周波数と円周の関係}
+  \newline
+  角周波数$\omega$で動径が回転するとき、その動径は単位時間に
+  \LARGE
+  \begin{equation}
+    \dfrac{\omega}{2\pi}
+  \end{equation}
+  \normalsize
+  だけ円を回ることになる。
+\end{theorem}
+
+ここで、三角関数は円関数とも呼ばれるように、円の1周は三角関数の1振動に対応する。
+
+振動を円周上の回転として表す三角関数のおかげで、「どれくらい回るか？」を「どれくらい振動するか？」とみることができる。
+
+つまり、動径が単位時間に$\dfrac{\omega}{2\pi}$だけ回転するということは、単位時間に$\dfrac{\omega}{2\pi}$だけ振動するということだ。
+
+\begin{theorem}{角周波数と振動数の関係}
+  \newline
+  角周波数を$\omega$とすると、振動数$\nu$は次のように表せる。
+  \LARGE
+  \begin{equation}
+    \nu = \dfrac{\omega}{2\pi}
+  \end{equation}
+  \normalsize
+\end{theorem}
+
+\subsection{角周波数と周期の関係}
+
+ここまでで、振動数$\nu$は2通りの表し方ができることがわかった。
+
+\begin{itemize}
+  \item $\nu = \dfrac{1}{T}$（周波数：単位時間に含まれる、最小波の時間幅）
+  \item $\nu = \dfrac{\omega}{2\pi}$（振動数：単位時間に含まれる、振動の回数）
+\end{itemize}
+
+この2式を組み合わせて、次のような関係が得られる。
+
+\begin{equation}
+  \omega = 2\pi\nu = \dfrac{2\pi}{T}
+\end{equation}
+
+\begin{theorem}{角周波数と周期の関係}
+  \newline
+  角周波数を$\omega$、周期を$T$とすると、次のような関係が成り立つ。
+  \LARGE
+  \begin{equation}
+    \omega = \dfrac{2\pi}{T}
+  \end{equation}
+\end{theorem}
+
+\section{偶関数と奇関数}
+
+$\sin$関数と$\cos$関数は、どちらも正弦波と呼ばれるが、その性質は異なる。
+
+$\sin$は奇関数であり、$\cos$は偶関数である。
+
+この違いが、後に議論するフーリエ級数展開においても重要な役割を果たす。
+
+\subsection{偶関数と奇関数は異なる対称性を持つ}
+
+\begin{definition}{偶関数}
+  \newline
+  グラフが$y$軸に対して対称な関数を偶関数と呼ぶ。\\
+  偶関数は、任意の$x$に対して次の関係が成り立つ関数として定義される。
+  \LARGE
+  \begin{equation}
+    f(-x) = f(x)
+  \end{equation}
+\end{definition}
+
+\begin{definition}{奇関数}
+  \newline
+  グラフが原点に対して対称な関数を奇関数と呼ぶ。\\
+  奇関数は、任意の$x$に対して次の関係が成り立つ関数として定義される。
+  \LARGE
+  \begin{equation}
+    f(-x) = -f(x)
+  \end{equation}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    % 偶関数のグラフ（左側）
+    \begin{scope}[xshift=-3cm]
+      \clip (-2.5, -2.5) rectangle (2.5, 2.5);
+      % 座標軸
+      \draw[axis] (-2.5,0) -- (2.5,0) node[below] {$x$};
+      \draw[axis] (0,-2) -- (0,2) node[above] {$y$};
+
+      % 偶関数のプロット (例: y = x^2 - 1)
+      \draw[thick, domain=-1.6:1.6, smooth, samples=100] plot (\x, {\x*\x - 1});
+
+      % ラベル
+      \node[below] at (0,-2) {偶関数: $f(-x) = f(x)$};
+    \end{scope}
+
+    % 奇関数のグラフ（右側）
+    \begin{scope}[xshift=3cm]
+      \clip (-2.5, -2.5) rectangle (2.5, 2.5);
+      % 座標軸
+      \draw[axis] (-2.5,0) -- (2.5,0) node[below] {$x$};
+      \draw[axis] (0,-2) -- (0,2) node[above] {$y$};
+
+      % 奇関数のプロット (例: y = x^3 - x)
+      \draw[thick, domain=-1.5:1.5, smooth, samples=100] plot (\x, {\x*\x*\x - \x});
+
+      % ラベル
+      \node[below] at (0,-2) {奇関数: $f(-x) = -f(x)$};
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+1つの関数が、この両方の性質を持つことはない。
+
+つまり、偶関数であり奇関数でもある関数は存在しない。
+
+\subsection{積に関する性質}
+
+\begin{theorem}{偶関数と奇関数の積}
+  偶関数と奇関数の積は、奇関数となる。
+\end{theorem}
+
+\begin{proof}
+  $f(x)$を奇関数、$g(x)$を偶関数とすると、
+  \begin{equation}
+    \begin{WithArrows}
+      f(x)g(x)   & = -f(-x)g(-x) \Arrow{両辺$-1$倍して両辺入れ替え} \\
+      f(-x)g(-x) & = -f(x)g(x)
+    \end{WithArrows}
+  \end{equation}
+  となり、引数を$-1$倍すると符号が反転するため、$f(x)g(x)$は奇関数である。
+\end{proof}
+
+\begin{theorem}{奇関数どうしの積}
+  奇関数と奇関数の積は、偶関数となる。
+\end{theorem}
+
+\begin{proof}
+  $f(x), g(x)$を奇関数とすると、
+  \begin{align}
+    f(x)g(x) & = -f(-x)\cdot\{-g(-x)\} \\
+             & = f(-x)g(-x)
+  \end{align}
+  となり、引数を$-1$倍しても符号がそのままなので、$f(x)g(x)$は偶関数である。
+\end{proof}
+
+\begin{theorem}{偶関数どうしの積}
+  偶関数と偶関数の積は、偶関数となる。
+\end{theorem}
+
+\begin{proof}
+  $f(x), g(x)$を偶関数とすると、
+  \begin{equation}
+    \begin{WithArrows}
+      f(x)g(x)   & = f(-x)g(-x) \Arrow{両辺入れ替え} \\
+      f(-x)g(-x) & = f(x)g(x)
+    \end{WithArrows}
+  \end{equation}
+  となり、引数を$-1$倍しても符号がそのままなので、$f(x)g(x)$は偶関数である。
+\end{proof}
+
+\subsection{和に関する性質}
+
+\begin{theorem}{奇関数どうしの和}
+  奇関数と奇関数の和は、奇関数となる。
+\end{theorem}
+
+\begin{proof}
+  $f(x), g(x)$を奇関数とすると、
+  \begin{equation}
+    \begin{WithArrows}
+      f(x) + g(x) &= -f(-x)-g(-x) \\
+      &= -\{f(-x)+g(-x)\} \Arrow{両辺$-1$倍して両辺入れ替え} \\
+      f(-x) + g(x) &= -\{f(x)+g(x)\}
+    \end{WithArrows}
+  \end{equation}
+  となり、引数を$-1$倍すると符号が反転するため、$f(x)+g(x)$は奇関数である。
+\end{proof}
+
+\begin{theorem}{偶関数どうしの和}
+  偶関数と偶関数の和は、偶関数となる。
+\end{theorem}
+
+\begin{proof}
+  $f(x), g(x)$を偶関数とすると、
+  \begin{equation}
+    f(x)+g(x) = f(-x)+g(-x)
+  \end{equation}
+  となり、引数を$-1$倍しても符号がそのままなので、$f(x)+g(x)$は偶関数である。
+\end{proof}
+
+\subsection{偶関数・奇関数の積分}
+
+\begin{theorem}{偶関数の積分公式}
+  \newline
+  原点に関して対称な区間$-a \leq x \leq a$において、$f(x)$が偶関数なら、次の式が成り立つ。
+  \LARGE
+  \begin{equation}
+    \int_{-a}^{a}f(x)dx = 2\int_{0}^{a}f(x)dx
+  \end{equation}
+\end{theorem}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmin{-2.5};
+    \def\xmax{2.5};
+    \def\ymin{-1};
+    \def\ymax{2};
+    \def\a{1.25};
+    \def\fn#1{#1*#1}
+
+    % 座標軸
+    \draw[axis] (\xmin,0) -- (\xmax,0) node[below] {$x$};
+    \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+
+    % x軸上の点a,-a
+    \node[below] at (\a,0) {$a$};
+    \node[below] at (-\a,0) {$-a$};
+
+    % 積分が面積となる領域
+    \fill [pink!80, domain=-\a:\a, variable=\x] (-\a, 0) -- plot ({\x}, {\fn{\x}}) -- (\a, 0) -- cycle;
+
+    % 原点
+    \node[below left] at (0,0) {$O$};
+
+    % 偶関数のグラフ
+    \begin{scope}
+      \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+      % 偶関数のプロット
+      \draw[thick, domain=\xmin:\xmax, smooth, samples=100] plot (\x, {\fn{\x}});
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{奇関数の積分公式}
+  \newline
+  原点に関して対称な区間$-a \leq x \leq a$において、$f(x)$が奇関数なら、次の式が成り立つ。
+  \LARGE
+  \begin{equation}
+    \int_{-a}^{a}f(x)dx = 0
+  \end{equation}
+\end{theorem}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmin{-2.5};
+    \def\xmax{2.5};
+    \def\ymin{-2};
+    \def\ymax{2};
+    \def\a{1};
+    \def\fn#1{#1*#1*#1 - #1};
+
+    % 座標軸
+    \draw[axis] (\xmin,0) -- (\xmax,0) node[below] {$x$};
+    \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+
+    % 原点
+    \node[below left] at (0,0) {$O$};
+
+    % x軸上の点a,-a
+    \node[right=0.5em, below] at (\a,0) {$a$};
+    \node[left=1.25em, below] at (-\a,0) {$-a$};
+
+    % 積分が正の面積となる領域
+    \fill [pink!80, domain=-\a:0, variable=\x] (-\a, 0) -- plot ({\x}, {\fn{\x}}) -- (0, 0) -- cycle;
+    % 積分が負の面積となる領域
+    \fill [cyan!30, domain=0:\a, variable=\x] (0, 0) -- plot ({\x}, {\fn{\x}}) -- (\a, 0) -- cycle;
+
+    % 奇関数のグラフ
+    \begin{scope}
+      \clip (\xmin, \ymin) rectangle (\xmax, \ymax);
+      % 奇関数のプロット
+      \draw[thick, domain=\xmin:\xmax, smooth, samples=100] plot (\x, {\fn{\x}});
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+\section{フーリエ級数}
+
+\subsection{そもそも級数とは}
+
+\begin{definition}{級数展開}
+  \newline
+  ある関数$f(x)$を、より基本的な関数系
+  \Large
+  \begin{equation}
+    \{\varphi_0(x), \varphi_1(x), \varphi_2(x), \dots\}
+  \end{equation}
+  \normalsize
+  を使って、次のような級数で表すことを級数展開という。
+  \LARGE
+  \begin{equation}
+    f(x) = \sum_{n=0}^{\infty} c_n \varphi_n(x)
+  \end{equation}
+\end{definition}
+
+級数展開は、近似や性質の分析に役立つ。
+
+\subsubsection{代表的な級数展開：マクローリン展開}
+
+$f(x)$が無限回微分可能なとき、$f(x)$は多項式関数$\{x^0, x^1, x^2, \dots\}$を使って級数展開できる。
+
+\begin{equation}
+  f(x) = \sum_{n=0}^{\infty} \dfrac{f^{(n)}(0)}{n!}x^n
+\end{equation}
+
+このような級数展開をマクローリン展開という。
+
+\subsubsection{代表的な級数展開：フーリエ級数展開}
+
+$f(x)$が特定の条件を満たすとき、$f(x)$は三角関数を使って級数展開できる。
+
+このような級数展開をフーリエ級数展開といい、これからの議論の対象となる。
+
+\subsection{有限区間で定義された関数のフーリエ級数展開}
+
+\begin{theorem}{有限区間で定義された関数のフーリエ級数展開}
+  \newline
+  $-\dfrac{T}{2} \leq t \leq \dfrac{T}{2}$（区間幅$T$の有限区間）で定義された関数$f(t)$について、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{a_0 + \sum_{n=1}^{\infty} \left\{ a_n\cos\left(\dfrac{2\pi nt}{T}\right) + b_n\sin\left(\dfrac{2\pi nt}{T}\right) \right\}}{\normalsize フーリエ級数展開}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$a_0, a_n, b_n$は次のようになる。
+  \Large
+  \begin{align}
+    a_0 & = \dfrac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) dt                                     \\
+    a_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt \\
+    b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
+
+\subsection{フーリエ級数展開の周期関数への拡張}
+
+元の関数$f(t)$には区間の制限を設けていたが、フーリエ級数を構成する三角関数は、無限区間で定義されている。
+
+そして、三角関数は、区間幅$T$だけずらしても同じ値をとる、周期$T$の周期関数である。
+
+つまり、特定の区間内の関数$f(t)$の形を、無限区間内で$T$ずつずらしていっても、それを表現するフーリエ級数の式は変わらない。
+
+関数$f(t)$が、区間の制限をなくしても同じ形を繰り返すだけ（周期関数）であれば、先ほどのフーリエ級数展開がそのまま成り立つことになる。
+
+\begin{theorem}{周期関数のフーリエ級数展開}
+  \newline
+  周期$T$の周期関数$f(t)$について、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{a_0 + \sum_{n=1}^{\infty} \left\{ a_n\cos\left(\dfrac{2\pi nt}{T}\right) + b_n\sin\left(\dfrac{2\pi nt}{T}\right) \right\}}{\normalsize フーリエ級数展開}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$a_0, a_n, b_n$は次のようになる。
+  \Large
+  \begin{align}
+    a_0 & = \dfrac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) dt                                     \\
+    a_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt \\
+    b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
+
+\subsection{不連続点におけるフーリエ級数の値}
+
+次のような矩形波$f(t)$では、$t=\dfrac{T}{n}$が不連続な点となる。
+
+\begin{equation}
+  f(t) = \left\{
+  \begin{array}{ll}
+    0 & (-\pi \leq t < 0) \\
+    1 & (0 \leq t < \pi)
+  \end{array}
+  \right.
+\end{equation}
+
+% SQUARE WAVE
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmin{-0.7*\T}   % min x axis
+    \def\xmax{6.0}       % max x axis
+    \def\ymin{-1.04}     % min y axis
+    \def\ymax{1.3}       % max y axis
+    \def\A{0.67*\ymax}   % amplitude
+    \def\T{(0.35*\xmax)} % period
+    \def\f#1{\A*4/pi/(#1)*sin(360/\T*#1*Mod(\t,\T))} %Mod(360*#1*\t/\T,360)
+    \def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
+
+    % AXIS
+    \draw[axis,thick] (0,\ymin) -- (0,\ymax) node[left] {$y$};
+    \draw[axis,thick] ({\xmin},0) -- (\xmax,0) node[below,right] {$t$ [s]};
+
+    % PLOT
+    \begin{scope}
+      \clip ({0.9*\xmin},-1.1*\A) rectangle (0.95*\xmax,1.1*\A);
+      \foreach \i [evaluate={\x=\i*\T/2;}] in {-2,...,5}{
+          \ifodd\i
+            \draw[plotline,very thick,line cap=round] (\x,{-\A}) --++ ({\T/2},0);
+            \draw[plotline,dashed,thin,line cap=round]
+            ({\x+\T/2},{-\A}) --++ (0,2*\A);
+          \else
+            \draw[plotline,very thick,line cap=round] (\x,{\A}) --++ ({\T/2},0);
+            \draw[plotline,dashed,thin,line cap=round]
+            ({\x+\T/2},{\A}) --++ (0,-2*\A);
+          \fi
+        }
+    \end{scope}
+
+    % 周期を表すラベル
+    \tick{{ -\T/2},0}{90} node[below,scale=0.8] {\contour{white}{$-\dfrac{T}{2}$}};
+    \tick{{  \T  },0}{90} node[below,scale=0.8] {\contour{white}{$T$}};
+    \tick{{  \T/2},0}{90} node[right,below,scale=0.8] {\contour{white}{$\dfrac{T}{2}$}};
+    \tick{{3*\T/2},0}{90} node[right,below,scale=0.8] {\contour{white}{$3\dfrac{T}{2}$}};
+    \tick{{2*\T  },0}{90} node[right,below,scale=0.8] {\contour{white}{$2T$}};
+    \tick{{5*\T/2},0}{90} node[right,below,scale=0.8] {\contour{white}{$5\dfrac{T}{2}$}};
+
+    \tick{0,{ \A}}{  0} node[left,scale=0.9] {$A$};
+    \tick{0,{-\A}}{180} node[right,scale=0.9] {$-A$};
+
+    % 原点
+    \node[below left] at (0,0) {$O$};
+  \end{tikzpicture}
+\end{center}
+
+この関数をフーリエ級数展開し、$k$項までの和を求めた結果が、$s_k$のような波形となる。
+
+% SQUARE WAVE SYNTHESIS - time domain
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmin{-0.65*\T}  % max x axis
+    \def\xmax{6.0}       % max x axis
+    \def\ymin{-1.04}     % min y axis
+    \def\ymax{1.3}       % max y axis
+    \def\A{0.67*\ymax}   % amplitude
+    \def\f#1{\A*4/pi/(#1)*sin(360/\T*#1*Mod(\t,\T))} %Mod(360*#1*\t/\T,360)
+    \def\T{(0.465*\xmax)} % period
+    \def\N{100}            % number of samples
+    \def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
+
+    % 元の矩形波を点線で描画
+    \begin{scope}
+      \clip ({-0.54*\T},-1.1*\A) rectangle (0.97*\xmax,1.1*\A);
+      \foreach \i [evaluate={\x=\i*\T/2;}] in {-2,...,4}{
+          \ifodd\i
+            \draw[blue!80!black!30,line cap=round] (\x,{-\A}) --++ ({\T/2},0);
+            \draw[blue!80!black!30,dashed,thin,line cap=round]
+            ({\x+\T/2},{-\A}) --++ (0,2*\A);
+          \else
+            \draw[blue!80!black!30,line cap=round] (\x,{\A}) --++ ({\T/2},0);
+            \draw[blue!80!black!30,dashed,thin,line cap=round]
+            ({\x+\T/2},{\A}) --++ (0,-2*\A);
+          \fi
+        }
+    \end{scope}
+
+    % AXIS
+    \draw[axis,thick] (0,\ymin) -- (0,\ymax) node[left] {$y$};
+    \draw[axis,thick] ({\xmin},0) -- (\xmax,0) node[below,right] {$t$ [s]};
+
+    % PLOT
+    \draw[plotline, thin,samples=\N,smooth,variable=\t,domain=-0.55*\T:0.94*\xmax] plot(\t,{\f{1}});
+    \draw[plotline, thin,green,samples=3*\N,smooth,variable=\t,domain=-0.54*\T:0.94*\xmax] plot(\t,{\f{1}+\f{3}});
+    \draw[plotline, thin,red,samples=5*\N,smooth,variable=\t,domain=-0.53*\T:0.94*\xmax] plot(\t,{\f{1}+\f{3}+\f{5}});
+    \draw[plotline, thin,orange,line width=0.7,samples=7*\N,smooth,variable=\t,domain=-0.52*\T:0.94*\xmax] plot(\t,{\f{1}+\f{3}+\f{5}+\f{7}});
+    \draw[plotline, thin,purple,samples=9*\N,smooth,variable=\t,domain=-0.52*\T:0.95*\xmax] plot(\t,{\f{1}+\f{3}+\f{5}+\f{7}+\f{9}});
+
+    % NUMBERS
+    \node[blue,  above,scale=0.9] at ({0.16*\T},1.20*\A) {$s_1$};
+    \node[green, below,scale=0.9] at ({0.25*\T},0.88*\A) {$s_3$};
+    \node[red,   above,scale=0.9] at ({0.41*\T},1.17*\A) {$s_5$};
+    \node[orange,right,scale=0.9] at ({0.48*\T},0.50*\A) {$s_7$};
+
+    % 周期を表すラベル
+    \tick{{  \T},0}{90} node[below right,scale=0.8] {$T$};
+    \tick{{2*\T},0}{90} node[below right,scale=0.8] {$2T$};
+
+    % 周波数を表すラベル
+    \tick{0,{ \A}}{  0} node[left,scale=0.9] {$A$};
+    \tick{0,{-\A}}{180} node[right,scale=0.9] {$-A$};
+
+    % 原点
+    \node[below left] at (0,0) {$O$};
+  \end{tikzpicture}
+\end{center}
+
+$k$が大きくなるほど、$s_k$は元の矩形波$f(t)$に近づいていることがわかる。
+
+ここで、元の関数の不連続点である$t=\dfrac{T}{n}$において、$s_k$は不連続点を通過している。
+
+例えば、$t=0$において、$t=0$より左側では$-A$に近い値、右側では$A$に近い値をとる。
+
+\begin{itemize}
+  \item $t=0$に右から近づいていくと、$s_k$は$A$に近づいていく（右極限は$A$）
+  \item $t=0$に左から近づいていくと、$s_k$は$-A$に近づいていく（左極限は$-A$）
+\end{itemize}
+
+そして、$t=0$において、$s_k$は$A$と$-A$の間の値（原点）を通過している。
+
+一般に、不連続となる$t$において、フーリエ級数展開の値は、その点での左右の極限値の平均値となる。
+
+\begin{theorem}{不連続点におけるフーリエ級数の収束}
+  \newline
+  $f(t)$が$t=a$で不連続のとき、フーリエ級数の値は左極限$f(a-0)$と右極限$f(a+0)$の平均値に収束する。
+  \LARGE
+  \begin{equation}
+    \lim_{t \to a} s_k(t) = \dfrac{f(a-0) + f(a+0)}{2}
+  \end{equation}
+\end{theorem}
+
+\subsection{フーリエ級数展開の意味}
+
+フーリエ級数展開の式は、
+
+\begin{itemize}
+  \item $1$の係数が$a_0$
+  \item $\cos\left(\dfrac{2\pi nt}{T}\right)$の係数が$a_n$
+  \item $\sin\left(\dfrac{2\pi nt}{T}\right)$の係数が$b_n$
+\end{itemize}
+
+となっていた。
+
+フーリエ級数展開は、次の基本関数系を使った級数展開といえる。
+
+\begin{equation}
+  \left\{1, \cos\left(\dfrac{2\pi nt}{T}\right), \sin\left(\dfrac{2\pi nt}{T}\right)\right\}
+\end{equation}
+
+ここで、
+
+\begin{review}
+  $\sin\omega t$や$\cos\omega t$は、角周波数$\omega$の正弦波と呼ばれる
+\end{review}
+
+ことを思い出すと、フーリエ級数展開を構成する基本関数系は、角周波数$\omega_n = \dfrac{2\pi n}{T}$の正弦波である。
+
+（1は$\cos\dfrac{2\pi nt}{T}$における、$n=0$の場合だと考えることができる。）
+
+つまり、フーリエ級数展開は、関数$f(t)$を角周波数$\omega_n$の正弦波に分解することである。
+
+\begin{center}
+  % SYNTHESIS 3D
+  \begin{tikzpicture}[x=(-20:0.9), y=(90:0.9), z=(42:1.1)]
+    \def\xmax{6.5}        % max x axis
+    \def\ymin{-1.2}       % min y axis
+    \def\ymax{1.6}        % max y axis
+    \def\zmax{5.8}        % max z axis
+    \def\xf{1.17*\xmax}   % x position frequency axis
+    \def\A{(0.60*\ymax)}  % amplitude
+    \def\T{(0.335*\xmax)} % period
+    \def\w{\zmax/11.2}    % spacing components
+    \def\N{100}           % number of samples
+    \def\f#1{\A*4/pi/(#1)*sin(360/\T*#1*Mod(\t,\T))} %Mod(360*#1*\t/\T,360)
+    \def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
+
+    % COMPONENTS
+    \foreach \i/\col [evaluate={\z=\w*\i;}] in {11/cyan,9/purple,7/orange,5/red,3/green,1/blue}{
+        %\draw[black!30] ({\T},0.1,\z) --++ (0,-0.2,0);
+        %\draw[black!30] ({2*\T},0.1,\z) --++ (0,-0.2,0);
+        % 分解された各波の座標軸
+        \draw[axis,black!30] (0,0,\z) --++ (0.93*\xmax,0,0);
+        % 分解された各波
+        \draw[plotline,\col,opacity=0.8,thick,samples=\i*\N,smooth,variable=\t,domain=-0.05*\T:0.87*\xmax] plot(\t,{\f{\i}},\z);
+      }
+
+    % TIME DOMAIN
+    \begin{scope}[shift={(0,0,-0.17*\zmax)}]
+      % 時間領域を表す平面
+      \draw[black,fill=white,opacity=0.3,xy-plane] (-0.1*\xmax,-1.25*\ymax) rectangle (1.13*\xmax,1.25*\ymax);
+      % 横軸
+      \draw[axis,thick] (-0.05*\xmax,0,0) -- (\xmax,0,0) node[below right,xy-plane] {$t$ [s]};
+      % 縦軸
+      \draw[axis,thick] (0,\ymin,0) -- (0,\ymax,0) node[left,xy-plane] {$y$};
+      % 時間領域での関数のグラフ
+      \draw[plotline,blue!90!black,very thick,samples=9*\N,smooth,variable=\t,domain=-0.05*\T:0.9*\xmax] plot(\t,{\f{1}+\f{3}+\f{5}+\f{7}+\f{9}+\f{11}},0);
+      % 周期を示すラベル
+      \tick{{\T},0,0}{90} node[below,scale=0.9,xy-plane] {\contour{white}{$T$}};
+      \tick{{2*\T},0,0}{90} node[below,scale=0.9,xy-plane] {\contour{white}{$2T$}};
+      % 平面を説明するラベル
+      \node[scale=0.8,xy-plane] at (0.4*\xmax,-\ymax,0) {時間の世界（連続的）};
+    \end{scope}
+
+    % FREQUENCY DOMAIN
+    \begin{scope}[shift={(\xf,0,0)}]
+      % 周波数領域を表す平面
+      \draw[black,fill=white,opacity=0.3,zy-plane] (-0.13*\zmax,-1.25*\ymax) rectangle (1.26*\zmax,1.25*\ymax);
+      % 縦軸
+      \draw[axis,thick] (0,0.8*\ymin,0) -- (0,\ymax,0) node[above=2,left=0,zy-plane] {$b_n$};
+      % 横軸
+      \draw[axis,thick] (0,0,-0.05*\zmax) --++ (0,0,1.13*\zmax) node[below right=-1,zy-plane] {$f_n$ $\left[\frac{1}{\mathrm{s}}\right]$};
+      % 平面を説明するラベル
+      \node[scale=0.8,zy-plane] at (0,-\ymax,0.65*\zmax) {周波数の世界（離散的）};
+      % 周波数領域での関数のグラフ
+      \draw[blue!30,dashed,samples=3*\N,smooth,variable=\t,domain=0.074*\zmax:1.02*\zmax] plot(0,{\A*4/pi/\t*\w},\t);
+      % 各周波数成分
+      \foreach \i/\col [evaluate={\z=\w*\i;}] in {11/cyan,9/purple,7/orange,5/red,3/green,1/blue}{
+          % 周波数成分の高さを示す補助線
+          \draw[\col,dash pattern=on 2 off 2] (0,0,\z) --++ (0,{\A*4/pi/\i},0);
+          % 周波数成分の値を示す点
+          \fill[\col,canvas is zy plane at x=0] (\z,{\A*4/pi/\i}) circle(0.07);
+          % 横軸上の目盛りとそのラベル
+          \tick{0,0,\z}{90} node[below,scale=0.85,zy-plane]{$\dfrac{\i}{T}$};
+          % 横軸上の各目盛りの中点
+          \foreach \i [evaluate={\z=\w*\i;}] in {2,4,...,10}{
+              \fill[blue!60!black,zy-plane] (\z,0) circle(0.07);
+            }
+        }
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+
+関数$f(t)$がどのような周波数成分で構成されているか？を解き明かすのがフーリエ級数展開で、フーリエ係数は時間領域から周波数領域へのマッピングの役割を果たしている。
+
+\subsection{フーリエ級数展開のさまざまな表現式}
+
+フーリエ級数展開の式は、文献によって異なるいくつかの形で表現される。
+
+\subsubsection{定数項をまとめた表現}
+
+定数項$a_0$を、$a_n$の$n=0$の場合として考えることができる。
+
+その場合、フーリエ級数展開は次のように表される。
+
+\begin{theorem}{フーリエ級数展開（フーリエ係数を整理した表現）}
+  \newline
+  周期$T$の周期関数$f(t)$について、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{\dfrac{a_0}{2} + \sum_{n=1}^{\infty} \left\{ a_n\cos\left(\dfrac{2\pi nt}{T}\right) + b_n\sin\left(\dfrac{2\pi nt}{T}\right) \right\}}{\normalsize フーリエ級数展開}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$a_n, b_n$は次のようになる。
+  \Large
+  \begin{align}
+    a_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt \\
+    b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
+
+\subsubsection{角周波数を使った表現}
+
+角周波数$\omega_0=\dfrac{2\pi}{T}$を使って、フーリエ級数展開の式を書き換えることもできる。
+
+\begin{theorem}{フーリエ級数展開（角周波数を使った表現）}
+  \newline
+  周期$T$の周期関数$f(t)$について、角周波数$\omega_0$を用いて、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{a_0 + \sum_{n=1}^{\infty} \left( a_n\cos \omega_0 nt + b_n\sin \omega_0 nt \right)}{\normalsize フーリエ級数展開}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$a_0, a_n, b_n$は次のようになる。
+  \Large
+  \begin{align}
+    a_0 & = \dfrac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) dt                 \\
+    a_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \cos\omega_0 nt dt \\
+    b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} f(t) \sin\omega_0 nt dt
+  \end{align}
+\end{theorem}
+
+\subsubsection{区間を0始まりにずらした表現}
+
+有限区間$-\dfrac{T}{2} \leq t \leq \dfrac{T}{2}$で定義された関数のフーリエ級数展開を考えてきたが、その有限区間は区間幅が$T$であればなんでもよい。
+
+特に、$0 \leq t \leq T$で定義された関数のフーリエ級数展開を考えることも多い。
+
+区間を変えても、周期関数への拡張は同様の議論により成り立ち、次のことがいえる。
+
+\begin{theorem}{フーリエ級数展開（積分区間を0始まりにした表現）}
+  \newline
+  周期$T$の周期関数$f(t)$について、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{a_0 + \sum_{n=1}^{\infty} \left\{ a_n\cos\left(\dfrac{2\pi nt}{T}\right) + b_n\sin\left(\dfrac{2\pi nt}{T}\right) \right\}}{\normalsize フーリエ級数展開}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$a_0, a_n, b_n$は次のようになる。
+  \Large
+  \begin{align}
+    a_0 & = \dfrac{1}{T} \int_{0}^{T} f(t) dt                                     \\
+    a_n & = \dfrac{2}{T} \int_{0}^{T} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt \\
+    b_n & = \dfrac{2}{T} \int_{0}^{T} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
+
+このフーリエ係数の式は、区間$-\dfrac{T}{2} \leq t \leq \dfrac{T}{2}$の場合の式を平行移動＋置換積分することで示される。
+
+\subsection{奇関数のフーリエ級数（フーリエ正弦級数）}
+
+$f(t)$が奇関数の場合、それを表現するフーリエ級数には、奇関数しか入らない。
+
+奇関数と奇関数の和が奇関数になることから、そう予想できる。
+
+偶関数$\cos$の項が消え、奇関数$\sin$の項だけが残ることを確かめるため、各フーリエ係数を計算してみよう。
+
+\subsubsection{定数項$a_0$}
+
+原点に対して対称な範囲での奇関数の積分は$0$になるから、
+
+\begin{align}
+  a_0 & = \dfrac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \oddFn{f(t)} dt \\
+      & = 0
+\end{align}
+
+\subsubsection{$\cos$の項の係数$a_n$}
+
+$\int$の中身を見ると、奇関数と偶関数の積は奇関数になるので、積分結果は$0$になる。
+
+\begin{align}
+  a_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \oddFn[0.4]{\oddFn{f(t)} \evenFn{\cos\left(\dfrac{2\pi nt}{T}\right)}} dt \\
+      & = 0
+\end{align}
+
+\subsubsection{$\sin$の項の係数$b_n$}
+
+$\int$の中身を見ると、奇関数と奇関数の積は偶関数になるので、
+
+\begin{review}
+  偶関数の積分公式
+  \begin{equation}
+    \int_{-a}^{a}f(x)dx = 2\int_{0}^{a}f(x)dx
+  \end{equation}
+\end{review}
+
+を使って計算する。
+
+\begin{align}
+  b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \evenFn[0.4]{\oddFn{f(t)} \oddFn{\sin\left(\dfrac{2\pi nt}{T}\right)}} dt \\
+      & = \dfrac{2}{T} \cdot 2 \int_{0}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt                                  \\
+      & = \dfrac{4}{T} \int_{0}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+\end{align}
+
+\subsubsection{まとめ：フーリエ正弦級数}
+
+以上より、$a_0$、$a_n$は$0$になるため、奇関数のフーリエ級数は、$\sin$の項だけで表現される。
+
+奇関数のフーリエ級数は、フーリエ正弦級数と呼ばれる。
+\begin{theorem}{フーリエ正弦級数}
+  \newline
+  周期$T$の周期関数$f(t)$が奇関数であり、
+  \Large
+  \begin{equation}
+    f(t) = \labelmath{\sum_{n=1}^{\infty} b_n\sin\left(\dfrac{2\pi nt}{T}\right)}{\normalsize フーリエ正弦級数}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$b_n$は次のようになる。
+  \Large
+  \begin{align}
+    b_n & = \dfrac{4}{T} \int_{0}^{\frac{T}{2}} f(t) \sin\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
+
+\subsection{偶関数のフーリエ級数（フーリエ余弦級数）}
+
+$f(t)$が偶関数の場合、それを表現するフーリエ級数には、偶関数しか入らない。
+
+偶関数と偶関数の和が偶関数になることから、そう予想できる。
+
+奇関数$\sin$の項が消え、偶関数$\cos$の項だけが残ることを確かめるため、各フーリエ係数を計算してみよう。
+
+\subsubsection{定数項$a_0$}
+
+偶関数の積分公式を使って計算する。
+
+\begin{align}
+  a_0 & = \dfrac{1}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \evenFn{f(t)} dt \\
+      & = \dfrac{1}{T} \cdot 2 \int_{0}^{\frac{T}{2}} f(t) dt             \\
+      & = \dfrac{2}{T} \int_{0}^{\frac{T}{2}} f(t) dt
+\end{align}
+
+\subsubsection{$\cos$の項の係数$a_n$}
+
+$\int$の中身を見ると、偶関数と偶関数の積は偶関数になるので、偶関数の積分公式を使って計算する。
+
+\begin{align}
+  b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \evenFn[0.3]{\evenFn{f(t)} \evenFn{\cos\left(\dfrac{2\pi nt}{T}\right)}} dt \\
+      & = \dfrac{2}{T} \cdot 2 \int_{0}^{\frac{T}{2}} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt                                    \\
+      & = \dfrac{4}{T} \int_{0}^{\frac{T}{2}} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt
+\end{align}
+
+\subsubsection{$\sin$の項の係数$b_n$}
+
+$\int$の中身を見ると、偶関数と奇関数の積は奇関数になるので、積分結果は$0$になる。
+
+\begin{align}
+  b_n & = \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} \oddFn[0.4]{\evenFn{f(t)} \oddFn{\sin\left(\dfrac{2\pi nt}{T}\right)}} dt \\
+      & = 0
+\end{align}
+
+\subsubsection{まとめ：フーリエ余弦級数}
+
+以上より、$b_n$は$0$になるため、偶関数のフーリエ級数は、$\cos$の項だけで表現される。
+
+偶関数のフーリエ級数は、フーリエ余弦級数と呼ばれる。
+
+\begin{theorem}{フーリエ余弦級数}
+  \newline
+  周期$T$の周期関数$f(t)$が偶関数であり、
+  \Large
+  \begin{equation}
+    f(t) = a_0 + \labelmath{\sum_{n=1}^{\infty} a_n\cos\left(\dfrac{2\pi nt}{T}\right)}{\normalsize フーリエ余弦級数}
+  \end{equation}
+  \normalsize
+  が成り立つとしたら、フーリエ係数$a_0, a_n$は次のようになる。
+  \Large
+  \begin{align}
+    a_0 & = \dfrac{2}{T} \int_{0}^{\frac{T}{2}} f(t) dt                                     \\
+    a_n & = \dfrac{4}{T} \int_{0}^{\frac{T}{2}} f(t) \cos\left(\dfrac{2\pi nt}{T}\right) dt
+  \end{align}
+\end{theorem}
+
+\end{document}

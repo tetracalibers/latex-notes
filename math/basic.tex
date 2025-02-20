@@ -1,0 +1,399 @@
+\documentclass[../math-imaging]{subfiles}
+
+\begin{document}
+
+\chapter{基本的な関数}
+
+\section{指数関数}
+
+\subsection{同じ数のかけ算の指数による表記}
+
+\begin{definition}{指数と底}
+  \newline
+  同じ数$a$を$n$回掛けたものを$a$の$n$乗といい，$a^n$と表す。
+  \LARGE
+  \begin{equation}
+    a^n = \underbrace{a \times a \times \cdots \times a}_{n\text{個の}a}
+  \end{equation}
+  \normalsize
+  このとき、$n$を指数、$a$を底という。
+\end{definition}
+
+\subsection{指数法則}
+
+指数を「かける回数」と捉えれば、いくつかの法則が当たり前に成り立つことがわかる。
+
+\subsubsection{「かける回数」の和}
+
+例えば、$a$を$m$回かけてから、続けて$a$を$n$回かける式を書いてみると、$a$は$m+n$個並ぶことになる。
+
+\begin{equation}
+  \overbrace{a\times a\times a}^{a^3} \times \overbrace{a\times a}^{a^2} = \overbrace{a\times a\times a\times a\times a}^{a^5}
+\end{equation}
+
+\begin{theorem}{指数の和に関する指数法則}
+  \LARGE
+  \begin{equation}
+    a^m \times a^n = a^{m+n}
+  \end{equation}
+\end{theorem}
+
+\subsubsection{「かける回数」の差}
+
+例えば、$a$を$m$回かけたものを、$a$を$n$回かけたもので割ると、$m-n$個の$a$の約分が発生する。
+
+\begin{equation}
+  \dfrac{\overbrace{a\times a\times a\times a\times a\times}^{a^5}}{\underbrace{a\times a}_{a^2}} = \overbrace{a\times a\times a}^{a^3}
+\end{equation}
+
+\begin{theorem}{指数の差に関する指数法則}
+  \LARGE
+  \begin{equation}
+    \dfrac{a^m}{a^n} = a^{m-n}
+  \end{equation}
+\end{theorem}
+
+\subsubsection{「かける回数」の積}
+
+例えば、「$a$を$m$回かけたもの」を$n$回かける式を書いてみると、$a$は$m \times n$個並ぶことになる。
+
+\begin{equation}
+  (a^2)^3 = \underbrace{\overbrace{a\times a}^{a^2} \times \overbrace{a\times a}^{a^2} \times \overbrace{a\times a}^{a^2}}_{a^6}
+\end{equation}
+
+\begin{theorem}{指数の積に関する指数法則}
+  \LARGE
+  \begin{equation}
+    (a^m)^n = a^{mn}
+  \end{equation}
+\end{theorem}
+
+\subsection{指数の拡張と指数関数}
+
+底を固定して、指数を変化させる関数を考えたい。
+
+指数部分に入れられる数を拡張したいが、このとき、どんな数を入れても指数法則が成り立つようにしたい。
+
+\subsubsection{$0$の指数}
+
+指数法則$a^m \times a^n = a^{m+n}$において、$m=0$の場合を考える。
+
+\begin{align}
+  a^0 \times a^n & = a^{0+n} \\
+  a^0 \times a^n & = a^n
+\end{align}
+
+この式が成り立つためには、$a^0$は$1$である必要がある。
+
+\begin{definition}{$0$の指数}
+  \newline
+  どんな数も、$0$乗すると$1$になると定義する。
+  \LARGE
+  \begin{equation}
+    a^0 = 1
+  \end{equation}
+\end{definition}
+
+そもそも、指数法則$a^m \times a^n = a^{m+n}$は、「指数の足し算が底のかけ算に対応する」ということを表している。
+
+\begin{itemize}
+  \item 「何もしない」足し算は$+ 0$
+  \item 「何もしない」かけ算は$\times 1$
+\end{itemize}
+
+なので、$a^0 = 1$は「何もしない」という観点で足し算とかけ算を対応づけたものといえる。
+
+\subsubsection{負の指数}
+
+指数法則$a^m \times a^n = a^{m+n}$において、正の数$n$を負の数$-n$に置き換えたものを考える。
+
+\begin{equation}
+  a^m \times a^{-n} = a^{m-n}
+\end{equation}
+
+さらに、指数法則$\dfrac{a^m}{a^n} = a^{m-n}$も成り立っていてほしいので、
+
+\begin{equation}
+  a^m \times a^{-n} = \dfrac{a^m}{a^n}
+\end{equation}
+
+この式は、$a^{-n}= \dfrac{1}{a^n}$とすれば、当たり前に成り立つものとなる。
+
+\begin{definition}{負の整数の指数}
+  \newline
+  $n$が正の整数であるとき、$-n$乗を次のように定義する。
+  \LARGE
+  \begin{equation}
+    a^{-n} = \dfrac{1}{a^n}
+  \end{equation}
+\end{definition}
+
+\subsubsection{有理数の指数}
+
+指数法則$a^m \times a^n = a^{m+n}$において、指数$m, n$を$\dfrac{1}{2}$に置き換えたものを考える。
+
+\begin{equation}
+  a^{\frac{1}{2}} \times a^{\frac{1}{2}} = a^{\frac{1}{2} + \frac{1}{2}} = a
+\end{equation}
+
+$a^{\frac{1}{2}} \times a^{\frac{1}{2}}$は、$(a^{\frac{1}{2}})^2$とも書けるので、
+
+\begin{equation}
+  (a^{\frac{1}{2}})^2 = a
+\end{equation}
+
+つまり、$a^{\frac{1}{2}}$は、2乗すると$a$になる数（$a$の平方根）でなければならない。
+
+\begin{equation}
+  a^{\frac{1}{2}} = \sqrt{a}
+\end{equation}
+
+同様に、$a^{\frac{1}{3}} \times a^{\frac{1}{3}} \times a^{\frac{1}{3}}$を考えてみると、
+
+\begin{equation}
+  a^{\frac{1}{3}} \times a^{\frac{1}{3}} \times a^{\frac{1}{3}} = a^{\frac{1}{3} + \frac{1}{3} + \frac{1}{3}} = a
+\end{equation}
+
+$a^{\frac{1}{3}} \times a^{\frac{1}{3}} \times a^{\frac{1}{3}}$は、$(a^{\frac{1}{3}})^3$とも書けるので、
+
+\begin{equation}
+  (a^{\frac{1}{3}})^3 = a
+\end{equation}
+
+つまり、$a^{\frac{1}{3}}$は、3乗すると$a$になる数（$a$の3乗根）でなければならない。
+
+\begin{equation}
+  a^{\frac{1}{3}} = \sqrt[3]{a}
+\end{equation}
+
+このようにして、$a^{\frac{1}{n}}$は、$n$乗すると$a$になる数（$a$の$n$乗根）として定義すればよい。
+
+\begin{equation}
+  a^{\frac{1}{n}} = \sqrt[n]{a}
+\end{equation}
+
+さて、分子が$1$ではない場合はどうだろうか？
+
+$(a^m)^n = a^{mn}$において、$m$を$\dfrac{m}{n}$に置き換えたものを考えると、
+
+\begin{equation}
+  (a^{\frac{m}{n}})^n = a^{\frac{m}{n} \times n} = a^m
+\end{equation}
+
+となるので、$a^{\frac{m}{n}}$は、$n$乗したら$a^m$になる数として定義すればよい。
+
+\begin{equation}
+  a^{\frac{m}{n}} = \sqrt[n]{a^m}
+\end{equation}
+
+\begin{definition}{有理数の指数}
+  \newline
+  $m, n$が整数で、$n$が正の整数であるとき、$\dfrac{m}{n}$乗を次のように定義する。
+  \LARGE
+  \begin{equation}
+    a^{\frac{m}{n}} = \sqrt[n]{a^m}
+  \end{equation}
+\end{definition}
+
+\subsubsection{実数への拡張}
+
+有理数は無数にあるので、指数$x$を有理数まで許容した関数$y=a^x$のグラフを書くと、十分に繋がった線になる。
+
+指数が無理数の場合は、まるでグラフ上の点と点の間を埋めるように、有理数の列で近似していくことで定義できる。
+
+\vskip\baselineskip
+
+これで、$x$を実数とし、関数$y=a^x$を定義できる。
+
+\begin{definition}{指数関数}
+  \newline
+  $a$を正の実数とし、$x$を実数とするとき、次のような関数を指数関数という。
+  \LARGE
+  \begin{equation}
+    y = a^x
+  \end{equation}
+\end{definition}
+
+\subsection{指数関数の底の変換}
+
+用途に応じて、使いやすい指数関数の底は異なる。
+
+\begin{itemize}
+  \item $e$：微分積分学、複素数、確率論など
+  \item $2$：情報理論、コンピュータサイエンスなど
+  \item $10$：対数表、音声、振動、音響など
+\end{itemize}
+
+よって、これらの底を互いに変換したい場面もある。
+
+\vskip\baselineskip
+
+指数の底を変えることは、指数の定数倍で実現できる。
+
+例えば、底が$4$の指数関数$4^x$を、底が$2$の指数関数に変換したいとすると、
+
+\begin{equation}
+  4^x = (2^2)^x = 2^{2x}
+\end{equation}
+
+のように、指数部分を$2$倍することで、底を$4$から$2$へと変換できる。
+
+当たり前だが、この変換は、$4 = 2^2$という関係のおかげで成り立っている。
+
+「$4$は$2$の何乗か？」がすぐにわかるから、$4$から$2$への底の変換が簡単にできたのだ。
+
+\vskip\baselineskip
+
+より一般に、$a^x$と$b^X$において、$a = b^c$という関係があるとする。
+
+つまり、$a$は$b$の$c$乗だとわかっているなら、
+
+\begin{equation}
+  a^x = (b^c)^x = b^{cx}
+\end{equation}
+
+のように、底を$a$から$b$へと変換できる。
+
+\begin{theorem}{指数関数の底の変換}
+  \newline
+  指数を定数倍することは、底を変えることと同じ操作になる。\\
+  $a = b^c$という関係があるなら、次の変換が成り立つ。
+  \LARGE
+  \begin{equation}
+    a^x = b^{cx}
+  \end{equation}
+\end{theorem}
+
+ここで重要なのは、指数関数の底を変換するには、「$a$は$b$の何乗か？」がわかっている必要があるということだ。
+
+次章では、$a = b^c$となるような$c$を表す道具として、対数を導入する。
+
+\section{対数関数}
+
+\subsection{対数：指数部分を関数で表す}
+
+指数関数は、「$a$を$x$乗したら$y$になる」という関係を表現するものだった。
+
+ここで、逆に「$y$は$a$の何乗か？」という関係を表現するものとして、対数関数を定義する。
+
+これは、$y$から$x$を導き出す関数であるから、指数関数$y=a^x$の逆関数といえる。
+
+\begin{definition}{対数}
+  \newline
+  $a^y = x$を満たす$y$を、$a$を底とする$x$の対数といい、次のように表す。
+  \LARGE
+  \begin{equation}
+    y = \log_a x
+  \end{equation}
+  \normalsize
+  ここで、$x$は真数、$a$は底と呼ばれる。
+\end{definition}
+
+\begin{definition}{対数関数は指数関数の逆関数}
+  \newline
+  対数関数$y=\log_a x$は、指数関数$x = a^y$の逆関数である。
+  \LARGE
+  \begin{equation}
+    \log_a x = y \quad \Longleftrightarrow  \quad a^y = x
+  \end{equation}
+\end{definition}
+
+対数は、指数関数の指数部分を表す。
+
+$a^y = x$の$y$に、$y=\log_a x$を代入することで、次のような式にまとめることもできる。
+
+\begin{theorem}{指数部分は対数で書き換えられる}
+  \LARGE
+  \begin{equation}
+    a^{\log_a x} = x
+  \end{equation}
+\end{theorem}
+
+\subsection{対数の性質}
+
+指数法則を対数に翻訳することで、対数の性質を導くことができる。
+
+\subsubsection{真数のかけ算は$\log$の足し算}
+
+$x_1 = a^m, x_2 = a^n$として、指数法則$a^m \times a^n = a^{m+n}$を考える。
+
+\begin{align}
+  x_1  x_2 & = a^m \times a^n \\
+           & = a^{m+n}
+\end{align}
+
+対数は指数部分を表すので、$m+n = \log_a (x_1x_2)$がいえる。
+
+また、$x_1 = a^m$より$m = \log_a x_1$、$x_2 = a^n$より$n = \log_a x_2$と表せるから、
+
+\begin{equation}
+  m + n = \log_a x_1 + \log_a x_2 = \log_a (x_1x_2)
+\end{equation}
+
+\begin{theorem}{積の対数は対数の和}
+  \LARGE
+  \begin{equation}
+    \log_a (x_1x_2) = \log_a x_1 + \log_a x_2
+  \end{equation}
+\end{theorem}
+
+\subsubsection{真数の割り算は$\log$の引き算}
+
+$x_1 = a^m, x_2 = a^n$として、指数法則$\dfrac{a^m}{a^n} = a^{m-n}$を考える。
+
+\begin{align}
+  \dfrac{x_1}{x_2} & = \dfrac{a^m}{a^n} \\
+                   & = a^{m-n}
+\end{align}
+
+対数は指数部分を表すので、$m-n = \log_a \left( \dfrac{x_1}{x_2} \right)$がいえる。
+
+また、$x_1 = a^m$より$m = \log_a x_1$、$x_2 = a^n$より$n = \log_a x_2$と表せるから、
+
+\begin{equation}
+  m - n = \log_a x_1 - \log_a x_2 = \log_a \left( \dfrac{x_1}{x_2} \right)
+\end{equation}
+
+\begin{theorem}{商の対数は対数の差}
+  \LARGE
+  \begin{equation}
+    \log_a \left( \dfrac{x_1}{x_2} \right) = \log_a x_1 - \log_a x_2
+  \end{equation}
+\end{theorem}
+
+\subsubsection{真数の冪乗は$\log$の指数倍}
+
+$x = a^m$として、指数法則$(a^m)^n = a^{mn}$を考える。
+
+\begin{align}
+  x^n & = (a^m)^n \\
+      & = a^{mn}
+\end{align}
+
+対数は指数部分を表すので、$mn = \log_a x^n$がいえる。
+
+また、$x = a^m$より$m = \log_a x$と表せるから、
+
+\begin{equation}
+  mn = n \log_a x \log_a x^n
+\end{equation}
+
+\begin{theorem}{冪の対数は対数の指数倍}
+  \LARGE
+  \begin{equation}
+    \log_a x^n = n \log_a x
+  \end{equation}
+\end{theorem}
+
+\subsection{常用対数と桁数}
+
+\begin{definition}{常用対数}
+  底を$10$にした対数関数を、常用対数と呼ぶ。
+  \LARGE
+  \begin{equation}
+    \log_{10} x
+  \end{equation}
+\end{definition}
+
+
+\end{document}

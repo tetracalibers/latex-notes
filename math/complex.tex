@@ -1,0 +1,390 @@
+\documentclass[../math-imaging]{subfiles}
+
+\begin{document}
+
+\chapter{複素数と複素関数}
+
+\section{複素平面}
+
+複素数は、実部（Real Part）と虚部（Imaginary Part）という2つの数から成る。
+
+そのため、実部を横軸に、虚部を縦軸にとった平面を考え、1つの複素数をこの平面上の1点として表すことができる。
+
+\begin{definition}{複素平面}
+  実部を横軸、虚部を縦軸にとった平面を複素平面と呼ぶ。
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\ang{35} % 偏角
+    \def\r{3} % 半径
+
+    % x軸の描画
+    \draw [axis] (-1,0) -- (4,0) node[right] {Re};
+    % y軸の描画
+    \draw [axis] (0,-1) -- (0,3) node[above] {Im};
+
+    % 原点O
+    \coordinate (O) at (0,0) node[below left] {O};
+
+    % 座標軸上の点
+    \coordinate[label=below right:$a$] (X) at ({\r*cos(\ang)}, 0);
+    \coordinate[label=left:$b$] (Y) at (0, {\r*sin(\ang)});
+
+    % 複素数z
+    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+
+    % 補助線の描画
+    \draw[auxline] (X) -- (Z);
+    \draw[auxline] (Y) -- (Z);
+
+    % 複素数を表す数式の描画
+    \node[above right] at (Z) {$a+ib$};
+  \end{tikzpicture}
+\end{center}
+
+\section{複素数の絶対値}
+
+\begin{definition}{複素数の絶対値}
+  \newline
+  複素平面において、原点から複素数$z$までの距離を複素数$z$の絶対値と定義する。\\
+  この距離は三平方の定理から求められ、$|z|$と表す。
+  \LARGE
+  \begin{equation}
+    |z| \coloneqq \sqrt{x^2 + y^2}
+  \end{equation}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\ang{35} % 偏角
+    \def\r{3} % 半径
+
+    % x軸の描画
+    \draw [axis] (-1,0) -- (4,0) node[right] {Re};
+    % y軸の描画
+    \draw [axis] (0,-1) -- (0,3) node[above] {Im};
+
+    % 原点O
+    \coordinate (O) at (0,0) node[below left] {O};
+
+    % 座標軸上の点
+    \coordinate[label=below right:$x$] (X) at ({\r*cos(\ang)}, 0);
+    \coordinate[label=left:$y$] (Y) at (0, {\r*sin(\ang)});
+
+    % 複素数z
+    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+
+    % 三角形の描画
+    \draw[fill=orange, opacity=0.4] (O) -- (X) -- (Z) -- cycle;
+
+    % 三角形の辺のラベルの描画
+    \draw (O) -- (X) node[midway, below] {$x$};
+    \draw (X) -- (Z) node[midway, right] {$y$};
+    \draw (O) -- (Z) node[midway, above, sloped] {$\sqrt{x^2 + y^2}$};
+
+    % ベクトルの描画
+    \draw[vector] (O) -- (Z);
+
+    % 補助線の描画
+    \draw[auxline] (X) -- (Z);
+    \draw[auxline] (Y) -- (Z);
+
+    % 複素数を表す数式の描画
+    \node[above right] at (Z) {$z$};
+  \end{tikzpicture}
+\end{center}
+
+\section{複素数の極形式による表現}
+
+\begin{definition}{極形式}
+  \newline
+  複素数$z$は、絶対値$r$と偏角$\theta$を用いて次のように表すことができる。
+  \LARGE
+  \begin{equation}
+    z = r(\cos\theta + i\sin\theta)
+  \end{equation}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\ang{35} % 偏角
+    \def\r{3} % 半径
+
+    % x軸の描画
+    \draw [axis] (-1,0) -- (4,0) node[right] {Re};
+    % y軸の描画
+    \draw [axis] (0,-1) -- (0,3) node[above] {Im};
+
+    % 原点O
+    \coordinate (O) at (0,0) node[below left] {O};
+
+    % 座標軸上の点
+    \coordinate[label=below right:$x$] (X) at ({\r*cos(\ang)}, 0);
+    \coordinate[label=left:$y$] (Y) at (0, {\r*sin(\ang)});
+
+    % 複素数z
+    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+
+    % 三角形の描画
+    \draw[fill=orange, opacity=0.4] (O) -- (X) -- (Z) -- cycle;
+
+    % 三角形の辺のラベルの描画
+    \draw (O) -- (X) node[midway, below] {$r\cos\theta$};
+    \draw (X) -- (Z) node[midway, right] {$r\sin\theta$};
+
+    % ベクトルの描画
+    \draw[vector] (O) -- (Z);
+
+    % 補助線の描画
+    \draw[auxline] (X) -- (Z);
+    \draw[auxline] (Y) -- (Z);
+
+    % 偏角を表す円弧の描画
+    \pic [draw, ->, "$\theta$", angle eccentricity=1.5] {angle = X--O--Z};
+
+    % 半径を表すラベルの描画
+    \draw (O) -- (Z) node[midway, above] {$r$};
+
+    % 複素数を表す数式の描画
+    \node[above right] at (Z) {$z=r\cos\theta + r\sin\theta$};
+  \end{tikzpicture}
+\end{center}
+
+\section{偏角と主値}
+
+$x=r\cos\theta$、$y=r\sin\theta$に、$r=\sqrt{x^2 + y^2}$を代入して整理した関係式から、偏角を改めて定義する。
+
+\begin{definition}{偏角}
+  \newline
+  複素数$z$を極形式で表現すると、\\
+  $\cos\theta=\dfrac{x}{\sqrt{x^2 + y^2}}$、$\sin\theta=\dfrac{y}{\sqrt{x^2 + y^2}}$という関係が成り立つ。\\\\
+  この関係を満たす$\theta$を偏角と呼び、次のように表す。
+  \LARGE
+  \begin{equation}
+    \arg z \coloneqq \theta
+  \end{equation}
+\end{definition}
+
+ここで、$\theta$を整数回$2\pi$シフトさせても（何周回っても）、複素数$z$の値は変わらない。
+
+つまり、1つの複素数に対して偏角の値は複数考えられるので、次のような主値を定義する。
+
+\begin{definition}{偏角の主値}
+  \newline
+  $0\leq \theta \leq 2\pi$、もしくは$-\pi < \theta \leq \pi$の範囲にある偏角を偏角の主値と呼び、次のように表す。
+  \LARGE
+  \begin{equation}
+    \Arg z \coloneqq \theta
+  \end{equation}
+\end{definition}
+
+\section{共役複素数}
+
+\begin{definition}{共役複素数}
+  \newline
+  複素数$z=x+iy$に対して，その共役複素数$\overline{z}$を次のように定義する。
+  \LARGE
+  \begin{equation}
+    \overline{z}\coloneqq x-iy
+  \end{equation}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\ang{35} % 偏角
+    \def\r{3} % 半径
+
+    % x軸の描画
+    \draw [axis] (-1,0) -- (4,0) node[right] {Re};
+    % y軸の描画
+    \draw [axis] (0,-3) -- (0,3) node[above] {Im};
+
+    % 原点O
+    \coordinate (O) at (0,0) node[below left] {O};
+
+    % 座標軸上の点
+    \coordinate[label=below right:$x$] (X) at ({\r*cos(\ang)}, 0);
+    \coordinate[label=left:$y$] (Y) at (0, {\r*sin(\ang)});
+    \coordinate[label=left:$-y$] (-Y) at (0, {-\r*sin(\ang)});
+
+    % 複素数z
+    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+    % 共役複素数z*
+    \coordinate (Z*) at ({\r*cos(\ang)}, {-\r*sin(\ang)});
+
+    % ベクトルの描画
+    \draw[vector] (O) -- (Z);
+    \draw[vector] (O) -- (Z*);
+
+    % 補助線の描画
+    \draw[auxline] (X) -- (Z);
+    \draw[auxline] (X) -- (Z*);
+    \draw[auxline] (Y) -- (Z);
+    \draw[auxline] (-Y) -- (Z*);
+
+    % 偏角を表す円弧の描画
+    \pic [draw, ->, "$\theta$", angle eccentricity=1.5] {angle = X--O--Z};
+    \pic [draw, <-, "$-\theta$", angle eccentricity=1.7] {angle = Z*--O--X};
+
+    % 半径を表すラベルの描画
+    \draw (O) -- (Z) node[midway, above] {$r$};
+    \draw (O) -- (Z*) node[midway, below] {$r$};
+
+    % 点の描画
+    \fill (O) circle (1.2pt);
+    \fill (Z) circle (1.2pt);
+    \fill (Z*) circle (1.2pt);
+
+    % 複素数を表す数式の描画
+    \node[above right] at (Z) {$z=x+iy$};
+    \node[below right] at (Z*) {$\overline{z}=x-iy$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{共役複素数と絶対値}
+  \newline
+  複素数$z$とその共役複素数$\overline{z}$の積は、$z$の絶対値の二乗に等しい。
+  \LARGE
+  \begin{equation}
+    z\overline{z} = |z|^2
+  \end{equation}
+\end{theorem}
+
+\begin{proof}
+  複素数$z=x+iy$とその共役複素数$\overline{z}=x-iy$の積を計算する。
+  \begin{align*}
+    z\overline{z} & = (x+iy)(x-iy)             \\
+                  & = x^2 - ixy + ixy - i^2y^2 \\
+                  & = x^2 + y^2                \\
+                  & = |z|^2
+  \end{align*}
+\end{proof}
+
+\section{オイラーの公式}
+
+\begin{center}
+  \def\xang{-13}
+  \def\zang{45}
+  \begin{tikzpicture}[x=(\xang:0.9), y=(90:0.9), z=(\zang:1.1)]
+    \def\xmax{8.8}         % max x axis
+    \def\ymin{-1.5}        % min y axis
+    \def\ymax{1.6}         % max y axis
+    \def\zmax{1.6}         % max z axis
+    \def\xf{1.17*\xmax}    % x position frequency axis
+    \def\A{(0.70*\ymax)}   % amplitude
+    \def\T{(0.335*\xmax)}  % period
+    \def\w{\zmax/11.2}     % spacing components
+    \def\ang{47}           % angle
+    \def\s{\ang/360*\T}    % time component
+    \def\x{\A*cos(\ang)}   % real component
+    \def\y{\A*sin(\ang)}   % imaginary component
+    \def\N{100}            % number of samples
+    \def\tick#1#2{\draw[thick] (#1) ++ (#2:0.12) --++ (#2-180:0.24)}
+
+    % COMPLEX PLANE
+    \begin{scope}[shift={(-1.6*\zmax,0,0)}]
+      % 複素平面の枠
+      \draw[black,fill=white,opacity=0.3,zy-plane](-1.25*\zmax,-1.25*\ymax) rectangle (1.4*\zmax,1.25*\ymax);
+      % Im axis
+      \draw[axis] (0,\ymin,0) -- (0,\ymax+0.02,0) node[pos=1,left=0,zy-plane] {Im};
+      % Re axis
+      \draw[axis] (0,0,-\zmax) -- (0,0,\zmax+0.02) node[right=1,below=0,zy-plane] {Re} coordinate (X);
+      % 複素平面上の単位円
+      \draw[plotline,zy-plane] (0,0) circle(0.991*\A) coordinate (O);
+      % 単位円上の点P
+      \fill[red,zy-plane] (\ang:{\A}) circle(0.07) coordinate(P);
+      \node[blue,zy-plane,anchor=south west,scale=0.7] at (P) {$z(t)=Ae^{i\omega t}$};
+      % 動径OP
+      \draw[vector,thick,zy-plane] (0,0) -- (\ang:{\A-0.03}) coordinate (R);
+      % 偏角を表す円弧
+      \draw pic[-{>[flex'=1]},draw=blue,angle radius=14,angle eccentricity=1,"$\omega t$"{above=0,right=-0.5,yslant=0.69,scale=0.8},blue,zy-plane] {angle = X--O--R};
+      % Re軸上の目盛り
+      \tick{0,0,{\A}}{90};
+      \tick{0,0,{-\A}}{90};
+      % Im軸上の目盛り
+      \tick{0,{\A},0}{\zang};
+      \tick{0,{-\A},0}{\zang};
+    \end{scope}
+
+    % IMAGINARY
+    \begin{scope}[shift={(0,0,1.9*\zmax)}]
+      % sinを描く平面の枠
+      \draw[black,fill=white,opacity=0.3,xy-plane](-0.5*\ymax,-1.2*\ymax) rectangle (1.10*\xmax,1.25*\ymax);
+      % t axis
+      \draw[axis] (-0.3*\ymax,0,0) -- (\xmax,0,0) node[below right,xy-plane] {$t$ [s]};
+      % Im axis
+      \draw[axis] (0,\ymin,0) -- (0,\ymax,0) node[left,xy-plane] {Im};
+      % sin関数のグラフ
+      \draw[plotline,samples=\N,smooth,variable=\t,domain=-0.05*\T:0.95*\xmax] plot(\t,{\A*sin(360/\T*\t)},0);
+      % sin関数上の点I
+      \fill[red,xy-plane] ({\s},{\y}) circle(0.07) coordinate(I);
+      % 点Iでの波の高さを示すベクトル
+      \draw[vector,thick,xy-plane] ({\s},0) --++ (0,{\y-0.03});
+      \node[xy-plane,below] at ({\s},0) {$\omega t$};
+      % 波の高さを表すIm軸上の目盛り
+      \tick{0,{\A},0}{180};
+      \tick{0,{-\A},0}{180};
+      % 周期を示す目盛り
+      \tick{{\T},0,0}{90} node[right=0,below,xy-plane] {\contour{white}{$T$}};
+      \tick{{2*\T},0,0}{90} node[right=0,below,xy-plane] {\contour{white}{$2T$}};
+      % 関数を表す数式
+      \node[blue,below=0,xy-plane] at (0.4*\xmax,1.15*\ymax,0) {$y(t)=A\sin(\omega t)$};
+    \end{scope}
+
+    % REAL
+    \begin{scope}[shift={(0,-1.8*\zmax,0)}]
+      % cosを描く平面の枠
+      \draw[black,fill=white,opacity=0.3,xz-plane] (-0.5*\ymax,-1.4*\ymax) rectangle (1.10*\xmax,1.25*\ymax);
+      % t axis
+      \draw[axis] (-0.3*\ymax,0,0) -- (\xmax,0,0) node[below right,xz-plane] {$t$ [s]};
+      % Re axis
+      \draw[axis] (0,0,-\zmax) -- (0,0,\zmax) node[left=-1,xz-plane] {Re};
+      % cos関数のグラフ
+      \draw[plotline,samples=\N,smooth,variable=\t,domain=-0.05*\T:0.95*\xmax] plot(\t,0,{\A*cos(360/\T*\t)});
+      % cos関数上の点R
+      \fill[red,xz-plane] ({\s},{\x}) circle(0.07) coordinate(R);
+      % 点Rでの波の高さを示すベクトル
+      \draw[vector,thick,xz-plane] ({\s},0) --++ (0,{\x-0.03});
+      \node[xz-plane,below] at ({\s},0) {$\omega t$};
+      % 波の高さを表すRe軸上の目盛り
+      \tick{0,0,{\A}}{180};
+      \tick{0,0,{-\A}}{180};
+      % 周期を示す目盛り
+      \tick{{\T},0,0}{\zang} node[below,xz-plane] {$T$};
+      \tick{{2*\T},0,0}{\zang} node[below,xz-plane] {$2T$};
+      % 関数を表す数式
+      \node[blue,above=0,xz-plane] at (0.3*\xmax,-\ymax,0) {$x(t)=A\cos(\omega t)$};
+    \end{scope}
+
+    % COMPONENTS
+    % 単位円上の点P、Im軸上の点I、Re軸上の点Rを結ぶ線
+    \draw[red!80!black,dashed] (P) -- ({\s},{\y},{\x}) (I) -- ({\s},{\y},{\x+0.05}) ({\s},{\y-0.06},{\x}) -- (R);
+    % 空間上に写したt軸
+    \draw[axis,black,thick] (-0.1*\ymax,0,0) -- (\xmax,0,0) node[below right] {$t$ [s]};
+    % 空間上に写したIm軸
+    \draw[axis,black,thick] (0,\ymin,0) -- (0,\ymax+0.02,0) node[above] {Im};
+    % 空間上に写したRe軸
+    \draw[axis,black,thick] (0,0,-\zmax) -- (0,0,\zmax+0.02);
+    \node[right=0.5em,below] at (0,0,\zmax+0.02) {$Re$};
+    % 空間上のグラフ
+    \foreach \i [evaluate={\tmin=max(-0.05*\T,(\i-0.05)*\T); \tmax=min(0.95*\xmax,(\i+1)*\T);}] in {0,...,2} {
+        \draw[plotline,samples=0.4*\N,smooth,variable=\t] plot[domain=\tmin:\tmax](\t,{\A*sin(360/\T*\t)},{\A*cos(360/\T*\t)});
+      }
+    % 単位円上の点P、Im軸上の点I、Re軸上の点Rを結ぶ線が交わる点Z
+    \fill[red] ({\s},{\y},{\x}) circle(0.07) coordinate(Z);
+    % 空間上に動径OPを写したベクトル
+    \draw[vector,thick] ({\s},0,0) --++ (0,{\y-0.03},{\x-0.03});
+    % 周期を表すt軸上の目盛り
+    \tick{{\T},0,0}{90};
+    \tick{{2*\T},0,0}{90};
+    % Re軸上の目盛り
+    \tick{0,0,{\A}}{90};
+    \tick{0,0,{-\A}}{90};
+    % Im軸上の目盛り
+    \tick{0,{\A},0}{\zang};
+    \tick{0,{-\A},0}{\zang};
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
