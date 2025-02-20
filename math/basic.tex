@@ -4,6 +4,82 @@
 
 \chapter{基礎数学}
 
+\section{三角関数}
+
+\subsection{円周率}
+
+すべての円は、お互いを拡大もしくは縮小した関係にある。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\d1{2cm}
+    \def\k{2}
+    \def\dst{5}
+
+    % 円周
+    \node      [draw,circle, inner sep=0pt, minimum size=\d1, draw=magenta!80, very thick, below, pattern=crosshatch dots, pattern color=pink] (C1) {};
+    \node also [label={[above, text=magenta!80]:$l_1$}] (C1);
+    % 直径
+    \draw [auxline, cyan, very thick] (C1.west) -- (C1.east) node [midway, above, pos=0.75] {$d_1$};
+    % 中心
+    \fill (C1) circle [radius=0.05] node [below] {$C_1$};
+
+    % 拡大した円
+    \node      [draw,circle, inner sep=0pt, minimum size=\d1*\k, draw=magenta!80, very thick, below, pattern=crosshatch dots, pattern color=pink] (C2) at ($(C1)+(\dst, \d1)$) {};
+    \node also [label={[above, text=magenta!80]:$l_2$}] (C2);
+    % 直径
+    \draw [auxline, cyan, very thick] (C2.west) -- (C2.east) node [midway, above, pos=0.75] {$d_2$};
+    % 中心
+    \fill (C2) circle [radius=0.05] node [below] {$C_2$};
+
+    % k倍を表す矢印
+    \draw [->] ($(C1.east)+(1em, 0)$) -- node [midway, above] {$k$倍} ($(C2.west)-(1em,0)$);
+  \end{tikzpicture}
+\end{center}
+
+円$C_2$が、円$C_1$を$k$倍に拡大したものだとすると、その直径や円周も$C_1$の$k$倍となる。
+
+\begin{align}
+  d_{2} & = k\cdot d_{1} \\
+  l_{2} & = k\cdot l_{1}
+\end{align}
+
+この2つの式を各辺どうし割ることで、$k$が約分されて消え、直径と円周の比が等しくなることがわかる。
+
+\begin{equation}
+  \dfrac{d_{2}}{l_{2}} = \dfrac{d_{1}}{l_{1}}
+\end{equation}
+
+\begin{theorem}{円の直径と円周の比}
+  すべての円において、直径と円周の長さの比は一定である。
+\end{theorem}
+
+そして、この一定の比率は、円周率$\pi$として知られている。
+
+\begin{definition}{円周率}
+  円の円周の長さ$l$と直径の長さ$d$の比を、円周率といい、$\pi$で表す。
+  \LARGE
+  \begin{equation}
+    \pi = \dfrac{l}{d} = 3.14\ldots
+  \end{equation}
+\end{definition}
+
+$\pi$の定義式を変形すると、円周の長さを求める式が得られる。
+
+半径を$r$とすると、直径$d = 2r$であるから、
+
+\begin{equation}
+  l = \pi \cdot d = 2\pi r
+\end{equation}
+
+\begin{theorem}{円周の長さ}
+  円の円周の長さ$l$は、半径$r$を使って次のように表される。
+  \LARGE
+  \begin{equation}
+    l = 2\pi r
+  \end{equation}
+\end{theorem}
+
 \section{指数関数}
 
 \subsection{同じ数のかけ算の指数による表記}
