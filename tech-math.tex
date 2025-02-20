@@ -1,4 +1,4 @@
-\documentclass[16pt,b5paper]{book}
+\documentclass[b5paper]{book}
 
 \title{画像処理・AIのための数学ノート}
 \author{tomixy}
@@ -46,7 +46,11 @@
 % === tikz ===
 
 \usepackage[dvipdfmx]{graphicx}
+
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.10}
+\usepgfplotslibrary{fillbetween}
+
 \usepackage{tikz} %図を描く
 \usetikzlibrary{
   positioning,
@@ -60,6 +64,7 @@
   3d,
   decorations.pathmorphing,
   decorations.pathreplacing,
+  patterns,
   shadows,
   shapes.geometric,
   spy
@@ -2096,7 +2101,7 @@ $m$と$n$はどちらも自然数として、$y=x^{\frac{m}{n}}$の微分を考�
     \node [below left] at (0,0) {$O$};
 
     % 関数のグラフ
-    \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
   \end{tikzpicture}
 \end{center}
 
@@ -2166,7 +2171,7 @@ $m$と$n$はどちらも自然数として、$y=x^{\frac{m}{n}}$の微分を考�
       \node [below left] at (0,0) {$O$};
 
       % 関数のグラフ
-      \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)});
+      \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)});
     \end{scope}
 
     \begin{scope}[scale=0.9, xshift=0.6\textwidth, local bounding box=right]
@@ -2228,7 +2233,7 @@ $m$と$n$はどちらも自然数として、$y=x^{\frac{m}{n}}$の微分を考�
       \node [below left] at (0,0) {$O$};
 
       % 関数のグラフ
-      \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)});
+      \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)});
     \end{scope}
 
     \draw[->, thick] ($(left.east)+(1em, 0)$) -- ($(left-|right.west)-(1em,0)$) node[pos=.5, above] {$\Delta x$小};
@@ -2298,7 +2303,7 @@ $a \leq x \leq b$の区間を$n$等分して、$x_1, x_2, \ldots, x_n$とする�
     \node [below left] at (0,0) {$O$};
 
     % 関数のグラフ
-    \draw[domain=.5:5.3,samples=200,variable=\x,violet!50,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
   \end{tikzpicture}
 \end{center}
 
@@ -2346,6 +2351,68 @@ $\sum$は間隔を取って足し合わせるのに対し、$\int$は間隔を�
   \normalsize
   このとき、$f(x)$を被積分関数と呼ぶ。
 \end{definition}
+
+$f(x)$の値が負になる区間では、定積分の値も負になるため、定積分は符号付き面積を表す。
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        name=myaxis,
+        axis y line = none,
+        axis x line = none,
+        xmin=-3, xmax=3,
+        ymin=-10, ymax=10,
+        declare function={
+            fn(\x) = 3*\x^3 - \x^2 - 10*\x;
+          }
+      ]
+      % 関数f(x)のプロット
+      \addplot [domain=-2:2.25, samples=100, name path=f, very thick, color=BurntOrange]
+      {fn{\x}};
+
+      % x軸
+      \addplot [name path=xaxis] {0};
+
+      % xaxisとfの交点
+      \path [name intersections={of=f and xaxis, by={I1,I2,I3}}];
+
+      % x軸上のラベル
+      \node [below, name=a, magenta, text height=0.75em] at ($(I1) + 1/3*(1cm,0)$) {$a_1$};
+      \node [below, name=b, magenta, text height=0.75em] at ($(I2) - 1/3*(1cm,0)$) {$b_1$};
+      \node [above, name=c, cyan, text height=0.75em] at ($(I2) + 2/5*(1cm,0)$) {$a_2$};
+      \node [above, name=d, cyan, text height=0.75em] at ($(I3) - 2/5*(1cm,0)$) {$b_2$};
+
+      % 各点のx座標を取り出してレジスタに保存
+      \pgfplotsextra{
+        \pgfplotspointgetcoordinates{(a)}
+        \pgfkeysgetvalue{/data point/x}{\ax}
+
+        \pgfplotspointgetcoordinates{(b)}
+        \pgfkeysgetvalue{/data point/x}{\bx}
+
+        \pgfplotspointgetcoordinates{(c)}
+        \pgfkeysgetvalue{/data point/x}{\cx}
+
+        \pgfplotspointgetcoordinates{(d)}
+        \pgfkeysgetvalue{/data point/x}{\dx}
+      }
+
+      % [a, b]区間の定積分
+      \addplot [
+        opacity=0.8, postaction={pattern=north east lines}, magenta!30, pattern color=magenta!80!gray] fill between [
+          of=f and xaxis, soft clip={domain=\ax:\bx},
+        ];
+      % [c, d]区間の定積分
+      \addplot [
+        opacity=0.8, postaction={pattern=north east lines}, cyan!30, pattern color=cyan!80!gray] fill between [
+          of=f and xaxis, soft clip={domain=\cx:\dx},
+        ];
+    \end{axis}
+
+    % x軸
+    \draw [axis] (myaxis.west) -- (myaxis.east) node [right] {$x$};
+  \end{tikzpicture}
+\end{center}
 
 \chapter{複素数と複素関数}
 
