@@ -1769,5 +1769,131 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
   \end{tikzpicture}
 \end{center}
 
+\subsection{微分の逆演算としての積分}
+
+定積分$\displaystyle\int_{a}^{b}f(x)dx$は、積分区間の取り方（$a$や$b$の値）を変えると、当然異なる計算結果になる。
+
+\vskip\baselineskip
+
+ここで、下限$a$は固定し、上限$b$を変化させて積分区間を広げていくことを考えよう。
+
+このとき、定積分$\displaystyle\int_{a}^{b}f(x)dx$は、$b$の関数として捉えられる。
+
+\begin{equation}
+  F(b) = \int_{a}^{b} f(x) dx
+\end{equation}
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \def\a{1}
+    \def\b{4.5}
+    \def\db{0.5}
+
+    % 積分区間[a,b]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\b,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b,0) -| cycle;
+    % ↑の領域の中央に、定積分の式のラベルを配置
+    \node[gray] at ({(\a+\b)/2},{f((\a+\b)/2)/2}) {$\displaystyle\int_{a}^{b}f(x)dx$};
+
+    % [b, b+db]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\b:\b+\db,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b+\db,0) -| cycle;
+
+    % 積分区間の下端のラベル
+    \node [anchor=north,lnode] at (\a,0) {$a$};
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode] at (\b,0) {$b$};
+    % b+dbのラベル
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\b+\db,0) {$b+\Delta b$};
+
+    % (b, f(b))の点
+    \fill[magenta] (\b,{f(\b)}) circle (2pt) node [above left] {$f(b)$};
+    % (b+db, f(b+db))の点
+    \fill[magenta] (\b+\db,{f(\b+\db)}) circle (2pt) node [right] {$f(b+\Delta b)$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (\b+\db+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % dbの幅を表す矢印
+    \draw [<->, magenta] ($(\b,-1.25em)+(0.2em,-1.25em)$) -- ($(\b+\db,-1.25em)+(-0.2em,-1.25em)$) node [below, midway, magenta] {$\Delta b$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+$b$を$\Delta b$だけ増加させたときに増える面積は、
+
+\begin{equation}
+  F(b+\Delta b) - F(b) = \int_{b}^{b+\Delta b} f(x) dx
+\end{equation}
+
+となるが、ここでさらに$\Delta b$を小さくしていくと…
+
+増えた領域は、幅$db$、高さ$f(b)$の長方形とみなせるので、その面積は$f(b)db$となる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \def\a{1}
+    \def\b{4.5}
+    \def\db{0.05}
+
+    % 積分区間[a,b]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\b,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b,0) -| cycle;
+    % ↑の領域の中央に、定積分の式のラベルを配置
+    \node[gray] at ({(\a+\b)/2},{f((\a+\b)/2)/2}) {$\displaystyle\int_{a}^{b}f(x)dx$};
+
+    % [b, b+db]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\b:\b+\db,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b+\db,0) -| cycle;
+
+    % 積分区間の下端のラベル
+    \node [anchor=north,lnode] at (\a,0) {$a$};
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\b,0) {$b \approx b+db$};
+
+    % (b, f(b))の点
+    \fill[magenta] (\b,{f(\b)}) circle (2pt) node [right] {$f(b) \approx f(b+db)$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (\b+\db+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+よって、$\Delta b \to 0$としたときには、
+
+\begin{equation}
+  F(b+db) - F(b) = f(b)db
+\end{equation}
+
+という式が成り立ち、これは実は見慣れた微分の関係式と同じ形をしている。
+
+\begin{equation}
+  F(b+db) = \origFn{F(b)} + \derivFn{f(b)}db
+\end{equation}
+
+この式は、定積分$F(b)$を$b$で微分すると、積分前の関数$f(x)$に戻るということを示している。
+
+このような「積分したものを微分すると、元の関数に戻る」という事実は、微積分学の基本定理として知られている。
+
+\begin{theorem}{微積分学の基本定理}
+  積分の逆の演算は微分である。
+\end{theorem}
 
 \end{document}
