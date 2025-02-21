@@ -1777,13 +1777,18 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
 
 ここで、下端$a$は固定し、上端$b$を変化させて積分区間を広げていくことを考えよう。
 
-変化する上端を表す変数として、$u$を導入する。
+上端が変化することを強調するため、上端は$x$と表記することにする。
 
-このとき、定積分$\displaystyle\int_{a}^{u}f(x)dx$は、上端$u$の関数として捉えられる。
+このとき、定積分$\displaystyle\int_{a}^{x}f(t)dt$は、上端$x$の関数として捉えられる。
 
 \begin{equation}
-  S(u) = \int_{a}^{u} f(x) dx
+  S(x) = \int_{a}^{x} f(t) dt
 \end{equation}
+
+\begin{supplnote}
+  $\int$の中で使っている変数$t$は、積分区間の下端から上端まで動く変数であり、どんな文字を使ってもよい。
+  「$t$が下端$a$から上端$x$まで動く」という表現はわかりやすいが、「$x$が下端$a$から上端$x$まで動く」というのはややこしいので、上端$x$と区別するために$t$を使うことにした。
+\end{supplnote}
 
 \begin{center}
   \begin{tikzpicture}[
@@ -1792,35 +1797,35 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
       lnode/.style={text height=1em}
     ]
     \def\a{1}
-    \def\u{4.5}
-    \def\du{0.5}
+    \def\x{4.5}
+    \def\dx{0.5}
 
-    % 積分区間[a,u]
-    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\u,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u,0) -| cycle;
+    % 積分区間[a,x]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\x,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x,0) -| cycle;
     % ↑の領域の中央に、定積分の式のラベルを配置
-    \node[gray] at ({(\a+\u)/2},{f((\a+\u)/2)/2}) {$\displaystyle\int_{a}^{u}f(x)dx$};
+    \node[gray] at ({(\a+\x)/2},{f((\a+\x)/2)/2}) {$\displaystyle\int_{a}^{u}f(t)dt$};
 
-    % [u, u+du]
-    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\u:\u+\du,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u+\du,0) -| cycle;
+    % [x, x+dx]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\x:\x+\dx,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x+\dx,0) -| cycle;
 
     % 積分区間の下端のラベル
     \node [anchor=north,lnode] at (\a,0) {$a$};
     % 積分区間の上端のラベル
-    \node[anchor=north,lnode] at (\u,0) {$u$};
+    \node[anchor=north,lnode] at (\x,0) {$x$};
     % u+duのラベル
-    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\u+\du,0) {$u+\Delta u$};
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\x+\dx,0) {$x+\Delta x$};
 
-    % (u, f(u))の点
-    \fill[magenta] (\u,{f(\u)}) circle (2pt) node [above left] {$f(u)$};
-    % (u+du, f(u+du))の点
-    \fill[magenta] (\u+\du,{f(\u+\du)}) circle (2pt) node [right] {$f(u+\Delta u)$};
+    % (x, f(x))の点
+    \fill[magenta] (\x,{f(\x)}) circle (2pt) node [above left] {$f(x)$};
+    % (x+dx, f(x+dx))の点
+    \fill[magenta] (\x+\dx,{f(\x+\dx)}) circle (2pt) node [right] {$f(x+\Delta x)$};
 
     % x軸とy軸
-    \draw [axis] (-0.5,0) -- (\u+\du+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (-0.5,0) -- (\x+\dx+2,0) node (xaxis) [below] {$x$};
     \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
 
-    % duの幅を表す矢印
-    \draw [<->, magenta] ($(\u,-1.25em)+(0.2em,-1.25em)$) -- ($(\u+\du,-1.25em)+(-0.2em,-1.25em)$) node [below, midway, magenta] {$\Delta u$};
+    % dxの幅を表す矢印
+    \draw [<->, magenta] ($(\x,-1.25em)+(0.2em,-1.25em)$) -- ($(\x+\dx,-1.25em)+(-0.2em,-1.25em)$) node [below, midway, magenta] {$\Delta x$};
 
     % 原点
     \node [below left] at (0,0) {$O$};
@@ -1830,15 +1835,15 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
   \end{tikzpicture}
 \end{center}
 
-$u$を$\Delta u$だけ増加させたときに増える面積は、
+$x$を$\Delta x$だけ増加させたときに増える面積は、
 
 \begin{equation}
-  S(u+\Delta u) - S(u) = \int_{u}^{u+\Delta u} f(x) dx
+  S(x+\Delta x) - S(x) = \int_{x}^{x+\Delta x} f(t) dt
 \end{equation}
 
-となるが、ここでさらに$\Delta u$を小さくしていくと…
+となるが、ここでさらに$\Delta x$を小さくしていくと…
 
-増えた領域は、幅$du$、高さ$f(u)$の長方形とみなせるので、その面積は$f(u)du$となる。
+増えた領域は、幅$dx$、高さ$f(x)$の長方形とみなせるので、その面積は$f(x)dx$となる。
 
 \begin{center}
   \begin{tikzpicture}[
@@ -1847,27 +1852,27 @@ $u$を$\Delta u$だけ増加させたときに増える面積は、
       lnode/.style={text height=1em}
     ]
     \def\a{1}
-    \def\u{4.5}
-    \def\du{0.05}
+    \def\x{4.5}
+    \def\dx{0.05}
 
-    % 積分区間[a,u]
-    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\u,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u,0) -| cycle;
+    % 積分区間[a,x]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\x,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x,0) -| cycle;
     % ↑の領域の中央に、定積分の式のラベルを配置
-    \node[gray] at ({(\a+\u)/2},{f((\a+\u)/2)/2}) {$\displaystyle\int_{a}^{u}f(x)dx$};
+    \node[gray] at ({(\a+\x)/2},{f((\a+\x)/2)/2}) {$\displaystyle\int_{a}^{x}f(t)dt$};
 
-    % [u, u+du]
-    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\u:\u+\du,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u+\du,0) -| cycle;
+    % [x, x+dx]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\x:\x+\dx,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x+\dx,0) -| cycle;
 
     % 積分区間の下端のラベル
     \node [anchor=north,lnode] at (\a,0) {$a$};
     % 積分区間の上端のラベル
-    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\u,0) {$u \approx u+du$};
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\x,0) {$x \approx x+dx$};
 
-    % (u, f(u))の点
-    \fill[magenta] (\u,{f(\u)}) circle (2pt) node [right] {$f(u) \approx f(u+du)$};
+    % (x, f(x))の点
+    \fill[magenta] (\x,{f(\x)}) circle (2pt) node [right] {$f(x) \approx f(x+dx)$};
 
     % x軸とy軸
-    \draw [axis] (-0.5,0) -- (\u+\du+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (-0.5,0) -- (\x+\dx+2,0) node (xaxis) [below] {$x$};
     \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
 
     % 原点
@@ -1878,19 +1883,19 @@ $u$を$\Delta u$だけ増加させたときに増える面積は、
   \end{tikzpicture}
 \end{center}
 
-よって、$\Delta u\to 0$としたときには、
+よって、$\Delta x\to 0$としたときには、
 
 \begin{equation}
-  S(u+du) - S(u) = f(u)du
+  S(x+dx) - S(x) = f(x)du
 \end{equation}
 
 という式が成り立ち、これは実は見慣れた微分の関係式と同じ形をしている。
 
 \begin{equation}
-  S(u+du) = \origFn{S(u)} + \derivFn{f(u)}du
+  S(x+dx) = \origFn{S(x)} + \derivFn{f(x)}du
 \end{equation}
 
-この式は、定積分したもの$F(u)$を$u$で微分すると、積分前の関数$f(u)$に戻るということを示している。
+この式は、定積分したもの$F(x)$を$x$で微分すると、積分前の関数$f(x)$に戻るということを示している。
 
 このような「積分したものを微分すると、元の関数に戻る」という事実は、微積分学の基本定理として知られている。
 
@@ -1913,9 +1918,9 @@ $u$を$\Delta u$だけ増加させたときに増える面積は、
   \end{equation}
 \end{definition}
 
-「微分したら元の関数に戻る」関数の1つが、前節で調べた$S(u) = \displaystyle\int_{a}^{u} f(x) dx$であったが、実はこのような関数は他にも存在する。
+「微分したら元の関数に戻る」関数の1つが、前節で調べた$S(x) = \displaystyle\int_{a}^{x} f(t) dt$であったが、実はこのような関数は他にも存在する。
 
-例えば、定数を微分すると$0$になるため、$S(u)$に任意の定数$C$を加えた関数$S(u) + C$を作っても、その微分結果は変わらず元の関数になる。
+例えば、定数を微分すると$0$になるため、$S(x)$に任意の定数$C$を加えた関数$S(x) + C$を作っても、その微分結果は変わらず元の関数になる。
 
 このことは、「原始関数には定数$C$分の不定性がある」などと表現されることがある。
 
