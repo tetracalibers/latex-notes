@@ -1346,11 +1346,102 @@ $m$と$n$はどちらも自然数として、$y=x^{\frac{m}{n}}$の微分を考�
 
 \subsection{合成関数の微分}
 
-\begin{theorem}{合成関数の微分}
+合成関数の微分の一般的な式は、いろいろな関数の微分を考える上で重要な公式である。
+
+\subsubsection{関数の微小変化量}
+
+関数$f(x)$において、変数$x$を$dx$だけ微小変化させた式は、これまで何度も登場した。
+
+\begin{equation}
+  f(x + dx) = f(x) + \fitLabelMath{f'(x)dx}{増えた分}
+\end{equation}
+
+この式は、「$x$を$dx$だけ微小変化させることで、関数$f$の値は$f'(x)dx$だけ増加した」と捉えることもできる。
+
+言い換えれば、関数$f$の微小変化量は$f'(x)dx$だということだ。
+
+変化量という観点で眺めるには、次のように移項した式がわかりやすいかもしれない。
+
+\begin{equation}
+  \fitLabelMath{f(x + dx) - f(x)}{区間$dx$での変化} = \fitLabelMath{f'(x)dx}{変化量}
+\end{equation}
+
+関数$f$の微小変化量$f'(x)dx$を、$df$と表すことにしよう。
+
+\subsubsection{合成関数の微分の関係式}
+
+今回はさらに、$t= f(x)$を関数$g(t)$に放り込むことを考える。
+
+$g(t)$についても、次のような微分の関係式が成り立つはずだ。
+
+\begin{equation}
+  g(t + dt) = g(t) + g'(t)dt
+\end{equation}
+
+合成関数$g(f(x))$を作るため、$t=f$（引数$(x)$を省略して書いた関数$f(x)$）を代入する。
+
+\begin{equation}
+  g(f + df) = g(f) + g'(f)df
+\end{equation}
+
+$f$を$f(x)$に、$df$を$f'(x)dx$に書き戻すと、
+
+\begin{equation}
+  g(f(x) + f'(x)dx) = g(f(x)) + g'(f(x))f'(x)dx
+\end{equation}
+
+となり、左辺の$g()$の中身$f(x) + f'(x)dx$は$f(x + dx)$と書き換えられるので、次の式を得る。
+
+\begin{equation}
+  g(f(x + dx)) = \origFn{g(f(x))} + \derivFn{g'(f(x))f'(x)}dx
+\end{equation}
+
+\begin{theorem}{合成関数の微分（ニュートン記法による表現）}
+  \newline
+  合成関数$g(f(x))$の微分は、次の式で表される。
   \Large
   \begin{equation}
     \left( g(f(x)) \right)' = f'(x)g'(f(x))
   \end{equation}
+\end{theorem}
+
+\subsubsection{連鎖律としての表現}
+
+ニュートン記法による表現はなかなかに覚えづらい式に見えるが、ライプニッツ記法を使って書き直すと、実は単純な関係式になっている。
+
+\begin{itemize}
+  \item $\left( g(f(x)) \right)'$は、$g(f(x))$を$x$で微分したもの：$\dfrac{d}{dx} g(f(x))$
+  \item $f'(x)$は、$f(x)$を$x$で微分したもの：$\dfrac{d}{dx} f(x)$
+  \item $g'(f(x))$は、$g(t)$を$t$で微分したもの$\dfrac{d}{dt} g(t)$に、$t=f(x)$に代入したもの：$\dfrac{d}{df}g(f(x))$
+\end{itemize}
+
+として書き直すと、
+
+\begin{equation}
+  \dfrac{d}{dx} g(f(x)) = \dfrac{d}{dx}f(x) \cdot \dfrac{d}{df}g(f(x))
+\end{equation}
+
+さらに、引数を省略して書くと、
+
+\begin{equation}
+  \frac{dg}{dx} = \frac{df}{dx} \cdot \frac{dg}{df}
+\end{equation}
+
+これは、$df$を約分できると考えたら、当たり前の式になっている。
+
+\begin{equation}
+  \frac{dg}{dx} = \frac{\cancel{df}}{dx} \cdot \frac{dg}{\cancel{df}}
+\end{equation}
+
+\begin{theorem}{合成関数の微分（連鎖律：ライプニッツ記法による表現）}
+  \newline
+  $y=f(x)$、$z=g(y)$という関係があるとき、次の式が成り立つ。
+  \LARGE
+  \begin{equation}
+    \frac{dz}{dx} = \frac{dz}{dy} \cdot \frac{dy}{dx}
+  \end{equation}
+  \normalsize
+  これは、$x$が微小変化すると$y$も微小変化し、さらに連鎖して$z$も微小変化するという関係から、\hl{連鎖律}と呼ばれる。
 \end{theorem}
 
 \subsection{三角関数の微分}
