@@ -1782,7 +1782,7 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
 このとき、定積分$\displaystyle\int_{a}^{u}f(x)dx$は、上端$u$の関数として捉えられる。
 
 \begin{equation}
-  F(u) = \int_{a}^{u} f(x) dx
+  S(u) = \int_{a}^{u} f(x) dx
 \end{equation}
 
 \begin{center}
@@ -1833,7 +1833,7 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
 $u$を$\Delta u$だけ増加させたときに増える面積は、
 
 \begin{equation}
-  F(u+\Delta u) - F(u) = \int_{u}^{u+\Delta u} f(x) dx
+  S(u+\Delta u) - S(u) = \int_{u}^{u+\Delta u} f(x) dx
 \end{equation}
 
 となるが、ここでさらに$\Delta u$を小さくしていくと…
@@ -1881,13 +1881,13 @@ $u$を$\Delta u$だけ増加させたときに増える面積は、
 よって、$\Delta u\to 0$としたときには、
 
 \begin{equation}
-  F(u+du) - F(u) = f(u)du
+  S(u+du) - S(u) = f(u)du
 \end{equation}
 
 という式が成り立ち、これは実は見慣れた微分の関係式と同じ形をしている。
 
 \begin{equation}
-  F(u+du) = \origFn{F(u)} + \derivFn{f(u)}du
+  S(u+du) = \origFn{S(u)} + \derivFn{f(u)}du
 \end{equation}
 
 この式は、定積分したもの$F(u)$を$u$で微分すると、積分前の関数$f(u)$に戻るということを示している。
@@ -1913,9 +1913,9 @@ $u$を$\Delta u$だけ増加させたときに増える面積は、
   \end{equation}
 \end{definition}
 
-「微分したら元の関数に戻る」関数の1つが、前節で調べた$F(u) = \displaystyle\int_{a}^{u} f(x) dx$であったが、実はこのような関数は他にも存在する。
+「微分したら元の関数に戻る」関数の1つが、前節で調べた$S(u) = \displaystyle\int_{a}^{u} f(x) dx$であったが、実はこのような関数は他にも存在する。
 
-例えば、定数を微分すると$0$になるため、$F(u)$に任意の定数$C$を加えた関数$F(u) + C$を作っても、その微分結果は変わらず元の関数になる。
+例えば、定数を微分すると$0$になるため、$S(u)$に任意の定数$C$を加えた関数$S(u) + C$を作っても、その微分結果は変わらず元の関数になる。
 
 このことは、「原始関数には定数$C$分の不定性がある」などと表現されることがある。
 
