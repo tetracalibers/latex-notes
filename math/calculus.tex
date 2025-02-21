@@ -1849,7 +1849,7 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
 
 \begin{supplnote}
   $\int$の中で使っている変数$t$は、積分区間の下端から上端まで動く変数であり、どんな文字を使ってもよい。
-  「$t$が下端$a$から上端$x$まで動く」という表現はわかりやすいが、「$x$が下端$a$から上端$x$まで動く」というのはややこしいので、上端$x$と区別するために$t$を使うことにした。
+  「$t$が下端$a$から上端$x$まで動く」なら違和感なく聞こえるが、「$x$が下端$a$から上端$x$まで動く」というのはややこしいので、上端$x$と区別するために$t$を使うことにした。
 \end{supplnote}
 
 \begin{center}
@@ -2085,5 +2085,118 @@ $x=b$を代入することで、積分区間の上端を$b$に戻した定積分
     \Bigl[ F(x) \Bigr]_{a}^{b} = F(b) - F(a)
   \end{equation}
 \end{theorem}
+
+\subsection{定積分の性質}
+
+面積としての理解だけではうまく想像できない性質も、原始関数との関係を使うことで数式で確かめられるようになる。
+
+\subsubsection{積分区間の結合}
+
+2つの定積分があり、それらの積分区間が連続していれば、1つの定積分としてまとめて計算できる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em},
+      mesh/.style={postaction={pattern=north east lines}}
+    ]
+    \def\a{1.5}
+    \def\b{\a+1.75}
+    \def\c{\b+1.25}
+
+    % 積分区間[a,b]
+    \draw[mesh, fill=SpringGreen!20, draw=SpringGreen!80!gray, pattern color=SpringGreen!80!gray] plot[domain=\a:\b,samples=167] ({\x},{f(\x)}) -- ({\b},0) -| cycle;
+    % 積分区間[b,c]
+    \draw[mesh, fill=BlueGreen!20, draw=BlueGreen!80!gray, pattern color=BlueGreen!80!gray] plot[domain=\b:\c,samples=167] (\x,{f(\x)}) -- (\c,0) -| cycle;
+
+    % aのラベル
+    \node [anchor=north,lnode] at (\a,0) {$a$};
+    % bのラベル
+    \node[anchor=north,lnode] at (\b,0) {$b$};
+    % cのラベル
+    \node[anchor=north,lnode] at (\c,0) {$c$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (\c+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{積分区間が連続する定積分の和}
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x) dx + \int_{b}^{c} f(x) dx = \int_{a}^{c} f(x) dx
+  \end{equation}
+\end{theorem}
+
+面積として考えれば明らかな性質だが、原始関数を使って証明することもできる。
+
+$f(x)$の原始関数を$F(x)$とすると、
+
+\begin{align}
+  \int_{a}^{b} f(x) dx + \int_{b}^{c} f(x) dx & = F(b) - F(a) + F(c) - F(b) \\
+                                              & = F(c) - F(a)               \\
+                                              & = \int_{a}^{c} f(x) dx
+\end{align}
+
+として、式が成立することがわかる。
+
+\subsubsection{積分区間の反転}
+
+積分区間の上限と下限を入れ替わると、符号が変わる。
+
+\begin{theorem}{定積分の積分区間の反転}
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x) dx = -\int_{b}^{a} f(x) dx
+  \end{equation}
+\end{theorem}
+
+これは、積分区間が連続する定積分の和の性質における、$c=a$の場合の式である。
+
+\begin{align}
+  \int_{a}^{b} f(x) dx + \int_{b}^{a} f(x) dx & = \int_{a}^{b} f(x) dx - \int_{a}^{b} f(x) dx \\
+                                              & = 0                                           \\
+  \int_{a}^{b} f(x) dx                        & = -\int_{b}^{a} f(x) dx
+\end{align}
+
+\subsubsection{定積分の線形性}
+
+微分や$\sum$記号などと同様に、定積分も線形性を持つ。
+
+\begin{theorem}{定積分の線形性}
+  \Large
+  \begin{equation}
+    \int_{a}^{b} \left\{ \alpha f(x) + \beta g(x) \right\} dx = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx
+  \end{equation}
+\end{theorem}
+
+この性質は、微分の線形性から導かれる。
+
+$f(x)$の原始関数を$F(x)$、$g(x)$の原始関数を$G(x)$とすると、微分の線形性より、
+
+\begin{align}
+  \dfrac{d}{dx} \left\{ \alpha F(x) + \beta G(x) \right\} & = \alpha \dfrac{d}{dx} F(x) + \beta \dfrac{d}{dx} G(x) \\
+                                                          & = \alpha f(x) + \beta g(x)
+\end{align}
+
+となるから、$\alpha f(x) + \beta g(x)$の原始関数は$\alpha F(x) + \beta G(x)$である。
+
+よって、定積分を原始関数を使って書き表すと、
+
+\begin{align}
+  \int_{a}^{b} \left\{ \alpha f(x) + \beta g(x) \right\} dx & = \alpha F(b) - \alpha F(a) + \beta G(b) - \beta G(a)                      \\
+                                                            & = \alpha \left\{ F(b) - F(a) \right\} + \beta \left\{ G(b) - G(a) \right\} \\
+                                                            & = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx
+\end{align}
+
+となり、原始関数を使うことで、微分の線形性から定積分の線形性につながることがわかる。
 
 \end{document}
