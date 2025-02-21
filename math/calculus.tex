@@ -1939,4 +1939,89 @@ $x$を$\Delta x$だけ増加させたときに増える面積は、
   ここで、$C$は\hl{積分定数}と呼ばれる任意の定数である。
 \end{definition}
 
+\subsection{原始関数による定積分の表現}
+
+少し前に、定積分$\displaystyle\int_{a}^{x}f(t)dt$を上端$x$の関数$S(x)$とみて、$x$を微小変化させることで、$S(u)$が$f(u)$の原始関数である（$S(u)$を$u$で微分したら$f(u)$になる）ことを確かめた。
+
+\begin{review}
+  区間$\Delta x$での面積の増分を考え、
+
+  \begin{equation}
+    S(x+\Delta x) - S(x) = \int_{x}^{x+\Delta x} f(t) dt
+  \end{equation}
+
+  $\Delta x \to 0$とすれば、次のような微分の関係式が得られる。
+
+  \begin{equation}
+    S(x+dx) = \origFn{S(x)} + \derivFn{f(x)}dx
+  \end{equation}
+\end{review}
+
+さらに前節では、「微分したら元に戻る」原始関数は1つだけではなく、任意の定数$C$を用いた$F(x) + C$も、$f(x)$の原始関数であることを述べた。
+
+\vskip\baselineskip
+
+そこで、$f(x)$の任意の原始関数を$F(x)$とおくことにする。
+
+原始関数は任意の定数$C$分だけ異なるので、$f(x)$の原始関数の1つである$S(x)$は、$f(x)$の他の原始関数$F(x)$を$C$分ずらしたものになるはずである。
+
+\begin{equation}
+  S(x) = F(x) + C
+\end{equation}
+
+ここで、$S(x) = \displaystyle\int_{a}^{x}f(t)dt$に、$x=a$を代入すると、下端と上端が一致する領域の面積（定積分）は明らかに$0$なので、
+
+\begin{equation}
+  S(a) = \int_{a}^{a}f(t)dt = 0
+\end{equation}
+
+なんとここから、$C$を求めることができる。
+
+$S(a) = F(a) + C = 0$より、
+
+\begin{equation}
+  C = -F(a)
+\end{equation}
+
+この$C$を用いて、$S(x)$を次のように表現できる。
+
+\begin{equation}
+  S(x) = F(x) - F(a)
+\end{equation}
+
+$x=b$を代入することで、積分区間の上端を$b$に戻した定積分を考えると、
+
+\begin{align}
+  S(b) & = F(b) - F(a)        \\
+  S(b) & = \int_{a}^{b}f(x)dx
+\end{align}
+
+という、$S(b)$について2通りの表現が得られる。
+
+\begin{supplnote}
+  上端を表す$x$という変数が現れなくなったので、$\int$の中で使っていた変数$t$はしれっと$x$に戻している。
+  $\int$の中の$x$は「下端$a$から上端$b$まで動く」という意味しか持っていないので、何の文字を使っても意味は変わらない。
+\end{supplnote}
+
+得られた2通りの表現式を組み合わせることで、次のような関係が成り立つ。
+
+\begin{equation}
+  \int_{a}^{b}f(x)dx = F(b) - F(a)
+\end{equation}
+
+\begin{theorem}{原始関数による定積分の表現}
+  \newline
+  関数$f(x)$の原始関数が$F(x)$であれば、定積分は次のように計算できる。
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b}f(x)dx = F(b) - F(a)
+  \end{equation}
+  \normalsize
+  ここで現れる$F(b) - F(a)$という量は、次の記号で表される。
+  \LARGE
+  \begin{equation}
+    \Bigl[ F(x) \Bigr]_{a}^{b} = F(b) - F(a)
+  \end{equation}
+\end{theorem}
+
 \end{document}
