@@ -1775,12 +1775,14 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
 
 \vskip\baselineskip
 
-ここで、下限$a$は固定し、上限$b$を変化させて積分区間を広げていくことを考えよう。
+ここで、下端$a$は固定し、上端$b$を変化させて積分区間を広げていくことを考えよう。
 
-このとき、定積分$\displaystyle\int_{a}^{b}f(x)dx$は、$b$の関数として捉えられる。
+変化する上端を表す変数として、$u$を導入する。
+
+このとき、定積分$\displaystyle\int_{a}^{u}f(x)dx$は、上端$u$の関数として捉えられる。
 
 \begin{equation}
-  F(b) = \int_{a}^{b} f(x) dx
+  F(u) = \int_{a}^{u} f(x) dx
 \end{equation}
 
 \begin{center}
@@ -1790,35 +1792,35 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
       lnode/.style={text height=1em}
     ]
     \def\a{1}
-    \def\b{4.5}
-    \def\db{0.5}
+    \def\u{4.5}
+    \def\du{0.5}
 
-    % 積分区間[a,b]
-    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\b,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b,0) -| cycle;
+    % 積分区間[a,u]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\u,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u,0) -| cycle;
     % ↑の領域の中央に、定積分の式のラベルを配置
-    \node[gray] at ({(\a+\b)/2},{f((\a+\b)/2)/2}) {$\displaystyle\int_{a}^{b}f(x)dx$};
+    \node[gray] at ({(\a+\u)/2},{f((\a+\u)/2)/2}) {$\displaystyle\int_{a}^{u}f(x)dx$};
 
-    % [b, b+db]
-    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\b:\b+\db,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b+\db,0) -| cycle;
+    % [u, u+du]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\u:\u+\du,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u+\du,0) -| cycle;
 
     % 積分区間の下端のラベル
     \node [anchor=north,lnode] at (\a,0) {$a$};
     % 積分区間の上端のラベル
-    \node[anchor=north,lnode] at (\b,0) {$b$};
-    % b+dbのラベル
-    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\b+\db,0) {$b+\Delta b$};
+    \node[anchor=north,lnode] at (\u,0) {$u$};
+    % u+duのラベル
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\u+\du,0) {$u+\Delta u$};
 
-    % (b, f(b))の点
-    \fill[magenta] (\b,{f(\b)}) circle (2pt) node [above left] {$f(b)$};
-    % (b+db, f(b+db))の点
-    \fill[magenta] (\b+\db,{f(\b+\db)}) circle (2pt) node [right] {$f(b+\Delta b)$};
+    % (u, f(u))の点
+    \fill[magenta] (\u,{f(\u)}) circle (2pt) node [above left] {$f(u)$};
+    % (u+du, f(u+du))の点
+    \fill[magenta] (\u+\du,{f(\u+\du)}) circle (2pt) node [right] {$f(u+\Delta u)$};
 
     % x軸とy軸
-    \draw [axis] (-0.5,0) -- (\b+\db+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (-0.5,0) -- (\u+\du+2,0) node (xaxis) [below] {$x$};
     \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
 
-    % dbの幅を表す矢印
-    \draw [<->, magenta] ($(\b,-1.25em)+(0.2em,-1.25em)$) -- ($(\b+\db,-1.25em)+(-0.2em,-1.25em)$) node [below, midway, magenta] {$\Delta b$};
+    % duの幅を表す矢印
+    \draw [<->, magenta] ($(\u,-1.25em)+(0.2em,-1.25em)$) -- ($(\u+\du,-1.25em)+(-0.2em,-1.25em)$) node [below, midway, magenta] {$\Delta u$};
 
     % 原点
     \node [below left] at (0,0) {$O$};
@@ -1828,15 +1830,15 @@ $f(x)$の値が負になる区間では、定積分の値も負になるため�
   \end{tikzpicture}
 \end{center}
 
-$b$を$\Delta b$だけ増加させたときに増える面積は、
+$u$を$\Delta u$だけ増加させたときに増える面積は、
 
 \begin{equation}
-  F(b+\Delta b) - F(b) = \int_{b}^{b+\Delta b} f(x) dx
+  F(u+\Delta u) - F(u) = \int_{u}^{u+\Delta u} f(x) dx
 \end{equation}
 
-となるが、ここでさらに$\Delta b$を小さくしていくと…
+となるが、ここでさらに$\Delta u$を小さくしていくと…
 
-増えた領域は、幅$db$、高さ$f(b)$の長方形とみなせるので、その面積は$f(b)db$となる。
+増えた領域は、幅$du$、高さ$f(u)$の長方形とみなせるので、その面積は$f(u)du$となる。
 
 \begin{center}
   \begin{tikzpicture}[
@@ -1845,27 +1847,27 @@ $b$を$\Delta b$だけ増加させたときに増える面積は、
       lnode/.style={text height=1em}
     ]
     \def\a{1}
-    \def\b{4.5}
-    \def\db{0.05}
+    \def\u{4.5}
+    \def\du{0.05}
 
-    % 積分区間[a,b]
-    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\b,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b,0) -| cycle;
+    % 積分区間[a,u]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\u,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u,0) -| cycle;
     % ↑の領域の中央に、定積分の式のラベルを配置
-    \node[gray] at ({(\a+\b)/2},{f((\a+\b)/2)/2}) {$\displaystyle\int_{a}^{b}f(x)dx$};
+    \node[gray] at ({(\a+\u)/2},{f((\a+\u)/2)/2}) {$\displaystyle\int_{a}^{u}f(x)dx$};
 
-    % [b, b+db]
-    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\b:\b+\db,samples=167,variable=\x] ({\x},{f(\x)}) -- (\b+\db,0) -| cycle;
+    % [u, u+du]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\u:\u+\du,samples=167,variable=\x] ({\x},{f(\x)}) -- (\u+\du,0) -| cycle;
 
     % 積分区間の下端のラベル
     \node [anchor=north,lnode] at (\a,0) {$a$};
     % 積分区間の上端のラベル
-    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\b,0) {$b \approx b+db$};
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\u,0) {$u \approx u+du$};
 
-    % (b, f(b))の点
-    \fill[magenta] (\b,{f(\b)}) circle (2pt) node [right] {$f(b) \approx f(b+db)$};
+    % (u, f(u))の点
+    \fill[magenta] (\u,{f(\u)}) circle (2pt) node [right] {$f(u) \approx f(u+du)$};
 
     % x軸とy軸
-    \draw [axis] (-0.5,0) -- (\b+\db+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (-0.5,0) -- (\u+\du+2,0) node (xaxis) [below] {$x$};
     \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
 
     % 原点
@@ -1876,19 +1878,19 @@ $b$を$\Delta b$だけ増加させたときに増える面積は、
   \end{tikzpicture}
 \end{center}
 
-よって、$\Delta b \to 0$としたときには、
+よって、$\Delta u\to 0$としたときには、
 
 \begin{equation}
-  F(b+db) - F(b) = f(b)db
+  F(u+du) - F(u) = f(u)du
 \end{equation}
 
 という式が成り立ち、これは実は見慣れた微分の関係式と同じ形をしている。
 
 \begin{equation}
-  F(b+db) = \origFn{F(b)} + \derivFn{f(b)}db
+  F(u+du) = \origFn{F(u)} + \derivFn{f(u)}du
 \end{equation}
 
-この式は、定積分$F(b)$を$b$で微分すると、積分前の関数$f(x)$に戻るということを示している。
+この式は、定積分したもの$F(u)$を$u$で微分すると、積分前の関数$f(u)$に戻るということを示している。
 
 このような「積分したものを微分すると、元の関数に戻る」という事実は、微積分学の基本定理として知られている。
 
@@ -1911,9 +1913,9 @@ $b$を$\Delta b$だけ増加させたときに増える面積は、
   \end{equation}
 \end{definition}
 
-「微分したら元の関数に戻る」関数の1つが、前節で調べた$F(b) = \displaystyle\int_{a}^{b} f(x) dx$であったが、実はこのような関数は他にも存在する。
+「微分したら元の関数に戻る」関数の1つが、前節で調べた$F(u) = \displaystyle\int_{a}^{u} f(x) dx$であったが、実はこのような関数は他にも存在する。
 
-例えば、定数を微分すると$0$になるため、$F(b)$に任意の定数$C$を加えた関数$F(b) + C$を作っても、その微分結果は変わらず元の関数になる。
+例えば、定数を微分すると$0$になるため、$F(u)$に任意の定数$C$を加えた関数$F(u) + C$を作っても、その微分結果は変わらず元の関数になる。
 
 このことは、「原始関数には定数$C$分の不定性がある」などと表現されることがある。
 
