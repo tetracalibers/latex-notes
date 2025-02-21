@@ -232,6 +232,10 @@ frame code={
 
 % === shotcut ===
 
+% definition,theorem環境内で用語を強調表示する
+\definecolor{hlcolor}{HTML}{F9F07A}
+\NewDocumentCommand{\hl}{O{hlcolor} m}{\hspace{0.25em}\textcolor{#1!40!black}{\textbf{#2}}\hspace{0.25em}}
+
 % 偶関数に背景色とラベルをつける
 \NewDocumentCommand{\evenFn}{O{0.6} m}{
   \fitLabelMath[pink][pink][#1]{#2}{偶}
