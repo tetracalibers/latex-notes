@@ -1444,6 +1444,65 @@ $f$を$f(x)$に、$df$を$f'(x)dx$に書き戻すと、
   これは、$x$が微小変化すると$y$も微小変化し、さらに連鎖して$z$も微小変化するという関係から、\hl{連鎖律}と呼ばれる。
 \end{theorem}
 
+\subsection{逆関数の微分}
+
+関数$y=f(x)$の逆関数$x = f^{-1}(y)$の微分も、ライプニッツ記法で考えると、ごく当たり前の式として導出できる。
+
+ネタバレすると、次の式がそのまま逆関数の微分を表すものになっている。
+
+\begin{equation}
+  \dfrac{dx}{dy} = \dfrac{1}{\dfrac{dy}{dx}}
+\end{equation}
+
+$\dfrac{dy}{dx}$を$f'(x)$と表記するなら、
+
+\begin{equation}
+  \dfrac{dx}{dy} = \dfrac{1}{f'(x)}
+\end{equation}
+
+である。この発想を納得するために、もう少し詳しく見ていこう。
+
+\froufrou
+
+$y=f(x)$の導関数$f'(x)$は、ライプニッツ記法では$\dfrac{dy}{dx}$と表記される。
+
+\begin{equation}
+  \frac{dy}{dx} = f'(x)
+\end{equation}
+
+ライプニッツ記法$\dfrac{dy}{dx}$には、「$y$で表される関数を$x$で微分する」という意味がこめられている。
+
+ならば、逆関数$x = f^{-1}(y)$の導関数は、「$x$で表される関数を$y$で微分する」という意味で、$\dfrac{dx}{dy}$と表記できる。
+
+\begin{equation}
+  \frac{dx}{dy} = (f^{-1})'(y)
+\end{equation}
+
+ここで、$\dfrac{dy}{dx} = f'(x)$という式から、次の等式も成り立つと考えられる。
+
+\begin{equation}
+  \frac{dx}{dy} = \frac{1}{f'(x)}
+\end{equation}
+
+これは逆関数の導関数になっているが、逆関数が$y$の関数なのだから、その導関数$\dfrac{dx}{dy}$も$y$の関数であってほしい。
+
+そこで、$x$を消すために$x = f^{-1}(y)$を代入することで、逆関数の導関数を完成させる。
+
+\begin{equation}
+  \frac{dx}{dy} = \frac{1}{f'(x)} \Bigg|_{x=f^{-1}(y)}
+\end{equation}
+
+\begin{theorem}{逆関数の微分}
+  \newline
+  逆関数の導関数は、元の関数の導関数の逆数になる。
+  \LARGE
+  \begin{equation}
+    \frac{dx}{dy} = \frac{1}{f'(x)} \Bigg|_{x=f^{-1}(y)}
+  \end{equation}
+  \normalsize
+  ここで、$\Bigg|_{x=f^{-1}(y)}$は、その直前の式を計算した後に、$x=f^{-1}(y)$を代入することを意味する。
+\end{theorem}
+
 \subsection{三角関数の微分}
 
 \begin{center}
