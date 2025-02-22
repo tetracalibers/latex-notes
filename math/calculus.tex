@@ -2349,4 +2349,85 @@ $f(x)$の原始関数を$F(x)$、$g(x)$の原始関数を$G(x)$とすると、�
 
 となり、原始関数を使うことで、微分の線形性から定積分の線形性につながることがわかる。
 
+\subsection{不定積分の性質}
+
+原始関数は、微分によって元の関数に戻る関数だった。
+
+そして、元の関数から原始関数を求める演算が不定積分である。
+
+\begin{center}
+  \begin{tikzpicture}
+    \node [scale=1.5] (A) {$F(x)$};
+    \node [scale=1.5] (B) [right=of A] {$f(x)$};
+
+    \draw [->] (A) to [bend left=45, edge label={$\dfrac{d}{dx}$}] (B);
+    \draw [<-] (A) to [bend right=45, edge node={node[below] {$\int$}}] (B);
+  \end{tikzpicture}
+\end{center}
+
+原始関数という言葉にとらわれないように表現すると、結局は次のような関係が成り立っている。
+
+\begin{center}
+  \begin{tikzpicture}
+    \node [scale=1.5] (A) {$f(x)$};
+    \node [scale=1.5] (B) [right=of A] {$f'(x)$};
+
+    \draw [->] (A) to [bend left=45, edge label={$\dfrac{d}{dx}$}] (B);
+    \draw [<-] (A) to [bend right=45, edge node={node[below] {$\int$}}] (B);
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{不定積分と微分は逆の演算}
+  \newline
+  関数を微分すると導関数になり、導関数を不定積分すると元の関数に戻る。
+\end{theorem}
+
+このような関係によって、微分が持つ性質から、不定積分の性質を導くことができる。
+
+\subsubsection{不定積分の線形性}
+
+微分の線形性から、不定積分の線形性も成り立つ。
+
+\begin{review}
+  微分の線形性
+  \begin{equation}
+    (\alpha F(x) + \beta G(x))' = \alpha F'(x) + \beta G'(x)
+  \end{equation}
+\end{review}
+
+微分の線形性の式の両辺を不定積分すると、左辺は微分する前の関数$\alpha F(x) + \beta G(x)$に戻るので、
+
+\begin{align}
+  \int (\alpha F(x) + \beta G(x))' dx & = \int \left\{ \alpha F'(x) + \beta G'(x) \right\} dx \\
+  \alpha F(x) + \beta G(x)            & = \int \left\{ \alpha F'(x) + \beta G'(x) \right\} dx
+\end{align}
+
+ここで、導関数を不定積分すると元の関数に戻ることから、
+
+\begin{align}
+  F(x) & = \int F'(x) dx \\
+  G(x) & = \int G'(x) dx
+\end{align}
+
+と置き換えることができる。
+
+これらを使って左辺を書き換えると、
+
+\begin{align}
+  \alpha \int F'(x) dx + \beta \int G'(x) dx & = \int \left\{ \alpha F'(x) + \beta G'(x) \right\} dx
+\end{align}
+
+$F(x)$は$f(x)$の原始関数、$G(x)$は$g(x)$の原始関数であるとすると、微分したらそれぞれ元に戻るので、次のように書き表せる。
+
+\begin{align}
+  \alpha \int f(x) dx + \beta \int g(x) dx & = \int \left\{ \alpha f(x) + \beta g(x) \right\} dx
+\end{align}
+
+\begin{theorem}{不定積分の線形性}
+  \Large
+  \begin{equation}
+    \int \left\{ \alpha f(x) + \beta g(x) \right\} dx = \alpha \int f(x) dx + \beta \int g(x) dx
+  \end{equation}
+\end{theorem}
+
 \end{document}
