@@ -4,7 +4,159 @@
 
 \chapter{複素数と複素関数}
 
-\section{複素平面}
+\section{虚数}
+
+\subsection{$x^2 = -1$の解は存在するか？}
+
+「負の数と負の数をかけたら正の数になる」というのが、中学校で初めて数学の門を叩いて真っ先に学ぶ事実である。
+
+\begin{equation}
+  (-1) \times (-1) = 1
+\end{equation}
+
+方程式の言葉で書けば、$x^2 = 1$の解の一つは$x = -1$となる。（もう一つの解は$x = 1$だ。）
+
+では、次の方程式の解は考えられるだろうか？
+
+\begin{equation}
+  x^2 = -1
+\end{equation}
+
+$x^2$ということは、同じ数$x$どうしをかけて$-1$にならなければならない。
+
+とはいえ、正の数どうしをかけても正の数になるし、負の数どうしをかけても正の数になる。
+
+\vskip\baselineskip
+
+つまり、このような$x$は「存在しない」ということになる。
+
+しかし、このような方程式の解が存在した方がありがたいと考えた人もいた。（私たちもこの先、その有り難さを知ることになる。）
+
+\vskip\baselineskip
+
+「負の数と負の数をかけたら正の数になる」というこれまでの数の体系を壊さずに、$x^2 = -1$が成り立つような数を新たに考えよう、という話が始まる。
+
+\subsection{回転で捉える数直線の拡張}
+
+これまでの数の体系である実数は、すべて数直線上に存在していた。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\len{4}
+    \draw[->] (-\len,0) -- (\len,0) node[right] {$\mathbb{R} $};
+    \foreach \x in {-1,0,1} {
+        \draw (\x*2,0.1) -- (\x*2,-0.1) node[below] {$\x$};
+      }
+  \end{tikzpicture}
+\end{center}
+
+$x^2 = -1$の解となる$x$は、少なくともこの数直線上には存在しない。
+
+ならば、数の体系を平面に拡張して考えてみよう。
+
+\vskip\baselineskip
+
+まずは、平面というスケールに飛び出して$(-1) \times (-1) = 1$を考えてみる。
+
+\begin{equation}
+  1 \times (-1) \times (-1) = 1
+\end{equation}
+
+と書き直すと、「$-1$を$2$回かけたら$1$に戻る」ということがいえる。
+
+図示すると、次のようなことが起こっていると考えられないだろうか？
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\len{4}
+    \def\scale{2}
+
+    % 180度回転を表す円弧 (1,0) to (-1,0)
+    \draw[->,-{Stealth[length=1em, open, round]}, shorten >=1em, shorten <=1em, thick, cyan] (\scale,0) arc (0:180:\scale) node[above, midway] {$\times$\large$(-1)$};
+    \draw[<-,{Stealth[length=1em, open, round]}-, shorten >=1em, shorten <=1em, thick, cyan] (\scale,0) arc (0:-180:\scale) node[below, midway] {$\times$\large$(-1)$};
+
+    \draw[->] (-\len,0) -- (\len,0) node[right] {$\mathbb{R} $};
+
+    \def\h{0.1}
+    \draw (\scale, \h) -- (\scale,-\h) node[below right] {$1$};
+    \draw (-\scale, \h) -- (-\scale,-\h) node[below left] {$-1$};
+
+    % 0
+    \draw (0, \h) -- (0,-\h) node[below] {$0$};
+  \end{tikzpicture}
+\end{center}
+
+「$-1$をかける」という操作を、平面上の$180$度回転と捉える。
+
+すると、$2$回かけて$-1$になる数（$x^2 = -1$の解）は、$180$度回転の中間に位置する数と考えることができる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\len{4}
+    \def\scale{2}
+
+    % 90度回転を表す円弧
+    \draw[->,-{Stealth[length=1em, open, round]}, shorten >=1em, shorten <=1em, thick, magenta] (\scale,0) arc (0:90:\scale) node[above right, midway] {$\times$\Large$?$};
+    % さらに90度回転を表す円弧
+    \draw[->,-{Stealth[length=1em, open, round]}, shorten >=1em, shorten <=1em, thick, magenta] (0, \scale) arc (90:180:\scale) node[above left, midway] {$\times$\Large$?$};
+
+    \draw[->] (-\len,0) -- (\len,0) node[right] {$\mathbb{R} $};
+    \draw[->, dotted] (0,-\len) -- (0,\len);
+
+    \def\h{0.1}
+    \draw (\scale, \h) -- (\scale,-\h) node[below] {$1$};
+    \draw (-\scale, \h) -- (-\scale,-\h) node[below] {$-1$};
+
+    % 0
+    \draw (0, \h) -- (0,-\h) node[below] {$0$};
+
+    \node[fill=white] at (0, \scale) {\large$?$};
+  \end{tikzpicture}
+\end{center}
+
+このような方向性で拡張した数を複素数といい、$?$にあたる数は虚数$i$と呼ぶことにする。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\len{4}
+    \def\scale{2}
+
+    % 90度回転を表す円弧
+    \draw[->,-{Stealth[length=1em, open, round]}, shorten >=1em, shorten <=1em, thick, magenta] (\scale,0) arc (0:90:\scale) node[above right, midway] {$\times$\Large$i$};
+    % さらに90度回転を表す円弧
+    \draw[->,-{Stealth[length=1em, open, round]}, shorten >=1em, shorten <=1em, thick, magenta] (0, \scale) arc (90:180:\scale) node[above left, midway] {$\times$\Large$i$};
+
+    \draw[->] (-\len,0) -- (\len,0) node[right] {$\mathbb{R}$};
+    \draw[->, gray] (0,-\len) -- (0,\len) node [above] {$\mathbb{R}i$};
+
+    \def\h{0.1}
+    \draw (\scale, \h) -- (\scale,-\h) node[below] {$1$};
+    \draw (-\scale, \h) -- (-\scale,-\h) node[below] {$-1$};
+
+    % O
+    \draw (0, \h) -- (0,-\h) node[below] {$0$};
+
+    \node[fill=white] at (0, \scale) {\large$i$};
+  \end{tikzpicture}
+\end{center}
+
+\subsection{虚数の定義}
+
+前章での話を踏まえて、新たな数を次のように定義する。
+
+\begin{definition}{虚数}
+  方程式$x^2 =-1$の解の一つを\hl{虚数}と呼び、$i$と表す。
+\end{definition}
+
+これで、$x^2 = -1$の解を、次のように記述できるようになった。
+
+\begin{theorem}{$x^2 = -1$の解}
+  方程式$x^2 = -1$の解は、$x= i$と$x=-i$の$2$つ存在する。
+\end{theorem}
+
+\section{複素数と複素平面}
+
+\subsection{複素平面}
 
 複素数は、実部（Real Part）と虚部（Imaginary Part）という2つの数から成る。
 
@@ -43,7 +195,7 @@
   \end{tikzpicture}
 \end{center}
 
-\section{複素数の絶対値}
+\subsection{複素数の絶対値}
 
 \begin{definition}{複素数の絶対値}
   \newline
@@ -95,7 +247,7 @@
   \end{tikzpicture}
 \end{center}
 
-\section{複素数の極形式による表現}
+\subsection{複素数の極形式による表現}
 
 \begin{definition}{極形式}
   \newline
@@ -151,7 +303,7 @@
   \end{tikzpicture}
 \end{center}
 
-\section{偏角と主値}
+\subsection{偏角と主値}
 
 $x=r\cos\theta$、$y=r\sin\theta$に、$r=\sqrt{x^2 + y^2}$を代入して整理した関係式から、偏角を改めて定義する。
 
@@ -179,7 +331,7 @@ $x=r\cos\theta$、$y=r\sin\theta$に、$r=\sqrt{x^2 + y^2}$を代入して整理
   \end{equation}
 \end{definition}
 
-\section{共役複素数}
+\subsection{共役複素数}
 
 \begin{definition}{共役複素数}
   \newline
