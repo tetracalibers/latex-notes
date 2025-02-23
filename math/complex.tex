@@ -188,42 +188,44 @@ $x^2 = -1$の解となる$x$は、少なくともこの数直線上には存在�
 平面上の点をベクトル（矢印）で表す考え方を流用して、次のように考えてみる。
 
 \begin{center}
-  \begin{tikzpicture}[
-      txtnode/.style={text height=0.75em},
-    ]
-    \def\ang{35} % 偏角
-    \def\r{3} % 半径
+  \scalebox{1.25}{
+    \begin{tikzpicture}[
+        txtnode/.style={text height=0.75em},
+      ]
+      \def\ang{35} % 偏角
+      \def\r{3} % 半径
 
-    % x軸の描画
-    \draw [->] (-1,0) -- (4,0) node[right] {Re};
-    % y軸の描画
-    \draw [->] (0,-1) -- (0,3) node[above] {Im};
+      % x軸の描画
+      \draw [->] (-1,0) -- (4,0) node[right] {Re};
+      % y軸の描画
+      \draw [->] (0,-1) -- (0,3) node[above] {Im};
 
-    % 原点O
-    \coordinate (O) at (0,0) node[below left, txtnode] {O};
+      % 原点O
+      \coordinate (O) at (0,0) node[below left, txtnode] {O};
 
-    % 座標軸上の点
-    \coordinate (X) at ({\r*cos(\ang)}, 0);
-    \coordinate (Y) at (0, {\r*sin(\ang)});
+      % 座標軸上の点
+      \coordinate (X) at ({\r*cos(\ang)}, 0);
+      \coordinate (Y) at (0, {\r*sin(\ang)});
 
-    \node [below, txtnode] at (X) {$a$};
-    \node [left, txtnode] at (Y) {$b$};
+      \node [below, txtnode] at (X) {$a$};
+      \node [left, txtnode] at (Y) {$b$};
 
-    % 複素数z
-    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+      % 複素数z
+      \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
 
-    % 補助線の描画
-    \draw[auxline] (X) -- (Z);
-    \draw[auxline] (Y) -- (Z);
+      % 補助線の描画
+      \draw[auxline] (X) -- (Z);
+      \draw[auxline] (Y) -- (Z);
 
-    % ベクトル
-    \draw[vector, magenta] (O) -- (X) node[midway, below, txtnode] {$a$};
-    \draw[vector, cyan] (X) -- (Z) node[midway, right, txtnode] {$bi$};
-    \draw[vector, Orchid] (O) -- (Z) node[midway, above left, txtnode] {$a+bi$};
+      % ベクトル
+      \draw[vector, magenta] (O) -- (X) node[midway, below, txtnode] {$a$};
+      \draw[vector, cyan] (X) -- (Z) node[midway, right, txtnode] {$bi$};
+      \draw[vector, Orchid] (O) -- (Z) node[midway, above left, txtnode] {$a+bi$};
 
-    % 複素数を表す数式の描画
-    \node[above right] at (Z) {$a+bi$};
-  \end{tikzpicture}
+      % 複素数を表す数式の描画
+      \node[above right] at (Z) {$a+bi$};
+    \end{tikzpicture}
+  }
 \end{center}
 
 $a$というベクトルは実軸上の単位ベクトル$1$を$a$倍したもの、$bi$というベクトルは虚軸上の単位ベクトル$i$を$b$倍したものと考え、平面上の任意の数はそれらのベクトルの和の形で表す。
@@ -254,91 +256,114 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
 \end{definition}
 
 \begin{center}
-  \begin{tikzpicture}[
-      txtnode/.style={text height=0.75em},
-    ]
-    \def\ang{35} % 偏角
-    \def\r{3} % 半径
+  \scalebox{1.25}{
+    \begin{tikzpicture}[
+        txtnode/.style={text height=0.75em},
+      ]
+      \def\ang{35} % 偏角
+      \def\r{3} % 半径
 
-    % x軸の描画
-    \draw [->] (-1,0) -- (4,0) node[right] {Re};
-    % y軸の描画
-    \draw [->] (0,-1) -- (0,3) node[above] {Im};
+      % x軸の描画
+      \draw [->] (-1,0) -- (4,0) node[right] {Re};
+      % y軸の描画
+      \draw [->] (0,-1) -- (0,3) node[above] {Im};
 
-    % 原点O
-    \coordinate (O) at (0,0) node[below left, txtnode] {O};
+      % 原点O
+      \coordinate (O) at (0,0) node[below left, txtnode] {O};
 
-    % 座標軸上の点
-    \coordinate (X) at ({\r*cos(\ang)}, 0);
-    \coordinate (Y) at (0, {\r*sin(\ang)});
+      % 座標軸上の点
+      \coordinate (X) at ({\r*cos(\ang)}, 0);
+      \coordinate (Y) at (0, {\r*sin(\ang)});
 
-    \node [below, txtnode] at (X) {$a$};
-    \node [left, txtnode] at (Y) {$b$};
+      \node [below, txtnode] at (X) {$a$};
+      \node [left, txtnode] at (Y) {$b$};
 
-    % 複素数z
-    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+      % 複素数z
+      \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
 
-    % 補助線の描画
-    \draw[auxline] (X) -- (Z);
-    \draw[auxline] (Y) -- (Z);
+      % 補助線の描画
+      \draw[auxline] (X) -- (Z);
+      \draw[auxline] (Y) -- (Z);
 
-    % 複素数を表す数式の描画
-    \node[above right] at (Z) {$a+bi$};
-  \end{tikzpicture}
+      % 複素数を表す数式の描画
+      \node[above right] at (Z) {$a+bi$};
+    \end{tikzpicture}
+  }
 \end{center}
 
 複素平面において、実軸をRe、虚軸をImと表記しているのは、複素数の実部（Real Part）と虚部（Imaginary Part）をそれぞれの軸で表しているからである。
 
+\froufrou
+
+複素数を複素平面上のベクトルとして捉えることで、複素数に幾何学的な意味を持たせることができる。
+
+そして最終的には、$-1$をかける操作が$180$度回転であることや、$i$をかける操作が$90$度回転であることの一般化として、複素数のかけ算に複素平面上の回転という解釈を与える。
+
+\vskip\baselineskip
+
+そのための準備として、まずは複素数に関する「長さ」と「角」を定義しよう。
+
 \subsection{複素数の絶対値}
+
+実数における絶対値は、数直線上の原点$0$からその数までの距離を表していた。
+
+複素数の絶対値も、同じように「原点からの距離」として定義する。
 
 \begin{definition}{複素数の絶対値}
   \newline
-  複素平面において、原点から複素数$z$までの距離を複素数$z$の絶対値と定義する。\\
+  複素平面において、原点から複素数$z=a+bi$までの距離を複素数$z$の絶対値と定義する。\\
   この距離は三平方の定理から求められ、$|z|$と表す。
   \LARGE
   \begin{equation}
-    |z| \coloneqq \sqrt{x^2 + y^2}
+    |z| = \sqrt{a^2 + b^2}
   \end{equation}
 \end{definition}
 
 \begin{center}
-  \begin{tikzpicture}
-    \def\ang{35} % 偏角
-    \def\r{3} % 半径
+  \scalebox{1.25}{
+    \begin{tikzpicture}[
+        txtnode/.style={text height=0.75em},
+      ]
+      \def\ang{35} % 偏角
+      \def\r{3} % 半径
 
-    % x軸の描画
-    \draw [axis] (-1,0) -- (4,0) node[right] {Re};
-    % y軸の描画
-    \draw [axis] (0,-1) -- (0,3) node[above] {Im};
+      % 原点O
+      \coordinate (O) at (0,0) node[below left, txtnode] {O};
 
-    % 原点O
-    \coordinate (O) at (0,0) node[below left] {O};
+      % 座標軸上の点
+      \coordinate (X) at ({\r*cos(\ang)}, 0);
+      \coordinate (Y) at (0, {\r*sin(\ang)});
+      \node [below, txtnode] at (X) {$a$};
+      \node [left, txtnode] at (Y) {$b$};
 
-    % 座標軸上の点
-    \coordinate[label=below right:$x$] (X) at ({\r*cos(\ang)}, 0);
-    \coordinate[label=left:$y$] (Y) at (0, {\r*sin(\ang)});
+      % 複素数z
+      \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
 
-    % 複素数z
-    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+      % 補助線の描画
+      \draw[auxline, lightgray] (Y) -- (Z);
 
-    % 三角形の描画
-    \draw[fill=orange, opacity=0.4] (O) -- (X) -- (Z) -- cycle;
+      % 三角形の描画
+      \draw[fill=myPurple!30] (O) -- (X) -- (Z) -- cycle;
 
-    % 三角形の辺のラベルの描画
-    \draw (O) -- (X) node[midway, below] {$x$};
-    \draw (X) -- (Z) node[midway, right] {$y$};
-    \draw (O) -- (Z) node[midway, above, sloped] {$\sqrt{x^2 + y^2}$};
+      % 直角O-X-Z
+      \draw (O) -- (X) -- (Z) pic [fill=lightgray, opacity=0.8, angle radius=0.6em] {right angle = O--X--Z};
 
-    % ベクトルの描画
-    \draw[vector] (O) -- (Z);
+      % 三角形の辺のラベルの描画
+      \node[below, myPurple!90!black] at ($(O)!0.5!(X)$) {$a$};
+      \draw[myPurple] (X) -- (Z) node[midway, right, myPurple!90!black] {$b$};
+      \draw[myPurple] (O) -- (Z) node[midway, above, sloped, Orchid] {$\sqrt{a^2 + b^2}$};
 
-    % 補助線の描画
-    \draw[auxline] (X) -- (Z);
-    \draw[auxline] (Y) -- (Z);
+      % ベクトルの描画
+      \draw[vector, Orchid] (O) -- (Z);
+      % 複素数を表す数式の描画
+      \node[above right] at (Z) {$z=a+bi$};
 
-    % 複素数を表す数式の描画
-    \node[above right] at (Z) {$z$};
-  \end{tikzpicture}
+      % x軸の描画
+      \draw [axis] (-1,0) -- (4,0) node[right] {Re};
+      % y軸の描画
+      \draw [axis] (0,-1) -- (0,3) node[above] {Im};
+    \end{tikzpicture}
+  }
 \end{center}
 
 \subsection{複素数の極形式による表現}
