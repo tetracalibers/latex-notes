@@ -428,6 +428,19 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
   \end{equation}
 \end{definition}
 
+ここで、$\theta$を整数回$2\pi$シフトさせても（何周回転させても）、同じ複素数$z$の位置に戻ってくる。
+
+つまり、1つの複素数$z$に対して偏角の値は複数考えられるので、それが困る場合には、主値と呼ばれる代表値を使うことにする。
+
+\begin{definition}{偏角の主値}
+  \newline
+  複素数$z$の偏角のうち、$0\leq \theta \leq 2\pi$、もしくは$-\pi < \theta \leq \pi$の範囲にある偏角を\hl{主値}と呼び、次のように表す。
+  \LARGE
+  \begin{equation}
+    \Arg z = \theta
+  \end{equation}
+\end{definition}
+
 \subsection{複素数の極形式による表現}
 
 \begin{definition}{極形式}
@@ -483,34 +496,6 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
     \node[above right] at (Z) {$z=r\cos\theta + r\sin\theta$};
   \end{tikzpicture}
 \end{center}
-
-\subsection{偏角と主値}
-
-$x=r\cos\theta$、$y=r\sin\theta$に、$r=\sqrt{x^2 + y^2}$を代入して整理した関係式から、偏角を改めて定義する。
-
-\begin{definition}{偏角}
-  \newline
-  複素数$z$を極形式で表現すると、\\
-  $\cos\theta=\dfrac{x}{\sqrt{x^2 + y^2}}$、$\sin\theta=\dfrac{y}{\sqrt{x^2 + y^2}}$という関係が成り立つ。\\\\
-  この関係を満たす$\theta$を偏角と呼び、次のように表す。
-  \LARGE
-  \begin{equation}
-    \arg z \coloneqq \theta
-  \end{equation}
-\end{definition}
-
-ここで、$\theta$を整数回$2\pi$シフトさせても（何周回っても）、複素数$z$の値は変わらない。
-
-つまり、1つの複素数に対して偏角の値は複数考えられるので、次のような主値を定義する。
-
-\begin{definition}{偏角の主値}
-  \newline
-  $0\leq \theta \leq 2\pi$、もしくは$-\pi < \theta \leq \pi$の範囲にある偏角を偏角の主値と呼び、次のように表す。
-  \LARGE
-  \begin{equation}
-    \Arg z \coloneqq \theta
-  \end{equation}
-\end{definition}
 
 \subsection{共役複素数}
 
