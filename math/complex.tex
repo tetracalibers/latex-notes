@@ -366,7 +366,7 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
   \end{equation}
 \end{definition}
 
-\subsubsection{複素数の成す「角」}
+\subsubsection{複素数の「回転角」}
 
 ここで、複素数$z$が$0$でなければ、原点$O$から$z$までを結ぶベクトルと、実軸Reの正の向きとのなす角$\theta$を考えることができる。
 
@@ -441,61 +441,80 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
   \end{equation}
 \end{definition}
 
-\subsection{複素数の極形式による表現}
+\subsection{複素数の極形式}
+
+複素数が持つ「長さ」と「角」を定義したところで、それらを使って1つの複素数を表現できないか？ということを考える。
+
+\begin{center}
+  \scalebox{1.5}{
+    \begin{tikzpicture}[
+        txtnode/.style={text height=0.75em},
+      ]
+      \def\ang{35} % 偏角
+      \def\r{3} % 半径
+
+      % 原点O
+      \coordinate (O) at (0,0) node[below left, txtnode] {O};
+
+      % 座標軸上の点
+      \coordinate (X) at ({\r*cos(\ang)}, 0);
+      \coordinate (Y) at (0, {\r*sin(\ang)});
+      \node [below, txtnode] at (X) {$a$};
+      \node [left, txtnode] at (Y) {$b$};
+
+      % 複素数z
+      \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
+
+      % 補助線の描画
+      \draw[auxline, lightgray] (Y) -- (Z);
+
+      % 三角形の描画
+      \draw[fill=myPurple!30] (O) -- (X) -- (Z) -- cycle;
+
+      % 直角O-X-Z
+      \draw (O) -- (X) -- (Z) pic [fill=lightgray, opacity=0.8, angle radius=0.6em] {right angle = O--X--Z};
+
+      % 角X-O-Zを表す扇形
+      \pic [fill=Emerald!30,angle eccentricity=1.3, angle radius=2em, "$\theta$"{text=Emerald}] {angle = X--O--Z};
+
+      % ベクトルの描画
+      \draw[vector, Orchid] (O) -- (Z);
+
+      % 複素数を表す数式の描画
+      \node[above right] at (Z) {$z$};
+
+      % x軸の描画
+      \draw [axis] (-1,0) -- (4,0) node[right] {Re};
+      % y軸の描画
+      \draw [axis] (0,-1) -- (0,3) node[above] {Im};
+
+      % 三角形の辺のラベルの描画
+      \draw[magenta, thick] (O) -- (X) node[midway, below] {$r\cos\theta$};
+      \draw[cyan, thick] (X) -- (Z) node[midway, right] {$r\sin\theta$};
+      \node[above left, Orchid] at ($(O)!0.5!(Z)$) {$r$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+複素数$z = a+ bi$の絶対値を$r$、偏角を$\theta$とすると、
+
+\begin{align}
+  a & = r\cos\theta \\
+  b & = r\sin\theta
+\end{align}
+
+となり、複素数$z$は絶対値と偏角を使った表示（極形式）に置き換えることができる。
 
 \begin{definition}{極形式}
   \newline
-  複素数$z$は、絶対値$r$と偏角$\theta$を用いて次のように表すことができる。
+  複素数$z$は、その絶対値$r$と偏角$\theta$を用いて次のように表すことができる。
   \LARGE
   \begin{equation}
     z = r(\cos\theta + i\sin\theta)
   \end{equation}
 \end{definition}
 
-\begin{center}
-  \begin{tikzpicture}
-    \def\ang{35} % 偏角
-    \def\r{3} % 半径
-
-    % x軸の描画
-    \draw [axis] (-1,0) -- (4,0) node[right] {Re};
-    % y軸の描画
-    \draw [axis] (0,-1) -- (0,3) node[above] {Im};
-
-    % 原点O
-    \coordinate (O) at (0,0) node[below left] {O};
-
-    % 座標軸上の点
-    \coordinate[label=below right:$x$] (X) at ({\r*cos(\ang)}, 0);
-    \coordinate[label=left:$y$] (Y) at (0, {\r*sin(\ang)});
-
-    % 複素数z
-    \coordinate (Z) at ({\r*cos(\ang)}, {\r*sin(\ang)});
-
-    % 三角形の描画
-    \draw[fill=orange, opacity=0.4] (O) -- (X) -- (Z) -- cycle;
-
-    % 三角形の辺のラベルの描画
-    \draw (O) -- (X) node[midway, below] {$r\cos\theta$};
-    \draw (X) -- (Z) node[midway, right] {$r\sin\theta$};
-
-    % ベクトルの描画
-    \draw[vector] (O) -- (Z);
-
-    % 補助線の描画
-    \draw[auxline] (X) -- (Z);
-    \draw[auxline] (Y) -- (Z);
-
-    % 偏角を表す円弧の描画
-    \pic [draw, ->, "$\theta$", angle eccentricity=1.5] {angle = X--O--Z};
-
-    % 半径を表すラベルの描画
-    \draw (O) -- (Z) node[midway, above] {$r$};
-
-    % 複素数を表す数式の描画
-    \node[above right] at (Z) {$z=r\cos\theta + r\sin\theta$};
-  \end{tikzpicture}
-\end{center}
+絶対値を「半径」、偏角を「回転角」とみなし、それらを使って複素数を表現できたことで、ようやく複素数と回転との関係を調べることができる。
 
 \subsection{共役複素数}
 
