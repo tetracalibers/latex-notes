@@ -514,9 +514,116 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
   \end{equation}
 \end{definition}
 
-絶対値を「半径」、偏角を「回転角」とみなし、それらを使って複素数を表現できたことで、ようやく複素数と回転との関係を調べることができる。
+絶対値を「半径」、偏角を「回転角」とみなし、それらを使って複素数を表現できたことで、複素数と回転との関係についても調べる準備が整った。
 
-\subsection{共役複素数}
+\section{複素数の四則演算}
+
+図形的な意味を考えながら、複素数の四則演算を定義していこう。
+
+\subsection{複素数の和と差}
+
+複素数の和・差は、ベクトルの和・差と同じように定義される。
+
+\begin{definition}{複素数の和と差}
+  \newline
+  複素数$z=a+bi, w = c +di$について、$z$と$w$の和（差）を次のように定義する。
+  \LARGE
+  \begin{equation}
+    z \pm w = (a \pm c) + (b \pm d)i
+  \end{equation}
+\end{definition}
+
+つまり、実部同士・虚部同士の足し算（引き算）を行えばよい。
+
+実部同士を足したものが実部になり、虚部同士を足したものが虚部になる。
+
+この定義は、実部と虚部を並べたベクトルの和（差）と一致している。
+
+\begin{equation}
+  \begin{pmatrix}
+    a \\
+    b
+  \end{pmatrix} \pm \begin{pmatrix}
+    c \\
+    d
+  \end{pmatrix} = \begin{pmatrix}
+    a \pm c \\
+    b \pm d
+  \end{pmatrix}
+\end{equation}
+
+\subsection{複素数の積}
+
+複素数の積は、ベクトルの演算から定義をそのまま流用することはできない。
+（そもそも、ベクトルの積とは何か？という問題になる。）
+
+\vskip\baselineskip
+
+複素数のかけ算で成り立っていてほしい性質は、$-1$をかける操作が$180$度回転であることや、$i$をかける操作が$90$度回転であることだ。
+
+というわけで、複素数の積は回転を表すものとして定義したい。
+
+\subsubsection{回転行列から定義を探る}
+
+複素数$z=a+bi$の実部と虚部を並べたベクトル$\icvec{a\\b}$を、原点を中心に$\theta$だけ回転させたベクトルは、2次元の回転行列を左からかけた形で次のように表せる。
+
+\begin{equation}
+  \begin{pmatrix}
+    \cos \theta & -\sin \theta \\
+    \sin \theta & \cos \theta
+  \end{pmatrix} \begin{pmatrix}
+    a \\
+    b
+  \end{pmatrix}
+  = \begin{pmatrix}
+    a \cos \theta - b \sin \theta \\
+    a \sin \theta + b \cos \theta
+  \end{pmatrix}
+\end{equation}
+
+ここで、絶対値が$1$、偏角が$\theta$である複素数$w=c+di$の実部と虚部は、
+
+\begin{align}
+  c & = \cos \theta \\
+  d & = \sin \theta
+\end{align}
+
+と表せるから、これらを使って回転行列を書き直してみる。
+
+\begin{equation}
+  \begin{pmatrix}
+    c & -d \\
+    d & c
+  \end{pmatrix} \begin{pmatrix}
+    a \\
+    b
+  \end{pmatrix}
+  = \begin{pmatrix}
+    a c - b d \\
+    a d + b c
+  \end{pmatrix}
+\end{equation}
+
+これは、複素数$z=a+bi$の実部と虚部を並べたベクトルを、複素数$w=c+di$の実部と虚部だけを使って回転させたものと捉えられる。
+
+つまり、$z$に$w$をかけることで$z$を回転させたいのなら、$z$と$w$の積を
+
+\begin{equation}
+  zw = (ac - bd) + (ad + bc)i
+\end{equation}
+
+と考えればよいのではないだろうか。
+
+\begin{definition}{複素数の積}
+  \newline
+  複素数$z=a+bi, w = c +di$について、$z$と$w$の積を次のように定義する。
+  \LARGE
+  \begin{equation}
+    zw = (ac - bd) + (ad + bc)i
+  \end{equation}
+\end{definition}
+
+\section{共役複素数}
 
 \begin{definition}{共役複素数}
   \newline
