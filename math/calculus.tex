@@ -1729,6 +1729,31 @@ $y=f(x)$の導関数$f'(x)$は、ライプニッツ記法では$\dfrac{dy}{dx}$�
   \end{equation}
 \end{theorem}
 
+\subsubsection{指数が定数倍されている場合}
+
+$y = e^{kx}$のように、指数が定数倍（$k$倍）されている場合は、合成関数の微分の公式を使って計算できる。
+
+$t=kx$とおくと、
+
+\begin{align}
+  \dfrac{dy}{dx} & = \dfrac{dt}{dx} \cdot \dfrac{dy}{dt}          \\
+                 & = \dfrac{d}{dx} (kx) \cdot \dfrac{d}{dt} (e^t) \\
+                 & = k\dfrac{\cancel{dx}}{\cancel{dx}} \cdot e^t  \\
+                 & = ke^{t}                                       \\
+                 & = ke^{kx}
+\end{align}
+
+となり、$e^{kx}$自体は変わらず、指数$k$が$e$の肩から「降りてくる」形になる。
+
+\begin{theorem}{ネイピア数を底とする指数関数の微分（指数が定数倍されている場合）}
+  \newline
+  $k$を定数とし、指数が$k$倍されている場合は、微分すると全体が$k$倍される。
+  \LARGE
+  \begin{equation}
+    \dfrac{d}{dx}e^{kx} = ke^{kx}
+  \end{equation}
+\end{theorem}
+
 \section{1変数関数の積分}
 
 積分とは、「部分を積み重ねる」演算である。
