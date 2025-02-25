@@ -1505,6 +1505,8 @@ $y=f(x)$の導関数$f'(x)$は、ライプニッツ記法では$\dfrac{dy}{dx}$�
 
 \subsection{三角関数の微分}
 
+角度$\theta$を$d\theta$だけ微小変化させたときの、三角形の高さの変化が$\sin\theta$の微小変化であり、底辺の長さの変化が$\cos\theta$の微小変化である。
+
 \begin{center}
   \scalebox{2}{
     \begin{tikzpicture}[scale=3]
@@ -1515,13 +1517,6 @@ $y=f(x)$の導関数$f'(x)$は、ライプニッツ記法では$\dfrac{dy}{dx}$�
       \coordinate (H) at (C1 |- O);
       % Hのx座標とC2のy座標を持つ点
       \coordinate (H2) at (C2 -| H);
-
-      % OとAを結ぶ線
-      \draw (O) -- (A);
-      % OとC1を結ぶ線
-      \draw (O) -- (C1);
-      % OとC2を結ぶ線
-      \draw (O) -- (C2);
 
       % 三角形O-H-C1
       \draw[fill=myPurple, opacity=0.6] (O) -- (H) -- (C1) -- cycle;
@@ -1548,22 +1543,134 @@ $y=f(x)$の導関数$f'(x)$は、ライプニッツ記法では$\dfrac{dy}{dx}$�
       \draw[magenta, thick] (C1) arc (30:40:1cm) node [midway,sloped, below] {$d\theta$};
 
       % C1からH2の高さを表すベクトル
-      \draw[<->] ($(C1)+ (0.05, 0)$) -- ($(H2)+(0.05,0)$) node [midway, right] {$d\theta\cos \theta$};
+      \draw[->, -Straight Barb, semithick] ($(C1)+ (0.05, 0)$) -- ($(H2)+(0.05,0)$) node [midway, right] {$d\theta\cos \theta$};
       % C2からH2の幅を表すベクトル
-      \draw[<->] ($(C2)+ (0, 0.05)$) -- ($(H2)+(0,0.05)$) node [midway, above] {$d\theta\sin \theta$};
+      \draw[<-, Straight Barb-, semithick] ($(C2)+ (0, 0.05)$) -- ($(H2)+(0,0.05)$) node [midway, above] {$d\theta\sin \theta$};
 
       % OからC2の長さを表すベクトル
-      \draw [<->, orange] to ($(O)!0.05!90:(C2)$) -- ($(C2)!-0.05!90:(O)$) node [midway, above, orange] { $1$ };
+      \draw [<->, semithick, orange] to ($(O)!0.05!90:(C2)$) -- ($(C2)!-0.05!90:(O)$) node [midway, above, orange] { $1$ };
       % OからAの長さを表すベクトル
-      \draw [<->, orange] to ($(O)-(0,0.05)$) -- ($(A)-(0,0.05)$) node [midway, below, orange] { $1$ };
-
-      % % sin\thetaを表すベクトル
-      % \draw [<->] to ($(C1)+(0.05,0)$) -- ($(H)+(0.05,0)$) node [midway, left] { $\sin \theta$ };
-      % % cos\thetaを表すベクトル
-      % \draw [<->] to ($(H)-(0,0.05)$) -- ($(O)-(0,0.05)$) node [midway, below] { $\cos \theta$ };
+      \draw [<->, semithick, orange] to ($(O)-(0,0.05)$) -- ($(A)-(0,0.05)$) node [midway, below, orange] { $1$ };
     \end{tikzpicture}
   }
 \end{center}
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.5\hsize}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}[scale=3]
+        \coordinate (O) at (0,0);
+        \coordinate (C1) at (30:1cm);
+        \coordinate (C2) at (40:1cm);
+        \coordinate (H) at (C1 |- O);
+        % Hのx座標とC2のy座標を持つ点
+        \coordinate (H2) at (C2 -| H);
+
+        % 三角形O-H-C1
+        \draw[fill=myPurple, opacity=0.6] (O) -- (H) -- (C1) -- cycle;
+        % 三角形C1-H-C2
+        \draw[fill=myPurple, opacity=0.6] (C2) -- (H2) -- (C1) -- cycle;
+
+        % 角A-O-C1を表す扇形
+        \draw (H) -- (O) -- (C1) pic [fill=cyan!50, angle radius=9mm, "$\theta$"] {angle = H--O--C1};
+        % 角C1-O-C2を表す扇形
+        \draw (C1) -- (O) -- (C2) pic [fill=magenta!40, angle radius=9mm] {angle = C1--O--C2};
+        % 角C1-H-C2を表す扇形
+        \draw (H2) -- (C1) -- (C2) pic [fill=cyan!60, angle radius=2mm] {angle = H2--C1--C2};
+
+        % 直角O-H-C1
+        \draw (O) -- (H) -- (C1) pic [fill=lightgray, angle radius=1.25mm] {right angle = O--H--C1};
+        % 直角O-C1-C2
+        \draw (O) -- (C1) --(C2) pic [fill=lightgray, angle radius=0.9mm] {right angle = O--C1--C2};
+        % 直角C1-H2-C2
+        \draw (C1) -- (H2) -- (C2) pic [fill=lightgray, angle radius=0.75mm] {right angle = C1--H2--C2};
+
+        % C1からC2を結ぶ円弧
+        \draw[magenta, thick] (C1) arc (30:40:1cm) node [midway,sloped, below] {$d\theta$};
+
+        % C1からH2の高さを表すベクトル
+        \draw[->, -Straight Barb, semithick] ($(C1)+ (0.05, 0)$) -- ($(H2)+(0.05,0)$) node [midway, right] {$d\theta\cos \theta$};
+
+        % sin\thetaを表すベクトル
+        \draw [<->, Straight Barb-, semithick, shorten <=0.1em] to ($(C1)+(0.05,0)$) -- ($(H)+(0.05,0)$) node [midway, right] { $\sin \theta$ };
+      \end{tikzpicture}
+    }
+  \end{minipage}%
+  \begin{minipage}{0.5\hsize}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}[scale=3]
+        \coordinate (O) at (0,0);
+        \coordinate (C1) at (30:1cm);
+        \coordinate (C2) at (40:1cm);
+        \coordinate (H) at (C1 |- O);
+        % Hのx座標とC2のy座標を持つ点
+        \coordinate (H2) at (C2 -| H);
+
+        % 三角形O-H-C1
+        \draw[fill=myPurple, opacity=0.6] (O) -- (H) -- (C1) -- cycle;
+        % 三角形C1-H-C2
+        \draw[fill=myPurple, opacity=0.6] (C2) -- (H2) -- (C1) -- cycle;
+
+        % 角H-O-C1を表す扇形
+        \draw (H) -- (O) -- (C1) pic [fill=cyan!50, angle radius=9mm, "$\theta$"] {angle = H--O--C1};
+        % 角C1-O-C2を表す扇形
+        \draw (C1) -- (O) -- (C2) pic [fill=magenta!40, angle radius=9mm] {angle = C1--O--C2};
+        % 角C1-H-C2を表す扇形
+        \draw (H2) -- (C1) -- (C2) pic [fill=cyan!60, angle radius=2mm] {angle = H2--C1--C2};
+
+        % 直角O-H-C1
+        \draw (O) -- (H) -- (C1) pic [fill=lightgray, angle radius=1.25mm] {right angle = O--H--C1};
+        % 直角O-C1-C2
+        \draw (O) -- (C1) --(C2) pic [fill=lightgray, angle radius=0.9mm] {right angle = O--C1--C2};
+        % 直角C1-H2-C2
+        \draw (C1) -- (H2) -- (C2) pic [fill=lightgray, angle radius=0.75mm] {right angle = C1--H2--C2};
+
+        % C1からC2を結ぶ円弧
+        \draw[magenta, thick] (C1) arc (30:40:1cm) node [midway,sloped, below] {$d\theta$};
+
+        % C2からH2の幅を表すベクトル
+        \draw[<-, Straight Barb-, semithick] ($(C2)+ (0, 0.05)$) -- ($(H2)+(0,0.05)$) node [midway, above] {$d\theta\sin \theta$};
+
+        % cos\thetaを表すベクトル
+        \draw [<-, Straight Barb-, semithick] to ($(H)-(0,0.05)$) -- ($(O)-(0,0.05)$) node [midway, below] { $\cos \theta$ };
+      \end{tikzpicture}
+    }
+  \end{minipage}
+\end{figure}
+
+\subsubsection{$\sin$の微分}
+
+三角形の高さは、$d\theta\cos\theta$だけ増えているので、
+
+\begin{equation}
+  \sin (\theta +d\theta) = \origFn{\sin\theta} + \derivFn{\cos\theta} d\theta
+\end{equation}
+
+\begin{theorem}{$\sin$関数の微分}
+  \LARGE
+  \begin{equation}
+    \frac{d}{d\theta}\sin\theta = \cos\theta
+  \end{equation}
+\end{theorem}
+
+\subsubsection{$\cos$の微分}
+
+三角形の底辺の長さは、$d\theta\sin\theta$だけ減っているので、
+
+\begin{align}
+  \cos (\theta +d\theta) & = \cos\theta - \sin\theta d\theta                       \\
+  \cos (\theta +d\theta) & = \origFn{\cos\theta} + (\derivFn{-\sin\theta}) d\theta
+\end{align}
+
+\begin{theorem}{$\cos$関数の微分}
+  \LARGE
+  \begin{equation}
+    \frac{d}{d\theta}\cos\theta = -\sin\theta
+  \end{equation}
+\end{theorem}
 
 \subsection{ネイピア数}
 
