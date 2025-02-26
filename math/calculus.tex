@@ -1831,6 +1831,116 @@ $y=\log x$は$x=e^y$の逆関数であるから、$e^y$の微分$e^y$の逆数�
   \end{equation}
 \end{theorem}
 
+\subsection{対数微分法}
+
+\subsubsection{真数が関数である自然対数の微分}
+
+$y=\log f(x)$の微分は、対数微分法と呼ばれる微分テクニックの原理となる。
+
+この微分は、$t=f(x)$として合成関数の微分を考えることで計算できる。
+
+\begin{align}
+  \dfrac{d}{dx}\log f(x) & = \dfrac{dy}{dt} \cdot \dfrac{dt}{dx}         \\
+                         & = \dfrac{d}{dt}\log t \cdot \dfrac{d}{dx}f(x) \\
+                         & = \dfrac{1}{t} \cdot f'(x)                    \\
+                         & = \dfrac{1}{f(x)} \cdot f'(x)                 \\
+                         & = \dfrac{f'(x)}{f(x)}
+\end{align}
+
+\begin{theorem}{真数が関数である自然対数の微分}
+  \LARGE
+  \begin{equation}
+    \dfrac{d}{dx}\log f(x) = \dfrac{f'(x)}{f(x)}
+  \end{equation}
+\end{theorem}
+
+ここで、この式を$f'(x) = \ldots$の形に直してみよう。
+
+\begin{align}
+  f'(x) = f(x) \cdot \dfrac{d}{dx}\log f(x)
+\end{align}
+
+関数$f(x)$の微分$f'(x)$は、$\log$を取ってから微分したもの$\dfrac{d}{dx}\log f(x)$に、元の関数$f(x)$をかけることでも計算できることがわかる。
+
+\begin{theorem}{対数微分法の原理}
+  \newline
+  $\log$を取ってから微分したものに元の関数をかける操作は、微分することと同じになる。
+  \LARGE
+  \begin{equation}
+    f'(x) = f(x) \cdot \left(\log f(x)\right)'
+  \end{equation}
+\end{theorem}
+
+この原理によって、$f(x)$の微分計算を、$\log f(x)$の微分計算に置き換えることが可能になる。
+
+対数を取ることで、対数の性質が使えるようになるため、微分が簡単になることがある。そんなときにこの原理が役に立つ。
+
+\subsubsection{対数微分法でライプニッツ則（関数の積の微分）を導く}
+
+$f(x)g(x)$の微分を、対数経由で計算してみよう。
+
+\vskip\baselineskip
+
+まず、$\log (f(x)g(x))$の微分は、「積の対数が対数の和になる」という対数の性質を用いて、次のように計算できる。
+
+\begin{align}
+  \dfrac{d}{dx} \log (f(x)g(x)) & = \dfrac{d}{dx} \left(\log f(x) + \log g(x)\right)  \\
+                                & = \dfrac{d}{dx} \log f(x) + \dfrac{d}{dx} \log g(x) \\
+                                & = \dfrac{f'(x)}{f(x)} + \dfrac{g'(x)}{g(x)}         \\
+                                & = \dfrac{f'(x)g(x) + f(x)g'(x)}{f(x)g(x)}
+\end{align}
+
+対数微分法の原理より、この式に$f(x)g(x)$をかけたものが、$f(x)g(x)$の微分になる。
+
+\begin{align}
+  (f(x)g(x))' & = f(x)g(x) \cdot \dfrac{d}{dx} \log (f(x)g(x))                             \\
+              & = \cancel{f(x)g(x)} \cdot \dfrac{f'(x)g(x) + f(x)g'(x)}{\cancel{f(x)g(x)}} \\
+              & = f'(x)g(x) + f(x)g'(x)
+\end{align}
+
+これは、関数の積の微分公式である、ライプニッツ則の式に一致している。
+
+\subsubsection{対数微分法で分数関数の微分（関数の商の微分）を考える}
+
+続いて、$\dfrac{f(x)}{g(x)}$の微分も対数微分法で計算してみよう。
+
+\vskip\baselineskip
+
+$\log \dfrac{f(x)}{g(x)}$の微分は、「商の対数が対数の差になる」という対数の性質を用いて、次のように計算できる。
+
+\begin{align}
+  \dfrac{d}{dx} \log \dfrac{f(x)}{g(x)} & = \dfrac{d}{dx} \left(\log f(x) - \log g(x)\right)  \\
+                                        & = \dfrac{d}{dx} \log f(x) - \dfrac{d}{dx} \log g(x) \\
+                                        & = \dfrac{f'(x)}{f(x)} - \dfrac{g'(x)}{g(x)}         \\
+                                        & = \dfrac{f'(x)g(x) - f(x)g'(x)}{f(x)g(x)}
+\end{align}
+
+対数微分法の原理より、この式に$\dfrac{f(x)}{g(x)}$をかけたものが、$\dfrac{f(x)}{g(x)}$の微分になる。
+
+\begin{align}
+  \left(\dfrac{f(x)}{g(x)}\right)' & = \dfrac{f(x)}{g(x)} \cdot \dfrac{d}{dx} \log \dfrac{f(x)}{g(x)}                     \\
+                                   & = \dfrac{\cancel{f(x)}}{g(x)} \cdot \dfrac{f'(x)g(x) - f(x)g'(x)}{\cancel{f(x)}g(x)} \\
+                                   & = \dfrac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}
+\end{align}
+
+\begin{theorem}{分数関数の微分}
+  \LARGE
+  \begin{equation}
+    \left(\dfrac{f(x)}{g(x)}\right)' = \dfrac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}
+  \end{equation}
+\end{theorem}
+
+\subsubsection{関数の積・商の微分の比較}
+
+対数を取ってから微分すると、ライプニッツ則と分数関数の微分の違いがシンプルに表現される。
+
+\begin{alignat}{3}
+   & \dfrac{d}{dx} \log \left(f(x)g(x)\right) & = \dfrac{f'(x)}{f(x)} + \dfrac{g'(x)}{g(x)} \\
+   & \dfrac{d}{dx} \log \dfrac{f(x)}{g(x)}    & = \dfrac{f'(x)}{f(x)} - \dfrac{g'(x)}{g(x)}
+\end{alignat}
+
+あとは、これらに$f(x)g(x)$や$\dfrac{f(x)}{g(x)}$をかけることで、元の関数の微分の式が導ける。
+
 \section{1変数関数の積分}
 
 積分とは、「部分を積み重ねる」演算である。
