@@ -1743,7 +1743,7 @@ $t=kx$とおくと、
                  & = ke^{kx}
 \end{align}
 
-となり、$e^{kx}$自体は変わらず、指数$k$が$e$の肩から「降りてくる」形になる。
+となり、$e^{kx}$自体は変わらず、指数の係数$k$が$e$の肩から「降りてくる」形になる。
 
 \begin{theorem}{ネイピア数を底とする指数関数の微分（指数が定数倍されている場合）}
   \newline
@@ -1751,6 +1751,26 @@ $t=kx$とおくと、
   \LARGE
   \begin{equation}
     \dfrac{d}{dx}e^{kx} = ke^{kx}
+  \end{equation}
+\end{theorem}
+
+\subsubsection{指数が関数の場合}
+
+指数が関数になっている場合$y=e^{f(x)}$の微分も、合成関数の微分を使って考えればよい。
+
+$t=f(x)$とおくと、
+
+\begin{align}
+  \dfrac{dy}{dx} & = \dfrac{dy}{dt} \cdot \dfrac{dt}{dx}      \\
+                 & = \dfrac{d}{dt}e^t \cdot \dfrac{d}{dx}f(x) \\
+                 & = e^t \cdot f'(x)                          \\
+                 & = e^{f(x)} \cdot f'(x)
+\end{align}
+
+\begin{theorem}{ネイピア数を底とする指数関数の微分（指数が関数の場合）}
+  \LARGE
+  \begin{equation}
+    \dfrac{d}{dx}e^{f(x)} = f'(x)e^{f(x)}
   \end{equation}
 \end{theorem}
 
