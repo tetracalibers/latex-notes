@@ -1754,6 +1754,40 @@ $t=kx$とおくと、
   \end{equation}
 \end{theorem}
 
+\subsection{一般の指数関数の微分}
+
+指数関数の底の変換公式より、$a$を底とする指数関数の微分は、ネイピア数$e$を底とする指数関数の微分（指数が定数倍されている場合）に帰着できる。
+
+\begin{review}
+  指数関数の底の変換公式
+  \begin{equation}
+    a^x = b^{(\log_b a)x}
+  \end{equation}
+\end{review}
+
+指数関数の底の変換公式において、$b=e$の場合を考えると、
+
+\begin{equation}
+  a^x = e^{(\log a)x}
+\end{equation}
+
+となるので、指数が$\log a$倍された、$e$を底とする指数関数の微分として考えればよい。
+
+\begin{equation}
+  \begin{WithArrows}
+    \dfrac{d}{dx} a^x &= \dfrac{d}{dx} e^{(\log a)x} \Arrow{$\dfrac{d}{dx}e^{kx} = ke^{kx}$} \\
+    &= (\log a)e^{(\log a)x} \Arrow{$e^{(\log a)x} = a^x$} \\
+    &= (\log a)a^x
+  \end{WithArrows}
+\end{equation}
+
+\begin{theorem}{指数関数の微分}
+  \LARGE
+  \begin{equation}
+    \dfrac{d}{dx} a^x = a^x(\log a)
+  \end{equation}
+\end{theorem}
+
 \section{1変数関数の積分}
 
 積分とは、「部分を積み重ねる」演算である。
