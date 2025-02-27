@@ -1946,6 +1946,48 @@ $\log \dfrac{f(x)}{g(x)}$の微分は、「商の対数が対数の差になる�
 
 あとは、これらに$f(x)g(x)$や$\dfrac{f(x)}{g(x)}$をかけることで、元の関数の微分の式が導ける。
 
+\section{高階微分とテイラー展開}
+
+\subsection{高階微分}
+
+関数$f(x)$を微分したもの$f'(x)$をさらに微分して、その結果をさらに微分して…というように、「導関数の導関数」を繰り返し考えていくことを高階微分という。
+
+\vskip\baselineskip
+
+まずは、2回微分した場合について定義しよう。
+
+$f(x)$を2回微分したものは、ニュートン記法では$f''(x)$と表される。
+
+ライプニッツ記法で表現するには、次のように考えるとよい。
+
+\begin{equation}
+  \dfrac{d}{dx} \left( \dfrac{d}{dx}f(x) \right) = \left( \dfrac{d}{dx} \right)^2 f(x) = \dfrac{d^2}{dx^2} f(x)
+\end{equation}
+
+\begin{definition}{二階微分（二階導関数）}
+  \newline
+  関数$f(x)$を微分して得られた導関数$f'(x)$をさらに微分することを\hl{二階微分}といい、その結果得られた導関数を\hl{二階導関数}という。\\
+  二階導関数は、次のように表記される。
+  \LARGE
+  \begin{equation}
+    f''(x) = \dfrac{d^2}{dx^2} f(x)
+  \end{equation}
+\end{definition}
+
+$n$階微分も同様に定義される。
+
+$n$が大きな値になると、プライム記号をつける表記では$f''''''''(x)$のようになってわかりづらいので、$f^{(n)}(x)$のようにプライムの数$n$を添える記法がよく使われる。
+
+\begin{definition}{$n$階微分（$n$階導関数）}
+  \newline
+  関数$f(x)$を$n$回微分することを\hl{$n$階微分}といい、その結果得られた導関数を\hl{$n$階導関数}という。\\
+  $n$階導関数は、次のように表記される。
+  \LARGE
+  \begin{equation}
+    f^{(n)}(x) = \dfrac{d^n}{dx^n} f(x)
+  \end{equation}
+\end{definition}
+
 \section{1変数関数の積分}
 
 積分とは、「部分を積み重ねる」演算である。
