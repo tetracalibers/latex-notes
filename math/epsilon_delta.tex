@@ -1,0 +1,152 @@
+\documentclass[../math-imaging]{subfiles}
+
+\begin{document}
+
+\chapter{ε-δ論法と関数の極限}
+
+ここまでのこの本では、極限というものを厳密に定義していなかった。
+また、微分と積分において、イメージで導出できることを最重視し、厳密な議論を避けた箇所が多くある。
+
+\vskip\baselineskip
+
+厳密には、極限はε-δ論法によって定義され、微分積分の基礎理論は極限の議論に基づいている。
+ε-δ論法に踏み込んでいない私たちは、極限というものを語る言葉をまだ持ち合わせていない。
+
+\section{実数の基礎}
+
+厳密な理論を展開する上で、知っておくべき言葉の定義を行う。
+
+\subsection{区間}
+
+2つの実数の間の範囲は、区間と呼ばれる。
+
+\begin{definition}{区間}
+  \newline
+  実数全体の集合$\mathbb{R} $の部分集合のうち、$a<b$である実数$a$と$b$の間にあるすべての実数の集合を\hl{区間}という。
+\end{definition}
+
+区間は、端点を含むかどうかによって、開区間、閉区間、半開区間に分類される。
+
+\subsubsection{開区間}
+
+端点を含まない区間を開区間という。
+
+\begin{definition}{開区間}
+  $a \leq x \leq b$となる実数$x$の集合を\hl{開区間}といい、$(a,b)$と表す。
+\end{definition}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnumnum[rosepink]{-1.5}[a]{o}{1.5}[b]{o}
+
+      % 上中央にタイトルを表示
+      \node[above=2em, midway, deeppink!70!gray] at (current bounding box.north) {$(a,b) =  \{ x \in \mathbb{R}  \mid a < x < b \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlinfnum[rosepink]{1.5}[a]{o}
+
+      \node[above=2em, midway, deeppink!70!gray] at (current bounding box.north) {$(a,+\infty) =  \{ x \in \mathbb{R}  \mid a < x \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnuminf[rosepink]{-1.5}[a]{o}
+
+      \node[above=2em, midway, deeppink!70!gray] at (current bounding box.north) {$(-\infty, a) =  \{ x \in \mathbb{R}  \mid a > x \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\subsubsection{閉区間}
+
+端点を含まない区間を閉区間という。
+
+\begin{definition}{閉区間}
+  $a < x < b$となる実数$x$の集合を\hl{閉区間}といい、$[a,b]$と表す。
+\end{definition}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnumnum[capri]{-1.5}[a]{c}{1.5}[b]{c}
+
+      % 上中央にタイトルを表示
+      \node[above=2em, midway, capri!70!gray] at (current bounding box.north) {$[a,b] =  \{ x \in \mathbb{R}  \mid a \leq x \leq b \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlinfnum[capri]{1.5}[a]{c}
+
+      \node[above=2em, midway, capri!70!gray] at (current bounding box.north) {$[a,+\infty] =  \{ x \in \mathbb{R}  \mid a \leq x \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnuminf[capri]{-1.5}[a]{c}
+
+      \node[above=2em, midway, capri!70!gray] at (current bounding box.north) {$[-\infty, a] =  \{ x \in \mathbb{R}  \mid a \geq  x \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\subsubsection{半開区間}
+
+一方の端点を含み、他方の端点を含まない区間を半開区間という。
+
+\begin{definition}{半開区間}
+  次のような集合を\hl{半開区間}という。
+  \begin{itemize}
+    \item $a \leq x < b$となる実数$x$の集合を、$[a,b)$と表す。
+    \item $a < x \leq b$となる実数$x$の集合を、$(a,b]$と表す。
+  \end{itemize}
+\end{definition}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnumnum[princetonorange]{-1.5}[a]{o}{1.5}[b]{c}
+
+      % 上中央にタイトルを表示
+      \node[above=2em, midway, princetonorange!80!gray] at (current bounding box.north) {$[a,b) =  \{ x \in \mathbb{R}  \mid a \leq x < b \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnumnum[princetonorange]{-1.5}[a]{c}{1.5}[b]{o}
+
+      % 上中央にタイトルを表示
+      \node[above=2em, midway, princetonorange!80!gray] at (current bounding box.north) {$(a,b] =  \{ x \in \mathbb{R}  \mid a < x \leq b \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+
+
+\end{document}
