@@ -30,6 +30,10 @@
 % 別の場所で参照する数式以外は番号が付かないように
 \mathtoolsset{showonlyrefs=true}
 
+% 数学モードに変更することなくギリシャ文字を使う
+% （これがないと謎にエラーになる）
+\usepackage{textgreek}
+
 % 約分のためのキャンセル線
 \usepackage[thicklines]{cancel}
 \renewcommand{\CancelColor}{\color{Rhodamine}}
@@ -111,6 +115,8 @@
 
 \usepackage{witharrows} % 数式の間に矢印で説明を入れる
 \usepackage{annotate-equations}
+
+\usepackage{nl-interval} % 数直線上の区間を描く
 
 \usepackage[outline]{contour} % 文字の縁取り
 
