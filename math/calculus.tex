@@ -1948,7 +1948,7 @@ $\log \dfrac{f(x)}{g(x)}$の微分は、「商の対数が対数の差になる�
 
 \section{高階微分とテイラー展開}
 
-\subsection{高階微分}
+\subsection{高階微分とその表記}
 
 関数$f(x)$を微分したもの$f'(x)$をさらに微分して、その結果をさらに微分して…というように、「導関数の導関数」を繰り返し考えていくことを高階微分という。
 
@@ -1987,6 +1987,89 @@ $n$が大きな値になると、プライム記号をつける表記では$f'''
     f^{(n)}(x) = \dfrac{d^n}{dx^n} f(x)
   \end{equation}
 \end{definition}
+
+\subsection{冪関数の高階微分}
+
+$n$次の冪関数$f(x)=x^n$を$k$回微分すると、次のようになる。
+
+\begin{align}
+  f(x)       & = x^n                               \\
+  f'(x)      & = nx^{n-1}                          \\
+  f''(x)     & = n(n-1)x^{n-2}                     \\
+  f'''(x)    & = n(n-1)(n-2)x^{n-3}                \\
+  \vdots     &                                     \\
+  f^{(k)}(x) & = n(n-1)(n-2)\cdots(n-(k-1))x^{n-k} \\
+             & = n(n-1)(n-2)\cdots(n-k+1)x^{n-k}
+\end{align}
+
+ここで、$k=n$とすると、
+
+\begin{align}
+  f^{(n)}(x) & = n(n-1)(n-2)\cdots(n-n+1)x^{n-n} \\
+             & = n(n-1)(n-2)\cdots 1 \cdot x^0   \\
+             & = n(n-1)(n-2)\cdots 1             \\
+             & = n!
+\end{align}
+
+となり、$n$階微分した時点で定数$n!$になるので、これ以上微分すると$0$になる。
+
+\begin{equation}
+  f^{(n+1)}(x) = 0
+\end{equation}
+
+\begin{theorem}{$n$次冪関数の高階微分}
+  \newline
+  $n$次冪関数$f(x) = x^n$の$n$階微分は$n!$となり、$n+1$回以上微分すると$0$になる。
+  \LARGE
+  \begin{equation}
+    f(x) = x^n \Longrightarrow  \begin{aligned}
+      f^{(n)}(x)   & = n! \\
+      f^{(n+1)}(x) & = 0
+    \end{aligned}
+  \end{equation}
+\end{theorem}
+
+\subsection{指数関数の高階微分}
+
+ネイピア数を底とする指数関数$f(x)=e^x$は、何度微分しても変わらない関数である。
+
+\begin{align}
+  f(x)       & = e^x \\
+  f'(x)      & = e^x \\
+  f''(x)     & = e^x \\
+  f'''(x)    & = e^x \\
+  \vdots     &       \\
+  f^{(n)}(x) & = e^x
+\end{align}
+
+\begin{theorem}{ネイピア数を底とする指数関数の高階微分}
+  \newline
+  $e$を底とする指数関数$f(x) = e^x$の$n$階微分は変わらず$e^x$となる。
+  \LARGE
+  \begin{equation}
+    f(x) = e^{x} \Longrightarrow  f^{(n)}(x) = e^{x}
+  \end{equation}
+\end{theorem}
+
+指数が$k$倍されている場合$f(x)=e^{kx}$は、微分するたびに$k$が前に落ちてきて、$n$階微分すると$k^n$が前につくことになる。
+
+\begin{align}
+  f(x)       & = e^{kx}     \\
+  f'(x)      & = ke^{kx}    \\
+  f''(x)     & = k^2 e^{kx} \\
+  f'''(x)    & = k^3 e^{kx} \\
+  \vdots     &              \\
+  f^{(n)}(x) & = k^ne^{kx}
+\end{align}
+
+\begin{theorem}{ネイピア数を底とする指数関数の高階微分（指数が定数倍されている場合）}
+  \newline
+  $e$を底とし、指数が定数$k$倍された指数関数$f(x) = e^{kx}$の$n$階微分は$k^n e^{kx}$となる。
+  \LARGE
+  \begin{equation}
+    f(x) = e^{kx} \Longrightarrow  f^{(n)}(x) = k^n e^{kx}
+  \end{equation}
+\end{theorem}
 
 \section{1変数関数の積分}
 
