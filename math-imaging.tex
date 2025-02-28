@@ -65,6 +65,7 @@
 
 % === layout ===
 
+\usepackage{lipsum} % デバッグ用のダミーテキスト
 
 \usepackage{setspace} % 行間調整用
 
@@ -196,29 +197,50 @@
   #2
 }
 
-\definecolor{ProofColor}{HTML}{fbfbfb}
-\DeclareTColorBox{proof}{O{}}{
-  enhanced,
-  title={Proof},
-  coltitle=magenta!60!white,
-  attach boxed title to top left={
-    xshift=0mm, yshift*=-\tcboxedtitleheight/2,
-  },
-  colback={ProofColor},
+\definecolor{ProofColor}{HTML}{D2DAFF}
+\DeclareTColorBox{proof}{m}{%
+  empty,
+  grow sidewards by=-1em,
+  title={#1},
+  before title={Proof:~},
+  attach boxed title to top left,
   boxed title style={
-    colback=ProofColor,
-    boxrule=0pt,
-    frame hidden,
-  },
-  boxrule=0pt,
-  frame hidden,
-  left=5mm,
-  breakable,
-  overlay={
-    \draw[line width=5pt,magenta!40!white,opacity=0.2]
-      ([shift={(3mm,-\tcboxedtitleheight/2)}]interior.north west) 
-        -- ([shift={(3mm,\tcboxedtitleheight/2)}]interior.south west);
+    empty,
+    size=minimal,
+    toprule=2pt,
+    top=4pt,
+    overlay={
+      \draw[ProofColor,line width=2pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
     }
+  },
+  coltitle=ProofColor!70!black,
+  fonttitle=\bfseries,
+  before=\par\medskip\noindent,
+  parbox=false,
+  boxsep=0pt,
+  left=1em,
+  right=1.5em,
+  top=2.5em,
+  bottom=1em,
+  breakable,
+  pad at break*=0mm,
+  vfill before first,
+  overlay unbroken={
+    \draw[ProofColor,line width=1pt, dashed] 
+      ([yshift=-1pt]title.north east) 
+        --([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east) 
+        --([xshift=-0.5pt]frame.south east)
+        --(frame.south west); 
+  },
+  overlay first={
+    \draw[ProofColor,line width=1pt, dashed]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
+  },
+  overlay middle={
+    \draw[ProofColor,line width=1pt, dashed] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
+  },
+  overlay last={
+    \draw[ProofColor,line width=1pt, dashed] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
+  },%
 }
 
 \definecolor{mathLabelColor}{HTML}{FF87CA}
