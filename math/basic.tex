@@ -4,6 +4,195 @@
 
 \chapter{基礎数学}
 
+\section{絶対値}
+
+\subsection{数直線上の原点からの距離}
+
+実数$a$の絶対値は、数直線上の原点$0$から$a$までの距離として定義される。
+
+$3$と$-3$を例に考えると、どちらも絶対値は$3$となる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      _txtnode/.style={text height=1.5em},
+    ]
+    \def\xmin{-5}
+    \def\xmax{5}
+    \def\a{-3}
+    \def\b{3}
+    \def\pointr{2.5pt}
+    \def\h{3}
+
+    \draw[->] (\xmin,\h) -- (\xmax,\h) node[right] {$\mathbb{R} $};
+
+    \fill[RoyalBlue] (\a,\h) circle (\pointr) node[below, _txtnode] {\large$-3$};
+    \fill[RoyalBlue] (\b,\h) circle (\pointr) node[below, _txtnode] {\large$3$};
+    \fill (0, \h) circle (\pointr) node[below, _txtnode] {$0$};
+
+    \draw[<->, Straight Barb-Straight Barb, magenta, yshift=1.5em, shorten >=0.1em, very thick] (\a,\h) -- (0,\h) node[midway, above, _txtnode] {\large$3$};
+    \draw[<->, Straight Barb-Straight Barb, magenta, yshift=1.5em, shorten <=0.1em, very thick] (0,\h) -- (\b,\h) node[midway, above, _txtnode] {\large$3$};
+  \end{tikzpicture}
+\end{center}
+
+$-3$の絶対値が$3$であるように、負の数の絶対値は元の数から符号を取ったもの（元の数を$-1$倍したもの）となる。
+
+まとめると、
+
+\begin{itemize}
+  \item 正の数の絶対値は元の数そのまま（$0$の絶対値もそのまま$0$）
+  \item 負の数の絶対値は元の数の$-1$倍
+\end{itemize}
+
+というように、絶対値は場合分けして定義される。
+
+\begin{definition}{絶対値}
+  \newline
+  実数$a$について、$a$の\hl{絶対値}を次のように定義する。
+  \LARGE
+  \begin{align}
+    |a| = \begin{cases}
+            a  & (a \geq  0) \\
+            -a & (a < 0)
+          \end{cases}
+  \end{align}
+\end{definition}
+
+負の数の場合は、符号を取って正の数にしたものを絶対値とすることから、絶対値が負の数になることはない。
+
+\begin{theorem}{絶対値は常に非負}
+  \newline
+  実数$a$の絶対値$|a|$は、常に$0$以上の数となる。
+  \LARGE
+  \begin{align}
+    |a| \geq 0
+  \end{align}
+  \normalsize
+  等号が成立するのは、$a=0$の場合である。
+\end{theorem}
+
+\subsection{数直線上の2点間の距離}
+
+\wip
+
+\subsection{max関数による表現}
+
+実数$a$の絶対値は、「$a$と$-a$のうち大きい方を選ぶ」という考え方でも表現できる。
+
+たとえば、$3$と$-3$の絶対値はともに$3$だが、これは$3$と$-3$のうち大きい方（正の数の方）を絶対値として採用した、という見方もできる。
+
+\begin{definition}{$\max$関数による絶対値の表現}
+  \newline
+  実数$a$について、$a$の\hl{絶対値}を次のように定義することもできる。
+  \LARGE
+  \begin{align}
+    |a| = \max\{a, -a\}
+  \end{align}
+\end{definition}
+
+ここで登場した$\max$は、「複数の数の中から最大のものを選ぶ」という操作を表している。
+
+\subsection{三角不等式}
+
+2つの実数$a$と$b$の「絶対値の和」と「和の絶対値」の間には、次のような大小関係がある。
+
+\begin{theorem}{絶対値に関する三角不等式}
+  \newline
+  任意の実数$a$と$b$について、次の不等式が成り立つ。
+  \LARGE
+  \begin{align}
+    |a + b| \leq |a| + |b|
+  \end{align}
+\end{theorem}
+
+\begin{supplnote}
+  この形の不等式は、実は今後登場するベクトルの長さ（ノルム）や、複素数の絶対値に対しても成り立つ。
+  三角不等式と呼ばれる所以は、ベクトルに関する三角不等式で明らかになる。
+\end{supplnote}
+
+絶対値の定義から、この不等式の証明を考えてみよう。
+
+\vskip\baselineskip
+
+$a$の絶対値$|a|$は、$a$から符号を取り払ったものであるから、逆に絶対値$|a|$に$+$か$-$の符号をつけることで、元の数$a$に戻すことができる。
+
+$a$が負の数だったなら、$-|a|$とすれば$a$に戻る。正の数だったなら、$|a|$がそのまま$a$に一致する。
+
+\begin{center}
+  \begin{tikzpicture}[
+      _txtnode/.style={text height=1.5em},
+    ]
+    \def\xmin{-5}
+    \def\xmax{5}
+    \def\a{-3}
+    \def\b{3}
+    \def\pointr{2.5pt}
+    \def\h{3}
+
+    \draw[->] (\xmin,\h) -- (\xmax,\h) node[right] {$\mathbb{R} $};
+
+    \fill[RoyalBlue] (\a,\h) circle (\pointr) node[below, _txtnode] {\large$-|a|$};
+    \fill[RoyalBlue] (\b,\h) circle (\pointr) node[below, _txtnode] {\large$|a|$};
+    \fill (0, \h) circle (\pointr) node[below, _txtnode] {$0$};
+
+    \draw[Straight Barb-, cyan, yshift=1.5em, shorten >=0.1em, very thick] (\a,\h) -- (0,\h) node[midway, above, _txtnode] {\large$|a|$};
+    \draw[-Straight Barb, magenta, yshift=1.5em, shorten <=0.1em, very thick] (0,\h) -- (\b,\h) node[midway, above, _txtnode] {\large$|a|$};
+  \end{tikzpicture}
+\end{center}
+
+$a$は原点からの距離が$|a|$の場所にあり、$a$は$-|a|$か$|a|$のどちらかに一致する。
+
+どちらに一致するかはわからないので、次のような不等式で表しておく。
+
+\begin{equation}
+  -|a| \leq a \leq |a|
+\end{equation}
+
+$b$についても、同じように考えることができる。
+
+\begin{equation}
+  -|b| \leq b \leq |b|
+\end{equation}
+
+これらの不等式を使って、さらに式変形を行うことで、三角不等式を導くことができる。
+
+\begin{proof}{絶対値に関する三角不等式}
+  絶対値の定義から、次の不等式が成り立つ。
+  \begin{align}
+    -|a| \leq a \leq |a| \\
+    -|b| \leq b \leq |b|
+  \end{align}
+
+  両辺を足し合わせて、次の不等式を得る。
+  \begin{align}
+    -(|a| + |b|) \leq a + b \leq |a| + |b|
+  \end{align}
+
+  $-(|a| + |b|) \leq a + b$の両辺を$-1$倍することで、次の関係も得られる。
+  （不等式の両辺を$-1$倍すると、不等号の向きが逆転することに注意）
+  \begin{align}
+    |a| + |b| \geq -(a + b)
+  \end{align}
+
+  ここまでで得られた、$a+b$についての不等式をまとめると、次のようになる。
+  \begin{align}
+    |a| + |b| & \geq a+b      \\
+    |a| + |b| & \geq -(a + b)
+  \end{align}
+
+  一方、$a+b$の絶対値は、定義より次のように表せる。
+  \begin{align}
+    |a + b| = \max\{a + b, -(a + b)\}
+  \end{align}
+
+  $a+b$と$-(a+b)$のうち大きい方が$|a+b|$となるが、$a + b$と$-(a+b)$はどちらも$|a| + |b|$以下となることがすでに示されているので、
+
+  \begin{equation}
+    |a + b| \leq |a| + |b|
+  \end{equation}
+
+  となり、定理は示された。$\qed$
+\end{proof}
+
 \section{三角関数}
 
 \subsection{円周率}
