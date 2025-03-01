@@ -449,4 +449,64 @@ $\varepsilon$を小さくしていくと、$\varepsilon$による$\alpha$周辺�
   このとき、$\alpha$を数列$\{a_n\}$の\hl{極限値}という。
 \end{definition}
 
+$\varepsilon-\delta$論法によるこの定義を用いることで、数列の収束に関する諸性質を証明できるようになる。
+
+\subsection{数列の極限の一意性}
+
+数列が最終的に複数の極限値に散らばるとしたら、それは収束と呼べるだろうか？
+
+$\varepsilon-\delta$論法による収束の定義は、そのような状況をきちんと除外するようになっている。
+
+\vskip\baselineskip
+
+数列が複数の値に収束することはない。このことを示すのが、次の定理である。
+
+\begin{theorem}{数列の極限の一意性}
+  \newline
+  数列$\{a_n\}$が収束するならば、その極限値はただ1つに定まる。
+\end{theorem}
+
+\begin{proof}{数列の極限の一意性}
+  数列$\{a_n\}$が$\alpha$と$\beta$の2つの極限値を持つと仮定する。
+
+  \vskip\baselineskip
+
+  このとき、任意の正の数$\varepsilon$に対して、
+  \begin{align}
+    n \geq N_1 \quad & \Longrightarrow \quad |a_n - \alpha| < \varepsilon \\
+    n \geq N_2 \quad & \Longrightarrow \quad |a_n - \beta| < \varepsilon
+  \end{align}
+  が成り立つような自然数$N_1$と$N_2$が存在する。
+
+  \vskip\baselineskip
+
+  ここで、$N = \max\{N_1, N_2\}$とおくと、$n \geq N$のとき、$N_1$と$N_2$の大きい方が$n$以下に収まることから、$n \geq N_1$と$n \geq N_2$がともに成り立つ。
+
+  \vskip\baselineskip
+
+  よって、$n \geq N$のとき、$|\alpha - \beta|$を考えると、
+  \begin{equation}
+    \begin{WithArrows}
+      |\alpha - \beta| & = |\alpha - \beta + \wavelabelmath{a_n - a_n}{$0$}| \\
+      & = |(\alpha - a_n) + (a_n - \beta)| \Arrow{三角不等式} \\
+      & \leq |\alpha - a_n| + |a_n - \beta| \\
+      &= |-(a_n - \alpha)| + |a_n - \beta| \Arrow{$|-A| = |A|$} \\
+      &= |a_n - \alpha| + |a_n - \beta| \Arrow{$n_1 \geq N$と$n_2 \geq N$より} \\
+      & < \varepsilon + \varepsilon \\
+      & = 2\varepsilon \\
+      \therefore \quad |\alpha - \beta| & < 2\varepsilon
+    \end{WithArrows}
+  \end{equation}
+
+  ここで、$\varepsilon$は任意の正の数であるから、$2\varepsilon$も任意の正の数をとりうる。
+
+  よって、「有限値$\varepsilon$の不等式による一致の表現」より、$|\alpha - \beta| < 2\varepsilon$から、
+  \begin{equation}
+    \alpha = \beta
+  \end{equation}
+  がいえる。
+
+  これで、数列$\{a_n\}$の極限値はただ1つに定まることが示された。$\qed$
+\end{proof}
+
 \end{document}
