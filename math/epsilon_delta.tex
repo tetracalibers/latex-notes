@@ -275,6 +275,22 @@ $|a-b|$が$0$でないという状況下では、あらゆる実数$\varepsilon$
   したがって、$a=b$でなければならない。$\qed$
 \end{proof}
 
+なお、$|a-b|<\varepsilon$の右辺を定数倍し、$|a-b|<k\varepsilon$などとしても、この定理は成り立つ。
+
+\begin{emphabox}
+  定理「有限値$\varepsilon $の不等式による一致の表現」は、定数を$k$として、次のように書き換えることもできる。
+  \large
+  \begin{equation}
+    |a-b|<k\varepsilon \quad \Longrightarrow  \quad a=b
+  \end{equation}
+\end{emphabox}
+
+この場合、証明で$\varepsilon_0 = \dfrac{|a-b|}{2k}$とおけば、まったく同様の議論が成り立つからだ。
+
+\vskip\baselineskip
+
+実際に、$|a-b|<2\varepsilon$とした場合のこの定理を、後に登場する数列の極限の一意性の証明で使うことになる。
+
 \subsection{ε- N論法による数列の収束}
 
 $\varepsilon - \delta$論法は、数列の極限に適用する場合、$\varepsilon - N$論法と呼ばれることが多い。
@@ -498,13 +514,10 @@ $\varepsilon-\delta$論法による収束の定義は、そのような状況を
     \end{WithArrows}
   \end{equation}
 
-  ここで、$\varepsilon$は任意の正の数であるから、$2\varepsilon$も任意の正の数をとりうる。
-
-  よって、「有限値$\varepsilon$の不等式による一致の表現」より、$|\alpha - \beta| < 2\varepsilon$から、
+  したがって、「有限値$\varepsilon$の不等式による一致の表現」より、
   \begin{equation}
     \alpha = \beta
   \end{equation}
-  がいえる。
 
   これで、数列$\{a_n\}$の極限値はただ1つに定まることが示された。$\qed$
 \end{proof}
