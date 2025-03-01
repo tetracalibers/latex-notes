@@ -345,8 +345,8 @@ frame code={
   grow sidewards by=-5mm,
   beforeafter skip=\baselineskip,
   frame code={%
-    \draw[dashed,line width=1pt,#1] ($(frame.north west)!0.3!(frame.north east)$) -- (frame.north west) -- ($(frame.north west)!0.3!(frame.south west)$);
-    \draw[dashed,line width=1pt,#1] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east) -- ($(frame.south east)!0.3!(frame.north east)$);
+    \draw[line width=1pt,#1] ($(frame.north west)!0.3!(frame.north east)$) -- (frame.north west) -- ($(frame.north west)!0.3!(frame.south west)$);
+    \draw[line width=1pt,#1] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east) -- ($(frame.south east)!0.3!(frame.north east)$);
     \draw[rosepink, fill=carnationpink, decorate, decoration={footprints,foot length=7pt,foot of=felis silvestris, foot angle=5, foot sep=2pt}] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east);
   }
 }
