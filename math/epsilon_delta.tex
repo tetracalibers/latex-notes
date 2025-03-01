@@ -522,4 +522,92 @@ $\varepsilon-\delta$論法による収束の定義は、そのような状況を
   これで、数列$\{a_n\}$の極限値はただ1つに定まることが示された。$\qed$
 \end{proof}
 
+\subsection{数列の極限の線形性}
+
+数列の極限についても、線形性が成り立つ。
+
+\begin{theorem}{数列の極限の線形性}
+  \newline
+  数列$\{a_n\}$と$\{b_n\}$がともに収束するとき、$c$を実数とすると、数列$\{ca_n + cb_n\}$も収束する。\\
+  そして、その極限値は次のようになる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} (ca_n + cb_n) = c\lim_{n \to \infty} a_n + c\lim_{n \to \infty} b_n
+  \end{equation}
+\end{theorem}
+
+この線形性の式は、数列の和の極限と、数列の定数倍の極限を組み合わせたものになっている。
+
+それぞれ証明することで、この線形性の式が成り立つことを確認しよう。
+
+\subsubsection{数列の和の極限}
+
+\begin{theorem}{数列の和の極限}
+  \newline
+  数列$\{a_n\}$と$\{b_n\}$がともに収束するとき、数列$\{a_n + b_n\}$も収束する。\\
+  そして、その極限値は次のようになる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n
+  \end{equation}
+\end{theorem}
+
+最終的に次のような関係を導くことで、この定理が証明される。
+
+\begin{equation}
+  n \geq N \quad \Longrightarrow \quad |(a_n + b_n) - (\alpha + \beta)| < \varepsilon
+\end{equation}
+
+$|(a_n + b_n) - (\alpha + \beta)|$は、$a_n + b_n$と$\alpha + \beta$がどれだけ近いか、すなわち$a_n + b_n$と$\alpha + \beta$の誤差を表している。
+そして、この誤差を$\varepsilon$より小さくする必要がある。
+
+そのためには、$a_n$と$\alpha$の誤差を$\dfrac{\varepsilon}{2}$より小さくし、$b_n$と$\beta$の誤差も$\dfrac{\varepsilon}{2}$より小さくできればよい。
+
+\begin{proof}{数列の和の極限}
+  $\displaystyle\lim_{n \to \infty} a_n = \alpha$、$\displaystyle\lim_{n \to \infty} b_n = \beta$とおき、$\varepsilon$を任意の正の数とする。
+
+  \vskip\baselineskip
+
+  このとき、$\displaystyle\lim_{n \to \infty} a_n = \alpha$より、次のような自然数$N_1$が存在する。
+  \begin{equation}
+    n \geq N_1 \quad \Longrightarrow \quad |a_n - \alpha| < \frac{\varepsilon}{2}
+  \end{equation}
+
+  同様に、$\displaystyle\lim_{n \to \infty} b_n = \beta$より、次のような自然数$N_2$が存在する。
+  \begin{equation}
+    n \geq N_2 \quad \Longrightarrow \quad |b_n - \beta| < \frac{\varepsilon}{2}
+  \end{equation}
+
+  ここで、$N = \max\{N_1, N_2\}$とおくと、$n \geq N$のとき、$n \geq N_1$と$n \geq N_2$がともに成り立つ。
+  \begin{equation}
+    n \geq N \quad \Longrightarrow \quad |a_n - \alpha| < \frac{\varepsilon}{2} \quad \text{かつ} \quad |b_n - \beta| < \frac{\varepsilon}{2}
+  \end{equation}
+
+  よって、$n \geq N$のとき、三角不等式より、
+  \begin{align}
+    |(a_n + b_n) - (\alpha + \beta)|                  & = |(a_n - \alpha) + (b_n - \beta)|              \\
+                                                      & \leq |a_n - \alpha| + |b_n - \beta|             \\
+                                                      & < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} \\
+                                                      & = \varepsilon                                   \\
+    \therefore \quad |(a_n + b_n) - (\alpha + \beta)| & < \varepsilon
+  \end{align}
+  という不等式が成り立つことで、$\displaystyle\lim_{n \to \infty} (a_n + b_n) = \alpha + \beta$が示された。$\qed$
+\end{proof}
+
+数列$\{a_n\}$が$\alpha$に収束するということは、$\varepsilon-N$論法による数列の収束の定義より、
+
+\begin{equation}
+  n \geq N \Longrightarrow |a_n - \alpha| < \varepsilon
+\end{equation}
+
+という関係が成り立つということである。
+
+ここでの$\varepsilon$は「任意の」正の数であるから、$\varepsilon$の部分にどんな正の数を当てはめても、この関係が成り立つことになる。
+
+数列の和の極限の証明では、$\varepsilon$の部分に$\dfrac{\varepsilon}{2}$を当てはめた関係を利用している。
+
+\subsubsection{数列の定数倍の極限}
+
+\wip
+
 \end{document}
