@@ -275,4 +275,178 @@ $|a-b|$が$0$でないという状況下では、あらゆる実数$\varepsilon$
   したがって、$a=b$でなければならない。$\qed$
 \end{proof}
 
+\subsection{ε- N論法による数列の収束}
+
+$\varepsilon - \delta$論法は、数列の極限に適用する場合、$\varepsilon - N$論法と呼ばれることが多い。
+
+「数列が$\{a_n\}$が$\alpha$に収束する」ことの$\varepsilon - N$論法による表現を、まずはイメージで掴んでみよう。
+
+\froufrou
+
+まず、$\alpha$の周りに、両側それぞれ$\varepsilon$だけ広げた区間を考える。
+
+$\varepsilon$は正の数ならなんでもよいとすれば、$\varepsilon$を小さな数に設定し、いくらでも区間を狭めることができる。
+
+そして、「ここから先の項はすべて区間内に収まる」といえる位置に、$N$という印をつけておく。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\ep{0.5} % ε
+    \def\N{3.75} % N
+
+    \def\xmax{9} % max x axis
+    \def\ymax{3.5}
+    \def\A{2.75} % 振幅を大きく
+    \def\om{(7.5*360/(0.94*\xmax))} % 周期を短く（振動数を上げる）
+    \def\t{1800/(0.94*\xmax)}
+    \def\T{2.0} % 減衰をやや速める
+    \def\samp{100} % number of samples
+    %\def\tick#1#2{\draw[thick] (#1)++(#2:0.12) --++ (#2-180:0.24)}
+
+    % AXIS
+    \draw[axis] (0,-\ymax) -- (0,\ymax) node[above] {\large$a_n$};
+    \draw[axis] (-0.2*\ymax,-\ymax + 1) -- (\xmax,-\ymax +1) node[right] {\large$n$};
+    %\tick{0,\A}{0} node[left=-1,scale=0.9] {$A_0$};
+    %\tick{0,-\A}{0} node[left=-1,scale=0.9] {$-A_0$};
+
+    % ε区間
+    \fill[carnationpink, fill opacity=0.5] ($($(0,\A)!.5!(0,-\A)$) + (0, \ep)$) rectangle ($($(\xmax,\A)!.5!(\xmax,-\A)$) - (0, \ep)$);
+    \draw[magenta, thick] ($(0,\A)!.5!(0,-\A)$) --++ (\xmax,0);
+    \draw[carnationpink] ($(0,\A)!.5!(0,-\A) - (0,\ep)$) --++ (\xmax,0);
+    \draw[carnationpink] ($(0,\A)!.5!(0,-\A) + (0,\ep)$) --++ (\xmax,0);
+
+    % ε
+    \draw[<->, hotpink, xshift=0.5em] ($(\xmax,\A)!.5!(\xmax,-\A)$) -- ($(\xmax,\A)!.5!(\xmax,-\A) - (0,\ep)$) node[midway, right] {$\varepsilon$};
+    \draw[<->, hotpink, xshift=0.5em] ($(\xmax,\A)!.5!(\xmax,-\A)$) -- ($(\xmax,\A)!.5!(\xmax,-\A) + (0,\ep)$) node[midway, right] {$\varepsilon$};
+
+    % 縦軸上のラベル
+    \node[left, magenta] at ($(0,\A)!.5!(0,-\A)$) {$\alpha$};
+    \node[left, carnationpink] at ($(0,\A)!.5!(0,-\A) - (0,\ep)$) {$\alpha - \varepsilon$};
+    \node[left, carnationpink] at ($(0,\A)!.5!(0,-\A) + (0,\ep)$) {$\alpha + \varepsilon$};
+
+    % PLOT
+    %\draw[dashed,samples=\samp,smooth,variable=\t,domain=0:0.96*\xmax]
+    %plot(\t,{\A*exp(-\t/\T)}) plot(\t,{-\A*exp(-\t/\T)});
+    \draw[dotted, cyan, thick, samples=100+\samp, smooth, variable=\t, domain=0:\xmax]
+    plot(\t,{\A*exp(-\t/\T)*cos(\om*\t)});
+
+    %%% 以下、重いのでデバッグ中はコメントアウト推奨 %%%
+
+    \path[name path=ExpAbove,samples=375+\samp, variable=\t, domain=0:\xmax] plot(\t,{\A*exp(-\t/\T)});
+    \path[name path=ExpBelow,samples=375+\samp, variable=\t, domain=0:\xmax] plot(\t,{-\A*exp(-\t/\T)});
+    \path[name path=Wave,samples=375+\samp, variable=\t, domain=0:\xmax] plot(\t,{\A*exp(-\t/\T)*cos(\om*\t)});
+
+    \fill[ProcessBlue,name intersections={of=ExpAbove and Wave, name=i, total=\t}]
+    \foreach \s in {1,...,\t}{(i-\s) circle (2pt)};
+
+    \fill[ProcessBlue,name intersections={of=ExpBelow and Wave, name=i, total=\t}]
+    \foreach \s in {1,...,\t}{(i-\s) circle (2pt)};
+
+    %%% 以上、重いのでデバッグ中はコメントアウト推奨 %%%
+
+    % N以降を表す矢印
+    \draw[lawngreen, opacity=0.8, -{Triangle[width = 18pt, length = 8pt]}, line width = 9pt] (\N,-2) -- (\xmax,-2);
+
+    % N以降を表す空間
+    \fill[lawngreen, opacity=0.2] (\N,-\ymax) rectangle (\xmax,\ymax);
+
+    % N直線
+    \draw[malachite, thick] (\N,-\ymax) -- (\N,\ymax);
+    \node[malachite] at (\N,-\ymax) [below] {\Large$N$};
+  \end{tikzpicture}
+\end{center}
+
+$\varepsilon$を小さくしていくと、$\varepsilon$による$\alpha$周辺の区間に入る項は少なくなる。
+
+それでも、$N$をずらしていけば、$N$以降はこの区間に収まる項だけになる。
+
+これこそが「収束」という現象だと定義するのが、$\varepsilon - N$論法の考え方である。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\ep{0.15} % ε
+    \def\N{6.5} % N
+
+    \def\xmax{9} % max x axis
+    \def\ymax{3.5}
+    \def\A{2.75} % 振幅を大きく
+    \def\om{(7.5*360/(0.94*\xmax))} % 周期を短く（振動数を上げる）
+    \def\t{1800/(0.94*\xmax)}
+    \def\T{2.0} % 減衰をやや速める
+    \def\samp{100} % number of samples
+    %\def\tick#1#2{\draw[thick] (#1)++(#2:0.12) --++ (#2-180:0.24)}
+
+    % AXIS
+    \draw[axis] (0,-\ymax) -- (0,\ymax) node[above] {\large$a_n$};
+    \draw[axis] (-0.2*\ymax,-\ymax + 1) -- (\xmax,-\ymax +1) node[right] {\large$n$};
+    %\tick{0,\A}{0} node[left=-1,scale=0.9] {$A_0$};
+    %\tick{0,-\A}{0} node[left=-1,scale=0.9] {$-A_0$};
+
+    % ε区間
+    \fill[carnationpink, fill opacity=0.5] ($($(0,\A)!.5!(0,-\A)$) + (0, \ep)$) rectangle ($($(\xmax,\A)!.5!(\xmax,-\A)$) - (0, \ep)$);
+    \draw[magenta, thick] ($(0,\A)!.5!(0,-\A)$) --++ (\xmax,0);
+    \draw[carnationpink] ($(0,\A)!.5!(0,-\A) - (0,\ep)$) --++ (\xmax,0);
+    \draw[carnationpink] ($(0,\A)!.5!(0,-\A) + (0,\ep)$) --++ (\xmax,0);
+
+    % ε
+    %\draw[<->, magenta, xshift=-0.5em] ($(0,\A)!.5!(0,-\A)$) -- ($(0,\A)!.5!(0,-\A) - (0,\ep)$) node[midway, left] {$\varepsilon$};
+    %\draw[<->, magenta, xshift=-0.5em] ($(0,\A)!.5!(0,-\A)$) -- ($(0,\A)!.5!(0,-\A) + (0,\ep)$) node[midway, left] {$\varepsilon$};
+
+    % PLOT
+    %\draw[dashed,samples=\samp,smooth,variable=\t,domain=0:0.96*\xmax]
+    %plot(\t,{\A*exp(-\t/\T)}) plot(\t,{-\A*exp(-\t/\T)});
+    \draw[dotted, cyan, thick, samples=100+\samp, smooth, variable=\t, domain=0:\xmax]
+    plot(\t,{\A*exp(-\t/\T)*cos(\om*\t)});
+
+    %%% 以下、重いのでデバッグ中はコメントアウト推奨 %%%
+
+    \path[name path=ExpAbove,samples=375+\samp, variable=\t, domain=0:\xmax] plot(\t,{\A*exp(-\t/\T)});
+    \path[name path=ExpBelow,samples=375+\samp, variable=\t, domain=0:\xmax] plot(\t,{-\A*exp(-\t/\T)});
+    \path[name path=Wave,samples=375+\samp, variable=\t, domain=0:\xmax] plot(\t,{\A*exp(-\t/\T)*cos(\om*\t)});
+
+    \fill[ProcessBlue,name intersections={of=ExpAbove and Wave, name=i, total=\t}]
+    \foreach \s in {1,...,\t}{(i-\s) circle (1.75pt)};
+
+    \fill[ProcessBlue,name intersections={of=ExpBelow and Wave, name=i, total=\t}]
+    \foreach \s in {1,...,\t}{(i-\s) circle (1.75pt)};
+
+    %%% 以上、重いのでデバッグ中はコメントアウト推奨 %%%
+
+    % N以降を表す矢印
+    \draw[lawngreen, opacity=0.8, -{Triangle[width = 18pt, length = 8pt]}, line width = 9pt] (\N,-2) -- (\xmax,-2);
+
+    % N以降を表す空間
+    \fill[lawngreen, opacity=0.2] (\N,-\ymax) rectangle (\xmax,\ymax);
+
+    % N直線
+    \draw[malachite, thick] (\N,-\ymax) -- (\N,\ymax);
+    \node[malachite] at (\N,-\ymax) [below] {\Large$N$};
+  \end{tikzpicture}
+\end{center}
+
+区間幅（の半分）となる$\varepsilon$をどんなに小さくしても、「$N$番目以降は区間内に収まる項だけになる」といえるような$N$を設定できるか？が肝心で、そのような$N$が存在するなら、数列は収束するといえる。
+
+このことを、数学の言葉でまとめておこう。
+
+\begin{definition}{数列の収束と極限値}
+  \newline
+  数列$\{a_n\}_{n=1}^{\infty}$と実数$\alpha$について、次の条件を考える。
+  \begin{spacebox}
+    任意の正の数$\varepsilon$に対して
+    \Large
+    \begin{equation}
+      n \geq N \quad \Longrightarrow \quad |a_n - \alpha| < \varepsilon
+    \end{equation}
+    \normalsize
+    が成り立つような自然数$N$が存在する
+  \end{spacebox}
+  この条件が成り立つとき、数列$\{a_n\}$は$\alpha$に\hl{収束}するといい、次のように表す。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} a_n = \alpha \quad \text{\normalsize または} \quad a_n \to \alpha \quad (n \to \infty)
+  \end{equation}
+  \normalsize
+  このとき、$\alpha$を数列$\{a_n\}$の\hl{極限値}という。
+\end{definition}
+
 \end{document}
