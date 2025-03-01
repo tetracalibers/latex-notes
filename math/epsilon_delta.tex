@@ -522,6 +522,74 @@ $\varepsilon-\delta$論法による収束の定義は、そのような状況を
   これで、数列$\{a_n\}$の極限値はただ1つに定まることが示された。$\qed$
 \end{proof}
 
+\subsection{定数数列の極限}
+
+最も単純な数列の極限値を、$\varepsilon-N$論法で考えてみよう。
+
+\vskip\baselineskip
+
+ここでは、同じ数だけを並べた数列（定数数列）の極限を考える。
+
+定数数列の極限を考えておくことで、のちに数列の定数倍の極限へと発展させることができる。
+
+\begin{definition}{定数数列}
+  任意の$n$に対して$a_n = c$となる数列$\{a_n\}$を定数数列という。
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmax{9} % max x axis
+    \def\ymax{2.5}
+    \def\c{0.25}
+
+    % AXIS
+    \draw[axis] (0,-\ymax) -- (0,\ymax) node[above] {\large$a_n$};
+    \draw[axis] (-0.2*\ymax,-\ymax + 1) -- (\xmax,-\ymax +1) node[right] {\large$n$};
+
+    % 縦軸上のラベル
+    \node[left, magenta, xshift=-0.5em] at (0, \c) {\Large$c$};
+
+    % PLOT
+    \draw[dotted, cyan, thick] (0,\c) -- (\xmax,\c);
+
+    % 項を表す点を打つ
+    \foreach \n in {0,1,2,...,\xmax}{
+        \fill[ProcessBlue] (\n,\c) circle (2pt);
+      }
+  \end{tikzpicture}
+\end{center}
+
+定数$c$を並べた数列では、$n$を大きくしたときの$a_n$の値も変わらず$c$なのだから、極限値も当然$c$となりそうである。
+
+\begin{theorem}{定数数列の極限}
+  \newline
+  任意の$n$に対して$a_n = c$となる定数数列$\{a_n\}$は収束し、その極限値は$c$となる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} a_n = c
+  \end{equation}
+\end{theorem}
+
+このような当たり前に聞こえる事実も、$\varepsilon-N$論法では「当たり前」という直観を排除して議論できる。
+
+\begin{proof}{定数数列の極限}
+  $\varepsilon$を任意の正の数とする。
+
+  $a_n$は$n$の値によらず$c$であるから、任意の$n$に対して次の式が成り立つ。
+  \begin{align}
+    |a_n - c|                  & = |c - c| = 0 < \varepsilon \\
+    \therefore \quad |a_n - c| & < \varepsilon
+  \end{align}
+
+  したがって、
+  \begin{equation}
+    n \geq N \quad \Rightarrow \quad |a_n - c| < \varepsilon
+  \end{equation}
+  となるような自然数$N$は存在する（というか$N$はなんでもよい）。
+
+  よって、$\{a_n\}$は収束し、その極限値は$c$である。$\qed$
+\end{proof}
+
 \subsection{数列の極限の線形性}
 
 数列の極限についても、線形性が成り立つ。
