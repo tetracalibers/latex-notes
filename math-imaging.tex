@@ -151,6 +151,8 @@
 \usepackage{froufrou} % セクションを区切る装飾
 \setfroufrou{dinkus}
 
+\usepackage{halloweenmath}
+
 % === tcolorbox ===
 
 \usepackage{tcolorbox}
@@ -336,6 +338,14 @@ frame code={
 }
 
 % === shotcut ===
+
+% WIPマークを表示
+\newcommand{\wip}{
+  \begin{center}
+    \vspace{1em}
+    \scalebox{2.5}{\textcolor{lightgray}{$\xrightswishingghost{\text{Under construction}\ldots}$}}
+  \end{center}
+}
 
 % definition,theorem環境内で用語を強調表示する
 \definecolor{hlcolor}{HTML}{F9F07A}
