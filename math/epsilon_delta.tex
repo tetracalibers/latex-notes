@@ -620,7 +620,7 @@ $\varepsilon-\delta$論法による収束の定義は、そのような状況を
   \end{equation}
 \end{theorem}
 
-最終的に次のような関係を導くことで、この定理が証明される。
+$\{a_n\}$の極限値を$\alpha$、$\{b_n\}$の極限値を$\beta$とすると、最終的に次のような関係を導くことで、この定理が証明される。
 
 \begin{equation}
   n \geq N \quad \Longrightarrow \quad |(a_n + b_n) - (\alpha + \beta)| < \varepsilon
@@ -676,6 +676,75 @@ $|(a_n + b_n) - (\alpha + \beta)|$は、$a_n + b_n$と$\alpha + \beta$がどれ�
 
 \subsubsection{数列の定数倍の極限}
 
-\wip
+\begin{theorem}{数列の定数倍の極限}
+  \newline
+  数列$\{a_n\}$が収束するとき、$c$を実数とすると、数列$\{ca_n\}$も収束する。\\
+  そして、その極限値は次のようになる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} (ca_n) = c\lim_{n \to \infty} a_n
+  \end{equation}
+\end{theorem}
+
+$\{a_n\}$の極限値を$\alpha$とすれば、$ca_n$と$c\alpha$の誤差を$\varepsilon$より小さくする必要がある。
+
+あとから誤差が最大$|c|$倍されても大丈夫なように、$a_n$と$\alpha$の誤差は$\dfrac{\varepsilon}{|c|}$より小さくできればよい。
+
+\begin{supplnote}
+  $c$は正の数とは限らない。誤差は任意の正の数$\varepsilon$と比較するために正の数として評価したいので、絶対値をつけている。
+\end{supplnote}
+
+$|c|$が分母にあるので、$c=0$の場合は除外して考える必要がある。
+
+$c=0$の場合は、定数数列の極限として考えることで、$0$に収束することがわかる。
+
+\vskip\baselineskip
+
+それでは、証明を見ていこう。
+
+\begin{proof}{数列の定数倍の極限}
+  $c=0$と$c\neq 0$の場合に分けて証明する。
+
+  \begin{subpattern}{$c=0$の場合}
+    $c=0$のとき、右辺は、
+    \begin{equation}
+      c \lim_{n \to \infty} a_n = 0 \cdot \lim_{n \to \infty} a_n = 0
+    \end{equation}
+
+    また、左辺は、定数数列の極限として考えて、
+    \begin{equation}
+      \lim_{n \to \infty} (ca_n) = \lim_{n \to \infty} 0 = 0
+    \end{equation}
+
+    したがって、$c=0$の場合は、数列$\{ca_n\}$は$c\alpha = 0$に収束する。
+  \end{subpattern}
+
+  \begin{subpattern}{$c\neq 0$の場合}
+    $\displaystyle\lim_{n \to \infty} a_n = \alpha$とおき、$\varepsilon$を任意の正の数とする。
+
+    \vskip\baselineskip
+
+    このとき、$\displaystyle\lim_{n \to \infty} a_n = \alpha$より、次のような自然数$N$が存在する。
+    \begin{equation}
+      n \geq N \quad \Longrightarrow \quad |a_n - \alpha| < \frac{\varepsilon}{|c|}
+    \end{equation}
+
+    よって、$n \geq N$のとき、
+    \begin{equation}
+      \begin{WithArrows}
+        |ca_n - c\alpha| & = |c(a_n -\alpha)|               \Arrow{$|AB|=|A||B|$}   \\
+        & = |c||a_n - \alpha|             \Arrow{$|a_n - \alpha| < \dfrac{\varepsilon}{|c|}$}  \\
+        & < |c| \cdot \dfrac{\varepsilon}{|c|} \\
+        & = \varepsilon
+      \end{WithArrows}
+    \end{equation}
+    \begin{equation}
+      \therefore \quad |ca_n - c\alpha| < \varepsilon
+    \end{equation}
+    という不等式が成り立つことで、$\displaystyle\lim_{n \to \infty} ca_n = c\alpha$がいえる。
+  \end{subpattern}
+
+  以上より、いずれの場合も、数列$\{ca_n\}$は$c\alpha$に収束することが示された。$\qed$
+\end{proof}
 
 \end{document}
