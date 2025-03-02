@@ -747,4 +747,100 @@ $c=0$の場合は、定数数列の極限として考えることで、$0$に収
   以上より、いずれの場合も、数列$\{ca_n\}$は$c\alpha$に収束することが示された。$\qed$
 \end{proof}
 
+\subsection{はさみうちの定理}
+
+はさみうちの定理（はさみうちの原理）は、
+
+\begin{emphabox}
+  ある数列が2つの数列に挟まれていて、その2つの数列の極限値が同じなら、挟まれた数列の極限値も同じになる。
+\end{emphabox}
+
+という内容の定理である。
+
+この定理により、直接極限を求めにくい数列でも、簡単な数列で挟むことで極限値を求めることが容易になる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmax{8.6} % max x axis
+    \def\ymax{3.25}
+    \def\A{2.5} % 振幅を大きく
+    \def\om{(7.5*360/(0.94*\xmax))} % 周期を短く（振動数を上げる）
+    \def\t{1800/(0.94*\xmax)}
+    \def\T{2.0} % 減衰をやや速める
+    \def\samp{100} % number of samples
+
+    % AXIS
+    \draw[axis] (0,-\ymax-0.2*\ymax) -- (0,\ymax) node[above] {\large$a_n$};
+    \draw[axis] (-0.2*\ymax,-\ymax+0.25) -- (\xmax,-\ymax+0.25) node[right] {\large$n$};
+
+    % 極限値を表す直線
+    \draw[BurntOrange, very thick] ($(0,\A)!.5!(0,-\A)$) --++ (\xmax,0);
+    \node[left, BurntOrange] at ($(0,\A)!.5!(0,-\A)$) {\Large$\alpha$};
+
+    % PLOT
+    \draw[dotted, rosebonbon, thick, samples=\samp,smooth,variable=\t,domain=0:\xmax] plot(\t,{\A*exp(-\t/\T)});
+    \draw[dotted, robineggblue, thick, samples=\samp,smooth,variable=\t,domain=0:\xmax] plot(\t,{-\A*exp(-\t/\T)});
+    \draw[dotted, Goldenrod!80!gray, thick, samples=100+\samp, smooth, variable=\t, domain=0:\xmax] plot(\t,{\A*exp(-\t/\T)*cos(\om*\t)});
+
+    % 一定周期で関数上に点を打つ
+    \foreach \i in {0,0.2,0.4,...,\xmax}{
+        \fill[Goldenrod] ({\i}, {\A*exp(-\i/\T)*cos(\om*\i)}) circle (1.8pt);
+      }
+    \foreach \i in {0,0.4,0.8,...,\xmax}{
+        \fill[rosebonbon] ({\i}, {\A*exp(-\i/\T)}) circle (1.8pt);
+        \fill[robineggblue] ({\i}, {-\A*exp(-\i/\T)}) circle (1.8pt);
+      }
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{数列の極限に関するはさみうちの定理}
+  \newline
+  数列$\{a_n\}$、$\{b_n\}$、$\{c_n\}$が、ある自然数$n_0$について、
+  \Large
+  \begin{equation}
+    a_n \leq c_n \leq b_n \quad (n \geq n_0)
+  \end{equation}
+  \normalsize
+  という関係が成り立つとする。
+  このうち、$\{a_n\}$と$\{b_n\}$が収束し、
+  \Large
+  \begin{equation}
+    \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \alpha
+  \end{equation}
+  \normalsize
+  が成り立つならば、$\{c_n\}$も収束し、
+  \Large
+  \begin{equation}
+    \lim_{n \to \infty} c_n = \alpha
+  \end{equation}
+  \normalsize
+  が成り立つ。
+\end{theorem}
+
+すべての自然数$n$に対して$a_n \leq c_n \leq b_n$である必要はない。
+
+たとえば、$5$以上の$n$に対して$a_n \leq c_n \leq b_n$が成り立つ場合（$n_0 = 5$の場合）にも、はさみうちの定理は適用できる。
+
+\begin{proof}{数列の極限に関するはさみうちの定理}
+  $\varepsilon$を任意の正の数とする。
+
+  \vskip\baselineskip
+
+  このとき、$\displaystyle\lim_{n \to \infty} a_n = \alpha$より、次のような自然数$N_1$が存在する。
+  \begin{equation}
+    n \geq N_1 \quad \Longrightarrow \quad |a_n - \alpha| < \varepsilon
+  \end{equation}
+
+  同様に、$\displaystyle\lim_{n \to \infty} b_n = \beta$より、次のような自然数$N_2$が存在する。
+  \begin{equation}
+    n \geq N_2 \quad \Longrightarrow \quad |b_n - \beta| < \varepsilon
+  \end{equation}
+
+  ここで、$N = \max\{N_1, N_2, n_0\}$とおくと、$n \geq N$のとき、$n \geq n_0$、$n \geq N_1$、$n \geq N_2$がすべて成り立つ。
+
+  よって、$n \geq N$のとき、
+
+  \wip
+\end{proof}
+
 \end{document}
