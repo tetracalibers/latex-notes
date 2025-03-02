@@ -265,23 +265,23 @@
   },%
 }
 
-\DeclareTColorBox{subpattern}{m}{%
-  enhanced,
-  breakable,
-  empty,
-  boxsep=0pt,
-  left=1.5em,
-  title={#1},
-  before title={\textcolor{ProofColor}{\faStarAndCrescent}~},
-  coltitle=black,
-  fonttitle=\bfseries,
-  attach boxed title to top left,
-  boxed title style={
+\NewDocumentCommand{\patterntitle}{m}{
+  \tcbox[
+    enhanced,
     empty,
-    left=0pt,right=0pt,
-    bottom=0pt,
+    boxsep=0pt,
+    left=2pt,right=2pt,
+    bottom=2pt,
+    fonttitle=\bfseries,
     borderline south={1pt}{0pt}{ProofColor},
-  }
+  ]{\textcolor{ProofColor}{\faStarAndCrescent}~#1}
+}
+
+\newenvironment{subpattern}[1]{
+  \patterntitle{#1}
+  \begin{quote}
+}{
+  \end{quote}
 }
 
 \definecolor{mathLabelColor}{HTML}{FF87CA}
