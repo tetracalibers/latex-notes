@@ -316,6 +316,28 @@
   ]{#4}
 }
 
+\NewDocumentCommand{\wavemath}{O{Rhodamine} m}{
+  \tcboxmath[
+    enhanced,
+      frame hidden,
+      interior hidden,
+      size=minimal,
+      bottom=1.1em,
+      overlay={
+          \draw[
+              #1,
+              thick,
+              decorate,
+              decoration={
+                  snake,               % 波線を引く
+                  amplitude=0.1em,     % 波線の振幅
+                  segment length=0.5em   % 波線の周期
+              }
+          ] ([yshift=0.7em]frame.south west) -- ([yshift=0.7em]frame.south east);
+      } 
+    ]{#2}
+}
+
 \NewDocumentCommand{\wavelabelmath}{O{Rhodamine} m m}{
   \tcboxmath[
     enhanced,
