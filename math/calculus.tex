@@ -168,7 +168,7 @@
 
 これで、先ほどの直線の式を完成させることができる。
 
-\begin{theorem}{関数の各点の接線}
+\begin{theorem}{関数の各点での直線による近似}\label{theorem:関数の各点での直線による近似}
   \newline
   関数$f(x)$は、ある点$x_0$の付近では、
   \Large
@@ -698,7 +698,7 @@ $\fitLabelMath[BlueGreen][BlueGreen!40]{f'(x)g'(x)dx^2}{\footnotesize 2次以上
    & = \origFn{f(x)g(x)} + \{ \derivFn{f'(x)g(x) + f(x)g'(x)} \}dx
 \end{align}
 
-\begin{theorem}{微分のライプニッツ則}
+\begin{theorem}{微分のライプニッツ則}\label{theorem:微分のライプニッツ則}
   \Large
   \begin{equation}
     \left( f(x) g(x) \right)' = f'(x) g(x) + f(x) g'(x)
@@ -2069,6 +2069,234 @@ $n$次の冪関数$f(x)=x^n$を$k$回微分すると、次のようになる。
   \begin{equation}
     f(x) = e^{kx} \quad \Longrightarrow \quad f^{(n)}(x) = k^n e^{kx}
   \end{equation}
+\end{theorem}
+
+\subsection{テイラー展開}
+
+微分の導入として話した、\hyperref[theorem:関数の各点での直線による近似]{関数の各点での直線による近似}に立ち返ろう。
+
+\begin{review}
+  関数$f(x)$は、ある点$x_0$の付近では、
+  \large
+  \begin{equation}
+    f(x) \simeq f(x_0) + f'(x)(x - x_0)
+  \end{equation}
+  \normalsize
+  という傾き$f'(x)$の直線に近似できる。
+\end{review}
+
+この式に$x=x_0$を代入すると、
+\begin{align}
+  f(x_0)                  & \simeq f(x_0) + f'(x_0)(x_0 - x_0) \\
+  f(x_0)                  & \simeq f(x_0) + f'(x_0) \cdot 0    \\
+  \therefore \quad f(x_0) & = f(x_0)
+\end{align}
+となり、たしかに点$x_0$では一致することがわかる。
+
+\vskip\baselineskip
+
+ここで、両辺を高階微分しても、点$x_0$で一致するような近似式を作りたい。
+
+一階微分が一致するなら点$x_0$でのグラフの傾きが等しく、二階微分が一致するなら点$x_0$でのグラフの曲がり具合が等しい、…といった具合に、高階微分を一致させていけば、どんどん本物の関数$f(x)$に近い近似式が得られるからだ。
+
+\vskip\baselineskip
+
+$n$階微分してから$x=x_0$を代入しても、$f^{(n)}(x_0) = f^{(n)}(x_0)$が成り立つようにするには、近似式の右辺$f(x_0) + f'(x)(x - x_0)$をどのように変更すればよいだろうか？
+
+\subsubsection{$f'(x)(x-x_0)$の$n$階微分}
+
+右辺を微分した時点で定数項$f(x_0)$は消えてしまうので、$f'(x)(x-x_0)$の微分結果だけが残ることになる。
+\begin{equation}
+  f^{(n)}(x) = \dfrac{d^n}{dx^n}\left( f'(x)(x-x_0) \right)
+\end{equation}
+
+そこで、$f'(x)(x-x_0)$の高階微分がどうなるかを探っていく。
+1階微分から順に見ていこう。
+
+この計算では、関数の積の微分（\hyperref[theorem:微分のライプニッツ則]{ライプニッツ則}）を思い出す必要がある。
+
+\begin{review}
+  関数の積の微分（ライプニッツ則）
+  \large
+  \begin{equation}
+    \dfrac{d}{dx}\left( f(x)g(x) \right) = \dfrac{d}{dx}f(x)\cdot g(x) + f(x)\cdot \dfrac{d}{dx}g(x)
+  \end{equation}
+\end{review}
+
+積の各項の微分を計算しておくと、
+\begin{align}
+   & \dfrac{d}{dx}f'(x)    = f''(x)                                        \\
+   & \dfrac{d}{dx} (x-x_0) = \dfrac{d}{dx}x - \dfrac{d}{dx}x_0 = 1 - 0 = 1
+\end{align}
+となるので、ライプニッツ則より、1階微分は次のようになる。
+\begin{align}
+  \dfrac{d}{dx}\left( f'(x)(x-x_0) \right) & = \fitLabelMath[magenta][magenta!40]{f''(x)}{$f'(x)$の微分}(x-x_0) + f'(x) \cdot \fitLabelMath[Cerulean][Cerulean!40]{1}{$(x-x_0)$の微分} \\
+                                           & = f''(x)(x-x_0) + f'(x)
+\end{align}
+
+この結果をもう一度微分すると、2階微分が求まる。
+\begin{align}
+  \dfrac{d^2}{dx^2}\left( f'(x)(x-x_0) \right) & = \dfrac{d}{dx}\left( f''(x)(x-x_0) + f'(x) \right)                                                                                                                     \\
+                                               & = \wavemath[BurntOrange]{\dfrac{d}{dx}f''(x)(x-x_0)} + \dfrac{d}{dx}f'(x)                                                                                               \\
+                                               & = \wavemath[BurntOrange]{\fitLabelMath[magenta][magenta!40]{f'''(x)}{$f''(x)$の微分}(x-x_0) + f''(x) \cdot \fitLabelMath[Cerulean][Cerulean!40]{1}{$(x-x_0)$の微分}} + f''(x) \\
+                                               & = f'''(x)(x-x_0) + 2f''(x)                                                                                                                                              \\
+\end{align}
+
+さらにもう一度微分することで、3階微分が求められる。
+\begin{align}
+  \dfrac{d^3}{dx^3}\left( f'(x)(x-x_0) \right) & = \dfrac{d}{dx}\left( f'''(x)(x-x_0) + 2f''(x) \right)                                                                                                                       \\
+                                               & = \wavemath[BurntOrange]{\dfrac{d}{dx}f'''(x)(x-x_0)} + 2\dfrac{d}{dx}f''(x)                                                                                                 \\
+                                               & = \wavemath[BurntOrange]{\fitLabelMath[magenta][magenta!40]{f''''(x)}{$f'''(x)$の微分}(x-x_0) + f'''(x) \cdot \fitLabelMath[Cerulean][Cerulean!40]{1}{$(x-x_0)$の微分}} + 2f'''(x) \\
+                                               & = f''''(x)(x-x_0) + 3f'''(x)                                                                                                                                                 \\
+\end{align}
+
+プライム記号の数が増えてきたので、$f''' = f^{(3)}$のように書き直して結果をまとめると、
+\begin{align}
+  \dfrac{d}{dx}\left( f'(x)(x-x_0) \right)     & = f^{(2)}(x)(x-x_0) + f^{(1)}(x)    \\
+  \dfrac{d^2}{dx^2}\left( f'(x)(x-x_0) \right) & = f^{(3)}(x)(x-x_0) + 2f^{(2)}(x)   \\
+  \dfrac{d^3}{dx^3}\left( f'(x)(x-x_0) \right) & = f^{(4)}(x)(x-x_0) + 3f^{(3)}(x)   \\
+  \vdots                                       &                                     \\
+  \dfrac{d^n}{dx^n}\left( f'(x)(x-x_0) \right) & = f^{(n+1)}(x)(x-x_0) + nf^{(n)}(x)
+\end{align}
+のように続き、$n$階微分の結果が得られる。
+
+\subsubsection{$x=x_0$を代入すると…}
+
+これで、$f(x)$の$n$階微分$f^{(n)}(x)$は、次のように表せることがわかった。
+\begin{align}
+  f^{(n)}(x) & = f^{(n)}(x)(x-x_0) + nf^{(n-1)}(x)
+\end{align}
+
+ここに、$x=x_0$を代入してみると、
+\begin{align}
+  f^{(n)}(x_0) & = f^{(n)}(x_0)(\wavelabelmath[Cerulean]{x_0-x_0}{$0$}) + n\fitLabelMath[Cerulean][Cerulean!40]{f^{(n-1)}(x_0)}{定数の微分は$0$} \\
+               & = f^{(n)}(x_0) \cdot 0 + n\cdot 0                                                                                         \\
+               & = 0
+\end{align}
+
+というように、右辺の項がすべて消えて、$0$になってしまう。
+
+$f^{(n)}(x_0) = f^{(n)}(x_0)$を成り立たせるには、右辺に項が足りないということになる。
+
+\vskip\baselineskip
+
+$n$階微分して$x=x_0$を代入しても$0$にならず、$f^{(n)}(x_0)$として生き残るような項を、元の近似式の右辺に追加する必要がある。
+
+\subsubsection{近似式の続きを予想する}
+
+具体的にどんな項を加えていけばよいかは、式の規則性から予想していくことにする。
+\begin{align}
+  f(x)  \simeq \wavemath{f(x_0)} + \wavemath[Cerulean]{f'(x_0)(x - x_0)}
+\end{align}
+という式を、次のように読み替えてみよう。
+\begin{align}
+  f(x) \simeq \wavelabelmath{f^{(0)}(x_0)(x-x_0)^0}{$0$次の項} + \wavelabelmath[Cerulean]{f^{(1)}(x_0)(x-x_0)^1}{$1$次の項}
+\end{align}
+$f(x_0)$は$0$階微分（微分を1回もしていない、そのままの関数）と考えて、$f^{(0)}(x_0)$と書いた。
+
+また、$0$乗は必ず$1$になるので、$f(x_0)$の後ろには$(x-x_0)^0 = 1$が隠れていると考えることができる。
+
+\vskip\baselineskip
+
+このように書き換えた式をみると、なんとなく次のような続きを予想できる。
+\begin{align}
+  f(x) \overset{?}{=} \wavelabelmath{f^{(0)}(x_0)(x-x_0)^0}{$0$次の項} + \wavelabelmath[Cerulean]{f^{(1)}(x_0)(x-x_0)^1}{$1$次の項} + \wavelabelmath[LimeGreen]{f^{(2)}(x_0)(x-x_0)^2}{$2$次の項} + \wavelabelmath[BurntOrange]{f^{(3)}(x_0)(x-x_0)^3}{$3$次の項} + \cdots
+\end{align}
+この式が正しいかどうかはわからないが、この式をベースに調整を加えていくアプローチを試してみよう。
+
+\subsubsection{$2$次の項を加えた近似式}
+
+まず$2$次の項だけ加えた状態で、$f(x)$の2階微分を考えてみる。
+\begin{align}
+  f(x) & \overset{?}{=} f(x_0) + f'(x_0)(x - x_0) + f''(x_0)(x - x_0)^2
+\end{align}
+このとき、元の近似式は2階微分すると$0$になってしまうので、元の近似式にあった$0$次の項と$1$次の項は2階微分によって消えてしまうことになる。
+
+よって、$f(x)$の2階微分は、$2$次の項だけの微分として考えればよい。
+
+\vskip\baselineskip
+
+\begin{equation}
+  \begin{WithArrows}
+    f''(x) & \overset{?}{=} \dfrac{d^2}{dx^2}\left( \eqnmark[BurntOrange]{C}{f''(x_0)}(x - x_0)^2 \right) \\
+    & = \textcolor{BurntOrange}{f''(x_0)} \cdot \wavemath{\dfrac{d^2}{dx^2}(x - x_0)^2}                       \\
+    & = f''(x_0) \cdot \wavemath{\dfrac{d}{dx} \left\{ \dfrac{d}{dx} (x - x_0)^2 \right\}}  \Arrow{$\dfrac{d}{dx}X^n = nX^{n-1}$}                  \\
+    & = f''(x_0) \cdot \wavemath{\dfrac{d}{dx} \left( 2(x - x_0) \right)    }                                \\
+    & = f''(x_0) \cdot \wavemath{2 \dfrac{d}{dx} (x - x_0) }                                                  \\
+    & = f''(x_0) \cdot \wavemath{2 \cdot 1     }                                                              \\
+    & = 2f''(x_0)
+  \end{WithArrows}
+\end{equation}
+\annotate[yshift=1em]{above}{C}{\bfseries 定数なので外に出せる}
+
+$x=x_0$を代入すると、
+\begin{align}
+  f''(x_0) & = 2f''(x_0)
+\end{align}
+という、微妙に惜しい結果が得られる。
+
+この結果から、$2$次の項に$\dfrac{1}{2}$をかけておけば、$f''(x_0) = f''(x_0)$が成り立たせることができるとわかる。
+
+つまり、近似式は次のように修正すればよい。
+\begin{align}
+  f(x) \simeq f(x_0) + f'(x_0)(x-x_0) + \wavelabelmath[LimeGreen]{\dfrac{1}{2}f^{(2)}(x_0)(x-x_0)^2}{$2$次の項} + \cdots
+\end{align}
+
+\subsubsection{$3$次の項を加えた近似式}
+
+3階微分した場合、先ほど追加した$2$次の項も消えてしまうので、さらに$3$次の項を加える必要がある。
+\begin{align}
+  f'''(x) & \overset{?}{=} \dfrac{d^3}{dx^3} \left( f'''(x_0)(x-x_0)^3 \right)                                               \\
+          & =  f'''(x_0)\cdot\dfrac{d}{dx} \left( \dfrac{d}{dx} \left( \dfrac{d}{dx} \left((x-x_0)^3 \right) \right) \right) \\
+          & =  f'''(x_0)\cdot\dfrac{d}{dx} \left( \dfrac{d}{dx} \left( 3(x-x_0)^2 \right) \right)                            \\
+          & =  f'''(x_0)\cdot\dfrac{d}{dx} \left( 3 \cdot 2(x-x_0) \right)                                                   \\
+          & =  f'''(x_0) \cdot 3 \cdot 2 \cdot 1
+\end{align}
+先ほどと同じように考えて、$3$次の項に$\dfrac{1}{3 \cdot 2 \cdot 1} = \dfrac{1}{3!}$をかけておけば、$f'''(x_0) = f'''(x_0)$が成り立たせることができる。
+
+これで、近似式は次のようになる。
+\begin{align}
+  f(x) \simeq f(x_0) + f'(x_0)(x-x_0) + \wavelabelmath[LimeGreen]{\dfrac{1}{2!}f^{(2)}(x_0)(x-x_0)^2}{$2$次の項} + \wavelabelmath[BurntOrange]{\dfrac{1}{3!}f^{(3)}(x_0)(x-x_0)^3}{$3$次の項} + \cdots
+\end{align}
+$2! = 2 \cdot 1 = 2$なので、$2$次の項の係数も階乗で書き直している。
+
+$0$次の項と$1$次の項についても、$0! = 1$、$1! = 1$を使って書き換えれば、次のような規則的な式になっていることがわかる。
+\begin{align}
+  f(x) \simeq \wavelabelmath{\dfrac{1}{0!}f^{(0)}(x_0)(x-x_0)^0}{$0$次の項} + \wavelabelmath[Cerulean]{\dfrac{1}{1!}f^{(1)}(x_0)(x-x_0)^1}{$1$次の項} + \wavelabelmath[LimeGreen]{\dfrac{1}{2!}f^{(2)}(x_0)(x-x_0)^2}{$2$次の項} + \wavelabelmath[BurntOrange]{\dfrac{1}{3!}f^{(3)}(x_0)(x-x_0)^3}{$3$次の項} + \cdots
+\end{align}
+
+これで、$n$次の項まで加えていった一般形が想像つくようになったのではないだろうか。
+
+\subsubsection{無限に項を加えた近似式：テイラー展開}
+
+同じような考え方で、$n$次の項まで加えた近似式を作ることができる。
+\begin{align}
+  f(x) \simeq \sum_{n=0}^{n} \dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n
+\end{align}
+$n \to \infty$とした場合のこの近似式には、テイラー展開という名前がつけられている。
+
+\begin{theorem}{テイラー展開}
+  \newline
+  関数$f(x)$が$x=x_0$で何回でも微分可能であるとき、関数$f(x)$が$x_0$の付近で
+  \LARGE
+  \begin{equation}
+    f(x) = \sum_{n=0}^{\infty} \dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n
+  \end{equation}
+  \normalsize
+  と表せるなら、この式を関数$f(x)$の$x=x_0$周りにおける\hl{テイラー展開}という。
+\end{theorem}
+
+特に、$x_0 = 0$の場合のテイラー展開には、マクローリン展開という別な名前がつけられている。
+
+\begin{theorem}{マクローリン展開}
+  \newline
+  関数$f(x)$が$x=0$で何回でも微分可能であるとき、関数$f(x)$が$0$の付近で
+  \LARGE
+  \begin{equation}
+    f(x) = \sum_{n=0}^{\infty} \dfrac{f^{(n)}(0)}{n!}x^n
+  \end{equation}
+  \normalsize
+  と表せるなら、この式を関数$f(x)$の\hl{マクローリン展開}という。
 \end{theorem}
 
 \section{1変数関数の積分}
