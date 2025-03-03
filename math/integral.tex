@@ -1,0 +1,813 @@
+\documentclass[../math-imaging]{subfiles}
+
+\begin{document}
+
+\section{1変数関数の積分}
+
+積分とは、「部分を積み重ねる」演算である。
+
+微小部分を調べる微分と、微小部分を積み重ねる積分は、互いに逆の操作になっている。
+
+\subsection{区分求積法：面積の再定義}
+
+長方形の面積は、なぜ「縦$\times$横」で求められるのだろうか？
+
+そこには、長方形の横幅分の長さを持つ線分を、長方形の高さに達するまで積み重ねるという発想がある。
+
+\vskip\baselineskip
+
+面積の計算を「線を積み重ねる」という発想で捉えると、あらゆる形状の面積を考えることができる。
+
+長方形では、積み重ねる線の長さは一定だが、他の形状では、積み重ねる線の長さが変化する。
+
+積み重ねるべき線の長さを、関数で表すことができたら…
+
+\froufrou
+
+関数$y=f(x)$が与えられたとき、高さ$f(x)$の線分を$a$から$b$までの区間で積み重ねることで、$x$軸とグラフに挟まれた部分の面積を求めることを考える。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    % 積分区間全体を塗りつぶす
+    \draw[fill=cyan!30, draw=cyan!70!gray] plot[domain=1:5,samples=167,variable=\x] ({\x},{f(\x)}) -- (5,0) -| cycle;
+
+    % 積分区間の下端のラベル
+    \node [anchor=north,lnode] at (1,0) {$a$};
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+この考え方は、面積を求めたい部分を長方形に分割し、長方形の幅を限りなく$0$に近づけるという操作で表現できる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \begin{scope}[scale=0.9, local bounding box=left]
+      \def\N{5}
+      \pgfmathtruncatemacro{\M}{\N/4}
+
+      \coordinate (start) at (.8,{f(.8)});
+
+      \ifnum\N<22
+        \foreach \X [remember=\X as \LastX (initially 0)] in {1,...,\N}
+          {
+            % 矩形
+            \draw[fill=cyan!30, draw=cyan!70!gray] (1+\LastX*4/\N,0) rectangle (1+\X*4/\N,{f(1+\LastX*4/\N)});
+            % 矩形の左上の頂点
+            \draw[fill=cyan, draw=cyan] (1+\LastX*4/\N,{f(1+\LastX*4/\N)}) circle (2pt) ;
+
+            % x軸上のラベル
+            \path (1+\LastX*4/\N,0pt) coordinate (x\X);
+            \ifnum\X=1
+              % 積分区間の下端のラベル
+              \node[anchor=north east,xshift=0.75em,lnode] at (1+\LastX*4/\N,0pt) {$a=x_{\X}$};
+            \else
+              % 積分区間内の各点のラベル
+              \pgfmathtruncatemacro{\itest}{mod(\X,\M)}
+              % 4等分した点のみラベルをつける
+              \ifnum\itest=0
+                \pgfmathsetmacro{\dist}{4-\LastX*4/\N}
+                % 5pt以上離れている場合のみラベルをつける
+                \ifdim\dist cm>5pt
+                  \node [anchor=north,lnode] at (1+\LastX*4/\N,0pt) {$x_{\X}$};
+                \fi
+              \fi
+            \fi
+          }
+
+        % \Delta x の幅を示す矢印
+        \draw[<->] (x2|- 0,-1)--(x3|- 0,-1) node[above,midway] {$\Delta x$};
+      \else
+        % 22個以上の場合は積分区間全体を塗りつぶす
+        \draw[fill=cyan!30, draw=cyan!70!gray] plot[domain=1:5,samples=167,variable=\x] ({\x},{f(\x)}) -- (5,0) -| cycle;
+
+        % 積分区間の下端のラベル
+        \node [anchor=north,lnode] at (1,0) {$a$};
+      \fi
+
+      \coordinate (end) at (5.05,{f(5.05)});
+
+      % 積分区間の上端のラベル
+      \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+      % 積分区間の上端におけるグラフの高さを示す線
+      \draw [draw=cyan!70!gray] (5,0)--(5,{f(5)});
+
+      % x軸とy軸
+      \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+      \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+      % 原点
+      \node [below left] at (0,0) {$O$};
+
+      % 関数のグラフ
+      \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)});
+    \end{scope}
+
+    \begin{scope}[scale=0.9, xshift=0.6\textwidth, local bounding box=right]
+      \def\N{14}
+      \pgfmathtruncatemacro{\M}{\N/4}
+
+      \coordinate (start) at (.8,{f(.8)});
+
+      \ifnum\N<22
+        \foreach \X [remember=\X as \LastX (initially 0)] in {1,...,\N}
+          {
+            % 矩形
+            \draw[fill=cyan!30, draw=cyan!70!gray] (1+\LastX*4/\N,0) rectangle (1+\X*4/\N,{f(1+\LastX*4/\N)});
+            % 矩形の左上の頂点
+            \draw[fill=cyan, draw=cyan] (1+\LastX*4/\N,{f(1+\LastX*4/\N)}) circle (2pt) ;
+
+            % x軸上のラベル
+            \path (1+\LastX*4/\N,0pt) coordinate (x\X);
+            \ifnum\X=1
+              % 積分区間の下端のラベル
+              \node[anchor=north east,xshift=0.75em,lnode] at (1+\LastX*4/\N,0pt) {$a=x_{\X}$};
+            \else
+              % 積分区間内の各点のラベル
+              \pgfmathtruncatemacro{\itest}{mod(\X,\M)}
+              % 4等分した点のみラベルをつける
+              \ifnum\itest=0
+                \pgfmathsetmacro{\dist}{4-\LastX*4/\N}
+                % 5pt以上離れている場合のみラベルをつける
+                \ifdim\dist cm>5pt
+                  \node [anchor=north,lnode] at (1+\LastX*4/\N,0pt) {$x_{\X}$};
+                \fi
+              \fi
+            \fi
+          }
+
+        % \Delta x の幅を示す矢印
+        \draw[<->] (x2|- 0,-1)--(x3|- 0,-1) node[above,midway] {$\Delta x$};
+      \else
+        % 22個以上の場合は積分区間全体を塗りつぶす
+        \draw[fill=cyan!30, draw=cyan!70!gray] plot[domain=1:5,samples=167,variable=\x] ({\x},{f(\x)}) -- (5,0) -| cycle;
+
+        % 積分区間の下端のラベル
+        \node [anchor=north,lnode] at (1,0) {$a$};
+      \fi
+
+      \coordinate (end) at (5.05,{f(5.05)});
+
+      % 積分区間の上端のラベル
+      \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+      % 積分区間の上端におけるグラフの高さを示す線
+      \draw [draw=cyan!70!gray] (5,0)--(5,{f(5)});
+
+      % x軸とy軸
+      \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+      \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+      % 原点
+      \node [below left] at (0,0) {$O$};
+
+      % 関数のグラフ
+      \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)});
+    \end{scope}
+
+    \draw[->, thick] ($(left.east)+(1em, 0)$) -- ($(left-|right.west)-(1em,0)$) node[pos=.5, above] {$\Delta x$小};
+  \end{tikzpicture}
+\end{center}
+
+$a \leq x \leq b$の区間を$n$等分して、$x_1, x_2, \ldots, x_n$とする。
+
+分割された各長方形は、幅が$\Delta x$で、高さが$f(x)$であるので、各長方形の面積は次のように表せる。
+
+\begin{equation}
+  \Delta S = f(x) \cdot \Delta x
+\end{equation}
+
+どんどん$\Delta x$を小さくしていくと、細かい長方形分割で、面積を求めたい図形を近似できる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=1.2,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \def\N{40}
+    \pgfmathtruncatemacro{\M}{\N/4}
+
+    \coordinate (start) at (.8,{f(.8)});
+
+    \foreach \X [remember=\X as \LastX (initially 0)] in {1,...,\N}
+    {
+    % 矩形
+    \draw[fill=cyan!30, draw=cyan!70!gray] (1+\LastX*4/\N,0) rectangle (1+\X*4/\N,{f(1+\LastX*4/\N)});
+    % 矩形の左上の頂点
+    \draw[fill=cyan, draw=cyan] (1+\LastX*4/\N,{f(1+\LastX*4/\N)}) circle (1pt) ;
+
+    % x軸上のラベル
+    \path (1+\LastX*4/\N,0pt) coordinate (x\X);
+    \ifnum\X=1
+      % 積分区間の下端のラベル
+      \node[anchor=north east,xshift=0.75em,lnode] at (1+\LastX*4/\N,0pt) {$a=x_{\X}$};
+    \else
+      % 積分区間内の各点のラベル
+      \pgfmathtruncatemacro{\itest}{mod(\X,\M)}
+      % 4等分した点のみラベルをつける
+      \ifnum\itest=0
+        \pgfmathsetmacro{\dist}{4-\LastX*4/\N}
+        % 5pt以上離れている場合のみラベルをつける
+        \ifdim\dist cm>5pt
+          \node [anchor=north,lnode] at (1+\LastX*4/\N,0pt) {$x_{\X}$};
+        \fi
+      \fi
+    \fi
+    }
+
+    \coordinate (end) at (5.05,{f(5.05)});
+
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode] at (5,0pt) {$b$};
+
+    % 積分区間の上端におけるグラフの高さを示す線
+    \draw [draw=cyan!70!gray] (5,0)--(5,{f(5)});
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (6,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+つまり、求めたい面積は、分割した長方形の面積をすべて足し合わせることで近似できる。
+
+\begin{equation}
+  S \approx \sum_{i=1}^{n} f(x_i) \cdot \Delta x
+\end{equation}
+
+$\Delta x \to 0$の果てでは、幅を持たなくなった長方形は線分とみなせるので、もはや近似ですらなくなるだろう。
+
+\begin{equation}
+  S = \lim_{\Delta x \to 0} \sum_{i=1}^{n} f(x_i) \cdot \Delta x
+\end{equation}
+
+このような考え方は、区分求積法と呼ばれる。
+
+\subsection{定積分：面積を求める積分}
+
+ここで、区間$a \leq x \leq b$における関数$y=f(x)$と$x$軸の間の面積$S$を求める式を、次のように表記する。
+
+\begin{equation}
+  S = \int_{a}^{b} f(x) \, dx
+\end{equation}
+
+$\sum$は離散的な和を表す記号であり、例えば$\displaystyle\sum_{i=0}^n$であれば、$i$を$1$ずつ増やして$n$に達するまで足し合わせることを意味する。
+
+一方、ここで新たに導入した$\int$は連続的な和を表す記号であり、微小変化を繰り返しながら足し合わせることを意味する。
+
+\vskip\baselineskip
+
+$\sum$は間隔を取って足し合わせるのに対し、$\int$は間隔を限りなく小さくして足し合わせる。
+
+足し合わせる間隔を限りなく小さくするという操作は、極限を取る操作に相当するので、$\sum$の極限を取ったもの$\displaystyle \lim \sum$をまとめて$\int$という記号で表記したと捉えることができる。
+
+さらに、$\displaystyle\lim_{\Delta x \to 0}$とした果ての$\Delta x$は、微小変化を意味する$dx$と書き換えられている。
+
+\begin{definition}{定積分}
+  \newline
+  $a \leq x \leq b$の区間内における関数$f(x)$のグラフと$x$軸の間の領域の符号付き面積を求める演算を定積分と定義し、次のように表記する。
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x) dx
+  \end{equation}
+  \normalsize
+  このとき、$f(x)$を被積分関数と呼ぶ。
+\end{definition}
+
+$f(x)$の値が負になる区間では、定積分の値も負になるため、定積分は符号付き面積を表す。
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        name=myaxis,
+        axis y line = none,
+        axis x line = none,
+        xmin=-3, xmax=3,
+        ymin=-10, ymax=10,
+        declare function={
+            fn(\x) = 3*\x^3 - \x^2 - 10*\x;
+          }
+      ]
+      % 関数f(x)のプロット
+      \addplot [domain=-2:2.25, samples=100, name path=f, very thick, color=BurntOrange]
+      {fn{\x}};
+
+      % x軸
+      \addplot [name path=xaxis] {0};
+
+      % xaxisとfの交点
+      \path [name intersections={of=f and xaxis, by={I1,I2,I3}}];
+
+      % x軸上のラベル
+      \node [below, name=a, magenta, text height=0.75em] at ($(I1) + 1/3*(1cm,0)$) {$a_1$};
+      \node [below, name=b, magenta, text height=0.75em] at ($(I2) - 1/3*(1cm,0)$) {$b_1$};
+      \node [above, name=c, cyan, text height=0.75em] at ($(I2) + 2/5*(1cm,0)$) {$a_2$};
+      \node [above, name=d, cyan, text height=0.75em] at ($(I3) - 2/5*(1cm,0)$) {$b_2$};
+
+      % 各点のx座標を取り出してレジスタに保存
+      \pgfplotsextra{
+        \pgfplotspointgetcoordinates{(a)}
+        \pgfkeysgetvalue{/data point/x}{\ax}
+
+        \pgfplotspointgetcoordinates{(b)}
+        \pgfkeysgetvalue{/data point/x}{\bx}
+
+        \pgfplotspointgetcoordinates{(c)}
+        \pgfkeysgetvalue{/data point/x}{\cx}
+
+        \pgfplotspointgetcoordinates{(d)}
+        \pgfkeysgetvalue{/data point/x}{\dx}
+      }
+
+      % [a, b]区間の定積分
+      \addplot [
+        opacity=0.8, postaction={pattern=north east lines}, magenta!30, pattern color=magenta!80!gray] fill between [
+          of=f and xaxis, soft clip={domain=\ax:\bx},
+        ];
+      % [c, d]区間の定積分
+      \addplot [
+        opacity=0.8, postaction={pattern=north east lines}, cyan!30, pattern color=cyan!80!gray] fill between [
+          of=f and xaxis, soft clip={domain=\cx:\dx},
+        ];
+    \end{axis}
+
+    % x軸
+    \draw [axis] (myaxis.west) -- (myaxis.east) node [right] {$x$};
+  \end{tikzpicture}
+\end{center}
+
+\subsection{微小範囲の定積分から微分へ}
+
+定積分$\displaystyle\int_{a}^{b}f(x)dx$は、積分区間の取り方（$a$や$b$の値）を変えると、当然異なる計算結果になる。
+
+\vskip\baselineskip
+
+ここで、下端$a$は固定し、上端$b$を変化させて積分区間を広げていくことを考えよう。
+
+上端が変化することを強調するため、上端は$x$と表記することにする。
+
+このとき、定積分$\displaystyle\int_{a}^{x}f(t)dt$は、上端$x$の関数として捉えられる。
+
+\begin{equation}
+  S(x) = \int_{a}^{x} f(t) dt
+\end{equation}
+
+\begin{supplnote}
+  $\int$の中で使っている変数$t$は、積分区間の下端から上端まで動く変数であり、どんな文字を使ってもよい。
+  「$t$が下端$a$から上端$x$まで動く」なら違和感なく聞こえるが、「$x$が下端$a$から上端$x$まで動く」というのはややこしいので、上端$x$と区別するために$t$を使うことにした。
+\end{supplnote}
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \def\a{1}
+    \def\x{4.5}
+    \def\dx{0.5}
+
+    % 積分区間[a,x]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\x,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x,0) -| cycle;
+    % ↑の領域の中央に、定積分の式のラベルを配置
+    \node[gray] at ({(\a+\x)/2},{f((\a+\x)/2)/2}) {$\displaystyle\int_{a}^{u}f(t)dt$};
+
+    % [x, x+dx]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\x:\x+\dx,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x+\dx,0) -| cycle;
+
+    % 積分区間の下端のラベル
+    \node [anchor=north,lnode] at (\a,0) {$a$};
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode] at (\x,0) {$x$};
+    % u+duのラベル
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\x+\dx,0) {$x+\Delta x$};
+
+    % (x, f(x))の点
+    \fill[magenta] (\x,{f(\x)}) circle (2pt) node [above left] {$f(x)$};
+    % (x+dx, f(x+dx))の点
+    \fill[magenta] (\x+\dx,{f(\x+\dx)}) circle (2pt) node [right] {$f(x+\Delta x)$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (\x+\dx+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % dxの幅を表す矢印
+    \draw [<->, magenta] ($(\x,-1.25em)+(0.2em,-1.25em)$) -- ($(\x+\dx,-1.25em)+(-0.2em,-1.25em)$) node [below, midway, magenta] {$\Delta x$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+$x$を$\Delta x$だけ増加させたときに増える面積は、
+
+\begin{equation}
+  S(x+\Delta x) - S(x) = \int_{x}^{x+\Delta x} f(t) dt
+\end{equation}
+
+となるが、ここでさらに$\Delta x$を小さくしていくと…
+
+増えた領域は、幅$dx$、高さ$f(x)$の長方形とみなせるので、その面積は$f(x)dx$となる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em}
+    ]
+    \def\a{1}
+    \def\x{4.5}
+    \def\dx{0.05}
+
+    % 積分区間[a,x]
+    \draw[fill=lightgray!20, draw=lightgray!80!gray] plot[domain=\a:\x,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x,0) -| cycle;
+    % ↑の領域の中央に、定積分の式のラベルを配置
+    \node[gray] at ({(\a+\x)/2},{f((\a+\x)/2)/2}) {$\displaystyle\int_{a}^{x}f(t)dt$};
+
+    % [x, x+dx]
+    \draw[fill=magenta!30, draw=magenta!70!gray] plot[domain=\x:\x+\dx,samples=167,variable=\x] ({\x},{f(\x)}) -- (\x+\dx,0) -| cycle;
+
+    % 積分区間の下端のラベル
+    \node [anchor=north,lnode] at (\a,0) {$a$};
+    % 積分区間の上端のラベル
+    \node[anchor=north,lnode, below right, xshift=-0.5em] at (\x,0) {$x \approx x+dx$};
+
+    % (x, f(x))の点
+    \fill[magenta] (\x,{f(\x)}) circle (2pt) node [right] {$f(x) \approx f(x+dx)$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (\x+\dx+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+よって、$\Delta x\to 0$としたときには、
+
+\begin{equation}
+  S(x+dx) - S(x) = f(x)du
+\end{equation}
+
+という式が成り立ち、これは実は見慣れた微分の関係式と同じ形をしている。
+
+\begin{equation}
+  S(x+dx) = \origFn{S(x)} + \derivFn{f(x)}du
+\end{equation}
+
+この式は、定積分したもの$F(x)$を$x$で微分すると、積分前の関数$f(x)$に戻るということを示している。
+
+このような「積分したものを微分すると、元の関数に戻る」という事実は、微積分学の基本定理として知られている。
+
+\begin{theorem}{微積分学の基本定理}
+  積分の逆の演算は微分である。
+\end{theorem}
+
+\subsection{不定積分：原始関数を求める積分}
+
+定積分の定義は面積から始まったが、定積分という操作で「微分したら元の関数に戻る」ような関数を作ることもできた。
+
+ここで、「微分したら元の関数に戻る」関数を次のように定義する。
+
+\begin{definition}{原始関数}
+  \newline
+  微分することで元の関数$f(x)$が得られる関数を、$f(x)$の\hl{原始関数}と呼び、$F(x)$と表す。
+  \LARGE
+  \begin{equation}
+    f(x) = \frac{d}{dx} F(x)
+  \end{equation}
+\end{definition}
+
+「微分したら元の関数に戻る」関数の1つが、前節で調べた$S(x) = \displaystyle\int_{a}^{x} f(t) dt$であったが、実はこのような関数は他にも存在する。
+
+例えば、定数を微分すると$0$になるため、$S(x)$に任意の定数$C$を加えた関数$S(x) + C$を作っても、その微分結果は変わらず元の関数になる。
+
+このことは、「原始関数には定数$C$分の不定性がある」などと表現されることがある。
+
+\vskip\baselineskip
+
+「微分したら元の関数に戻る」関数を求める演算、すなわち「微分の逆演算」として捉えた積分を新たに定義してみよう。
+
+\begin{definition}{不定積分}
+  \newline
+  関数$f(x)$から原始関数$F(x)$を求める演算を、$f(x)$の\hl{不定積分}と呼び、次のように表す。
+  \LARGE
+  \begin{equation}
+    \int f(x) dx = F(x) + C
+  \end{equation}
+  \normalsize
+  ここで、$C$は\hl{積分定数}と呼ばれる任意の定数である。
+\end{definition}
+
+\subsection{原始関数による定積分の表現}
+
+少し前に、定積分$\displaystyle\int_{a}^{x}f(t)dt$を上端$x$の関数$S(x)$とみて、$x$を微小変化させることで、$S(u)$が$f(u)$の原始関数である（$S(u)$を$u$で微分したら$f(u)$になる）ことを確かめた。
+
+\begin{review}
+  区間$\Delta x$での面積の増分を考え、
+
+  \begin{equation}
+    S(x+\Delta x) - S(x) = \int_{x}^{x+\Delta x} f(t) dt
+  \end{equation}
+
+  $\Delta x \to 0$とすれば、次のような微分の関係式が得られる。
+
+  \begin{equation}
+    S(x+dx) = \origFn{S(x)} + \derivFn{f(x)}dx
+  \end{equation}
+\end{review}
+
+さらに前節では、「微分したら元に戻る」原始関数は1つだけではなく、任意の定数$C$を用いた$F(x) + C$も、$f(x)$の原始関数であることを述べた。
+
+\vskip\baselineskip
+
+そこで、$f(x)$の任意の原始関数を$F(x)$とおくことにする。
+
+原始関数は任意の定数$C$分だけ異なるので、$f(x)$の原始関数の1つである$S(x)$は、$f(x)$の他の原始関数$F(x)$を$C$分ずらしたものになるはずである。
+
+\begin{equation}
+  S(x) = F(x) + C
+\end{equation}
+
+ここで、$S(x) = \displaystyle\int_{a}^{x}f(t)dt$に、$x=a$を代入すると、下端と上端が一致する領域の面積（定積分）は明らかに$0$なので、
+
+\begin{equation}
+  S(a) = \int_{a}^{a}f(t)dt = 0
+\end{equation}
+
+なんとここから、$C$を求めることができる。
+
+$S(a) = F(a) + C = 0$より、
+
+\begin{equation}
+  C = -F(a)
+\end{equation}
+
+この$C$を用いて、$S(x)$を次のように表現できる。
+
+\begin{equation}
+  S(x) = F(x) - F(a)
+\end{equation}
+
+$x=b$を代入することで、積分区間の上端を$b$に戻した定積分を考えると、
+
+\begin{align}
+  S(b) & = F(b) - F(a)        \\
+  S(b) & = \int_{a}^{b}f(x)dx
+\end{align}
+
+という、$S(b)$について2通りの表現が得られる。
+
+\begin{supplnote}
+  上端を表す$x$という変数が現れなくなったので、$\int$の中で使っていた変数$t$はしれっと$x$に戻している。
+  $\int$の中の$x$は「下端$a$から上端$b$まで動く」という意味しか持っていないので、何の文字を使っても意味は変わらない。
+\end{supplnote}
+
+得られた2通りの表現式を組み合わせることで、次のような関係が成り立つ。
+
+\begin{equation}
+  \int_{a}^{b}f(x)dx = F(b) - F(a)
+\end{equation}
+
+\begin{theorem}{原始関数による定積分の表現}
+  \newline
+  関数$f(x)$の原始関数が$F(x)$であれば、定積分は次のように計算できる。
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b}f(x)dx = F(b) - F(a)
+  \end{equation}
+  \normalsize
+  ここで現れる$F(b) - F(a)$という量は、次の記号で表される。
+  \LARGE
+  \begin{equation}
+    \Bigl[ F(x) \Bigr]_{a}^{b} = F(b) - F(a)
+  \end{equation}
+\end{theorem}
+
+\subsection{定積分の性質}
+
+面積としての理解だけではうまく想像できない性質も、原始関数との関係を使うことで数式で確かめられるようになる。
+
+\subsubsection{積分区間の結合}
+
+2つの定積分があり、それらの積分区間が連続していれば、1つの定積分としてまとめて計算できる。
+
+\begin{center}
+  \begin{tikzpicture}[
+      scale=0.9,
+      declare function={f(\x)=((1/3)*(\x)^(3)-3*(\x)^(2)+8*\x-3;},
+      lnode/.style={text height=1em},
+      mesh/.style={postaction={pattern=north east lines}}
+    ]
+    \def\a{1.5}
+    \def\b{\a+1.75}
+    \def\c{\b+1.25}
+
+    % 積分区間[a,b]
+    \draw[mesh, fill=SpringGreen!20, draw=SpringGreen!80!gray, pattern color=SpringGreen!80!gray] plot[domain=\a:\b,samples=167] ({\x},{f(\x)}) -- ({\b},0) -| cycle;
+    % 積分区間[b,c]
+    \draw[mesh, fill=BlueGreen!20, draw=BlueGreen!80!gray, pattern color=BlueGreen!80!gray] plot[domain=\b:\c,samples=167] (\x,{f(\x)}) -- (\c,0) -| cycle;
+
+    % aのラベル
+    \node [anchor=north,lnode] at (\a,0) {$a$};
+    % bのラベル
+    \node[anchor=north,lnode] at (\b,0) {$b$};
+    % cのラベル
+    \node[anchor=north,lnode] at (\c,0) {$c$};
+
+    % x軸とy軸
+    \draw [axis] (-0.5,0) -- (\c+2,0) node (xaxis) [below] {$x$};
+    \draw [axis] (0,-0.5) -- (0,5) node [left] {$y$};
+
+    % 原点
+    \node [below left] at (0,0) {$O$};
+
+    % 関数のグラフ
+    \draw[domain=.5:5.3,samples=200,variable=\x,BurntOrange,very thick] plot ({\x},{f(\x)}) node [above right] {$y=f(x)$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{積分区間が連続する定積分の和}
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x) dx + \int_{b}^{c} f(x) dx = \int_{a}^{c} f(x) dx
+  \end{equation}
+\end{theorem}
+
+面積として考えれば明らかな性質だが、原始関数を使って証明することもできる。
+
+$f(x)$の原始関数を$F(x)$とすると、
+
+\begin{align}
+  \int_{a}^{b} f(x) dx + \int_{b}^{c} f(x) dx & = F(b) - F(a) + F(c) - F(b) \\
+                                              & = F(c) - F(a)               \\
+                                              & = \int_{a}^{c} f(x) dx
+\end{align}
+
+として、式が成立することがわかる。
+
+\subsubsection{積分区間の反転}
+
+積分区間の上限と下限を入れ替わると、符号が変わる。
+
+\begin{theorem}{定積分の積分区間の反転}
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x) dx = -\int_{b}^{a} f(x) dx
+  \end{equation}
+\end{theorem}
+
+これは、積分区間が連続する定積分の和の性質における、$c=a$の場合の式である。
+
+\begin{align}
+  \int_{a}^{b} f(x) dx + \int_{b}^{a} f(x) dx & = \int_{a}^{a} f(x) dx  \\
+                                              & = 0                     \\
+  \int_{a}^{b} f(x) dx                        & = -\int_{b}^{a} f(x) dx
+\end{align}
+
+\subsubsection{定積分の線形性}
+
+微分や$\sum$記号などと同様に、定積分も線形性を持つ。
+
+\begin{theorem}{定積分の線形性}
+  \Large
+  \begin{equation}
+    \int_{a}^{b} \left\{ \alpha f(x) + \beta g(x) \right\} dx = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx
+  \end{equation}
+\end{theorem}
+
+この性質は、微分の線形性から導かれる。
+
+$f(x)$の原始関数を$F(x)$、$g(x)$の原始関数を$G(x)$とすると、微分の線形性より、
+
+\begin{align}
+  \dfrac{d}{dx} \left\{ \alpha F(x) + \beta G(x) \right\} & = \alpha \dfrac{d}{dx} F(x) + \beta \dfrac{d}{dx} G(x) \\
+                                                          & = \alpha f(x) + \beta g(x)
+\end{align}
+
+となるから、$\alpha f(x) + \beta g(x)$の原始関数は$\alpha F(x) + \beta G(x)$である。
+
+よって、定積分を原始関数を使って書き表すと、
+
+\begin{align}
+  \int_{a}^{b} \left\{ \alpha f(x) + \beta g(x) \right\} dx & = \alpha F(b) - \alpha F(a) + \beta G(b) - \beta G(a)                      \\
+                                                            & = \alpha \left\{ F(b) - F(a) \right\} + \beta \left\{ G(b) - G(a) \right\} \\
+                                                            & = \alpha \int_{a}^{b} f(x) dx + \beta \int_{a}^{b} g(x) dx
+\end{align}
+
+となり、原始関数を使うことで、微分の線形性から定積分の線形性につながることがわかる。
+
+\subsection{不定積分の性質}
+
+原始関数は、微分によって元の関数に戻る関数だった。
+
+そして、元の関数から原始関数を求める演算が不定積分である。
+
+\begin{center}
+  \begin{tikzpicture}
+    \node [scale=1.5] (A) {$F(x)$};
+    \node [scale=1.5] (B) [right=of A] {$f(x)$};
+
+    \draw [->] (A) to [bend left=45, edge label={$\dfrac{d}{dx}$}] (B);
+    \draw [<-] (A) to [bend right=45, edge node={node[below] {$\int$}}] (B);
+  \end{tikzpicture}
+\end{center}
+
+原始関数という言葉にとらわれないように表現すると、結局は次のような関係が成り立っている。
+
+\begin{center}
+  \begin{tikzpicture}
+    \node [scale=1.5] (A) {$f(x)$};
+    \node [scale=1.5] (B) [right=of A] {$f'(x)$};
+
+    \draw [->] (A) to [bend left=45, edge label={$\dfrac{d}{dx}$}] (B);
+    \draw [<-] (A) to [bend right=45, edge node={node[below] {$\int$}}] (B);
+  \end{tikzpicture}
+\end{center}
+
+\begin{theorem}{不定積分と微分は逆の演算}
+  \newline
+  関数を微分すると導関数になり、導関数を不定積分すると元の関数に戻る。
+\end{theorem}
+
+このような関係によって、微分が持つ性質から、不定積分の性質を導くことができる。
+
+\subsubsection{不定積分の線形性}
+
+微分の線形性から、不定積分の線形性も成り立つ。
+
+\begin{review}
+  微分の線形性
+  \begin{equation}
+    (\alpha F(x) + \beta G(x))' = \alpha F'(x) + \beta G'(x)
+  \end{equation}
+\end{review}
+
+微分の線形性の式の両辺を不定積分すると、左辺は微分する前の関数$\alpha F(x) + \beta G(x)$に戻るので、
+
+\begin{align}
+  \int (\alpha F(x) + \beta G(x))' dx & = \int \left\{ \alpha F'(x) + \beta G'(x) \right\} dx \\
+  \alpha F(x) + \beta G(x)            & = \int \left\{ \alpha F'(x) + \beta G'(x) \right\} dx
+\end{align}
+
+ここで、導関数を不定積分すると元の関数に戻ることから、
+
+\begin{align}
+  F(x) & = \int F'(x) dx \\
+  G(x) & = \int G'(x) dx
+\end{align}
+
+と置き換えることができる。
+
+これらを使って左辺を書き換えると、
+
+\begin{align}
+  \alpha \int F'(x) dx + \beta \int G'(x) dx & = \int \left\{ \alpha F'(x) + \beta G'(x) \right\} dx
+\end{align}
+
+$F(x)$は$f(x)$の原始関数、$G(x)$は$g(x)$の原始関数であるとすると、微分したらそれぞれ元に戻るので、次のように書き表せる。
+
+\begin{align}
+  \alpha \int f(x) dx + \beta \int g(x) dx & = \int \left\{ \alpha f(x) + \beta g(x) \right\} dx
+\end{align}
+
+\begin{theorem}{不定積分の線形性}
+  \Large
+  \begin{equation}
+    \int \left\{ \alpha f(x) + \beta g(x) \right\} dx = \alpha \int f(x) dx + \beta \int g(x) dx
+  \end{equation}
+\end{theorem}
+
+\end{document}
