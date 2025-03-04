@@ -435,6 +435,47 @@ $\sin$は奇関数であり、$\cos$は偶関数であることから導かれ�
 
 直交しているベクトルを基底ベクトルとして使うことで、基底ベクトルの一次結合で他のベクトルを表現できるのと同じように、直交関数系を使うことで、関数を「直交基底関数の一次結合」として表現できる。
 
+\subsection{sinとcosの内積}
+
+$\sin$と$\cos$は、直交関数系をなすことが知られている。
+実際に内積を計算することで、その事実を確認してみよう。
+
+\subsubsection{$\sin$どうしの内積}
+
+\begin{theorem}{$\sin$どうしの内積}
+  $m$、$n$を正の整数とするとき、次の式が成り立つ。
+  \LARGE
+  \begin{equation}
+    \int_0^{2\pi} \sin mx \sin nx \dd{x} = \left\{ \begin{array}{ll}
+      \pi & (m = n)    \\
+      0   & (m \neq n)
+    \end{array} \right.
+  \end{equation}
+\end{theorem}
+
+\subsubsection{$\cos$どうしの内積}
+
+\begin{theorem}{$\cos$どうしの内積}
+  $m$、$n$を正の整数とするとき、次の式が成り立つ。
+  \LARGE
+  \begin{equation}
+    \int_0^{2\pi} \cos mx \cos nx \dd{x} = \left\{ \begin{array}{ll}
+      \pi & (m = n)    \\
+      0   & (m \neq n)
+    \end{array} \right.
+  \end{equation}
+\end{theorem}
+
+\subsubsection{$\sin$と$\cos$の内積}
+
+\begin{theorem}{$\sin$と$\cos$の内積}
+  $m$、$n$を正の整数とするとき、次の式が成り立つ。
+  \LARGE
+  \begin{equation}
+    \int_0^{2\pi} \sin mx \cos nx \dd{x} = 0
+  \end{equation}
+\end{theorem}
+
 \section{フーリエ級数}
 
 \subsection{そもそも級数とは}
