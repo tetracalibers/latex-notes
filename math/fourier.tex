@@ -381,6 +381,60 @@ $\sin$は奇関数であり、$\cos$は偶関数である。
   \end{tikzpicture}
 \end{center}
 
+\section{直交関数系としての三角関数}
+
+$\sin$は奇関数であり、$\cos$は偶関数であることから導かれる、$\sin$と$\cos$の重要な性質がある。
+
+\subsection{関数の内積と直交関数系}
+
+ベクトルの内積は、次のように定義されていた。
+\begin{equation}
+  \vb*{a}\vdot\vb*{b} = \sum_{i=1}^{n} a_ib_i
+\end{equation}
+ここで、離散的な和$\sum$を、連続的な足し合わせ$\int$に置き換えることで、この内積の定義を関数に拡張する。
+\begin{equation}
+  \langle f,g \rangle = \int_{a}^{b} f(x)g(x)dx
+\end{equation}
+このように拡張して定義された関数の内積は、ベクトルの内積と同様の性質を持つことが知られている。
+
+\begin{definition}{関数の内積}
+  \newline
+  2つの関数$f(x)$と$g(x)$の内積を以下のように定義する。
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f(x)g(x)dx
+  \end{equation}
+\end{definition}
+
+ベクトルの内積では、「2つのベクトルが直交しているとき、その内積は$0$になる」という性質があった。
+内積が$0$というのは、「互いに共通な成分を一切持たない」ということであり、図形的には2つのベクトルのなす角が直角であることを意味していた。
+
+\vskip\baselineskip
+
+関数の内積においても、「異なる関数どうしの内積が$0$であれば、2つの関数は直交している」と表現しよう。
+
+\begin{definition}{関数の直交性}
+  \newline
+  関数が\hl{直交}しているとは、自身以外との内積が$0$であることをいう。
+\end{definition}
+
+そして、互いに直交する関数の集合は、直交関数系と呼ばれる。
+
+\begin{definition}{直交関数系}
+  \newline
+  関数の集合$\{f_n(x)\}$が直交関数系であるとは、任意の$n \neq m$に対して
+  \LARGE
+  \begin{equation}
+    \int_{a}^{b} f_n(x)f_m(x)dx = 0
+  \end{equation}
+  \normalsize
+  が成り立つことをいう。
+\end{definition}
+
+直交関数系は、基底としての役割も果たす。
+
+直交しているベクトルを基底ベクトルとして使うことで、基底ベクトルの一次結合で他のベクトルを表現できるのと同じように、直交関数系を使うことで、関数を「直交基底関数の一次結合」として表現できる。
+
 \section{フーリエ級数}
 
 \subsection{そもそも級数とは}
