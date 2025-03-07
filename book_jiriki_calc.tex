@@ -1,0 +1,458 @@
+\documentclass[b5paper,17pt,twocolumn]{jsarticle}
+
+\title{読書ノート：地力をつける微分積分}
+\author{tomixy}
+
+% === color ===
+
+\usepackage[dvipsnames]{xcolor}
+
+% === math ===
+
+\usepackage{mathtools}
+% 別の場所で参照する数式以外は番号が付かないように
+\mathtoolsset{showonlyrefs=true}
+
+% === font ===
+
+\usepackage[T1]{fontenc}
+
+% normal font, math font
+%\usepackage[light,math]{anttor}
+\usepackage{gfsartemisia}
+
+% monospace font
+\usepackage[scaled]{beramono}
+
+% === layout ===
+
+\usepackage[top=15truemm,bottom=30truemm,left=20truemm,right=20truemm]{geometry} % 余白
+\renewcommand{\baselinestretch}{1.25} % 行間
+
+\setlength{\parindent}{0pt} % 段落始めでの字下げをしない
+
+% === tikz ===
+
+\usepackage{froufrou} % セクションを区切る装飾
+\setfroufrou{dinkus}
+
+% === original ===
+
+\newcommand{\keyword}[1]{\textcolor{RubineRed}{\textbf{#1}}}
+
+\newcommand{\sectionline}{\vspace{-\baselineskip}\froufrou\vspace{-\baselineskip}}
+
+% ---
+
+\begin{document}
+
+\maketitle
+
+\section*{微分と積分は何を捉えているか}
+
+\keyword{微分}は、「微小な変化でどのような変動が起こるか」を分析する数学の手法
+
+数学では、\keyword{極限}という概念を用いて「無限小レベルの変化」として厳密に微分を定義する
+
+\sectionline
+
+現実の事象を解明しようとすると、その事象に関わる要因は1つではなく、複数の要因が絡み合っていることが多い
+
+複数の要因が絡み合っている状況を数量的に表すのが\keyword{多変数関数}
+
+\sectionline
+
+変数が2個以上あると、「変数を少し動かす」といってもいろいろな動かし方がある
+
+その動かし方を精密に扱うのが\keyword{偏微分}
+
+\sectionline
+
+\keyword{積分}は「そこにある量を算出する道具」
+
+「そこにある量」を小分けして合算して求める考え方（\keyword{区分求積法}）が積分論の主軸
+
+\section*{本書の内容}
+
+数学では、相対的に無視できるものを切り捨てるという操作を論理的に積み重ねて、\keyword{無限}という概念に向き合う
+
+\sectionline
+
+近似をしたつもりなのに大きな誤差が生じているとすると、その兆候はどこかに現れているはず
+
+局所近似の誤差の兆候は\keyword{高階の微分}に現れる
+
+これを逆に突き詰めると\keyword{テイラー展開}という概念に到達する
+
+\section*{大きな数を感覚的に捉える方法}
+
+分子も分母も無限大に近づく中で、分母に比べて分子を無視できるという等式
+
+\begin{equation}
+  \lim_{n\to \infty }\frac{n^2}{n^3}=0
+\end{equation}
+
+分子を1辺$n$の正方形の面積（2次元）、分母を1辺$n$の立方体の体積（3次元）とみなせば、「次数が高くなると巨大な数が現れやすい」という性質の1つの姿と思うこともできる
+
+\section*{収束や発散の速さ}
+
+$a_1, a_2, a_3, \cdots$という数列があったときに、その初めの$N$個の和を次のように表す
+
+\begin{equation}
+  \sum_{k=1}^{N}a_k = a_1 + a_2 + a_3 + \cdots + a_N
+\end{equation}
+
+2個や3個の和なら$a_1 + a_2$や$a_1 + a_2 + a_3$と書けるが、たとえば$N$が$10^{16}$というようなときには、すべての項を書き出せないため、このように記法を決めておく
+
+\sectionline
+
+等比級数$A_N$の収束の速さを考える
+
+\begin{equation}
+  A_N = \sum_{k=1}^{N}\dfrac{1}{2^k} = \dfrac{1}{2} + \dfrac{1}{4} + \cdots + \dfrac{1}{2^N}
+\end{equation}
+
+この和に$\dfrac{1}{2^N}$を足すと、$1$になる
+
+たとえば、
+\begin{equation}
+  \dfrac{1}{2} + \dfrac{1}{4} + \dfrac{1}{8} + \dfrac{1}{8} = 1
+\end{equation}
+
+なので、$N$個の総和は、
+\begin{equation}
+  1 - \dfrac{1}{2^N}
+\end{equation}
+
+$\dfrac{1}{2^N}$がどれくらい小さいかがわかれば、$A_N$の和が$1$にどれくらい近いかがわかる
+
+\vskip\baselineskip
+
+では、$N=10^{16}$のとき、$\dfrac{1}{2^N}$はどれくらいの大きさか？
+
+まず、$N=10$の場合を考えると、
+\begin{equation}
+  2^{10} = 1024 \fallingdotseq 1000
+\end{equation}
+より、
+\begin{align}
+  \dfrac{1}{2^{10}}     & \fallingdotseq 0.001 \\
+  1 - \dfrac{1}{2^{10}} & \fallingdotseq 0.999
+\end{align}
+というふうに、小数点以下に$9$が3つ連続して並ぶ
+
+$N=10^2$のときは、
+\begin{equation}
+  2^{100} = (2^{10})^{10} = (1024)^{10} \fallingdotseq (1000)^{10} = 10^{30}
+\end{equation}
+から、$9$がおよそ30個並ぶ（$1024 > 1000$なので、「少なくとも」30個並ぶ）
+
+$N=10^{16}$のときは、
+\begin{equation}
+  2^{10^{16}} = (2^{10})^{10^{15}} \fallingdotseq 10^{30 \times 10^{15}}
+\end{equation}
+から、$3 \times 10^{15} = 3000$兆以上の$9$が並ぶ
+
+このように、$N$を大きくしていくと、$2^N$はきわめて$1$に近い数になる
+
+$N \to \infty$としたときに、等比級数$A_N$は$1$に収束する
+
+\section*{誤差評価}
+
+測定や推定で何らかの値を得たとき、\keyword{誤差}は次のように定義される
+\begin{equation}
+  \text{誤差} = \left| \text{測定値 or 推定値} - \text{真の値} \right|
+\end{equation}
+
+誤差が論理的に小さいと言えれば、その測定値や推定値は一定の安心感を持って\keyword{近似値}として使うことができる
+
+\vskip\baselineskip
+
+誤差がある数$\varepsilon$より小さくなるという不等式
+\begin{equation}
+  \left| \text{測定値 or 推定値} - \text{真の値} \right| < \varepsilon
+\end{equation}
+を\keyword{誤差評価}という
+
+\vskip\baselineskip
+
+$N$が$10^{16}$のとき、右辺は小数点以下に少なくとも$3\times 10^{15}$個の$0$が並ぶ
+\begin{equation}
+  \left| A_N - 1 \right| < 0.00\ldots 0 \ldots
+\end{equation}
+この不等式は、$N=10^{16}$のときの$A_N$が、極限値である$1$をどの程度の精度で近似しているかを表す誤差評価と考えることもでき、この誤差評価は、相対的な収束の速さを数値的に表すものでもある（右辺の小数点以下に並ぶ$0$の数で速さがわかる）
+
+\section*{関数の全体を見る}
+
+$y=x^4$と$y=x^2$の差異を考えてみる
+
+\vskip\baselineskip
+
+$x$が大きい場合の例として、たとえば$x=10$のときは、
+\begin{align}
+  y=x^4 & = 10^4 = 10000 \\
+  y=x^2 & = 10^2 = 100
+\end{align}
+$x$をもっと大きくすると、$x^2$も$x^4$も大きな数になるが、この2つだけを比較すると、$x^4$の方がはるかに大きいので$x^2$は相対的に無視できそうだといえる
+
+\vskip\baselineskip
+
+$x$が$0$に近い場合の例として、たとえば$x=0.1$のときは、
+\begin{align}
+  y=x^4 & = 0.1^4 = 0.0001 \\
+  y=x^2 & = 0.1^2 = 0.01
+\end{align}
+$x=0$の近くでグラフを書くと、$y=x^4$の方は$x$軸すれすれになる
+
+このように、$x$が$0$に近いときは$x^2$も$x^4$も小さな数だが、この2つだけを比較すると、$x^2$の方が相対的に大きいので$x^4$は無視できるくらい小さそうだといえる
+
+\vskip\baselineskip
+
+3つ以上のものを比較するときも、\keyword{圧倒的に大きいものが1つだけあれば残りを無視しよう}という考え方ができる
+
+微分や積分における極限にも、この考え方が用いられる
+
+\sectionline
+
+厳密な論理体系である数学では、どういう基準で何を無視するかというルールを明確に決めてから議論を積み重ねることになる
+
+その一方で、論理的な証明を導く際には、\keyword{効くものと無視できるものを区別する}という直観が役立つ
+
+\section*{二項係数の4つの側面}
+
+\keyword{パスカルの三角形}を帰納的に定義する
+
+\begin{itemize}
+  \item 1段目（最上段）は$1$とする
+  \item $n$段目に$n$個の数を定めたとして、$n+1$段目は線で繋がっているすぐ上の数を足し合わせて定めることにする
+\end{itemize}
+
+このとき、次の4つの数が一致する
+\begin{enumerate}
+  \item $(a+b)^n$の展開式における$a^{n-k}b^k$の係数
+  \item パスカルの三角形の$n+1$段目、左から$k+1$番目の数
+  \item パスカルの三角形で$n+1$段目、左から$k+1$番目の地点から最上段に登る最短経路の個数
+  \item ${}_n C_k = \binom{n}{k} = \dfrac{n!}{k!(n-k)!}$
+\end{enumerate}
+
+\sectionline
+
+\subparagraph{1と4の一致}
+
+次のように$(a+b)^n$を$n$個の積を並べたものとして表すことで示す
+\begin{equation}
+  (a+b)^n = \underbrace{(a+b)\times (a+b)\times \cdots \times (a+b)}_{n}
+\end{equation}
+
+この展開式において、たとえば$a^{n-k}b^k$という項がどこから生じるかを考える
+
+\vskip\baselineskip
+
+右辺を展開するとき、$a+b$のそれぞれの項で$a$か$b$の2通りの選択肢があるため、展開すると全部で$2^n$通りの単項式の和になる
+
+展開したときに$a^{n-k}b^k$という項に寄与するのは、$n$個の$(a+b)$の中から$b$を$k$個選ぶ場合の数なので、${}_n C_k$通りある
+
+\vskip\baselineskip
+
+こうして、${}_n C_k$通りの$a^{n-k}b^k$が現れることから、$a^{n-k}b^k$の係数は${}_n C_k$となる
+
+\sectionline
+
+\subparagraph{2と3の一致}
+
+ある地点から最上段に行くには、その地点の左上か右上に移動するしかない
+
+そのため、この地点から最上段に登る最短経路の個数は、そのすぐ左上の地点を経由して最上段に登る最短経路の個数と、そのすぐ右上の地点を経由して最上段に登る最短経路の個数の和になる（和の法則）
+
+これはまさにパスカルの三角形を定義したときのルールであり、パスカルの三角形の$n+1$段目、左から$k+1$番目の数は、$n$段目かつ左から$k$番目の数と、$n$段目かつ左から$k+1$番目の数の和になる
+
+\sectionline
+
+\subparagraph{1と2の一致}
+
+次のように書くことで見えてくる
+\begin{align}
+  (a+b)^n & = (a+b)^{n - 1}\times (a+b)                     \\
+          & = (a+b)^{n - 1}\times a + (a+b)^{n - 1}\times b
+\end{align}
+これは、$(a+b)^{n - 1}$の各項に、$a$と$b$をそれぞれかけて足し合わせる計算になっている
+
+\vskip\baselineskip
+
+$(a+b)^{n - 1}$を展開すると、それぞれの項は、$a$を$(n-1)-k$回、$b$を$k$回かけた形になる
+\begin{equation}
+  (a+b)^{n-1} = \sum_{k=0}^{n-1} {}_{n-1}C_k \cdot a^{n-k-1}b^k
+\end{equation}
+
+\vskip\baselineskip
+
+$(a+b)^{n - 1}$の各項に$a$をかけると、$a$の指数が1増えるので、$a^{n-k}$の項が現れる
+\begin{align}
+  (a+b)^{n-1} \times a & = \sum_{k=0}^{n-1} {}_{n-1}C_k a^{n-k}b^k           \\
+                       & = a^n + \sum_{k=1}^{n-1} {}_{n-1}C_{k-1} a^{n-k}b^k
+\end{align}
+
+同様に、$(a+b)^{n - 1}$の各項に$b$をかけると、$b$の指数が1増えるので、$b^{k+1}$の項が現れる
+\begin{align}
+  (a+b)^{n-1} \times b & = \sum_{k=0}^{n-1} {}_{n-1}C_{k} a^{n-k-1}b^{k+1} \\
+                       & = \sum_{k=1}^{n} {}_{n-1}C_k a^{n-k} b^k + b^n
+\end{align}
+
+\vskip\baselineskip
+
+よって、これらを足し合わせると、
+\begin{align}
+  (a+b)^n & = a^n + \sum_{k=1}^{n-1} \left( {}_{n-1}C_{k-1} + {}_{n-1}C_k \right) a^{n-k} b^k + b^n
+\end{align}
+
+\vskip\baselineskip
+
+${}_{n-1}C_{k-1} + {}_{n-1}C_k$の部分は、それぞれ
+\begin{itemize}
+  \item ${}_{n-1}C_{k-1}$はパスカルの三角形の$n$段目、左から$k$番目の数
+  \item ${}_{n-1}C_k$はパスカルの三角形の$n$段目、左から$k+1$番目の数
+\end{itemize}
+を表すので、これらの和（$a^{n-k}b^k$の係数）がパスカルの三角形の$n+1$段目、左から$k+1$番目の数になることがいえる
+
+（注：段数は$1$から始まるので、$n+1$段目が$(a+b)^n$の展開に対応する。同様に、左から数える番号も$1$始まりなので、$k+1$番目が$a^{n-k}b^k$の係数に対応する）
+
+\sectionline
+
+\subparagraph{一般の展開公式}
+
+1と4の一致から、一般の展開公式は次のように書ける
+\begin{equation}
+  (a+b)^n = \sum_{k=0}^{n} \dfrac{n!}{k!(n-k)!} a^{n-k}b^k
+\end{equation}
+この展開公式を\keyword{二項展開}という
+
+\vskip\baselineskip
+
+そして、$a^{n-k}b^k$の係数
+\begin{equation}
+  {}_n C_k = \dfrac{n!}{k!(n-k)!} = \dfrac{n(n-1)\cdots (n-k+1)}{k(k-1)\cdots 1}
+\end{equation}
+は\keyword{二項係数}という
+
+\sectionline
+
+二項展開において、$a=1$の場合を考えると、
+\begin{equation}
+  (1+b)^n = 1 + nb + \dfrac{n(n-1)}{2!}b^2 + \dfrac{n(n-1)(n-2)}{3!}b^3 + \cdots
+\end{equation}
+ここで、二項係数はいつでも正なので、$b > 0$ならば、上の二項展開に現れる項はすべて正となる
+
+\vskip\baselineskip
+
+特に、$n \geq 2$ならば、次の不等式が成り立つ
+\begin{equation}
+  (1+b)^n > 1 + nb
+\end{equation}
+
+\section*{$100!$と$10^{100}$はどちらが大きいか？}
+
+$n=100$のとき、\keyword{$10^n$はとても大きい数だが、$n!$と比べたら取るに足らない}ことを示す（$n!$を概算するスターリングの公式は使わずに）
+
+\sectionline
+
+$100!$において、$10$から先をすべて$10$に置き換える
+
+$10$から$100$までの数は$91$個あるので、
+\begin{equation}
+  100! > 10^{91}
+\end{equation}
+がわかる
+
+\vskip\baselineskip
+
+より精密に評価するために、$10$から$99$までの90個の数の積を10個ずつまとめてみると、
+\begin{gather}
+  10^{10} < 10 \cdot 11 \cdots 19 < 10^{20}  \\
+  10^{20} < 20 \cdot 21 \cdots 29 < 10^{30}  \\
+  \vdots                                     \\
+  10^{90} < 90 \cdot 91 \cdots 99 < 10^{100}
+\end{gather}
+さらに、これを縦にかけ合わせて、
+\begin{equation}
+  10^{10} \cdots 90^{10} < 10 \cdots 99 < 20^{10} \cdots 100^{10}
+\end{equation}
+左辺は、
+\begin{align}
+  10^{10} \cdots 90^{10} & = (10\cdots 90)^{10}                                                                  \\
+                         & = \left( (10 \cdot 1) \cdot (10 \cdot 2) \cdot \cdots \cdot (10 \cdot 9) \right)^{10} \\
+                         & = \left( 10^9 \cdot (1 \cdot 2 \cdot \cdots \cdot 9) \right)^{10}                     \\
+                         & = \left( 10^9 \cdot 9! \right)^{10}                                                   \\
+                         & = 10^{90} \cdot (9!)^{10}
+\end{align}
+右辺は、
+\begin{align}
+  20^{10} \cdots 100^{10} & = (20\cdots 100)^{10}                                                      \\
+                          & = \left( (10 \cdot 2) \cdot (10 \cdot 3) \cdots (10 \cdot 10) \right)^{10} \\
+                          & = \left( 10^{9} \cdot (1 \cdot 2 \cdots 9 \cdot 10) \right)^{10}           \\
+                          & = \left( 10^{9} \cdot 9! \cdot 10 \right)^{10}                             \\
+                          & = \left( 10^{10} \cdot 9! \right)^{10}                                     \\
+                          & = 10^{100} \cdot (9!)^{10}
+\end{align}
+なので、
+\begin{equation}
+  10^{90} \cdot (9!)^{10} < 10 \cdots 99 < 10^{100} \cdot (9!)^{10}
+\end{equation}
+ここで、
+\begin{equation}
+  100! = 9! \cdot 10 \cdots 99 \cdot 100
+\end{equation}
+と表し、後回しにしていた$9! \cdot 100$を不等式の各項にかけると、
+\begin{gather}
+  10^{90} \cdot (9!)^{10} \cdot 10^{2} \cdot 9! < 100! < 10^{100} \cdot (9!)^{10} \cdot 10^{2} \cdot 9! \\
+  10^{92} \cdot (9!)^{11} < 100! < 10^{102} \cdot (9!)^{11}
+\end{gather}
+
+\vskip\baselineskip
+
+ところで、$9! = 362880 \fallingdotseq 3.6 \times 10^5$から、
+\begin{gather}
+  3 \times 10^5 < 9! < 4 \times 10^5
+\end{gather}
+と粗く評価しておき、この式の両辺を$11$乗すると、
+\begin{gather}
+  3^{11} \times 10^{55} < (9!)^{11} < 4^{11} \times 10^{55}
+\end{gather}
+ここで、次のように考えると、$10^5 < 3^{11}$という大まかな不等式が成り立つ
+\begin{align}
+  10^5 & = 3^5 \times \dfrac{10^5}{3^5}                 \\
+       & = 3^5 \times \left( \dfrac{10}{3} \right)^5    \\
+       & \fallingdotseq 3^5 \times \left( 3.3 \right)^5 \\
+       & = 3^5 \times 3^{0.3 \times 5}                  \\
+       & = 3^{10} \times 3^{0.3}                        \\
+       & < 3^{11}
+\end{align}
+また、次のように考えることで、$4^{11} < 10^7$という大まかな不等式も成り立つ
+\begin{align}
+  4^{11} & = 2^{22}                                                   \\
+         & = 2^{10} \times 2^{10} \times 2^2                          \\
+         & = 1024^2 \times 4                                          \\
+         & = \left( 1000 \times \dfrac{1024}{1000} \right)^2 \times 4 \\
+         & = \left( 10^3 \times 1.024 \right)^2 \times 4              \\
+         & = 10^6 \times 1.024^2 \times 4                             \\
+         & < 10^6 \times 1.1^2 \times 4                               \\
+         & < 10^7
+\end{align}
+これらを使うと、$(9!)^{11}$に関する不等式の左辺と右辺は、
+\begin{gather}
+  3^{11} \times 10^{55} < (9!)^{11} < 4^{11} \times 10^{55} \\
+  10^5 \times 10^{55} < (9!)^{11} < 10^7 \times 10^{55}     \\
+  10^{60} < (9!)^{11} < 10^{62}
+\end{gather}
+したがって、$100!$に関する不等式の左辺と右辺は、
+\begin{gather}
+  10^{92} \times (9!)^{11} < 100! < 10^{102} \times (9!)^{11} \\
+  10^{92} \times 10^{60} < 100! < 10^{102} \times 10^{62}     \\
+  10^{152} < 100! < 10^{164}
+\end{gather}
+これで、大まかな手計算で$100!$の大きさを評価できた
+
+特に、$10^{152} < 100!$から、$100!$が$10^{100}$よりもはるかに大きいことがわかる
+
+\section*{$\cos x$のテイラー展開}
+
+\end{document}
