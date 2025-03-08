@@ -186,6 +186,37 @@ $x$を止めて考えると、$f(x)$の微分は1つの数
 
 \section*{単項式$x^n$の微分}
 
+$f(x+h)=(x+h)^n$の二項展開
+\begin{equation}
+  f(x+h) = x^n + nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^n
+\end{equation}
+を用いると、
+\begin{align}
+   & f(x+h)-f(x)                                                  \\
+   & = (x+h)^n - x^n                                              \\
+   & = x^n + nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^n - x^n \\
+   & = nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^{n-1}
+\end{align}
+上の式変形で、最初の$x^n$は最後の$-x^n$と相殺されている
 
+両辺を$h$で割ると、
+\begin{align}
+  \dfrac{f(x+h)-f(x)}{h}
+   & = \dfrac{nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^{n-1}}{h} \\
+   & = nx^{n-1} + {}_n C_2 x^{n-2}h + \cdots + h^{n-1}
+\end{align}
+
+$h$が$0$に近づくと、
+\begin{itemize}
+  \item $h$に無関係な最初の項$nx^{n-1}$はそのまま残る
+  \item 次の$h$の項は$0$に近づく
+  \item その後の$h^2, h^3, \cdots, h^{n-1}$の項はさらに速く$0$に近づく
+\end{itemize}
+
+というわけで、$h$を$0$に近づけると$nx^{n-1}$に収束し、
+\begin{equation}
+  \dfrac{d}{dx}x^n = nx^{n-1}
+\end{equation}
+が成り立つ
 
 \end{document}
