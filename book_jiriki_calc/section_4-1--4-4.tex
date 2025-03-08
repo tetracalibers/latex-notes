@@ -192,10 +192,10 @@ $f(x+h)=(x+h)^n$の二項展開
 \end{equation}
 を用いると、
 \begin{align}
-   & f(x+h)-f(x)                                                  \\
-   & = (x+h)^n - x^n                                              \\
-   & = x^n + nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^n - x^n \\
-   & = nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^{n-1}
+  f(x+h)-f(x) & = (x+h)^n - x^n                                      \\
+              & = x^n + nx^{n-1}h + {}_n C_2 x^{n-2}h^2              \\
+              & \phantom{=====} + \cdots + h^n - x^n                 \\
+              & = nx^{n-1}h + {}_n C_2 x^{n-2}h^2 + \cdots + h^{n-1}
 \end{align}
 上の式変形で、最初の$x^n$は最後の$-x^n$と相殺されている
 
@@ -287,5 +287,105 @@ $n$に具体的な数を入れて確かめてみる
        & = 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \cdots
 \end{align}
 後にこの関数は、\keyword{指数関数}として$e^x$と書くことになる
+
+\section*{ネイピアの数}
+
+次の関数に$x=0$と$x=1$を代入してみる
+\begin{equation}
+  f(x) = 1 + x + \dfrac{1}{2!}x^2 + \dfrac{1}{3!}x^3 + \cdots
+\end{equation}
+
+\sectionline
+
+\subparagraph{$x=0$を代入すると}
+
+最初の$1$だけが残り、
+\begin{equation}
+  f(0) = 1
+\end{equation}
+
+\sectionline
+
+\subparagraph{$x=1$を代入すると}
+
+$1$を何乗しても$1$であるから、
+\begin{equation}
+  f(1) = 1 + 1 + \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots
+\end{equation}
+
+\vskip\baselineskip
+
+この$f(1)$の数値はどのくらいになるだろうか？
+\begin{enumerate}
+  \item 第1項は$1$
+  \item 第2項も$1$
+  \item 第3項は$0.5$
+  \item 次は前の項を$3$で割るわけだから$0.166\ldots$
+  \item 次はさらに$4$で割るから$0.041\ldots$
+  \item 次はさらにそれを$5$で割って$0.008\ldots$
+\end{enumerate}
+ここまでの$6$項の和で$2.716\ldots$となる
+
+\vskip\baselineskip
+
+加える項は急速に$0$に近づく
+
+項が100個くらいまで進むと、次に加える$\dfrac{1}{100!}$は小数点以下に$0$が150個以上並ぶくらい小さな数になる（$10^{152}<100!<10^{164}$という不等式より）
+
+\vskip\baselineskip
+
+このように、無限級数$f(1)$は収束がとても速く、
+\begin{equation}
+  f(1) = 2.71828\ldots
+\end{equation}
+という数になる
+
+\sectionline
+
+\paragraph{定理}
+
+\begin{equation}
+  \lim_{n\to\infty}\left(1+\dfrac{1}{n}\right)^n = \sum_{k=0}^{\infty} \dfrac{1}{k!}
+\end{equation}
+
+\vskip\baselineskip
+
+\subparagraph{証明のスケッチ}
+
+二項展開を用いて、
+\begin{align}
+  \left(1+\dfrac{1}{n}\right)^n
+   & = \sum_{k=0}^{n} \frac{n!}{k!(n-k)!} \cdot \frac{1}{n^k}
+  %& = 1 + 1 + \dfrac{1}{2!}\left(1-\dfrac{1}{n}\right)                                             \\\\
+  %& \phantom{=====} + \dfrac{1}{3!}\left(1-\dfrac{1}{n}\right)\left(1-\dfrac{2}{n}\right) + \cdots
+\end{align}
+
+ここで、$k=2$以降の各項は次のように展開する
+\begin{align}
+  \frac{n!}{2!(n-2)!} \cdot \frac{1}{n^2}
+   & = \frac{n(n-1)}{2!} \cdot \frac{1}{n^2}       \\
+   & = \dfrac{1}{2!} \cdot \dfrac{n-1}{n}          \\
+   & = \frac{1}{2!} \left( 1 - \frac{1}{n} \right)
+\end{align}
+
+\begin{align}
+  \frac{n!}{3!(n-3)!} \cdot \frac{1}{n^3}
+   & = \frac{n(n-1)(n-2)}{3!} \cdot \frac{1}{n^3}                                 \\
+   & = \dfrac{1}{3!} \cdot \dfrac{n-1}{n} \cdot \dfrac{n-2}{n}                    \\
+   & = \frac{1}{3!} \left( 1 - \frac{1}{n} \right) \left( 1 - \frac{2}{n} \right)
+\end{align}
+
+これらを用いると、
+\begin{multline}
+  \left(1+\dfrac{1}{n}\right)^n = 1 + 1 + \dfrac{1}{2!}\left(1-\dfrac{1}{n}\right) \\
+  + \dfrac{1}{3!}\left(1-\dfrac{1}{n}\right)\left(1-\dfrac{2}{n}\right) + \cdots
+\end{multline}
+$n$が大きくなると$\dfrac{1}{n}$は$0$に近づくので、$1-\dfrac{1}{n}$は$1$に近づき、
+\begin{equation}
+  \left(1+\dfrac{1}{n}\right)^n = 1 + 1 + \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots
+\end{equation}
+となる$\qed$
+
+
 
 \end{document}
