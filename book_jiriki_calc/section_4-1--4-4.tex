@@ -386,6 +386,132 @@ $n$が大きくなると$\dfrac{1}{n}$は$0$に近づくので、$1-\dfrac{1}{n}
 \end{equation}
 となる$\qed$
 
+\section*{無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$の収束}
 
+$n$を大きくすると$n!$は急速に大きくなるので、$x=1$のときには無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}=\sum_{n=0}^{\infty} \dfrac{1}{n!}$が収束することは納得できる
+
+\vskip\baselineskip
+
+では、$x>1$のときもこの無限級数は収束するといえるのだろうか？
+
+\sectionline
+
+そもそも数列の各項が$0$に近づかないと、その数列の総和は収束しないため、まず次の問いを考える
+（以下では$x$を固定しておく）
+
+\vskip\baselineskip
+
+\paragraph{問題}
+
+$n$をどんどん大きくしたとき、$\dfrac{x^n}{n!}$は$0$に近づくか？
+
+\vskip\baselineskip
+
+この問いは、$x^n$と$n!$の大きさを比べようという問題である
+
+たとえば$n=100$とすると、実は$100!$の方が$10^{100}$よりも圧倒的に大きくなることをすでに示している
+
+\vskip\baselineskip
+
+$n=100$に限らず、「$x$を止めたとき、$x^n$と$n!$の比である$\dfrac{x^n}{n!}$は、$n$を大きくすると分母が圧倒的に大きくなり、比は$0$に近づく」ことが同様の議論で示される
+
+\sectionline
+
+無限級数の各項が$0$に近づいたとしても、「塵も積もれば山となる」（足し合わせると発散する）ことも起こり得る
+
+\vskip\baselineskip
+
+では、次の問題はどうだろうか？
+
+\vskip\baselineskip
+
+\paragraph{問題}
+
+無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$は収束するか？
+
+\vskip\baselineskip
+
+実はこの無限級数は、等比級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{1}{2^n}$よりももっと速く収束する
+
+\vskip\baselineskip
+
+\subparagraph{証明のスケッチ}\quad
+
+$x$は固定して、$n$に関する和を考える
+
+\vskip\baselineskip
+
+整数$n$が十分に大きければ、
+\begin{equation}
+  \dfrac{\left|x\right|^n}{n!} < \dfrac{1}{2^n}
+\end{equation}
+
+これは、「無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$が等比級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{1}{2^n}$より速く収束する」という1つの表現
+
+\vskip\baselineskip
+
+正確には、$8x^2+1$より大きいすべての自然数$n$に対して、
+\begin{equation}
+  \dfrac{\left|x\right|^n}{n!} < \dfrac{1}{2^n}
+\end{equation}
+が成り立つ
+
+このことがいえれば、$8x^2$より大きい整数$N$に対して、無限級数$\displaystyle\sum_{n=N+1}^{\infty} \dfrac{x^n}{n!}$は次のように等比級数$\displaystyle\sum_{n=N+1}^{\infty} \dfrac{1}{2^n}$より速く収束する
+\begin{align}
+  \left| \sum_{n=N+1}^{\infty} \dfrac{x^n}{n!} \right|
+   & \leq \sum_{n=N+1}^{\infty} \dfrac{\left| x \right|^n}{2^n} \\
+   & < \sum_{n=N+1}^{\infty} \dfrac{1}{2^n}                     \\
+   & = \dfrac{1}{2^{N}}
+\end{align}
+
+上の計算のうち、$\displaystyle\left| \sum_{n=N+1}^{\infty} \dfrac{x^n}{n!} \right| \leq \sum_{n=N+1}^{\infty} \dfrac{\left| x \right|^n}{2^n}$では、次のような三角不等式を利用している
+\begin{align}
+  \left| a_1 + a_2 + \dots + a_m \right|   & \leq |a_1| + |a_2| + \dots + |a_m| \\
+  \left| \sum_{n=N+1}^{\infty} a_n \right| & \leq \sum_{n=N+1}^{\infty} |a_n|
+\end{align}
+
+\vskip\baselineskip
+
+そこで、無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$を、$n=N$までの有限和と、$n=N+1$からの無限級数に分けて考える
+\begin{equation}
+  \sum_{n=0}^{\infty} \dfrac{x^n}{n!} = \sum_{n=0}^{N} \dfrac{x^n}{n!} + \sum_{n=N+1}^{\infty} \dfrac{x^n}{n!}
+\end{equation}
+このように考えると、左辺の無限級数が、右辺の有限和に収束することがわかる
+
+\vskip\baselineskip
+
+\subparagraph{不等式$\dfrac{\left|x\right|^n}{n!} < \dfrac{1}{2^n}$の証明}\quad\\
+
+一般に$A \leq 0$のとき、$n > 2A^2 + 1$ならば、
+\begin{equation}
+  A^n < n!
+\end{equation}
+という不等式が成り立つことを示す
+
+\vskip\baselineskip
+
+$A=2|x|$の場合$\left( 2|x| \right)^n < n!$が、$\dfrac{\left|x\right|^n}{n!} < \dfrac{1}{2^n}$となる
+
+\vskip\baselineskip
+
+$n$が偶数（$=2m$）の場合、$n > 2A^2$の$n$を$2m$に置き換えることで、$m > A^2$となり、
+\begin{align}
+  n! & = (2m)! = 2m \cdot (2m-1) \cdots 2 \cdot 1   \\
+     & > m \cdot m \cdots m = m^m = m^{\frac{n}{2}} \\
+     & > \left( A^2 \right)^{\frac{n}{2}} = A^n
+\end{align}
+が成り立つ
+
+\vskip\baselineskip
+
+$n$が奇数の場合、$n-1$は偶数なので、偶数の場合の結果から$(n-1)! > A^{n-1}$がいえる
+
+さらに、$n > 2A^2 + 1 > A$なので、
+\begin{align}
+  n! & = n \cdot (n-1)!        \\
+     & > n \cdot A^{n-1}       \\
+     & > A \cdot A^{n-1} = A^n
+\end{align}
+となり、いずれの場合も$A^n < n!$が成り立つ$\qed$
 
 \end{document}
