@@ -219,4 +219,73 @@ $h$が$0$に近づくと、
 \end{equation}
 が成り立つ
 
+\section*{微分しても変わらない不思議な関数}
+
+この式をぼんやりと眺めていると、
+\begin{equation}
+  \dfrac{d}{dx}x^n = nx^{n-1}
+\end{equation}
+
+\begin{itemize}
+  \item 左辺における$\dfrac{d}{dx}$という記号に呼応して、右辺では$n$が飛び出すというふうにも見える
+  \item 左辺では$x$の$n$乗だったものが、右辺では$n-1$乗になっている
+\end{itemize}
+
+\sectionline
+
+$x^n$を$n$の階乗で割った$\dfrac{x^n}{n!}$という関数を考える
+
+\vskip\baselineskip
+
+この関数を微分すると、$\dfrac{1}{n!}$は微分の外に出せる
+\begin{equation}
+  \dfrac{d}{dx}\left(\dfrac{x^n}{n!}\right) = \dfrac{1}{n!}\left(\dfrac{d}{dx}x^n\right) = \dfrac{nx^{n-1}}{n!} = \dfrac{x^{n-1}}{(n-1)!}
+\end{equation}
+
+この式では、左辺と右辺で似た形が現れている
+
+文字は左辺の$n$から右辺の$n-1$に化けるが、形は同じ
+
+\vskip\baselineskip
+
+$n$に具体的な数を入れて確かめてみる
+\begin{itemize}
+  \item $n=0$のとき、$\dfrac{d}{dx}\left(\dfrac{x^0}{0!}\right) = 0$
+  \item $n=1$のとき、$\dfrac{d}{dx}\left(\dfrac{x^1}{1!}\right) = \dfrac{x^0}{0!}$
+  \item $n=2$のとき、$\dfrac{d}{dx}\left(\dfrac{x^2}{2!}\right) = \dfrac{x^1}{1!}$
+  \item $n=3$のとき、$\dfrac{d}{dx}\left(\dfrac{x^3}{3!}\right) = \dfrac{x^2}{2!}$
+  \item $n=4$のとき、$\dfrac{d}{dx}\left(\dfrac{x^4}{4!}\right) = \dfrac{x^3}{3!}$
+  \item $n=5$のとき、$\dfrac{d}{dx}\left(\dfrac{x^5}{5!}\right) = \dfrac{x^4}{4!}$
+\end{itemize}
+微分すると斜め右下にまったく同じ形の式が現れるというパターンが続く
+
+上のリストでは$n=5$で止めているが、たとえば$n=100$までいっても同じパターンが続く
+
+\vskip\baselineskip
+
+そこで、$\dfrac{x^n}{n!}$を$n=0$から順に全部足すことを考え、それを$f(x)$とおく
+\begin{align}
+  f(x)              & = \dfrac{x^0}{0!} + \dfrac{x^1}{1!} + \dfrac{x^2}{2!} + \dfrac{x^3}{3!} + \cdots \\
+  \dfrac{d}{dx}f(x) & = 0 + \dfrac{x^0}{0!} + \dfrac{x^1}{1!} + \dfrac{x^2}{2!} + \cdots
+\end{align}
+下の式は1個右にずれているので、途中で打ち切れば1個足りなくなるが、無限に足すと、上の式と下の式はぴったり一致している
+
+したがって、
+\begin{equation}
+  \dfrac{d}{dx}f(x) = f(x)
+\end{equation}
+が成り立つことがわかる
+
+つまり、\keyword{関数$f(x)$は微分したものが自分自身になっている！}
+
+\vskip\baselineskip
+
+いま無限級数として定義した関数$f(x)$を何通りかの記法で表しておく
+\begin{align}
+  f(x) & = \sum_{n=0}^{\infty} \dfrac{x^n}{n!}                                            \\
+       & = \dfrac{x^0}{0!} + \dfrac{x^1}{1!} + \dfrac{x^2}{2!} + \dfrac{x^3}{3!} + \cdots \\
+       & = 1 + x + \dfrac{x^2}{2} + \dfrac{x^3}{6} + \cdots
+\end{align}
+後にこの関数は、\keyword{指数関数}として$e^x$と書くことになる
+
 \end{document}
