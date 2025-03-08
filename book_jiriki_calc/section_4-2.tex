@@ -297,4 +297,114 @@ $n$が奇数の場合、$n-1$は偶数なので、偶数の場合の結果から
 \end{align}
 となり、いずれの場合も$A^n < n!$が成り立つ$\qed$
 
+\section*{関数等式}
+
+無限級数$\displaystyle f(x) = \sum_{n=0}^{\infty} \dfrac{x^n}{n!}$に$x+y$を代入し、$f(x+y)$を計算してみる
+\begin{align}
+  f(x+y) & = \sum_{n=0}^{\infty} \dfrac{(x+y)^n}{n!}                                                          \\
+         & = \sum_{n=0}^{\infty} \dfrac{1}{n!} \left( \sum_{k=0}^{n} \dfrac{n!}{k!(n-k)!} x^k y^{n-k} \right) \\
+         & = \sum_{n=0}^{\infty} \left( \sum_{k=0}^{n} \dfrac{1}{k!(n-k)!} x^k y^{n-k} \right)                \\
+         & = \sum_{n=0}^{\infty} \left( \sum_{k=0}^{n} \dfrac{x^k}{k!} \dfrac{y^{n-k}}{(n-k)!} \right)
+\end{align}
+
+\sectionline
+
+\subparagraph{2重和}
+
+何かを算出したいとき、一旦小計を取ることがある
+
+小計を取ってから、小計を足し合わせて総計を取るのが\keyword{2重和}
+
+\vskip\baselineskip
+
+小計として何を選ぶかには自由度がある
+
+たとえば、1ヶ月の支出を計算するときに、
+\begin{itemize}
+  \item 食費や本代などの品目ごとの小計をを取り、それを足し合わせる
+  \item 日々の支出を計算し、それを足し合わせる
+\end{itemize}
+どちらの方法を選んでも、まったく同じ総額が得られる
+
+一般の2重和の計算においても、何を小計として選んでも総和は同じになる
+
+\vskip\baselineskip
+
+多重積分における累次積分の計算法は、2重和$\sum\sum$を一般化したものになっている
+
+\sectionline
+
+$f(x+y)$で現れる2重和は、そもそも全体として何を算出しようとしているのか？
+
+\vskip\baselineskip
+
+$a, b$という自然数（$0$を含む）を固定して、$x^ay^b$という項が$f(x+y)$の2重和の中にどのように出現しているのか探す
+\begin{align}
+  f(x+y) = \sum_{n=0}^{\infty} \left( \sum_{k=0}^{n} \dfrac{x^k}{k!} \dfrac{y^{n-k}}{(n-k)!} \right)
+\end{align}
+
+この式において、
+\begin{itemize}
+  \item $x^ky^{n-k}$が$x^ay^b$となるのは、$a=k, b=n-k$の場合
+  \item $(k,n)$の組は$a,b$によって$k=a, n=a+b$とただ1つ定まる
+  \item このとき$0 \leq k \leq n$を満たしている（$\displaystyle\sum_{k=0}^{n}$より）
+\end{itemize}
+
+まとめると、$(a,b)=(k,n-k)$すなわち$(k, n) = (a, a+b)$という等式の下で、組$(a,b)$と組$(k,n)$が1対1に対応している
+
+\vskip\baselineskip
+
+そのため、$x^ay^b$は、$f(x+y)$の2重和の中で、
+\begin{equation}
+  \dfrac{x^a}{a!} \cdot \dfrac{y^b}{b!} = \dfrac{x^k}{k!} \cdot \dfrac{y^{n-k}}{(n-k)!}
+\end{equation}
+という形で現れることがわかる
+
+\vskip\baselineskip
+
+また、
+\begin{itemize}
+  \item $a=0,1,2,\ldots$かつ$b=0,1,2,\ldots$
+  \item $n=0,1,2,\ldots$かつ$0 \leq k \leq n$
+\end{itemize}
+という数の範囲の条件も、1対1に対応している
+
+\vskip\baselineskip
+
+このことから、$\displaystyle\sum_{n=0}^{\infty}\sum_{k=0}^{n}$を$\displaystyle\sum_{a=0}^{\infty}\sum_{b=0}^{\infty}$に書き換えることができて、
+\begin{align}
+  f(x+y) & = \sum_{n=0}^{\infty} \left( \sum_{k=0}^{n} \dfrac{x^k}{k!} \dfrac{y^{n-k}}{(n-k)!} \right) \\
+         & = \sum_{a=0}^{\infty} \sum_{b=0}^{\infty} \dfrac{x^a}{a!} \dfrac{y^b}{b!}
+\end{align}
+が成り立つ
+
+このように書き換えると、2重和の計算の順序は入れ替えてもよいことがわかる
+
+\sectionline
+
+ここでさらに、かけ算の分配法則（有限個の場合と同様に、和がきちんと収束すれば分配法則が成り立つ
+）を使って書き直すと、
+\begin{align}
+  f(x+y) & = \sum_{a=0}^{\infty} \sum_{b=0}^{\infty} \dfrac{x^a}{a!} \dfrac{y^b}{b!}                           \\
+         & = \left(\sum_{a=0}^{\infty} \dfrac{x^a}{a!}\right) \left(\sum_{b=0}^{\infty} \dfrac{y^b}{b!}\right)
+\end{align}
+
+$f(x)$の定義式$\displaystyle f(x) = \sum_{n=0}^{\infty} \dfrac{x^n}{n!}$より、
+\begin{align}
+  f(x+y) & = f(x)f(y)
+\end{align}
+
+$f(x+y)$を二項展開を使って2重和として書き表し、「小計の取り方を変えても、結局は同じ総和が計算できる」という2重和のトリックを使うと、$f(x)f(y)$という積になった
+
+\sectionline
+
+\paragraph{定理}
+
+無限級数$\displaystyle f(x) = \sum_{n=0}^{\infty} \dfrac{x^n}{n!}$は次の関数等式を満たす
+\begin{equation}
+  f(x+y) = f(x)f(y)
+\end{equation}
+
+\sectionline
+
 \end{document}
