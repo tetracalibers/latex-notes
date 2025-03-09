@@ -108,4 +108,67 @@
 \end{align}
 という、三角関数の微分の公式が導かれた
 
+\section*{オイラーの公式と三角関数のテイラー展開}
+
+$F(t)$が実数値の関数$f(t),\, g(t)$を用いて
+\begin{equation}
+  F(t) = f(t) + ig(t)
+\end{equation}
+と表されるとき、$F(t)$を\keyword{複素数値の関数}という
+
+ここで、$i$は虚数単位で、$i^2 = -1$である
+
+\sectionline
+
+$F(t) = \cos t + i\sin t$という複素数値の関数を考える
+
+実数であっても複素数であっても定数倍は微分の外に出せることに留意して、$F(t)$の微分を計算する
+\begin{align}
+  \dfrac{dF(t)}{dt} & = \dfrac{d}{dt}\cos t + i\dfrac{d}{dt}\sin t \\
+                    & = -\sin t + i\cos t                          \\
+                    & = i\cos t + i^2\sin t                        \\
+                    & = i(\cos t + i\sin t)                        \\
+                    & = iF(t)
+\end{align}
+両辺を見比べると、
+\begin{equation*}
+  F'(t) = iF(t)
+\end{equation*}
+という微分方程式が得られたことになる
+
+\sectionline
+
+ところで、関数$F(t)$が
+\begin{itemize}
+  \item 微分方程式$F'(t) = \lambda F(t)$
+  \item 初期条件$F(0) = 1$
+\end{itemize}
+を満たすならば、$F(t)$は
+\begin{equation}
+  F(t) = e^{\lambda t}
+\end{equation}
+という形になっていることを、以前示した
+
+\vskip\baselineskip
+
+指数関数$e^{\lambda t}$は、無限級数表示$\displaystyle\sum_{n=0}^{\infty}\dfrac{(\lambda t)^n}{n!}$を用いると、$\lambda$が複素数のときでも意味を持つ
+
+そうすると、この定理は、定数$\lambda$が複素数で$F(t)$が複素数値の関数の場合にも成り立つ
+
+\vskip\baselineskip
+
+上述の$F(t) = \cos t + i\sin t$は、$F'(t) = iF(t)$と$F(0) = 1$を満たすので、$\lambda = i$の場合に対応する
+
+\sectionline
+
+\paragraph{定理：オイラーの公式}
+
+\begin{equation*}
+  e^{it} = \cos t + i\sin t
+\end{equation*}
+
+\sectionline
+
+この公式を用いると、三角関数の性質は、指数関数のさまざまな性質から導ける
+
 \end{document}
