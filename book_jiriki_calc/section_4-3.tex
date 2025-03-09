@@ -22,7 +22,7 @@ $f(x+h)-f(x)$は地点$x$から水平に$h$だけ進んだときの標高の差�
 
 つまり、坂道の勾配として、標高の「微分を感じている」ことになる
 
-\sectionline
+\vskip\baselineskip
 
 \paragraph{微分を感じる例}
 
@@ -38,5 +38,117 @@ $x$座標が増える方向に歩いているとき、ある地点$x$におけ�
   \item $f'(x)<0$：下り坂
   \item $\left|f'(x)\right|$が大きい：急勾配
 \end{itemize}
+
+\section*{時間の変化で微分を感じる}
+
+時が経つにつれて変化する量は、時刻を変数とする関数で表される
+
+たとえば、時とともに何かものが動くときは、その位置の座標は時刻を変数とする関数で記述できる
+
+\vskip\baselineskip
+
+ここでは、このような時刻を変数として位置を表す例を考える
+
+\vskip\baselineskip
+
+\subparagraph{位置の微分}
+
+数直線上で物体が動いていて、時刻$t$におけるその位置をその座標$f(t)$で表すとする
+
+\vskip\baselineskip
+
+ここで、微分の定義において、極限を取る前の
+\begin{equation}
+  \frac{f(t+h)-f(t)}{h}
+\end{equation}
+という値の意味に注目する
+
+\vskip\baselineskip
+
+分子は時刻$t$から時刻$t+h$の間に進んだ距離で、それをその間にかかった時間$h$で割っていることから、これは時間間隔$h$での\keyword{平均速度}を表している
+
+\vskip\baselineskip
+
+したがって、時間間隔$h$を$0$に近づけたときの極限、すなわち位置の微分$f'(t)$は、時刻$t$における\keyword{（瞬間）速度}を表していると理解できる
+
+\vskip\baselineskip
+
+\paragraph{微分を感じる例}
+
+位置の微分$f'(t)$は、時刻$t$における速度である
+
+\sectionline
+
+\subparagraph{位置の2階微分}
+
+速度は、時刻とともに変わっていく
+
+速度の時間変化を見るために、速度$f'(t)$を時刻$t$の関数とみなすと、これは位置$f(t)$の導関数である
+
+\vskip\baselineskip
+
+速度$f'(t)$をさらに微分するということは、$f(t)$の2階微分$f''(t)$を考えることになる
+
+これにも名前がついていて、\keyword{加速度}という
+
+加速度$f''(t)$は、速度の変化を表す量である
+
+\vskip\baselineskip
+
+\paragraph{微分を感じる例}
+
+位置の2階微分$f''(t)$は、時刻$t$における加速度である
+
+\sectionline
+
+\subparagraph{運動の記述}
+
+\keyword{運動}という言葉は、物理学では「物体が時々刻々と位置を変える」という"motion"の意味で使われる
+
+\vskip\baselineskip
+
+先ほどは、数直線上という1次元的な位置の変化を考えたが、今度は次元を上げて、平面上あるいは空間の中における「運動」を考えてみる
+
+\vskip\baselineskip
+
+そのために、座標を用いて時々刻々と変わる位置を記述することにする
+
+たとえば2次元の運動の場合、時刻$t$における位置を\keyword{位置ベクトル}として、
+\begin{equation}
+  \left( x(t), y(t) \right)
+\end{equation}
+とベクトルで表す
+
+3次元空間の場合には、もう1つ$z$座標を用いる
+
+\vskip\baselineskip
+
+位置ベクトルの$x$成分、$y$成分をそれぞれ微分して得られるベクトル
+\begin{equation}
+  \left( x'(t), y'(t) \right) = \left( \dfrac{dx}{dt}(t), \dfrac{dy}{dt}(t) \right)
+\end{equation}
+を\keyword{速度ベクトル}という
+
+速度ベクトルは大きさだけではなく、どちらの方向に進んでいるかという向きの情報も持っている
+
+\vskip\baselineskip
+
+これに対して、速度ベクトルの大きさを\keyword{速さ}といい、向きの情報を含む「速度」と区別した用語を使う
+\begin{equation}
+  \text{速さ} = \sqrt{x'(t)^2 + y'(t)^2}
+\end{equation}
+
+\vskip\baselineskip
+
+\keyword{加速度ベクトル}は、速度ベクトルを微分した次のベクトルになる
+\begin{equation}
+  \left( x''(t), y''(t) \right) = \left( \dfrac{d^2x}{dt^2}(t), \dfrac{d^2y}{dt^2}(t) \right)
+\end{equation}
+
+\sectionline
+
+物理法則は、座標とは無関係に成り立っている
+
+一方、座標系を使うことで、次元が高い場合でも、座標成分ごとに微分すれば速度ベクトルや加速度ベクトルを求めることができるため、計算上の便利さがある
 
 \end{document}
