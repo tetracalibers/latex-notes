@@ -196,4 +196,38 @@ $h$が小さいとき、縦長の帯と横長の帯は、縦か横のいずれ�
 \end{multline}
 という形で「目に見える」ようになる
 
+\section*{商の微分}
+
+\paragraph{定理：商の微分}\quad
+
+\begin{equation}
+  \left( \frac{f(t)}{g(t)} \right)' = \frac{f'(t)g(t) - f(t)g'(t)}{(g(t))^2}
+\end{equation}
+
+\sectionline
+
+\subparagraph{証明}
+
+左辺の$\dfrac{f(t)}{g(t)}$を$G(t)$とおいておく
+
+$G(t)$の微分$G'(t)$を求めるのが目標
+
+\vskip\baselineskip
+
+$G(t)=\dfrac{f(t)}{g(t)}$の分母を払うと、
+\begin{equation}
+  f(t) \times G(t) = g(t)
+\end{equation}
+この両辺を微分すると、ライプニッツの法則を使って、
+\begin{equation}
+  f(t)G'(t) + f'(t)G(t) = g'(t)
+\end{equation}
+移項して、$f(t)$で割れば、
+\begin{align}
+  G'(t) & = \dfrac{g'(t) - f'(t)G(t)}{f(t)}                       \\
+        & = \dfrac{g'(t) - f'(t) \times \dfrac{f(t)}{g(t)}}{f(t)} \\
+        & = \dfrac{g'(t)f(t) - f'(t)g(t)}{(f(t))^2}
+\end{align}
+となり、商の微分の公式が導かれた$\qed$
+
 \end{document}
