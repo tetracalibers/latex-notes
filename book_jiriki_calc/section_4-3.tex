@@ -293,4 +293,59 @@ $p$が$q$と同じ程度かそれ以上に好きならば、$U(p) \geq U(q)$を�
   \item 2階微分が負：「だんだん飽きてくる（関数の増加率がだんだん減ってくる）」ということでグラフは上に凸
 \end{enumerate}
 
+\section*{微分がつねに$0$ならば定数である}
+
+標語的に言えば、\keyword{無限小レベルで変化がなければ、大域的に変化がない}ということ
+
+\sectionline
+
+\paragraph{定理}
+
+実数全体で定義された関数$f(x)$について、すべての$x$で$f'(x)=0$ならば、その関数$f(x)$は定数である
+
+\sectionline
+
+この定理は、\keyword{平均値の定理}という一種の「不動点定理」から導かれる
+
+\begin{itemize}
+  \item どの時刻でも速度が$0$ならば、実は動いていない（位置が一定）
+  \item 限界効用が$0$ならば、そもそもこの人はそのことに無関心（効用関数$U(q)$が消費量$q$によらずに一定）
+\end{itemize}
+
+具体例に当てはめると当たり前に思えるが、よく見ると\keyword{局所的な性質から大域的な性質を導いている}ことがわかる
+
+\sectionline
+
+\paragraph{定理}
+
+実数全体で定義された関数$g(x)$について、すべての$x$で$g'(x)=a$ならば、$g(x) = ax+g(0)$である
+
+\sectionline
+
+\subparagraph{証明}
+
+この定理は、前述の定理から導かれる
+
+新たな関数として$f(x) = g(x) - ax$とおいてみると、
+\begin{equation}
+  f'(x) = g'(x) - a = a - a = 0
+\end{equation}
+となるので、$f(x)$は定数である
+
+特に、$f(x) = f(0)$がすべての$x$に対して成り立つ
+
+\vskip\baselineskip
+
+$f(x) = g(x) - ax$だったことを思い出すと、$f(0)= g(0)$となるので、
+\begin{align}
+  g(x) -ax              & =f(0) = g(0) \\
+  \therefore \quad g(x) & = ax + g(0)
+\end{align}
+が示される$\qed$
+
+\sectionline
+
+ここで取り上げた2つの定理は、もっとも簡単な\keyword{微分方程式}を解いたとみなすこともできる
+
+
 \end{document}
