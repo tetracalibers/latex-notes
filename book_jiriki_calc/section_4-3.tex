@@ -1,0 +1,42 @@
+\documentclass[../book_jiriki_calc]{subfiles}
+
+\begin{document}
+
+\section*{位置の変化で微分を感じる}
+
+「傾き」としての微分は歩いているときにも感じることができる
+
+\vskip\baselineskip
+
+まっすぐな坂道があって、坂道の出発点から水平方向に$x$だけ進んだ地点の標高が$f(x)$だとする
+
+標高$f(x)$は$x$の関数だと思うことができ、坂道を真横から見ると、$y=f(x)$のグラフとみなせる
+
+\vskip\baselineskip
+
+$f(x+h)-f(x)$は地点$x$から水平に$h$だけ進んだときの標高の差となるので、$\dfrac{f(x+h)-f(x)}{h}$はこの地点のおおよその勾配となる
+
+一方、$f(x)$が微分可能ならば、$h$が十分に小さいとき、この値は微分$f'(x)$に近い値になっているだろう
+
+\vskip\baselineskip
+
+つまり、坂道の勾配として、標高の「微分を感じている」ことになる
+
+\sectionline
+
+\paragraph{微分を感じる例}
+
+坂道において、$f(x)$を出発点から水平に$x$だけ離れた地点の標高とすると、$f'(x)$はその地点における勾配を表す
+
+\sectionline
+
+坂道の勾配は、位置によって異なる
+
+$x$座標が増える方向に歩いているとき、ある地点$x$における勾配が$f'(x)$というのは、次のように感じることができる
+\begin{itemize}
+  \item $f'(x)>0$：登り坂
+  \item $f'(x)<0$：下り坂
+  \item $\left|f'(x)\right|$が大きい：急勾配
+\end{itemize}
+
+\end{document}
