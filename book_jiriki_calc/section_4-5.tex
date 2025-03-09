@@ -44,4 +44,147 @@
 \end{equation}
 であるという主張になる
 
+\section*{$f'(x)=\lambda f(x)$という微分方程式を解く}
+
+指数関数$e^x$は$\displaystyle\sum_{n=0}^{\infty}\dfrac{x^n}{n!}$というべき級数展開を用いると導関数が自分自身になる、すなわち$(e^x)'=e^x$が成り立つことを以前示した
+
+\vskip\baselineskip
+
+その逆は成り立つだろうか？
+
+これは「$f'(x)=f(x)$という微分方程式を解く」問題である
+
+\sectionline
+
+\paragraph{定理}
+
+$\lambda$を定数とする
+
+実数全体で定義された関数$F(t)$が
+\begin{itemize}
+  \item 微分方程式 $F'(t) = \lambda F(t)$
+  \item 初期条件 $F(0) = A$
+\end{itemize}
+を満たすならば、$F(t) = Ae^{\lambda t}$である
+
+\sectionline
+
+\subparagraph{解を1つ見つける}\quad
+
+まず、指数関数$e^{\lambda t}$が微分方程式$F'(t)=\lambda F(t)$を満たしていることを確かめる
+
+\vskip\baselineskip
+
+$e^{\lambda t}$を$f(x)=e^x$と$g(t)=\lambda t$の合成関数と見なすと、
+\begin{itemize}
+  \item $f(x)=e^x$に対しては$f'(x)=e^x$
+  \item $g(t)=\lambda t$に対しては$g'(t)=\lambda$
+\end{itemize}
+が成り立つので、合成関数の微分の公式より、
+\begin{align}
+  \dfrac{d}{dt}e^{\lambda t} & = \frac{d}{dt} f(g(t))        \\
+                             & = f'(g(t)) \cdot g'(t)        \\
+                             & = e^{g(t)} \cdot \lambda      \\
+                             & = e^{\lambda t} \cdot \lambda
+\end{align}
+となり、確かに$e^{\lambda t}$は微分方程式を満たす関数である
+
+\sectionline
+
+\subparagraph{すべての解を見つける}\quad
+
+では、$e^{\lambda t}$と異なるタイプの解は存在するだろうか？
+
+\vskip\baselineskip
+
+微分方程式$F'(t)=\lambda F(t)$を満たす未知の解$F(t)$を既知の解$e^{\lambda t}$と比較するため、割り算してみる
+
+\vskip\baselineskip
+
+定理の結論は、
+\begin{equation}
+  \dfrac{\text{未知の解}}{\text{既知の解}} = \dfrac{F(t)}{e^{\lambda t}}
+\end{equation}
+が$t$によらない定数$A$になるということ
+
+\vskip\baselineskip
+
+そこで、割り算したものを$t$で微分してみる
+
+商の微分の公式を使うと、
+\begin{align}
+  \dfrac{d}{dt}\left(\dfrac{F(t)}{e^{\lambda t}}\right) = \dfrac{F'(t)e^{\lambda t} - F(t)\lambda e^{\lambda t}}{(e^{\lambda t})^2}
+\end{align}
+ここで、$F'(t)=\lambda F(t)$であり、$(e^{\lambda t})'=\lambda e^{\lambda t}$なので、
+\begin{equation}
+  \dfrac{d}{dt}\left(\dfrac{F(t)}{e^{\lambda t}}\right) = \dfrac{\lambda F(t)e^{\lambda t} - \lambda F(t)e^{\lambda t}}{e^{2\lambda t}}
+\end{equation}
+この分子は、同じものどうしの引き算なので$0$になる
+\begin{equation}
+  \dfrac{d}{dt}\left(\dfrac{F(t)}{e^{\lambda t}}\right) = 0
+\end{equation}
+
+$t$で微分すると$0$になるということは、この関数$\dfrac{F(t)}{e^{\lambda t}}$は定数関数である
+
+\vskip\baselineskip
+
+$\dfrac{F(t)}{e^{\lambda t}}$の値は$t$によらないので、特に、$t=0$における値とも同じになる
+
+初期条件$F(0)=A$を思い出すと、
+\begin{equation}
+  \dfrac{F(t)}{e^{\lambda t}} = \dfrac{F(0)}{e^{\lambda \cdot 0}} = \dfrac{A}{e^0} = A
+\end{equation}
+よって、
+\begin{equation}
+  F(t) = Ae^{\lambda t}
+\end{equation}
+これで、初期条件$F(0)=A$を満たす微分方程式$F'(t)=\lambda F(t)$の解は、$F(t)=Ae^{\lambda t}$のみであることが示された$\qed$
+
+\sectionline
+
+このように、指数関数の性質である
+\begin{enumerate}
+  \item 無限級数表示
+  \item 指数法則
+  \item 微分方程式
+\end{enumerate}
+は、同じ関数の3つの異なる側面を表している
+
+\vskip\baselineskip
+
+ここでは、微分方程式を解くことによって、3から1や2の性質を復元できることを確かめた
+
+\sectionline
+
+\subparagraph{パラメータ$\lambda$の符号}\quad
+
+微分方程式$F'(t)=\lambda F(t)$のパラメータ$\lambda$は、その解の挙動に大事な役割を持つ
+
+\vskip\baselineskip
+
+初期条件$A>0$とすると、$F(t) = Ae^{\lambda t}$のグラフの形状は$\lambda$の符号によって異なる
+
+\vskip\baselineskip
+
+現象を記述するとき、ある量が変数$t$を用いて$Ae^{\lambda t}$という形で（近似的に）表されることがよくある
+
+こういった場合、その量は
+\begin{itemize}
+  \item $\lambda>0$のとき、\keyword{指数的に増大する}（ネズミ算式に増える）
+  \item $\lambda<0$のとき、\keyword{指数的に減少する}
+\end{itemize}
+と言うことがある
+
+\sectionline
+
+\subparagraph{$A=\lambda=1$の場合と自然対数}\quad
+
+$A=\lambda=1$の場合の指数関数$e^t$は、$t$が決まれば$e^t$の値が定まり、そのグラフ$y=e^t$は単調増加になっている
+
+\vskip\baselineskip
+
+逆に、グラフを見ると、$y>0$に対して$y=e^t$となる実数$t$が1つ定まることがわかる
+
+この値を$y$の\keyword{自然対数}といい、$t = \log y$と表記する
+
 \end{document}
