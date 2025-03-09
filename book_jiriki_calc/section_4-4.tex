@@ -1,0 +1,74 @@
+\documentclass[../book_jiriki_calc]{subfiles}
+
+\begin{document}
+
+\section*{合成関数の微分}
+
+$x=g(t)$を$f(x)$に代入すると、$t$を変数とする関数$f(g(t))$が得られる
+
+この関数$f(g(t))$を、関数$f(x)$と関数$g(t)$の\keyword{合成関数}という
+
+\sectionline
+
+\paragraph{定理：合成関数の微分（連鎖律）}\quad
+
+関数$f(x)$と関数$g(t)$の合成関数$f(g(t))$を$F(t)$と書くと、
+\begin{equation}
+  F'(t) = f'(g(t)) \cdot g'(t)
+\end{equation}
+が成り立つ
+
+\sectionline
+
+\keyword{代入してから微分 $\neq$ 微分してから代入}であることに注意
+
+\begin{itemize}
+  \item $F'(t)$：代入してから微分（$x=g(t)$を$f(x)$に代入した関数$f(g(t))$を微分）
+  \item $f'(g(t))$：微分してから代入（$f(x)$を微分した$f'(x)$に$x=g(t)$を代入）
+\end{itemize}
+
+後者に$g'(t)$をかけて初めて前者と一致する、というのが合成関数の微分公式の趣旨
+
+\sectionline
+
+\subparagraph{連鎖率の感覚}
+
+勾配が一定の坂道を登っている状況を考える
+
+\begin{itemize}
+  \item 水平方向の速度は、「単位時間あたりにどれだけ進むか」を表している
+  \item 坂道の勾配は、「単位距離進むごとにどれだけ登るか」を表している
+\end{itemize}
+
+よって、上下方向の速度「単位時間あたりにどれだけ登るか」を求めるには、水平方向の速度と勾配をかければよい
+\begin{equation}
+  \text{上下方向の速度} = \text{水平方向の速度} \times \text{勾配}
+\end{equation}
+
+\vskip\baselineskip
+
+この計算式を、微分を用いて表現する
+
+\vskip\baselineskip
+
+水平方向に座標$x$をとり、その標高を$f(x)$とする
+
+そうすると、微分$f'(x)$はこの地点での坂道の勾配となる
+
+\vskip\baselineskip
+
+一方、ある人が時刻$t$に、$x$座標では$x=g(t)$の地点にいるとすると、微分$g'(t)$はその人の水平方向の速度となる
+
+\vskip\baselineskip
+
+このとき、合成関数$F(t) = f(g(t))$は時刻$t$にこの人がいる地点の標高となり、その微分$F'(t)$は、時刻$t$における上下方向の速度を表すことになる
+
+\vskip\baselineskip
+
+よって、上下方向の速度を求める式は、
+\begin{equation}
+  F'(t) = f'(g(t)) \cdot g'(t)
+\end{equation}
+これは、合成関数の微分の公式になっている
+
+\end{document}
