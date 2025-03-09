@@ -71,4 +71,129 @@ $x=g(t)$を$f(x)$に代入すると、$t$を変数とする関数$f(g(t))$が得
 \end{equation}
 これは、合成関数の微分の公式になっている
 
+\section*{積の微分（ライプニッツの法則）}
+
+2つの関数が与えられたとすると、それらを足せば1つの関数になり、またそれらをかけても別の関数が得られる
+
+2つの関数をかけたとき、その微分がどうなるか？
+
+\sectionline
+
+\paragraph{定理：積の微分（ライプニッツの法則）}\quad
+
+2つの関数$f(t),\, g(t)$の積$f(t)g(t)$の微分は、
+\begin{equation}
+  (f(t)g(t))' = f'(t)g(t) + f(t)g'(t)
+\end{equation}
+である
+
+\sectionline
+
+\subparagraph{ライプニッツの法則の可視化}\quad
+
+時刻$t$のときに高さ$g(t)$、底辺の長さ$f(t)$の長方形を考える
+
+この長方形の面積は$f(t)g(t)$である
+
+\vskip\baselineskip
+
+時々刻々と$f(t)$も$g(t)$も変わる、それに応じて長方形の形も変わり、面積$f(t)g(t)$が変化する
+
+ライプニッツの法則の左辺$(f(t)g(t))'$は、この面積の変化率を表している
+
+\vskip\baselineskip
+
+まず、微分の定義に戻って、積$f(t)g(t)$の微分を書き下すと、
+\begin{align}
+  (f(t)g(t))' & = \lim_{h \to 0} \frac{f(t+h)g(t+h) - f(t)g(t)}{h}
+\end{align}
+右辺の分子は、時刻$t+h$での長方形の面積と、時刻$t$での長方形の面積の差になっている
+
+\vskip\baselineskip
+
+時刻$t$から$t+h$になったとき、高さも底辺の長さも増加する
+
+このとき、長方形の面積の変化を、次の3つの部分に分けて考える
+\begin{itemize}
+  \item 高さの変化による面積の増加（縦長の帯）
+  \item 底辺の長さの変化による面積の増加（横長の帯）
+  \item 高さと底辺の長さの変化による面積の増加（小さな四角形）
+\end{itemize}
+
+\sectionline
+
+\subparagraph{高さの変化によって増えた部分}\quad
+
+縦長の帯は、幅$h$、高さ$g(t+h)-g(t)$の縦長の長方形になっている
+
+\vskip\baselineskip
+
+$h$が$0$に近づくと、$\dfrac{g(t+h)-g(t)}{h}$は$g(t)$の微分$g'(t)$に近づくことから、$h$が$0$に近ければ、
+\begin{equation}
+  g(t+h)-g(t) \approx hg'(t)
+\end{equation}
+となるので、縦長の帯の高さは$hg'(t)$で近似できる
+
+\vskip\baselineskip
+
+よって、
+\begin{equation}
+  \text{縦長の帯の面積} \approx f(t) \cdot hg'(t) = hf(t)g'(t)
+\end{equation}
+
+\sectionline
+
+\subparagraph{底辺の長さの変化によって増えた部分}\quad
+
+横長の帯は、幅$h$、高さ$f(t+h)-f(t)$の横長の長方形になっている
+
+先ほどと同様に高さの近似を考えて、
+\begin{equation}
+  \text{横長の帯の面積} \approx g(t) \cdot hf'(t) = hf(t)g'(t)
+\end{equation}
+
+\sectionline
+
+\subparagraph{高さと底辺の長さの変化によって増えた部分}\quad
+
+小さな四角形は、幅$f(t+h)-f(t)$、高さ$g(t+h)-g(t)$の長方形になっている
+
+幅と高さについて、これまでと同様に近似を考えると、
+\begin{align}
+  \text{小さな四角形の面積} & \approx (hf'(t))\times (hg'(t)) \\
+                   & = h^2f'(t)g'(t)
+\end{align}
+
+$h$が小さいとき、縦長の帯と横長の帯は、縦か横のいずれかだけが小さくなるが、小さな四角形は縦も横も小さい
+
+この違いを反映して、右辺には$h^2$という、$h$よりもはるかに小さい係数が現れている
+
+この項は、$h$を$0$に近づける極限の計算の中では実は寄与しない
+
+\sectionline
+
+まとめると、長方形の面積の変化は、縦長の帯の面積と横長の帯の面積と小さな四角形の面積の和になるので、
+\begin{multline}
+  f(t+h)g(t+h) - f(t)g(t) \\ = hf(t)g'(t) + hf(t)g'(t) + h^2f'(t)g'(t)
+  \\ = h\left( f(t)g'(t) + f'(t)g(t) + hf'(t)g'(t)\right)
+\end{multline}
+
+よって、積の微分は、
+\begin{align}
+   & \phantom{==} (f(t)g(t))'                                                      \\
+   & = \lim_{h \to 0} \frac{f(t+h)g(t+h) - f(t)g(t)}{h}                            \\
+   & = \lim_{h \to 0} \frac{h\left( f(t)g'(t) + f'(t)g(t) + hf'(t)g'(t)\right)}{h} \\
+   & = \lim_{h \to 0} \left( f(t)g'(t) + f'(t)g'(t)+ hf'(t)g'(t)\right)            \\
+   & = f(t)g'(t) + f'(t)g(t)
+\end{align}
+となり、ライプニッツの法則が導かれた
+
+\sectionline
+
+このように図形を用いると、ライプニッツの法則は、
+\begin{multline}
+  \text{長方形の面積の変化} \\ = \text{縦長の帯の寄与} + \text{横長の帯の寄与}
+\end{multline}
+という形で「目に見える」ようになる
+
 \end{document}
