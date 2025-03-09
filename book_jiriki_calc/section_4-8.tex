@@ -28,4 +28,79 @@
   \item 坂道の勾配を見て100m先の高低差は推測できても、10km先の高低差はわからない
 \end{itemize}
 
+\section*{誤差と誤差率}
+
+測定値や何らかの概算値が真の値とどれくらい異なるかは、
+\begin{equation*}
+  \text{誤差} = \left|\text{測定値} - \text{真の値}\right|
+\end{equation*}
+という絶対量で表された
+
+\vskip\baselineskip
+
+一方、相対的な比率として定義される、
+\begin{equation*}
+  \text{誤差率} = \left|\frac{\text{誤差}}{\text{真の値}}\right| = \left|\frac{\text{測定値} - \text{真の値}}{\text{真の値}}\right|
+\end{equation*}
+も大事な視点である
+
+\vskip\baselineskip
+
+実用上は、分母を「測定値」に取り換えた、
+\begin{equation*}
+  P = \left|\frac{\text{誤差}}{\text{測定値}}\right| = \left|\frac{\text{測定値} - \text{真の値}}{\text{測定値}}\right|
+\end{equation*}
+で代用することもある
+
+\vskip\baselineskip
+
+$P$が小さいときは誤差率として代用できることは、次のように確認できる
+
+\sectionline
+
+\paragraph{定理}
+
+$P<\dfrac{1}{101}$ならば、誤差率は$1\%$未満
+
+\sectionline
+
+\subparagraph{証明}
+
+$t=\dfrac{\text{真の値}}{\text{測定値}}$とおくと、
+\begin{align*}
+  \text{誤差} & = \left|\text{測定値} - \text{真の値}\right|  \\
+            & = \left|\text{測定値} - t\text{測定値}\right| \\
+            & = \left|1-t\right|\text{測定値}
+\end{align*}
+より、
+\begin{gather}
+  P          = \left|\frac{\text{測定値} - \text{真の値}}{\text{測定値}}\right| = \left|1-t\right| \\
+  \text{誤差率} = \left|\frac{\text{誤差}}{\text{真の値}}\right| = \left|\frac{\left|1-t\right|\text{測定値}}{\text{真の値}}\right| =\left|\dfrac{1-t}{t}\right|
+\end{gather}
+と書き表せる
+
+\vskip\baselineskip
+
+$P<\dfrac{1}{101}$ならば、
+\begin{align*}
+  -P  & > -\frac{1}{101}                    \\
+  1-P & > 1-\frac{1}{101} = \frac{100}{101}
+\end{align*}
+であり、$t$について、三角不等式より、
+\begin{gather}
+  1 - \left| 1-t\right| = 1 - \left| t-1\right| \leq \left| 1+ (t-1)\right| = t \\
+  \dfrac{100}{101} < 1-P \leq t
+\end{gather}
+これを用いると、
+\begin{align*}
+  \text{誤差率} & = \left|\frac{1-t}{t}\right|                                                                                                                                        \\
+             & < \left|\dfrac{1-\dfrac{100}{101}}{\dfrac{100}{101}}\right| = \dfrac{\dfrac{1}{101}}{\dfrac{100}{101}} = \dfrac{\dfrac{1}{101}\cdot 101}{\dfrac{100}{101}\cdot 101} \\
+             & = \dfrac{1}{100}
+\end{align*}
+として、誤差率は$1\%$未満であることが示された$\qed$
+
+\sectionline
+
+真の値が分からなくとも、何か別の情報や論理から、誤差を「上から評価する」すなわち、「誤差が〜以下である」という形の評価式が得られることがある
+
 \end{document}
