@@ -405,6 +405,141 @@ $f(x+y)$を二項展開を使って2重和として書き表し、「小計の�
   f(x+y) = f(x)f(y)
 \end{equation}
 
+\section*{指数関数の拡張}
+
+先ほど示した関数等式は、\keyword{指数法則}ともいう
+
 \sectionline
+
+$f(x)$が無限級数として定義されていたことは一旦忘れて、
+\begin{itemize}
+  \item $x>0$のとき$f(x)>0$
+  \item $f(x+y)=f(x)f(y)$
+  \item $f(0)=1,\quad f(1) = e$
+\end{itemize}
+という性質だけを用いて何が言えるか見ていく
+
+\sectionline
+
+\paragraph{定理}
+
+$m$を自然数とするとき、
+\begin{equation}
+  f(mx) = f(x)^m
+\end{equation}
+が成り立つ
+
+\vskip\baselineskip
+
+\subparagraph{$m=0$の場合}
+
+$f(0)=1$より、$f(0x)=f(0)=1$
+
+また、$f(x)^0=1$より、$f(x)^0=f(0x)$が成り立つ
+
+\subparagraph{$m=1$の場合}
+
+$f(x)=f(x)^1$が成り立つ
+
+\vskip\baselineskip
+
+\subparagraph{一般の場合の証明}
+
+$m+1$の場合を考える
+
+$y=mx$とおくと、$x+y=(m+1)x$となり、関数等式が使える
+
+よって、$f(mx) = f(x)^m$が$m$で成り立つなら、
+\begin{align}
+  f((m+1)x) & = f(mx)f(x)   \\
+            & = f(x)^m f(x) \\
+            & = f(x)^{m+1}
+\end{align}
+となり、$m+1$でも成り立つ
+
+これで、数学的帰納法によって、すべての自然数$m$に対して$f(mx)=f(x)^m$が成り立つことが示された$\qed$
+
+\sectionline
+
+\subparagraph{$x=1$の場合}
+
+$n$が自然数のとき、
+\begin{equation}
+  f(n) = f(1)^n = e^n
+\end{equation}
+
+\subparagraph{$x$が正の有理数の場合}
+
+$x$を正の有理数$x=\dfrac{n}{m}$とする
+
+$m$は自然数なので、先ほど示した$f(x)^m = f(mx)$が成り立ち、
+\begin{align}
+  f(x)^m = f(mx) = f\left(m\cdot\dfrac{n}{m}\right) = f(n)
+\end{align}
+さらに$n$も自然数なので、$f(n) = e^n$となり、
+\begin{equation}
+  f(x)^m = e^n
+\end{equation}
+$f(x) > 0$に注意して、両辺の$m$乗根を取れば、
+\begin{equation}
+  f(x) = e^{\frac{n}{m}} = e^x
+\end{equation}
+となり、$x$が正の有理数のときも$f(x)=e^x$が成り立つ
+
+\subparagraph{$x$が負の有理数の場合}
+
+関数等式より、
+\begin{align}
+  f(-x)f(x) = f(-x+x) = f(0) = 1
+\end{align}
+なので、$f(-x)$は$f(x)$の逆数となる
+
+したがって、$f(-x)=\dfrac{1}{f(x)}$であり、$f(x)=e^x$より、
+\begin{align}
+  f(-x) = \dfrac{1}{f(x)} = \dfrac{1}{e^x} = e^{-x}
+\end{align}
+$x$を$-x$に置き換えても、$f(x)=e^x$が成り立つことがわかる
+
+\sectionline
+
+以上の議論から、$x$が有理数のとき$f(x)=e^x$となることがわかった
+
+\vskip\baselineskip
+
+$x$が有理数以外のときに、$e^x$はどうやって定義すればよいだろうか？
+
+\vskip\baselineskip
+
+\subparagraph{有理数での近似による定義}
+
+1つの考え方として、\keyword{どんな実数でも有理数を使っていくらでも近似できる}ということを用いる
+
+たとえば、実数$x$を小数点以下$3$桁まで表示して得られる数$y$は、$y=\dfrac{\text{整数}}{1000}$と表せるので有理数であり、しかも$x$との誤差が$10^{-3}$未満になる
+
+\vskip\baselineskip
+
+$e^x$の値が変数$x$について連続的に動くと考えると、実数$x$を有理数$\dfrac{n}{m}$で近似すれば、$e^{\frac{n}{m}}$は$e^x$を近似できるだろう
+
+そこで、近似をどんどん精密にしたときの極限として$e^x$の値を定義する
+
+\vskip\baselineskip
+
+\subparagraph{べき級数展開による定義}
+
+$x$が有理数とは限らない場合に指数関数$e^x$を定義する別の方法として、次の\keyword{べき級数展開}を用いるという考え方もある
+\begin{equation}
+  e^x = \sum_{k=0}^{\infty} \dfrac{x^k}{k!}
+\end{equation}
+$x$が有理数でなくても、右辺の無限級数で定義した関数を$e^x$と表記しよう、という発想
+
+\vskip\baselineskip
+
+べき乗という1つの観点にこだわっていると、$x$が複素数の場合に$e$の$x$乗が何を意味するのかは、哲学的な問題となってしまう
+
+無限級数であれば、$x$が複素数であっても意味を持つ
+
+\vskip\baselineskip
+
+$x$が複素数の場合も含めて、無限級数で指数関数$e^x$を定義しておくと、指数関数と三角関数も結びつき、さらに世界が拡がる
 
 \end{document}
