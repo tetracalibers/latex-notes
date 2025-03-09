@@ -171,4 +171,73 @@ $F(t) = \cos t + i\sin t$という複素数値の関数を考える
 
 この公式を用いると、三角関数の性質は、指数関数のさまざまな性質から導ける
 
+\vskip\baselineskip
+
+\subparagraph{三角関数の加法公式}\quad
+
+指数法則
+\begin{equation*}
+  e^{i(a+b)} = e^{ia}e^{ib}
+\end{equation*}
+すなわち、
+\begin{equation*}
+  \cos(a+b) + i\sin(a+b) = (\cos a + i\sin a)(\cos b + i\sin b)
+\end{equation*}
+の右辺を展開して、実部と虚部を比較することで、
+\begin{align*}
+  \cos(a+b) & = \cos a\cos b - \sin a\sin b \\
+  \sin(a+b) & = \sin a\cos b + \cos a\sin b
+\end{align*}
+が得られる
+
+\vskip\baselineskip
+
+\subparagraph{三角関数の3倍角の公式}\quad
+
+指数法則
+\begin{equation*}
+  e^{i3t} = (e^{it})^3
+\end{equation*}
+において、$x=it$とすると、
+\begin{equation*}
+  \cos 3t + i\sin 3t = e^{i3t} = (e^{it})^3 = (\cos t + i\sin t)^3
+\end{equation*}
+右辺を展開して、実部と虚部を比較することで、
+\begin{align*}
+  \cos 3t & = 4\cos^3 t - 3\cos t \\
+  \sin 3t & = 3\sin t - 4\sin^3 t
+\end{align*}
+が得られる
+
+\vskip\baselineskip
+
+\subparagraph{$e, \pi, i$の関係式}\quad
+
+オイラーの公式において、$t = \pi$とすれば、
+\begin{equation*}
+  e^{i\pi} = -1
+\end{equation*}
+という等式が成り立つ
+
+これは、数学における3つの重要な数$e, \pi, i$の間に成り立つ美しい関係式である
+
+\vskip\baselineskip
+
+\subparagraph{三角関数のテイラー展開}\quad
+
+$e^x$のべき級数展開に$x = it$を代入すると、
+\begin{align}
+  e^{it} & = 1 + it + \dfrac{(it)^2}{2!} + \dfrac{(it)^3}{3!} + \dfrac{(it)^4}{4!} + \cdots                                \\
+         & = 1 + it - \dfrac{t^2}{2!} - i\dfrac{t^3}{3!} + \dfrac{t^4}{4!} + i\dfrac{t^5}{5!} - \cdots                     \\
+         & = 1 - \dfrac{t^2}{2!} + \dfrac{t^4}{4!} - \cdots + i\left(t - \dfrac{t^3}{3!} + \dfrac{t^5}{5!} - \cdots\right)
+\end{align}
+となる
+
+この実部と虚部を、$e^{it} = \cos t + i\sin t$の実部や虚部と比べると、
+\begin{align}
+  \cos t & = 1 - \dfrac{t^2}{2!} + \dfrac{t^4}{4!} - \cdots = \sum_{n=0}^{\infty}\dfrac{(-1)^n}{(2n)!}t^{2n}     \\
+  \sin t & = t - \dfrac{t^3}{3!} + \dfrac{t^5}{5!} - \cdots = \sum_{n=0}^{\infty}\dfrac{(-1)^n}{(2n+1)!}t^{2n+1}
+\end{align}
+という、三角関数のテイラー展開が得られる
+
 \end{document}
