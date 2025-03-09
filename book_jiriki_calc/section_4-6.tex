@@ -36,4 +36,76 @@
 
 実際、基準線の方向を変えても、角度$\theta(t)$には時刻によらない定数が付け加わるだけであるから、その微分である角速度には影響しないことになる
 
+\section*{三角関数の微分}
+
+円周上を一定の速さで進むことを\keyword{等速円運動}という
+
+等速円運動では、円の中心から見ると角速度が一定になっている
+
+\sectionline
+
+ここでは計算を簡単にするため、半径$1$の円周上を速さ$1$で左回りに動くことを考える
+
+速さ$1$というのは、経過した時間が$t$ならば、円弧を長さ$t$だけ進むということ（経過時間と進んだ距離が等しい＝その比が$1$になる）
+
+円の中心から見た角度も、弧度法で$t$だけ増える
+
+\vskip\baselineskip
+
+この等速円運動を$xy$座標を用いて表す
+
+時刻$t=0$のときに$x$軸上の点$(1,0)$を出発すると、時刻$t$の位置$P$は、原点を中心に角度$t$だけ円周上を左回りに進んだ点として
+\begin{equation}
+  (x(t), y(t)) = (\cos t, \sin t)
+\end{equation}
+と座標表示される
+
+\vskip\baselineskip
+
+この運動の速さは$1$で一定だが、速度ベクトルの向きは時刻とともに変わる
+
+速度ベクトルは、$x$座標、$y$座標それぞれについて微分すればよいので、時刻$t$において、
+\begin{equation}
+  \left(\dfrac{dx(t)}{dt}, \dfrac{dy(t)}{dt}\right) = \left(\dfrac{d}{dt}\cos t, \dfrac{d}{dt}\sin t\right)
+\end{equation}
+で与えられる
+
+\vskip\baselineskip
+
+\subparagraph{角速度から三角関数の微分を導く}\quad
+
+半径$1$の円周上を動くという条件は、
+\begin{equation}
+  x^2(t) + y^2(t) = 1
+\end{equation}
+と表される
+
+両辺を微分すると、積の微分に関するライプニッツの法則より、
+\begin{equation}
+  2 \left(x(t)x'(t) + y(t)y'(t)\right) = 0
+\end{equation}
+となり、内積が$0$であることから、速度ベクトルは位置ベクトルに直交していることがわかる
+
+\vskip\baselineskip
+
+また、速さが$1$なので、速度ベクトルの大きさは$1$である
+
+\vskip\baselineskip
+
+したがって、この速度ベクトルは大きさが$1$で、向きは位置ベクトルを$\dfrac{\pi}{2}$だけ左に回転させた方向を向いていることになり、
+\begin{align}
+  \left(\dfrac{dx(t)}{dt}, \dfrac{dy(t)}{dt}\right) & = \left(\cos\left(t+\dfrac{\pi}{2}\right), \sin\left(t+\dfrac{\pi}{2}\right)\right) \\
+                                                    & = \left(-\sin t, \cos t\right)
+\end{align}
+がわかる
+
+\vskip\baselineskip
+
+速度ベクトルの2通りの表現が得られたので、
+\begin{align}
+  \dfrac{d}{dt}\cos t & = -\sin t \\
+  \dfrac{d}{dt}\sin t & = \cos t
+\end{align}
+という、三角関数の微分の公式が導かれた
+
 \end{document}
