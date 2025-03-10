@@ -202,4 +202,105 @@ $f(c)=0$というのは、$g(c)=c$、つまり動かした後の座標$g(c)$と�
 
 経済学やゲーム理論でも、均衡した状態がどこかに存在するということが、不動点定理から説明できることがある
 
+\section*{平均値の定理}
+
+微分を含んだ存在定理として、\keyword{平均値の定理}がある
+
+\sectionline
+
+\paragraph{定理：平均値の定理}
+
+$f(x)$は$a \leq x \leq b$で定義された関数で、微分可能とする
+
+このとき、
+\begin{equation*}
+  f'(c) = \frac{f(b) - f(a)}{b - a}
+\end{equation*}
+となる$c$が$a$と$b$の間に存在する
+
+\sectionline
+
+点Pの座標を$(a,\,f(a))$、点Qの座標を$(b,\,f(b))$とすると、$\dfrac{f(b) - f(a)}{b - a}$は線分PQの傾きである
+
+$f'(c)$は接線の傾きなので、平均値の定理は、線分PQと平行な接線が必ずある、と述べている
+
+\sectionline
+
+\subparagraph{例：速度の平均値}
+
+オリンピックの100m走で、ぴったり10秒で走り切った選手がいるとする
+
+この選手の10秒間の平均速度は秒速10mであり、この平均速度は線分PQの傾きに対応する
+
+\vskip\baselineskip
+
+もちろん、この選手は10秒間同じスピードで走っているわけではない
+
+加速や減速の数値はわからなくても、ぴったり秒速10mになった瞬間がこの10秒の中に必ず存在することは保証する、というのが平均値の定理の意味になる
+
+\sectionline
+
+\paragraph{定理（再掲）}
+
+$f'(x)=0$がすべての$x$で成り立てば、関数$f(x)$は定数である
+
+\vskip\baselineskip
+
+\subparagraph{証明}
+
+$f'(x)=0$がすべての$x$で成り立てば、平均値の定理の左辺$f'(c)$が$0$となるので、
+\begin{align*}
+  \dfrac{f(b) - f(a)}{b - a} & = 0 \\\\
+  f(b) - f(a)                & = 0 \\
+\end{align*}
+となり、$f(a)=f(b)$がすべての実数$a,\,b$に対して成り立つことがわかる
+
+したがって、$f(x)$は定数である$\qed$
+
+\sectionline
+
+\subparagraph{平均値の定理の証明}\quad
+
+平均値の定理は、「閉区間上の連続関数が最大値・最小値をとる」ことを用いて証明できる
+
+\begin{equation*}
+  g(x) = f(x) - Ax , \quad A    = \dfrac{f(b) - f(a)}{b - a}
+\end{equation*}
+とおくと、$g(x)$は$a \leq x \leq b$で最大値・最小値をとる
+
+一方、$A$の選び方から、$g(a)=g(b)$である
+\begin{align*}
+  g(a) - g(b) & = \left(f(a) - Aa\right) - \left( f(b) - Ab \right) \\
+              & = f(a) - f(b) - A(b-a)                              \\
+              & = f(a) - f(b) - \dfrac{f(b) - f(a)}{b - a}(b-a)     \\
+              & = 0
+\end{align*}
+したがって、$g(x)$の最大値または最小値のうち、少なくとも一方は$a \leq x \leq b$の両端$a,\,b$とは異なる点$c$で実現される
+
+ここで、
+
+\vskip\baselineskip
+
+\paragraph{定理（再掲）}
+
+$a < x < b$で定義された、微分可能な関数$f(x)$が$x=c$で最大値または最小値を取るならば、$f'(c)=0$である
+
+\vskip\baselineskip
+
+という定理を思い出すと、$a < c < b$なので$g'(c) = 0$となる
+\begin{align}
+  g'(c) = f'(c) - A = 0
+\end{align}
+より、$f'(c) = A$が示された$\qed$
+
+\sectionline
+
+\begin{itemize}
+  \item 中間値の定理は、微分は無関係で、連続関数のとる値に関する存在定理
+  \item 平均値の定理は、1階の微分に関する存在定理
+\end{itemize}
+
+もう一歩踏み込んで、2階の微分、3階の微分、$\ldots$と高階の微分に関する存在定理を考えていくと、次に述べるテイラー展開の定理になる
+
+
 \end{document}
