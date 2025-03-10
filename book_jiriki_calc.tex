@@ -30,7 +30,7 @@
 
 % === layout ===
 
-\usepackage[top=15truemm,bottom=30truemm,left=20truemm,right=20truemm]{geometry} % 余白
+\usepackage[top=20truemm,bottom=20truemm,left=20truemm,right=20truemm]{geometry} % 余白
 \renewcommand{\baselinestretch}{1.25} % 行間
 
 \setlength{\parindent}{0pt} % 段落始めでの字下げをしない
@@ -51,6 +51,10 @@
 \usepackage{tocloft}
 \renewcommand{\cftsecfont}{\rmfamily}
 \setcounter{secnumdepth}{0}
+
+\cftpagenumbersoff{section}
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+\pagestyle{empty}
 
 % === hyperlink ===
 
