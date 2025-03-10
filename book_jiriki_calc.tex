@@ -46,11 +46,38 @@
 
 \newcommand{\sectionline}{\vspace{-\baselineskip}\froufrou\vspace{-\baselineskip}}
 
+% === toc ===
+
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\rmfamily}
+\setcounter{secnumdepth}{0}
+
+% === hyperlink ===
+
+% 「%」は以降の内容を「改行コードも含めて」無視するコマンド
+\usepackage[%
+  dvipdfmx,% 欧文ではコメントアウトする
+  setpagesize=false,%
+  bookmarks=true,%
+  bookmarksdepth=tocdepth,%
+  bookmarksnumbered=true,%
+  colorlinks=true,%
+  allcolors=darkgray,%
+  pdftitle={},%
+  pdfsubject={},%
+  pdfauthor={},%
+  pdfkeywords={}%
+]{hyperref}
+% PDFのしおり機能の日本語文字化けを防ぐ((u)pLaTeXのときのみかく)
+\usepackage{pxjahyper}
+
 % ---
 
 \begin{document}
 
 \maketitle
+\tableofcontents
+\cleardoublepage
 
 \subfile{book_jiriki_calc/section_1-1--1-4}
 \subfile{book_jiriki_calc/section_2-1--2-4}
