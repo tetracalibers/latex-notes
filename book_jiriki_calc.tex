@@ -50,9 +50,9 @@
 
 \usepackage{tocloft}
 \renewcommand{\cftsecfont}{\rmfamily}
+\renewcommand{\cftsecpagefont}{\rmfamily}
 \setcounter{secnumdepth}{0}
 
-\cftpagenumbersoff{section}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 \pagestyle{empty}
 
@@ -81,7 +81,8 @@
 
 \maketitle
 \tableofcontents
-\cleardoublepage
+
+\vskip 2\baselineskip
 
 \subfile{book_jiriki_calc/section_1-1--1-4}
 \subfile{book_jiriki_calc/section_2-1--2-4}
