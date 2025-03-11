@@ -82,4 +82,99 @@
 
 偏微分には、複数の財の「相性」や「相乗効果」といった、\keyword{多変数関数ならではの現象}についての大事な情報も反映されている
 
+\section{偏微分の定義}
+
+2変数関数$f(x, y)$の$x$に関する\keyword{偏微分}は、「$y$を止めて$x$に関して微分する」という意味で、
+\begin{equation*}
+  \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x + h, y) - f(x, y)}{h}
+\end{equation*}
+と定義される
+
+$y$を止めると、$x$だけが変数となるので、$x$の1変数関数と思って普通に微分する
+
+\vskip\baselineskip
+
+$\dfrac{\partial f}{\partial x}(x,y)$を変数$x$に関する\keyword{編微分係数}とよぶこともある
+
+\vskip\baselineskip
+
+逆に、$x$を止め、$y$だけを動かして微分することで、
+\begin{equation*}
+  \frac{\partial f}{\partial y} = \lim_{h \to 0} \frac{f(x, y + h) - f(x, y)}{h}
+\end{equation*}
+という$y$に関する偏微分が定義される
+
+\vskip\baselineskip
+
+\subparagraph{偏微分の記号}
+
+偏微分の記号にはさまざまな流儀があり、以下の記号はすべて同じ意味で使う
+\begin{equation*}
+  \frac{\partial f}{\partial x}(x, y) = \dfrac{\partial f}{\partial x} =f_x = f_x(x, y)
+\end{equation*}
+
+\vskip\baselineskip
+
+変数$(x,y)$を省略した$\dfrac{\partial f}{\partial x}$や$f_x$という記法は文字数が少なくて便利だが、「$y$を止めて」という約束が記号に反映されていない
+
+異なる解釈が生じる可能性があるときには注意が必要
+
+\sectionline
+
+偏微分で混乱する大きな原因は、何を止めているのかが不明瞭になること
+
+一定にするものを変えると、偏微分の意味も値も異なってしまう可能性がある
+
+\vskip\baselineskip
+
+たとえば、先ほどの効用関数の例では、$\dfrac{\partial f}{\partial x}$はジュースを飲む量$x$を増やしたときの効用の変化率を表す
+
+しかし、何を一定にしているかを明示しないと、その内容がまったく異なることになる
+\begin{itemize}
+  \item お菓子の量を一定にして、ジュースの量$x$を増やす
+  \item 予算を一定にして、ジュースの量$x$を増やす
+\end{itemize}
+前者では単純にジュースの量$x$が増えるのを好む一方で、後者では予算が一定であるため、ジュースの量$x$を増やすとお菓子の量が減ることになる
+
+そのため、後者ではジュースの量を増やすのを好まない人もいる
+
+この場合は、効用関数を$x$に関して微分したときの結果も異なってくる
+
+\vskip\baselineskip
+
+偏微分では、微分する変数だけではなく、その際に\keyword{いったん固定している変数は何であるか}を意識して式や文章を見る必要がある
+
+\sectionline
+
+偏微分を計算するときは微分していない変数をいったん止めるが、偏微分を行った後は$x$も$y$も自由に動かせる
+
+\vskip\baselineskip
+
+偏微分$f_x(x, y)$や$f_y(x, y)$は、$x$と$y$を与えると1つの数が決めるという意味で、再び$x, \, y$の関数と見なすことができる
+
+このように$x,\,y$の関数と見なすときは、\keyword{偏導関数}とよぶ
+
+\vskip\baselineskip
+
+関数だと思えば、さらに偏微分を繰り返すことができる
+
+こうして偏微分を2回繰り返した2階の偏微分には、いくつか可能性がある
+
+\begin{itemize}
+  \item $f$を$x$で微分すると$f_x = \dfrac{\partial f}{\partial x}$
+        \begin{itemize}
+          \item $f_x$を$x$で微分すると$f_{xx} = \dfrac{\partial^2 f}{\partial x^2}$
+          \item $f_x$を$y$で微分すると$f_{xy} = \dfrac{\partial^2 f}{\partial x \partial y}$
+        \end{itemize}
+  \item $f$を$y$で微分すると$f_y = \dfrac{\partial f}{\partial y}$
+        \begin{itemize}
+          \item $f_y$を$x$で微分すると$f_{yx} = \dfrac{\partial^2 f}{\partial y \partial x}$
+          \item $f_y$を$y$で微分すると$f_{yy} = \dfrac{\partial^2 f}{\partial y^2}$
+        \end{itemize}
+\end{itemize}
+
+2階の偏微分$f_{xy}$と$f_{yx}$の違いは、どちらを先に偏微分するかという点だが、多くの場合はこの順序を気にする必要はない
+
+「素直」な関数ならば偏微分の順序が交換でき、$f_{xy} = f_{yx}$が成り立つ
+
 \end{document}
