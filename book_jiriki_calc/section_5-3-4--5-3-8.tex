@@ -123,8 +123,184 @@ $ap+bq$は、\keyword{座標系のとり方に依存しない}がゆえに重要
 ベクトルの直交について、次の関係が成り立つ
 \begin{align*}
   \overrightarrow{OA}\text{と}\overrightarrow{OB}\text{が直交する}
-   & \Leftrightarrow \cos\theta = 0                                  \\
-   & \Leftrightarrow \overrightarrow{OA}\cdot\overrightarrow{OB} = 0
+   & \Longleftrightarrow \cos\theta = 0                                  \\
+   & \Longleftrightarrow \overrightarrow{OA}\cdot\overrightarrow{OB} = 0
 \end{align*}
+
+\section{直線と平面と空間}
+
+\subparagraph{平面の中の直線を理解する}\quad
+
+2次元平面の中の直線を、複数の見方でとらえてみる
+
+\sectionline
+
+\paragraph{直線の幾何的性質}
+
+\begin{enumerate}
+  \item 相異なる2点を通る直線は唯一つ存在する
+  \item 与えられた点を通り、与えられた直線に平行な直線は唯一つ存在する
+  \item 与えられた点を通り、与えられた直線に垂直な直線は唯一つ存在する
+\end{enumerate}
+
+\sectionline
+
+直線の幾何的性質2を座標で表すと、次のような形になる
+
+\vskip\baselineskip
+
+\paragraph{直線のパラメータ表示}
+
+\begin{equation*}
+  (x,y) = (x_0,y_0) + t(a,b)
+\end{equation*}
+
+\vskip\baselineskip
+
+$t=0$で与えられた点$(x_0,y_0)$を通り、$t$が実数全体を動くと、ベクトル$(a,b)\neq (0,0)$に平行な直線になる
+
+$t$を\keyword{パラメータ（媒介変数）}という
+
+\sectionline
+
+直線の幾何的性質3を座標で表すとどうなるだろうか？
+
+\vskip\baselineskip
+
+点$(x_0,y_0)$を通り、位置ベクトル$(x,y)$--$(x_0,y_0)$がベクトル$(a,b)$に垂直であるような点$(x,y)$を集めて得られる図形が、幾何的性質3で記述した直線である
+
+このように得られる直線に対し、$(a,b)$を\keyword{法線ベクトル}という
+
+\vskip\baselineskip
+
+2つのベクトルが直交するための必要十分条件は、その内積が0になることであるから、
+\begin{gather}
+  a(x-x_0) + b(y-y_0)  = 0 \\
+  ax + by             = ax_0 + by_0
+\end{gather}
+$a,b$は与えられた直線の方向のデータ、$x_0,y_0$は与えられた点の座標であるから、右辺は定数である
+
+\vskip\baselineskip
+
+よって、$c=ax_0+by_0$とおくと、次の1次方程式の解$(x,y)$の描く図形が幾何的性質3で記述した直線となる
+
+\vskip\baselineskip
+
+\paragraph{直線の方程式による表示}
+
+\begin{equation*}
+  ax + by = c
+\end{equation*}
+
+\vskip\baselineskip
+
+$b\neq 0$ならば、次のように傾きが$-\dfrac{a}{b}$、$y$切片が$\dfrac{c}{b}$の直線を表す式として表せる
+
+\vskip\baselineskip
+
+\paragraph{直線のグラフ表示}
+
+\begin{equation*}
+  y = -\frac{a}{b}x + \frac{c}{b}
+\end{equation*}
+
+\vskip\baselineskip
+
+\sectionline
+
+\subparagraph{3次元空間の中の平面を理解する}\quad
+
+3次元空間の中で直線ではなく平面を記述したい場合について考える
+
+\vskip\baselineskip
+
+まず、直線の幾何的性質2は次のように言い換えられる
+
+\vskip\baselineskip
+
+\paragraph{平面の幾何的性質}
+
+\begin{enumerate}[start=2]
+  \item 与えられた点を通り、与えられた交差する2本の直線に平行な平面は唯一つ存在する
+\end{enumerate}
+
+\vskip\baselineskip
+
+2つのベクトル$\overrightarrow{u}$と$\overrightarrow{v}$に対して、$a\overrightarrow{u}+b\overrightarrow{v}=\overrightarrow{0}$となるような実数$a$と$b$が$0$に限るとき、この$\overrightarrow{u}$と$\overrightarrow{v}$は\keyword{一次独立}であるという
+
+\vskip\baselineskip
+
+「交差する2本の直線に平行」と言うかわりに、「一次独立な2つのベクトルに平行」と言い換えても同じことである
+
+\sectionline
+
+3次元空間における2つの直線は、交わっていなくても対応する2つの方向ベクトルが垂直なとき、\keyword{垂直}と言うことにする
+
+\vskip\baselineskip
+
+そうすると、直線の幾何的性質3で述べた「与えられた点を通り、与えられた直線に垂直な直線」は、3次元空間の中では無数にあり、それを全部集めると平面になる
+
+そのため、直線の幾何的性質3は、3次元空間の中では次の形に言い直すことになる
+
+\vskip\baselineskip
+
+\paragraph{平面の幾何的性質}
+
+\begin{enumerate}[start=3]
+  \item 与えられた点を通り、与えられた直線に垂直な平面は唯一つ存在する
+\end{enumerate}
+
+\vskip\baselineskip
+
+逆に、空間の中に平面が先に与えられたとき、次の主張が成り立つ
+
+\vskip\baselineskip
+
+\paragraph{平面の幾何的性質}
+
+\begin{enumerate}[label={\arabic*'},start=3]
+  \item 与えられた点を通り、与えられた平面に垂直な直線は唯一つ存在する
+\end{enumerate}
+  
+\vskip\baselineskip
+
+平面の幾何的性質3と3'は、言葉だけを見ると「直線」と「平面」が入れ替わっている
+
+この関係は\keyword{直交条件に関する双対性}として、ラグランジュの未定乗数法の背景となる
+
+\sectionline
+
+平面の幾何的性質3'を座標で表すことで、平面の方程式を導くことができる
+
+\vskip\baselineskip
+
+平面の幾何的性質3'において、あらかじめ与えられたデータは点$(x_0,y_0,z_0)$と\keyword{法線ベクトル}$(a,b,c) \neq (0,0,0)$である
+
+そうすると、平面の幾何的性質3'で得られた平面上の任意の点$(x,y,z)$に対して、ベクトル$(a,b,c)$とベクトル$(x-x_0,y-y_0,z-z_0)$が直交することから、その内積は$0$、すなわち、
+\begin{equation*}
+  a(x-x_0) + b(y-y_0) + c(z-z_0) = 0
+\end{equation*}
+
+$d=ax_0+by_0+cz_0$とおくと、この平面の方程式は、
+\begin{equation}
+  ax + by + cz = d
+\end{equation}
+となることが証明できた
+
+\vskip\baselineskip
+
+\paragraph{平面の方程式}
+
+\begin{equation*}
+  ax + by + cz = d
+\end{equation*}
+
+$c\neq 0$ならば、次のように表せる
+
+\begin{equation*}
+  z = -\frac{a}{c}x - \frac{b}{c}y + \frac{d}{c}
+\end{equation*}
+
+\sectionline
 
 \end{document}
