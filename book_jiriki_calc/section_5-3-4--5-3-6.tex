@@ -303,6 +303,145 @@ $c\neq 0$ならば、次のように表せる
 
 \section{接線と接平面}
 
+\subparagraph{平面内の曲線と接線}
 
+1変数関数$f(x)$のグラフ$y=f(x)$上の1点$(x_0,y_0)$に接する直線$y=ax+b$をどのようにして求められるか考えてみる
+
+\vskip\baselineskip
+
+より一般の状況（関数のグラフに限らず、図形などの局所的な近似に応用する場合）を想定して、$ax+b$を$g(x)$と書いておく
+
+\vskip\baselineskip
+
+「接する」とは、点を共有して、傾きが同じということ
+
+そのため、$y=f(x)$と$y=g(x)$のグラフが点$(x_0,y_0)$で接するための条件は、
+\begin{enumerate}
+  \item 点$(x_0,y_0)$を共有する：$f(x_0)=g(x_0) =y_0$
+  \item 点$(x_0,y_0)$における傾きが等しい：$f'(x_0)=g'(x_0)$
+\end{enumerate}
+いま、$g(x)$が1次式$ax+b$だとすると、$g(x_0)=ax_0+b$、$g'(x_0)=a$であるから、この条件は、
+\begin{enumerate}
+  \item $f(x_0)=ax_0+b=y_0$
+  \item $f'(x_0)=a$
+\end{enumerate}
+これを$a,b$について解くと、
+\begin{align*}
+  a & = f'(x_0) \\
+  b & = y_0 - ax_0 = y_0 - f'(x_0)x_0
+\end{align*}
+よって、グラフ$y=f(x)$の点$(x_0,y_0) = (x_0,f(x_0))$における接線の方程式は、
+\begin{align*}
+  y & = g(x) = ax+b \\
+    & = f'(x_0)x + \left(y_0 - f'(x_0)x_0\right) \\
+    & = f'(x_0)(x-x_0) + y_0
+\end{align*}
+となる
+
+\sectionline
+
+\subparagraph{3次元内の曲線と接平面}
+
+「曲面に対する接平面」は「曲線に対する接線」の次元を上げたものとみなすことができる
+
+\vskip\baselineskip
+
+関数$f(x,y)$を地点$(x,y)$の標高と考えると、この局面は地形を表しているとも解釈できる
+
+山の斜面の1つの地点Pで接するような板（接平面）を数式で表すためには、どう考えればよいだろうか？
+
+\sectionline
+
+まず、2つの曲面$z=f(x,y)$と$z=g(x,y)$が1点Pで接するための条件を考える
+
+接点Pの座標を$(x_0,y_0,z_0)$とすると、Pはグラフ上の点なので、$z_0=f(x_0,y_0)$である
+
+\vskip\baselineskip
+
+$z=f(x,y)$のグラフ（曲面）に$z=g(x,y)$のグラフ（曲面）が「接している」とすると、
+\begin{enumerate}
+  \item 点Pを共有する：$f(x_0,y_0)=g(x_0,y_0)=z_0$
+  \item 点Pにおける曲面の傾きが等しい：（偏微分の言葉で表すと…？）
+\end{enumerate}
+
+そもそも、「曲面の傾きが等しい」とはどういう意味だろうか？
+
+\sectionline
+
+\subparagraph{「曲面の傾きが等しい」の意味}
+
+ある地点の「傾き」というと、あらゆる方向の傾きを扱いたいわけだが、まずは、特別な方向の傾きを考えてみる
+
+\vskip\baselineskip
+
+たとえば、$x$が東西方向の座標で、$y$が南北方向の座標であるとする
+
+\vskip\baselineskip
+
+東西方向の傾斜は、$y$座標を$y=y_0$と一定にし、$x$を動かしたときの標高の変化率であるから、これはまさに$x$に関する偏微分である
+
+したがって、それが一致するという条件は次の等式で表される
+\begin{equation*}
+  \dfrac{\partial f}{\partial x}(x_0,y_0) = \dfrac{\partial g}{\partial x}(x_0,y_0)
+\end{equation*}
+
+\vskip\baselineskip
+
+同じように、南北方向の傾斜は、$x$座標を$x=x_0$と一定にし、$y$を動かしたときの標高の変化率であるから、それが一致するという条件は、$y$に関する偏微分が一致するという条件になる
+\begin{equation*}
+  \dfrac{\partial f}{\partial y}(x_0,y_0) = \dfrac{\partial g}{\partial y}(x_0,y_0)
+\end{equation*}
+
+\sectionline
+
+\subparagraph{接平面の方程式}
+
+以上をまとめると、2つの曲面$z=f(x,y)$と$z=g(x,y)$が点Pで接するならば、
+\begin{align}
+  f(x_0,y_0) &= g(x_0,y_0) =z_0 \\
+  \dfrac{\partial f}{\partial x}(x_0,y_0) &= \dfrac{\partial g}{\partial x}(x_0,y_0) \\
+  \dfrac{\partial f}{\partial y}(x_0,y_0) &= \dfrac{\partial g}{\partial y}(x_0,y_0)
+\end{align}
+が成り立つ
+
+\vskip\baselineskip
+
+$g(x,y)$が1次式$ax+by+d$で表されるとすると、上述の3つの条件式は、
+\begin{align*}
+  f(x_0,y_0) &= ax_0+by_0+d = z_0 \\
+  \dfrac{\partial f}{\partial x}(x_0,y_0) & = a \\
+  \dfrac{\partial f}{\partial y}(x_0,y_0) & = b
+\end{align*}
+これを$a,b,d$について解くと、
+\begin{align*}
+  a & = \dfrac{\partial f}{\partial x}(x_0,y_0) \\
+  b & = \dfrac{\partial f}{\partial y}(x_0,y_0) \\
+  d & = z_0 - a x_0 - b y_0 \\
+    & = z_0 - \dfrac{\partial f}{\partial x}(x_0,y_0)x_0 - \dfrac{\partial f}{\partial y}(x_0,y_0)y_0
+\end{align*}
+となるので、$a,b,d$の値はすべて決まり、点Pにおける\keyword{接平面}の方程式は、
+\begin{multline*}
+  z = ax + by + d \\
+    = \dfrac{\partial f}{\partial x}(x_0,y_0)x + \dfrac{\partial f}{\partial y}(x_0,y_0)y \\ + \left(z_0 - \dfrac{\partial f}{\partial x}(x_0,y_0)x_0 - \dfrac{\partial f}{\partial y}(x_0,y_0)y_0\right) \\
+    = \dfrac{\partial f}{\partial x}(x_0,y_0)(x-x_0) + \dfrac{\partial f}{\partial y}(x_0,y_0)(y-y_0) + z_0
+\end{multline*}
+という形になる
+
+\vskip\baselineskip
+
+つまり、$z=f(x_0,y_0)$、$\dfrac{\partial f}{\partial x}(x_0,y_0)$、$\dfrac{\partial f}{\partial y}(x_0,y_0)$の値だけで、接平面が決まってしまうということである
+
+これは、東西方向と南北方向の勾配の情報だけで、曲面に接する「板」の傾きが決まることに対応している
+
+\sectionline
+
+\paragraph{接平面の方程式（その1）}
+
+$z_0=f(x_0,y_0)$とすると、グラフ$z=f(x,y)$上の点$(x_0,y_0,z_0)$における接平面は次の方程式で与えられる
+\begin{equation*}
+  z = \dfrac{\partial f}{\partial x}(x_0,y_0)(x-x_0) + \dfrac{\partial f}{\partial y}(x_0,y_0)(y-y_0) + z_0
+\end{equation*}
+
+\sectionline
 
 \end{document}
