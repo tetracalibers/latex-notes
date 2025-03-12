@@ -1,0 +1,130 @@
+\documentclass[../book_jiriki_calc]{subfiles}
+
+\begin{document}
+
+\section{平面の幾何 --- 余弦定理}
+
+2つの地点の間の距離を知りたくても、その間に山や池があって直接距離を測るのが難しいことがある
+
+こんなとき、第3の地点からの角度を含めた測量データがあれば、知りたい距離を計算できることがある
+
+\sectionline
+
+AB間の距離$n$は、別の2つの辺の長さ$l,\,m$とその間の角度$\theta$から計算できる（AとBの間に池があってもかまわない）
+
+この計算方法を与えるのが\keyword{余弦定理}である
+\begin{equation*}
+  n^2 = l^2 + m^2 - 2lm\cos\theta
+\end{equation*}
+この式を書き換えると、3辺の情報から、角度を知る公式にもなる
+\begin{equation*}
+  \cos\theta = \frac{l^2 + m^2 - n^2}{2lm}
+\end{equation*}
+
+\vskip\baselineskip
+
+余弦定理は、三平方の定理（ピタゴラスの定理）を拡張した定理と見なせる
+
+実際、$\theta = 90^\circ$のとき$\cos\theta = 0$であるから、余弦定理はピタゴラスの定理に一致する
+\begin{equation*}
+  n^2 = l^2 + m^2
+\end{equation*}
+
+\sectionline
+
+余弦定理を座標で書き表してみる
+
+まず、この3頂点が$xy$平面にあるものと思って、ベクトルで表示する
+\begin{align*}
+  \overrightarrow{OA} & = (a,b)     \\
+  \overrightarrow{OB} & = (p,q)     \\
+  \overrightarrow{BA} & = (a-p,b-q)
+\end{align*}
+とおくと、各辺の長さは、
+\begin{align*}
+  l & = \sqrt{a^2 + b^2}         \\
+  m & = \sqrt{p^2 + q^2}         \\
+  n & = \sqrt{(a-p)^2 + (b-q)^2}
+\end{align*}
+と表せる
+
+これを使って、$\cos\theta = \dfrac{l^2 + m^2 - n^2}{2lm}$の分子を計算すると、多くの項が打ち消し合って、
+\begin{multline*}
+  l^2 + m^2 - n^2 \\ = a^2 + b^2 + p^2 + q^2 - ((a-p)^2 - (b-q)^2)
+  \\ = 2ap + 2bq
+\end{multline*}
+となるので、余弦定理は、
+\begin{align}
+  \cos\theta               & = \dfrac{2(ap+bq)}{2lm} \\
+  \therefore \quad ap + bq & = lm\cos\theta
+\end{align}
+と書き換えられる
+
+\sectionline
+
+この式の両辺をあらためて観察してみる
+
+\begin{equation*}
+  ap + bq = lm\cos\theta
+\end{equation*}
+
+左辺に現れる$a, b, p, q$という数は、座標系を決めないと値が定まらない
+
+たとえば、三角形が地面に描かれているとする
+
+地面の上なので、好きな点を原点にとり、好きな方向を$x$軸に選び、それと垂直に$y$軸を定める
+
+そうするとベクトル$\overrightarrow{OA}$や$\overrightarrow{OB}$の$x$成分や$y$成分である$a, b, p, q$の値が定まるが、別の座標系をとれば、ベクトルの成分$a, b, p, q$は別の値になる
+
+\vskip\baselineskip
+
+しかし、右辺は、辺の長さや角度という三角形の幾何に固有な量だけで表されている
+
+$ap+bq$は、どんな座標系でも同じ値になる、\keyword{三角形に内在的な量}なのだ
+
+\vskip\baselineskip
+
+この重要な量$ap+bq$を、2つのベクトル$\overrightarrow{OA}$と$\overrightarrow{OB}$の\keyword{内積}あるいは\keyword{スカラー積}あるいは\keyword{ドット積}という
+
+$ap+bq$は、\keyword{座標系のとり方に依存しない}がゆえに重要な量である
+
+\sectionline
+
+\paragraph{内積の座標による定義}
+
+ベクトル$(a,b)$と$(p,q)$の内積を
+\begin{equation*}
+  (a,b)\cdot(p,q) = ap + bq
+\end{equation*}
+と定義する
+
+\vskip\baselineskip
+
+\paragraph{内積の幾何的な定義}
+
+ベクトル$\overrightarrow{OA}$と$\overrightarrow{OB}$の内積を
+\begin{equation*}
+  \overrightarrow{OA}\cdot\overrightarrow{OB} = |\overrightarrow{OA}||\overrightarrow{OB}|\cos\theta
+\end{equation*}
+と定義する
+
+ここで、$\theta$は$\overrightarrow{OA}$と$\overrightarrow{OB}$のなす角を表す
+
+\sectionline
+
+この2つの定義が一致するというのが、
+\begin{equation*}
+  ap + bq = lm\cos\theta
+\end{equation*}
+という等式の意味である
+
+\sectionline
+
+ベクトルの直交について、次の関係が成り立つ
+\begin{align*}
+  \overrightarrow{OA}\text{と}\overrightarrow{OB}\text{が直交する}
+   & \Leftrightarrow \cos\theta = 0                                  \\
+   & \Leftrightarrow \overrightarrow{OA}\cdot\overrightarrow{OB} = 0
+\end{align*}
+
+\end{document}
