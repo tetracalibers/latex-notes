@@ -444,4 +444,85 @@ $z_0=f(x_0,y_0)$とすると、グラフ$z=f(x,y)$上の点$(x_0,y_0,z_0)$にお
 
 \sectionline
 
+変数が3個以上ある場合、グラフを描こうとすると、空間の次元が$4$以上になってしまい、目で見るのが難しくなってしまう
+
+このようなときは、次元に依存しない概念に置き換えるのが便利である
+
+\vskip\baselineskip
+
+以前、三角形は地面に描かれていても空中に浮かんでいても、その幾何的な性質が変わらないことに着目し、「ベクトルの内積は座標や次元によらない概念である」ことを示した
+
+そこで、ベクトルの内積を用いて、接平面の方程式をより汎用的な形に書き換える
+
+\vskip\baselineskip
+
+以下のように$a,b,p,q$を当てはめると、
+\begin{align*}
+  a & = \dfrac{\partial f}{\partial x}(x_0,y_0) \\
+  b & = \dfrac{\partial f}{\partial y}(x_0,y_0) \\
+  p & = x-x_0 \\
+  q & = y-y_0
+\end{align*}
+接平面の方程式は、ベクトル$(a,b)$とベクトル$(p,q)$の内積となる
+\begin{equation*}
+  z - z_0 = ap + bq
+\end{equation*}
+
+ここで、ベクトル$(a,b)$と$(p,q)$の意味を幾何的に考えてみる
+
+\vskip\baselineskip
+
+\subparagraph{勾配ベクトルによる表現}\quad
+
+関数$f(x,y)$の\keyword{勾配ベクトル}を
+\begin{equation*}
+  \nabla f(x,y) = \mathrm{grad} f(x,y) = \left(\dfrac{\partial f}{\partial x},\dfrac{\partial f}{\partial y}\right)
+\end{equation*}
+と定義する
+
+同様に、$n$変数関数$g(x_1,x_2,\ldots,x_n)$の勾配ベクトルは、$n$次元ベクトルとして定義される
+
+\vskip\baselineskip
+
+勾配ベクトルは多変数関数の局所的な振る舞いに関する重要な情報を持っている
+
+\vskip\baselineskip
+
+勾配ベクトルの定義を踏まえると、
+\begin{itemize}
+  \item $(a,b)$は勾配ベクトル$\nabla f(x_0,y_0)$
+  \item $(p,q)$は位置ベクトル$(x-x_0,y-y_0)$
+\end{itemize}
+と解釈できる
+
+よって、接平面の方程式は、勾配ベクトルと位置ベクトルとの内積として、次のように書き表せる
+
+\sectionline
+
+\paragraph{接平面の方程式（その2）}
+
+\begin{equation*}
+  z = z_0 + \nabla f(x_0,y_0)\cdot(x-x_0,y-y_0)
+\end{equation*}
+
+\sectionline
+
+\subparagraph{局所的な近似式}
+
+接平面は、接点$(x_0,y_0,z_0) = (x_0,y_0,f(x_0,y_0))$を通り、この点で曲面$z=f(x,y)$と「接している」平面である
+
+\vskip\baselineskip
+
+したがって、点$(x,y)$が$(x_0,y_0)$に近いとき、2変数関数$f(x,y)$の値は、接平面上の$z$座標である次の値
+\begin{equation*}
+  f(x_0,y_0) + \nabla f(x_0,y_0)\cdot(x-x_0,y-y_0)
+\end{equation*}
+で近似できることになる
+
+この式は、展開すると$x,y$の1次式となるので、$f(x,y)$の\keyword{一次近似}あるいは\keyword{線形近似}と言う
+
+\vskip\baselineskip
+
+内積を用いると、変数の個数が何個であっても、多変数関数の局所的な近似式を同じ形で表示できる
+
 \end{document}
