@@ -698,10 +698,6 @@ $|c|$が分母にあるので、$c=0$の場合は除外して考える必要が�
 
 $c=0$の場合は、定数数列の極限として考えることで、$0$に収束することがわかる。
 
-\vskip\baselineskip
-
-それでは、証明を見ていこう。
-
 \begin{proof}{数列の定数倍の極限}
   $c=0$と$c\neq 0$の場合に分けて証明する。
 
@@ -745,6 +741,96 @@ $c=0$の場合は、定数数列の極限として考えることで、$0$に収
   \end{subpattern}
 
   以上より、いずれの場合も、数列$\{ca_n\}$は$c\alpha$に収束することが示された。$\qed$
+\end{proof}
+
+\subsection{数列の積の極限}
+
+\begin{theorem}{数列の積の極限}\quad\\
+  数列$\{a_n\}$と$\{b_n\}$がともに収束するとき、数列$\{a_n b_n\}$も収束する。\\
+  そして、その極限値は次のようになる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} a_n b_n = \lim_{n \to \infty} a_n \cdot \lim_{n \to \infty} b_n
+  \end{equation}
+\end{theorem}
+
+$\{a_n\}$の極限値を$\alpha$、$\{b_n\}$の極限値を$\beta$とすると、最終的に次のような関係を導くことで、この定理が証明される。
+
+\begin{equation}
+  n \geq N \quad \Longrightarrow \quad |a_n b_n - \alpha \beta| < \varepsilon
+\end{equation}
+
+$a_n b_n$と$\alpha \beta$の誤差$|a_n b_n - \alpha \beta|$を、三角不等式で見積もっておこう。
+\begin{align*}
+  |a_n b_n - \alpha \beta| &= |a_n b_n - a_n \beta + a_n \beta - \alpha \beta| \\
+  & = |a_n(b_n - \beta) + \beta(a_n - \alpha)| \\
+  &\leq |a_n||b_n - \beta| + |\beta||a_n - \alpha|
+\end{align*}
+
+ここで、$\{a_n\}$の極限値が$\alpha$、$\{b_n\}$の極限値が$\beta$であることから、任意の正の数を$\varepsilon'$として、$|a_n - \alpha| < \varepsilon'$、$|b_n - \beta| < \varepsilon'$という関係を使うことができる。
+
+ここまでで得られた不等式において、$|a_n|$の部分も$|\alpha|$に置き換えたいが、このときに$a_n$と$\alpha$の誤差$\varepsilon'$を考慮する必要がある。
+\begin{align*}
+  |a_n| - |\alpha| &\leq |a_n - \alpha| < \varepsilon' \\
+  |a_n| &< |\alpha| + \varepsilon'
+\end{align*}
+これを使うことで、
+\begin{align*}
+  |a_n b_n - \alpha \beta|   &\leq |a_n||b_n - \beta| + |\beta||a_n - \alpha| \\
+  &< (|\alpha| + \varepsilon')|b_n - \beta| + |\beta||a_n - \alpha| \\
+  &= (|\alpha| + \varepsilon')\varepsilon' + |\beta|\varepsilon' \\
+  &< |\alpha|\varepsilon' + \varepsilon'^2 + |\beta|\varepsilon' \\
+  &= (|\alpha| + |\beta| + \varepsilon')\varepsilon'
+\end{align*}
+また、$\varepsilon'$は任意の正の数であるが、結局はどんどん小さな数に狭めていくものなので、最初から$1$未満に設定して$0 < \varepsilon' < 1$としてもよい。
+\begin{align*}
+  |a_n b_n - \alpha \beta| &< (|\alpha| + |\beta| + \varepsilon')\varepsilon' \\
+  &< (|\alpha| + |\beta| + 1)\varepsilon'
+\end{align*}
+以上の考察を、次のような証明として落とし込む。
+
+\vskip\baselineskip
+
+\begin{proof}{数列の積の極限}
+  $\displaystyle\lim_{n \to \infty} a_n = \alpha$、$\displaystyle\lim_{n \to \infty} b_n = \beta$とおき、$\varepsilon$を任意の正の数とする。
+  
+  \vskip\baselineskip
+  
+  極限を考えるので、$0 < \varepsilon < |\alpha| + |\beta| + 1$としてもよい。
+  
+  そこで、
+  \begin{equation*}
+    \varepsilon' = \dfrac{\varepsilon}{|\alpha| + |\beta| + 1}
+  \end{equation*}
+  とおくと、$0 < \varepsilon' < 1$である。
+
+  \vskip\baselineskip
+
+  このとき、$\displaystyle\lim_{n \to \infty} a_n = \alpha$より、次のような自然数$N_1$が存在する。
+  \begin{equation}
+    n \geq N_1 \quad \Longrightarrow \quad |a_n - \alpha| < \varepsilon'
+  \end{equation}
+
+  同様に、$\displaystyle\lim_{n \to \infty} b_n = \beta$より、次のような自然数$N_2$が存在する。
+  \begin{equation}
+    n \geq N_2 \quad \Longrightarrow \quad |b_n - \beta| < \varepsilon'
+  \end{equation}
+
+  ここで、$N = \max\{N_1, N_2\}$とおくと、$n \geq N$のとき、$n \geq N_1$と$n \geq N_2$がともに成り立つ。
+  \begin{equation}
+    n \geq N \quad \Longrightarrow \quad |a_n - \alpha| < \varepsilon' \quad \text{かつ} \quad |b_n - \beta| < \varepsilon'
+  \end{equation}
+
+  よって、$n \geq N$のとき、三角不等式と$0 < \varepsilon' < 1$より、
+  \begin{align*}
+    |a_n b_n - \alpha \beta| &\leq |a_n||b_n - \beta| + |\beta||a_n - \alpha| \\
+    &< (|\alpha| + \varepsilon')\varepsilon' + |\beta|\varepsilon' \\
+    &= (|\alpha| + |\beta| + \varepsilon')\varepsilon' \\
+    &< (|\alpha| + |\beta| + 1)\varepsilon' \\
+    &= \varepsilon \\
+    \therefore \quad |a_n b_n - \alpha \beta| &< \varepsilon
+  \end{align*}
+  という不等式が成り立つことで、$\displaystyle\lim_{n \to \infty} (a_n b_n) = \alpha \beta$が示された。$\qed$
 \end{proof}
 
 \subsection{はさみうちの定理}
