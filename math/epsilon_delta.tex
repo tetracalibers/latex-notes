@@ -769,6 +769,8 @@ $a_n b_n$と$\alpha \beta$の誤差$|a_n b_n - \alpha \beta|$を、三角不等�
 
 ここで、$\{a_n\}$の極限値が$\alpha$、$\{b_n\}$の極限値が$\beta$であることから、任意の正の数を$\varepsilon'$として、$|a_n - \alpha| < \varepsilon'$、$|b_n - \beta| < \varepsilon'$という関係を使うことができる。
 
+\vskip\baselineskip
+
 ここまでで得られた不等式において、$|a_n|$の部分も$|\alpha|$に置き換えたいが、このときに$a_n$と$\alpha$の誤差$\varepsilon'$を考慮する必要がある。
 \begin{align*}
   |a_n| - |\alpha| &\leq |a_n - \alpha| < \varepsilon' \\
@@ -832,6 +834,101 @@ $a_n b_n$と$\alpha \beta$の誤差$|a_n b_n - \alpha \beta|$を、三角不等�
   \end{align*}
   という不等式が成り立つことで、$\displaystyle\lim_{n \to \infty} (a_n b_n) = \alpha \beta$が示された。$\qed$
 \end{proof}
+
+\subsection{数列の商の極限}
+
+\begin{theorem}{数列の逆数の極限}\quad\\
+  数列$\{a_n\}$がともに収束し、$\displaystyle\lim_{n \to \infty} a_n \neq 0$のとき、数列$\left\{\dfrac{1}{a_n}\right\}$も収束する。\\
+  そして、その極限値は次のようになる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} \dfrac{1}{a_n} = \dfrac{1}{\displaystyle\lim_{n \to \infty} a_n}
+  \end{equation}
+\end{theorem}
+
+$\{a_n\}$の極限値を$\alpha$とすると、最終的に次のような関係を導くことで、上の式は証明される。
+\begin{equation}
+  n \geq N \quad \Longrightarrow \quad \left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right| < \varepsilon
+\end{equation}
+ここでも、$\dfrac{1}{a_n}$と$\dfrac{1}{\alpha}$の誤差$\left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right|$を、三角不等式で見積もっておく。
+\begin{align*}
+  \left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right| &= \left|\dfrac{\alpha - a_n}{a_n \alpha}\right| \\
+  &= \dfrac{|a_n - \alpha|}{|a_n \alpha|}
+\end{align*}
+ここで、$0< \varepsilon' < \dfrac{|\alpha|}{2}$とすると、
+\begin{gather*}
+  \left|a_n - \alpha\right| < \varepsilon' < \dfrac{|\alpha|}{2} \\
+  \therefore \quad \left|a_n-\alpha\right| < \dfrac{\left|\alpha\right|}{2}
+\end{gather*}
+また、三角不等式より、
+\begin{gather*}
+  \left| |a_n| - |\alpha| \right| \leq |a_n - \alpha| < \dfrac{\left|\alpha\right|}{2} \\
+  - \dfrac{|\alpha|}{2} < |a_n| - |\alpha| < \dfrac{|\alpha|}{2} \\
+  |\alpha| - \dfrac{|\alpha|}{2} < |a_n| \\
+  \dfrac{2|\alpha|}{2} - \dfrac{|\alpha|}{2} < |a_n| \\
+  \therefore \quad \dfrac{|\alpha|}{2} < |a_n|
+\end{gather*}
+が成り立つことを利用して、
+\begin{align*}
+  \left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right| &< \dfrac{|a_n - \alpha|}{|a_n \alpha|} \\
+  &< \dfrac{|a_n - \alpha|}{\dfrac{\left|\alpha\right|}{2} \cdot \left|\alpha\right|} \\
+  &= \dfrac{2}{|\alpha|^2}|a_n - \alpha| \\
+\end{align*}
+このような不等式から、次のように証明を組み立てる。
+
+\begin{proof}{数列の逆数の極限}
+  $\displaystyle\lim_{n \to \infty} a_n = \alpha$、$\displaystyle\lim_{n \to \infty} b_n = \beta$とおき、$\varepsilon$を任意の正の数とする。
+  
+  \vskip\baselineskip
+  
+  $\displaystyle\lim_{n \to \infty} a_n = \alpha$より、次のような自然数$N_1$が存在する。
+  \begin{equation}
+    n \geq N_1 \quad \Longrightarrow \quad |a_n - \alpha| < \dfrac{|\alpha|}{2}
+  \end{equation}
+  このとき、$n \geq N_1$ならば、三角不等式より次のような不等式が成り立つ。
+  \begin{equation*}
+    \dfrac{|\alpha|}{2} < |a_n|
+  \end{equation*}
+  よって、$n \geq N_1$とすると、$a_n \neq 0$である。
+    
+  このとき、次のような不等式も得られる。
+  \begin{align*}
+    \left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right| &< \dfrac{|a_n - \alpha|}{|a_n \alpha|} \\
+    &< \dfrac{2}{|\alpha|^2}|a_n - \alpha|
+  \end{align*}
+  
+  \vskip\baselineskip
+  
+  一方、$\displaystyle\lim_{n \to \infty} a_n = \alpha$より、次のような自然数$N_2$も存在する。
+  \begin{equation*}
+    n \geq N_2 \quad \Longrightarrow \quad |a_n - \alpha| < \dfrac{\varepsilon}{\dfrac{2}{|\alpha|^2}}
+  \end{equation*}
+  
+  ここで、$N = \max\{N_1, N_2\}$とおくと、$n \geq N$のとき、$n \geq N_1$と$n \geq N_2$がともに成り立つ。
+  
+  よって、$n \geq N$のとき、
+  \begin{align*}
+    \left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right| &< \dfrac{2}{|\alpha|^2}|a_n - \alpha| \\
+    &< \dfrac{2}{|\alpha|^2} \cdot \dfrac{\varepsilon}{\dfrac{2}{|\alpha|^2}} \\
+    &= \varepsilon \\
+    \therefore \quad \left|\dfrac{1}{a_n} - \dfrac{1}{\alpha}\right| &< \varepsilon
+  \end{align*}
+  という不等式が成り立つことで、$\displaystyle\lim_{n \to \infty} \dfrac{1}{a_n} = \dfrac{1}{\alpha}$が示された。$\qed$
+\end{proof}
+
+今示した数列の逆数の極限と、数列の積の極限を組み合わせることで、数列の商の極限も求めることができる。
+\begin{equation*}
+  \lim_{n \to \infty} \dfrac{b_n}{a_n} = \lim_{n\to\infty}\dfrac{1}{a_n} \cdot \lim_{n\to\infty} b_n
+\end{equation*}
+
+\begin{theorem}{数列の商の極限}\quad\\
+  数列$\{a_n\}$と$\{b_n\}$がともに収束し、$\displaystyle\lim_{n \to \infty} a_n \neq 0$のとき、数列$\left\{\dfrac{b_n}{a_n}\right\}$も収束する。\\
+  そして、その極限値は次のようになる。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} \dfrac{b_n}{a_n} = \dfrac{\displaystyle\lim_{n \to \infty} b_n}{\displaystyle\lim_{n \to \infty} a_n}
+  \end{equation}
+\end{theorem}
 
 \subsection{はさみうちの定理}
 
