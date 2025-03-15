@@ -4,6 +4,8 @@
 
 \chapter{複素数と複素関数}
 
+\ifSubfilesClassLoaded{\tableofcontents}{}
+
 \section{虚数の導入}
 
 \subsection{$x^2 = -1$の解は存在するか？}
@@ -516,9 +518,9 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
 
 絶対値を「半径」、偏角を「回転角」とみなし、それらを使って複素数を表現できたことで、複素数と回転との関係についても調べる準備が整った。
 
-\section{複素数の四則演算}
+\section{複素数の演算}
 
-図形的な意味を考えながら、複素数の四則演算を定義していこう。
+ベクトルとの対応や極形式をもとに、複素数の演算を定義していこう。
 
 \subsection{複素数の和と差}
 
@@ -623,7 +625,26 @@ $b=0$であるとき、複素数$a+bi$は実数$a$となるので、複素数は
   \end{equation}
 \end{definition}
 
-\section{共役複素数}
+ここでは、回転行列を経由して、回転としての複素数の積の定義を探ってみたが、実は2つの複素数の積を展開して実部と虚部をまとめるだけで、まったく同じ式が得られる。
+\begin{equation*}
+  \begin{WithArrows}
+    zw & = (a + bi)(c + di) \\
+            & = ac + adi + bci + bdi^2 \Arrow{$i^2 = -1$} \\
+            & = ac + adi + bci - bd \\
+            & = (ac - bd) + (ad + bc)i
+  \end{WithArrows}
+\end{equation*}
+単純な式展開によって得られる定義と、回転行列によって妥当だと思えた定義が一致するのは、とても不思議なことではないだろうか。
+
+このように、複素数の積は自然と回転を表すものになっている。
+
+\subsection{複素数の商}
+
+\wip
+
+\subsection{共役複素数}
+
+\wip
 
 \begin{definition}{共役複素数}
   \newline
