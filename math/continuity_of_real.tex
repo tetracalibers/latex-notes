@@ -82,7 +82,7 @@
       \def\maxR{4}
       
       \nlAxisX{\minR}{\maxR}
-      \nlinfnum{\x}[]{o}
+      \nlinfnum{\x}[]{}
       
       \draw[lightslategray]
         (\minR,0) -- (\x,0) node[lightslategray, midway,above=2em]{\bfseries\small 上に有界な区間$X$};
@@ -113,7 +113,7 @@
       \def\maxR{4}
       
       \nlAxisX{\minR}{\maxR}
-      \nlnuminf{\x}[]{o}
+      \nlnuminf{\x}[]{}
       
       \draw[lightslategray]
         (\x,0) -- (\maxR,0) node[lightslategray, midway,above=2em]{\bfseries\small 下に有界な区間$X$};
@@ -145,7 +145,7 @@
       \def\maxX{1.5}
       
       \nlAxisX{\minR}{\maxR}
-      \nlnumnum{\minX}[]{o}{\maxX}[]{o}
+      \nlnumnum{\minX}[]{}{\maxX}[]{}
 
       \node[above=2em, midway, lightslategray] at (current bounding box.north) {\bfseries\small 有界な区間$X$};
       
