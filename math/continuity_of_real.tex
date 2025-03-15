@@ -6,9 +6,159 @@
 
 ε-δ論法によって微分積分の理論を再定義しても、その議論は実数の連続性に依存している。
 
-さらに厳密な議論を追究したいのなら、「実数は連続である」、平たく言えば数直線は穴のない線である、ということを数学の言葉で表現する必要がある。
+この章では、「実数は連続である」、平たく言えば「数直線には穴がない」という表現を観察する。
 
-\section{上限と下限}
+\ifSubfilesClassLoaded{\tableofcontents}{}
+
+\section{区間の限界を表す}
+
+区間の最大値や最小値は、その区間の中で最大もしくは最小となる数を指す。
+
+閉区間の場合は、区間の端点が最大値・最小値となるが、開区間では端点を含まないため、「区間の中で」最大（もしくは最小）といえる数は存在しないことになる。
+
+\vskip\baselineskip
+
+しかし、「最大値（最小値）がない＝区間は限りなく続く」というわけではない。
+
+もしそうだとしたら、次の3つの開区間が区別できないことになる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnumnum{-1.5}[a]{o}{1.5}[b]{o}
+
+      % 上中央にタイトルを表示
+      \node[above=2em, midway, lightslategray] at (current bounding box.north) {$(a,b) =  \{ x \in \mathbb{R}  \mid a < x < b \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlinfnum{1.5}[a]{o}
+
+      \node[above=2em, midway, lightslategray] at (current bounding box.north) {$(a,+\infty) =  \{ x \in \mathbb{R}  \mid a < x \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \nlAxisX{-4}{4}
+      \nlnuminf{-1.5}[a]{o}
+
+      \node[above=2em, midway, lightslategray] at (current bounding box.north) {$(-\infty, a) =  \{ x \in \mathbb{R}  \mid a > x \}$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+そこで、最大値・最小値とは別に、区間に限界があることを表す概念を導入する。
+
+\subsection{上界と下界}
+
+区間内の数がとりうる値に「限\keyword{界}が\keyword{有}る」ことを、\keyword{有界}という概念で表す。
+
+\subsubsection{上界、上に有界}
+
+ある区間に属するどの数も、ある数$M$以下であるとき、この区間は\keyword{上に有界}であるといい、この$M$を\keyword{上界}という。
+
+\begin{definition}{上界}
+  $M$が区間$X$の\hl{上界}であるとは、
+  \begin{center}
+    任意の$x \in X$に対して$x \leq M$が成り立つ
+  \end{center}
+  ことをいう。このような上界$M$が存在するとき、$X$は\hl{上に有界}であるという。
+\end{definition}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\x{-1}
+      \def\minR{-4}
+      \def\maxR{4}
+      
+      \nlAxisX{\minR}{\maxR}
+      \nlinfnum{\x}[]{o}
+      
+      \draw[lightslategray]
+        (\minR,0) -- (\x,0) node[lightslategray, midway,above=2em]{\bfseries\small 上に有界な区間$X$};
+  
+      \draw [Rhodamine,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
+        (\x,0) -- (\maxR+0.5,0) node[midway,yshift=-3em]{\bfseries\small $X$の上界\scriptsize（$M$はここのどこか）};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\subsubsection{下界、下に有界}
+
+ある区間に属するどの数も、ある数$N$以上であるとき、この区間は\keyword{下に有界}であるといい、この$N$を\keyword{下界}という。
+
+\begin{definition}{下界}
+  $N$が区間$X$の\hl{下界}であるとは、
+  \begin{center}
+    任意の$x \in X$に対して$x \geq N$が成り立つ
+  \end{center}
+  ことをいう。このような下界$N$が存在するとき、$X$は\hl{下に有界}であるという。
+\end{definition}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\x{1}
+      \def\minR{-4}
+      \def\maxR{4}
+      
+      \nlAxisX{\minR}{\maxR}
+      \nlnuminf{\x}[]{o}
+      
+      \draw[lightslategray]
+        (\x,0) -- (\maxR,0) node[lightslategray, midway,above=2em]{\bfseries\small 下に有界な区間$X$};
+  
+      \draw [Cerulean,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
+        (\minR,0) -- (\x,0) node[midway,yshift=-3em]{\bfseries\small $X$の下界\scriptsize（$N$はここのどこか）};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\subsubsection{有界}
+
+ある区間が上にも下にも有界であるとき、この区間は\keyword{有界}であるという。
+
+\begin{definition}{有界}
+  区間$X$が\hl{有界}であるとは、
+  \begin{center}
+    $X$が上に有界かつ下に有界である
+  \end{center}
+  ことをいう。
+\end{definition}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\minR{-4}
+      \def\maxR{4}
+      \def\minX{-1.5}
+      \def\maxX{1.5}
+      
+      \nlAxisX{\minR}{\maxR}
+      \nlnumnum{\minX}[]{o}{\maxX}[]{o}
+
+      \node[above=2em, midway, lightslategray] at (current bounding box.north) {\bfseries\small 有界な区間$X$};
+      
+      \draw [Rhodamine,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
+        (\maxX,0) -- (\maxR+0.5,0) node[midway,yshift=-3em]{\bfseries\small $X$の上界};
+        
+      \draw [Cerulean,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
+        (\minR,0) -- (\minX,0) node[midway,yshift=-3em]{\bfseries\small $X$の下界};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\subsection{上限と下限}
 
 \subsection{上限定理}
 
