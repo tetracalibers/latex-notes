@@ -887,7 +887,249 @@ $\{a_n\}$の極限値を$\alpha$とすると、最終的に次のような関係
 
 \subsection{ε- N論法による数列の発散}
 
-\todo{定義1.2}
+数列がどんな実数にも収束しないとき、その数列は\keyword{発散}するという。
+
+\subsubsection{正の無限大への発散}
+
+数列の項が先に進むにつれて限りなく大きくなる場合に、その数列は\keyword{正の無限大に発散}するという。
+
+\vskip\baselineskip
+
+「ここから先の項はすべて$K$より大きくなる」といえる位置に、$N$という印をつけるようにしよう。
+
+\begin{center}
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \def\N{3.5} % N
+      \def\K{-1.25} % K
+      
+      \def\xmax{8.25} % max x axis
+      \def\ymax{3.25}
+      \def\ymin{-\ymax-0.2*\ymax}
+      \def\samp{100} % number of samples
+      \def\fn#1{exp(0.25*#1)-3.5}
+  
+      % AXIS
+      \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {\large$a_n$};
+      \draw[axis] (-0.2*\ymax,-\ymax+0.25) -- (\xmax,-\ymax+0.25) node[right] {\large$n$};
+  
+      % Nより右で、Kより上の空間
+      \fill[carnationpink, opacity=0.4] (\N,\K) rectangle (\xmax,\ymax);
+      
+      % PLOT
+      \begin{scope}
+        \clip (-1,-\ymax) rectangle (\xmax,\ymax);
+        \draw[dotted, BurntOrange, thick, samples=\samp,smooth,variable=\t,domain=0:\xmax] plot(\t,{\fn{\t}});
+        
+        % 一定周期で関数上に点を打つ
+        \foreach \i in {0,0.4,0.8,...,\xmax}{
+          \fill[BurntOrange] ({\i}, {\fn{\i}}) circle (1.8pt);
+        }
+      \end{scope}
+      
+      % N以降を表す矢印
+      \draw[lawngreen, opacity=0.8, -{Triangle[width = 18pt, length = 8pt]}, line width = 9pt] (\N,-2) -- (\xmax,-2);
+  
+      % N直線
+      \draw[malachite, very thick] (\N,\ymin) -- (\N,\ymax);
+      \node[malachite] at (\N,\ymin) [below] {\Large$N$};
+      
+      % K直線
+      \draw[magenta, thick] (-0.2*\ymax,\K) -- (\xmax,\K);
+      \node[magenta] at (-0.2*\ymax,\K) [left] {\Large$K$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+どれだけ$K$を大きくしても、$N$をずらしていけば、$N$以降は$K$を超える項だけになる。
+
+\begin{center}
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \def\N{6.5} % N
+      \def\K{1.75} % K
+      
+      \def\xmax{8.25} % max x axis
+      \def\ymax{3.25}
+      \def\ymin{-\ymax-0.2*\ymax}
+      \def\samp{100} % number of samples
+      \def\fn#1{exp(0.25*#1)-3.5}
+  
+      % AXIS
+      \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {\large$a_n$};
+      \draw[axis] (-0.2*\ymax,-\ymax+0.25) -- (\xmax,-\ymax+0.25) node[right] {\large$n$};
+  
+      % Nより右で、Kより上の空間
+      \fill[carnationpink, opacity=0.4] (\N,\K) rectangle (\xmax,\ymax);
+      
+      % PLOT
+      \begin{scope}
+        \clip (-1,-\ymax) rectangle (\xmax,\ymax);
+        \draw[dotted, BurntOrange, thick, samples=\samp,smooth,variable=\t,domain=0:\xmax] plot(\t,{\fn{\t}});
+        
+        % 一定周期で関数上に点を打つ
+        \foreach \i in {0,0.4,0.8,...,\xmax}{
+          \fill[BurntOrange] ({\i}, {\fn{\i}}) circle (1.8pt);
+        }
+      \end{scope}
+      
+      % N以降を表す矢印
+      \draw[lawngreen, opacity=0.8, -{Triangle[width = 18pt, length = 8pt]}, line width = 9pt] (\N,-2) -- (\xmax,-2);
+  
+      % N直線
+      \draw[malachite, very thick] (\N,\ymin) -- (\N,\ymax);
+      \node[malachite] at (\N,\ymin) [below] {\Large$N$};
+      
+      % K直線
+      \draw[magenta, thick] (-0.2*\ymax,\K) -- (\xmax,\K);
+      \node[magenta] at (-0.2*\ymax,\K) [left] {\Large$K$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+このような状況が、正の無限大への発散である。
+
+\vskip\baselineskip
+
+$K$をどんなに大きくしても、「$N$番目以降の項は$K$よりも大きくなる」といえるような$N$を設定できるか？が肝心で、そのような$N$が存在するなら、数列は正の無限大に発散すると定義する。
+
+\begin{definition}{数列の正の無限大への発散}\quad\\
+  数列$\{a_n\}_{n=1}^{\infty}$について、次の条件を考える。
+  \begin{spacebox}
+    任意の正の実数$K$に対して
+    \Large
+    \begin{equation}
+      n \geq N \quad \Longrightarrow \quad a_n > K
+    \end{equation}
+    \normalsize
+    が成り立つような自然数$N$が存在する
+  \end{spacebox}
+  この条件が成り立つとき、数列$\{a_n\}$は\hl{正の無限大に発散}するといい、次のように表す。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} a_n = \infty
+  \end{equation}
+\end{definition}
+
+\subsubsection{負の無限大への発散}
+
+逆に、数列の項が先に進むにつれて限りなく小さくなる場合には、その数列は\keyword{負の無限大に発散}するという。
+
+\vskip\baselineskip
+
+「ここから先の項はすべて$K$より小さくなる」といえる位置に、$N$という印をつけるようにする。
+
+\begin{center}
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \def\N{4.5} % N
+      \def\K{-2.75} % K
+      
+      \def\xmin{-1}
+      \def\xmax{7.5} % max x axis
+      \def\ymax{1}
+      \def\ymin{-6}
+      \def\samp{100} % number of samples
+      \def\fn#1{-exp(0.25*#1)+0.5}
+  
+      % AXIS
+      \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {\large$a_n$};
+      \draw[axis] (\xmin,-\ymax-1) -- (\xmax,-\ymax-1) node[right] {\large$n$};
+  
+      % Nより右で、Kより上の空間
+      \fill[columbiablue, opacity=0.5] (\N,\K) rectangle (\xmax,\ymin);
+      
+      % PLOT
+      \begin{scope}
+        \clip (-1,\ymin) rectangle (\xmax,\ymax);
+        \draw[dotted, BurntOrange, thick, samples=\samp,smooth,variable=\t,domain=0:\xmax] plot(\t,{\fn{\t}});
+        
+        % 一定周期で関数上に点を打つ
+        \foreach \i in {0,0.4,0.8,...,\xmax}{
+          \fill[BurntOrange] ({\i}, {\fn{\i}}) circle (1.8pt);
+        }
+      \end{scope}
+      
+      % N以降を表す矢印
+      \draw[lawngreen, opacity=0.8, -{Triangle[width = 18pt, length = 8pt]}, line width = 9pt] (\N,-1) -- (\xmax,-1);
+  
+      % N直線
+      \draw[malachite, very thick] (\N,\ymin) -- (\N,\ymax);
+      \node[malachite] at (\N,\ymax) [above] {\Large$N$};
+      
+      % K直線
+      \draw[Cerulean, thick] (-0.2*\ymax,\K) -- (\xmax,\K);
+      \node[Cerulean] at (-0.2*\ymax,\K) [left] {\Large$K$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+どれだけ$K$を小さくしても、$N$をずらしていけば、$N$以降は$K$より小さい項だけになる。
+
+\begin{center}
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \def\N{6.5} % N
+      \def\K{-4.75} % K
+      
+      \def\xmin{-1}
+      \def\xmax{7.5} % max x axis
+      \def\ymax{1}
+      \def\ymin{-6}
+      \def\samp{100} % number of samples
+      \def\fn#1{-exp(0.25*#1)+0.5}
+  
+      % AXIS
+      \draw[axis] (0,\ymin) -- (0,\ymax) node[above] {\large$a_n$};
+      \draw[axis] (\xmin,-\ymax-1) -- (\xmax,-\ymax-1) node[right] {\large$n$};
+  
+      % Nより右で、Kより上の空間
+      \fill[columbiablue, opacity=0.5] (\N,\K) rectangle (\xmax,\ymin);
+      
+      % PLOT
+      \begin{scope}
+        \clip (-1,\ymin) rectangle (\xmax,\ymax);
+        \draw[dotted, BurntOrange, thick, samples=\samp,smooth,variable=\t,domain=0:\xmax] plot(\t,{\fn{\t}});
+        
+        % 一定周期で関数上に点を打つ
+        \foreach \i in {0,0.4,0.8,...,\xmax}{
+          \fill[BurntOrange] ({\i}, {\fn{\i}}) circle (1.8pt);
+        }
+      \end{scope}
+      
+      % N以降を表す矢印
+      \draw[lawngreen, opacity=0.8, -{Triangle[width = 18pt, length = 8pt]}, line width = 9pt] (\N,-1) -- (\xmax,-1);
+  
+      % N直線
+      \draw[malachite, very thick] (\N,\ymin) -- (\N,\ymax);
+      \node[malachite] at (\N,\ymax) [above] {\Large$N$};
+      
+      % K直線
+      \draw[Cerulean, thick] (-0.2*\ymax,\K) -- (\xmax,\K);
+      \node[Cerulean] at (-0.2*\ymax,\K) [left] {\Large$K$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+このような状況が、負の無限大への発散である。
+
+\begin{definition}{数列の負の無限大への発散}\quad\\
+  数列$\{a_n\}_{n=1}^{\infty}$について、次の条件を考える。
+  \begin{spacebox}
+    任意の負の実数$K$に対して
+    \Large
+    \begin{equation}
+      n \geq N \quad \Longrightarrow \quad a_n < K
+    \end{equation}
+    \normalsize
+    が成り立つような自然数$N$が存在する
+  \end{spacebox}
+  この条件が成り立つとき、数列$\{a_n\}$は\hl{負の無限大に発散}するといい、次のように表す。
+  \LARGE
+  \begin{equation}
+    \lim_{n \to \infty} a_n = -\infty
+  \end{equation}
+\end{definition}
 
 \subsection{追い出しの原理}
 
