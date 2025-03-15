@@ -6,6 +6,229 @@
 
 \subsection{ε-δ論法による関数の極限}
 
+$\varepsilon$がどんなに小さい正の数であっても、$x$と$a$の誤差を$\delta$以内に収めることで$f(x)$と$b$の誤差が$\varepsilon$以内に収まるとき、関数$f(x)$は点$a$で$b$に収束するという。
+
+\froufrou
+
+まず、$y=b$の周りに、両側それぞれ$\varepsilon$だけ広げた区間を考える。（この区間を青い帯と呼ぶことにする。）
+
+\begin{center}
+  \scalebox{0.9}{
+    \begin{tikzpicture}
+      \def\a{3} % a
+      \def\diff{-0.4} % aとxの誤差
+      \def\ep{0.6} % ε
+      \def\dl{0.5} % δ
+      
+      \def\xmin{-1};
+      \def\xmax{6};
+      \def\ymin{-1};
+      \def\ymax{5};
+      \def\fn#1{(#1-2)^3/6 - 1.5*(#1-2)/1.5 + 3};
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{\large$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{\large$y$};
+
+      % 原点
+      \node at (0,0) [below left]{$O$};
+
+      % δ区間
+      %\fill[carnationpink, fill opacity=0.5] (\a-\dl,0) rectangle (\a+\dl,\ymax);
+      % ε区間
+      \fill[SkyBlue, fill opacity=0.5] (0,{\fn{\a}-\ep}) rectangle (\xmax,{\fn{\a}+\ep});
+      
+      % δ区間を表す矢印
+      %\draw[<->, hotpink, yshift=0.5em] (\a-\dl,\ymax) -- (\a,\ymax) node[midway, above]{$\delta$};
+      %\draw[<->, hotpink, yshift=0.5em] (\a,\ymax) -- (\a+\dl,\ymax) node[midway, above]{$\delta$};
+      
+      % ε区間を表す矢印
+      \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}-\ep}) -- (\xmax,{\fn{\a}}) node[midway, right]{$\varepsilon$};
+      \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}}) -- (\xmax,{\fn{\a}+\ep}) node[midway, right]{$\varepsilon$};
+  
+      % 関数のグラフ
+      \begin{scope}
+        \clip (\xmin/3,\ymin) rectangle (\xmax,\ymax);
+        \draw[BurntOrange,thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+      % 文字に被る部分は点線にする
+      \begin{scope}
+        \clip (\xmin,0) rectangle (\xmin/3,\ymax);
+        \draw[BurntOrange, dotted, thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+      
+      % x=aの直線
+      %\draw[magenta, dashed] (\a,0) node[below]{$a$} -- (\a,\ymax);
+      % y=bの直線
+      \draw[cyan, dashed] (0,{\fn{\a}}) node[left]{$b$} -- (\xmax,{\fn{\a}});
+      
+      % 点(x, f(x))を表す補助線
+      %\draw[gray, semithick] (\a+\diff,0) node[below]{$x$} -- (\a+\diff,{\fn{\a+\diff}});
+      % y軸にも写す
+      %\draw[gray, semithick] (0,{\fn{\a+\diff}}) node[left]{$f(x)$} -- (\a+\diff,{\fn{\a+\diff}});
+    \end{tikzpicture}
+  }
+\end{center}
+
+$x=a$の周りには、両側それぞれ$\delta$だけ広げた区間を考える。（この区間をピンクの帯と呼ぶことにする。）
+
+このとき、「この$x$であれば、$f(x)$が青い帯に収まる」という$x$を探して、その$x$をピンクの帯で包むように$\delta$を設定する。
+
+\begin{center}
+  \scalebox{1}{
+    \begin{tikzpicture}
+      \def\a{3} % a
+      \def\diff{-0.5} % aとxの誤差
+      \def\ep{0.6} % ε
+      \def\dl{0.7} % δ
+      
+      \def\xmin{-1};
+      \def\xmax{6};
+      \def\ymin{-1};
+      \def\ymax{5};
+      \def\fn#1{(#1-2)^3/6 - 1.5*(#1-2)/1.5 + 3};
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{\large$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{\large$y$};
+
+      % 原点
+      \node at (0,0) [below left]{$O$};
+
+      % δ区間
+      \fill[carnationpink, fill opacity=0.5] (\a-\dl,0) rectangle (\a+\dl,\ymax);
+      % ε区間
+      \fill[SkyBlue, fill opacity=0.5] (0,{\fn{\a}-\ep}) rectangle (\xmax,{\fn{\a}+\ep});
+      
+      % δ区間を表す矢印
+      \draw[<->, hotpink, yshift=0.5em] (\a-\dl,\ymax) -- (\a,\ymax) node[midway, above]{$\delta$};
+      \draw[<->, hotpink, yshift=0.5em] (\a,\ymax) -- (\a+\dl,\ymax) node[midway, above]{$\delta$};
+      
+      % ε区間を表す矢印
+      \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}-\ep}) -- (\xmax,{\fn{\a}}) node[midway, right]{$\varepsilon$};
+      \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}}) -- (\xmax,{\fn{\a}+\ep}) node[midway, right]{$\varepsilon$};
+  
+      % 関数のグラフ
+      \begin{scope}
+        \clip (\xmin/3,\ymin) rectangle (\xmax,\ymax);
+        \draw[BurntOrange,thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+      % 文字に被る部分は点線にする
+      \begin{scope}
+        \clip (\xmin,0) rectangle (\xmin/3,\ymax);
+        \draw[BurntOrange, dotted, thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+      
+      % x=aの直線
+      \draw[magenta, dashed] (\a,0) node[below]{$a$} -- (\a,\ymax);
+      % y=bの直線
+      \draw[cyan, dashed] (0,{\fn{\a}}) node[left]{$b$} -- (\xmax,{\fn{\a}});
+      
+      % 点(x, f(x))を表す補助線
+      \draw[gray, semithick] (\a+\diff,0) node[below]{$x$} -- (\a+\diff,{\fn{\a+\diff}});
+      % y軸にも写す
+      \draw[gray, semithick] (0,{\fn{\a+\diff}}) node[left]{$f(x)$} -- (\a+\diff,{\fn{\a+\diff}});
+    \end{tikzpicture}
+  }
+\end{center}
+
+$\varepsilon$は正の数ならなんでもよいとすれば、$\varepsilon$を小さな数に設定し、いくらでも青い帯を狭めることができる。
+
+しかしこのとき、$x$をピンクの帯に収まるようにしなければならない。
+
+ピンクの帯の中心は$a$なので、$x$をピンクの帯に収めようとすると、$x$は$a$に近づいていくことになる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\a{3} % a
+      \def\diff{-0.15} % aとxの誤差
+      \def\ep{0.175} % ε
+      \def\dl{0.225} % δ
+      
+      \def\xmin{-1};
+      \def\xmax{6};
+      \def\ymin{-1};
+      \def\ymax{5};
+      \def\fn#1{(#1-2)^3/6 - 1.5*(#1-2)/1.5 + 3};
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{\large$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{\large$y$};
+
+      % 原点
+      \node at (0,0) [below left]{$O$};
+
+      % δ区間
+      \fill[carnationpink, fill opacity=0.5] (\a-\dl,0) rectangle (\a+\dl,\ymax);
+      % ε区間
+      \fill[SkyBlue, fill opacity=0.5] (0,{\fn{\a}-\ep}) rectangle (\xmax,{\fn{\a}+\ep});
+      
+      % δ区間を表す矢印
+      %\draw[<->, hotpink, yshift=0.5em] (\a-\dl,\ymax) -- (\a,\ymax) node[midway, above]{$\delta$};
+      %\draw[<->, hotpink, yshift=0.5em] (\a,\ymax) -- (\a+\dl,\ymax) node[midway, above]{$\delta$};
+      
+      % ε区間を表す矢印
+      %\draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}-\ep}) -- (\xmax,{\fn{\a}}) node[midway, right]{$\varepsilon$};
+      %\draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}}) -- (\xmax,{\fn{\a}+\ep}) node[midway, right]{$\varepsilon$};
+  
+      % 関数のグラフ
+      \begin{scope}
+        \clip (\xmin/3,\ymin) rectangle (\xmax,\ymax);
+        \draw[BurntOrange,thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+      % 文字に被る部分は点線にする
+      \begin{scope}
+        \clip (\xmin,0) rectangle (\xmin/3,\ymax);
+        \draw[BurntOrange, dotted, thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+      
+      % x=aの直線
+      \draw[magenta, dashed] (\a,0) node[below]{$a$} -- (\a,\ymax);
+      % y=bの直線
+      \draw[cyan, dashed] (0,{\fn{\a}}) node[left]{$b$} -- (\xmax,{\fn{\a}});
+      
+      % 点(x, f(x))を表す補助線
+      \draw[gray, semithick] (\a+\diff,0) node[below left]{$x$} -- (\a+\diff,{\fn{\a+\diff}});
+      % y軸にも写す
+      \draw[gray, semithick] (0,{\fn{\a+\diff}}) node[above left]{$f(x)$} -- (\a+\diff,{\fn{\a+\diff}});
+    \end{tikzpicture}
+  }
+\end{center}
+
+
+青い帯の幅$\varepsilon$がどんなに小さくても、ピンクの帯の幅$\delta$を小さくしていけば、$x$と$f(x)$をそれぞれ帯の中に収めることができる。
+
+このように、$x$を$a$に近い範囲に閉じ込めれば、$f(x)$も$b$に近い範囲に閉じ込められるという状況を、点$a$での関数の収束と定義する。
+
+\vskip\baselineskip
+
+青い帯の幅$\varepsilon$がどんなに小さくても、「この$x$であれば、$f(x)$が青い帯に収まる」という$x$がピンクの帯からはみ出ないように$\delta$を小さくしていけるなら、自動的に$x$も$f(x)$もそれぞれ帯の中に収まる。
+
+つまり、$\delta$に課された制約が肝心で、「この$x$であれば、$f(x)$が青い帯に収まる」という$x$を包めるような$\delta$の存在が、収束を保証することになる。
+
+\vskip\baselineskip
+
+\begin{definition}{関数の収束と極限値（$x\to a$の場合）}\quad\\
+  関数$f(x)$と実数$a,b$について、次の条件を考える。
+  \begin{spacebox}
+    任意の正の数$\varepsilon$に対して
+    \Large
+    \begin{equation}
+      |x - a| < \delta \quad \Longrightarrow \quad |f(x) - b| < \varepsilon
+    \end{equation}
+    \normalsize
+    が成り立つような正の数$\delta$が存在する
+  \end{spacebox}
+  この条件が成り立つとき、関数$f(x)$は点$a$で$b$に\hl{収束}するといい、次のように表す。
+  \LARGE
+  \begin{equation}
+    \lim_{x \to a} f(x) = b \quad \text{\normalsize または} \quad f(x) \to b \quad (x \to a)
+  \end{equation}
+  \normalsize
+  このとき、$b$を数列$f(x)$の\hl{極限値}という。
+\end{definition}
+
 \todo{定義1.1}
 
 \subsection{関数の極限と数列の極限の関係}
