@@ -44,8 +44,8 @@
       }
       
       % 7本の矢印を囲む箱を、矢印の左にずらして描く
-      \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=-6em] (cityA) {A市};
-      \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=6em] (cityB) {B市};
+      \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=-6em] (cityA) {\bfseries A市};
+      \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=6em] (cityB) {\bfseries B市};
     \end{tikzpicture}
   \end{minipage}
 \end{figure}
@@ -139,8 +139,8 @@ A市から駅までは電車で、駅からB市まではバスで行くとする
     }
     
     % 4本の矢印を囲む箱を、矢印の左にずらして描く
-    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=-6em] (cityA) {A市};
-    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=6em] (station) {駅};
+    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=-6em] (cityA) {\bfseries A市};
+    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=6em] (station) {\bfseries 駅};
     
     % 駅の右側に3本の矢印を追加（中央揃え、上で計算した間隔を空ける）
     \foreach \i in {-1,0,1} {
@@ -154,7 +154,7 @@ A市から駅までは電車で、駅からB市まではバスで行くとする
     }
     
     % 駅の右側に3本の矢印を囲む箱を、矢印の右にずらして描く
-    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=18em] (cityB) {B市};
+    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=18em] (cityB) {\bfseries B市};
   \end{tikzpicture}
 \end{center}
 
