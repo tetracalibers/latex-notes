@@ -274,6 +274,55 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
 \end{emphabox}
 ということになる。
 
+\subsection{直角三角形による測量}
+
+直角三角形では、3辺の比の値が1つの角によって決まる。
+
+角度が同じであれば比の値は一致するので、小さな直角三角形で角度に応じた辺の比の値を計算しておけば、同じ角度を持つ大きな直角三角形でも同じ比の値を使って計算できる。
+
+\vskip\baselineskip
+
+これにより、たとえば建物の高さを直接測らなくても、視点からの距離と見上げる角度を使って、建物の高さを計算で求めることができる。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \begin{tikzpicture}
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (4,0);
+      \coordinate (c) at (4,3);
+      
+      \draw (a) -- (b) -- (c) -- cycle;
+      
+      \node[gray] at (a) [left] {\bfseries 視点};
+      
+      \draw[->, very thick, -Straight Barb, Rhodamine] ([xshift=0.7em]b) -- ([xshift=0.7em]c) node[midway, right] {\bfseries 建物の高さ};
+      \draw[->, very thick, -Straight Barb, Cerulean] ([yshift=-0.7em]a) -- ([yshift=-0.7em]b) node[midway, below] {\bfseries 視点からの距離};
+      \draw[->, very thick, dashed, -Straight Barb, Dandelion] ([yshift=0.7em]a) -- ([yshift=0.7em]c) node[sloped, above, midway] {\bfseries 見上げる};
+      
+      \pic [draw, ->, very thick, BurntOrange, angle radius=7mm, angle eccentricity=1.5, "\large$\theta$"] {angle = b--a--c};
+      \pic [draw, lightslategray, angle radius=3mm] {right angle = a--b--c};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \begin{align*}
+      \text{\bfseries 比の値}\bigl(\theta\bigr) &= \dfrac{\text{\bfseries\textcolor{Cerulean}{視点からの距離}}}{\text{\bfseries\textcolor{Rhodamine}{建物の高さ}}} \\\\
+      \text{\bfseries\textcolor{Rhodamine}{建物の高さ}} &= \text{\bfseries\textcolor{Cerulean}{視点からの距離}} \times \text{\bfseries 比の値}\bigl(\theta\bigr)
+    \end{align*}
+  \end{minipage}
+\end{figure}
+
+辺の比の値は角度によって決まるため、関数の記号を真似て$\text{\bfseries 比の値}\bigl(\theta\bigr)$と書いている。
+
+$\text{\bfseries 比の値}\bigl(\theta\bigr)$を（たとえば同じ角度$\theta$を持つ小さな三角形で）事前に求めておけば、このような測量に利用することができる。
+
+\vskip\baselineskip
+
+実際に、直角三角形の辺の比の値を角度の関数とみて、その対応関係や値を調べてみることで、他にもさまざまな応用先が見つかるのではないだろうか。
+
+その発想の第一歩が、\keyword{三角比}という概念である。
+
 \subsection{三角比}
 
 \subsection{扇形の弧長と角}
