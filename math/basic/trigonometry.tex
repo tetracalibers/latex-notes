@@ -78,4 +78,208 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
   \end{equation}
 \end{theorem}
 
+\subsection{直角三角形の相似}
+
+ある図形のすべての辺を$r$倍したとき、元の図形と$r$倍後の図形は\keyword{相似}であるという。
+
+\begin{center}
+  \begin{tikzpicture}[
+    myangles/.style = {draw, angle radius = #1 mm, lightslategray},
+    myangles/.default = 4,
+    txtnode/.style = {font=\large},
+  ]
+    \begin{scope}[local bounding box=trg1]
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (3,0);
+      \coordinate (c) at (1,2);
+      
+      \draw (a) -- (b) -- (c) -- cycle;
+    
+      % 各辺に異なる色をつける
+      \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$a$};
+      \draw [very thick, Cerulean] (b) -- (c) node[txtnode, midway, above right=-0.2em] {$b$};
+      \draw [very thick, Dandelion] (c) -- (a) node[txtnode, midway, left] {$c$};
+      
+      \pic [myangles]     {angle = b--a--c}; 
+      
+      \pic [myangles]     {angle = a--c--b};
+      \pic [myangles=5]   {angle = a--c--b};
+      
+      \pic [myangles]     {angle = c--b--a};
+      \pic [myangles=5]   {angle = c--b--a};
+      \pic [myangles=6]   {angle = c--b--a};
+    \end{scope}
+    
+    \begin{scope}[xshift=44mm, scale=1.5, local bounding box=trg2]
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (3,0);
+      \coordinate (c) at (1,2);
+    
+      \draw (a) -- (b) -- (c) -- cycle;
+      
+      \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$ra$};
+      \draw [very thick, Cerulean] (b) -- (c) node[txtnode, midway, above right=-0.2em] {$rb$};
+      \draw [very thick, Dandelion] (c) -- (a) node[txtnode, midway, left] {$rc$};
+            
+      \pic [myangles]     {angle = b--a--c};
+    
+      \pic [myangles]     {angle = a--c--b};
+      \pic [myangles=5]   {angle = a--c--b};
+    
+      \pic [myangles]     {angle = c--b--a};
+      \pic [myangles=5]   {angle = c--b--a};
+      \pic [myangles=6]   {angle = c--b--a};
+    \end{scope}
+    
+    % 相似を表す記号
+    \node[gray] at ($(trg1.east)!0.5!(trg2.west)$) {\Huge$\sim$};
+  \end{tikzpicture}
+\end{center}
+
+元の図形の辺の比を$a:b:c$とすると、$r$倍後の図形の辺の比は$ra:rb:rc = a:b:c$となる。
+
+このように、相似な図形同士の辺の比は等しい。
+
+\subsubsection{2つの角が一致する三角形同士は相似}
+
+三角形の内角の和は$180^\circ$であるから、2つの角の大きさが等しければ、もう1つの角の大きさも等しくなる。
+
+つまり、2つの角の大きさが一致する2つの三角形は、辺の間の角度は変わらず、各辺の長さを一定倍したものなので、相似といえる。
+
+\vskip\baselineskip
+
+「辺の間の角度がすべて同じ」ことと「各辺の長さが一定倍されている」ことがうまく結びつかない人は、次の図を見てみよう。
+
+もしも辺の長さの拡大率が辺によって異なるとしたら、辺の間の角度を変えない限り、頂点として辺同士を結ぶことができない。
+
+\begin{center}
+  \begin{tikzpicture}[
+    myangles/.style = {draw, angle radius = #1 mm, lightslategray},
+    myangles/.default = 4,
+    txtnode/.style = {font=\large},
+  ]
+    \begin{scope}[local bounding box=trg1]
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (3,0);
+      \coordinate (c) at (1,2);
+    
+      \draw (a) -- (b) -- (c) -- cycle;
+    
+      % 各辺に異なる色をつける
+      \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$ra$};
+      \draw [very thick, Cerulean] (b) -- ($(b)!15em!(c)$) node[txtnode, midway, above right=-0.2em] {$Rb$};
+      \draw [very thick, Dandelion] (c) -- (a) node[txtnode, midway, left] {$rc$};
+      
+      \pic [myangles]     {angle = b--a--c}; 
+      
+      \pic [myangles]     {angle = a--c--b};
+      \pic [myangles=5]   {angle = a--c--b};
+      
+      \pic [myangles]     {angle = c--b--a};
+      \pic [myangles=5]   {angle = c--b--a};
+      \pic [myangles=6]   {angle = c--b--a};
+    \end{scope}
+    
+    \begin{scope}[xshift=80mm, local bounding box=trg2]
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (3,0);
+      \coordinate (c) at (1,2);
+      
+      \coordinate (c') at ($(b)!15em!(c)$);
+    
+      \draw (a) -- (b) -- (c') -- cycle;
+    
+      % 各辺に異なる色をつける
+      \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$ra$};
+      \draw [very thick, Cerulean] (b) -- (c') node[txtnode, midway, above right=-0.2em] {$Rb$};
+      \draw [very thick, Dandelion] (c') -- (a) node[txtnode, midway, left] {$rc$};
+      
+      \pic [myangles]     {angle = b--a--c'}; 
+      
+      \pic [myangles]     {angle = a--c'--b};
+      \pic [myangles=5]   {angle = a--c'--b};
+      
+      \pic [myangles]     {angle = c'--b--a};
+      \pic [myangles=5]   {angle = c'--b--a};
+      \pic [myangles=6]   {angle = c'--b--a};
+    \end{scope}
+    
+    \draw[->, thick, -Straight Barb, gray] (trg1.east) -- node[above] {\small 無理やり三角形に…？} (trg2.west);
+  \end{tikzpicture}
+\end{center}
+
+\subsubsection{1つの鋭角が一致する直角三角形同士は相似}
+
+ある1つの角が直角である三角形を、\keyword{直角三角形}という。
+
+2つの角が一致する三角形同士が相似であるなら、直角三角形の場合は、1つの鋭角が一致するだけで相似であることがわかる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\s{1.75}
+    
+    \coordinate (a1) at (0,0);
+    \coordinate (b1) at (2,0);
+    \coordinate (c1) at (2,1.5);
+    
+    \coordinate (a2) at (a1);
+    \coordinate (c2) at ($(a1)!2!(c1)$);
+    \coordinate (b2') at ($(a1)!2!(b1)$);
+    \coordinate (b2) at ($(a1)!(c2)!(b2')$);
+  
+    \coordinate (a3) at (a1);
+    \coordinate (c3) at ($(a1)!3!(c1)$);
+    \coordinate (b3') at ($(a1)!3!(b1)$);
+    \coordinate (b3) at ($(a1)!(c3)!(b3')$);
+    
+    \draw[Goldenrod, fill=Goldenrod!60, fill opacity=0.8] (a3) -- (b3) -- (c3) -- cycle;
+    \draw[SkyBlue, fill=SkyBlue!60, fill opacity=0.8] (a2) -- (b2) -- (c2) -- cycle;
+    \draw[carnationpink, fill=carnationpink!60, fill opacity=0.8] (a1) -- (b1) -- (c1) -- cycle;
+    
+    \pic [draw, Magenta, fill=Magenta, fill opacity=0.6, angle radius=7mm, angle eccentricity=1.5] {angle = b3--a3--c3};
+    
+    % 直角
+    \pic [draw, lightslategray, angle radius=2.5mm] {right angle = a3--b3--c3};
+    \pic [draw, lightslategray, angle radius=2.5mm] {right angle = a2--b2--c2};
+    \pic [draw, lightslategray, angle radius=2.5mm] {right angle = a1--b1--c1};
+    
+    \draw[Dandelion]
+      (b3) to[bend right=30] node[right,midway]{$nb$} (c3)
+      (c3) to[bend right=30] node[near start,above=0.25em]{$nc$} (a3)
+      (a3) to[bend right=30] node[near end,below=0.25em]{$na$} (b3);
+    
+    \draw[Cerulean]
+      (b2) to[bend right=20] node[right,midway]{$mb$} (c2)
+      (c2) to[bend right=20] node[near start,above=0.25em]{$mc$} (a2)
+      (a2) to[bend right=20] node[near end,below=0.25em]{$ma$} (b2);
+    
+    \draw[Rhodamine]
+      (b1) to[bend right=10] node[right,midway]{$b$} (c1)
+      (c1) to[bend right=10] node[near start,above]{$c$} (a1)
+      (a1) to[bend right=10] node[near end,below=-0.15em]{$a$} (b1);
+  \end{tikzpicture}
+\end{center}
+
+つまり、鋭角が等しいすべての直角三角形は、お互いを拡大もしくは縮小した関係（互いに相似の関係）にあり、3辺の比も等しくなる。
+
+\vskip\baselineskip
+
+言い換えれば、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      直角三角形の3辺の比は、1つの鋭角の大きさで決まる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということになる。
+
+\subsection{三角比}
+
+\subsection{扇形の弧長と角}
+
+\subsubsection{扇形の弧の長さ}
+
+\subsubsection{扇形の弧長と半径による中心角の表現}
+
 \end{document}
