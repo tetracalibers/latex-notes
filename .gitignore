@@ -4,3 +4,4 @@ out/_test.pdf
 .DS_Store
 **/.tex_intermediates
 *.log
+_*.*
