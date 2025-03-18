@@ -1,0 +1,201 @@
+\documentclass[../book_infinite_continuous_math]{subfiles}
+
+\begin{document}
+
+\section{平均値の定理、テイラーの定理を見直す}
+
+\subsection{平均値の定理を見直す}
+
+\br
+
+\begin{screen}
+  \paragraph{平均値の定理}
+  $f(x)$が$a$から$b$までの間のどの$x$でも微分係数を求めることができるとき、
+  \begin{equation*}
+    \frac{f(b) - f(a)}{b - a} = f'(c) \quad (a < c < b)
+  \end{equation*}
+  をみたす$c$が少なくとも1つ存在する
+\end{screen}
+
+\br
+
+この定理をなぜ「平均値の定理」というのだろうか？
+
+微分できる関数$y=f(x)$を考える
+
+$x$が$a$から$b$まで変化するとき、途中の変化の様子は考えずに出発点と終点だけで考えると、$y$は$f(a)$から$f(b)$まで変化したことになり、その平均変化率は
+\begin{equation*}
+  \frac{f(b) - f(a)}{b - a}
+\end{equation*}
+となるが、平均値の定理は$a$と$b$の間に、ちょうどこの変化率と同じだけ変化した瞬間が必ずあることを示している
+
+平均変化率に等しい瞬間変化率があるということで、この定理を\keyword{平均値の定理}という
+
+\sectionline
+\subsection{平均値の定理のもとになるロルの定理}
+
+\br
+
+\begin{screen}
+  \paragraph{ロルの定理}
+  関数$f(x)$は閉区間$[a, b]$で連続、開区間$(a, b)$で微分可能とする
+
+  $f(a) = f(b)=0$のとき、
+  \begin{equation*}
+    f'(c) = 0 \quad (a < c < b)
+  \end{equation*}
+  となる$c$が少なくとも1つ存在する
+\end{screen}
+
+\br
+
+\paragraph{ロルの定理を使った平均値の定理の証明}\quad
+
+$f(x)$が決まってしまえば、定数$a, b$を与えたとき、平均変化率はある定数になる
+
+その定数を$k$とする
+\begin{equation*}
+  k = \frac{f(b) - f(a)}{b - a}
+\end{equation*}
+分母を払って移項すると、
+\begin{align*}
+  f(b) - \left\{ f(a) + k(b - a) \right\} & = 0 \\
+\end{align*}
+ここで、この式の左辺の$a$を$x$に置き換えた関数$F(x)$を考える
+\begin{equation*}
+  F(x) = f(x) - \left\{f(x) + k(x - x)\right\}
+\end{equation*}
+$F(x)$は閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能である
+
+しかも、
+\begin{equation*}
+  F(b) = F(a) = 0
+\end{equation*}
+は明らかだから、ロルの定理によって、
+\begin{equation*}
+  F'(c) = 0 \quad (a < c < b)
+\end{equation*}
+となる$c$が少なくとも1つ存在する
+
+ここで導関数$F'(x)$を計算すると、
+\begin{equation*}
+  F'(x) = - f'(x) - \left\{ f'(x) + k \right\}
+\end{equation*}
+だから、$F'(c) = 0$より、
+\begin{equation*}
+  f'(c) = k
+\end{equation*}
+すなわち、
+\begin{equation*}
+  \frac{f(b) - f(a)}{b - a} = f'(c)
+\end{equation*}
+を得る$\qed$
+
+\sectionline
+
+\begin{screen}
+  \paragraph{定理}
+  区間$[a, b]$で$f'(x) > 0$なら、この区間で$f(x)$は増加関数である
+
+  すなわち、この区間内で$x_1 < x_2$なら$f(x_1) < f(x_2)$である
+\end{screen}
+
+\br
+
+$f'(x)$は接線の傾きである、という幾何学的・直感的な理解から、その傾きが正なら増加しているのは明らかだが、平均値の定理を使うと、図に頼らずに証明することができる
+
+\paragraph{平均値の定理による証明}\quad
+
+平均値の定理より、
+\begin{equation*}
+  f(x_2) - f(x_1) = f'(c)(x_2 - x_1) \quad (a \leq x_1 < c < x_2 \leq b)
+\end{equation*}
+となる$c$が存在するが、右辺は$f'(c)>0$、$x_2 - x_1 > 0$より正である$\qed$
+
+\sectionline
+
+また、この区間で$f'(x) = 0$なら$f(x)$が定数関数であることも平均値の定理を使うときちんと証明することができる
+
+
+\sectionline
+\subsection{テイラーの定理を理解する}
+
+\br
+
+\begin{screen}
+  \paragraph{テイラーの定理}
+  $y=f(x)$は閉区間$[a, b]$で連続、開区間$(a, b)$で$n$回微分可能とする
+
+  このとき、
+  \begin{multline}
+    f(b) = f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 \\+ \dfrac{1}{3!}f'''(a)(b-a)^3 + \cdots \\+ \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \\+ \dfrac{1}{n!}f^{(n)}(c)(b-a)^n \quad (a< c < b)
+  \end{multline}
+  となる$c$が少なくとも1つ存在する
+\end{screen}
+
+\br
+
+平均値の定理の場合は両辺を$b-a$で割ることにより、平均変化率と瞬間変化率の関係という幾何学的な意味での表現ができたが、テイラーの定理ではその形をとることができないため、分母を払った形で表すのが普通
+
+\br
+
+\paragraph{テイラーの定理の証明}\quad
+
+$f(x)$が決まってしまえば、
+\begin{gather}
+  \dfrac{1}{(b-a)^n} \left( f(b) - \left( f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \right) \right)
+\end{gather}
+は定数$a,b$を決めると決まってしまう定数である
+
+この定数を$k$とおき、分母を払うと、
+\begin{gather}
+  f(b) - \left( f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \right) = k(b-a)^n
+\end{gather}
+すなわち、
+\begin{gather}
+  f(b) - \left( f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} - k(b-a)^n \right) = 0
+\end{gather}
+となる
+
+ここで、左辺の$a$を$x$に置き換えた関数を$F(x)$とする
+
+すなわち、
+\begin{gather}
+  F(x) = f(x) - \left( f(a) + f'(a)(x-a) + \dfrac{1}{2!}f''(a)(x-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(x-a)^{n-1} - k(x-a)^n \right)
+\end{gather}
+とする
+
+$f(x)$は$n$回微分可能、もちろん$(b-a)^r$は何回でも微分可能だから、$F(x)$は閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能である
+
+かつ、$F(b) = F(a) = 0$は明らかだから、ロルの定理によって、
+\begin{gather}
+  F'(c) = 0 \quad (a < c < b)
+\end{gather}
+となる$c$が少なくとも1つ存在する
+
+$F'(x)$を計算すると、
+\begin{gather}
+  F'(x) = - \left( f'(x)
+  + f''(x)(b-x) - f'(x)
+  + \dfrac{1}{2!}f'''(x)(b-x)^2 - f''(x)(b-x)
+  + \cdots
+  + \dfrac{1}{(n-1)!}f^{(n)}(x)(b-x)^{n-1} - \dfrac{1}{(n-2)!}f^{(n-2)}(x)(b-x)^{n-2}
+  - nk(b-x)^{n-1} \right)
+\end{gather}
+したがって、括弧の中は順に消えていき、
+\begin{gather}
+  F'(x)= - \left(\dfrac{1}{(n-1)!}f^{(n)}(x)(b-x)^{n-1} - nk(b-x)^{n-1} \right)
+\end{gather}
+となる
+
+よって、$F'(c) = 0$より、
+\begin{gather}
+  \dfrac{1}{(n-1)!}f^{(n)}(c)(b-c)^{n-1} - nk(b-c)^{n-1} = 0
+\end{gather}
+となるが、$b-c \neq 0$より、
+\begin{gather}
+  k = \dfrac{1}{n!}f^{(n)}(c)
+\end{gather}
+となり、これを$f(b) - (\ldots) = 0$の式に代入して求める結果を得る$\qed$
+
+\end{document}
