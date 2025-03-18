@@ -142,27 +142,35 @@ $f'(x)$は接線の傾きである、という幾何学的・直感的な理解�
 \paragraph{テイラーの定理の証明}\quad
 
 $f(x)$が決まってしまえば、
-\begin{gather}
-  \dfrac{1}{(b-a)^n} \left( f(b) - \left( f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \right) \right)
-\end{gather}
+\begin{multline}
+  \dfrac{1}{(b-a)^n} \left( f(b) - \left( f(a) + f'(a)(b-a) \right.\right. \\
+  \left.\left. + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots \right.\right. \\
+  \left.\left. + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \right) \right)
+\end{multline}
 は定数$a,b$を決めると決まってしまう定数である
 
 この定数を$k$とおき、分母を払うと、
-\begin{gather}
-  f(b) - \left( f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \right) = k(b-a)^n
-\end{gather}
+\begin{multline}
+  f(b) - \left( f(a) + f'(a)(b-a) \right. \\
+  \left. + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots \right. \\
+  \left. + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} \right) = k(b-a)^n
+\end{multline}
 すなわち、
-\begin{gather}
-  f(b) - \left( f(a) + f'(a)(b-a) + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} - k(b-a)^n \right) = 0
-\end{gather}
+\begin{multline}
+  f(b) - \left( f(a) + f'(a)(b-a) \right. \\
+  \left. + \dfrac{1}{2!}f''(a)(b-a)^2 + \cdots \right. \\
+  \left. + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(b-a)^{n-1} - k(b-a)^n \right) = 0
+\end{multline}
 となる
 
 ここで、左辺の$a$を$x$に置き換えた関数を$F(x)$とする
 
 すなわち、
-\begin{gather}
-  F(x) = f(x) - \left( f(a) + f'(a)(x-a) + \dfrac{1}{2!}f''(a)(x-a)^2 + \cdots + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(x-a)^{n-1} - k(x-a)^n \right)
-\end{gather}
+\begin{multline}
+  F(x) = f(x) - \left( f(a) + f'(a)(x-a) \right. \\
+  \left. + \dfrac{1}{2!}f''(a)(x-a)^2 + \cdots \right. \\
+  \left. + \dfrac{1}{(n-1)!}f^{(n-1)}(a)(x-a)^{n-1} - k(x-a)^n \right)
+\end{multline}
 とする
 
 $f(x)$は$n$回微分可能、もちろん$(b-a)^r$は何回でも微分可能だから、$F(x)$は閉区間$[a, b]$で連続かつ開区間$(a, b)$で微分可能である
@@ -174,14 +182,14 @@ $f(x)$は$n$回微分可能、もちろん$(b-a)^r$は何回でも微分可能�
 となる$c$が少なくとも1つ存在する
 
 $F'(x)$を計算すると、
-\begin{gather}
-  F'(x) = - \left( f'(x)
-  + f''(x)(b-x) - f'(x)
-  + \dfrac{1}{2!}f'''(x)(b-x)^2 - f''(x)(b-x)
-  + \cdots
-  + \dfrac{1}{(n-1)!}f^{(n)}(x)(b-x)^{n-1} - \dfrac{1}{(n-2)!}f^{(n-2)}(x)(b-x)^{n-2}
-  - nk(b-x)^{n-1} \right)
-\end{gather}
+\begin{multline}
+  F'(x) = - \left( f'(x) \right. \\
+  \left. + f''(x)(b-x) - f'(x) \right. \\
+  \left. + \dfrac{1}{2!}f'''(x)(b-x)^2 - f''(x)(b-x) \right. \\
+  \left. + \cdots + \dfrac{1}{(n-1)!}f^{(n)}(x)(b-x)^{n-1} \right. \\
+  \left. - \dfrac{1}{(n-2)!}f^{(n-2)}(x)(b-x)^{n-2} \right. \\
+  \left. - nk(b-x)^{n-1} \right)
+\end{multline}
 したがって、括弧の中は順に消えていき、
 \begin{gather}
   F'(x)= - \left(\dfrac{1}{(n-1)!}f^{(n)}(x)(b-x)^{n-1} - nk(b-x)^{n-1} \right)
