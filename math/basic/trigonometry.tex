@@ -84,53 +84,53 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
 
 \begin{center}
   \begin{tikzpicture}[
-    myangles/.style = {draw, angle radius = #1 mm, lightslategray},
-    myangles/.default = 4,
-    txtnode/.style = {font=\large},
-  ]
+      myangles/.style = {draw, angle radius = #1 mm, lightslategray},
+      myangles/.default = 4,
+      txtnode/.style = {font=\large},
+    ]
     \begin{scope}[local bounding box=trg1]
       \coordinate (a) at (0,0);
       \coordinate (b) at (3,0);
       \coordinate (c) at (1,2);
-      
+
       \draw (a) -- (b) -- (c) -- cycle;
-    
+
       % 各辺に異なる色をつける
       \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$a$};
       \draw [very thick, Cerulean] (b) -- (c) node[txtnode, midway, above right=-0.2em] {$b$};
       \draw [very thick, Dandelion] (c) -- (a) node[txtnode, midway, left] {$c$};
-      
-      \pic [myangles]     {angle = b--a--c}; 
-      
+
+      \pic [myangles]     {angle = b--a--c};
+
       \pic [myangles]     {angle = a--c--b};
       \pic [myangles=5]   {angle = a--c--b};
-      
+
       \pic [myangles]     {angle = c--b--a};
       \pic [myangles=5]   {angle = c--b--a};
       \pic [myangles=6]   {angle = c--b--a};
     \end{scope}
-    
+
     \begin{scope}[xshift=44mm, scale=1.5, local bounding box=trg2]
       \coordinate (a) at (0,0);
       \coordinate (b) at (3,0);
       \coordinate (c) at (1,2);
-    
+
       \draw (a) -- (b) -- (c) -- cycle;
-      
+
       \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$ra$};
       \draw [very thick, Cerulean] (b) -- (c) node[txtnode, midway, above right=-0.2em] {$rb$};
       \draw [very thick, Dandelion] (c) -- (a) node[txtnode, midway, left] {$rc$};
-            
+
       \pic [myangles]     {angle = b--a--c};
-    
+
       \pic [myangles]     {angle = a--c--b};
       \pic [myangles=5]   {angle = a--c--b};
-    
+
       \pic [myangles]     {angle = c--b--a};
       \pic [myangles=5]   {angle = c--b--a};
       \pic [myangles=6]   {angle = c--b--a};
     \end{scope}
-    
+
     % 相似を表す記号
     \node[gray] at ($(trg1.east)!0.5!(trg2.west)$) {\Huge$\sim$};
   \end{tikzpicture}
@@ -154,56 +154,56 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
 
 \begin{center}
   \begin{tikzpicture}[
-    myangles/.style = {draw, angle radius = #1 mm, lightslategray},
-    myangles/.default = 4,
-    txtnode/.style = {font=\large},
-  ]
+      myangles/.style = {draw, angle radius = #1 mm, lightslategray},
+      myangles/.default = 4,
+      txtnode/.style = {font=\large},
+    ]
     \begin{scope}[local bounding box=trg1]
       \coordinate (a) at (0,0);
       \coordinate (b) at (3,0);
       \coordinate (c) at (1,2);
-    
+
       \draw (a) -- (b) -- (c) -- cycle;
-    
+
       % 各辺に異なる色をつける
       \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$ra$};
       \draw [very thick, Cerulean] (b) -- ($(b)!15em!(c)$) node[txtnode, midway, above right=-0.2em] {$Rb$};
       \draw [very thick, Dandelion] (c) -- (a) node[txtnode, midway, left] {$rc$};
-      
-      \pic [myangles]     {angle = b--a--c}; 
-      
+
+      \pic [myangles]     {angle = b--a--c};
+
       \pic [myangles]     {angle = a--c--b};
       \pic [myangles=5]   {angle = a--c--b};
-      
+
       \pic [myangles]     {angle = c--b--a};
       \pic [myangles=5]   {angle = c--b--a};
       \pic [myangles=6]   {angle = c--b--a};
     \end{scope}
-    
+
     \begin{scope}[xshift=80mm, local bounding box=trg2]
       \coordinate (a) at (0,0);
       \coordinate (b) at (3,0);
       \coordinate (c) at (1,2);
-      
+
       \coordinate (c') at ($(b)!15em!(c)$);
-    
+
       \draw (a) -- (b) -- (c') -- cycle;
-    
+
       % 各辺に異なる色をつける
       \draw [very thick, Rhodamine] (a) -- (b) node[txtnode, midway, below] {$ra$};
       \draw [very thick, Cerulean] (b) -- (c') node[txtnode, midway, above right=-0.2em] {$Rb$};
       \draw [very thick, Dandelion] (c') -- (a) node[txtnode, midway, left] {$rc$};
-      
-      \pic [myangles]     {angle = b--a--c'}; 
-      
+
+      \pic [myangles]     {angle = b--a--c'};
+
       \pic [myangles]     {angle = a--c'--b};
       \pic [myangles=5]   {angle = a--c'--b};
-      
+
       \pic [myangles]     {angle = c'--b--a};
       \pic [myangles=5]   {angle = c'--b--a};
       \pic [myangles=6]   {angle = c'--b--a};
     \end{scope}
-    
+
     \draw[->, thick, -Straight Barb, gray] (trg1.east) -- node[above] {\small 無理やり三角形に…？} (trg2.west);
   \end{tikzpicture}
 \end{center}
@@ -217,46 +217,46 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
 \begin{center}
   \begin{tikzpicture}
     \def\s{1.75}
-    
+
     \coordinate (a1) at (0,0);
     \coordinate (b1) at (2,0);
     \coordinate (c1) at (2,1.5);
-    
+
     \coordinate (a2) at (a1);
     \coordinate (c2) at ($(a1)!2!(c1)$);
     \coordinate (b2') at ($(a1)!2!(b1)$);
     \coordinate (b2) at ($(a1)!(c2)!(b2')$);
-  
+
     \coordinate (a3) at (a1);
     \coordinate (c3) at ($(a1)!3!(c1)$);
     \coordinate (b3') at ($(a1)!3!(b1)$);
     \coordinate (b3) at ($(a1)!(c3)!(b3')$);
-    
+
     \draw[Goldenrod, fill=Goldenrod!60, fill opacity=0.8] (a3) -- (b3) -- (c3) -- cycle;
     \draw[SkyBlue, fill=SkyBlue!60, fill opacity=0.8] (a2) -- (b2) -- (c2) -- cycle;
     \draw[carnationpink, fill=carnationpink!60, fill opacity=0.8] (a1) -- (b1) -- (c1) -- cycle;
-    
+
     \pic [draw, Magenta, fill=Magenta, fill opacity=0.6, angle radius=7mm, angle eccentricity=1.5] {angle = b3--a3--c3};
-    
+
     % 直角
     \pic [draw, lightslategray, angle radius=2.5mm] {right angle = a3--b3--c3};
     \pic [draw, lightslategray, angle radius=2.5mm] {right angle = a2--b2--c2};
     \pic [draw, lightslategray, angle radius=2.5mm] {right angle = a1--b1--c1};
-    
+
     \draw[Dandelion]
-      (b3) to[bend right=30] node[right,midway]{$nb$} (c3)
-      (c3) to[bend right=30] node[near start,above=0.25em]{$nc$} (a3)
-      (a3) to[bend right=30] node[near end,below=0.25em]{$na$} (b3);
-    
+    (b3) to[bend right=30] node[right,midway]{$nb$} (c3)
+    (c3) to[bend right=30] node[near start,above=0.25em]{$nc$} (a3)
+    (a3) to[bend right=30] node[near end,below=0.25em]{$na$} (b3);
+
     \draw[Cerulean]
-      (b2) to[bend right=20] node[right,midway]{$mb$} (c2)
-      (c2) to[bend right=20] node[near start,above=0.25em]{$mc$} (a2)
-      (a2) to[bend right=20] node[near end,below=0.25em]{$ma$} (b2);
-    
+    (b2) to[bend right=20] node[right,midway]{$mb$} (c2)
+    (c2) to[bend right=20] node[near start,above=0.25em]{$mc$} (a2)
+    (a2) to[bend right=20] node[near end,below=0.25em]{$ma$} (b2);
+
     \draw[Rhodamine]
-      (b1) to[bend right=10] node[right,midway]{$b$} (c1)
-      (c1) to[bend right=10] node[near start,above]{$c$} (a1)
-      (a1) to[bend right=10] node[near end,below=-0.15em]{$a$} (b1);
+    (b1) to[bend right=10] node[right,midway]{$b$} (c1)
+    (c1) to[bend right=10] node[near start,above]{$c$} (a1)
+    (a1) to[bend right=10] node[near end,below=-0.15em]{$a$} (b1);
   \end{tikzpicture}
 \end{center}
 
@@ -292,23 +292,23 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
       \coordinate (a) at (0,0);
       \coordinate (b) at (4,0);
       \coordinate (c) at (4,3);
-      
+
       \draw (a) -- (b) -- (c) -- cycle;
-      
+
       \node[gray] at (a) [left] {\bfseries 視点};
-      
+
       \draw[->, very thick, -Straight Barb, Rhodamine] ([xshift=0.7em]b) -- ([xshift=0.7em]c) node[midway, right] {\bfseries 建物の高さ};
       \draw[->, very thick, -Straight Barb, Cerulean] ([yshift=-0.7em]a) -- ([yshift=-0.7em]b) node[midway, below] {\bfseries 視点からの距離};
       \draw[->, very thick, dashed, -Straight Barb, Dandelion] ([yshift=0.7em]a) -- ([yshift=0.7em]c) node[sloped, above, midway] {\bfseries 見上げる};
-      
+
       \pic [draw, ->, very thick, BurntOrange, angle radius=7mm, angle eccentricity=1.5, "\large$\theta$"] {angle = b--a--c};
       \pic [draw, lightslategray, angle radius=3mm] {right angle = a--b--c};
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}{0.49\columnwidth}
     \begin{align*}
-      \text{\bfseries 比の値}\bigl(\theta\bigr) &= \dfrac{\text{\bfseries\textcolor{Rhodamine}{建物の高さ}}}{\text{\bfseries\textcolor{Cerulean}{視点からの距離}}} \\\\
-      \text{\bfseries\textcolor{Rhodamine}{建物の高さ}} &= \text{\bfseries\textcolor{Cerulean}{視点からの距離}} \times \text{\bfseries 比の値}\bigl(\theta\bigr)
+      \text{\bfseries 比の値}\bigl(\theta\bigr)       & = \dfrac{\text{\bfseries\textcolor{Rhodamine}{建物の高さ}}}{\text{\bfseries\textcolor{Cerulean}{視点からの距離}}} \\\\
+      \text{\bfseries\textcolor{Rhodamine}{建物の高さ}} & = \text{\bfseries\textcolor{Cerulean}{視点からの距離}} \times \text{\bfseries 比の値}\bigl(\theta\bigr)
     \end{align*}
   \end{minipage}
 \end{figure}
@@ -335,13 +335,13 @@ $\text{\bfseries 比の値}\bigl(\theta\bigr)$を（たとえば同じ角度$\th
       \coordinate (a) at (0,0);
       \coordinate (b) at (4,0);
       \coordinate (c) at (4,3);
-      
+
       \draw (a) -- (b) -- (c) -- cycle;
-  
+
       \draw[thick, Dandelion] (c) to[bend right=20] node[midway, fill=white]{\Large$c$} (a);
       \draw[thick, Rhodamine] (a) to[bend right=20] node[midway, fill=white]{\Large$a$} (b);
       \draw[thick, Cerulean] (b) to[bend right=20] node[midway,fill=white]{\Large$b$} (c);
-  
+
       \pic [draw, very thick, LimeGreen, fill=LimeGreen, angle radius=7mm, angle eccentricity=1.5, "\Large$\theta$"] {angle = b--a--c};
       \pic [draw, lightslategray, angle radius=3mm] {right angle = a--b--c};
     \end{tikzpicture}
@@ -365,53 +365,127 @@ $\text{\bfseries 比の値}\bigl(\theta\bigr)$を（たとえば同じ角度$\th
 \renewcommand{\b}{\textcolor{Cerulean}{b}}
 \renewcommand{\c}{\textcolor{BurntOrange}{c}}
 \newcommand{\fnname}[1]{\textcolor{airforceblue}{\LARGE #1}\hspace{0.2em}}
-  \begin{forest}
-    for tree={
-      inner sep = 1em,
-      anchor = east,
-      grow = east,
-      rounded corners,
-      forked edge,            % for forked edge
-            s sep = 4mm,    % sibling distance
-            l sep = 8mm,    % level distance
-         fork sep = 4mm,    % distance from parent to branching point
-      L1/.style={font=\Large,draw,gray},
-      L2/.style={font=\bfseries\color{gray},draw,gray,edge={gray,semithick}},
-      L3/.style={font=\Large,edge={gray,semithick}},
-      L4/.style={font=\large\color{gray}, edge={dotted, semithick}},
-    }
+\begin{forest}
+  for tree={
+  inner sep = 1em,
+  anchor = east,
+  grow = east,
+  rounded corners,
+  forked edge,            % for forked edge
+  s sep = 4mm,    % sibling distance
+  l sep = 8mm,    % level distance
+  fork sep = 4mm,    % distance from parent to branching point
+  L1/.style={font=\Large,draw,gray},
+  L2/.style={font=\bfseries\color{gray},draw,gray,edge={gray,semithick}},
+  L3/.style={font=\Large,edge={gray,semithick}},
+  L4/.style={font=\large\color{gray}, edge={dotted, semithick}},
+  }
   [$\a:\b:\c$,L1
-    [$\c$と$\a$の比,L2
-      [{$\c:\a=\dfrac{\c}{\a}$},L3
-        [\fnname{sec}ant,L4]
-      ]
-      [{$\a:\c=\dfrac{\a}{\c}$},L3
-        [\fnname{cos}ine,L4]
-      ]
-    ]
-    [$\b$と$\c$の比,L2
-      [{$\c:\b=\dfrac{\c}{\b}$},L3
-        [\fnname{cosec}ant,L4]
-      ]
-      [{$\b:\c=\dfrac{\b}{\c}$},L3
-        [\fnname{sin}e,L4]
-      ]
-    ]
-    [$\a$と$\b$の比,L2
-      [{$\a:\b=\dfrac{\a}{\b}$},L3
-        [\fnname{cot}angent,L4]
-      ]
-      [{$\b:\a=\dfrac{\b}{\a}$},L3
-        [\fnname{tan}gent,L4]
-      ]
-    ]
+  [$\c$と$\a$の比,L2
+  [{$\c:\a=\dfrac{\c}{\a}$},L3
+  [\fnname{sec}ant,L4]
   ]
-    \end{forest}
+  [{$\a:\c=\dfrac{\a}{\c}$},L3
+  [\fnname{cos}ine,L4]
+  ]
+  ]
+  [$\b$と$\c$の比,L2
+  [{$\c:\b=\dfrac{\c}{\b}$},L3
+  [\fnname{cosec}ant,L4]
+  ]
+  [{$\b:\c=\dfrac{\b}{\c}$},L3
+  [\fnname{sin}e,L4]
+  ]
+  ]
+  [$\a$と$\b$の比,L2
+  [{$\a:\b=\dfrac{\a}{\b}$},L3
+  [\fnname{cot}angent,L4]
+  ]
+  [{$\b:\a=\dfrac{\b}{\a}$},L3
+  [\fnname{tan}gent,L4]
+  ]
+  ]
+  ]
+\end{forest}
 \endgroup
 
 これらをまとめて\keyword{三角比}という。
 
-特に重要なのは\keyword{$\sin$}、\keyword{$\cos$}、\keyword{$\tan$}の3つであり、他の3つはこれらの逆数として表されるので、あまり使われることはない。
+特に重要なのは$\sin,\,\cos,\,\tan$の3つであり、他の3つはこれらの逆数として表されるので、あまり使われることはない。
+
+三角比は、1つの鋭角$\theta$の大きさによって決まるので、比の名前に基準となる角度$\theta$をつけて表記する。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \begin{tikzpicture}
+      \coordinate (a) at (0,0);
+      \coordinate (b) at (4,0);
+      \coordinate (c) at (4,3);
+
+      % [debug] draw points
+      % \foreach \p in {a, b, c}
+      % \fill[black] (\p) circle (2pt) node[below]{$\p$};
+
+      \draw (a) -- (b) -- (c) -- cycle;
+
+      \pic [draw, very thick, LimeGreen, fill=LimeGreen, angle radius=7mm, angle eccentricity=1.5, "\Large$\theta$"] {angle = b--a--c};
+      \pic [draw, lightslategray, angle radius=3mm] {right angle = a--b--c};
+
+      \draw[thick, lightslategray] (a) -- (c) node[midway, below]{\Large$c$};
+      \draw[thick, lightslategray] (a) -- (b) node[midway, above right]{\Large$a$};
+      \draw[thick, lightslategray] (b) -- (c) node[midway, left]{\Large$b$};
+
+      \coordinate (cMid) at ($(a)!0.5!(b)$);
+      \coordinate (aMid) at ($(b)!0.5!(c)$);
+      \coordinate (bMid) at ($(c)!0.5!(a)$);
+
+      \node [above=1.25em of bMid] (bMid') {};
+      \node [right=1em of aMid] (aMid') {};
+      \node [below=1em of cMid] (cMid') {};
+
+      \node [below=1em of a] (a'cMid) {};
+      \node [above=1.25em of a] (a'bMid) {};
+
+      \node [below=1em of b] (b'aMid) {};
+      \node [right=1em of b] (b'cMid) {};
+
+      \node [right=1em of c] (cMid'a) {};
+      \node [left=1.75em of c] (cMid'b) {};
+
+      % 直線a'bMid--bMid'と、直線a'cMid--cMid'の交点
+      \coordinate (a') at (intersection of a'bMid--bMid' and a'cMid--cMid');
+      \draw[Rhodamine, very thick, ->, line join=round] (bMid') -- (a') -- (cMid') node[sloped, below, near start] {\LARGE$\cos$};
+
+      % 直線cMid'--b'aMidと、直線b'cMid--aMid'の交点
+      \coordinate (b') at (intersection of cMid'--b'aMid and b'cMid--aMid');
+      \draw[BurntOrange, very thick, ->, line join=round] (cMid') -- (b') -- (aMid') node[sloped, above, near start] {\LARGE$\tan$};
+
+      % 直線aMid'--cMid'bと、直線cMid'a--bMid'の交点
+      \coordinate (c') at (intersection of aMid'--cMid'a and cMid'b--bMid');
+      \draw[Cerulean, very thick, <-, line join=round] (aMid') -- (c') -- (bMid') node[sloped, above, near start] {\LARGE$\sin$};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{0.22\columnwidth}
+    \centering
+    \Large
+    \begin{align*}
+      \color{Rhodamine}
+      \cos \theta & = \dfrac{a}{c} \\\\
+      \color{Cerulean}
+      \sin \theta & = \dfrac{b}{c}
+    \end{align*}
+  \end{minipage}
+  \begin{minipage}{0.22\columnwidth}
+    \centering
+    \Large
+    \begin{align*}
+      \color{BurntOrange}
+      \tan \theta & = \dfrac{b}{a}
+    \end{align*}
+  \end{minipage}
+\end{figure}
 
 \subsection{扇形の弧長と角}
 
