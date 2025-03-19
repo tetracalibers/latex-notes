@@ -1,0 +1,83 @@
+\documentclass[../book_infinite_continuous_math]{subfiles}
+
+\begin{document}
+
+\section{ロルの定理を証明してみる}
+
+\subsection{ロルの定理とその証明}
+
+\begin{oframed}
+  \paragraph{ロルの定理（再掲）}
+  関数$f(x)$は閉区間$[a, b]$で連続、開区間$(a, b)$で微分可能とする
+
+  $f(a) = f(b)=0$のとき、
+  \begin{equation*}
+    f'(c) = 0 \quad (a < c < b)
+  \end{equation*}
+  となる$c$が少なくとも1つ存在する
+\end{oframed}
+
+\paragraph{ロルの定理の証明}\quad
+
+$f(x)$が区間$[a, b]$で定数（$=0$）なら、すべての$c$（$a < c < b$）で$f'(c) = 0$だから定理は成り立つ
+
+したがって、$f(x)$は定数でないとしてよい
+
+\br
+
+この区間での$f(x)$の最大値を$f(c)$とする
+
+$f(a) = f(b) = 0$なので、最大値$f(c)$は、$f(c) \geq 0$である
+
+最大値$f(c)$が$0$になるときは$f(x) \leq 0$なので、$-f(x)$を改めて$f(x)$と考えると、$f(x) \geq 0$となり、$f(x)$は定数関数ではないので、$f(x) > 0$である
+
+したがって、最大値$f(c) > 0$で$a < c < b$としてよい
+
+\br
+
+$c$での微分係数
+\begin{equation*}
+  f'(c) = \lim_{h \to 0} \dfrac{f(c+h) - f(c)}{h}
+\end{equation*}
+を考える
+
+$h >0$としてこの極限値をとると、$f(c)$が最大値であるから$f(c+h) - f(c) \leq 0$より、
+\begin{equation*}
+  \dfrac{f(c+h) - f(c)}{h} \leq 0
+\end{equation*}
+したがって、分子は負または$0$、分母は正だから、
+\begin{equation*}
+  f'(c) = \lim_{h \to 0} \dfrac{f(c+h) - f(c)}{h} \leq 0
+\end{equation*}
+である
+
+\br
+
+一方、同じ極限値を$h<0$としてとると、分子の符号は変わらないから、
+\begin{equation*}
+  \dfrac{f(c+h) - f(c)}{h} \geq 0
+\end{equation*}
+したがって、
+\begin{equation*}
+  f'(c) = \lim_{h \to 0} \dfrac{f(c+h) - f(c)}{h} \geq 0
+\end{equation*}
+である
+
+\br
+
+すなわち、
+\begin{equation*}
+  f'(c) \leq 0 \text{かつ} f'(c) \geq 0
+\end{equation*}
+となり、
+\begin{equation*}
+  f'(c) = 0
+\end{equation*}
+である$\qed$
+
+\sectionline
+\subsection{ロルの定理の物理的な意味}
+
+
+
+\end{document}
