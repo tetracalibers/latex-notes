@@ -96,15 +96,13 @@
 
 座標とは、「$x$軸方向の移動」と「$y$軸方向の移動」という2回の移動を行った結果である。
 
-右にどれくらい、上にどれくらい、という考え方は「位置」を特定するには便利だが、「移動」を表したいだけなら、単に点から点へ向かう矢印で表すこともできる。
+右にどれくらい、上にどれくらい、という考え方で平面上の「位置」を特定しているわけだが、単に「移動」を表したいだけなら、点から点へ向かう矢印で一気に表すこともできる。
 
 \br
 
-ある地点から別のある地点への「移動」を表すものを\keyword{ベクトル}という。
+ある地点から別のある地点への「移動」を表す矢印を\keyword{ベクトル}という。
 
 \br
-
-ベクトルは、絶対的な位置を表すものではない。
 
 ベクトルが示す、ある地点からこのように移動すれば、この地点にたどり着く…といった「移動」の情報は、相対的な「位置関係」を表す上で役に立つ。
 
@@ -153,7 +151,83 @@
 
 つまり、平行移動して重なる矢印は、同じベクトルとみなすことができる。
 
-\subsection{ベクトルの多次元化：数ベクトル}
+\subsubsection{移動の合成とベクトルの分解}
+
+ベクトルは、各方向への移動の合成として考えることもできる。
+
+純粋に「縦」と「横」に分解した場合は直交座標の考え方によく似ているが、必ずしも直交する方向のベクトルに分解する必要はない。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{1.5}
+        \def\vy{2}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0);
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean, shorten >=0.25em] (\vx, 0) -- (\vx, \vy);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries 「縦」と「横」に分解}
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{1.5}
+        \def\vy{2}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0.75);
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean, shorten >=0.25em] (\vx, 0.75) -- (\vx, \vy);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries 他の分解も考えられる}
+  \end{minipage}
+\end{figure}
+
+\subsection{多次元への対応：数ベクトル}
 
 多次元空間内の「移動」を表すには、「縦」と「横」の2方向だけでなく、もっと多くの数が必要になる。
 
@@ -165,6 +239,8 @@
 そこで、一旦「向き」の情報を取り除くことで、高次元に立ち向かえないかと考える。
 
 移動を表す矢印は「どの方向に進むか」と「どれくらい進むか」という向きと大きさの情報を持っているが、その「どれくらい進むか」だけを取り出して並べよう。
+
+\todo{平面ベクトルの場合の図}
 
 \vskip\baselineskip
 
