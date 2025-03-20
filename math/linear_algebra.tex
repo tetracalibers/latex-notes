@@ -16,7 +16,142 @@
 
 \subsection{移動の表現としてのベクトル}
 
-\wip
+平面上のある点の位置を表すのに、よく使われるのが\keyword{直交座標}である。
+
+直交座標では、$x$軸と$y$軸を垂直に張り、
+\begin{itemize}
+  \item 原点$O$からの$x$軸方向の移動量（$x$座標）
+  \item 原点$O$からの$y$軸方向の移動量（$y$座標）
+\end{itemize}
+という2つの数の組で点の位置を表す。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.49\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        \draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+        \draw[axis] (0, \ymin) -- (0, \ymax) node[above] {$y$};
+
+        % 原点
+        \node at (0, 0) [below left] {$O$};
+
+        % x軸方向の移動量
+        \draw[dashed, very thick, Rhodamine] (0, 0) -- (\vx, 0) node[below, midway] {$a$};
+        % y軸方向の移動量
+        \draw[dashed, very thick, Cerulean] (\vx,0) -- (\vx, \vy) node[right, midway] {$b$};
+
+        % 点
+        \draw (\vx, \vy) node[circle, fill, inner sep=1.5pt] {};
+        \node at (\vx, \vy) [above right] {$(a,b)$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries「位置の特定」という視点}
+  \end{minipage}
+  \begin{minipage}[b]{0.49\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        % 平面
+        \draw[dotted, lightslategray] (\xmin, \ymin) -- (\xmax, \ymin) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries「移動」という視点}
+  \end{minipage}
+\end{figure}
+
+\br
+
+座標とは、「$x$軸方向の移動」と「$y$軸方向の移動」という2回の移動を行った結果である。
+
+右にどれくらい、上にどれくらい、という考え方は「位置」を特定するには便利だが、「移動」を表したいだけなら、単に点から点へ向かう矢印で表すこともできる。
+
+\br
+
+ある地点から別のある地点への「移動」を表すものを\keyword{ベクトル}という。
+
+\br
+
+ベクトルは、絶対的な位置を表すものではない。
+
+ベクトルが示す、ある地点からこのように移動すれば、この地点にたどり着く…といった「移動」の情報は、相対的な「位置関係」を表す上で役に立つ。
+
+\subsubsection{座標とベクトルの違い}
+
+座標は「位置」を表すものだが、ベクトルは「移動」を表すものにすぎない。
+
+座標は「原点からの」移動量によって位置を表すが、ベクトルは始点の位置にはこだわらない。
+
+\br
+
+たとえば、次の2つのベクトルは始点の位置は異なるが、同じ向きに同じだけ移動している矢印なので、同じベクトルとみなせる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+      \def\vx{1.5}
+      \def\vy{2}
+      \def\sx{2.5}
+      \def\sy{1}
+
+      \draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+      \draw[axis] (0, \ymin) -- (0, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (0, 0) [below left] {$O$};
+
+      % ベクトル
+      \draw[vector, very thick, magenta] (0, 0) -- (\vx, \vy);
+
+      % 平行移動したベクトル
+      \draw[vector, very thick, magenta] (\sx, \sy) -- ($(\sx,\sy)+(\vx,\vy)$);
+
+      % 平行移動を表す破線
+      \draw[dashed, lightslategray] (0, 0) -- (\sx, \sy);
+      \draw[dashed, lightslategray] (\vx, \vy) -- ($(\vx,\vy)+(\sx,\sy)$);
+    \end{tikzpicture}
+  }
+\end{center}
+
+このような「同じ向きに同じだけ移動している矢印」は、平面内では平行な関係にある。
+
+つまり、平行移動して重なる矢印は、同じベクトルとみなすことができる。
 
 \subsection{ベクトルの多次元化：数ベクトル}
 
