@@ -116,7 +116,7 @@
 \newenvironment{supplnote}{
   \begin{awesomeblock}{1pt}{\faPaw}{lightgray}
     \small
-}{
+    }{
   \end{awesomeblock}
 }
 
@@ -184,25 +184,25 @@
   enhanced,
   colframe=white,
   colback=yellow!10!white,
-  coltitle=cyan!40!black, 
+  coltitle=cyan!40!black,
   fonttitle=\bfseries,
   breakable=true,
   underlay unbroken={
-    \begin{tcbclipinterior}
-      \shade[inner color=cyan!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2cm);
-      \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
-    \end{tcbclipinterior}
-  },
+      \begin{tcbclipinterior}
+        \shade[inner color=cyan!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2cm);
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
+      \end{tcbclipinterior}
+    },
   underlay first={
-    \begin{tcbclipinterior}
-      \shade[inner color=cyan!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2.5cm);
-      \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
-    \end{tcbclipinterior}},
+      \begin{tcbclipinterior}
+        \shade[inner color=cyan!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2.5cm);
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
+      \end{tcbclipinterior}},
   underlay last={
-    \begin{tcbclipinterior}
-      \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
-    \end{tcbclipinterior}
-  },
+      \begin{tcbclipinterior}
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
+      \end{tcbclipinterior}
+    },
   title={#1},
   attach title to upper=\quad,
   bottom=5mm,
@@ -215,28 +215,28 @@
   enhanced,
   colframe=white,
   colback=yellow!10!white,
-  coltitle=magenta!40!black, 
+  coltitle=magenta!40!black,
   fonttitle=\bfseries,
   breakable,
   underlay unbroken={
-    \begin{tcbclipinterior}
-      \shade[inner color=magenta!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2cm);
-      \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
-    \end{tcbclipinterior}
-  }, 
+      \begin{tcbclipinterior}
+        \shade[inner color=magenta!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2cm);
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
+      \end{tcbclipinterior}
+    },
   underlay first={
-    \begin{tcbclipinterior}
-      \shade[inner color=magenta!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2.5cm);
-      \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
-    \end{tcbclipinterior}
-  },
+      \begin{tcbclipinterior}
+        \shade[inner color=magenta!80!yellow,outer color=yellow!10!white] (interior.north east) circle (2.5cm);
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
+      \end{tcbclipinterior}
+    },
   underlay last={
-    \begin{tcbclipinterior}
-      \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
-    \end{tcbclipinterior}
-  },
+      \begin{tcbclipinterior}
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}] (interior.south west) grid (interior.north east);
+      \end{tcbclipinterior}
+    },
   title={#1},
-  attach title to upper=\quad, 
+  attach title to upper=\quad,
   bottom=5mm,
   #2
 }
@@ -248,14 +248,14 @@
   before title={Proof:~},
   attach boxed title to top left,
   boxed title style={
-    empty,
-    size=minimal,
-    toprule=2pt,
-    top=4pt,
-    overlay={
-      \draw[ProofColor,line width=2pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
-    }
-  },
+      empty,
+      size=minimal,
+      toprule=2pt,
+      top=4pt,
+      overlay={
+          \draw[ProofColor,line width=2pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
+        }
+    },
   coltitle=ProofColor!70!black,
   fonttitle=\bfseries,
   before=\par\medskip\noindent,
@@ -269,21 +269,21 @@
   pad at break*=0mm,
   vfill before first,
   overlay unbroken={
-    \draw[ProofColor,line width=1pt, dashed] 
-      ([yshift=-1pt]title.north east) 
-        --([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east) 
-        --([xshift=-0.5pt]frame.south east)
-        --(frame.south west); 
-  },
+      \draw[ProofColor,line width=1pt, dashed]
+      ([yshift=-1pt]title.north east)
+      --([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+      --([xshift=-0.5pt]frame.south east)
+      --(frame.south west);
+    },
   overlay first={
-    \draw[ProofColor,line width=1pt, dashed]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
-  },
+      \draw[ProofColor,line width=1pt, dashed]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
+    },
   overlay middle={
-    \draw[ProofColor,line width=1pt, dashed] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
-  },
+      \draw[ProofColor,line width=1pt, dashed] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
+    },
   overlay last={
-    \draw[ProofColor,line width=1pt, dashed] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
-  },%
+      \draw[ProofColor,line width=1pt, dashed] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
+    },%
 }
 
 \NewDocumentCommand{\patterntitle}{m}{
@@ -301,7 +301,7 @@
 \newenvironment{subpattern}[1]{
   \patterntitle{#1}
   \begin{quote}
-}{
+    }{
   \end{quote}
 }
 
@@ -338,46 +338,46 @@
 \NewDocumentCommand{\wavemath}{O{Rhodamine} m}{
   \tcboxmath[
     enhanced,
-      frame hidden,
-      interior hidden,
-      size=minimal,
-      bottom=1.1em,
-      overlay={
-          \draw[
-              #1,
-              thick,
-              decorate,
-              decoration={
-                  snake,               % 波線を引く
-                  amplitude=0.1em,     % 波線の振幅
-                  segment length=0.5em   % 波線の周期
-              }
-          ] ([yshift=0.7em]frame.south west) -- ([yshift=0.7em]frame.south east);
-      } 
-    ]{#2}
+    frame hidden,
+    interior hidden,
+    size=minimal,
+    bottom=1.1em,
+    overlay={
+        \draw[
+          #1,
+          thick,
+          decorate,
+          decoration={
+              snake,               % 波線を引く
+              amplitude=0.1em,     % 波線の振幅
+              segment length=0.5em   % 波線の周期
+            }
+        ] ([yshift=0.7em]frame.south west) -- ([yshift=0.7em]frame.south east);
+      }
+  ]{#2}
 }
 
 \NewDocumentCommand{\wavelabelmath}{O{Rhodamine} m m}{
   \tcboxmath[
     enhanced,
-      frame hidden,
-      interior hidden,
-      size=minimal,
-      bottom=1.4em,
-      overlay={
-          \draw[
-              #1,
-              thick,
-              decorate,
-              decoration={
-                  snake,               % 波線を引く
-                  amplitude=0.1em,     % 波線の振幅
-                  segment length=0.5em   % 波線の周期
-              }
-          ] ([yshift=1.1em]frame.south west) -- ([yshift=1.1em]frame.south east)
-          node[midway,below] {\bfseries #3};
+    frame hidden,
+    interior hidden,
+    size=minimal,
+    bottom=1.4em,
+    overlay={
+        \draw[
+          #1,
+          thick,
+          decorate,
+          decoration={
+              snake,               % 波線を引く
+              amplitude=0.1em,     % 波線の振幅
+              segment length=0.5em   % 波線の周期
+            }
+        ] ([yshift=1.1em]frame.south west) -- ([yshift=1.1em]frame.south east)
+        node[midway,below] {\bfseries #3};
       }
-    ]{#2}
+  ]{#2}
 }
 
 \definecolor{reviewBgColor}{HTML}{F9F9F9}
@@ -389,14 +389,14 @@
   enhanced,
   attach boxed title to top left={yshift=-0.18cm,xshift=-0.5mm},
   boxed title style={
-    tikz={rotate=4,transform shape},
-    frame code={
-      \draw[decorate, reviewFgColor,decoration={random steps,segment length=2mm,amplitude=0.6pt},fill=lightgray!20] (frame.south west) rectangle (frame.north east);
-    }
-  },
-frame code={
-  \draw[decorate, reviewFgColor!50,decoration={random steps,segment length=2mm,amplitude=0.6pt}] (frame.north east) rectangle (frame.south west);
-},
+      tikz={rotate=4,transform shape},
+      frame code={
+          \draw[decorate, reviewFgColor,decoration={random steps,segment length=2mm,amplitude=0.6pt},fill=lightgray!20] (frame.south west) rectangle (frame.north east);
+        }
+    },
+  frame code={
+      \draw[decorate, reviewFgColor!50,decoration={random steps,segment length=2mm,amplitude=0.6pt}] (frame.north east) rectangle (frame.south west);
+    },
 }
 
 \DeclareTColorBox{emphabox}{O{CadetBlue}}{%
@@ -407,10 +407,10 @@ frame code={
   grow sidewards by=-5mm,
   beforeafter skip=\baselineskip,
   frame code={%
-    \draw[line width=1pt,#1] ($(frame.north west)!0.3!(frame.north east)$) -- (frame.north west) -- ($(frame.north west)!0.3!(frame.south west)$);
-    \draw[line width=1pt,#1] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east) -- ($(frame.south east)!0.3!(frame.north east)$);
-    \draw[rosepink, fill=carnationpink, decorate, decoration={footprints,foot length=7pt,foot of=felis silvestris, foot angle=5, foot sep=2pt}] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east);
-  }
+      \draw[line width=1pt,#1] ($(frame.north west)!0.3!(frame.north east)$) -- (frame.north west) -- ($(frame.north west)!0.3!(frame.south west)$);
+      \draw[line width=1pt,#1] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east) -- ($(frame.south east)!0.3!(frame.north east)$);
+      \draw[rosepink, fill=carnationpink, decorate, decoration={footprints,foot length=7pt,foot of=felis silvestris, foot angle=5, foot sep=2pt}] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east);
+    }
 }
 
 \DeclareTColorBox{spacebox}{}{%
