@@ -227,9 +227,9 @@
   \end{minipage}
 \end{figure}
 
-\subsection{多次元への対応：数ベクトル}
+\subsection{高次元への対応：数ベクトル}
 
-多次元空間内の「移動」を表すには、「縦」と「横」などといった2方向だけでなく、もっと多くの方向への移動量を組み合わせて考える必要がある。
+2次元以上の空間内の「移動」を表すには、「縦」と「横」などといった2方向だけでなく、もっと多くの方向への移動量を組み合わせて考える必要がある。
 
 また、4次元を超えてしまうと、矢印の描き方すら想像がつかなくなってしまう。
 それは、方向となる軸が多すぎて、どの方向に進むかを表すのが難しくなるためだ。
@@ -240,9 +240,36 @@
 
 移動を表す矢印は「どの方向に進むか」と「どれくらい進むか」という向きと大きさの情報を持っているが、その「どれくらい進むか」だけを取り出して並べよう。
 
-\todo{平面ベクトルの場合の図}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.33\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\vx{2}
+        \def\vy{1.5}
 
-\vskip\baselineskip
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0) node[below, midway] {$a_1$};
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean] (\vx, 0) -- (\vx, \vy) node[right, midway] {$a_2$};
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange] (A) -- (B) node[midway, above left] {$\vb*{a}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.33\columnwidth}
+    \LARGE
+    \color{BurntOrange}
+    \begin{equation*}
+      \vb*{a} = \begin{bmatrix} \textcolor{Rhodamine}{a_1} \\ \textcolor{Cerulean}{a_2} \end{bmatrix}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
 
 こうして単に「数を並べたもの」もベクトルと呼ぶことにし、このように定義したベクトルを\keyword{数ベクトル}という。
 
@@ -306,7 +333,88 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 たとえば、$x$軸方向に$a_1$、$y$軸方向に$a_2$進んだ場所から、さらに$x$軸方向に$b_1$、$y$軸方向に$b_2$進む…というような「移動の合成」を表すのが、ベクトルの和である。
 
-\todo{図}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{4.5}
+        \def\ax{2}
+        \def\ay{1}
+        \def\bx{0.5}
+        \def\by{2}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % 座標軸
+        \draw[axis] (\xmin, 0) -- (1,0) node[right] {$x$};
+        \draw[axis] (0, \ymin) -- (0, 1) node[above] {$y$};
+
+        % ベクトルaのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++(\ax, 0) node[below, midway] {\small$a_1$};
+        % ベクトルaのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)$) -- ++(0, \ay) node[left, midway] {\small$a_2$};
+
+        % ベクトルbのx成分
+        \draw[thick, densely dashed, Rhodamine] ($(S)+(\ax,\ay)$) -- ++(\bx, 0) node[below, midway] {\small$b_1$};
+        % ベクトルbのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,\ay)+(\bx, 0)$) -- ++(0, \by) node[right, midway] {\small$b_2$};
+
+        \begin{scope}[transparency group, opacity=0.9]
+          % ベクトルa
+          \draw[vector, very thick, Orchid] (S) -- ($(S)+(\ax,\ay)$) node[above, midway] {$\vb*{a}$};
+          % ベクトルb
+          \draw[vector, very thick, Orchid] ($(S)+(\ax,\ay)$) -- ++(\bx,\by) node[left, midway] {$\vb*{b}$};
+        \end{scope}
+
+        % ベクトルa+b
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax+\bx, \ay+\by) node[above, sloped, midway] {$\vb*{a}+\vb*{b}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{4.5}
+        \def\ax{2}
+        \def\ay{1}
+        \def\bx{0.5}
+        \def\by{2}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトルa+bのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++($(\ax,0)+(\bx,0)$) node[below, midway] {\small$a_1+b_1$};
+        % ベクトルa+bのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)+(\bx,0)$) -- ++($(0,\ay)+(0,\by)$) node[right, midway] {\small$a_2+b_2$};
+
+        \begin{scope}[transparency group, opacity=0.45]
+          % ベクトルa
+          \draw[vector, very thick, lightslategray] (S) -- ($(S)+(\ax,\ay)$) node[above, midway] {$\vb*{a}$};
+          % ベクトルb
+          \draw[vector, very thick, lightslategray] ($(S)+(\ax,\ay)$) -- ++(\bx,\by) node[left, midway] {$\vb*{b}$};
+        \end{scope}
+
+        % ベクトルa+b
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax+\bx, \ay+\by) node[above, sloped, midway] {$\vb*{a}+\vb*{b}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+\end{figure}
 
 \subsubsection{ベクトルのスカラー倍}
 
