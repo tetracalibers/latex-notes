@@ -204,7 +204,7 @@ $\pi$の定義式を変形すると、円周の長さを求める式が得られ
       \pic [myangles=6]   {angle = c'--b--a};
     \end{scope}
 
-    \draw[->, thick, -Straight Barb, gray] (trg1.east) -- node[above] {\small 無理やり三角形に…？} (trg2.west);
+    \draw[->, thick, -Straight Barb] (trg1.east) -- node[above] {\small 無理やり三角形に…} (trg2.west);
   \end{tikzpicture}
 \end{center}
 
@@ -375,9 +375,9 @@ $\text{\bfseries 比の値}\bigl(\theta\bigr)$を（たとえば同じ角度$\th
   s sep = 4mm,    % sibling distance
   l sep = 8mm,    % level distance
   fork sep = 4mm,    % distance from parent to branching point
-  L1/.style={font=\Large,draw,gray},
-  L2/.style={font=\bfseries\color{gray},draw,gray,edge={gray,semithick}},
-  L3/.style={font=\Large,edge={gray,semithick}},
+  L1/.style={font=\Large,draw},
+  L2/.style={font=\bfseries\color{gray},draw,edge={semithick}},
+  L3/.style={font=\Large,edge={semithick}},
   L4/.style={font=\large\color{gray}, edge={dotted, semithick}},
   }
   [$\a:\b:\c$,L1
