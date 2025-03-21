@@ -27,6 +27,155 @@
 \sectionline
 \subsection{内積はスカラー値を与える関数}
 
+内積を「二つのベクトルを引数にとり、スカラー値を返す関数」として捉えてみる
 
+ただし、どんな関数でもよいわけではなく、いくつかの性質を満たす必要がある
+
+\br
+
+2つのベクトル$\vb*{a}_1$と$\vb*{a}_2$を考える
+
+これらは$D$次元空間内の矢印だとし、それぞれのベクトルを成分に分けて以下のように書くことにする
+\begin{equation*}
+  \vb*{a}_1 = \begin{bmatrix} a_{1,1} \\ a_{1,2} \\ \vdots \\ a_{1,D} \end{bmatrix}, \quad \vb*{a}_2 = \begin{bmatrix} a_{2,1} \\ a_{2,2} \\ \vdots \\ a_{2,D} \end{bmatrix}
+\end{equation*}
+1つ目の添え字はどちらのベクトルかを指定するもので、2つ目の添字が空間の次元を示す
+
+\br
+
+これら2つのベクトルの内積を以下のように定義する
+\begin{equation*}
+  \vb*{a}_1 \cdot \vb*{a}_2 = \sum_{d=1}^{D} a_{1,d} a_{2,d}
+\end{equation*}
+ベクトルの要素ごとにかけ算をして足し合わせる、というだけ
+
+\sectionline
+\subsection{内積の「書き方」は一つではない}
+
+内積の記法はいくつかある
+\begin{itemize}
+  \item $\vb*{a}_1 \cdot \vb*{a}_2$
+  \item $\left( \vb*{a}_1, \vb*{a}_2 \right)$
+  \item $\vb*{a}_1^\top \vb*{a}_2$
+  \item $\Braket{\vb*{a}_1|\vb*{a}_2}$
+\end{itemize}
+
+$\vb*{a}_1 \cdot \vb*{a}_2$の記法は、本書では今後は使わない
+
+\br
+
+$\left( \vb*{a}_1, \vb*{a}_2 \right)$では括弧が閉じていて、2つのベクトルを用いていることがわかりやすい
+
+これは数学でよく使う
+
+\br
+
+$\vb*{a}_1^\top \vb*{a}_2$は、すでに行列について学んだ人にはわかりやすい表記
+
+ただし、本書では先にこの記法を導入しておく
+
+縦向きにならんだベクトルを横向きに転置した$\vb*{a}_1^\top$を左側に置き、右側のベクトル$\vb*{a}_2$とならべて書いたときに、「要素ごとの積の総和」を意味することにする
+
+\br
+
+$\Braket{\vb*{a}_1|\vb*{a}_2}$の記法は物理学、特に量子力学の分野でよく用いられるもの
+
+\sectionline
+\subsection{内積の「定義」ですら一つではない}
+
+実は内積と呼ばれる量はこれだけに限らない
+
+たとえば物理学の一般相対性理論では曲がった空間を考える
+
+すると、ベクトル同士の関係性が、空間の曲がり方によって変わる
+
+内積は関係性を議論するための道具なので、曲がった空間には曲がった空間なりの関係性、つまり内積が定義される
+
+\br
+
+形式的な定義を与えたとき、その具体的な可能性はいろいろとあり得るのが数学のよいところ
+
+答えや手段が一つに決まらないのは不安かもしれないが、逆に言えば、たくさんの可能性のなかから目的にあったものを選び取れるということ
+
+\sectionline
+\subsection{内積の形式的な定義}
+
+ここでは$\mathbb{R}$上の線形空間$V$を考える
+
+このとき、2つのベクトルを引数にとり、実数を返す関数$(\cdot, \cdot) : V \times V \to \mathbb{R}$として、次の性質を満たすものを\keyword{内積}と呼ぶ
+
+なお、ここでは$\vb*{u}, \vb*{v}, \vb*{w} \in V$、$c \in \mathbb{R}$とする
+\begin{enumerate}
+  \item $\left( \vb*{u}, \vb*{v} \right) = \left( \vb*{v}, \vb*{u} \right)$
+  \item $\left( c\vb*{u}, \vb*{v} \right) = \left( \vb*{u}, c\vb*{v} \right) = c\left( \vb*{u}, \vb*{v} \right)$
+  \item $\left( \vb*{u} + \vb*{v}, \vb*{w} \right) = \left( \vb*{u}, \vb*{w} \right) + \left( \vb*{v}, \vb*{w} \right), \quad \left( \vb*{u}, \vb*{v} + \vb*{w} \right) = \left( \vb*{u}, \vb*{v} \right) + \left( \vb*{u}, \vb*{w} \right)$
+  \item $\left( \vb*{u}, \vb*{u} \right) \geq 0, \, \left( \vb*{u}, \vb*{u} \right) = 0 \Leftrightarrow  \vb*{u} = \vb*{0}$
+\end{enumerate}
+1番目は対称性を意味しており、順番を変えても結果が変わらない
+
+2番目と3番目の性質は\keyword{双線形性}と呼ばれるもの
+
+4番目は、自分自身との内積は負の値にならないことを意味している
+
+\sectionline
+
+線形代数という言葉にも使われている\keyword{線形性}についても触れておこう
+
+関数$f : V \to \mathbb{R} $が線形であるとは、以下の2つの性質を満たす場合を言う
+
+ここでは$\vb*{u}, \vb*{v} \in V$、$c \in \mathbb{R}$とする
+\begin{enumerate}
+  \item $f(c\vb*{u}) = cf(\vb*{u})$
+  \item $f(\vb*{u} + \vb*{v}) = f(\vb*{u}) + f(\vb*{v})$
+\end{enumerate}
+つまり、スカラー倍や和などの演算をしてから$f$に入れるのと、先に$f$に入れてから演算をするのは同じ、ということ
+
+関数を使うタイミングと演算をするタイミングを入れ替えられるので、計算がとても楽になる
+
+\br
+
+先ほどの双線形性は、引数が2つの場合なので「双」がつく
+
+\sectionline
+
+これらを満たせばすべて内積なので、今後、内積を使った議論が出てきた場合には、自分好みの内積を定義して当てはめることができる
+
+\sectionline
+\subsection{ブラケット記号は「閉じた」形}
+
+縦方向に数が並んだベクトルに対応する記号として$\Ket{\vb*{a}_1}$を導入する
+
+これを\keyword{ケットベクトル}と呼ぶ
+
+本書では単に\keyword{ケット}と呼ぶこともある
+
+たとえば以下のようなもの
+\begin{equation*}
+  \Ket{\vb*{a}_1} = \begin{bmatrix} 0 \\ 1 \\ 7 \end{bmatrix}, \quad \Ket{\vb*{a}_2} = \begin{bmatrix} 1 \\ 0 \\ 4 \end{bmatrix}
+\end{equation*}
+
+そしてこれらを横倒しに転置したものが\keyword{ブラベクトル}
+\begin{equation*}
+  \Bra{\vb*{a}_1} = \begin{bmatrix} 0 & 1 & 7 \end{bmatrix}, \quad \Bra{\vb*{a}_2} = \begin{bmatrix} 1 & 0 & 4 \end{bmatrix}
+\end{equation*}
+本書では単に\keyword{ブラ}と呼ぶこともある
+
+\br
+
+英語で括弧のことをブラケット（bracket）と言う
+
+左側に来る$\Bra{\vb*{a}_1}$などがブラ（bra）、右側に来る$\Ket{\vb*{a}_2}$がケット（ket）、つなぎとしてアルファベットのcを追加してあげれば、「bracket」の完成
+
+\br
+
+この表記だと括弧が閉じるので、ブラベクトルとケットベクトルがセットになることもわかりやすい
+
+内積はスカラー、つまり単なる数を与えるので、$\Braket{\vb*{a}_1|\vb*{a}_2}$が出てきたらスカラーとして扱える
+
+\br
+
+今は具体的なベクトルを考えたが、記法を変えたのでもう少し抽象的なものとして捉えることができる
+
+「無限個の数字がならんだベクトル」を扱うときに、この表記が便利
 
 \end{document}
