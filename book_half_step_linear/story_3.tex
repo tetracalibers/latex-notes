@@ -178,4 +178,66 @@ $\Braket{\vb*{a}_1|\vb*{a}_2}$の記法は物理学、特に量子力学の分�
 
 「無限個の数字がならんだベクトル」を扱うときに、この表記が便利
 
+\section{大きさ、距離、さらなる解釈}
+
+\subsection{自分自身の大きさは自分自身との内積}
+
+ほかのベクトルとの関係性を見る前に、自分自身との関係性を見てみよう
+
+つまりベクトルの大きさである
+
+\br
+
+ベクトルの大きさは、要素ごとの2乗を計算し、和をとって、その平方根をとったもの
+
+$D$次元ベクトル$\vb*{a}_1$の場合には、
+\begin{equation*}
+  \lVert \vb*{a}_1 \rVert = \sqrt{a_{1,1}^2 + a_{1,2}^2 + \cdots + a_{1,D}^2} = \sqrt{\sum_{d=1}^{D} a_{1,d}^2}
+\end{equation*}
+と書ける
+
+\br
+
+ここで、$\lVert \vb*{a}_1 \rVert$の記号は\keyword{ノルム}と呼ばれる
+
+わざわざ新しい言葉を導入したのは、今後を見すえて概念を広く捉えるため
+
+\br
+
+また、上式の形のノルムを特に$\lVert \vb*{a}_1 \rVert_2$と書くこともある
+
+要素ごとの2乗を考えているので右下添字として$2$をつけた、と捉えられる
+
+\br
+
+ちなみに、上式を次のように書き換えられる
+\begin{equation*}
+  \lVert \vb*{a}_1 \rVert = \sqrt{\Braket{\vb*{a}_1|\vb*{a}_1}}
+\end{equation*}
+内積を使って、ノルムを定義できるということになる
+
+\sectionline
+\subsection{ノルムの定義も一つではない}
+
+以下の3つの性質を満たすものはすべてノルム
+\begin{enumerate}
+  \item $\lVert \vb*{u} \rVert \geq 0$であり、また$\lVert \vb*{u} \rVert = 0 \Leftrightarrow \vb*{u} = \vb*{0}$
+  \item $c \in \mathbb{R}$に対して$\lVert c\vb*{u} \rVert = |c|\lVert \vb*{u} \rVert$（$|c|$は通常の絶対値）
+  \item $\lVert \vb*{u} + \vb*{v} \rVert \leq \lVert \vb*{u} \rVert + \lVert \vb*{v} \rVert$
+\end{enumerate}
+1番目は、「大きさがゼロのベクトルは、ゼロベクトル」であることを意味している
+
+\sectionline
+\subsection{互いがどれだけ離れているかを測る}
+
+ここで導入する関係性は\keyword{距離}
+
+距離としては、離れているものほど大きな値を、近いほど小さな値を返すような関数を考えればよい
+
+また、負の距離というのは不自然なので、ゼロ以上の値を返してほしい
+
+\br
+
+
+
 \end{document}
