@@ -12,6 +12,8 @@
 
 この章では、そんな状況を実現するための理論を追いかけていく。
 
+\ifSubfilesClassLoaded{\tableofcontents}{}
+
 \section{ベクトルの作り方}
 
 \subsection{移動の表現としてのベクトル}
@@ -437,7 +439,7 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 ここで向きごとにかける数を変えてしまうと、いずれかの方向に多く進むことになり、ベクトルの向きが変わってしまう。そのため、「同じ」数をかけることに意味がある。
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \begin{minipage}{0.49\columnwidth}
     \centering
@@ -526,7 +528,44 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 ベクトルを「引き伸ばす」スカラー倍と、「つなぎ合わせる」足し算を組み合わせることで、あるベクトルを他のベクトルを使って表すことができる。
 
-\todo{図}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.45\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{4}
+        \def\ymin{0}
+        \def\ymax{3}
+        \def\ax{2.5}
+        \def\ay{2}
+
+        \coordinate (S) at (0.5,0.5);
+
+        % 透明なグリッド（bounding boxの調整用）
+        \draw[dotted, opacity=0] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax,\ay) node[midway, auto] {$\vb*{a}_3$};
+
+        % x成分とy成分
+        \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\ax,0) node[below, pos=0.7] {$\lambda_1 \vb*{a}_1$};
+        \draw[vector, dashed, very thick, SkyBlue] ($(S)+(\ax,0)$) -- ++(0,\ay) node[right, pos=0.6] {$\lambda_2 \vb*{a}_2$};
+
+        % 基底ベクトル
+        \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(1,0) node[below, pos=0.4] {$\vb*{a}_1$};
+        \draw[vector, very thick, Cerulean] ([xshift=0cm]$(S)+(\ax,0)$) -- ++(0,0.5) node[right, near start] {$\vb*{a}_2$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.45\columnwidth}
+    \LARGE
+    \begin{equation*}
+      \textcolor{BurntOrange}{\vb*{a}_3} = \textcolor{CarnationPink}{\lambda_1} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{\lambda_2} \textcolor{Cerulean}{\vb*{a}_2}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
 
 このように、スカラー倍と和のみを使った形を\keyword{一次結合}もしくは\keyword{線形結合}という。
 
