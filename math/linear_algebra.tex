@@ -420,13 +420,97 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 「どれくらい進むか」を表す数たち全員に同じ数をかけることで、向きを変えずにベクトルを「引き伸ばす」ことができる。
 
-\todo{図}
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \coordinate (a) at (0,0);
+      \coordinate (t) at (4,2);
+      \coordinate (b) at ($(a)!1.5cm!(t)$);
+      \draw [vector, thick, TealBlue] (a) -- (t) node[midway, below=0.5em] {$k\vb*{a}$};
 
-ここで位置ごとにかける数を変えてしまうと、いずれかの方向に多く進むことになり、ベクトルの向きが変わってしまう。そのため、「同じ」数をかけることに意味がある。
+      \coordinate (c) at ($(a)!0.2cm!90:(b)$);
+      \coordinate (d) at ($(b)+(c)-(a)$);
+      \draw [vector, thick, BurntOrange] (c) -- node[midway,auto] {$\vb*{a}$} (d);
+    \end{tikzpicture}
+  }
+\end{center}
 
-\todo{図}
+ここで向きごとにかける数を変えてしまうと、いずれかの方向に多く進むことになり、ベクトルの向きが変わってしまう。そのため、「同じ」数をかけることに意味がある。
 
-\vskip\baselineskip
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{5.5}
+        \def\ax{1}
+        \def\ay{0.5}
+        \def\k{3}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトルaのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++(\ax, 0) node[below, midway] {\small$a_1$};
+        % ベクトルaのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)$) -- ++(0, \ay) node[right, midway] {\small$a_2$};
+
+        % ベクトルkaのx成分
+        \draw[thick, densely dashed, Rhodamine] ([yshift=1.5cm]S) -- ++(\k*\ax, 0) node[below, midway] {\small$3a_1$};
+        % ベクトルkaのy成分
+        \draw[thick, densely dashed, Cerulean] ([yshift=1.5cm]$(S)+(\k*\ax, 0)$) -- ++(0, \k*\ay) node[right, midway] {\small$3a_2$};
+
+        % ベクトルa
+        \draw[vector, very thick, BurntOrange] (S) -- ($(S)+(\ax,\ay)$) node[above=0.1em, pos=0.4] {$\vb*{a}$};
+
+        % ベクトルkaを上に平行移動したベクトル
+        \draw[vector, very thick, TealBlue] ([yshift=1.5cm]S) -- ([yshift=1.5cm]$(S)+\k*(\ax,\ay)$) node[midway, auto] {$3\vb*{a}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{5.5}
+        \def\ax{1}
+        \def\ay{0.5}
+        \def\kx{3}
+        \def\ky{5}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトルaのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++(\ax, 0) node[below, midway] {\small$a_1$};
+        % ベクトルaのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)$) -- ++(0, \ay) node[right, midway] {\small$a_2$};
+
+        % ベクトルkaのx成分
+        \draw[thick, densely dashed, Rhodamine] ([yshift=1.5cm]S) -- ++(\kx*\ax, 0) node[below, midway] {\small$3a_1$};
+        % ベクトルkaのy成分
+        \draw[thick, densely dashed, Cerulean] ([yshift=1.5cm]$(S)+(\kx*\ax, 0)$) -- ++(0, \ky*\ay) node[right, midway] {\small$5a_2$};
+
+        % ベクトルa
+        \draw[vector, very thick, BurntOrange] (S) -- ($(S)+(\ax,\ay)$) node[above=0.1em, pos=0.4] {$\vb*{a}$};
+
+        % ベクトルkaを上に平行移動したベクトル
+        \draw[vector, very thick, TealBlue] ([yshift=1.5cm]S) -- ([yshift=1.5cm]$(S)+(\kx*\ax,\ky*\ay)$) node[midway, auto] {$\vb*{?}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+\end{figure}
 
 そこで、ベクトルの定数倍（スカラー倍）を次のように定義する。
 
