@@ -126,4 +126,196 @@ $\ket{\vb*{x}}$を基底で表現する一次結合を考えてみると、
 
 この意味で、直交する基底、すなわち\keyword{直交基底}は便利で「よい」と言える
 
+\section{直交は作れる}
+
+\subsection{直交するように係数を選ぶ}
+
+\keyword{シュミットの直交化法}と呼ばれる方法により、直交基底を作ることもできる
+
+\br
+
+例として、次の3つのベクトルを生成元とする線形空間を考える
+\begin{equation*}
+  \ket{\vb*{a}_1} = \mqty[1 \\ 1 \\ 0], \quad \ket{\vb*{a}_2} = \mqty[1 \\ 0 \\ 1], \quad \ket{\vb*{a}_3} = \mqty[0 \\ 2 \\ -1]
+\end{equation*}
+まず1つ、ベクトル$\ket{\vb*{a}_1}$を選ぶ
+
+次に$\ket{\vb*{a}_1}$に直交する基底を作りたいのだが、何でもよいわけではない
+
+生成元から作られる空間を考えたいので、ここでは$\ket{\vb*{a}_2}$を材料に使う
+
+$c \in \mathbb{R} $として、
+\begin{equation*}
+  \Ket{\tilde{\vb*{u}}_2} = \Ket{\vb*{a}_2} + c \Ket{\vb*{a}_1}
+\end{equation*}
+を作る
+
+この$\Ket{\tilde{\vb*{u}}_2}$を$\ket{\vb*{a}_1}$と直交させたいので、左から$\bra{\vb*{a}_1}$を掛け算する
+\begin{equation*}
+  \Braket{\vb*{a}_1|\tilde{\vb*{u}}_2} = \Braket{\vb*{a}_1|\vb*{a}_2} + c \Braket{\vb*{a}_1|\vb*{a}_1}
+\end{equation*}
+この左辺をゼロにしたいわけなので、
+\begin{equation*}
+  c = -\frac{\Braket{\vb*{a}_1|\vb*{a}_2}}{\Braket{\vb*{a}_1|\vb*{a}_1}}
+\end{equation*}
+と選べばよいことがわかる
+
+\sectionline
+\subsection{ノルムを揃えておくと便利}
+
+分母$\Braket{\vb*{a}_1|\vb*{a}_1}$の部分はベクトル$\vb*{a}_1$の内積で、この平方根がノルム、つまりベクトルの大きさである
+
+ここを初めから$1$にしておくと分母が消えてくれて、計算が簡単になりそう
+
+もし最初から$\ket{\vb*{a}_1}$のノルムが$1$であれば、次のようになる
+\begin{equation*}
+  c = -\Braket{\vb*{a}_1|\vb*{a}_2}
+\end{equation*}
+ベクトルのノルムを$1$に揃えておくことを\keyword{正規化}と呼ぶ
+
+\br
+
+$\ket{\vb*{a}_1}$を正規化したベクトルを$\ket{\vb*{u}_1}$として、$\bra{\vb*{a}_1}$の代わりに$\bra{\vb*{u}_1}$を使って$c$を求めておく
+\begin{equation*}
+  c = -\Braket{\vb*{u}_1|\vb*{a}_2}
+\end{equation*}
+すると、$\Ket{\tilde{\vb*{u}}_2} = \Ket{\vb*{a}_2} + c \Ket{\vb*{a}_1}$の代わりに
+\begin{equation*}
+  \Ket{\tilde{\vb*{u}}_2} = \Ket{\vb*{a}_2} - \Bigl( \Braket{\vb*{u}_1|\vb*{a}_2} \Bigr) \Ket{\vb*{u}_1}
+\end{equation*}
+を考えればよいことになる
+
+この式だけで、考えたい空間上において$\vb*{u}_1$に直交するベクトルを作ることができた
+
+\br
+
+さらにこの作業を続けるときに、求まった$\Ket{\tilde{\vb*{u}}_2}$をまた正規化して、$\ket{\vb*{u}_2}$を作っておく
+
+次に作るベクトル$\Ket{\tilde{\vb*{u}}_3}$は、$\ket{\vb*{u}_1}$と$\ket{\vb*{u}_2}$の両方に直交する必要がある
+
+考え方は上の計算と同じで、係数を追加して、その係数を求める方程式を立てるという流れ
+
+\br
+
+念のため次のステップまで進んでおくと、まずは、
+\begin{equation*}
+  \Ket{\tilde{\vb*{u}}_3} = \Ket{\vb*{a}_3} + c_1 \Ket{\vb*{u}_1} + c_2 \Ket{\vb*{u}_2}
+\end{equation*}
+とする
+
+これに左から$\bra{\vb*{u}_1}$と$\bra{\vb*{u}_2}$をかけ算した場合のそれぞれにおいて、左辺がゼロになればよい
+
+式が2つ出てきて、未知変数も$c_1$と$c_2$の2つあるので、解ける
+
+ただ、実際にはそもそも$\ket{\vb*{u}_2}$は$\ket{\vb*{u}_1}$に直交しているので、もっと簡単に計算を進められる
+
+\sectionline
+\subsection{シュミットの直交化法のまとめ}
+
+今、考えたい空間の生成元を$\ket{\vb*{a}_d}, \, d = 1, 2, \ldots, D$とする
+\begin{enumerate}
+  \item $\ket{\vb*{a}_1}$を正規化して最初の基底を作る：$\ket{\vb*{u}_1} = \dfrac{1}{\sqrt{\Braket{\vb*{a}_1|\vb*{a}_2}}}\Ket{\vb*{a}_1}$
+  \item まずは$d=1$として、以下の手順3~5を繰り返す
+  \item $d+1$番目の基底の候補を作る：$\Ket{\tilde{\vb*{u}}_{d+1}} = \Ket{\vb*{a}_{d+1}} - \displaystyle\sum_{d'=1}^{d} \Bigl( \Braket{\vb*{u}_{d'}|\vb*{a}_{d+1}}\Bigr) \Ket{\vb*{u}_{d'}}$
+  \item 基底の候補$\Ket{\tilde{\vb*{u}}_{d+1}}$を正規化して$\ket{\vb*{u}_{d+1}}$を作り、これを$d+1$個目の基底とする
+  \item $d$を1つ増やして、次の基底の計算へと進む
+\end{enumerate}
+このように、互いに直交しつつノルムが1となっている基底のことを\keyword{正規直交基底}と呼ぶ
+
+この正規直交基底を作るための手順は、あとで関数を考えるときにも使う
+
+\sectionline
+\subsection{成分を抜いたら残らないこともある}
+
+実は以下のベクトルは一次従属であるため、「基底」とは呼べない
+\begin{equation*}
+  \ket{\vb*{a}_1} = \mqty[1 \\ 1 \\ 0], \quad \ket{\vb*{a}_2} = \mqty[1 \\ 0 \\ 1], \quad \ket{\vb*{a}_3} = \mqty[0 \\ 2 \\ -1]
+\end{equation*}
+あとで見るように、この中から2つを選んで組を作ると基底となる
+
+3次元空間中に2つのベクトルなので、作られる線形空間は平面
+
+\br
+
+与えられたベクトルの組、つまり生成元が、どのような空間を作るのか、基底なのか、それとも余分なものが含まれるのか…\keyword{行列}の概念はこの判断と密接に関係する
+
+ただ、このあとの計算で見るように、シュミットの直交化法で実際に正規直交基底を構成することでも、余分なものを削ることができる
+
+\sectionline
+\subsection{具体的な計算で余分なものが消える}
+
+次の例で計算を進めてみる
+\begin{equation*}
+  \ket{\vb*{a}_1} = \mqty[1 \\ 1 \\ 0], \quad \ket{\vb*{a}_2} = \mqty[1 \\ 0 \\ 1], \quad \ket{\vb*{a}_3} = \mqty[1 \\ 2 \\ -1]
+\end{equation*}
+
+$\braket{\vb*{a}_1|\vb*{a}_1} = 2$なので、正規化すると、
+\begin{equation*}
+  \ket{\vb*{u}_1} = \frac{1}{\sqrt{2}} \mqty[1 \\ 1 \\ 0]
+\end{equation*}
+が得られる
+
+次のステップは、
+\begin{align*}
+  \Braket{\vb*{u}_1|\vb*{a}_2} & = \mqty[\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & 0] \mqty[1 \\ 0 \\ 1] = \frac{1}{\sqrt{2}} \cdot 1 = \frac{1}{\sqrt{2}} \\
+\end{align*}
+より、
+\begin{align*}
+  \ket{\tilde{\vb*{u}}_2} & = \ket{\vb*{a}_2} - \Bigl(\Braket{\vb*{u}_1|\vb*{a}_2}\Bigr) \ket{\vb*{u}_1} \\
+                          & = \mqty[1                                                                    \\ 0 \\ 1] - \frac{1}{\sqrt{2}} \cdot \dfrac{1}{\sqrt{2}} \mqty[1 \\ 1 \\ 0] \\
+                          & = \mqty[1                                                                    \\ 0 \\ 1] - \frac{1}{2} \mqty[1 \\ 1 \\ 0] \\
+                          & = \frac{1}{2} \mqty[1                                                        \\ -1 \\ 2]
+\end{align*}
+である
+
+\br
+
+次のステップのために正規化しておこう
+
+$\braket{\tilde{\vb*{u}}_2|\tilde{\vb*{u}}_2} = \dfrac{3}{2}$なので、次のようになる
+\begin{equation*}
+  \ket{\vb*{u}_2} = \frac{1}{\sqrt{6}} \mqty[1 \\ -1 \\ 2]
+\end{equation*}
+
+\br
+
+次に得られるはずのベクトル$\ket{\tilde{\vb*{u}}_3}$は以下のように計算できる
+\begin{align*}
+  \Braket{\vb*{u}_1|\vb*{a}_3} & = \mqty[\frac{1}{\sqrt{2}}                                        & \frac{1}{\sqrt{2}}  & 0]              \mqty[1     \\ 2 \\ -1] \\
+                               & = \dfrac{1}{\sqrt{2}} + \dfrac{2}{\sqrt{2}}                                                                           \\
+                               & = \dfrac{3}{\sqrt{2}}                                                                                                 \\
+  \Braket{\vb*{u}_2|\vb*{a}_3} & = \mqty[\frac{1}{\sqrt{6}}                                        & -\frac{1}{\sqrt{6}} & \frac{2}{\sqrt{6}}] \mqty[1 \\ 2 \\ -1] \\
+                               & = \dfrac{1}{\sqrt{6}} - \dfrac{2}{\sqrt{6}} - \dfrac{2}{\sqrt{6}}                                                     \\
+                               & = -\dfrac{3}{\sqrt{6}}
+\end{align*}
+より、
+\begin{align*}
+  \ket{\tilde{\vb*{u}}_3} & = \ket{\vb*{a}_3} - \Bigl(\Braket{\vb*{u}_1|\vb*{a}_3}\Bigr) \ket{\vb*{u}_1} - \Bigl(\Braket{\vb*{u}_2|\vb*{a}_3}\Bigr) \ket{\vb*{u}_2} \\
+                          & = \mqty[1                                                                                                                               \\ 2 \\ -1] - \frac{3}{\sqrt{2}} \mqty[\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0] + \frac{3}{\sqrt{6}} \mqty[\frac{1}{\sqrt{6}} \\ -\frac{1}{\sqrt{6}} \\ \frac{2}{\sqrt{6}}] \\
+                          & = \mqty[1                                                                                                                               \\ 2 \\ -1] - \mqty[\frac{3}{2} \\ \frac{3}{2} \\ 0] + \mqty[\frac{3}{6} \\ -\frac{3}{6} \\ 1] \\
+                          & = \mqty[\frac{6}{6} - \frac{9}{6} + \frac{3}{6}                                                                                         \\ \frac{12}{6} - \frac{9}{6} - \frac{3}{6} \\ -1 - 0 + 1] \\
+                          & = \mqty[0                                                                                                                               \\ 0 \\ 0 ]
+\end{align*}
+最後に残ったのはゼロベクトル
+
+つまり、これまでに得られたものを抜くと何も残らない、ということ
+
+\br
+
+この時点までで、3つの生成元から作られる線形空間は2次元、つまり平面であり、基底は2つであることがわかる
+
+その基底として、ここで作った$\ket{\vb*{u}_1}$と$\ket{\vb*{u}_2}$を使える
+
+\br
+
+なお、消えてしまった$\ket{\vb*{a}_3}$が不要ということではない
+
+今回は$\ket{\vb*{a}_1}$から出発したが、ほかのベクトルから始めることもできる
+
+そうすると別の基底が求まる
+
+そこでは$\ket{\vb*{a}_3}$が、$\ket{\vb*{a}_1}$か$\ket{\vb*{a}_2}$のどちらかの代わりに活躍する
+
+ただし、どんな基底を使っても、結果として作られる平面は同一のもの
+
 \end{document}
