@@ -99,8 +99,6 @@
 \AddToHook{cmd/section/before}{\ifafterchapter\global\afterchapterfalse\else\clearpage\fi}
 \AddToHook{cmd/chapter/before}{\global\afterchaptertrue} % \chapter の後でフラグをリセット
 
-\usepackage{lipsum} % デバッグ用のダミーテキスト
-
 \usepackage{setspace} % 行間調整用
 
 \usepackage[margin=15mm]{geometry} % 余白
@@ -172,7 +170,13 @@
 
 \usepackage{halloweenmath}
 
+% === draft ===
+
+\usepackage{lipsum} % デバッグ用のダミーテキスト
+
 \usepackage[enable]{easy-todo}
+
+\usepackage{mindflow}
 
 % === tcolorbox ===
 
