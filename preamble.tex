@@ -94,10 +94,10 @@
 % === layout ===
 
 % \section の前に改ページを挿入（ただし、\chapter 直後は除外）
-\newif\ifafterchapter
-\afterchaptertrue % 初期状態は true に設定
-\AddToHook{cmd/section/before}{\ifafterchapter\global\afterchapterfalse\else\clearpage\fi}
-\AddToHook{cmd/chapter/before}{\global\afterchaptertrue} % \chapter の後でフラグをリセット
+% \newif\ifafterchapter
+% \afterchaptertrue % 初期状態は true に設定
+% \AddToHook{cmd/section/before}{\ifafterchapter\global\afterchapterfalse\else\clearpage\fi}
+% \AddToHook{cmd/chapter/before}{\global\afterchaptertrue} % \chapter の後でフラグをリセット
 
 \usepackage{setspace} % 行間調整用
 
