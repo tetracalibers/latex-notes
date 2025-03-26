@@ -2,7 +2,13 @@
 
 \begin{document}
 
-\section{三角関数}
+\ifSubfilesClassLoaded{
+  \let\subsubsection\subsection
+  \let\subsection\section
+  \chapter{三角関数}
+}{
+  \section{三角関数}
+}
 
 \subsection{円周率}
 

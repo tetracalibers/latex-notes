@@ -2,7 +2,13 @@
 
 \begin{document}
 
-\section{数列}
+\ifSubfilesClassLoaded{
+  \let\subsubsection\subsection
+  \let\subsection\section
+  \chapter{数列}
+}{
+  \section{数列}
+}
 
 数列は、「数の並びの規則性に着目しよう」という話題として語られる。
 

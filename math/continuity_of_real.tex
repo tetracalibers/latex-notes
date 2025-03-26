@@ -8,8 +8,6 @@
 
 この章では、「実数は連続である」、平たく言えば「数直線には穴がない」という表現を観察する。
 
-\ifSubfilesClassLoaded{\tableofcontents}{}
-
 \section{区間の限界を表す}
 
 区間の最大値や最小値は、その区間の中で最大もしくは最小となる数を指す。
@@ -80,15 +78,15 @@
       \def\x{-1}
       \def\minR{-4}
       \def\maxR{4}
-      
+
       \nlAxisX{\minR}{\maxR}
       \nlinfnum{\x}[]{}
-      
+
       \draw[lightslategray]
-        (\minR,0) -- (\x,0) node[lightslategray, midway,above=2em]{\bfseries\small 上に有界な区間$X$};
-  
+      (\minR,0) -- (\x,0) node[lightslategray, midway,above=2em]{\bfseries\small 上に有界な区間$X$};
+
       \draw [Rhodamine,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
-        (\x,0) -- (\maxR+0.5,0) node[midway,yshift=-3em]{\bfseries\small $X$の上界\scriptsize（$M$はここのどこか）};
+      (\x,0) -- (\maxR+0.5,0) node[midway,yshift=-3em]{\bfseries\small $X$の上界\scriptsize（$M$はここのどこか）};
     \end{tikzpicture}
   }
 \end{center}
@@ -111,15 +109,15 @@
       \def\x{1}
       \def\minR{-4}
       \def\maxR{4}
-      
+
       \nlAxisX{\minR}{\maxR}
       \nlnuminf{\x}[]{}
-      
+
       \draw[lightslategray]
-        (\x,0) -- (\maxR,0) node[lightslategray, midway,above=2em]{\bfseries\small 下に有界な区間$X$};
-  
+      (\x,0) -- (\maxR,0) node[lightslategray, midway,above=2em]{\bfseries\small 下に有界な区間$X$};
+
       \draw [Cerulean,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
-        (\minR,0) -- (\x,0) node[midway,yshift=-3em]{\bfseries\small $X$の下界\scriptsize（$N$はここのどこか）};
+      (\minR,0) -- (\x,0) node[midway,yshift=-3em]{\bfseries\small $X$の下界\scriptsize（$N$はここのどこか）};
     \end{tikzpicture}
   }
 \end{center}
@@ -143,17 +141,17 @@
       \def\maxR{4}
       \def\minX{-1.5}
       \def\maxX{1.5}
-      
+
       \nlAxisX{\minR}{\maxR}
       \nlnumnum{\minX}[]{}{\maxX}[]{}
 
       \node[above=2em, midway, lightslategray] at (current bounding box.north) {\bfseries\small 有界な区間$X$};
-      
+
       \draw [Rhodamine,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
-        (\maxX,0) -- (\maxR+0.5,0) node[midway,yshift=-3em]{\bfseries\small $X$の上界};
-        
+      (\maxX,0) -- (\maxR+0.5,0) node[midway,yshift=-3em]{\bfseries\small $X$の上界};
+
       \draw [Cerulean,thick, decorate,decoration={brace,amplitude=5pt,mirror,raise=3ex}]
-        (\minR,0) -- (\minX,0) node[midway,yshift=-3em]{\bfseries\small $X$の下界};
+      (\minR,0) -- (\minX,0) node[midway,yshift=-3em]{\bfseries\small $X$の下界};
     \end{tikzpicture}
   }
 \end{center}
