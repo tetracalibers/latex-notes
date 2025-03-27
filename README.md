@@ -11,7 +11,7 @@ alias pdf2htmlEX='docker run -ti --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htm
 #### (master)
 
 ```bash
-pdf2htmlEX --dest-dir ./html ./out/imaging-math.pdf
+cp ./out/imaging-math.pdf ./html/imaging-math.pdf
 ```
 
 #### 数列
