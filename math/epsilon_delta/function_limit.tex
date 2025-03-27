@@ -1,4 +1,4 @@
-\documentclass[../../math-imaging]{subfiles}
+\documentclass[../../imaging-math]{subfiles}
 
 \begin{document}
 
@@ -19,7 +19,7 @@ $\varepsilon$がどんなに小さい正の数であっても、$x$と$a$の誤�
       \def\diff{-0.4} % aとxの誤差
       \def\ep{0.6} % ε
       \def\dl{0.5} % δ
-      
+
       \def\xmin{-1};
       \def\xmax{6};
       \def\ymin{-1};
@@ -37,15 +37,15 @@ $\varepsilon$がどんなに小さい正の数であっても、$x$と$a$の誤�
       %\fill[carnationpink, fill opacity=0.5] (\a-\dl,0) rectangle (\a+\dl,\ymax);
       % ε区間
       \fill[SkyBlue, fill opacity=0.5] (0,{\fn{\a}-\ep}) rectangle (\xmax,{\fn{\a}+\ep});
-      
+
       % δ区間を表す矢印
       %\draw[<->, hotpink, yshift=0.5em] (\a-\dl,\ymax) -- (\a,\ymax) node[midway, above]{$\delta$};
       %\draw[<->, hotpink, yshift=0.5em] (\a,\ymax) -- (\a+\dl,\ymax) node[midway, above]{$\delta$};
-      
+
       % ε区間を表す矢印
       \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}-\ep}) -- (\xmax,{\fn{\a}}) node[midway, right]{$\varepsilon$};
       \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}}) -- (\xmax,{\fn{\a}+\ep}) node[midway, right]{$\varepsilon$};
-  
+
       % 関数のグラフ
       \begin{scope}
         \clip (\xmin/3,\ymin) rectangle (\xmax,\ymax);
@@ -56,12 +56,12 @@ $\varepsilon$がどんなに小さい正の数であっても、$x$と$a$の誤�
         \clip (\xmin,0) rectangle (\xmin/3,\ymax);
         \draw[BurntOrange, dotted, thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
       \end{scope}
-      
+
       % x=aの直線
       %\draw[magenta, dashed] (\a,0) node[below]{$a$} -- (\a,\ymax);
       % y=bの直線
       \draw[cyan, dashed] (0,{\fn{\a}}) node[left]{$b$} -- (\xmax,{\fn{\a}});
-      
+
       % 点(x, f(x))を表す補助線
       %\draw[gray, semithick] (\a+\diff,0) node[below]{$x$} -- (\a+\diff,{\fn{\a+\diff}});
       % y軸にも写す
@@ -81,7 +81,7 @@ $x=a$の周りには、両側それぞれ$\delta$だけ広げた区間を考え�
       \def\diff{-0.5} % aとxの誤差
       \def\ep{0.6} % ε
       \def\dl{0.7} % δ
-      
+
       \def\xmin{-1};
       \def\xmax{6};
       \def\ymin{-1};
@@ -99,15 +99,15 @@ $x=a$の周りには、両側それぞれ$\delta$だけ広げた区間を考え�
       \fill[carnationpink, fill opacity=0.5] (\a-\dl,0) rectangle (\a+\dl,\ymax);
       % ε区間
       \fill[SkyBlue, fill opacity=0.5] (0,{\fn{\a}-\ep}) rectangle (\xmax,{\fn{\a}+\ep});
-      
+
       % δ区間を表す矢印
       \draw[<->, hotpink, yshift=0.5em] (\a-\dl,\ymax) -- (\a,\ymax) node[midway, above]{$\delta$};
       \draw[<->, hotpink, yshift=0.5em] (\a,\ymax) -- (\a+\dl,\ymax) node[midway, above]{$\delta$};
-      
+
       % ε区間を表す矢印
       \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}-\ep}) -- (\xmax,{\fn{\a}}) node[midway, right]{$\varepsilon$};
       \draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}}) -- (\xmax,{\fn{\a}+\ep}) node[midway, right]{$\varepsilon$};
-  
+
       % 関数のグラフ
       \begin{scope}
         \clip (\xmin/3,\ymin) rectangle (\xmax,\ymax);
@@ -118,12 +118,12 @@ $x=a$の周りには、両側それぞれ$\delta$だけ広げた区間を考え�
         \clip (\xmin,0) rectangle (\xmin/3,\ymax);
         \draw[BurntOrange, dotted, thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
       \end{scope}
-      
+
       % x=aの直線
       \draw[magenta, dashed] (\a,0) node[below]{$a$} -- (\a,\ymax);
       % y=bの直線
       \draw[cyan, dashed] (0,{\fn{\a}}) node[left]{$b$} -- (\xmax,{\fn{\a}});
-      
+
       % 点(x, f(x))を表す補助線
       \draw[gray, semithick] (\a+\diff,0) node[below]{$x$} -- (\a+\diff,{\fn{\a+\diff}});
       % y軸にも写す
@@ -145,7 +145,7 @@ $\varepsilon$は正の数ならなんでもよいとすれば、$\varepsilon$を
       \def\diff{-0.15} % aとxの誤差
       \def\ep{0.175} % ε
       \def\dl{0.225} % δ
-      
+
       \def\xmin{-1};
       \def\xmax{6};
       \def\ymin{-1};
@@ -163,15 +163,15 @@ $\varepsilon$は正の数ならなんでもよいとすれば、$\varepsilon$を
       \fill[carnationpink, fill opacity=0.5] (\a-\dl,0) rectangle (\a+\dl,\ymax);
       % ε区間
       \fill[SkyBlue, fill opacity=0.5] (0,{\fn{\a}-\ep}) rectangle (\xmax,{\fn{\a}+\ep});
-      
+
       % δ区間を表す矢印
       %\draw[<->, hotpink, yshift=0.5em] (\a-\dl,\ymax) -- (\a,\ymax) node[midway, above]{$\delta$};
       %\draw[<->, hotpink, yshift=0.5em] (\a,\ymax) -- (\a+\dl,\ymax) node[midway, above]{$\delta$};
-      
+
       % ε区間を表す矢印
       %\draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}-\ep}) -- (\xmax,{\fn{\a}}) node[midway, right]{$\varepsilon$};
       %\draw[<->, SkyBlue, xshift=0.5em] (\xmax,{\fn{\a}}) -- (\xmax,{\fn{\a}+\ep}) node[midway, right]{$\varepsilon$};
-  
+
       % 関数のグラフ
       \begin{scope}
         \clip (\xmin/3,\ymin) rectangle (\xmax,\ymax);
@@ -182,12 +182,12 @@ $\varepsilon$は正の数ならなんでもよいとすれば、$\varepsilon$を
         \clip (\xmin,0) rectangle (\xmin/3,\ymax);
         \draw[BurntOrange, dotted, thick,samples=100] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
       \end{scope}
-      
+
       % x=aの直線
       \draw[magenta, dashed] (\a,0) node[below]{$a$} -- (\a,\ymax);
       % y=bの直線
       \draw[cyan, dashed] (0,{\fn{\a}}) node[left]{$b$} -- (\xmax,{\fn{\a}});
-      
+
       % 点(x, f(x))を表す補助線
       \draw[gray, semithick] (\a+\diff,0) node[below left]{$x$} -- (\a+\diff,{\fn{\a+\diff}});
       % y軸にも写す
