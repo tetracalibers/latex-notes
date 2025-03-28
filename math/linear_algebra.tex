@@ -581,25 +581,266 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 このように、スカラー倍と和のみを使った形を\keyword{一次結合}もしくは\keyword{線形結合}という。
 
-\subsection{基底}
+\subsection{基底：座標を復元する}
 
-\begin{mindflow}
+3次元までのベクトルは、矢印によって「ある点を指し示すもの」として定義できる。
 
-  3次元までのベクトルは、矢印によって「ある点を指し示すもの」として定義できる。
+しかし、4次元以上の世界に話を広げるため、ベクトルを単に「数を並べたもの」として再定義した。
+「数を並べたもの」としてのベクトルを、\keyword{数ベクトル}と呼んでいる。
 
-  しかし、4次元以上の世界に話を広げるため、ベクトルを単に「数を並べたもの」として再定義した。
+\br
 
-  \vskip\baselineskip
+さて、2次元平面や3次元空間で点を指し示すためのもう一つの概念として、\keyword{座標}がある。
 
-  点を指し示すためのもう一つの概念として、座標がある。
+座標は、$x$軸方向にこのくらい進み、$y$軸方向にこのくらい進む…というように、「進む方向」と「進む長さ」によって表現される。
 
-  座標も結局は矢印と同様に、$x$軸方向にこのくらい進み、$y$軸方向にこのくらい進む、というように、「進む方向」と「進む長さ」を持つ。
+\br
 
-  \vskip\baselineskip
+単なる数の並びである数ベクトルでは、「進む方向」については何も記述されていない。
+\begin{equation*}
+  \begin{bmatrix}
+    3 \\
+    2
+  \end{bmatrix}
+\end{equation*}
 
-  単なる数の並びを、向きと大きさを持つ量として復元するための道具が、基底である。
+しかし、「進む方向」を表すベクトル$\vb*{a}_1,\,\vb*{a}_2$を新たに用意すれば、一次結合によって「進む方向」と「進む長さ」を持つベクトルを作ることができる。
+\begin{equation*}
+  \vb*{x} = 3 \vb*{a}_1 + 2 \vb*{a}_2
+\end{equation*}
 
-\end{mindflow}
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{cc}
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.4}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{3}
+          \def\ymin{-0.5}
+          \def\ymax{2.5}
+
+          % 基底ベクトル
+          \def\ax{0.5}
+          \def\ay{0.5}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (O) at (\ox,\oy);
+          \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+          % 0.5刻みのグリッド
+          \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % 原点
+          \node at (O) [below left] {$O$};
+
+          % x軸方向の移動量
+          \draw[vector, dashed, very thick, CarnationPink] (O) -- ++(\n*\ax, 0) node[below, midway] {$3$};
+          % y軸方向の移動量
+          \draw[vector, dashed, shorten >=0.05cm, very thick, SkyBlue] ($(O)+(\n*\ax,0)$) -- ++(0, \m*\ay) node[right, midway] {$2$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (O) -- ++(\n*\ax,\m*\ay) node[midway, auto] {$\vb*{x}$};
+
+          % 点
+          \draw (X) node[circle, fill, inner sep=1.5pt] {};
+          \node at (X) [above right] {$(3,2)$};
+        \end{tikzpicture}
+      }
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.4}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{3}
+          \def\ymin{-0.5}
+          \def\ymax{2.5}
+
+          % 基底ベクトル
+          \def\ax{0.5}
+          \def\ay{0.5}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (S) at (\ox,\oy);
+
+          % グリッド
+          \draw[dotted] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          % 透明な軸（bouding boxの調整用）
+          \draw[axis, opacity=0] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis, opacity=0] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (S) -- ++(\n*\ax,\m*\ay) node[midway, auto] {$\vb*{x}$};
+
+          % x成分とy成分
+          \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\n*\ax,0) node[below, near end] {$3 \vb*{a}_1$};
+          \draw[vector, dashed, very thick, SkyBlue] ($(S)$) -- ++(0,\m*\ay) node[left, near end] {$2 \vb*{a}_2$};
+
+          % 基底ベクトル
+          \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(\ax,0) node[below, pos=0.4] {$\vb*{a}_1$};
+          \draw[vector, very thick, Cerulean] ([xshift=0cm]$(S)$) -- ++(0,\ay) node[left, near start] {$\vb*{a}_2$};
+        \end{tikzpicture}
+      }
+    \end{minipage} \\
+
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \left(\textcolor{CarnationPink}{3}, \textcolor{SkyBlue}{2}\right)
+      \end{align*}
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \textcolor{BurntOrange}{\vb*{x}}  = \textcolor{CarnationPink}{3} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{2} \textcolor{Cerulean}{\vb*{a}_2}
+      \end{align*}
+    \end{minipage} \\
+  \end{tabular}
+\end{figure}
+
+$\vb*{a}_1$と$\vb*{a}_2$のように、座標を復元するために向きの情報を付け加えるベクトルを、\keyword{基底}と呼ぶことにする。
+（「基底」と呼ぶための条件はいろいろあるが、それについては後々解説していく。）
+
+\subsubsection{基底が変われば座標が変わる}
+
+先ほどの例では、直交座標による点$(3,2)$をベクトルの一次結合$\vb*{x} = 3 \vb*{a}_1 + 2 \vb*{a}_2$で表現するために$\vb*{a}_1$と$\vb*{a}_2$を用意した。
+
+$\vb*{a}_1$を$x$軸方向の長さ$1$のベクトル、$\vb*{a}_2$を$y$軸方向の長さ$1$のベクトルとすれば、$\vb*{a}_1$を$3$倍、$\vb*{a}_2$を$2$倍して足し合わせることで、点$(5,4)$を指し示すベクトル$\vb*{x}$を作ることができる。
+
+\br
+
+ここで、一次結合の式$\vb*{x} = 3 \vb*{a}_1 + 2 \vb*{a}_2$は変えずに、$\vb*{a}_1$と$\vb*{a}_2$を変更すると、$\vb*{x}$が指し示す点も変わってしまう。
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{cc}
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.15}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{4.5}
+          \def\ymin{-0.5}
+          \def\ymax{5.5}
+
+          % 基底ベクトル
+          \def\ax{1}
+          \def\ay{2}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (S) at (\ox,\oy);
+
+          % グリッド
+          \draw[dotted] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          % 透明な軸（bouding boxの調整用）
+          \draw[axis, opacity=0] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis, opacity=0] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (S) -- ++(\n*\ax,\m*\ay) node[midway, auto] {$\vb*{x}$};
+
+          % x成分とy成分
+          \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\n*\ax,0) node[below, near end] {$3 \vb*{a}_1$};
+          \draw[vector, dashed, very thick, SkyBlue] ($(S)$) -- ++(0,\m*\ay) node[left, near end] {$2 \vb*{a}_2$};
+
+          % 基底ベクトル
+          \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(\ax,0) node[below, pos=0.4] {$\vb*{a}_1$};
+          \draw[vector, very thick, Cerulean] ([xshift=0cm]$(S)$) -- ++(0,\ay) node[left, near start] {$\vb*{a}_2$};
+        \end{tikzpicture}
+      }
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.15}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{4.5}
+          \def\ymin{-0.5}
+          \def\ymax{5.5}
+
+          % 基底ベクトル
+          \def\ax{1}
+          \def\ay{2}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (O) at (\ox,\oy);
+          \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+          % 0.5刻みのグリッド
+          \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % 原点
+          \node at (O) [below left] {$O$};
+
+          % x軸方向の移動量
+          \draw[vector, dashed, very thick, CarnationPink] (O) -- ++(\n*\ax, 0) node[below, midway] {$6$};
+          % y軸方向の移動量
+          \draw[vector, dashed, shorten >=0.05cm, very thick, SkyBlue] ($(O)+(\n*\ax,0)$) -- ++(0, \m*\ay) node[right, midway] {$8$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (O) -- (X) node[midway, auto] {$\vb*{x}$};
+
+          % 点
+          \draw (X) node[circle, fill, inner sep=1.5pt] {};
+          \node at (X) [above right] {$(6,8)$};
+        \end{tikzpicture}
+      }
+    \end{minipage} \\[-1.75em]
+
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \textcolor{BurntOrange}{\vb*{x}}  = \textcolor{CarnationPink}{3} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{2} \textcolor{Cerulean}{\vb*{a}_2}
+      \end{align*}
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \left(\textcolor{CarnationPink}{6}, \textcolor{SkyBlue}{8}\right)
+      \end{align*}
+    \end{minipage}
+  \end{tabular}
+\end{figure}
+
+このことから、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      座標は使っている基底の情報とセットでないと意味をなさない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ものだといえる。
 
 \section{ベクトルの測り方}
 
