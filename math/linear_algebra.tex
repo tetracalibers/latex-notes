@@ -538,16 +538,14 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 ベクトルを「引き伸ばす」スカラー倍と、「つなぎ合わせる」足し算を組み合わせることで、あるベクトルを他のベクトルを使って表すことができる。
 
-\todo{平行四辺形で図を描き直す}
-
 \begin{figure}[h]
   \centering
   \begin{minipage}{0.45\columnwidth}
     \centering
     \scalebox{1.5}{
       \begin{tikzpicture}
-        \def\xmin{0}
-        \def\xmax{4}
+        \def\xmin{-0.5}
+        \def\xmax{3.5}
         \def\ymin{0}
         \def\ymax{3}
         \def\ax{2.5}
@@ -563,11 +561,11 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
         % x成分とy成分
         \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\ax,0) node[below, pos=0.7] {$\lambda_1 \vb*{a}_1$};
-        \draw[vector, dashed, very thick, SkyBlue] ($(S)+(\ax,0)$) -- ++(0,\ay) node[right, pos=0.6] {$\lambda_2 \vb*{a}_2$};
+        \draw[vector, dashed, very thick, SkyBlue] (S) -- ++(0,\ay) node[left, pos=0.6] {$\lambda_2 \vb*{a}_2$};
 
         % 基底ベクトル
         \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(1,0) node[below, pos=0.4] {$\vb*{a}_1$};
-        \draw[vector, very thick, Cerulean] ([xshift=0cm]$(S)+(\ax,0)$) -- ++(0,0.5) node[right, near start] {$\vb*{a}_2$};
+        \draw[vector, very thick, Cerulean] ([xshift=0cm]S) -- ++(0,0.5) node[left, near start] {$\vb*{a}_2$};
       \end{tikzpicture}
     }
   \end{minipage}
