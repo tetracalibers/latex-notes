@@ -1076,16 +1076,16 @@ $x$軸と$y$軸が平行だと、$(x,y)$の組で平面上の点を表すこと�
 ベクトルの組を考え、どれか1つのベクトルがほかのベクトルの一次結合で表せるとき、それらのベクトルの組は\keyword{一次従属}であるという。
 
 \begin{definition}{一次従属}\quad\\
-  $k$個のベクトル$\vb*{a}_i = \{ \vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_k \}$が\hl{一次従属}であるとは、少なくとも1つは$0$でない$k$個の係数$\alpha_i = \{\alpha_1, \alpha_2, \ldots, \alpha_k\}$を用意すれば、それらを使った一次結合を零ベクトル$\vb{0}$にできることをいう。
+  $k$個のベクトル$\vb*{a}_i = \{ \vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_k \}$が\hl{一次従属}であるとは、少なくとも1つは$0$でない$k$個の係数$c_i = \{c_1, c_2, \ldots, c_k\}$を用意すれば、それらを使った一次結合を零ベクトル$\vb{0}$にできることをいう。
   \large
   \begin{equation*}
-    \sum_{i=1}^{k-1} \alpha_i \vb*{a}_i = \alpha_1 \vb*{a}_1 + \alpha_2 \vb*{a}_2 + \cdots + \alpha_k\vb*{a}_{k} = \vb{0}
+    \sum_{i=1}^{k-1} c_i \vb*{a}_i = c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_k\vb*{a}_{k} = \vb{0}
   \end{equation*}
 \end{definition}
 
-たとえば、$\alpha_1$が$0$でないとき、一次結合を零ベクトルにできるということは、次のような式変形ができることになる。
+たとえば、$c_1$が$0$でないとき、一次結合を零ベクトルにできるということは、次のような式変形ができることになる。
 \begin{equation*}
-  \vb*{a}_1 = -\frac{\alpha_2}{\alpha_1} \vb*{a}_2 - \frac{\alpha_3}{\alpha_1} \vb*{a}_3 - \cdots - \frac{\alpha_k}{\alpha_1} \vb*{a}_{k}
+  \vb*{a}_1 = -\frac{c_2}{c_1} \vb*{a}_2 - \frac{c_3}{c_1} \vb*{a}_3 - \cdots - \frac{c_k}{c_1} \vb*{a}_{k}
 \end{equation*}
 つまり、ベクトル$\vb*{a}_1$をほかのベクトルの一次結合で表せている。
 
