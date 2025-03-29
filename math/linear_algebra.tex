@@ -16,9 +16,9 @@
 
 \subsection{移動の表現としてのベクトル}
 
-平面上のある点の位置を表すのに、よく使われるのが\keyword{直交座標}である。
+平面上のある点の位置を表すのに、よく使われるのが\keyword{直交座標系}である。
 
-直交座標では、$x$軸と$y$軸を垂直に張り、
+直交座標系では、$x$軸と$y$軸を垂直に張り、
 \begin{itemize}
   \item 原点$O$からの$x$軸方向の移動量（$x$座標）
   \item 原点$O$からの$y$軸方向の移動量（$y$座標）
@@ -713,7 +713,7 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 \end{figure}
 
 $\vb*{a}_1$と$\vb*{a}_2$のように、座標を復元するために向きの情報を付け加えるベクトルを、\keyword{基底}と呼ぶことにする。
-（「基底」と呼ぶための条件はいろいろあるが、それについては後々解説していく。）
+（厳密には「基底」と呼ぶための条件はいろいろあるが、それについては後々解説していく。）
 
 \subsubsection{基底が変われば座標が変わる}
 
@@ -839,6 +839,162 @@ $\vb*{a}_1$を$x$軸方向の長さ$1$のベクトル、$\vb*{a}_2$を$y$軸方�
   \end{spacebox}
 \end{emphabox}
 ものだといえる。
+
+\subsection{標準基底による直交座標系の構成}
+
+座標という数値の組は、使っている基底とセットでないと意味をなさないものである。
+
+逆にいえば、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      「こういう基底を使えば、このようなルールで座標を表現できる」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という考え方もできる。
+つまり、\keyword{基底}によって\keyword{座標系}を定義するということだ。
+
+\br
+
+前の章で見た例を一般化して考えてみよう。
+
+$\vb*{e}_1$を$x$軸方向の長さ$1$のベクトル、$\vb*{e}_2$を$y$軸方向の長さ$1$のベクトルとすれば、$\vb*{e}_1$を$x$倍、$\vb*{e}_2$を$y$倍して足し合わせたベクトル$x\vb*{e_1}+y\vb*{e_2}$で、2次元直交座標系での点$(x,y)$を指し示すことができる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+
+      % 基底ベクトル
+      \def\ax{1}
+      \def\ay{1}
+      \def\acolor{LimeGreen}
+      % 係数
+      \def\n{2.5}
+      \def\m{2}
+
+      \def\ox{0}
+      \def\oy{0}
+
+      \coordinate (O) at (\ox,\oy);
+      \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+      % グリッド
+      \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=1] (\xmax, \ymax);
+
+      \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+      \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (O) [below left] {$O$};
+
+      % ベクトル
+      \draw[vector, very thick, BurntOrange] (O) -- ++(\n*\ax,\m*\ay) node[midway,sloped, above] {\Large$x\vb*{e_1}+y\vb*{e_2}$};
+
+      % 点
+      \draw (X) node[circle, fill, inner sep=1.5pt] {};
+      \node at (X) [above right] {\large$(x, y)$};
+
+      % 基底ベクトル
+      \draw[vector, very thick, \acolor] (O) -- ++(\ax, 0) node[below, midway] {$\vb*{e}_1$};
+      \draw[vector, very thick, \acolor] (O) -- ++(0, \ay) node[left, midway] {$\vb*{e}_2$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+このとき、$\vb*{e}_1$と$\vb*{e}_2$は、各方向の1目盛に相当する。
+
+これらをまとめて$\mathbb{R}^2$上の\keyword{標準基底}と呼び、$\left\{ \vb*{e}_1, \vb*{e}_2 \right\}$と表す。
+（$\mathbb{R}^2$とは、実数の集合である数直線$\mathbb{R}$を2本用意してつくった、2次元平面を表す記号である。）
+
+\br
+
+点$(x,y)$を指し示す$x\vb*{e_1}+y\vb*{e_2}$というベクトルは、直交座標による点の表現が「$x$軸方向の移動」と「$y$軸方向の移動」という2回の移動を行った結果であることをうまく表現している。
+
+\br
+
+直交座標系をベクトルの言葉で言い換えると、
+\begin{emphabox}
+  \keyword{直交座標系}は、\keyword{標準基底}である各ベクトル$\vb*{e}_1$と$\vb*{e}_2$を軸として、平面上の点の位置を標準基底の一次結合の係数$x$と$y$の組で表す仕組み
+\end{emphabox}
+だといえる。
+
+\begin{supplnote}
+  \keyword{座標}は点の位置を表す数の組のことで、\keyword{座標系}は点の位置を数の組で表すための仕組み（ルール）のことをいう。
+\end{supplnote}
+
+\subsubsection{基底を変えれば違う座標系を作れる}
+
+直交座標系は、標準基底という互いに直交するベクトルを基底に使っていたが、座標系を表現するにあたって必ずしも基底ベクトルが直交している必要はない。
+
+\br
+
+座標系を基底ベクトルを使って捉え直しておくと、基底を取り替えることで、目的の計算に都合のいい座標系を作ることができる。
+
+たとえば、次のように歪んだ空間を記述するための座標系を作ることも可能である。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+
+      % 斜交基底ベクトル（e1, e2）
+      \def\eonex{1}
+      \def\eoney{0}
+      \def\etwox{0.55}
+      \def\etwoy{1}
+      \def\acolor{LimeGreen}
+
+      % 座標の係数
+      \def\n{2.5}
+      \def\m{2}
+
+      % 原点
+      \coordinate (O) at (0, 0);
+      % 点の位置（ベクトルの合成）
+      \coordinate (X) at ($(\n*\eonex + \m*\etwox, \n*\eoney + \m*\etwoy)$);
+
+      % グリッド線（斜交座標系）
+      \foreach \i in {\xmin,...,\xmax} {
+          \draw[dotted, lightslategray, domain=\xmin:\xmax]
+          plot ({\i*\eonex + \x*\etwox}, {\i*\eoney + \x*\etwoy});
+        }
+
+      \foreach \j in {\ymin,...,\ymax} {
+          \draw[dotted, lightslategray, domain=\ymin:\ymax]
+          plot ({\x*\eonex + \j*\etwox}, {\x*\eoney + \j*\etwoy});
+        }
+
+      % 斜交座標軸 (e1方向とe2方向)
+      \draw[axis] ($(-1*\eonex, -1*\eoney)$) -- ($(4*\eonex, 4*\eoney)$) node[right] {$x$};
+      \draw[axis] ($(-1*\etwox, -1*\etwoy)$) -- ($(4*\etwox, 4*\etwoy)$) node[above] {$y$};
+
+      % 原点
+      \node at (O) [below left, xshift=-0.5em] {$O$};
+
+      % ベクトル x*e1 + y*e2
+      \draw[vector, very thick, BurntOrange] (O) -- (X)
+      node[pos=0.55, sloped, above] {\Large$x\vb*{a_1}+y\vb*{a_2}$};
+
+      % 点のマーク
+      \draw (X) node[circle, fill, inner sep=1.5pt] {};
+      \node at (X) [above right] {\large$(x, y)$};
+
+      % 基底ベクトル
+      \draw[vector, very thick, \acolor] (O) -- ++(\eonex,\eoney)
+      node[below, midway] {$\vb*{a}_1$};
+      \draw[vector, very thick, \acolor] (O) -- ++(\etwox,\etwoy)
+      node[left, midway] {$\vb*{a}_2$};
+    \end{tikzpicture}
+  }
+\end{center}
 
 \section{基底にできるベクトルを探す}
 
