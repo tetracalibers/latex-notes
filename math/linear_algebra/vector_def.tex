@@ -1,0 +1,989 @@
+\documentclass[../../imaging-math]{subfiles}
+
+\begin{document}
+
+\section{ベクトルと座標}
+
+\subsection{移動の表現としてのベクトル}
+
+平面上のある点の位置を表すのに、よく使われるのが\keyword{直交座標系}である。
+
+直交座標系では、$x$軸と$y$軸を垂直に張り、
+\begin{itemize}
+  \item 原点$O$からの$x$軸方向の移動量（$x$座標）
+  \item 原点$O$からの$y$軸方向の移動量（$y$座標）
+\end{itemize}
+という2つの数の組で点の位置を表す。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.49\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        \draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+        \draw[axis] (0, \ymin) -- (0, \ymax) node[above] {$y$};
+
+        % 原点
+        \node at (0, 0) [below left] {$O$};
+
+        % x軸方向の移動量
+        \draw[dashed, very thick, Rhodamine] (0, 0) -- (\vx, 0) node[below, midway] {$a$};
+        % y軸方向の移動量
+        \draw[dashed, very thick, Cerulean] (\vx,0) -- (\vx, \vy) node[right, midway] {$b$};
+
+        % 点
+        \draw (\vx, \vy) node[circle, fill, inner sep=1.5pt] {};
+        \node at (\vx, \vy) [above right] {$(a,b)$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries「位置の特定」という視点}
+  \end{minipage}
+  \begin{minipage}[b]{0.49\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        % 平面
+        \draw[dotted, lightslategray] (\xmin, \ymin) -- (\xmax, \ymin) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries「移動」という視点}
+  \end{minipage}
+\end{figure}
+
+\br
+
+座標とは、「$x$軸方向の移動」と「$y$軸方向の移動」という2回の移動を行った結果である。
+
+右にどれくらい、上にどれくらい、という考え方で平面上の「位置」を特定しているわけだが、単に「移動」を表したいだけなら、点から点へ向かう矢印で一気に表すこともできる。
+
+\br
+
+ある地点から別のある地点への「移動」を表す矢印を\keyword{ベクトル}という。
+
+\br
+
+ベクトルが示す、ある地点からこのように移動すれば、この地点にたどり着く…といった「移動」の情報は、相対的な「位置関係」を表す上で役に立つ。
+
+\subsubsection{平行移動してもベクトルは同じ}
+
+座標は「位置」を表すものだが、ベクトルは「移動」を表すものにすぎない。
+
+座標は「原点からの」移動量によって位置を表すが、ベクトルは始点の位置にはこだわらない。
+
+\br
+
+たとえば、次の2つのベクトルは始点の位置は異なるが、同じ向きに同じだけ移動している矢印なので、同じベクトルとみなせる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+      \def\vx{1.5}
+      \def\vy{2}
+      \def\sx{2.5}
+      \def\sy{1}
+
+      \draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+      \draw[axis] (0, \ymin) -- (0, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (0, 0) [below left] {$O$};
+
+      % ベクトル
+      \draw[vector, very thick, magenta] (0, 0) -- (\vx, \vy);
+
+      % 平行移動したベクトル
+      \draw[vector, very thick, magenta] (\sx, \sy) -- ($(\sx,\sy)+(\vx,\vy)$);
+
+      % 平行移動を表す破線
+      \draw[dashed, lightslategray] (0, 0) -- (\sx, \sy);
+      \draw[dashed, lightslategray] (\vx, \vy) -- ($(\vx,\vy)+(\sx,\sy)$);
+    \end{tikzpicture}
+  }
+\end{center}
+
+このような「同じ向きに同じだけ移動している矢印」は、平面内では平行な関係にある。
+
+つまり、平行移動して重なる矢印は、同じベクトルとみなすことができる。
+
+\subsubsection{移動の合成とベクトルの分解}
+
+ベクトルは、各方向への移動の合成として考えることもできる。
+
+純粋に「縦」と「横」に分解した場合は直交座標の考え方によく似ているが、必ずしも直交する方向のベクトルに分解する必要はない。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{1.5}
+        \def\vy{2}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0);
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean, shorten >=0.25em] (\vx, 0) -- (\vx, \vy);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries 「縦」と「横」に分解}
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{1.5}
+        \def\vy{2}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0.75);
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean, shorten >=0.25em] (\vx, 0.75) -- (\vx, \vy);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries 他の分解も考えられる}
+  \end{minipage}
+\end{figure}
+
+\subsection{高次元への対応：数ベクトル}
+
+2次元以上の空間内の「移動」を表すには、「縦」と「横」などといった2方向だけでなく、もっと多くの方向への移動量を組み合わせて考える必要がある。
+
+また、4次元を超えてしまうと、矢印の描き方すら想像がつかなくなってしまう。
+それは、方向となる軸が多すぎて、どの方向に進むかを表すのが難しくなるためだ。
+
+\vskip\baselineskip
+
+そこで、一旦「向き」の情報を取り除くことで、高次元に立ち向かえないかと考える。
+
+移動を表す矢印は「どの方向に進むか」と「どれくらい進むか」という向きと大きさの情報を持っているが、その「どれくらい進むか」だけを取り出して並べよう。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.33\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0) node[below, midway] {$a_1$};
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean] (\vx, 0) -- (\vx, \vy) node[right, midway] {$a_2$};
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange] (A) -- (B) node[midway, above left] {$\vb*{a}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.33\columnwidth}
+    \LARGE
+    \color{BurntOrange}
+    \begin{equation*}
+      \vb*{a} = \begin{bmatrix} \textcolor{Rhodamine}{a_1} \\ \textcolor{Cerulean}{a_2} \end{bmatrix}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
+
+こうして単に「数を並べたもの」もベクトルと呼ぶことにし、このように定義したベクトルを\keyword{数ベクトル}という。
+
+\vskip\baselineskip
+
+数を並べるとき、縦と横の2通りがある。それぞれ\keyword{列ベクトル}、\keyword{行ベクトル}として定義する。
+
+\begin{definition}{列ベクトル}
+  数を縦に並べたものを\hl{列ベクトル}という。
+  \Large
+  \begin{equation*}
+    \vb*{a} = [a_i] = \begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{行ベクトル}
+  数を横に並べたものを\hl{行ベクトル}という。
+  \Large
+  \begin{equation*}
+    \vb*{a} = [a_i] = \begin{bmatrix} a_1 & a_2 & \cdots & a_n \end{bmatrix}
+  \end{equation*}
+\end{definition}
+
+単に「ベクトル」と言った場合は、列ベクトルを指すことが多い。
+
+\vskip\baselineskip
+
+行ベクトルは、列ベクトルを横倒しにしたもの（列ベクトルの\keyword{転置}）と捉えることもできる。
+
+\begin{theorem}{転置による行ベクトルの表現}\quad\\
+  行ベクトルは、列ベクトル$\vb*{a}$を\hl{転置}したものとして表現できる。
+  \Large
+  \begin{equation*}
+    \vb*{a}^\top = \begin{bmatrix} a_1 & a_2 & \cdots & a_n \end{bmatrix}
+  \end{equation*}
+\end{theorem}
+
+\subsection{ベクトルの和}
+
+ベクトルによって数をまとめて扱えるようにするために、ベクトルどうしの演算を定義したい。
+
+\br
+
+ベクトルどうしの足し算は、同じ位置にある数どうしの足し算として定義する。
+
+\begin{definition}{ベクトルの和}
+  2つの$n$次元ベクトル$\vb*{a}$と$\vb*{b}$の和を次のように定義する。
+  \Large
+  \begin{equation*}
+    \vb*{a} + \vb*{b} = [a_i] + [b_i] = \begin{bmatrix} a_1 + b_1 \\ a_2 + b_2 \\ \vdots \\ a_n + b_n \end{bmatrix}
+  \end{equation*}
+\end{definition}
+
+$i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ、その位置の数どうしの足し算を考えることはできない。
+
+そのため、ベクトルの和が定義できるのは、同じ次元を持つ（並べた数の個数が同じ）ベクトルどうしに限られる。
+
+\subsubsection{移動の合成としてのイメージ}
+
+数ベクトルを「どれくらい進むか」を並べたものと捉えると、同じ位置にある数どうしを足し合わせるということは、同じ向きに進む量を足し合わせるということになる。
+
+たとえば、$x$軸方向に$a_1$、$y$軸方向に$a_2$進んだ場所から、さらに$x$軸方向に$b_1$、$y$軸方向に$b_2$進む…というような「移動の合成」を表すのが、ベクトルの和である。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{4.5}
+        \def\ax{2}
+        \def\ay{1}
+        \def\bx{0.5}
+        \def\by{2}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % 座標軸
+        \draw[axis] (\xmin, 0) -- (1,0) node[right] {$x$};
+        \draw[axis] (0, \ymin) -- (0, 1) node[above] {$y$};
+
+        % ベクトルaのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++(\ax, 0) node[below, midway] {\small$a_1$};
+        % ベクトルaのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)$) -- ++(0, \ay) node[left, midway] {\small$a_2$};
+
+        % ベクトルbのx成分
+        \draw[thick, densely dashed, Rhodamine] ($(S)+(\ax,\ay)$) -- ++(\bx, 0) node[below, midway] {\small$b_1$};
+        % ベクトルbのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,\ay)+(\bx, 0)$) -- ++(0, \by) node[right, midway] {\small$b_2$};
+
+        \begin{scope}[transparency group, opacity=0.9]
+          % ベクトルa
+          \draw[vector, very thick, Orchid] (S) -- ($(S)+(\ax,\ay)$) node[above, midway] {$\vb*{a}$};
+          % ベクトルb
+          \draw[vector, very thick, Orchid] ($(S)+(\ax,\ay)$) -- ++(\bx,\by) node[left, midway] {$\vb*{b}$};
+        \end{scope}
+
+        % ベクトルa+b
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax+\bx, \ay+\by) node[above, sloped, midway] {$\vb*{a}+\vb*{b}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{4.5}
+        \def\ax{2}
+        \def\ay{1}
+        \def\bx{0.5}
+        \def\by{2}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトルa+bのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++($(\ax,0)+(\bx,0)$) node[below, midway] {\small$a_1+b_1$};
+        % ベクトルa+bのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)+(\bx,0)$) -- ++($(0,\ay)+(0,\by)$) node[right, midway] {\small$a_2+b_2$};
+
+        \begin{scope}[transparency group, opacity=0.45]
+          % ベクトルa
+          \draw[vector, very thick, lightslategray] (S) -- ($(S)+(\ax,\ay)$) node[above, midway] {$\vb*{a}$};
+          % ベクトルb
+          \draw[vector, very thick, lightslategray] ($(S)+(\ax,\ay)$) -- ++(\bx,\by) node[left, midway] {$\vb*{b}$};
+        \end{scope}
+
+        % ベクトルa+b
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax+\bx, \ay+\by) node[above, sloped, midway] {$\vb*{a}+\vb*{b}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+\end{figure}
+
+\subsubsection{平行四辺形の法則}
+
+\todo{平行移動しても同じベクトルなので…}
+
+\subsubsection{ベクトルの差：逆向きにしてから足す}
+
+\todo{irobutsu-linear-algebra 2.1.2 ベクトルの差}
+
+\subsubsection{矢に沿った移動で考える}
+
+\todo{手持ちの画像を参考に、和と差の両方について書く}
+
+\subsection{ベクトルのスカラー倍}
+
+「どれくらい進むか」を表す数たち全員に同じ数をかけることで、向きを変えずにベクトルを「引き伸ばす」ことができる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \coordinate (a) at (0,0);
+      \coordinate (t) at (4,2);
+      \coordinate (b) at ($(a)!1.5cm!(t)$);
+      \draw [vector, thick, TealBlue] (a) -- (t) node[midway, below=0.5em] {$k\vb*{a}$};
+
+      \coordinate (c) at ($(a)!0.2cm!90:(b)$);
+      \coordinate (d) at ($(b)+(c)-(a)$);
+      \draw [vector, thick, BurntOrange] (c) -- node[midway,auto] {$\vb*{a}$} (d);
+    \end{tikzpicture}
+  }
+\end{center}
+
+ここで向きごとにかける数を変えてしまうと、いずれかの方向に多く進むことになり、ベクトルの向きが変わってしまう。そのため、「同じ」数をかけることに意味がある。
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{5.5}
+        \def\ax{1}
+        \def\ay{0.5}
+        \def\k{3}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトルaのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++(\ax, 0) node[below, midway] {\small$a_1$};
+        % ベクトルaのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)$) -- ++(0, \ay) node[right, midway] {\small$a_2$};
+
+        % ベクトルkaのx成分
+        \draw[thick, densely dashed, Rhodamine] ([yshift=1.5cm]S) -- ++(\k*\ax, 0) node[below, midway] {\small$3a_1$};
+        % ベクトルkaのy成分
+        \draw[thick, densely dashed, Cerulean] ([yshift=1.5cm]$(S)+(\k*\ax, 0)$) -- ++(0, \k*\ay) node[right, midway] {\small$3a_2$};
+
+        % ベクトルa
+        \draw[vector, very thick, BurntOrange] (S) -- ($(S)+(\ax,\ay)$) node[above=0.1em, pos=0.4] {$\vb*{a}$};
+
+        % ベクトルkaを上に平行移動したベクトル
+        \draw[vector, very thick, TealBlue] ([yshift=1.5cm]S) -- ([yshift=1.5cm]$(S)+\k*(\ax,\ay)$) node[midway, auto] {$3\vb*{a}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.25}{
+      \begin{tikzpicture}
+        \def\xmin{0}
+        \def\xmax{5}
+        \def\ymin{0}
+        \def\ymax{5.5}
+        \def\ax{1}
+        \def\ay{0.5}
+        \def\kx{3}
+        \def\ky{5}
+
+        \coordinate (S) at (1,1);
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトルaのx成分
+        \draw[thick, densely dashed, Rhodamine] (S) -- ++(\ax, 0) node[below, midway] {\small$a_1$};
+        % ベクトルaのy成分
+        \draw[thick, densely dashed, Cerulean] ($(S)+(\ax,0)$) -- ++(0, \ay) node[right, midway] {\small$a_2$};
+
+        % ベクトルkaのx成分
+        \draw[thick, densely dashed, Rhodamine] ([yshift=1.5cm]S) -- ++(\kx*\ax, 0) node[below, midway] {\small$3a_1$};
+        % ベクトルkaのy成分
+        \draw[thick, densely dashed, Cerulean] ([yshift=1.5cm]$(S)+(\kx*\ax, 0)$) -- ++(0, \ky*\ay) node[right, midway] {\small$5a_2$};
+
+        % ベクトルa
+        \draw[vector, very thick, BurntOrange] (S) -- ($(S)+(\ax,\ay)$) node[above=0.1em, pos=0.4] {$\vb*{a}$};
+
+        % ベクトルkaを上に平行移動したベクトル
+        \draw[vector, very thick, TealBlue] ([yshift=1.5cm]S) -- ([yshift=1.5cm]$(S)+(\kx*\ax,\ky*\ay)$) node[midway, auto] {$\vb*{?}$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+\end{figure}
+
+そこで、ベクトルの定数倍（スカラー倍）を次のように定義する。
+
+\begin{definition}{ベクトルのスカラー倍}
+  $n$次元ベクトル$\vb*{a}$の$k$倍を次のように定義する。
+  \Large
+  \begin{equation*}
+    k\vb*{a} = k[a_i] = \begin{bmatrix} ka_1 \\ ka_2 \\ \vdots \\ ka_n \end{bmatrix}
+  \end{equation*}
+\end{definition}
+
+\subsection{一次結合}
+
+ベクトルを「引き伸ばす」スカラー倍と、「つなぎ合わせる」足し算を組み合わせることで、あるベクトルを他のベクトルを使って表すことができる。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.45\columnwidth}
+    \centering
+    \scalebox{1.5}{
+      \begin{tikzpicture}
+        \def\xmin{-0.5}
+        \def\xmax{3.5}
+        \def\ymin{0}
+        \def\ymax{3}
+        \def\ax{2.5}
+        \def\ay{2}
+
+        \coordinate (S) at (0.5,0.5);
+
+        % 透明なグリッド（bounding boxの調整用）
+        \draw[dotted, opacity=0] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax,\ay) node[midway, auto] {$\vb*{a}_3$};
+
+        % x成分とy成分
+        \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\ax,0) node[below, pos=0.7] {$\lambda_1 \vb*{a}_1$};
+        \draw[vector, dashed, very thick, SkyBlue] (S) -- ++(0,\ay) node[left, pos=0.6] {$\lambda_2 \vb*{a}_2$};
+
+        % 基底ベクトル
+        \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(1,0) node[below, pos=0.4] {$\vb*{a}_1$};
+        \draw[vector, very thick, Cerulean] ([xshift=0cm]S) -- ++(0,0.5) node[left, near start] {$\vb*{a}_2$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.45\columnwidth}
+    \LARGE
+    \begin{equation*}
+      \textcolor{BurntOrange}{\vb*{a}_3} = \textcolor{CarnationPink}{\lambda_1} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{\lambda_2} \textcolor{Cerulean}{\vb*{a}_2}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
+
+このように、スカラー倍と和のみを使った形を\keyword{一次結合}もしくは\keyword{線形結合}という。
+
+\subsection{基底：座標を復元する}
+
+3次元までのベクトルは、矢印によって「ある点を指し示すもの」として定義できる。
+
+しかし、4次元以上の世界に話を広げるため、ベクトルを単に「数を並べたもの」として再定義した。
+「数を並べたもの」としてのベクトルを、\keyword{数ベクトル}と呼んでいる。
+
+\br
+
+さて、2次元平面や3次元空間で点を指し示すためのもう一つの概念として、\keyword{座標}がある。
+
+座標は、$x$軸方向にこのくらい進み、$y$軸方向にこのくらい進む…というように、「進む方向」と「進む長さ」によって表現される。
+
+\br
+
+単なる数の並びである数ベクトルでは、「進む方向」については何も記述されていない。
+\begin{equation*}
+  \begin{bmatrix}
+    3 \\
+    2
+  \end{bmatrix}
+\end{equation*}
+
+しかし、「進む方向」を表すベクトル$\vb*{a}_1,\,\vb*{a}_2$を新たに用意すれば、一次結合によって「進む方向」と「進む長さ」を持つベクトルを作ることができる。
+\begin{equation*}
+  \vb*{x} = 3 \vb*{a}_1 + 2 \vb*{a}_2
+\end{equation*}
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{cc}
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.4}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{3}
+          \def\ymin{-0.5}
+          \def\ymax{2.5}
+
+          % 基底ベクトル
+          \def\ax{0.5}
+          \def\ay{0.5}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (O) at (\ox,\oy);
+          \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+          % 0.5刻みのグリッド
+          \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % 原点
+          \node at (O) [below left] {$O$};
+
+          % x軸方向の移動量
+          \draw[vector, dashed, very thick, CarnationPink] (O) -- ++(\n*\ax, 0) node[below, midway] {$3$};
+          % y軸方向の移動量
+          \draw[vector, dashed, shorten >=0.05cm, very thick, SkyBlue] ($(O)+(\n*\ax,0)$) -- ++(0, \m*\ay) node[right, midway] {$2$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (O) -- ++(\n*\ax,\m*\ay) node[midway, auto] {$\vb*{x}$};
+
+          % 点
+          \draw (X) node[circle, fill, inner sep=1.5pt] {};
+          \node at (X) [above right] {$(3,2)$};
+        \end{tikzpicture}
+      }
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.4}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{3}
+          \def\ymin{-0.5}
+          \def\ymax{2.5}
+
+          % 基底ベクトル
+          \def\ax{0.5}
+          \def\ay{0.5}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (S) at (\ox,\oy);
+
+          % グリッド
+          \draw[dotted] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          % 透明な軸（bouding boxの調整用）
+          \draw[axis, opacity=0] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis, opacity=0] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (S) -- ++(\n*\ax,\m*\ay) node[midway, auto] {$\vb*{x}$};
+
+          % x成分とy成分
+          \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\n*\ax,0) node[below, near end] {$3 \vb*{a}_1$};
+          \draw[vector, dashed, very thick, SkyBlue] ($(S)$) -- ++(0,\m*\ay) node[left, near end] {$2 \vb*{a}_2$};
+
+          % 基底ベクトル
+          \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(\ax,0) node[below, pos=0.4] {$\vb*{a}_1$};
+          \draw[vector, very thick, Cerulean] ([xshift=0cm]$(S)$) -- ++(0,\ay) node[left, near start] {$\vb*{a}_2$};
+        \end{tikzpicture}
+      }
+    \end{minipage} \\
+
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \left(\textcolor{CarnationPink}{3}, \textcolor{SkyBlue}{2}\right)
+      \end{align*}
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \textcolor{BurntOrange}{\vb*{x}}  = \textcolor{CarnationPink}{3} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{2} \textcolor{Cerulean}{\vb*{a}_2}
+      \end{align*}
+    \end{minipage} \\
+  \end{tabular}
+\end{figure}
+
+$\vb*{a}_1$と$\vb*{a}_2$のように、座標を復元するために向きの情報を付け加えるベクトルを、\keyword{基底}と呼ぶことにする。
+（厳密には「基底」と呼ぶための条件はいろいろあるが、それについては後々解説していく。）
+
+\subsubsection{基底が変われば座標が変わる}
+
+先ほどの例では、直交座標による点$(3,2)$をベクトルの一次結合$\vb*{x} = 3 \vb*{a}_1 + 2 \vb*{a}_2$で表現するために$\vb*{a}_1$と$\vb*{a}_2$を用意した。
+
+$\vb*{a}_1$を$x$軸方向の長さ$1$のベクトル、$\vb*{a}_2$を$y$軸方向の長さ$1$のベクトルとすれば、$\vb*{a}_1$を$3$倍、$\vb*{a}_2$を$2$倍して足し合わせることで、点$(5,4)$を指し示すベクトル$\vb*{x}$を作ることができる。
+
+\br
+
+ここで、一次結合の式$\vb*{x} = 3 \vb*{a}_1 + 2 \vb*{a}_2$は変えずに、$\vb*{a}_1$と$\vb*{a}_2$を変更すると、$\vb*{x}$が指し示す点も変わってしまう。
+
+\begin{figure}[H]
+  \centering
+  \begin{tabular}{cc}
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.15}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{4.5}
+          \def\ymin{-0.5}
+          \def\ymax{5.5}
+
+          % 基底ベクトル
+          \def\ax{1}
+          \def\ay{2}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (S) at (\ox,\oy);
+
+          % グリッド
+          \draw[dotted] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          % 透明な軸（bouding boxの調整用）
+          \draw[axis, opacity=0] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis, opacity=0] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (S) -- ++(\n*\ax,\m*\ay) node[midway, auto] {$\vb*{x}$};
+
+          % x成分とy成分
+          \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\n*\ax,0) node[below, near end] {$3 \vb*{a}_1$};
+          \draw[vector, dashed, very thick, SkyBlue] ($(S)$) -- ++(0,\m*\ay) node[left, near end] {$2 \vb*{a}_2$};
+
+          % 基底ベクトル
+          \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(\ax,0) node[below, pos=0.4] {$\vb*{a}_1$};
+          \draw[vector, very thick, Cerulean] ([xshift=0cm]$(S)$) -- ++(0,\ay) node[left, near start] {$\vb*{a}_2$};
+        \end{tikzpicture}
+      }
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \centering
+      \scalebox{1.15}{
+        \begin{tikzpicture}
+          \def\xmin{-0.5}
+          \def\xmax{4.5}
+          \def\ymin{-0.5}
+          \def\ymax{5.5}
+
+          % 基底ベクトル
+          \def\ax{1}
+          \def\ay{2}
+          % 係数
+          \def\n{3}
+          \def\m{2}
+
+          \def\ox{0.5}
+          \def\oy{0.5}
+
+          \coordinate (O) at (\ox,\oy);
+          \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+          % 0.5刻みのグリッド
+          \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+          \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+          \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+          % 原点
+          \node at (O) [below left] {$O$};
+
+          % x軸方向の移動量
+          \draw[vector, dashed, very thick, CarnationPink] (O) -- ++(\n*\ax, 0) node[below, midway] {$6$};
+          % y軸方向の移動量
+          \draw[vector, dashed, shorten >=0.05cm, very thick, SkyBlue] ($(O)+(\n*\ax,0)$) -- ++(0, \m*\ay) node[right, midway] {$8$};
+
+          % ベクトル
+          \draw[vector, very thick, BurntOrange] (O) -- (X) node[midway, auto] {$\vb*{x}$};
+
+          % 点
+          \draw (X) node[circle, fill, inner sep=1.5pt] {};
+          \node at (X) [above right] {$(6,8)$};
+        \end{tikzpicture}
+      }
+    \end{minipage} \\[-1.75em]
+
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \textcolor{BurntOrange}{\vb*{x}}  = \textcolor{CarnationPink}{3} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{2} \textcolor{Cerulean}{\vb*{a}_2}
+      \end{align*}
+    \end{minipage} &
+    \begin{minipage}{0.45\columnwidth}
+      \LARGE
+      \begin{align*}
+        \left(\textcolor{CarnationPink}{6}, \textcolor{SkyBlue}{8}\right)
+      \end{align*}
+    \end{minipage}
+  \end{tabular}
+\end{figure}
+
+このことから、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      座標は使っている基底の情報とセットでないと意味をなさない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ものだといえる。
+
+\subsection{標準基底による直交座標系の構成}
+
+座標という数値の組は、使っている基底とセットでないと意味をなさないものである。
+
+逆にいえば、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      「こういう基底を使えば、このようなルールで座標を表現できる」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という考え方もできる。
+つまり、\keyword{基底}によって\keyword{座標系}を定義するということだ。
+
+\br
+
+前の章で見た例を一般化して考えてみよう。
+
+$\vb*{e}_1$を$x$軸方向の長さ$1$のベクトル、$\vb*{e}_2$を$y$軸方向の長さ$1$のベクトルとすれば、$\vb*{e}_1$を$x$倍、$\vb*{e}_2$を$y$倍して足し合わせたベクトル$x\vb*{e_1}+y\vb*{e_2}$で、2次元直交座標系での点$(x,y)$を指し示すことができる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+
+      % 基底ベクトル
+      \def\ax{1}
+      \def\ay{1}
+      \def\acolor{LimeGreen}
+      % 係数
+      \def\n{2.5}
+      \def\m{2}
+
+      \def\ox{0}
+      \def\oy{0}
+
+      \coordinate (O) at (\ox,\oy);
+      \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+      % グリッド
+      \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=1] (\xmax, \ymax);
+
+      \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+      \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (O) [below left] {$O$};
+
+      % ベクトル
+      \draw[vector, very thick, BurntOrange] (O) -- ++(\n*\ax,\m*\ay) node[midway,sloped, above] {\Large$x\vb*{e_1}+y\vb*{e_2}$};
+
+      % 点
+      \draw (X) node[circle, fill, inner sep=1.5pt] {};
+      \node at (X) [above right] {\large$(x, y)$};
+
+      % 基底ベクトル
+      \draw[vector, very thick, \acolor] (O) -- ++(\ax, 0) node[below, midway] {$\vb*{e}_1$};
+      \draw[vector, very thick, \acolor] (O) -- ++(0, \ay) node[left, midway] {$\vb*{e}_2$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+このとき、$\vb*{e}_1$と$\vb*{e}_2$は、各方向の1目盛に相当する。
+
+これらをまとめて$\mathbb{R}^2$上の\keyword{標準基底}と呼び、$\left\{ \vb*{e}_1, \vb*{e}_2 \right\}$と表す。
+（$\mathbb{R}^2$とは、実数の集合である数直線$\mathbb{R}$を2本用意してつくった、2次元平面を表す記号である。）
+
+\br
+
+点$(x,y)$を指し示す$x\vb*{e_1}+y\vb*{e_2}$というベクトルは、直交座標による点の表現が「$x$軸方向の移動」と「$y$軸方向の移動」という2回の移動を行った結果であることをうまく表現している。
+
+\br
+
+直交座標系をベクトルの言葉で言い換えると、
+\begin{emphabox}
+  \keyword{直交座標系}は、\keyword{標準基底}である各ベクトル$\vb*{e}_1$と$\vb*{e}_2$を軸として、平面上の点の位置を標準基底の一次結合の係数$x$と$y$の組で表す仕組み
+\end{emphabox}
+だといえる。
+
+\begin{supplnote}
+  \keyword{座標}は点の位置を表す数の組のことで、\keyword{座標系}は点の位置を数の組で表すための仕組み（ルール）のことをいう。
+\end{supplnote}
+
+\subsubsection{基底を変えれば違う座標系を作れる}
+
+直交座標系は、標準基底という互いに直交するベクトルを基底に使っていたが、座標系を表現するにあたって必ずしも基底ベクトルが直交している必要はない。
+
+\br
+
+座標系を基底ベクトルを使って捉え直しておくと、基底を取り替えることで、目的の計算に都合のいい座標系を作ることができる。
+
+たとえば、次のように歪んだ空間を記述するための座標系を作ることも可能である。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+
+      % 斜交基底ベクトル（e1, e2）
+      \def\eonex{1}
+      \def\eoney{0}
+      \def\etwox{0.55}
+      \def\etwoy{1}
+      \def\acolor{LimeGreen}
+
+      % 座標の係数
+      \def\n{2.5}
+      \def\m{2}
+
+      % 原点
+      \coordinate (O) at (0, 0);
+      % 点の位置（ベクトルの合成）
+      \coordinate (X) at ($(\n*\eonex + \m*\etwox, \n*\eoney + \m*\etwoy)$);
+
+      % グリッド線（斜交座標系）
+      \foreach \i in {\xmin,...,\xmax} {
+          \draw[dotted, lightslategray, domain=\xmin:\xmax]
+          plot ({\i*\eonex + \x*\etwox}, {\i*\eoney + \x*\etwoy});
+        }
+
+      \foreach \j in {\ymin,...,\ymax} {
+          \draw[dotted, lightslategray, domain=\ymin:\ymax]
+          plot ({\x*\eonex + \j*\etwox}, {\x*\eoney + \j*\etwoy});
+        }
+
+      % 斜交座標軸 (e1方向とe2方向)
+      \draw[axis] ($(-1*\eonex, -1*\eoney)$) -- ($(4*\eonex, 4*\eoney)$) node[right] {$x$};
+      \draw[axis] ($(-1*\etwox, -1*\etwoy)$) -- ($(4*\etwox, 4*\etwoy)$) node[above] {$y$};
+
+      % 原点
+      \node at (O) [below left, xshift=-0.5em] {$O$};
+
+      % ベクトル x*e1 + y*e2
+      \draw[vector, very thick, BurntOrange] (O) -- (X)
+      node[pos=0.55, sloped, above] {\Large$x\vb*{a_1}+y\vb*{a_2}$};
+
+      % 点のマーク
+      \draw (X) node[circle, fill, inner sep=1.5pt] {};
+      \node at (X) [above right] {\large$(x, y)$};
+
+      % 基底ベクトル
+      \draw[vector, very thick, \acolor] (O) -- ++(\eonex,\eoney)
+      node[below, midway] {$\vb*{a}_1$};
+      \draw[vector, very thick, \acolor] (O) -- ++(\etwox,\etwoy)
+      node[left, midway] {$\vb*{a}_2$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\end{document}
