@@ -26,10 +26,10 @@ pdf2htmlEX ./math/basic/out/sequence.pdf
 pdf2htmlEX ./math/basic/out/combination.pdf
 ```
 
-#### 集合と写像
+#### 論理と集合
 
 ```bash
-pdf2htmlEX ./math/out/set_and_map.pdf
+pdf2htmlEX ./math/out/set_logic.pdf
 ```
 
 #### 絶対値
