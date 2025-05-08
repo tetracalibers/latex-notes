@@ -70,11 +70,11 @@
 解釈を一通りにするには、表し方を統一してしまうのが手っ取り早い。
 そのために、共通認識として定義された記号を使って文章を表現するのが、数学のアプローチなのである。
 
-\subsection{真偽値：正しさを値とみなす}
-
-ここからは、命題を記号化する具体的なルールを見ていこう。
-
 \br
+
+ここからは、命題を記号化する具体的なルールを見ていくことにする。
+
+\subsection{真偽値：正しさを値とみなす}
 
 命題は、主張の内容によって「正しい」か「正しくない」かが決まる。
 
@@ -98,12 +98,88 @@
   \end{itemize}
 \end{definition}
 
-\begin{mindflow}
-  \begin{itemize}
-    \item 論理演算子
-    \item 論理式
-  \end{itemize}
-\end{mindflow}
+\subsection{論理式：命題を記号化する}
+
+命題が真偽値という値を持つという視点に立つと、その値を反転させたり、組み合わせたりといった操作を考えることができる。
+
+この考え方は、小学校からお馴染みの数の演算に近いものだ。たとえば、足し算という演算は、1と2という値を組み合わせて、3という新たな値を作り出す操作といえる。
+
+\br
+
+ある命題から「新たな命題を作り出す操作」を表す記号を\keyword{論理演算子}といい、論理演算子のような記号の組み合わせによって命題を表現したものを、\keyword{論理式}という。
+
+\subsection{命題の否定}
+
+さて、のび太くんの今回の算数テストの点数は0点だったとする。
+
+このとき、のび太くんが「今回の算数テストは0点じゃなかった！」と主張しても、それは嘘である。
+
+\br
+
+0点だったという事実を$p$、0点じゃなかったという主張を$q$とおこう。
+
+\begin{itemize}
+  \item $p$ : のび太くんの算数テストの点数は0点である
+  \item $q$ : のび太くんの算数テストの点数は0点ではない
+\end{itemize}
+
+このとき、$q$を$p$の\keyword{否定命題}と呼ぶ。
+
+\br
+
+$p$が真実で、$q$は嘘であるのだから、
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      否定命題になると真偽が入れ替わる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+ということになる。
+
+\begin{definition}{命題の否定}\quad\\
+  命題$p$に対して、「$p$ではない」という命題を$p$の\hl{否定命題}といい、
+  \LARGE
+  \begin{equation*}
+    \neg p
+  \end{equation*}
+  \normalsize
+  と表す。
+\end{definition}
+
+$\neg$は「not」を意味する記号で、命題の否定を表す論理演算子である。
+
+\subsubsection{真理値表}
+
+ここで、初めての論理演算子が登場した。
+
+論理演算子によって新たな命題を作り出すとき、元の命題からの真偽値の変化を一覧化しておくとわかりやすい。
+そのように真偽値を一覧化した表を、\keyword{真理値表}という。
+
+\br
+
+\begin{wrapstuff}[r,type=table,width=0.3\linewidth]
+  \centering
+  \begin{NiceTabular}[hvlines]{W{c}{2em}W{c}{2em}}
+    \CodeBefore
+    \cellcolor{Rhodamine!40}{2-1,3-2}
+    \cellcolor{periwinkle!60}{2-2,3-1}
+    \Body
+    $p$ & $\neg p$ \\
+    1   & 0        \\
+    0   & 1        \\
+  \end{NiceTabular}
+  \caption*{\bfseries 否定の真理値表}
+\end{wrapstuff}
+
+この「否定の真理値表」では、次の対応関係が示されている。
+
+\begin{itemize}
+  \item $p$の真偽値が1のとき、$\neg p$の真偽値は0である
+  \item $p$の真偽値が0のとき、$\neg p$の真偽値は1である
+\end{itemize}
 
 \subsection{命題関数}
 
