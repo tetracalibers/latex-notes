@@ -110,6 +110,16 @@
 
 \usepackage{here} % figure環境のHオプション（画像を強制的にその場に表示する）を提供
 \usepackage{caption}
+
+% figure環境内で図の\captionを、table環境内で表の\captionを使う
+% ref: http://tony.in.coocan.jp/latex/index.html#captype
+\makeatletter%% プリアンブルで定義する場合は必須
+\newcommand{\figcap}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcap}[1]{\def\@captype{table}\caption{#1}}
+\newcommand{\figcapstar}[1]{\def\@captype{figure}\caption*{#1}}
+\newcommand{\tblcapstar}[1]{\def\@captype{table}\caption*{#1}}
+\makeatother%% プリアンブルで定義する場合は必須
+
 \usepackage{enumitem}
 \usepackage{wrapstuff} % 回り込み
 
