@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section{命題と論理}
+\section{命題と論理演算子}
 
 数学では「曖昧さ」を取り除いた議論が重要である。
 
@@ -313,7 +313,7 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
   \end{NiceTabular}
 \end{tcolorbox}
 
-\subsection{同値な命題}
+\section{同値な命題}
 
 論理演算子を組み合わせることで、元の命題と「同じ意味」の命題を作り出すこともできる。
 
@@ -327,7 +327,7 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
 
 「同じ意味」を表す言葉を定義した上で、「同じ意味」になる論理演算子の組み合わせのパターンをいくつか見ていこう。
 
-\subsubsection{構成命題と同値}
+\subsection{構成命題と同値}
 
 まず、「論理演算子を使って作られた命題」に名前をつけておく。
 
@@ -361,6 +361,53 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
 
 同値とは、あくまでも論理演算子を使って加工した結果として、同じ真理値を持つ命題が得られたという状況を指す。
 まったく異なる命題どうしを結びつけるものではなく、論理演算子の関係（効果が同じかどうか）を示すものだと捉えておこう。
+
+\subsection{反射法則（二重否定）}
+
+同値な命題が得られる論理演算子の組み合わせのパターンは、法則としていくつか知られている。
+
+\br
+
+その1つ目の例として、「否定を否定すると元に戻る」という法則を考えてみよう。
+
+次の3つの文章において、1つ目の文章と3つ目の文章は、どちらも同じく「勉強した」という主張になっている。
+
+\begin{enumerate}
+  \item 試験勉強はした
+  \item 試験勉強はしていない（否定）
+  \item 試験勉強はしていないわけじゃない（二重否定）
+\end{enumerate}
+
+3つ目の文章のような、「否定の否定」を\keyword{二重否定}と呼び、次の法則が成り立つ。
+
+\begin{theorem}{論理式の反射法則}
+  \titlegap
+  命題$p$に対して、$p$とその\hl{二重否定}$\neg(\neg p)$は同値となる。
+  \LARGE
+  \begin{equation*}
+    p \iff \neg(\neg p)
+  \end{equation*}
+\end{theorem}
+
+\begin{tcolorbox}[empty, size=minimal, sidebyside, righthand ratio=0.3]
+  実際に、真理値表を使って確かめてみよう。
+
+  「否定」とは0と1を反転させる操作であるから、2回反転させると元に戻る様子が明らかである。
+
+  \tcblower
+
+  \centering
+  \begin{NiceTabular}[hvlines]{W{c}{2.5em}W{c}{2.5em}W{c}{2.5em}}
+    \CodeBefore
+    \cellcolor{carnationpink!40}{2-1,2-3,3-2}
+    \cellcolor{periwinkle!60}{3-1,2-2,3-3}
+    \Body
+    $p$ & $\neg p$ & $\neg(\neg p)$ \\
+    1   & 0        & 1              \\
+    0   & 1        & 0              \\
+  \end{NiceTabular}
+  \tblcapstar{\bfseries 二重否定の真理値表}
+\end{tcolorbox}
 
 \section{述語論理}
 
