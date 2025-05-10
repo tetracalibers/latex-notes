@@ -495,9 +495,9 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
 
 たとえば、次のような文章を考えてみる。
 
-\begin{itemize}
-  \item 電池が切れたら、リモコンは動かなくなる
-\end{itemize}
+\begin{center}
+  電池が切れたら、リモコンは動かなくなる
+\end{center}
 
 「電池が切れている $\Rightarrow$ リモコンは動かなくなる」は真である。
 電池が切れたら、確実にリモコンは動かなくなるからだ。
@@ -517,15 +517,44 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
 
 他の例も見てみよう。
 
-\begin{itemize}
-  \item 足が痛い $\Rightarrow$ 足が骨折している
-\end{itemize}
+\begin{center}
+  足が痛い $\Rightarrow$ 足が骨折している
+\end{center}
 
 足が痛いからといって、必ずしも足が骨折しているとは限らないので、これは偽である。
 
-\subsubsection{「ならば」の真理値表}
+\subsection{必要条件と十分条件}
 
-論理包含「ならば」の真理値表を見てみよう。
+命題$p, \, q$に関して$p \Rightarrow q$が成り立つとき、$p$と$q$には名前がつけられている。
+
+\begin{definition}{必要条件と十分条件}
+  \titlegap
+  命題$p, \, q$に対して、$p \Rightarrow q$が常に成り立つとき、
+  \begin{itemize}
+    \item $q$は$p$の\hl{必要条件}である
+    \item $p$は$q$の\hl{十分条件}である
+  \end{itemize}
+  という。
+\end{definition}
+
+たとえば、
+
+\begin{center}
+  Ms.Fukasawaは日本人である $\Rightarrow$ Ms.Fukasawaは人間である
+\end{center}
+
+という文章の場合、「日本人である」が十分条件で、「人間である」が必要条件となる。
+
+\begin{itemize}
+  \item 「日本人である」というだけで、明言しなくても\keyword{十分}に「人間である」と言える
+  \item 「人間である」ことは、「日本人である」ことの前提として\keyword{必要}である
+\end{itemize}
+
+$p \Rightarrow q$の1つの理解として、「$p$であることは、$q$であることに含まれている」という包含関係のイメージを持っておくと、このような「必要」と「十分」という言葉のニュアンスを感じ取ることができる。
+
+\subsection{論理包含の真理値表}
+
+論理包含「ならば」の真理値表は、次のようになる。
 
 \begin{tcolorbox}[empty, size=minimal]
   \centering
@@ -565,8 +594,6 @@ $p$が偽のときは、$q$の真偽に関わらず、$p \Rightarrow q$は真と
 「雨は降っていなくても傘をさす」としても、「雨が降れば傘をさす」という文章を否定したことにはならないのである。
 
 「雨が降れば傘をさす」に反するのは、「雨が降っているのに傘をささない」場合だけだ。
-
-\subsection{必要条件と十分条件}
 
 \section{述語論理}
 
