@@ -1,0 +1,350 @@
+\documentclass[../book_ronri-and-set]{subfiles}
+
+\begin{document}
+
+\section{記号化の効用}
+
+文を記号化することにより、文の長さや内容に煩わされることなく、文の構造を把握することが容易となり、「思考の節約」になる
+
+\br
+
+もともとの文は忘れて、記号で表された文の間の関係を調べる分野のことを\keyword{記号論理学}という
+
+\br
+
+記号論理学は、
+\begin{itemize}
+  \item 主張（命題）を扱う\keyword{命題論理学}
+  \item 「すべての〜」とか「ある〜」とかを含む文を扱う\keyword{述語論理学}
+\end{itemize}
+に分かれている
+
+\sectionline
+\section{命題論理の法則}
+
+\begin{oframed}
+  \paragraph{結合法則}
+  \begin{align*}
+    (p \land q) \land r & \equiv p \land (q \land r) \\
+    (p \lor q) \lor r   & \equiv p \lor (q \lor r)
+  \end{align*}
+\end{oframed}
+
+\keyword{結合法則}は、「どこから計算しても同じ」という性質を支えるもの
+
+\sectionline
+
+記号論理では、ある法則が成り立つとき、
+\begin{shaded*}
+  その法則の$\land$を$\lor$に、そして、$\lor$を$\land$に置き換えた法則が成り立つ
+\end{shaded*}
+という原理があり、\keyword{双対性}と呼ばれている
+
+\br
+
+\begin{shaded*}
+  \keyword{双対性}は、2つのことがら・概念が、ちょうどお互いに鏡で写し合っているような対称性を持つ状況
+\end{shaded*}
+
+\keyword{双対性}は数学のいろんな分野で登場する
+
+\sectionline
+
+\begin{oframed}
+  \paragraph{冪等法則}
+  \begin{align*}
+    p \land p & \equiv p \\
+    p \lor p  & \equiv p
+  \end{align*}
+\end{oframed}
+
+これらを繰り返して適用すると、
+\begin{align*}
+  p \land \cdots \land p & \equiv p \\
+  p \lor \cdots \lor p   & \equiv p
+\end{align*}
+であることが容易にわかる
+
+これは、AND（あるいはOR）を「何度繰り返しても同値」であることを示している
+
+\br
+
+$\land$をかけ算（積）と見なすと、$  p \land \cdots \land$は$p$の累乗である
+
+昔は、累乗のことを「冪」と呼んだので、「冪等法則」の名称もここから来ている
+
+\sectionline
+
+\begin{oframed}
+  \paragraph{交換法則}
+  \begin{align*}
+    p \land q & \equiv q \land p \\
+    p \lor q  & \equiv q \lor p
+  \end{align*}
+\end{oframed}
+
+$p$と$q$の順序が交換できることを示している
+
+\sectionline
+
+\begin{oframed}
+  \paragraph{分配法則}
+  \begin{align*}
+    p \land (q \lor r) & \equiv (p \land q) \lor (p \land r) \\
+    p \lor (q \land r) & \equiv (p \lor q) \land (p \lor r)
+  \end{align*}
+\end{oframed}
+
+交換法則を考慮すると、分配法則は右から分配することもできる
+
+\begin{align*}
+  p \land (q \lor r) & \equiv (q \lor r) \land p \\
+  p \lor (q \land r) & \equiv (q \land r) \lor p
+\end{align*}
+
+\sectionline
+
+\begin{oframed}
+  \paragraph{吸収法則}
+  \begin{align*}
+    p \land (p \lor q) & \equiv p \\
+    p \lor (p \land q) & \equiv p
+  \end{align*}
+\end{oframed}
+
+分配法則によく似ているが、分配する方と分配される方のどちらにも$p$が入っている
+
+このような状況では$q$の影響がなくなって、命題が$p$と同値になるというのが\keyword{吸収法則}
+
+\sectionline
+
+\begin{oframed}
+  \paragraph{ド・モルガンの法則}
+  \begin{align*}
+    \neg (p \land q) & \equiv \neg p \lor \neg q  \\
+    \neg (p \lor q)  & \equiv \neg p \land \neg q
+  \end{align*}
+\end{oframed}
+
+\keyword{ド・モルガンの法則}は、ANDおよびORの否定がどうなるかを述べたもの
+
+命題の否定を作るときにはなくてはならない重要な公式
+
+\sectionline
+
+これらの法則を前提にすると、真理表を使用せずに、\keyword{同値変形}という方法で、2つの命題が同値であることを確かめることができる
+
+\sectionline
+\section{恒真命題と恒偽命題}
+
+同値変形をしていく場合に、真理値が一定な値をとる命題を考えると、便利であることがわかってくる
+
+\begin{oframed}
+  \paragraph{定義（恒真命題）}
+  真理値を1しかとらない命題を\keyword{恒真命題}と呼び、$I$で表す
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{定義（恒偽命題）}
+  真理値を0しかとらない命題を\keyword{恒偽命題}と呼び、$O$で表す
+\end{oframed}
+
+\sectionline
+
+恒真命題と恒偽命題の定義から、明らかに次が成り立つ
+
+\begin{oframed}
+  \paragraph{恒真命題と恒偽命題の関係}
+  \begin{align*}
+    \neg I & \equiv O \\
+    \neg O & \equiv I
+  \end{align*}
+\end{oframed}
+
+なぜなら、否定をとるというのは、真理値について0を1にし、1を0にする操作だから
+
+\sectionline
+
+\begin{oframed}
+  \paragraph{恒真命題の性質}
+  \begin{align*}
+    p \land I & \equiv p \\
+    p \lor I  & \equiv I
+  \end{align*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{恒偽命題の性質}
+  \begin{align*}
+    p \land O & \equiv O \\
+    p \lor O  & \equiv p
+  \end{align*}
+\end{oframed}
+
+これらの性質において、
+\begin{itemize}
+  \item $\land$を$\lor$に
+  \item $\lor$を$\land$に
+  \item $I$を$O$に
+  \item $O$を$I$に
+\end{itemize}
+置き換えると、
+\begin{align*}
+  p \land I \equiv p & \quad\leftrightarrow\quad p \lor O \equiv p  \\
+  p \lor I \equiv I  & \quad\leftrightarrow\quad p \land O \equiv O
+\end{align*}
+という対応が得られ、恒真命題と恒偽命題が\keyword{双対的}であることがわかる
+
+\sectionline
+\section{矛盾法則と排中法則}
+
+「命題とその否定命題は同時に成り立たない」というのが\keyword{矛盾法則}
+
+\begin{oframed}
+  \paragraph{矛盾法則}
+  \begin{align*}
+    p \land \neg p & \equiv O
+  \end{align*}
+\end{oframed}
+
+矛盾法則とは双対的に、\keyword{排中法則}は、「命題とその否定命題のどちらかは常に成り立つ」ということを表している
+
+\begin{oframed}
+  \paragraph{排中法則}
+  \begin{align*}
+    p \lor \neg p & \equiv I
+  \end{align*}
+\end{oframed}
+
+\sectionline
+
+否定を含む論理式の同値変形において、矛盾法則、排中法則、恒真命題の性質、恒偽命題の性質を用いると、次のような2つのステップで、式をより単純な形にすることができる
+
+\begin{enumerate}
+  \item 矛盾法則や排中法則により、命題とその否定命題のペアは、恒真命題$I$や恒偽命題$O$に置き換えることができる
+  \item 恒真命題の性質や恒偽命題の性質により、恒真命題$I$と恒偽命題$O$は、式をより簡単にする
+\end{enumerate}
+
+\sectionline
+\section{ならば}
+
+\begin{oframed}
+  \paragraph{定義}
+  命題$p, \, q$に対して、$\neg p \lor q$という命題を$p \to q$と書いて、「$p$ならば$q$」と読む
+\end{oframed}
+
+\sectionline
+\section{必要条件と十分条件}
+
+\begin{oframed}
+  \paragraph{定義（必要条件と十分条件）}
+  命題$p, \, q$に対して、命題$p \to q$が常に正しいとき、$p \Rightarrow q$と書き、
+  \begin{itemize}
+    \item $p$は$q$の\keyword{必要条件}である
+    \item $q$は$p$の\keyword{十分条件}である
+  \end{itemize}
+  と呼ぶ
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{定義（必要十分条件）}
+  $p \Rightarrow q$であり、$q \Rightarrow p$であるとき、$p \Leftrightarrow q$と書き、
+  \begin{itemize}
+    \item $p$は$q$の\keyword{必要十分条件}である
+    \item $q$は$p$の\keyword{必要十分条件}である
+  \end{itemize}
+  と呼ぶ
+\end{oframed}
+
+\sectionline
+\section{三段論法}
+
+「ならば」を用いた有名な議論の方法として、\keyword{仮言三段論法}がある
+
+これは、「$A$ならば$B$」という主張と「$B$ならば$C$」という主張から、「$A$ならば$C$」という主張を導くことができるというもの
+
+\sectionline
+\section{逆と対偶}
+
+対偶$\neg q \to \neg p$と、もとの命題$p \to q$は同値である
+
+\begin{equation}
+  \begin{WithArrows}
+    & \phantom{\equiv} \neg q \to \neg p \Arrow{$\to$の定義} \\
+    & \equiv (\neg \neg q) \lor \neg p \Arrow{反射法則} \\
+    & \equiv q \lor \neg p \Arrow{交換法則} \\
+    & \equiv \neg p \lor q \Arrow{$\to$の定義} \\
+    & \equiv p \to q
+  \end{WithArrows}
+\end{equation}
+
+\sectionline
+
+「晴れるならば、外出する」はまともな主張だが、その対偶「外出しないならば、晴れない」というのは、少し違和感を感じる
+
+\br
+
+これは、「外出しない」という原因によって「晴れない」という結果が導かれるととらえてしまうから
+
+\br
+
+あくまで、論理の「ならば」は、「外出しない」という事実があるときに、「晴れない」という事実があるという状態を表すもの
+
+\br
+
+「〜ならば〜」というのは、
+\begin{shaded*}
+  原因と結果という因果関係ではなく、2つの状態の間の事実関係である
+\end{shaded*}
+と思っておくとよい
+
+\sectionline
+
+$\neg p \to \neg q$は、$p \to q$の\keyword{裏}と呼ばれることもある
+
+\begin{itemize}
+  \item $(\neg p \to \neg q) \equiv (\neg\neg p) \lor \neg q \equiv p \lor \neg q$
+  \item $(p \to q) \equiv (\neg p \lor q)$
+\end{itemize}
+であるため、裏$\neg p \to \neg q$と元の命題$p \to q$は特に関係がない
+
+\sectionline
+\section{2つの同値}
+
+\begin{oframed}
+  \paragraph{定義（同値）}
+  2つの命題$p, \, q$に対して、真理値がすべて等しい（真理表が一致する）ということを、$p$と$q$は\keyword{同値}であると呼び、
+  \begin{equation*}
+    p \equiv q
+  \end{equation*}
+  と表す
+\end{oframed}
+
+一方、同値にはもう1つの定義がある
+
+\begin{oframed}
+  \paragraph{定義（同値）}
+  命題$p$と命題$q$がお互いに必要十分条件であるとき、言いかえると、$p \Rightarrow q$かつ$q \Rightarrow p$であるとき、$p$と$q$は\keyword{同値}であると呼び、
+  \begin{equation*}
+    p \Leftrightarrow q
+  \end{equation*}
+  と表す
+\end{oframed}
+
+この2つの同値$\equiv$と$\Leftrightarrow$は、実は同じ内容を表している
+
+\br
+
+「$p \Rightarrow q$かつ$q \Rightarrow p$」であるというのは、
+
+\begin{shaded*}
+  命題$p \to q$および命題$q \to p$の真理値がすべて1である
+\end{shaded*}
+
+ということだから、「$p$と$q$の真理値が等しいこと」と「$p \to q$と$q \to p$の真理値がどちらも1であること」は一致している
+
+\br
+
+したがって、2つの同値$\equiv$と$\Leftrightarrow$は同じ内容を表していることがわかる
+
+\end{document}
