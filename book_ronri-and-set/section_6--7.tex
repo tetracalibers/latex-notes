@@ -2,6 +2,176 @@
 
 \begin{document}
 
+\sectionline
+\section{命題関数}
 
+これまで、たとえば「1234567891は素数である」というような\keyword{命題}を扱ってきた
+
+ここで、たとえば$x$が自然数全体を動くとき、「$x$は素数である」という形の主張を\keyword{命題関数}と呼ぶ
+
+\br
+
+命題は記号$p$で表されたのに対し、命題関数は$p(x)$と書く
+
+命題関数$p(x)$は、$x$の値に応じて主張が変わり、真理値が変化していく
+
+\br
+
+命題関数$p(x)$の$x$は、\keyword{変数}と呼ばれる
+
+命題関数$p(x)$の変数は、実数や自然数のような数以外に、直線とか地図のような数学的対象や一般的概念をとる
+
+\sectionline
+\section{すべての〜}
+
+命題関数$p(x)$に対して、「すべての$x$について$p(x)$である」という命題を
+\begin{equation*}
+  \forall x p(x)
+\end{equation*}
+と表す
+
+\br
+
+「すべての〜について〇〇である」は、
+\begin{itemize}
+  \item 「すべての〜は〇〇である」
+  \item 「任意の〜について〇〇である」
+  \item 「任意の〜は〇〇である」
+\end{itemize}
+と表すこともある
+
+\br
+
+$\forall$という記号は、「all（すべての〜）」や「any（任意の〜）」の頭文字のAを逆さにしたものに由来する
+
+\sectionline
+
+変数$x$が$x= a_1, a_2, \cdots , a_n$という有限個の値をとるとき、「すべての$x$について$p(x)$である」というのは、
+\begin{shaded*}
+  $p(a_1)$であり、かつ、$p(a_2)$であり、かつ、$\cdots$、かつ、$p(a_n)$である
+\end{shaded*}
+ということに他ならない
+
+言い換えると、
+\begin{equation*}
+  \forall x p(x) = p(a_1) \land p(a_2) \land \cdots \land p(a_n)
+\end{equation*}
+ということになる
+
+\sectionline
+\section{ある〜}
+
+命題関数$p(x)$に対して、「ある$x$について$p(x)$である」という命題を
+\begin{equation*}
+  \exists x p(x)
+\end{equation*}
+と表す
+
+\br
+
+「ある〜について〇〇である」は、
+\begin{itemize}
+  \item 「ある〜は〇〇である」
+  \item 「ある〜が存在して〇〇である」
+  \item 「〇〇であるような〜が存在する」
+\end{itemize}
+と表すこともある
+
+\br
+
+$\exists$という記号は、「exists（存在する）」の頭文字のEを逆さにしたものに由来する
+
+\sectionline
+
+変数$x$が$x= a_1, a_2, \cdots , a_n$という有限個の値をとるとき、「ある$x$について$p(x)$である」というのは、
+\begin{shaded*}
+  $p(a_1)$であるか、あるいは、$p(a_2)$であるか、あるいは、$\cdots$、あるいは、$p(a_n)$である
+\end{shaded*}
+ということに他ならない
+
+言い換えると、
+\begin{equation*}
+  \exists x p(x) = p(a_1) \lor p(a_2) \lor \cdots \lor p(a_n)
+\end{equation*}
+ということになる
+
+\sectionline
+\section{「すべての〜」と「ある〜」}
+
+「すべての〜」と「ある〜」の2つの概念の間には\keyword{双対性}がある
+
+\begin{align*}
+  \forall x p(x) & = p(a_1) \land p(a_2) \land \cdots \land p(a_n) \\
+  \exists x p(x) & = p(a_1) \lor p(a_2) \lor \cdots \lor p(a_n)
+\end{align*}
+という式を比較してみると、「すべての〜（$\forall$）」と「ある〜（$\exists$）」は、AND（$\land$）とOR（$\lor$）の双対性を反映していることがわかる
+
+\sectionline
+\section{$\forall$と$\exists$を含んだ式の同値変形}
+
+\begin{oframed}
+  \paragraph{$\forall$と$\exists$の性質}
+  \begin{align*}
+    \forall x (p(x) \land q(x)) & \equiv \forall x p(x) \land \forall x q(x) \\
+    \exists x (p(x) \lor q(x))  & \equiv \exists x p(x) \lor \exists x q(x)
+  \end{align*}
+\end{oframed}
+
+これらはそれぞれ、
+\begin{itemize}
+  \item 「すべての〜」（$\forall x$）とAND（$\land$）
+  \item 「ある〜」（$\exists x$）とOR（$\lor$）
+\end{itemize}
+が対応していると思って眺めるとよい
+
+\sectionline
+\section{$\forall$と$\exists$の否定}
+
+「すべての〜」（$\forall$）と「ある〜」（$\exists$）を含む命題の否定は、次の\keyword{ド・モルガンの法則}で与えられる
+
+\begin{oframed}
+  \paragraph{ド・モルガンの法則（述語論理）}
+  \begin{align*}
+    \neg \forall x p(x) & \equiv \exists x \neg p(x) \\
+    \neg \exists x p(x) & \equiv \forall x \neg p(x)
+  \end{align*}
+\end{oframed}
+
+$\neg \forall x p(x) \equiv \exists x \neg p(x)$より、
+\begin{shaded*}
+  「すべての〜について…である」の否定は、「ある〜について…でない」
+\end{shaded*}
+
+$\neg \exists x p(x) \equiv \forall x \neg p(x)$より、
+\begin{shaded*}
+  「ある〜について…である」の否定は、「すべての〜について…でない」
+\end{shaded*}
+
+要するに、否定をとると、「すべての〜」は「ある〜」になり、「ある〜」は「すべての〜」になる
+
+\sectionline
+
+述語論理のド・モルガンの法則は、命題論理のド・モルガンの法則の一般化になっている
+
+\br
+
+$x$が$x = a_1, a_2, \cdots , a_n$というように、有限個の値しかとらない場合、
+\begin{align*}
+  \forall x p(x) & = p(a_1) \land p(a_2) \land \cdots \land p(a_n) \\
+  \exists x p(x) & = p(a_1) \lor p(a_2) \lor \cdots \lor p(a_n)
+\end{align*}
+であり、
+\begin{align*}
+  \forall x \neg p(x) & = \neg p(a_1) \land \neg p(a_2) \land \cdots \land \neg p(a_n) \\
+  \exists x \neg p(x) & = \neg p(a_1) \lor \neg p(a_2) \lor \cdots \lor \neg p(a_n)
+\end{align*}
+であるので、述語論理のド・モルガンの法則は、それぞれ次のように書き換えられる
+\begin{multline}
+  \neg (p(a_1) \land p(a_2) \land \cdots \land p(a_n)) \\ \equiv \neg p(a_1) \lor \neg p(a_2) \lor \cdots \lor \neg p(a_n)
+\end{multline}
+\begin{multline}
+  \neg (p(a_1) \lor p(a_2) \lor \cdots \lor p(a_n)) \\ \equiv \neg p(a_1) \land \neg p(a_2) \land \cdots \land \neg p(a_n)
+\end{multline}
+これらはそれぞれ、命題論理のド・モルガンの法則の一般化になっていることは一目瞭然
 
 \end{document}
