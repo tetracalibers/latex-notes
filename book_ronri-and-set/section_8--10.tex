@@ -241,4 +241,128 @@ $x$が集合$A$の要素であるとき、$x$は$A$に\keyword{含まれる}、�
   \item $\{x \mid p(x)\} \subset \{x \mid q(x)\}$
 \end{itemize}
 
+\sectionline
+\section{全体集合と補集合}
+
+集合にも、論理の「否定」に対するものがある
+
+それが\keyword{補集合}というもの
+
+\br
+
+集合の場合は「〜でない」という要素を集めてくる必要があるので、「どこまでの範囲」の中で集めるかということをあらかじめ設定しておかなければならない
+
+その「どこまでの範囲」として、あらかじめ定められた1つの集合のことを\keyword{全体集合}という
+
+\sectionline
+
+枠組みとなる集合を1つ固定して、扱う集合をその部分集合に限るとき、その枠組みとなる集合を\keyword{全体集合}という
+
+全体集合は$\Omega $という記号を用いることが多い
+
+\br
+
+また、全体集合$\Omega $が定まっているとき、$\Omega$の部分集合$A$に対して、$A$に含まれていない$\Omega$の要素の全体からなる集合を$A$の\keyword{補集合}と呼び、記号では$\overline{A}$あるいは$A^c$と書く
+\begin{align*}
+  A^c & = \{x \mid x \in \Omega \land x \notin A\} \\
+      & = \Omega - A
+\end{align*}
+
+\sectionline
+
+補集合を用いると、論理の反射法則とド・モルガンの法則に対応する、集合の法則が得られる
+
+\begin{oframed}
+  \paragraph{反射法則}
+  \begin{equation*}
+    (A^c)^c = A
+  \end{equation*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{ド・モルガンの法則}
+  \begin{align*}
+    (A \cap B)^c & = A^c \cup B^c \\
+    (A \cup B)^c & = A^c \cap B^c
+  \end{align*}
+\end{oframed}
+
+補集合は論理の「否定」に対応している
+
+\sectionline
+
+全体集合という枠組みの設定のもとで、「空集合」と「全体集合」は双対的な概念であることがわかる
+
+\begin{oframed}
+  \paragraph{空集合の性質}
+  \begin{align*}
+    A \cap \emptyset & = \emptyset \\
+    A \cup \emptyset & = A
+  \end{align*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{全体集合の性質}
+  \begin{align*}
+    A \cap \Omega & = A      \\
+    A \cup \Omega & = \Omega
+  \end{align*}
+\end{oframed}
+
+これらの性質において、
+\begin{itemize}
+  \item $\cap$を$\cup$に
+  \item $\cup$を$\cap$に
+  \item $\emptyset$を$\Omega$に
+  \item $\Omega$を$\emptyset$に
+\end{itemize}
+置き換えると、
+\begin{itemize}
+  \item $A \cap \emptyset = \emptyset \quad \leftrightarrow \quad A \cup \Omega = \Omega$
+  \item $A \cup \emptyset = A \quad \leftrightarrow \quad A \cap \Omega = A$
+\end{itemize}
+という対応が得られ、空集合と全体集合が双対的であることがわかる
+
+\sectionline
+
+空集合の性質は恒偽命題の性質に対応し、全体集合の性質は恒真命題の性質に対応する
+
+\br
+
+つまり、
+\begin{shaded*}
+  空集合$\emptyset$が論理の恒偽命題$O$に対応し、全体集合$\Omega$が論理の恒真命題$I$に対応している
+\end{shaded*}
+
+実際、
+\begin{align*}
+  \Omega    & = \{x \in \Omega \mid I\} \\
+  \emptyset & = \{x \in \Omega \mid O\}
+\end{align*}
+ということ
+
+この証明も、対応する論理の法則を用いれば容易に得られる
+
+\br
+
+また、「空集合と全体集合の双対性」は「恒偽命題と恒真命題の双対性」に対応している
+
+\sectionline
+
+補集合については、次の性質が定義からわかる
+
+\begin{oframed}
+  \paragraph{補集合の性質}
+  \begin{align*}
+    A \cap A^c & = \emptyset \\
+    A \cup A^c & = \Omega
+  \end{align*}
+\end{oframed}
+
+これらの性質はそれぞれ、論理の矛盾法則と排中法則に対応している
+
+\sectionline
+
+「集合」と「論理」は、双対性を備えた単純できれいな構造を持ち、それらの間には双対的な関係が成り立っている
+
 \end{document}
