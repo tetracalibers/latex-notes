@@ -48,4 +48,197 @@ $x$が集合$A$の要素であるとき、$x$は$A$に\keyword{含まれる}、�
 
 「要素が1つもない集まり」も、1つの集合とみなして、\keyword{空集合}と呼び、記号$\emptyset$で表す
 
+\sectionline
+\section{部分集合}
+
+2つの集合$A$と$B$に対して、$A$は$B$の\keyword{部分集合}である（$A$は$B$に\keyword{含まれる}）とは、
+\begin{shaded*}
+  $A$のすべての要素が$B$の要素になっている
+\end{shaded*}
+ことを言い、記号では$A \subset B$と書く
+
+\br
+
+「$A \subset B$かつ$B \subset A$である」ことは、$A = B$であることに他ならない
+
+\sectionline
+\section{共通部分}
+
+いくつかの集合があったとき、それらの「共通の部分」、すなわち、
+\begin{shaded*}
+  それらの共通の要素を集めてできた集合
+\end{shaded*}
+のことを\keyword{共通部分}という
+
+共通部分には$\cap$という記号が用いられる
+
+\sectionline
+
+たとえば、2つの集合$A,\,B$に対して、$A$と$B$のどちらにも含まれている要素の全体からなる集合を$A$と$B$の\keyword{共通部分}と呼び、記号では$A \cap B$と書く
+
+\br
+
+すなわち、
+\begin{equation*}
+  A \cap B = \{x \mid x \in A \land x \in B\}
+\end{equation*}
+
+\sectionline
+
+有限個の集合でも同様に、集合$A_1, A_2, \cdots , A_n$に対して、すべての$A_i$に含まれている要素の全体からなる集合を、集合$A_1, A_2, \cdots , A_n$の\keyword{共通部分}と呼び、記号で
+\begin{equation*}
+  A_1 \cap A_2 \cap \cdots \cap A_n \quad \text{あるいは} \quad \bigcap_{i=1}^n A_i
+\end{equation*}
+と書く
+
+\br
+
+すなわち、
+\begin{align*}
+  A_1 \cap A_2 \cap \cdots \cap A_n
+   & = \{x \mid \forall A_i , c \in A_i \}               \\
+   & = \{x \mid x \in A_1 \land \cdots \land x \in A_n\}
+\end{align*}
+
+\sectionline
+
+いくつかの集合があって、それらのどの2つも共通部分をもたないとき、それらは\keyword{互いに素}であるという
+
+\sectionline
+\section{和集合}
+
+いくつかの集合があったとき、
+\begin{shaded*}
+  それらの集合をすべて集めてできた集合
+\end{shaded*}
+のことを\keyword{和集合}という
+
+和集合には$\cup$という記号が用いられる
+
+\sectionline
+
+たとえば、2つの集合$A,\,B$に対して、$A$と$B$のどちらかに含まれている要素の全体からなる集合を$A$と$B$の\keyword{和集合}と呼び、記号では$A \cup B$と書く
+
+\br
+
+すなわち、
+\begin{equation*}
+  A \cup B = \{x \mid x \in A \lor x \in B\}
+\end{equation*}
+
+\sectionline
+
+有限個の集合でも同様に、集合$A_1, A_2, \cdots , A_n$に対して、ある$A_i$に含まれている要素の全体からなる集合を、集合$A_1, A_2, \cdots , A_n$の\keyword{和集合}と呼び、記号で
+\begin{equation*}
+  A_1 \cup A_2 \cup \cdots \cup A_n \quad \text{あるいは} \quad \bigcup_{i=1}^n A_i
+\end{equation*}
+と書く
+
+\br
+
+すなわち、
+\begin{align*}
+  A_1 \cup A_2 \cup \cdots \cup A_n
+   & = \{x \mid \exists A_i , c \in A_i \}             \\
+   & = \{x \mid x \in A_1 \lor \cdots \lor x \in A_n\}
+\end{align*}
+
+\sectionline
+\section{集合と論理の間の対応関係}
+
+「集合」と「論理」は対応しているため、論理で登場した法則は集合に対しても成り立つ
+
+\begin{oframed}
+  \paragraph{冪等法則}
+  \begin{align*}
+    A \cap A & = A \\
+    A \cup A & = A
+  \end{align*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{交換法則}
+  \begin{align*}
+    A \cap B & = B \cap A \\
+    A \cup B & = B \cup A
+  \end{align*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{結合法則}
+  \begin{align*}
+    A \cap (B \cap C) & = (A \cap B) \cap C \\
+    A \cup (B \cup C) & = (A \cup B) \cup C
+  \end{align*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{分配法則}
+  \begin{align*}
+    A \cap (B \cup C) & = (A \cap B) \cup (A \cap C) \\
+    A \cup (B \cap C) & = (A \cup B) \cap (A \cup C)
+  \end{align*}
+\end{oframed}
+
+\begin{oframed}
+  \paragraph{吸収法則}
+  \begin{align*}
+    A \cap (A \cup B) & = A \\
+    A \cup (A \cap B) & = A
+  \end{align*}
+\end{oframed}
+
+たとえば、交換法則の証明は次のようになる
+\begin{equation}
+  \begin{WithArrows}
+    & \phantom{=} A \cap B \Arrow{$\cap$の定義}\\
+    & =\{x \mid x \in A \land x \in B\} \Arrow{論理の交換法則} \\
+    &=\{x \mid x \in B \land x \in A\} \Arrow{$\cap$の定義} \\
+    & = B \cap A
+  \end{WithArrows}
+\end{equation}
+
+この証明を見てみると、「集合の性質」と「論理の性質」が対応していることがわかる
+
+\sectionline
+
+「集合」というのは、内包的記法により
+\begin{equation*}
+  \text{集合} = \{x \mid x \text{は〜である}\}
+\end{equation*}
+という形で表現できるが、「$x$は〜である」というのは、「論理」の命題関数である
+
+\br
+
+すなわち、命題関数$p(x)$を用いて、
+\begin{equation*}
+  \text{集合} = \{x \mid p(x)\}
+\end{equation*}
+と書ける
+
+\br
+
+このとき、$\cap$と$\cup$の定義から、
+\begin{align*}
+  \{x \mid p(x)\} \cap \{x \mid q(x)\} & = \{x \mid p(x) \land q(x)\} \\
+  \{x \mid p(x)\} \cup \{x \mid q(x)\} & = \{x \mid p(x) \lor q(x)\}
+\end{align*}
+となる
+
+\br
+
+さらに、次の2つの主張は同値である
+\begin{itemize}
+  \item $p(x) \equiv q(x)$
+  \item $\{x \mid p(x)\} = \{x \mid q(x)\}$
+\end{itemize}
+
+\br
+
+もっと一般に、次の2つの主張が同値であることが確かめられる
+\begin{itemize}
+  \item $p(x) \Rightarrow q(x)$
+  \item $\{x \mid p(x)\} \subset \{x \mid q(x)\}$
+\end{itemize}
+
 \end{document}
