@@ -128,6 +128,66 @@
   #1
 }
 
+\definecolor{ProofColor}{HTML}{D2DAFF}
+\DeclareTColorBox{proof}{}{%
+  empty,
+  title={\textcolor{ProofColor}{\faParagraph}証明},
+  attach boxed title to top left,
+  sharp corners,
+  boxed title style={
+      empty,
+      size=minimal,
+      toprule=2pt,
+      top=4pt,
+      left=1em,
+      right=1em,
+      top=0.25cm,
+      overlay={
+          \draw[ProofColor,line width=2pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
+        }
+    },
+  coltitle=ProofColor!70!black,
+  fonttitle=\bfseries,
+  before=\par\medskip\noindent,
+  parbox=false,
+  boxsep=0pt,
+  left=2em,
+  right=0.5em,
+  top=0.5cm,
+  bottom=0.5cm,
+  breakable,
+  pad at break*=0mm,
+  vfill before first,
+  overlay unbroken={
+      \draw[ProofColor,line width=1pt]
+      ([yshift=-1pt]title.north east)
+      --([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+      --([xshift=-0.5pt]frame.south east)
+      --(frame.south west);
+    },
+  overlay first={
+      \draw[ProofColor,line width=1pt]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
+    },
+  overlay middle={
+      \draw[ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
+    },
+  overlay last={
+      \draw[ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
+    },%
+}
+
+\NewDocumentCommand{\patterntitle}{m}{
+  \tcbox[
+    enhanced,
+    empty,
+    boxsep=0pt,
+    left=2pt,right=2pt,
+    bottom=2pt,
+    fonttitle=\bfseries,
+    borderline south={1pt}{0pt}{ProofColor},
+  ]{\textcolor{ProofColor}{\faStarAndCrescent}~#1}
+}
+
 % === memo ===
 
 \usepackage[enable]{easy-todo}
