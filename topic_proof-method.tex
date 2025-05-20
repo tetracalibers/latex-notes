@@ -1,0 +1,100 @@
+\documentclass[b5paper,12pt]{jsarticle}
+
+\title{Topic Note: 証明の手法}
+\author{tomixy}
+
+\input{topic_preamble.tex}
+
+% ---
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{証明と推論}
+
+ある事柄が証明できるということは、「ある事柄が公理から導ける」ということ
+
+「導く」という部分は厳密には\keyword{推論する}といわれる
+
+\br
+
+導くことを、$\rightarrow $を使って表現したりする
+
+$\Rightarrow$と$\rightarrow$は本質的には違うもの
+
+\begin{itemize}
+  \item 前者は論理演算子であり、新しい命題を作るための記号
+  \item 後者は証明に必要な推論を表す記号で、論理式から論理式を「導く」ための記号
+\end{itemize}
+
+\sectionline
+\section{対偶法}
+
+\keyword{対偶法}は「対偶は真偽が変わらない」ということを利用した証明方法
+
+\begin{description}
+  \item[Mr. A] 「ゾウさんはみんな鼻が長いね」
+  \item[Ms. B] 「だって鼻が長くなかったら象じゃないでしょ！」
+\end{description}
+
+前提条件（$\Rightarrow$の前）が式にしにくかったり複雑な問題のときは、対偶をとってみるとよい
+
+\sectionline
+\section{背理法}
+
+最終的に否定することを期待して正しいと仮定した事柄から矛盾を導くという証明方法を\keyword{背理法}という
+
+\begin{description}
+  \item[Mr. A] Bってモテるよね
+  \item[Mr. B] そう？
+  \item[Mr. A] だってモテない人はバレンタインにチョコ10個ももらえないよ
+\end{description}
+
+この論法の流れを詳しく見てみると、
+
+\begin{description}
+  \item[仮定] Bはモテない
+  \item[事実] Bはバレンタインにチョコを10個もらった
+  \item[矛盾] モテない人はバレンタインにチョコを一切もらえない
+  \item[結論] Bはモテる
+\end{description}
+
+背理法は、$p \Rightarrow q$が真であることを証明したいときに$p \land \neg q$が偽であることを証明するという構造になっている
+
+\begin{theorem}{背理法の原理}
+  $p \land \neg q$が偽であることと$p \Rightarrow q$が真であることは同じである
+\end{theorem}
+
+\begin{proof}
+  \todo{証明 p92}
+\end{proof}
+
+背理法の考え方は統計学の\keyword{検定}という分野でも使われていて、現代社会で大活躍している
+
+\sectionline
+\section{数学的帰納法}
+
+ドミノ倒しの理屈を考えてみる
+
+\begin{enumerate}
+  \item 最初のドミノは人間の手で倒すから必ず倒れる
+  \item 一つ前のドミノが倒れたら、必ず次のドミノに当たって倒れるように配置されている
+\end{enumerate}
+
+つまり、ドミノが全て倒れるためには、
+
+\begin{enumerate}
+  \item 最初のドミノを手で倒す必要がある
+  \item 前が倒れたら後ろも倒れるように配置する必要がある
+\end{enumerate}
+
+より一般化して述べると、次の2つが認められれば全て成り立つという証明方法が\keyword{数学的帰納法}
+
+\begin{enumerate}
+  \item 初めは成り立つ
+  \item どの連続した2つも、前が成り立つなら後ろも成り立つ
+\end{enumerate}
+
+\end{document}
