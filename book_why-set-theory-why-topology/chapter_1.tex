@@ -2,8 +2,188 @@
 
 \begin{document}
 
-\section{フーリエ級数と「任意の関数」}
+\section{熱伝導方程式とフーリエ級数}
 
+細長い棒状の物体があったとする
 
+時刻$t$における、左端から右に向かって距離$x$の位置での、この物体の温度を$u(x,t)$と表す
+
+このとき、$u$の変化は、次の\keyword{熱伝導方程式}に従う
+
+\begin{equation*}
+  \frac{\partial u}{\partial t} = \frac{\partial^2 u}{\partial x^2}
+\end{equation*}
+
+\sectionline
+
+棒の両端での温度をゼロに保ち、初期状態での温度が位置$x$の関数$f(x)$で与えられているものとして、温度$u$のその後の変化を追っていく
+
+\br
+
+計算を簡単にするため、棒の長さが円周率$\pi$となるように長さの単位を選ぶことにする
+
+\br
+
+すると、棒の左端では$x=0$、右端では$x=\pi$であるから、両端の温度がいつでもゼロであるという条件は
+\begin{equation*}
+  u(0,t) = u(\pi,t) = 0 \quad (t \geq 0)
+\end{equation*}
+と表現される
+
+この条件を熱伝導方程式に対する\keyword{境界条件}という
+
+\br
+
+また、最初の温度が$f(x)$で与えられるという条件は、
+\begin{equation*}
+  u(x,0) = f(x) \quad (0 \leq x \leq \pi)
+\end{equation*}
+と表現できる
+
+この条件を熱伝導方程式に対する\keyword{初期条件}という
+
+\br
+
+熱伝導方程式を、これらの境界条件と初期条件のもとで解けばよい
+
+\sectionline
+
+熱伝導方程式と境界条件は、次の性質をもつ
+
+\begin{itemize}
+  \item $u_1$と$u_2$が熱伝導方程式と境界条件を満たすとき、和$u_1 + u_2$もまた熱伝導方程式と境界条件を満たす
+  \item $u$が熱伝導方程式と境界条件を満たすとき、その任意の定数倍$ku$もまた熱伝導方程式と境界条件を満たす
+\end{itemize}
+
+熱伝導方程式のこの性質を、\keyword{重ね合わせの原理}という
+
+\sectionline
+
+フーリエは、重ね合わせの原理を活用して、
+
+\begin{enumerate}
+  \item 方程式と境界条件を満たす関数のうち、なるべく簡単なものを求める
+  \item 得られた簡単な形の関数を足し合わせることで、初期条件を満たす関数を作る
+\end{enumerate}
+
+という二段構えで問題を解こうとした
+
+\br
+
+まず、熱伝導方程式の変数分離型の解のうち、境界条件を満たすのは、
+\begin{equation*}
+  e^{-n^2 t} \sin(nx) \quad (n=1,2,\ldots)
+\end{equation*}
+という形のものとその定数倍だけであることがわかる
+
+\begin{leftbar}
+  注：ただし、棒の長さが$\pi$ではなく、一般に長さ$L$の棒であれば、ここでの解は
+  \begin{equation*}
+    e^{-\frac{n^2\pi^2}{L^2}t} \sin\left(\frac{n\pi}{L} x\right) \quad (n=1,2,\ldots)
+  \end{equation*}
+  という形になる
+\end{leftbar}
+
+\br
+
+重ね合わせの原理により、この関数に定数$b_n$をかけて、たとえば$1 \leq n \leq N$の範囲で足し合わせた
+\begin{equation*}
+  \sum_{n=1}^N b_n e^{-n^2 t} \sin(nx)
+\end{equation*}
+という関数も、方程式と境界条件を満たす
+
+\br
+
+ここでフーリエは大胆にも、和の上限$N$をなくした無限和
+\begin{equation*}
+  u(x,t) = \sum_{n=1}^\infty b_n e^{-n^2 t} \sin(nx)
+\end{equation*}
+も方程式と境界条件を満たすだろうと主張した
+
+\br
+
+そして、初期条件を満たす関数$u$を求めるためには、上の式の右辺で$t=0$とした式を関数$f(x)$と等値した
+\begin{equation*}
+  f(x) = \sum_{n=1}^\infty b_n \sin(nx)
+\end{equation*}
+が成り立つように定数$b_n$を定めればよいと考えた
+
+\br
+
+この式が有限和
+\begin{equation*}
+  f(x) = \sum_{n=1}^N b_n \sin(nx)
+\end{equation*}
+であった場合には、両辺に$\sin kx$をかけて0から$\pi$まで積分すれば、定積分の公式
+\begin{equation*}
+  \int_0^\pi \sin nx \sin kx \, dx = \begin{cases}
+    0             & (n \neq k) \\
+    \frac{\pi}{2} & (n = k)
+  \end{cases}
+\end{equation*}
+によって、
+\begin{equation*}
+  \int_0^\pi f(x) \sin kx \, dx = \frac{\pi}{2} b_k
+\end{equation*}
+となり、$b_n$は積分
+\begin{equation*}
+  b_n = \frac{2}{\pi} \int_0^\pi f(x) \sin nx \, dx
+\end{equation*}
+で求められる
+
+\br
+
+無限和の場合も同様に、与えられた関数$f(x)$に対して、この式で$b_n$を定めれば、無限級数が成立するだろうとフーリエは主張した
+
+\sectionline
+
+こうして、熱伝導方程式を解く方法の一環として、関数$f(x)$から得られる積分値を係数とした三角関数の和で$f(x)$を表示する、という着想にフーリエは至った
+
+\br
+
+$f(x)$からこの方法で得られる三角関数の和を、$f(x)$の\keyword{フーリエ級数}という
+
+\begin{leftbar}
+  注：ここでは、$f(x)$が区間の両端でゼロになる場合だけを扱ったため、フーリエ級数がサイン関数だけの和になった \\
+  一般には、区間の両端で値が一致しない関数や、原点でグラフが対称でない関数も含めて考えるために、サイン関数とコサイン関数の和を考える
+\end{leftbar}
+
+\sectionline
+\section{フーリエの理論の問題点}
+
+一般に、$-\pi$から$\pi$までの実数$x$に対して定義された関数$f(x)$に対して、$a_n$と$b_n$を
+\begin{align*}
+  a_n & = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos nx \, dx \\
+  b_n & = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \sin nx \, dx
+\end{align*}
+のように定めれば、$f(x)$の\keyword{フーリエ級数}は
+\begin{equation*}
+  f(x) \sim \dfrac{a_0}{2} + \sum_{n=1}^\infty \left( a_n \cos nx + b_n \sin nx \right)
+\end{equation*}
+という形を持つことになる
+
+\br
+
+フーリエ級数は、収束するかどうかわからない上、収束しても値が$f(x)$と一致するかどうかわからないため、一般には、この式の両辺を等号で結ぶことはできない
+
+\br
+
+そこで、左辺の関数のフーリエ級数は右辺の級数だよ、ということを表現するために、等号の代わりに$\sim$記号を用いる
+
+\sectionline
+
+フーリエの議論の一番の問題点は、無限級数の\keyword{項別積分}の可能性にあった
+
+\br
+
+仮に、関数$f(x)$が本当に三角関数の和として
+\begin{equation*}
+  f(x) = \dfrac{a_0}{2} + \sum_{n=1}^\infty \left( a_n \cos nx + b_n \sin nx \right)
+\end{equation*}
+の形で与えられているとしても、このことから、たとえば
+\begin{equation*}
+  a_n = \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos nx \, dx
+\end{equation*}
+を結論づけるには、無限和と積分の順序交換、すなわち\keyword{項別積分}
 
 \end{document}
