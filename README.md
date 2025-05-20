@@ -26,12 +26,6 @@ pdf2htmlEX ./math/basic/out/sequence.pdf
 pdf2htmlEX ./math/basic/out/combination.pdf
 ```
 
-#### 論理と集合
-
-```bash
-pdf2htmlEX ./math/out/set_logic.pdf
-```
-
 #### 絶対値
 
 ```bash
@@ -54,6 +48,12 @@ pdf2htmlEX ./math/out/exp_log.pdf
 
 ```bash
 pdf2htmlEX ./math/out/calculus.pdf
+```
+
+#### 論理と集合
+
+```bash
+pdf2htmlEX ./math/out/set_logic.pdf
 ```
 
 #### 線形代数
