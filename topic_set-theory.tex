@@ -5,6 +5,11 @@
 
 \input{topic_preamble.tex}
 
+% === 参考文献 ===
+
+\newcommand{\refbookA}{\refbook{ろんりと集合}}
+\newcommand{\refbookB}{\refbook{大学数学 ほんとうに必要なのは「集合」}}
+
 % ---
 
 \begin{document}
@@ -15,10 +20,23 @@
 \sectionline
 \section{集合}
 
+\marginnote{\refbookA}
+
 \keyword{集合}とは「ものの集まり」のことであり、その「ものの集まり」に入っているか、あるいは、入っていないかが客観的に判断できるもの
 
 \sectionline
+\marginnote{\refbookB}
+
+「何かしらの対象」と「何かしらの集まり」としておけば、汎用性が高いまま抽象的な議論ができる点が集合を勉強する意義
+
+\begin{definition}{集合}
+  何かしらの対象の集まりを\keyword{集合}といい、その集合に入る何かしらの対象を\keyword{元}という
+\end{definition}
+
+\sectionline
 \section{集合の要素}
+
+\marginnote{\refbookA}
 
 集合を構成する個々の「もの」を、その集合の\keyword{要素}あるいは\keyword{元}と呼ぶ
 
@@ -26,8 +44,21 @@
 
 $x$が集合$A$の要素であるとき、$x$は$A$に\keyword{含まれる}、あるいは\keyword{属する}と言い、記号では$x \in A$と書く
 
+
+\sectionline
+\marginnote{\refbookB}
+
+任意の対象は、「ある集合$A$の元」か「ある集合$A$の元でない」かどちらかが考えられる
+
+\begin{definition}{属する}
+  集合$A$があるとする。
+  このとき、ある対象$a$が集合$A$に入ることを$a \in A$と表し、$a$が集合$A$に入らないことを$a \notin A$と表す
+\end{definition}
+
 \sectionline
 \section{集合の表記法}
+
+\marginnote{\refbookA}
 
 次のような2つの方法がある
 \begin{itemize}
@@ -58,8 +89,16 @@ $x$が集合$A$の要素であるとき、$x$は$A$に\keyword{含まれる}、�
 
 「要素が1つもない集まり」も、1つの集合とみなして、\keyword{空集合}と呼び、記号$\emptyset$で表す
 
+\marginnote{\refbookB}
+
+\begin{definition}{空集合}
+  何も含まれていない集まりのことを\keyword{空集合}といい、$\phi $で表す
+\end{definition}
+
 \sectionline
 \section{部分集合}
+
+\marginnote{\refbookA}
 
 2つの集合$A$と$B$に対して、$A$は$B$の\keyword{部分集合}である（$A$は$B$に\keyword{含まれる}）とは、
 \begin{shaded}

@@ -5,6 +5,11 @@
 
 \input{topic_preamble.tex}
 
+% === 参考文献 ===
+
+\newcommand{\refbookA}{\refbook{ろんりと集合}}
+\newcommand{\refbookB}{\refbook{大学数学 ほんとうに必要なのは「集合」}}
+
 % ---
 
 \begin{document}
@@ -15,11 +20,25 @@
 \sectionline
 \section{命題関数}
 
+\marginnote{\refbookA}
+
 これまで、たとえば「1234567891は素数である」というような\keyword{命題}を扱ってきた
 
 ここで、たとえば$x$が自然数全体を動くとき、「$x$は素数である」という形の主張を\keyword{命題関数}と呼ぶ
 
-\br
+\sectionline
+
+\marginnote{\refbookB}
+
+文字が一つ確定すると命題が一つ定まるというシステムを関数と捉えて\keyword{命題関数}という
+
+\begin{definition}{命題関数}
+  文章中に変数を含み、その変数を定めるごとに命題になる文章を\keyword{命題関数}という
+\end{definition}
+
+\sectionline
+
+\marginnote{\refbookA}
 
 命題は記号$p$で表されたのに対し、命題関数は$p(x)$と書く
 
@@ -32,7 +51,17 @@
 命題関数$p(x)$の変数は、実数や自然数のような数以外に、直線とか地図のような数学的対象や一般的概念をとる
 
 \sectionline
+\marginnote{\refbookB}
+
+命題関数が正しいかどうかは、あらゆる変数をすべて入れていき、その都度作られる命題がすべて正しい場合と定義される
+
+\begin{definition}{命題関数が正しいとは}
+  命題関数が正しいとは、含まれる変数を定めるごとに決まる命題が全て正しいということ
+\end{definition}
+
+\sectionline
 \section{すべての〜}
+\marginnote{\refbookA}
 
 命題関数$p(x)$に対して、「すべての$x$について$p(x)$である」という命題を
 \begin{equation*}
@@ -50,11 +79,50 @@
 \end{itemize}
 と表すこともある
 
+\sectionline
+\marginnote{\refbookB}
+
+$\forall$と自由変数が命題関数にくっついた形は\keyword{全称命題}と呼ばれる
+
+\begin{definition}{全称命題}
+  $P(x)$を命題関数とする。このとき、
+  \begin{equation*}
+    ^{\forall}x, \, P(x)
+  \end{equation*}
+  という形の命題を\keyword{全称命題}と呼び、「すべての$x$に対して$P(x)$が成り立つ」という命題を表す
+\end{definition}
+
+\sectionline
+\marginnote{\refbookB}
+
+「すべての$x$に対してhogehogeである」という文章は、次のように記号化される
+\begin{equation*}
+  ^{\forall}x, \, \text{hogehoge}
+\end{equation*}
+
+$,$が「対して」を表すと考えればよい
+
 \br
+
+「Aに対してB」という言い方をした場合、Bは「Aによって変わりうるもの」というニュアンスがある
+
+BはAをとった後にとるもの、この前後関係を示す言葉が「対して」という言葉
+
+\sectionline
+\marginnote{\refbookA}
 
 $\forall$という記号は、「all（すべての〜）」や「any（任意の〜）」の頭文字のAを逆さにしたものに由来する
 
+\br
+\marginnote{\refbookB}
+
+この記号は\keyword{全称記号}と呼ばれる
+
+記号列として捉えて$\forall x$と書く流儀と、添字として捉えて$^{\forall}x$と書く流儀がある
+
 \sectionline
+
+\marginnote{\refbookA}
 
 変数$x$が$x= a_1, a_2, \cdots , a_n$という有限個の値をとるとき、「すべての$x$について$p(x)$である」というのは、
 \begin{shaded}
