@@ -1,0 +1,154 @@
+\documentclass[../../imaging-math]{subfiles}
+
+\begin{document}
+
+\section{命題と命題の関係}
+
+ここまで、命題と論理演算子を組み合わせて新たな命題を作るという考え方に触れてきた。
+
+ここからは、命題と命題の関係を考え、それを表す方法を見ていこう。
+
+\subsection{論理包含：「ならば」}
+
+物事には因果関係があり、それを辿ることで真相を明らかにする…
+
+推理小説などで欠かせない描写だが、この考え方は数学の演繹（何かを前提に何かを導き出すこと）にも通じるものである。
+
+\br
+
+「Aが成り立っていれば、必ずBも成り立つ」といった関係を、数学では「ならば」という言葉で結んで表現する。
+
+\begin{definition}{論理包含}
+  \titlegap
+  $p,\,q$を命題とするとき、「$p$ならば$q$」すなわち「$p$が真であれば$q$も真である」という命題を\hl{論理包含}という。\\
+  論理包含は、論理演算子$\Rightarrow$を使って、次のように表す。
+  \LARGE
+  \begin{equation*}
+    p \Rightarrow q
+  \end{equation*}
+\end{definition}
+
+論理「包含」という名前については、次のように解釈してみよう。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $p$である可能性（状況）は、$q$である可能性（状況）に含まれている
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\subsubsection{日常生活で考える：「ならば」が真となる例}
+
+たとえば、次のような文章を考えてみる。
+
+\begin{center}
+  電池が切れたら、リモコンは動かなくなる
+\end{center}
+
+「電池が切れている $\Rightarrow$ リモコンは動かなくなる」は真である。
+電池が切れたら、確実にリモコンは動かなくなるからだ。
+
+\br
+
+とはいえ、リモコンが動かなくなる原因は他にも考えられる。
+電池が切れた場合だけでなく、リモコン自体が故障した場合や、リモコンで操作する機器のセンサーが感知しなくなった場合もあるだろう。
+
+\br
+
+つまり、「リモコンの電池が切れている」という状況は、数多くある「リモコンが動かない」という状況の中の1つのパターンに過ぎないのだ。
+
+論理「包含」という名前は、このような例から感じ取ることができる。
+
+\subsubsection{日常生活で考える：「ならば」が偽となる例}
+
+他の例も見てみよう。
+
+\begin{center}
+  足が痛い $\Rightarrow$ 足が骨折している
+\end{center}
+
+足が痛いからといって、必ずしも足が骨折しているとは限らないので、これは偽である。
+
+\subsection{必要条件と十分条件}
+
+命題$p, \, q$に関して$p \Rightarrow q$が成り立つとき、$p$と$q$には名前がつけられている。
+
+\begin{definition}{必要条件と十分条件}
+  \titlegap
+  命題$p, \, q$に対して、$p \Rightarrow q$が常に成り立つとき、
+  \begin{itemize}
+    \item $q$は$p$の\hl{必要条件}である
+    \item $p$は$q$の\hl{十分条件}である
+  \end{itemize}
+  という。
+\end{definition}
+
+たとえば、
+
+\begin{center}
+  Ms.Fukasawaは日本人である $\Rightarrow$ Ms.Fukasawaは人間である
+\end{center}
+
+という文章の場合、「日本人である」が十分条件で、「人間である」が必要条件となる。
+
+\begin{itemize}
+  \item 「日本人である」というだけで、明言しなくても\keyword{十分}に「人間である」と言える
+  \item 「人間である」ことは、「日本人である」ことの前提として\keyword{必要}である
+\end{itemize}
+
+$p \Rightarrow q$の1つの理解として、「$p$であることは、$q$であることに含まれている」という包含関係のイメージを持っておくと、このような「必要」と「十分」という言葉のニュアンスを感じ取ることができる。
+
+\subsection{論理包含の真理値表}
+
+論理包含「ならば」の真理値表は、次のようになる。
+
+\begin{tcolorbox}[empty, size=minimal]
+  \centering
+  \tblcapstar{\bfseries 論理包含の真理値表}
+  \begin{NiceTabular}[hvlines]{W{c}{2.5em}W{c}{2.5em}W{c}{2.5em}}
+    \CodeBefore
+    \cellcolor{carnationpink!40}{2-,3-1,4-2,4-3,5-3}
+    \cellcolor{periwinkle!60}{3-2,3-3,4-1,5-1,5-2}
+    \Body
+    $p$ & $q$ & $p \Rightarrow q$ \\
+    1   & 1   & 1                 \\
+    1   & 0   & 0                 \\
+    0   & 1   & 1                 \\
+    0   & 0   & 1                 \\
+  \end{NiceTabular}
+\end{tcolorbox}
+
+表の各行はそれぞれ、次のような対応を表している。
+
+\begin{enumerate}
+  \item $p$が成り立てば$q$も成り立つ：$p \Rightarrow q$は真
+  \item $p$が成り立っていても$q$が成り立たない：$p \Rightarrow q$は偽
+  \item $p$が成り立たないとき、$q$が成り立つかどうかは関係ない：$p \Rightarrow q$は真
+  \item $p$が成り立たないとき、$q$が成り立つかどうかは関係ない：$p \Rightarrow q$は真
+\end{enumerate}
+
+不可解に思えるのは、3〜4行目かもしれない。
+
+$p$が偽のときは、$q$の真偽に関わらず、$p \Rightarrow q$は真となる。
+
+なぜなら、「$p$ならば…」という文章は、そもそも「$p$が成り立つとき」にしか言及していないため、それ以外の場合には何が起ころうと嘘をついたことにはならないからだ。
+
+\br
+
+たとえば、「雨が降れば傘をさす」という文章は、雨が降った場合にしか言及していない。
+
+「雨は降っていなくても傘をさす」としても、「雨が降れば傘をさす」という文章を否定したことにはならないのである。
+
+「雨が降れば傘をさす」に反するのは、「雨が降っているのに傘をささない」場合だけだ。
+
+\begin{mindflow}
+  \begin{itemize}
+    \item 必要十分条件
+    \item 同値の言い換え
+  \end{itemize}
+\end{mindflow}
+
+\subsection{逆・裏・対偶}
+
+\end{document}
