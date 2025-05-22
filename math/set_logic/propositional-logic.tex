@@ -490,17 +490,90 @@ $p \land q$を先に計算しても、$q \land r$を先に計算しても、結�
 
 \subsubsection{冪等法則}
 
-\begin{mindflow}
-  \begin{itemize}
-    \item 何回繰り返しても同値
-  \end{itemize}
-\end{mindflow}
+冪等法則は、論理積や論理和によって「同じ主張を繰り返したところで、新しい意味は加わらない」ということを表現した法則といえる。
+
+\begin{theorem}{冪等法則（命題論理）}
+  \Large
+  \begin{align*}
+    p \land p & \equiv p \\
+    p \lor p  & \equiv p
+  \end{align*}
+\end{theorem}
+
+\br
+
+\begin{tcolorbox}[empty, size=minimal, sidebyside, righthand ratio=0.4]
+  たとえば、「晴れている」かつ「晴れている」では、結局「晴れている」ことしか主張していない。
+
+  \tcblower
+
+  \centering
+  \tblcapstar{\bfseries 「かつ」の冪等法則の証明}
+  \scalebox{0.85}{
+    \begin{NiceTabular}[hvlines]{W{c}{1.5em}W{c}{1.5em}W{c}{2.5em}}
+      \CodeBefore
+      \cellcolor{carnationpink!40}{
+        2-,3-1,4-2
+      }
+      \cellcolor{periwinkle!60}{
+        3-2,3-3,4-1,4-3,5-
+      }
+      \Body
+      $p$ & $p$ & $p \land p$ \\
+      1   & 1   & 1           \\
+      1   & 0   & 0           \\
+      0   & 1   & 0           \\
+      0   & 0   & 0           \\
+    \end{NiceTabular}
+  }
+\end{tcolorbox}
+
+\begin{tcolorbox}[empty, size=minimal, sidebyside, righthand ratio=0.6]
+  \centering
+  \tblcapstar{\bfseries 「または」の冪等法則の証明}
+  \scalebox{0.85}{
+    \begin{NiceTabular}[hvlines]{W{c}{1.5em}W{c}{1.5em}W{c}{2.5em}}
+      \CodeBefore
+      \cellcolor{carnationpink!40}{
+        2-,3-1,3-3,4-2,4-3
+      }
+      \cellcolor{periwinkle!60}{
+        3-2,4-1,5-
+      }
+      \Body
+      $p$ & $p$ & $p \lor p$ \\
+      1   & 1   & 1          \\
+      1   & 0   & 1          \\
+      0   & 1   & 1          \\
+      0   & 0   & 0          \\
+    \end{NiceTabular}
+  }
+
+  \tcblower
+
+  「雨が降っている」または「雨が降っている」という主張は、雨が降っていれば真、降っていなければ偽となり、「雨が降っている」という主張と同じである。
+\end{tcolorbox}
+
+\br
+
+この冪等法則を繰り返して適用すると、
+\begin{align*}
+  p \land \cdots \land p & \equiv p \\
+  p \lor \cdots \lor p   & \equiv p
+\end{align*}
+となり、論理積や論理和は「何回繰り返しても同値」であることがわかる。
+
+\br
+
+ところで、論理積$\land$をかけ算（積）と見なすと、$  p \land \cdots \land p$は$p$の累乗と捉えられる。
+
+累乗は「冪」とも呼ばれるため、「冪等法則」という名称もここから来ているとされる。
 
 \subsubsection{交換法則}
 
 交換法則は、$p$と$q$の「順序を交換しても同値」であることを示している。
 
-\begin{theorem}{交換法則}
+\begin{theorem}{交換法則（命題論理）}
   \large
   \begin{align*}
     p \land q & \equiv q \land p \\
