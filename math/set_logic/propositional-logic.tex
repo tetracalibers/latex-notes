@@ -380,7 +380,7 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
 
 3つ目の文章のような、「否定の否定」を\keyword{二重否定}と呼び、次の法則が成り立つ。
 
-\begin{theorem}{論理式の反射法則}
+\begin{theorem}{反射法則}
   \titlegap
   命題$p$に対して、$p$とその\hl{二重否定}$\neg(\neg p)$は同値となる。
   \LARGE
@@ -411,12 +411,82 @@ $p$と$q$のどちらかだけでも1であれば、$p \lor q$は1になる。
 
 \subsubsection{結合法則}
 
-\begin{mindflow}
-  \begin{itemize}
-    \item どこから計算しても同値
-    \item 双対性
-  \end{itemize}
-\end{mindflow}
+次の結合法則は、「どこから計算しても同値」という意味で、有用な性質といえる。
+
+\begin{theorem}{結合法則（命題論理）}
+  \Large
+  \begin{align*}
+    (p \land q) \land r & \equiv p \land (q \land r) \\
+    (p \lor q) \lor r   & \equiv p \lor (q \lor r)
+  \end{align*}
+\end{theorem}
+
+「かつ」だけで結ばれた条件（命題）は、考える順序に関わらず、結局最終的に「全部の条件が満たされていること」が必要になる。
+
+$p \land q$を先に計算しても、$q \land r$を先に計算しても、結局すべて1の場合しか残らないことを真理値表から読み取ろう。
+
+\begin{tcolorbox}[empty, size=minimal, sidebyside, righthand ratio=0.6]
+  $p$と$q$と$r$が「かつ」だけで結ばれている以上、すべての真理値が1である場合にしか、$p \land q \land r$は決して1にならない。
+
+  \tcblower
+
+  \tblcapstar{\bfseries 論理積「かつ」の結合法則の証明}
+  \scalebox{0.85}{
+    \centering
+    \begin{NiceTabular}[hvlines]{W{c}{1.5em}W{c}{1.5em}W{c}{1.5em}W{c}{2.5em}W{c}{2.5em}W{c}{4.5em}W{c}{4.5em}}
+      \CodeBefore
+      \cellcolor{carnationpink!40}{
+        2-,3-1,3-2,3-4,3-5,4-1,4-3,4-5,5-1,6-2,6-3,6-5,7-2,7-5,8-3,8-5
+      }
+      \cellcolor{periwinkle!60}{
+        3-3,3-6,3-7,4-2,4-4,4-6,4-7,5-2,5-3,5-4,5-5,5-6,5-7,6-1,6-4,
+        6-6,6-7,7-1,7-3,7-4,7-6,7-7,8-1,8-2,8-4,8-6,8-7,9-
+      }
+      \Body
+      $p$ & $q$ & $r$ & $p \land q$ & $q \land r$ & $(p \land q) \land r$ & $p \land (q \land r)$ \\
+      1   & 1   & 1   & 1           & 1           & 1                     & 1                     \\
+      1   & 1   & 0   & 1           & 0           & 0                     & 0                     \\
+      1   & 0   & 1   & 0           & 0           & 0                     & 0                     \\
+      1   & 0   & 0   & 0           & 0           & 0                     & 0                     \\
+      0   & 1   & 1   & 0           & 1           & 0                     & 0                     \\
+      0   & 1   & 0   & 0           & 1           & 0                     & 0                     \\
+      0   & 0   & 1   & 0           & 1           & 0                     & 0                     \\
+      0   & 0   & 0   & 0           & 0           & 0                     & 0                     \\
+    \end{NiceTabular}
+  }
+\end{tcolorbox}
+
+「または」だけで結ばれた条件（命題）も、考える順序に関わらず「どれか1つでも満たされていればよい」という意味に帰着する。
+
+\begin{tcolorbox}[empty, size=minimal, sidebyside, righthand ratio=0.6]
+  $p$と$q$と$r$が「または」だけで結ばれている場合、結局いずれかの真理値が1であれば、$p \lor q \lor r$は1になる。
+
+  \tcblower
+
+  \tblcapstar{\bfseries 論理和「または」の結合法則の証明}
+  \scalebox{0.85}{
+    \centering
+    \begin{NiceTabular}[hvlines]{W{c}{1.5em}W{c}{1.5em}W{c}{1.5em}W{c}{2.5em}W{c}{2.5em}W{c}{4.5em}W{c}{4.5em}}
+      \CodeBefore
+      \cellcolor{carnationpink!40}{
+        2-,3-1,3-2,3-4,3-5,3-6,3-7,4-1,4-3,4-4,4-5,4-6,4-7,5-1,5-4,5-6,5-7,6-2,6-3,6-4,6-5,6-6,6-7,7-2,7-4,7-5,7-6,7-7,8-3,8-5,8-6,8-7
+      }
+      \cellcolor{periwinkle!60}{
+        3-3,4-2,5-2,5-3,5-5,6-1,7-1,7-3,8-1,8-2,8-4,9-
+      }
+      \Body
+      $p$ & $q$ & $r$ & $p \lor q$ & $q \lor r$ & $(p \lor q) \lor r$ & $p \lor (q \lor r)$ \\
+      1   & 1   & 1   & 1          & 1          & 1                   & 1                   \\
+      1   & 1   & 0   & 1          & 1          & 1                   & 1                   \\
+      1   & 0   & 1   & 1          & 1          & 1                   & 1                   \\
+      1   & 0   & 0   & 1          & 0          & 1                   & 1                   \\
+      0   & 1   & 1   & 1          & 1          & 1                   & 1                   \\
+      0   & 1   & 0   & 1          & 1          & 1                   & 1                   \\
+      0   & 0   & 1   & 0          & 1          & 1                   & 1                   \\
+      0   & 0   & 0   & 0          & 0          & 0                   & 0                   \\
+    \end{NiceTabular}
+  }
+\end{tcolorbox}
 
 \subsubsection{冪等法則}
 
