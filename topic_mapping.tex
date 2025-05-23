@@ -1,0 +1,178 @@
+\documentclass[b5paper,12pt]{jsarticle}
+
+\title{Topic Note: 写像}
+\author{tomixy}
+
+\input{topic_preamble.tex}
+
+% === 参考文献 ===
+
+\newcommand{\refbookA}{\refbook{ろんりと集合}}
+\newcommand{\refbookB}{\refbook{大学数学 ほんとうに必要なのは「集合」}}
+
+% ---
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\sectionline
+\section{写像}
+\marginnote{\refbookA}
+
+\keyword{写像}は、集合の間の「対応」である
+
+\br
+
+関数は、数を入力すると数が出力される「装置」
+
+関数のような「対応」という考え方の対象を「数」に限定せず、「集合の要素」に一般化したものが\keyword{写像}である
+
+\br
+
+写像というときは、どの集合からどの集合への写像であるかをはっきりしておかなければならない
+
+\begin{definition}{写像}
+  集合$A, \, B$があったとき、$A$のすべての要素$a$に対して、$B$のある要素$b$を「ただ一つ対応」させる規則$f$が与えられたとき、$f$を$A$から$B$への\keyword{写像}と呼び、記号で
+  \begin{equation*}
+    f\colon A \to B
+  \end{equation*}
+  と表す
+
+  このとき、集合$A$を$f$の\keyword{定義域}と呼ぶ
+
+  また、次の集合を$f$の\keyword{値域}と呼ぶ
+  \begin{equation*}
+    f(A) = \{ f(a) \mid a \in A \}
+  \end{equation*}
+
+  写像$f$により、$A$の要素$a$が$B$の要素$b$に対応しているとき、$b$は$a$の$f$による\keyword{像}であるといい、$f(a) = b$と書く
+\end{definition}
+
+「集合」と「写像」というのはそれぞれ、「対象」と「それらの間の対応」ということであり、数学において基本的な概念である
+
+\sectionline
+\section{像と逆像}
+
+\begin{definition}{像と逆像}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A'$に対して、
+  \begin{equation*}
+    f(A') = \{ f(a) \mid a \in A' \}
+  \end{equation*}
+  とおき、$f(A')$を$A'$の$f$による\keyword{像}と呼ぶ
+
+  また、$B$の部分集合$B'$に対して、
+  \begin{equation*}
+    f^{-1}(B') = \{ a \mid f(a) \in B' \}
+  \end{equation*}
+  とおき、$f^{-1}(B')$を$B'$の$f$による\keyword{逆像}と呼ぶ
+\end{definition}
+
+\keyword{値域}は、定義域$A$の像$f(A)$のことにほかならない
+
+\begin{theorem}{像と逆像の性質}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A_1, A_2$と$B$の部分集合$B_1, B_2$に対して、次が成り立つ
+  \begin{itemize}
+    \item $A_1 \subset A_2 \implies f(A_1) \subset f(A_2)$
+    \item $B_1 \subset B_2 \implies f^{-1}(B_1) \subset f^{-1}(B_2)$
+  \end{itemize}
+\end{theorem}
+
+\begin{theorem}{像と逆像の性質}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A_1, A_2$と$B$の部分集合$B_1, B_2$に対して、次が成り立つ
+  \begin{itemize}
+    \item $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$
+    \item $f(A_1 \cup A_2) = f(A_1) \cup f(A_2)$
+    \item $f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$
+    \item $f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$
+  \end{itemize}
+\end{theorem}
+
+\sectionline
+\section{単射}
+
+\begin{definition}{単射}
+  写像$f\colon A \to B$に対して、$f$が\keyword{単射}であるとは、$A$の任意の要素$a, a'$に対して
+  \begin{equation*}
+    f(a) = f(a') \implies a = a'
+  \end{equation*}
+  が成り立つことをいう
+\end{definition}
+
+この主張の対偶
+\begin{equation*}
+  a \ne a' \implies f(a) \ne f(a')
+\end{equation*}
+を考えれば、\keyword{単射}であるということは、「異なる要素が$f$によって同じ要素に対応することはない」ということにほかならない
+
+\sectionline
+\section{全射}
+
+\begin{definition}{全射}
+  写像$f\colon A \to B$に対して、$f$が\keyword{全射}であるとは、
+  \begin{equation*}
+    f(A) = B
+  \end{equation*}
+  すなわち
+  \begin{equation*}
+    \forall b \in B, \exists a \in A\colon f(a) = b
+  \end{equation*}
+  が成り立つことをいう
+\end{definition}
+
+言い換えると、$B$への写像$f$が\keyword{全射}であるとは、$B$の要素に「対応していないものがない」ということ
+
+\sectionline
+\section{全単射}
+
+\begin{definition}{全単射}
+  集合$A$から集合$B$への写像$f$が単射かつ全射であるときは、\keyword{全単射}であるという
+\end{definition}
+
+これは、写像$f$により、集合$A$の要素と集合$B$の要素が「一対一に対応している」ことにほかならない
+
+\sectionline
+
+数学では、数学的構造を保つ写像が重要であり、特に、構造を保つ全単射写像のことは\keyword{同型写像}と呼ぶ
+
+\sectionline
+\section{逆写像}
+
+\begin{definition}{逆写像}
+  写像$f\colon A \to B$が全単射であるとき、対応が一対一であるので、逆向きの対応、すなわち、$B$から$A$への対応を考えることができる
+
+  この対応により定義される写像を$f$の\keyword{逆写像}と呼び、記号で$f^{-1}$と書く
+\end{definition}
+
+\sectionline
+\section{合成写像}
+
+\begin{definition}{合成写像}
+  2つの写像
+  \begin{align*}
+    f\colon A & \to B \\
+    g\colon B & \to C
+  \end{align*}
+  が与えられたとき、$A$の要素$a$に対して、$C$の要素$g(f(a))$を対応させる、集合$A$から集合$C$への写像のことを$f$と$g$の\keyword{合成写像}と呼び、記号で$g \circ f$と書く
+
+  すなわち
+  \begin{equation*}
+    (g \circ f)(a) = g(f(a))
+  \end{equation*}
+  である
+\end{definition}
+
+\sectionline
+\section{恒等写像}
+
+\begin{definition}{恒等写像}
+  集合$A$に対して、$A$の要素$a$を同じ要素$a$に対応させる、$A$から$A$への写像を$A$上の\keyword{恒等写像}と呼ぶ
+\end{definition}
+
+恒等写像の記号は定まっていないが、ここでは、$A$上の恒等写像を$I_A$と書くことにする
+
+\sectionline
+\section{単射と全射の双対性}
+
+\end{document}
