@@ -795,6 +795,42 @@ $p$が真の場合（「このままだと納期に間に合わない」場合�
 
 \subsection{ド・モルガンの法則}
 
+ド・モルガンの法則は、論理積および論理和の否定について述べたもので、命題の否定を作るときにはなくてはならない重要な法則である。
+
+\begin{theorem}{ド・モルガンの法則（命題論理）}
+  \Large
+  \begin{align*}
+    \neg (p \land q) & \equiv \neg p \lor \neg q  \\
+    \neg (p \lor q)  & \equiv \neg p \land \neg q
+  \end{align*}
+\end{theorem}
+
+「かつ」の否定は「または」になり、「または」の否定は「かつ」になっていることに注目しよう。
+
+\br
+
+論理積「かつ」の否定に関するド・モルガンの法則は、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      「両方成り立たない」は「少なくともどちらかが違う」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということを表現したものと考えることができる。
+
+\br
+
+また、論理和「または」の否定に関するド・モルガンの法則は、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      「どちらか1つすら成り立たない」は「どちらも成り立たない」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という、言葉にすると当たり前にも感じられる主張として解釈できる。
+
 \subsection{同値変形}
 
 \begin{mindflow}
