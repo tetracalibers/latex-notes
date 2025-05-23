@@ -433,6 +433,44 @@ $x$が集合$A$の要素であるとき、$x$は$A$に\keyword{含まれる}、�
 \sectionline
 \section{同値関係と商集合}
 
+等式$a=b$や不等式$a < b$のような2つの要素$a$と$b$の間にある性質を表示したものを\keyword{関係}という
 
+\begin{definition}{関係}
+  集合$A$の\keyword{関係}とは、$A \times A$の部分集合$R$のこと
+
+  このとき、2つの要素$a$と$b$に対して、$(a, b) \in R$であるとき、$a$と$b$は関係$R$をもつという
+\end{definition}
+
+\begin{definition}{同値関係}
+  集合$A$に対して、$A$上の関係$\sim $が次の3つの性質を満たすとき、$\sim$は$A$上の\keyword{同値関係}と呼ぶ
+  \begin{description}
+    \item[反射法則] $a \sim a$
+    \item[対称法則] $a \sim b \Rightarrow b \sim a$
+    \item[推移法則] $a \sim b \land b \sim c \Rightarrow a \sim c$
+  \end{description}
+  ここで、$a, b, c$は$A$の任意の要素である
+\end{definition}
+
+\begin{definition}{同値類}
+  集合$A$上の同値関係$\sim$があるとき、$a \in A$に対して、$a$と同値な$A$の要素をすべて集めた集合を$a$の\keyword{同値類}と呼び、記号では$[a]$と書く
+  \begin{equation*}
+    [a] = \{b \in A \mid b \sim a\}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{商集合}
+  同値類をすべて集めた集合のことを、$A$の同値関係$\sim$による\keyword{商集合}と呼び、記号では$A/\sim $と書く
+  \begin{equation*}
+    A/\sim = \{[a] \mid a \in A\}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}{代表元}
+  同値類$[a]$に含まれる要素のことを、同値類$[a]$の\keyword{代表元}と呼ぶ
+\end{definition}
+
+たとえば、平面や空間内のベクトルは同値類である
+
+「平行移動で重なり合う2つの矢線ベクトルは同値である」とした同値類のことをベクトル$\vb*{a}$と呼んでいる
 
 \end{document}
