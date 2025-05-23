@@ -1,0 +1,76 @@
+\documentclass[../../topic_linear-map]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列の積}
+
+\begin{theorem}{線形写像の合成}
+  $\mathbb{R}^n$から$\mathbb{R}^m$への線形写像$g$と、$\mathbb{R}^m$から$\mathbb{R}^l$への線形写像$f$が与えられているとき、これらを合成して得られる写像
+  \begin{equation*}
+    f \circ g\colon \mathbb{R}^n \xrightarrow{g} \mathbb{R}^m \xrightarrow{f} \mathbb{R}^l
+  \end{equation*}
+  は、$\mathbb{R}^n$から$\mathbb{R}^l$への線形写像である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p56 （問2.2）}
+\end{proof}
+
+$f$と$g$の表現行列をそれぞれ$A = (a_{ij}), \, B = (b_{ij})$とする
+
+$A$は$l \times m$型、$B$は$m \times n$型の行列である
+
+\br
+
+このとき、$f \circ g$は$l \times n$型行列で表現される
+
+それを$C$と書くことにして、その成分を計算しよう
+
+そのためには、基本ベクトルの写り先を見ればよい
+
+\br
+
+$B$を列ベクトルに分解して$B = (\vb*{b}_1, \vb*{b}_2, \dots, \vb*{b}_n)$と書くとき、
+\begin{equation*}
+  (f \circ g)(\vb*{e}_j) = f(g(\vb*{e}_j)) = f(\vb*{b}_j) = A \vb*{b}_j \quad (1 \leq j \leq n)
+\end{equation*}
+なので、
+\begin{equation*}
+  C = (A\vb*{b}_1, A\vb*{b}_2, \dots, A\vb*{b}_n)
+\end{equation*}
+となる
+
+$C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
+\begin{equation*}
+  c_{ij} = a_{i1} b_{1j} + a_{i2} b_{2j} + \cdots + a_{im} b_{mj} = \sum_{k=1}^m a_{ik} b_{kj}
+\end{equation*}
+により与えられる
+
+つまり、$C$の$(i, j)$成分を計算するときは、$A$の第$i$行、$B$の第$j$列だけを見ればよい
+
+\begin{equation*}
+  \begin{pmatrix}
+           &        &       &        \\
+           &        &       &        \\
+    a_{i1} & a_{i2} & \dots & a_{im} \\
+           &        &       &        \\
+           &        &       &
+  \end{pmatrix}
+  \begin{pmatrix}
+     & b_{1j} & \\
+     & b_{2j} & \\
+     & \vdots & \\
+     & b_{mj} &
+  \end{pmatrix} = \begin{pmatrix}
+          & \vdots                                  &       \\
+    \dots & \displaystyle\sum_{k=1}^m a_{ik} b_{kj} & \dots \\
+          & \vdots                                  &
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+このようにして得られた$l \times n$型行列$C$を$AB$と書き、$A$と$B$の\keyword{積}と呼ぶ
+
+\end{document}

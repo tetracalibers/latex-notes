@@ -1,0 +1,95 @@
+\documentclass[../../topic_linear-map]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列の導入}
+\marginnote{\refbookA 1.4}
+
+長方形に並んだ数の集まりを
+\begin{equation*}
+  A = \begin{pmatrix}
+    a_{11} & a_{12} & \dots  & a_{1n} \\
+    a_{21} & a_{22} & \dots  & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \dots  & a_{mn}
+  \end{pmatrix}
+\end{equation*}
+などと書き、\keyword{行列}と呼ぶ
+
+\br
+
+横の数字の並びを\keyword{行}、縦の数字の並びを\keyword{列}と呼ぶ
+
+$A$は$m$個の行と$n$個の列をもつ行列である
+
+\br
+
+第$i$行、第$j$列にある数字を$a_{ij}$と表し、これを$(i, j)$\keyword{成分}と呼ぶ
+
+\br
+
+行が$m$個、列が$n$個の行列は、\keyword{$m$行$n$列の行列}、あるいは\keyword{$m \times n$型の行列}であるという
+
+$n \times n$型の場合、行列は正方形なので$n$次\keyword{正方行列}と呼ぶ
+
+\sectionline
+
+$A$の成分から第$j$列だけを取り出して$\mathbb{R}^m$のベクトルとしたものが
+\begin{equation*}
+  \vb*{a}_j = \begin{pmatrix}
+    a_{1j} \\
+    a_{2j} \\
+    \vdots \\
+    a_{mj}
+  \end{pmatrix} \quad (1 \leq i \leq n)
+\end{equation*}
+であり、これを$A$の$j$番目の\keyword{列ベクトル}という
+
+\br
+
+$A$は、これらを横に並べたものという意味で
+\begin{equation*}
+  A = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)
+\end{equation*}
+と書くことができる
+
+\sectionline
+
+\begin{definition}{行列とベクトルの積}
+  $m \times n$型の行列$A = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)$と$\vb*{v} \in \mathbb{R}^n$との\keyword{積}を
+  \begin{equation*}
+    A\vb*{v} = v_1 \vb*{a}_1 + v_2 \vb*{a}_2 + \cdots + v_n \vb*{a}_n
+  \end{equation*}
+  により定める
+
+  ここで、$v_i$は$\vb*{v}$の第$i$成分である
+\end{definition}
+
+$A\vb*{v}$を考えるとき、ほとんどの場合は、$A$が1つ与えられていてm$\vb*{v}$がいろいろ動くという意識が強い
+
+それは、行列$A$のことを、ベクトルを与えて別なベクトルを作る
+\begin{equation*}
+  \text{入力ベクトル} \vb*{v} \rightarrow \text{出力ベクトル} A\vb*{v}
+\end{equation*}
+という装置、すなわち\keyword{写像}だとみなすことである
+
+\sectionline
+
+\begin{definition}{行列のスカラー倍}
+  $A$を行列、$c$をスカラーとするとき、$A$のすべての成分を$c$倍して得られる行列を$cA$とする
+\end{definition}
+
+\begin{theorem}{行列とベクトルの積の性質}
+  $A, \, B$を$m \times n$型行列、$\vb*{u}, \, \vb*{v} \in \mathbb{R}^n$、$c \in \mathbb{R}$とするとき、次が成り立つ
+  \begin{enumerate}[label=\romanlabel]
+    \item $A(\vb*{u} + \vb*{v}) = A\vb*{u} + A\vb*{v}$
+    \item $A(c\vb*{v}) = cA\vb*{v}$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p24（命題1.4.3）}
+\end{proof}
+
+\end{document}

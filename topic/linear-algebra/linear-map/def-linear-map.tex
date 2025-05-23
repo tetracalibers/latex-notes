@@ -1,0 +1,172 @@
+\documentclass[../../topic_linear-map]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形写像の定義}
+\marginnote{\refbookA 2}
+
+\begin{definition}{線形写像と線形性}
+  写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$が\keyword{線形写像}であるとは、次の2つの条件が成立することである
+  \begin{enumerate}[label=\romanlabel]
+    \item $f(c\vb*{v}) = cf(\vb*{v})$がすべての$c \in \mathbb{R} , \, \vb*{v} \in \mathbb{R}^n$に対して成り立つ
+    \item $f(\vb*{u} + \vb*{v}) = f(\vb*{u}) + f(\vb*{v})$がすべての$\vb*{u}, \vb*{v} \in \mathbb{R}^n$に対して成り立つ
+  \end{enumerate}
+  これらの性質を写像$f$の\keyword{線形性}という
+
+  また、$m=n$のとき、線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^n$を$\mathbb{R}^n$の\keyword{線形変換}と呼ぶ
+\end{definition}
+
+\keyword{線形変換}は空間$\mathbb{R}^n$からそれ自身への写像なので、$\mathbb{R}^n$内において「ベクトルが変化している」（あるいは$f$が空間$\mathbb{R}^n$に\keyword{作用}している）ニュアンスとみることができる
+
+\sectionline
+
+$f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、\romannum{i}より、
+\begin{equation*}
+  f(0 \cdot \vb*{v}) = 0 \cdot f(\vb*{v})
+\end{equation*}
+なので、
+\begin{equation*}
+  f(\vb*{0}) = \vb*{0}
+\end{equation*}
+が成り立つ
+
+\begin{theorem}{零ベクトルの像}
+  零ベクトルは線形写像によって零ベクトルに写される
+\end{theorem}
+
+\sectionline
+
+$m=n=1$のときは、線形写像$f\colon \mathbb{R}^1 \to \mathbb{R}^1$は、通常の意味の関数である
+
+このとき、\romannum{i}の性質から、
+\begin{equation*}
+  f(c) = f(c \cdot 1) = c \cdot f(1) \quad (c \in \mathbb{R} = \mathbb{R}^1)
+\end{equation*}
+が成り立つので、$a = f(1) \in \mathbb{R}$とおくと、
+\begin{equation*}
+  f(x) = ax
+\end{equation*}
+と書ける
+
+\begin{theorem}{比例関数}
+  線形写像$f\colon \mathbb{R}^1 \to \mathbb{R}^1$は、$a$を\keyword{比例定数}とする\keyword{比例関数}である
+\end{theorem}
+
+\sectionline
+\section{線形写像の表現行列}
+
+$f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、各基本ベクトル$\vb*{e}_j$の$f$による像を
+\begin{equation*}
+  f(\vb*{e}_j) = \vb*{a}_j = \begin{pmatrix}
+    a_{1j} \\
+    a_{2j} \\
+    \vdots \\
+    a_{mj}
+  \end{pmatrix}
+\end{equation*}
+と書くとする
+
+これらを横に並べることによって、$m$行$n$列の行列を作る
+\begin{equation*}
+  A = \begin{pmatrix}
+    a_{11} & a_{12} & \dots  & a_{1n} \\
+    a_{21} & a_{22} & \dots  & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \dots  & a_{mn}
+  \end{pmatrix} = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)
+\end{equation*}
+この行列$A$を$f$の\keyword{表現行列}という
+
+\br
+
+特に、$\mathbb{R}^n$の線形変換の表現行列は$n$次\keyword{正方行列}である
+
+\sectionline
+
+$\mathbb{R}^n$の一般のベクトル$\vb*{v}$を、基本ベクトルの線型結合として
+\begin{equation*}
+  \vb*{v} = \sum_{j=1}^n v_j \vb*{e}_j
+\end{equation*}
+と書く
+
+このとき、$f$の線形性より、
+\begin{equation*}
+  f(\vb*{v}) = \sum_{j=1}^n v_j f(\vb*{e}_j) = \sum_{j=1}^n v_j \vb*{a}_j
+\end{equation*}
+となる
+
+このベクトルの第$i$成分は
+\begin{equation*}
+  a_{i1} v_1 + a_{i2} v_2 + \cdots + a_{in} v_n
+\end{equation*}
+と書ける
+
+これは$A\vb*{v}$の第$i$成分である
+
+\br
+
+したがって、この記法を踏まえて、次のような表記ができる
+
+\begin{theorem}{線形写像とその表現行列の関係}
+  \begin{equation*}
+    f(\vb*{v}) = A\vb*{v}
+  \end{equation*}
+\end{theorem}
+
+比例関数が比例定数$a$だけで決まるのと同じように、線形写像は表現行列$A$が与えられれば決まる
+
+\sectionline
+
+\begin{definition}{零写像と零行列}
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を、すべての$\vb*{v} \in \mathbb{R}^n$に対して$f(\vb*{v}) = \vb*{0}$と定めたものは明らかに線形写像であり、これを\keyword{零写像}と呼ぶ
+
+  その表現行列はすべての成分が0である行列である
+
+  この行列を\keyword{零行列}と呼び、$O$で表す
+\end{definition}
+
+$m \times n$型であることを明示するために$O_{m,n}$と書くこともある
+
+また、$n$次正方行列の場合は、$O_n$と書く
+
+\sectionline
+
+\begin{definition}{恒等写像と単位行列}
+  $f\colon \mathbb{R}^n \to \mathbb{R}^n$を、すべての$\vb*{v} \in \mathbb{R}^n$に対して$f(\vb*{v}) = \vb*{v}$と定めたものは明らかに線形写像である
+
+  これを\keyword{恒等写像}と呼び、$f = \id_{\mathbb{R}^n}$と書く
+
+  恒等写像の表現行列は、$f(\vb*{e}_j) = \vb*{e}_j \quad (1 \leq j \leq n)$より
+  \begin{equation*}
+    E = (\vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n) = \begin{pmatrix}
+      1      & 0      & \dots  & 0      \\
+      0      & 1      & \dots  & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \dots  & 1
+    \end{pmatrix}
+  \end{equation*}
+  であり、これを\keyword{単位行列}と呼ぶ
+\end{definition}
+
+単位行列は正方行列であり、$n$次であることを明示したいときは$E_n$と書く
+
+\sectionline
+
+線形写像$f$から行列$A$を作ったのとは逆に、任意の行列から線形写像を作ることができる
+
+\begin{theorem}{行列から線形写像を作る}
+  $m \times n$型行列$A$に対して、
+  \begin{equation*}
+    f(\vb*{v}) = A\vb*{v} \quad (\vb*{v} \in \mathbb{R}^n)
+  \end{equation*}
+  によって写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$を定めれば、$f$は線形写像である
+\end{theorem}
+
+\begin{proof}
+  行列とベクトルの積の性質より、$f$は線形写像である
+
+  また、$f$の定義から明らかに$A$は$f$の表現行列である $\qed$
+\end{proof}
+
+\end{document}
