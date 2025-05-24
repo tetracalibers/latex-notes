@@ -1,0 +1,65 @@
+\documentclass[../../../topic_linear-map]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列と複素数}
+
+\begin{equation*}
+  I = \begin{pmatrix}
+    0 & -1 \\
+    1 & 0
+  \end{pmatrix}
+\end{equation*}
+とおき、
+\begin{equation*}
+  aE + bI = \begin{pmatrix}
+    a & -b \\
+    b & a
+  \end{pmatrix} \quad (a, b \in \mathbb{R})
+\end{equation*}
+という形の行列を\keyword{複素数}と呼ぶことにより、複素数の定義ができる
+
+この定義では、通常は$a + bi$と書かれるものを行列として実現している
+
+\sectionline
+\section{対角行列}
+
+\begin{definition}{対角成分}
+  正方行列$A = (a_{ij})$に対して、$a_{ii}$を\keyword{対角成分}と呼ぶ
+\end{definition}
+
+\begin{definition}{対角行列}
+  対角成分以外の成分がすべて0である正方行列を\keyword{対角行列}と呼ぶ
+
+  $a_{ii} = c_i \quad (1 \leq i \leq n)$である対角行列を次のように表す
+  \begin{equation*}
+    \diag(c_1, c_2, \ldots, c_n) = \begin{pmatrix}
+      c_1    & 0      & \cdots & 0      \\
+      0      & c_2    & \cdots & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \cdots & c_n
+    \end{pmatrix}
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}{対角行列と列ベクトルのスカラー倍}
+  右から対角行列をかけると、各列ベクトルがスカラー倍になる
+
+  すなわち、$A = (\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n)$とすると、
+  \begin{equation*}
+    A \cdot \diag(c_1, c_2, \ldots, c_n) = (c_1\vb*{a}_1, c_2\vb*{a}_2, \ldots, c_n\vb*{a}_n)
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p63 （問2.8）}
+\end{proof}
+
+\sectionline
+\section{トレース}
+
+\todo{\refbookA p64 （問2.9）}
+
+\end{document}
