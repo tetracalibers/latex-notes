@@ -71,9 +71,6 @@
 
 \usepackage{witharrows}
 
-\usepackage{froufrou} % セクションを区切る装飾
-\setfroufrou{dinkus}
-
 % === tcolorbox ===
 
 \usepackage{tcolorbox}
@@ -204,7 +201,21 @@
 \newcommand{\keyword}[1]{\textcolor{RubineRed}{\textbf{#1}}}
 
 \newcommand{\br}{\vskip0.5\baselineskip}
-\newcommand{\sectionline}{\froufrou}
+
+\usepackage[object=vectorian]{pgfornament}
+\newcommand{\sectionline}{%
+  \noindent
+  \begin{center}
+    {\color{lightgray}
+      \resizebox{0.5\linewidth}{1ex}
+      {{%
+            {\begin{tikzpicture}
+                  \node  (C) at (0,0) {};
+                  \node (D) at (9,0) {};
+                  \path (C) to [ornament=85] (D);
+                \end{tikzpicture}}}}}%
+  \end{center}%
+}
 
 \renewcommand{\labelitemii}{$\circ$}
 
