@@ -107,4 +107,142 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
 \sectionline
 \section{行列の和とスカラー倍}
 
+$A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, j)$成分を足すことで行列の和$A + B$を定める
+
+\begin{theorem}{分配法則}
+  積が定義できるとき、
+  \begin{align*}
+    A(B + C) & = AB + AC \\
+    (B + C)A & = BA + CA
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}{行列の積とスカラー倍の性質}
+  行列$A,\,B$の積$AB$が定義できるとき、つまり$A$の列の個数と$B$の行の個数が同じであるとき、$c \in \mathbb{R}$に対して
+  \begin{equation*}
+    (cA)B = A(cB) = c(AB)
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\sectionline
+
+\begin{theorem}{線形写像の和}
+  $f,g\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とし、
+  \begin{equation*}
+    h(\vb*{v}) = f(\vb*{v}) + g(\vb*{v}) \quad (\vb*{v} \in \mathbb{R}^n)
+  \end{equation*}
+  により写像$h\colon \mathbb{R}^n \to \mathbb{R}^m$を定めるとき、$h$も線形写像である
+
+  また、$f,g$の表現行列を$A,B$とするとき、$h$の表現行列は$A + B$である
+
+  なお、$h = f + g$と書き、$f,g$の\keyword{和}と呼ぶ
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p59 （問2.5）}
+\end{proof}
+
+\sectionline
+
+\begin{definition}{スカラー行列}
+  $c$をスカラーとするとき、$cE$の形の行列を\keyword{スカラー行列}という
+  \begin{equation*}
+    cE = \begin{pmatrix}
+      c      & 0      & \cdots & 0      \\
+      0      & c      & \cdots & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \cdots & c
+    \end{pmatrix}
+  \end{equation*}
+\end{definition}
+
+行列$A$にスカラー行列をかけることは、
+\begin{equation*}
+  (cE)A = A(cE) = cA
+\end{equation*}
+のように、スカラー$c$をかけるのと同じである
+
+\sectionline
+\section{行列の積の結合法則}
+
+\begin{theorem}{積の結合法則}
+  積$AB, \, BC$がともに定義できるとき、
+  \begin{equation*}
+    (AB)C = A(BC)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}[写像による証明]
+  $A,\,B, \, C$がそれぞれ$q \times m, \, m \times n, \, n \times p$型行列だとする
+
+  線形写像の合成
+  \begin{equation*}
+    \mathbb{R}^p \xrightarrow{h} \mathbb{R}^n \xrightarrow{g} \mathbb{R}^m \xrightarrow{f} \mathbb{R}^q
+  \end{equation*}
+  を考え、$f,\, g, \, h$の表現行列をそれぞれ$A, \, B, \, C$とする
+
+  一般的な写像の合成の性質として、
+  \begin{equation*}
+    (f \circ g) \circ h = f \circ (g \circ h)
+  \end{equation*}
+  が成り立つから、
+  \begin{equation*}
+    (AB)C = A(BC)
+  \end{equation*}
+  がしたがう $\qed$
+\end{proof}
+
+\begin{proof}[積の計算規則による証明]
+  $AB$の$(i,l)$成分は、
+  \begin{equation*}
+    (AB)_{il} = \sum_{k=1}^m a_{ik} b_{kl}
+  \end{equation*}
+  これを用いて、
+  \begin{align*}
+    ((AB)C)_{ij} & = \sum_{l=1}^n (AB)_{il} c_{lj}                                 \\
+                 & = \sum_{l=1}^n \left( \sum_{k=1}^m a_{ik} b_{kl} \right) c_{lj}
+  \end{align*}
+
+  $i,\,j$はいま固定されているので、和には関係がない
+
+  動いているのは$k,\,l$だけ
+
+  \br
+
+  ここで、次の書き換えができる
+  \begin{align*}
+    \sum_{l=1}^n \left( \sum_{k=1}^m a_{ik} b_{kl} \right) c_{lj} & = \sum_{l=1}^n \left(\sum_{k=1}^m a_{ik} b_{kl} c_{lj} \right) \\
+                                                                  & = \sum_{l=1}^n \sum_{k=1}^m a_{ik} b_{kl} c_{lj}
+  \end{align*}
+  $\displaystyle\sum_{l=1}^n$の右にある式は$l$に関する和をとる前のものなので、$l$は止まっていると考えてよく、単純な分配法則を使っている
+
+  また、括弧がなくても、$k$に関する和を先にとって、その後で$l$に関する和をとっていると読むことができる
+
+  \br
+
+  このとき、和の順番は交換してもよいので、
+  \begin{align*}
+    \sum_{l=1}^n \sum_{k=1}^m a_{ik} b_{kl} c_{lj} & = \sum_{k=1}^m \sum_{l=1}^n a_{ik} b_{kl} c_{lj}                \\
+                                                   & = \sum_{k=1}^m a_{ik} \left( \sum_{l=1}^n b_{kl} c_{lj} \right) \\
+                                                   & = \sum_{k=1}^m a_{ik} (BC)_{kj}
+  \end{align*}
+  先ほどと同様に、$\displaystyle\sum_{k=1}^m$の右では$k$は止まっていると考えている
+
+  そして、この結果は、$A(BC)$の$(i, j)$である $\qed$
+\end{proof}
+
+結合法則が成り立つことが示されたので、$(AB)C$または$A(BC)$を表すとき、括弧を書かずに単に$ABC$と書いても問題ない
+
+行列の個数が増えても同様である
+
+\br
+
+また、$A$が正方行列の場合は、
+\begin{align*}
+  A^2 & = AA  \\
+  A^3 & = AAA
+\end{align*}
+などのように書く
+
 \end{document}
