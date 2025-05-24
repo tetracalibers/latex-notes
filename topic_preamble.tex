@@ -19,6 +19,7 @@
 \definecolor{airforceblue}{rgb}{0.36, 0.54, 0.66}
 \definecolor{columbiablue}{rgb}{0.61, 0.87, 1.0}
 \definecolor{magnolia}{rgb}{0.97, 0.96, 1.0}
+\definecolor{coolgrey}{rgb}{0.55, 0.57, 0.67}
 
 % === box ===
 
@@ -32,7 +33,7 @@
 \usepackage{amssymb} % use \blacksquare
 
 \usepackage{amsthm} % 定理環境とQEDコマンド
-\renewcommand{\qedsymbol}{\textcolor{black!75}{$\blacksquare$}}
+\renewcommand{\qedsymbol}{\textcolor{coolgrey}{$\blacksquare$}}
 
 \usepackage{mathtools}
 % 別の場所で参照する数式以外は番号が付かないように
@@ -132,10 +133,10 @@
   #1
 }
 
-\definecolor{ProofColor}{HTML}{D2DAFF}
-\DeclareTColorBox{proof}{}{%
+\newcommand{\ProofColor}{coolgrey}
+\DeclareTColorBox{proof}{O{証明}}{%
   empty,
-  title={\textcolor{ProofColor}{\faParagraph}証明},
+  title={\faBroom #1},
   attach boxed title to top left,
   sharp corners,
   boxed title style={
@@ -147,49 +148,37 @@
       right=1em,
       top=0.25cm,
       overlay={
-          \draw[ProofColor,line width=2pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
+          \draw[\ProofColor, double,line width=1pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
         }
     },
-  coltitle=ProofColor!70!black,
+  coltitle=\ProofColor,
   fonttitle=\bfseries,
   before=\par\medskip\noindent,
   parbox=false,
   boxsep=0pt,
-  left=2em,
-  right=0.5em,
+  left=1em,
+  right=1em,
   top=0.5cm,
   bottom=0.5cm,
   breakable,
   pad at break*=0mm,
   vfill before first,
   overlay unbroken={
-      \draw[ProofColor,line width=1pt]
+      \draw[\ProofColor,line width=0.5pt]
       ([yshift=-1pt]title.north east)
       --([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
       --([xshift=-0.5pt]frame.south east)
       --(frame.south west);
     },
   overlay first={
-      \draw[ProofColor,line width=1pt]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
+      \draw[\ProofColor,line width=1pt]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
     },
   overlay middle={
-      \draw[ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
+      \draw[\ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
     },
   overlay last={
-      \draw[ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
+      \draw[\ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
     },%
-}
-
-\NewDocumentCommand{\patterntitle}{m}{
-  \tcbox[
-    enhanced,
-    empty,
-    boxsep=0pt,
-    left=2pt,right=2pt,
-    bottom=2pt,
-    fonttitle=\bfseries,
-    borderline south={1pt}{0pt}{ProofColor},
-  ]{\textcolor{ProofColor}{\faStarAndCrescent}~#1}
 }
 
 % === memo ===
