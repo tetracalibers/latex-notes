@@ -1,0 +1,208 @@
+\documentclass[../../../topic_linear-equation]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{連立一次方程式の行列表記}
+\marginnote{\refbookA p22〜25}
+
+未知数$x_1, x_2, \dots, x_n$に関する連立方程式として
+\begin{equation*}
+  \left\{
+  \begin{alignedat}{12}
+    a_{11} & x_1    & {}+{} & a_{12} & x_2 & {}+{} & \cdots & {}+{} & a_{1n} & x_n & {}={} & b_1    \\
+    a_{21} & x_1    & {}+{} & a_{22} & x_2 & {}+{} & \cdots & {}+{} & a_{2n} & x_n & {}={} & b_2    \\
+           & \vdots &       & \vdots &     &       &        &       & \vdots &     &       & \vdots \\
+    a_{m1} & x_1    & {}+{} & a_{m2} & x_2 & {}+{} & \cdots & {}+{} & a_{mn} & x_n & {}={} & b_m    \\
+  \end{alignedat}
+  \right.
+\end{equation*}
+を考える
+
+$a_{ij}$などは与えられた定数であり、\keyword{係数}と呼ばれる
+
+$i$番目の式の$x_j$の係数を$a_{ij}$と書いている
+
+\br
+
+ここで、係数だけを集めて行列を作る
+\begin{equation*}
+  A = \begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+           & \vdots &        & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn}
+  \end{pmatrix}
+\end{equation*}
+
+すると、先ほどの連立方程式は、ベクトル形で
+\begin{equation*}
+  x_1 \vb*{a}_1 + x_2 \vb*{a}_2 + \cdots + x_n \vb*{a}_n = \vb*{b}
+\end{equation*}
+と書ける
+
+\br
+
+また、$n$個の未知数$x_1, x_2, \dots, x_n$からベクトルを作る
+\begin{equation*}
+  \vb*{x} = \begin{pmatrix}
+    x_1    \\
+    x_2    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+\end{equation*}
+
+すると、ベクトル形の方程式の左辺のベクトルを、行列$A$とベクトル$\vb*{x}$の積と考えて、$A\vb*{x}$と表記できる
+
+こうして、もとの連立一次方程式は、行列形の方程式
+\begin{equation*}
+  A\vb*{x} = \vb*{b}
+\end{equation*}
+に書き換えられる
+
+\sectionline
+\section{行基本変形}
+\marginnote{\refbookA p25}
+
+連立一次方程式を行列によってとり扱うとき、1つ1つの方程式は行列の行によって表されている
+
+よって、行列の行に関する次のような操作（変形）を考えることは自然である
+
+\begin{definition}{行基本変形}
+  行列への次の3種類の操作を\keyword{行基本変形}という
+  \begin{enumerate}[label=\romanlabel]
+    \item ある行の定数倍を他の行に加える
+    \item ある行に0でない数をかける
+    \item 2つの行を交換する
+  \end{enumerate}
+\end{definition}
+
+原則として上三角型を目指してこのような変形を繰り返すが、いつでも上三角型にできるわけではなく、\keyword{行階段行列}と呼ばれる形を作っていくのが\keyword{掃き出し法}と呼ばれる手法である
+
+\sectionline
+\section{行階段行列}
+\marginnote{\refbookA p26〜28}
+
+掃き出し法では、あるステップで下の成分がすべて0になって、
+\begin{equation*}
+  \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
+    [margin, extra-margin=2pt,no-cell-nodes]
+    \rowcolor{red!15} \spadesuit & * & * & * & * & * & * & *\\
+    0 & \rowcolor{red!15} \spadesuit & * & * & * & * & * & * \\
+    0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * & * & * \\
+    0 & 0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * & * \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+  \end{pNiceArray}
+\end{equation*}
+のような形になるのが典型例である
+
+0でない成分を$\spadesuit$で、任意の値をもつ成分を$*$で表した
+
+\br
+
+一般には、成分が0ばかりの行が下にくる
+
+そのような行を\keyword{零行}という
+
+零行が現れない場合もあるし、複数現れる場合もある
+
+\br
+
+零行でない行に対して、一番左の0でない成分$\spadesuit$を\keyword{主成分}と呼ぶ
+
+\br
+
+先ほど示した形では、行の主成分は左上から斜め右下$45^\circ$方向にまっすぐ並んでいるが、一般にはそうできるとは限らない
+
+しかし、次のような形には必ずできる
+\begin{equation*}
+  \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
+    [margin, extra-margin=2pt,no-cell-nodes]
+    0 & \rowcolor{red!15} \spadesuit & * & * & * & * & * & * \\
+    0 & 0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * & * \\
+    0 & 0 & 0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{red!15} \spadesuit \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+  \end{pNiceArray}
+\end{equation*}
+
+\begin{definition}{行階段行列}
+  次の条件を満たす行列を\keyword{行階段行列}という
+  \begin{itemize}
+    \item 零行でない行の主成分が、下の行ほど1つ以上右にある
+    \item 零行がある場合は、まとめてすべて下にある
+  \end{itemize}
+\end{definition}
+
+どんな行列も、行基本変形の繰り返しで行階段行列にできる
+
+\sectionline
+\section{行列の階数}
+\marginnote{\refbookA p28〜29}
+
+行階段行列に変形することで、重要な量が読み取れる
+
+\begin{definition}{行列の階数}
+  行列$A$を行階段行列に変形したとき、零行でない行の個数を$A$の\keyword{階数}（rank）と呼び、$\rank(A)$と書く
+\end{definition}
+
+変形の結果として得られる行階段行列は1通りとは限らないし、変形の途中の掃き出しの手順も1通りとは限らないが、階数は$A$のみによって定まる値であることが後に証明できる
+
+\sectionline
+
+$A$が$m \times n$型ならば、行は$m$個なので、$\rank(A)$は0以上$m$以下の整数である
+
+\br
+
+行階段行列において、零行でない行の個数は主成分の個数と一致するので、階数は行階段行列に変形したときの主成分の個数でもある
+
+\br
+
+行基本行列の主成分は各列に高々1つなので、主成分の個数は列の個数$n$を超えない
+
+\br
+
+したがって、次の重要な評価が成り立つ
+\begin{equation*}
+  0 \leq \rank(A) \leq \min(m,n)
+\end{equation*}
+
+\sectionline
+\section{簡約化された行階段行列}
+\marginnote{\refbookA p29〜30}
+
+必要に応じて、行階段行列をさらに変形して次のような形にする
+
+\begin{equation*}
+  \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
+    [margin, extra-margin=2pt,no-cell-nodes]
+    0 & \rowcolor{red!15} 1 & * & 0 & 0 & * & * & 0 \\
+    0 & 0 & 0 & \rowcolor{red!15} 1 & 0 & * & * & 0 \\
+    0 & 0 & 0 & 0 & \rowcolor{red!15} 1 & * & * & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{red!15} 1 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+  \end{pNiceArray}
+\end{equation*}
+
+行の主成分はすべて1で、主成分のある列の主成分以外の成分はすべて0である
+
+この形を\keyword{簡約化された行階段行列}と呼ぶ
+
+\br
+
+与えられた行列$A$に対して、行基本変形の繰り返しで得られる行階段行列は一意的ではないが、簡約化された行階段行列は一意的であることを後に議論する
+
+そこで、簡約化された行階段行列を$A_\circ$と書くことにする
+
+\sectionline
+
+変形の過程を
+\begin{equation*}
+  \text{行列}A \rightarrow \text{行階段行列} \rightarrow \text{簡約化された行階段行列}A_\circ
+\end{equation*}
+と2段階にわけるのは、計算の効率以上の意味がある
+
+行階段行列にするところまでで解決する問題（解の存在と一意性など）もあるからである
+
+\end{document}
