@@ -247,7 +247,50 @@ $A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, 
 
 \sectionline
 \section{行列の区分け}
+\marginnote{\refbookA p64}
 
-\todo{\refbookA p64}
+行列を
+\begin{equation*}
+  A = \begin{pmatrix}
+    A_{11} & A_{12} \\
+    A_{21} & A_{22}
+  \end{pmatrix}
+\end{equation*}
+のようなブロック型に区分けして計算することがよくある
+
+\br
+
+$A$が$m \times n$型のとき、$m = m_1 + m_2, \, n = n_1 + n_2$として、$A_{ij}$は$m_i \times n_j$型である
+
+\br
+
+また、$B$が$n \times l$型で、$n = n_1 + n_2, \, l = l_1 + l_2$と区分けして
+\begin{equation*}
+  B = \begin{pmatrix}
+    B_{11} & B_{12} \\
+    B_{21} & B_{22}
+  \end{pmatrix}
+\end{equation*}
+とするとき、
+\begin{align*}
+  AB & = \begin{pmatrix}
+           A_{11} & A_{12} \\
+           A_{21} & A_{22}
+         \end{pmatrix} \begin{pmatrix}
+                         B_{11} & B_{12} \\
+                         B_{21} & B_{22}
+                       \end{pmatrix}                             \\
+     & = \begin{pmatrix}
+           A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\
+           A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}
+         \end{pmatrix}
+\end{align*}
+のように$A_{ij}$などが行列の成分であるかのようにして（ただし積の順序は変えずに）積が計算できる
+
+ここで、$A$の列の区分けと$B$の行の区分けの仕方が同じであることが必要である
+
+\br
+
+3つ以上のブロックに分ける場合も同様である
 
 \end{document}
