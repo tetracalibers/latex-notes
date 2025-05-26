@@ -119,7 +119,7 @@
 
 \sectionline
 \section{行列の階数と線型独立性}
-\marginnote{\refbookA p42〜}
+\marginnote{\refbookA p42〜44}
 
 次の事実は、行変形のもっとも重要な性質である
 
@@ -139,6 +139,73 @@
 
 \begin{proof}
   \todo{\refbookA p42 （命題 1.6.8）}
+\end{proof}
+
+\sectionline
+
+\begin{definition}{主列ベクトル}
+  行列$A = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)$を行階段形にしたときに、主成分のある列番号を$i_1, i_2, \dots, i_r$とする
+
+  ここで、$r$は$A$の階数である
+
+  このとき、$\vb*{a}_{i_1}, \vb*{a}_{i_2}, \dots, \vb*{a}_{i_r}$を\keyword{主列ベクトル}という
+\end{definition}
+
+\begin{theorem}{主列ベクトルと線型独立性}
+  行列の主列ベクトルの集合は線型独立である
+
+  また、主列ベクトル以外の列ベクトルは、主列ベクトルの線形結合である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p43 （命題 1.6.11）}
+\end{proof}
+
+\br
+
+掃き出し法は、行列の列ベクトルの中から、$\rank(A)$個の線型独立な列ベクトルを選び出す方法を与えていることになる
+
+\begin{theorem}{列ベクトルの線形従属性と階数}
+  行列$A$の列ベクトルから$\rank(A)$個よりも多いベクトルを選ぶと、線形従属になる
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p43 （命題 1.6.12）}
+\end{proof}
+
+\br
+
+以上によって、行列の階数に関する次の理解が得られたことになる
+
+\begin{theorem}{階数と線型独立な列ベクトル}
+  行列$A$の階数$\rank(A)$は、$A$の列ベクトルに含まれる線型独立なベクトルの最大個数と一致する
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p43 （定理 1.6.13）}
+\end{proof}
+
+「行変形を繰り返して行階段形にしたときの0でない段の数」として導入した階数という量の、より本質的な意味がわかったことになる
+
+\br
+
+特に、
+\begin{shaded}
+  行変形によって定めた階数が行変形の仕方によらない
+\end{shaded}
+という事実がこの定理からしたがう
+
+\sectionline
+
+\begin{theorem}{2つの行列の階数の和}
+  $A,\,B$を同じ型の行列とするとき、
+  \begin{equation*}
+    \rank(A+B) \leq \rank(A) + \rank(B)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p44 問 1.15}
 \end{proof}
 
 \end{document}
