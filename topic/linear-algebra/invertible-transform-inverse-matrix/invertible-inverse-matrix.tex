@@ -1,0 +1,105 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{正則行列}
+\marginnote{\refbookA p71}
+
+\begin{definition}{正則}
+  線形変換$f$は全単射であるとき、\keyword{正則}な線形変換であるという
+\end{definition}
+
+\begin{definition}{正則行列}
+  正方行列$A$は、それが正則な線形変換を与えるとき、\keyword{正則行列}であるという
+\end{definition}
+
+「線形代数における鳩の巣原理」から、次のことがいえる
+
+\begin{theorem}{正則の判定と階数}
+  $n$次正方行列$A$に対して、次は同値である
+  \begin{enumerate}[label=\romanlabel]
+    \item $A$が正則行列
+    \item $\rank(A) = n$
+  \end{enumerate}
+\end{theorem}
+
+上の定理は、線形変換$f$（もしくは正方行列$A$）が\keyword{正則}かどうかについて、\keyword{階数}という1つの数値で判定できることを示している
+
+\sectionline
+
+\begin{theorem}{正則の判定と線型独立性}
+  $n$次正方行列$A$に対して、次は同値である
+  \begin{enumerate}[label=\romanlabel]
+    \item $A = (\vb*{a}_1 , \vb*{a}_2 , \cdots , \vb*{a}_n)$が正則
+    \item $\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n$が線型独立
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p71 命題2.4.4}
+\end{proof}
+
+\sectionline
+\section{逆行列}
+\marginnote{\refbookA p71〜72}
+
+写像$f$が全単射であれば、\keyword{逆写像}$f^{-1}$が存在する
+
+\begin{theorem}{逆写像の線形性}
+  $f$を$\mathbb{R}^n$の正則な線形変換とするとき、逆写像$f^{-1}$は線形である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p71 問2.16}
+\end{proof}
+
+$n$次正則行列$A$は、正則な線形変換$f\colon \mathbb{R}^n \to \mathbb{R}^n$と対応している
+
+逆写像$f^{-1}$が存在し、線形であるから、ある$n$次正方行列$B$が対応するはずである
+
+\br
+
+$f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像の合成は行列の積に対応するから、
+\begin{equation*}
+  AB = BA = E
+\end{equation*}
+が成り立つ
+
+\br
+
+このような$B$を$A$の\keyword{逆行列}と呼び、$A^{-1}$と書く
+
+\sectionline
+
+\begin{theorem}{逆行列の一意性}
+  正方行列$A$に対して、$A$の逆行列が存在するならば、それは一意的である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p71 問2.17}
+\end{proof}
+
+\sectionline
+\section{逆行列の計算法と線形方程式}
+\marginnote{\refbookA p72〜}
+
+正則行列$A$に対して、方程式$A\vb*{x} = \vb*{b}$のただ1つの解は次で与えられる
+\begin{equation*}
+  \vb*{x} = A^{-1} \vb*{b}
+\end{equation*}
+$A^{-1}$が計算できれば、行列のかけ算によって線型方程式の解が求められる
+
+\sectionline
+
+正則行列$A$の逆行列を計算するために、次の定理に注目しよう
+
+\begin{theorem}{逆行列の計算法の原理}
+  正方行列$A$に対して、$AB=E$を満たす正方行列$B$があるならば、$A$は正則であり、$B$は$A$の逆行列である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p72 命題2.4.6}
+\end{proof}
+
+\end{document}
