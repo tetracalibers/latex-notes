@@ -57,14 +57,85 @@
 
 \sectionline
 \section{線形写像の単射性と全射性}
-\marginnote{\refbookA p67〜}
+\marginnote{\refbookA p67〜68}
 
 線形写像$f$の単射性を表現行列$A$の言葉で述べる
 
-\todo{\refbookA p67〜69}
+\begin{theorem}{線形写像の単射性と表現行列}
+  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$は単射
+    \item $A\vb*{x} = \vb*{0}$は自明な解しか持たない
+    \item $\rank(A) = n$
+  \end{enumerate}
+\end{theorem}
 
-% \begin{theorem}{線形写像の単射性と表現行列}
+\begin{proof}
+  \todo{\refbookA p67 命題2.3.4}
+\end{proof}
 
-% \end{theorem}
+\romannum{i}は抽象的な概念、\romannum{ii}は方程式論的な言葉、\romannum{iii}は数値的な条件であり、これらは言い換えただけで同値であると述べている。
+
+\sectionline
+
+単射性と対比して、全射性の理解も表現行列の言葉で整理する
+
+\begin{theorem}{線形写像の全射性と表現行列}
+  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$は全射
+    \item 任意の$\vb*{b} \in \mathbb{R}^m$に対して、$A\vb*{x} = \vb*{b}$には解が存在する
+    \item $\rank(A) = m$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p68 命題2.3.6}
+\end{proof}
+
+\sectionline
+\section{像空間と核空間}
+\marginnote{\refbookA p68〜69}
+
+線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の\keyword{全射性}は、$\mathbb{R}^m$の部分集合である\keyword{像空間}$\Im(f)$と関係している
+
+$f$が全射であることは、$\Im(f) = \mathbb{R}^m$と同値である
+
+\sectionline
+
+一方、$f$の\keyword{単射性}と関連して、$\mathbb{R}^n$の部分集合
+\begin{equation*}
+  \Ker(f) = \{ \vb*{v} \in \mathbb{R}^n \mid f(\vb*{v}) = \vb*{0} \}
+\end{equation*}
+を考え、これを$f$の\keyword{核空間}あるいは\keyword{カーネル}と呼ぶ
+
+\br
+
+線形写像の単射性は、次のようにも言い換えられる
+
+\begin{theorem}{線形写像の単射性}
+  線形写像$f$が単射であることと次は同値である
+  \begin{equation*}
+    \Ker(f) = \{ \vb*{0} \}
+  \end{equation*}
+\end{theorem}
+
+\sectionline
+
+核空間$\Ker(f)$は、実はすでに馴染みのある概念である
+
+\br
+
+線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、
+\begin{equation*}
+  \Ker(f) = \{ \vb*{v} \in \mathbb{R}^n \mid A\vb*{v} = \vb*{0} \}
+\end{equation*}
+と定めると、$\Ker(f)$と$\Ker(A)$は同じものである
+
+これは、斉次形の連立線形方程式$A\vb*{x} = \vb*{0}$の\keyword{解空間}そのものである
+
+\br
+
+$\Ker(A)$の元は、$A\vb*{x} = \vb*{0}$の基本解を使ってパラメータ表示できる
 
 \end{document}
