@@ -140,6 +140,17 @@
 
 \sectionline
 \section{単射}
+\marginnote{\refbookE p56〜}
+
+単射とは、
+\begin{shaded}
+  異なる元は異なる元に写る
+\end{shaded}
+という性質である
+
+\br
+
+$A$の異なる元が$B$の異なる元に写るとき、写像$f\colon A \to B$は\keyword{単射}であるという
 
 \begin{definition}{単射}
   写像$f\colon A \to B$に対して、$f$が\keyword{単射}であるとは、$A$の任意の要素$a, a'$に対して
@@ -155,8 +166,59 @@
 \end{equation*}
 を考えれば、\keyword{単射}であるということは、「異なる要素が$f$によって同じ要素に対応することはない」ということにほかならない
 
+\br
+
+単射な写像は、
+\begin{shaded}
+  写像の定義域を値域にそっくり「コピーする」
+\end{shaded}
+と考えることができる
+
+\begin{center}
+  \begin{tikzpicture}
+    % 半径2cmの円を2つ横並びに配置（少しスペースを空ける）
+    \draw[gray,thick] (-3,0) circle (1.5cm);
+    \draw[gray,thick] (3,0) circle (2cm);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{単射}};
+
+    % 右の円の中にさらに小さな円を配置
+    \draw[fill=Rhodamine!40, draw=gray] (3,-0.25) circle (1cm);
+
+    % 左の円の中に2つの点を不規則に配置
+    \fill (-2.75,0.5) circle (2pt);
+    \fill (-3,-0.5) circle (2pt);
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (3.2,0.25) circle (2pt);
+    \fill (3,-0.5) circle (2pt);
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-2.75,0.5) to[out=45,in=135] (3.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-3,-0.5) to[out=-45,in=-135] (3,-0.5);
+
+    \node[yshift=1.5cm] at (-3,0.5) {\Large $A$};
+    \node[yshift=2cm] at (3,0.5) {\Large $B$};
+
+    % 左の円の中の小さな円にもラベルを付ける
+    \node[yshift=1.5cm, Rhodamine] at (3,-3) {\bfseries $A$のコピー};
+  \end{tikzpicture}
+\end{center}
+
 \sectionline
 \section{全射}
+\marginnote{\refbookE p57〜}
+
+全射とは、
+\begin{shaded}
+  どんな$b$も$A$の元の像になる
+\end{shaded}
+という性質である
+
+\br
+
+$B$の任意の元が$A$のある元の像となるとき、写像$f\colon A \to B$は\keyword{全射}であるという
 
 \begin{definition}{全射}
   写像$f\colon A \to B$に対して、$f$が\keyword{全射}であるとは、
@@ -172,8 +234,49 @@
 
 言い換えると、$B$への写像$f$が\keyword{全射}であるとは、$B$の要素に「対応していないものがない」ということ
 
+\br
+
+全射な写像は、
+\begin{shaded}
+  定義域の元の像で値域を「埋め尽くす」
+\end{shaded}
+と考えることができる
+
+\begin{center}
+  \begin{tikzpicture}
+    % 半径2cmの円を2つ横並びに配置（少しスペースを空ける）
+    \draw[gray,thick] (-3,0) circle (1.5cm);
+    \draw[gray,fill=Rhodamine!40,thick] (3,0) circle (2cm);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{全射}};
+
+    % 左の円の中に2つの点を不規則に配置
+    \fill (-2.75,0.5) circle (2pt);
+    \fill (-3,-0.5) circle (2pt);
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (3.2,0.25) circle (2pt);
+    \fill (3,-0.5) circle (2pt);
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-2.75,0.5) to[out=45,in=135] (3.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-3,-0.5) to[out=-45,in=-135] (3,-0.5);
+
+    \node[yshift=1.5cm] at (-3,0.5) {\Large $A$};
+    \node[yshift=2cm] at (3,0.5) {\Large $B$};
+  \end{tikzpicture}
+\end{center}
+
 \sectionline
 \section{全単射}
+\marginnote{\refbookE p57〜}
+
+全単射とは、
+\begin{shaded}
+  どんな$B$の元も、ただ1つの$A$の元の像になる
+\end{shaded}
+という性質である
 
 \begin{definition}{全単射}
   集合$A$から集合$B$への写像$f$が単射かつ全射であるときは、\keyword{全単射}であるという
@@ -182,6 +285,7 @@
 これは、写像$f$により、集合$A$の要素と集合$B$の要素が「一対一に対応している」ことにほかならない
 
 \sectionline
+\section{同型写像}
 
 数学では、数学的構造を保つ写像が重要であり、特に、構造を保つ全単射写像のことは\keyword{同型写像}と呼ぶ
 
