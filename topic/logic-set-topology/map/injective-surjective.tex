@@ -4,7 +4,7 @@
 
 \sectionline
 \section{単射}
-\marginnote{\refbookE p56〜}
+\marginnote{\refbookE p56〜59}
 
 単射とは、
 \begin{shaded}
@@ -40,39 +40,49 @@ $A$の異なる元が$B$の異なる元に写るとき、写像$f\colon A \to B$
 
 \begin{center}
   \begin{tikzpicture}
-    % 半径2cmの円を2つ横並びに配置（少しスペースを空ける）
-    \draw[gray,thick] (-3,0) circle (1.5cm);
-    \draw[gray,thick] (3,0) circle (2cm);
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\rCopy{1cm}      % 右の円の中の小円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \draw[gray,thick] (\leftX,0) circle (\rA);
+    \draw[gray,thick] (\rightX,0) circle (\rB);
 
     % 2つの円の間に矢印
     \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{単射}};
 
     % 右の円の中にさらに小さな円を配置
-    \draw[fill=Rhodamine!40, draw=gray] (3,-0.25) circle (1cm);
+    \draw[fill=Rhodamine!40, draw=gray] (\rightX,-0.25) circle (\rCopy);
 
     % 左の円の中に2つの点を不規則に配置
-    \fill (-2.75,0.5) circle (2pt);
-    \fill (-3,-0.5) circle (2pt);
+    \fill (\leftX+0.25,0.5) circle (\dotSize);
+    \fill (\leftX,-0.5) circle (\dotSize);
 
     % 右の円の中の小さな円の中に2つの点を不規則に配置
-    \fill (3.2,0.25) circle (2pt);
-    \fill (3,-0.5) circle (2pt);
+    \fill (\rightX+0.2,0.25) circle (\dotSize);
+    \fill (\rightX,-0.5) circle (\dotSize);
 
     % 曲がった矢印を2つの点に向けて引く
-    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-2.75,0.5) to[out=45,in=135] (3.2,0.25);
-    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-3,-0.5) to[out=-45,in=-135] (3,-0.5);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=45,in=135] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-45,in=-135] (\rightX,-0.5);
 
-    \node[yshift=1.5cm] at (-3,0.5) {\Large $A$};
-    \node[yshift=2cm] at (3,0.5) {\Large $B$};
-
-    % 左の円の中の小さな円にもラベルを付ける
-    \node[yshift=1.5cm, Rhodamine] at (3,-3) {\bfseries $A$のコピー};
+    % ラベル
+    \node[yshift=1.5cm] at (\leftX,0.5) {\Large $A$};
+    \node[yshift=2cm] at (\rightX,0.5) {\Large $B$};
+    \node[yshift=1.5cm, Rhodamine] at (\rightX,-3) {\bfseries $A$のコピー};
   \end{tikzpicture}
 \end{center}
 
 \sectionline
 \section{全射}
-\marginnote{\refbookE p57〜}
+\marginnote{\refbookE p57〜59}
 
 全射とは、
 \begin{shaded}
@@ -134,7 +144,7 @@ $B$の任意の元が$A$のある元の像となるとき、写像$f\colon A \to
 
 \sectionline
 \section{全単射}
-\marginnote{\refbookE p57〜}
+\marginnote{\refbookE p57〜59}
 
 全単射とは、
 \begin{shaded}
@@ -152,5 +162,166 @@ $B$の任意の元が$A$のある元の像となるとき、写像$f\colon A \to
 \section{同型写像}
 
 数学では、数学的構造を保つ写像が重要であり、特に、構造を保つ全単射写像のことは\keyword{同型写像}と呼ぶ
+
+\sectionline
+\section{単射・全射と合成}
+\marginnote{\refbookE p59〜61}
+
+単射や全射の性質は、写像の合成に関して閉じている
+
+\br
+
+\begin{theorem}{単射な写像の合成}
+  単射な写像の合成は単射である
+\end{theorem}
+
+直観的には、
+\begin{shaded}
+  $C$の中に$A$のコピーのコピーができる
+\end{shaded}
+という解釈ができる
+
+\begin{center}
+  \scalebox{0.6}{
+    \begin{tikzpicture}
+      \def\rA{1.5cm}
+      \def\rB{2cm}
+      \def\rC{2.5cm}       % 円Cの半径（Bより大きい）
+      \def\rCopyA{1cm}
+      \def\rCopyCopyA{1.4cm} % C内の小円の半径（Aのコピー）
+      \def\rSubA{0.9cm}
+      \def\dotSize{2pt}
+      \def\spaceX{6}
+
+      % 各円の中心X座標
+      \def\xA{-\spaceX+0.5}
+      \def\xB{0}
+      \def\xC{\spaceX+1.5*0.5}
+
+      % 円A, B, C
+      \begin{scope}[local bounding box=circleA]
+        \draw[gray, thick] (\xA,0) circle (\rA);
+      \end{scope}
+      \begin{scope}[local bounding box=circleB]
+        \draw[gray, thick] (\xB,0) circle (\rB);
+      \end{scope}
+      \begin{scope}[local bounding box=circleC]
+        \draw[gray, thick] (\xC,0) circle (\rC);
+      \end{scope}
+
+      % ラベル
+      \node[yshift=\rA] at (\xA,0.5) {\Large $A$};
+      \node[yshift=\rB] at (\xB,0.5) {\Large $B$};
+      \node[yshift=\rC] at (\xC,0.5) {\Large $C$}; % y位置も少し上へ
+
+      % B内の小円（Aのコピー）
+      \draw[fill=Rhodamine!40, draw=gray,xshift=-0.25\rB,yshift=0.25\rB] (\xB,0) circle (\rCopyA);
+
+      % C内の小円（Aのコピー）とその部分集合
+      \draw[fill=Rhodamine!40, draw=gray,xshift=-0.25*\rCopyCopyA,yshift=0.25*\rCopyCopyA] (\xC,0) circle (\rCopyCopyA);
+      \draw[fill=Apricot!50, draw=gray,xshift=-0.1*\rSubA,yshift=0.1*\rSubA] (\xC,0) circle (\rSubA);
+
+      % 点（A内）
+      \fill (\xA+0.25,0.5) circle (\dotSize);
+      % 点（B内）
+      \fill (\xB+0.2,0.25) circle (\dotSize);
+      % 点（C内の小円）
+      \fill (\xC+0.2,0.25) circle (\dotSize);
+
+      % A → B の写像矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xA+0.25,0.5) to[out=45,in=135] (\xB+0.2,0.25);
+
+      % A → B を結ぶ矢印（直線の上に「単射」ラベル）
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleA.east) -- (circleB.west) node[midway, above] {\large\textbf{単射}};
+      % B → C を結ぶ矢印（直線の上に「単射」ラベル）
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleB.east) -- (circleC.west) node[midway, above] {\large\textbf{単射}};
+
+      % B → C の対応矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xB+0.2,0.25) to[out=45,in=135] (\xC+0.2,0.25);
+
+      % ラベル（コピー情報）
+      \node[Rhodamine] at (\xB,-\rCopyA) {\large\bfseries $A$のコピー};
+      \node[Rhodamine] at (\xC,-\rCopyCopyA) {\large\bfseries $A$のコピーのコピー};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{proof}
+  \todo{\refbookE p59}
+\end{proof}
+
+\br
+
+\begin{theorem}{全射な写像の合成}
+  全射な写像の合成は全射である
+\end{theorem}
+
+直観的には、
+\begin{shaded}
+  合成すると$A$の元の像で$C$は埋め尽くされる
+\end{shaded}
+と解釈できる
+
+\begin{center}
+  \scalebox{0.7}{
+    \begin{tikzpicture}
+      \def\rA{1.5cm}
+      \def\rB{1.5cm}
+      \def\rC{1.5cm}
+      \def\dotSize{2pt}
+      \def\spaceX{5}
+
+      % 各円の中心X座標
+      \def\xA{0}
+      \def\xB{\spaceX}
+      \def\xC{\spaceX*2}
+
+      % 円A, B, C
+      \begin{scope}[local bounding box=circleA]
+        \draw[gray, thick] (\xA,0) circle (\rA);
+      \end{scope}
+      \begin{scope}[local bounding box=circleB]
+        \draw[fill=Rhodamine!20, draw=gray, thick] (\xB,0) circle (\rB);
+      \end{scope}
+      \begin{scope}[local bounding box=circleC]
+        \draw[fill=Rhodamine!40, draw=gray, thick] (\xC,0) circle (\rC);
+      \end{scope}
+
+      % ラベル
+      \node[yshift=\rA] at (\xA,0.5) {\Large $A$};
+      \node[yshift=\rB] at (\xB,0.5) {\Large $B$};
+      \node[yshift=\rC] at (\xC,0.5) {\Large $C$}; % y位置も少し上へ
+
+      % 点（A内）
+      \fill (\xA+0.25,0.5) circle (\dotSize);
+      % 点（B内）
+      \fill (\xB+0.2,0.25) circle (\dotSize);
+      % 点（C内の小円）
+      \fill (\xC+0.2,0.25) circle (\dotSize);
+
+      % A → B の写像矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xA+0.25,0.5) to[out=45,in=135] (\xB+0.2,0.25);
+      % B → C の対応矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xB+0.2,0.25) to[out=45,in=135] (\xC+0.2,0.25);
+
+      % A → B を結ぶ矢印（直線の上に「単射」ラベル）
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleA.east) -- (circleB.west) node[midway, above] {\textbf{全射}};
+      % B → C を結ぶ矢印（直線の上に「単射」ラベル）
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleB.east) -- (circleC.west) node[midway, above] {\textbf{全射}};
+
+      % ラベル（コピー情報）
+      \node[Rhodamine, yshift=-1.5em] at (\xB,-\rB) {\bfseries $A$の元の像で埋め尽くす};
+      \node[Rhodamine, yshift=-1.5em] at (\xC,-\rC) {\bfseries $B$の元の像で埋め尽くす};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{proof}
+  \todo{\refbookE p60}
+\end{proof}
 
 \end{document}
