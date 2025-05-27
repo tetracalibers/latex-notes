@@ -104,6 +104,41 @@
 \end{theorem}
 
 \sectionline
+\section{恒等写像}
+\marginnote{\refbookE p55〜56}
+
+「何も変えない写像」は\keyword{恒等写像}と呼ばれる
+
+\begin{definition}{恒等写像}
+  集合$A$に対して、$A$の要素$a$を同じ要素$a$に対応させる、$A$から$A$への写像
+  \begin{equation*}
+    A \to A; a \mapsto a
+  \end{equation*}
+  を$A$上の\keyword{恒等写像}といい、$I_A$や$\Id_A$、あるいは単に$\Id$と書く
+\end{definition}
+
+\sectionline
+\section{合成写像}
+\marginnote{\refbookE p55〜56}
+
+「2つの操作を続けて行う」ことは、写像の\keyword{合成}として定義される
+
+\begin{definition}{合成写像}
+  2つの写像
+  \begin{align*}
+    f\colon A & \to B \\
+    g\colon B & \to C
+  \end{align*}
+  が与えられたとき、$A$の要素$a$に対して、$C$の要素$g(f(a))$を対応させる、集合$A$から集合$C$への写像のことを$f$と$g$の\keyword{合成写像}と呼び、記号で$g \circ f$と書く
+
+  すなわち
+  \begin{equation*}
+    (g \circ f)(a) = g(f(a))
+  \end{equation*}
+  である
+\end{definition}
+
+\sectionline
 \section{単射}
 
 \begin{definition}{単射}
@@ -157,41 +192,6 @@
   写像$f\colon A \to B$が全単射であるとき、対応が一対一であるので、逆向きの対応、すなわち、$B$から$A$への対応を考えることができる
 
   この対応により定義される写像を$f$の\keyword{逆写像}と呼び、記号で$f^{-1}$と書く
-\end{definition}
-
-\sectionline
-\section{合成写像}
-\marginnote{\refbookE p55〜56}
-
-「2つの操作を続けて行う」ことは、写像の\keyword{合成}として定義される
-
-\begin{definition}{合成写像}
-  2つの写像
-  \begin{align*}
-    f\colon A & \to B \\
-    g\colon B & \to C
-  \end{align*}
-  が与えられたとき、$A$の要素$a$に対して、$C$の要素$g(f(a))$を対応させる、集合$A$から集合$C$への写像のことを$f$と$g$の\keyword{合成写像}と呼び、記号で$g \circ f$と書く
-
-  すなわち
-  \begin{equation*}
-    (g \circ f)(a) = g(f(a))
-  \end{equation*}
-  である
-\end{definition}
-
-\sectionline
-\section{恒等写像}
-\marginnote{\refbookE p55〜56}
-
-「何も変えない写像」は\keyword{恒等写像}と呼ばれる
-
-\begin{definition}{恒等写像}
-  集合$A$に対して、$A$の要素$a$を同じ要素$a$に対応させる、$A$から$A$への写像
-  \begin{equation*}
-    A \to A; a \mapsto a
-  \end{equation*}
-  を$A$上の\keyword{恒等写像}といい、$I_A$や$\Id_A$、あるいは単に$\Id$と書く
 \end{definition}
 
 \sectionline
