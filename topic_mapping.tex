@@ -1,6 +1,6 @@
-\documentclass[b5paper,12pt]{jsarticle}
+\documentclass[b5paper,12pt,notitlepage]{jsreport}
 
-\title{Topic Note: 写像}
+\title{写像の整理帳}
 \author{tomixy}
 
 \input{topic_preamble.tex}
@@ -9,6 +9,9 @@
 
 \newcommand{\refbookA}{\refbook{ろんりと集合}}
 \newcommand{\refbookB}{\refbook{大学数学 ほんとうに必要なのは「集合」}}
+\newcommand{\refbookC}{\refbook{なっとくする 集合・写像}}
+\newcommand{\refbookD}{\refbook{集合と位相をなぜ学ぶのか}}
+\newcommand{\refbookE}{\refbook{図で整理！例題で納得！線形空間入門}}
 
 % ---
 
@@ -46,14 +49,25 @@
   \begin{equation*}
     f(A) = \{ f(a) \mid a \in A \}
   \end{equation*}
-
-  写像$f$により、$A$の要素$a$が$B$の要素$b$に対応しているとき、$b$は$a$の$f$による\keyword{像}であるといい、$f(a) = b$と書く
 \end{definition}
 
 「集合」と「写像」というのはそれぞれ、「対象」と「それらの間の対応」ということであり、数学において基本的な概念である
 
 \sectionline
 \section{像と逆像}
+\marginnote{\refbookE p52〜55}
+
+\begin{definition}{像}
+  写像$f$により、$A$の要素$a$が$B$の要素$b$に対応しているとき、「$b$は$a$の$f$による\keyword{像}である」あるいは「$f$により$a$は$b$に写る」といい、
+  \begin{gather*}
+    f(a) = b \\
+    f: a \mapsto b \\
+    f: A \to B; a \mapsto b
+  \end{gather*}
+  などと書く
+\end{definition}
+
+集合の言葉で述べると、次のようにも定義できる
 
 \begin{definition}{像と逆像}
   写像$f\colon A \to B$があるとき、$A$の部分集合$A'$に対して、
@@ -147,6 +161,9 @@
 
 \sectionline
 \section{合成写像}
+\marginnote{\refbookE p55〜56}
+
+「2つの操作を続けて行う」ことは、写像の\keyword{合成}として定義される
 
 \begin{definition}{合成写像}
   2つの写像
@@ -165,12 +182,17 @@
 
 \sectionline
 \section{恒等写像}
+\marginnote{\refbookE p55〜56}
+
+「何も変えない写像」は\keyword{恒等写像}と呼ばれる
 
 \begin{definition}{恒等写像}
-  集合$A$に対して、$A$の要素$a$を同じ要素$a$に対応させる、$A$から$A$への写像を$A$上の\keyword{恒等写像}と呼ぶ
+  集合$A$に対して、$A$の要素$a$を同じ要素$a$に対応させる、$A$から$A$への写像
+  \begin{equation*}
+    A \to A; a \mapsto a
+  \end{equation*}
+  を$A$上の\keyword{恒等写像}といい、$I_A$や$\Id_A$、あるいは単に$\Id$と書く
 \end{definition}
-
-恒等写像の記号は定まっていないが、ここでは、$A$上の恒等写像を$I_A$と書くことにする
 
 \sectionline
 \section{単射と全射の双対性}
