@@ -1,0 +1,123 @@
+\documentclass[../../../topic_mapping]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{写像}
+\marginnote{\refbookA}
+
+\keyword{写像}は、集合の間の「対応」である
+
+\br
+
+関数は、数を入力すると数が出力される「装置」
+
+関数のような「対応」という考え方の対象を「数」に限定せず、「集合の要素」に一般化したものが\keyword{写像}である
+
+\br
+
+写像というときは、どの集合からどの集合への写像であるかをはっきりしておかなければならない
+
+\begin{definition}{写像}
+  集合$A, \, B$があったとき、$A$のすべての要素$a$に対して、$B$のある要素$b$を「ただ一つ対応」させる規則$f$が与えられたとき、$f$を$A$から$B$への\keyword{写像}と呼び、記号で
+  \begin{equation*}
+    f\colon A \to B
+  \end{equation*}
+  と表す
+
+  このとき、集合$A$を$f$の\keyword{定義域}と呼ぶ
+
+  また、次の集合を$f$の\keyword{値域}と呼ぶ
+  \begin{equation*}
+    f(A) = \{ f(a) \mid a \in A \}
+  \end{equation*}
+\end{definition}
+
+「集合」と「写像」というのはそれぞれ、「対象」と「それらの間の対応」ということであり、数学において基本的な概念である
+
+\sectionline
+\section{像と逆像}
+\marginnote{\refbookE p52〜55}
+
+\begin{definition}{像}
+  写像$f$により、$A$の要素$a$が$B$の要素$b$に対応しているとき、「$b$は$a$の$f$による\keyword{像}である」あるいは「$f$により$a$は$b$に写る」といい、
+  \begin{gather*}
+    f(a) = b \\
+    f: a \mapsto b \\
+    f: A \to B; a \mapsto b
+  \end{gather*}
+  などと書く
+\end{definition}
+
+集合の言葉で述べると、次のようにも定義できる
+
+\begin{definition}{像と逆像}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A'$に対して、
+  \begin{equation*}
+    f(A') = \{ f(a) \mid a \in A' \}
+  \end{equation*}
+  とおき、$f(A')$を$A'$の$f$による\keyword{像}と呼ぶ
+
+  また、$B$の部分集合$B'$に対して、
+  \begin{equation*}
+    f^{-1}(B') = \{ a \mid f(a) \in B' \}
+  \end{equation*}
+  とおき、$f^{-1}(B')$を$B'$の$f$による\keyword{逆像}と呼ぶ
+\end{definition}
+
+\keyword{値域}は、定義域$A$の像$f(A)$のことにほかならない
+
+\begin{theorem}{像と逆像の性質}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A_1, A_2$と$B$の部分集合$B_1, B_2$に対して、次が成り立つ
+  \begin{itemize}
+    \item $A_1 \subset A_2 \implies f(A_1) \subset f(A_2)$
+    \item $B_1 \subset B_2 \implies f^{-1}(B_1) \subset f^{-1}(B_2)$
+  \end{itemize}
+\end{theorem}
+
+\begin{theorem}{像と逆像の性質}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A_1, A_2$と$B$の部分集合$B_1, B_2$に対して、次が成り立つ
+  \begin{itemize}
+    \item $f(A_1 \cap A_2) \subset f(A_1) \cap f(A_2)$
+    \item $f(A_1 \cup A_2) = f(A_1) \cup f(A_2)$
+    \item $f^{-1}(B_1 \cap B_2) = f^{-1}(B_1) \cap f^{-1}(B_2)$
+    \item $f^{-1}(B_1 \cup B_2) = f^{-1}(B_1) \cup f^{-1}(B_2)$
+  \end{itemize}
+\end{theorem}
+
+\sectionline
+\section{恒等写像}
+\marginnote{\refbookE p55〜56}
+
+「何も変えない写像」は\keyword{恒等写像}と呼ばれる
+
+\begin{definition}{恒等写像}
+  集合$A$に対して、$A$の要素$a$を同じ要素$a$に対応させる、$A$から$A$への写像
+  \begin{equation*}
+    A \to A; a \mapsto a
+  \end{equation*}
+  を$A$上の\keyword{恒等写像}といい、$I_A$や$\Id_A$、あるいは単に$\Id$と書く
+\end{definition}
+
+\sectionline
+\section{合成写像}
+\marginnote{\refbookE p55〜56}
+
+「2つの操作を続けて行う」ことは、写像の\keyword{合成}として定義される
+
+\begin{definition}{合成写像}
+  2つの写像
+  \begin{align*}
+    f\colon A & \to B \\
+    g\colon B & \to C
+  \end{align*}
+  が与えられたとき、$A$の要素$a$に対して、$C$の要素$g(f(a))$を対応させる、集合$A$から集合$C$への写像のことを$f$と$g$の\keyword{合成写像}と呼び、記号で$g \circ f$と書く
+
+  すなわち
+  \begin{equation*}
+    (g \circ f)(a) = g(f(a))
+  \end{equation*}
+  である
+\end{definition}
+
+\end{document}

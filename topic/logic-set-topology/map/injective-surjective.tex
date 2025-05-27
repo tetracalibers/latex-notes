@@ -1,0 +1,212 @@
+\documentclass[../../../topic_mapping]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{単射}
+\marginnote{\refbookE p56〜}
+
+単射とは、
+\begin{shaded}
+  異なる元は異なる元に写る
+\end{shaded}
+という性質である
+
+\br
+
+$A$の異なる元が$B$の異なる元に写るとき、写像$f\colon A \to B$は\keyword{単射}であるという
+
+\begin{definition}{単射}
+  写像$f\colon A \to B$に対して、$f$が\keyword{単射}であるとは、$A$の任意の要素$a, a'$に対して
+  \begin{equation*}
+    f(a) = f(a') \implies a = a'
+  \end{equation*}
+  が成り立つことをいう
+\end{definition}
+
+この主張の対偶
+\begin{equation*}
+  a \ne a' \implies f(a) \ne f(a')
+\end{equation*}
+を考えれば、\keyword{単射}であるということは、「異なる要素が$f$によって同じ要素に対応することはない」ということにほかならない
+
+\br
+
+単射な写像は、
+\begin{shaded}
+  写像の定義域を値域にそっくり「コピーする」
+\end{shaded}
+と考えることができる
+
+\begin{center}
+  \begin{tikzpicture}
+    % 半径2cmの円を2つ横並びに配置（少しスペースを空ける）
+    \draw[gray,thick] (-3,0) circle (1.5cm);
+    \draw[gray,thick] (3,0) circle (2cm);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{単射}};
+
+    % 右の円の中にさらに小さな円を配置
+    \draw[fill=Rhodamine!40, draw=gray] (3,-0.25) circle (1cm);
+
+    % 左の円の中に2つの点を不規則に配置
+    \fill (-2.75,0.5) circle (2pt);
+    \fill (-3,-0.5) circle (2pt);
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (3.2,0.25) circle (2pt);
+    \fill (3,-0.5) circle (2pt);
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-2.75,0.5) to[out=45,in=135] (3.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-3,-0.5) to[out=-45,in=-135] (3,-0.5);
+
+    \node[yshift=1.5cm] at (-3,0.5) {\Large $A$};
+    \node[yshift=2cm] at (3,0.5) {\Large $B$};
+
+    % 左の円の中の小さな円にもラベルを付ける
+    \node[yshift=1.5cm, Rhodamine] at (3,-3) {\bfseries $A$のコピー};
+  \end{tikzpicture}
+\end{center}
+
+\sectionline
+\section{全射}
+\marginnote{\refbookE p57〜}
+
+全射とは、
+\begin{shaded}
+  どんな$b$も$A$の元の像になる
+\end{shaded}
+という性質である
+
+\br
+
+$B$の任意の元が$A$のある元の像となるとき、写像$f\colon A \to B$は\keyword{全射}であるという
+
+\begin{definition}{全射}
+  写像$f\colon A \to B$に対して、$f$が\keyword{全射}であるとは、
+  \begin{equation*}
+    f(A) = B
+  \end{equation*}
+  すなわち
+  \begin{equation*}
+    \forall b \in B, \exists a \in A\colon f(a) = b
+  \end{equation*}
+  が成り立つことをいう
+\end{definition}
+
+言い換えると、$B$への写像$f$が\keyword{全射}であるとは、$B$の要素に「対応していないものがない」ということ
+
+\br
+
+全射な写像は、
+\begin{shaded}
+  定義域の元の像で値域を「埋め尽くす」
+\end{shaded}
+と考えることができる
+
+\begin{center}
+  \begin{tikzpicture}
+    % 半径2cmの円を2つ横並びに配置（少しスペースを空ける）
+    \draw[gray,thick] (-3,0) circle (1.5cm);
+    \draw[gray,fill=Rhodamine!40,thick] (3,0) circle (2cm);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{全射}};
+
+    % 左の円の中に2つの点を不規則に配置
+    \fill (-2.75,0.5) circle (2pt);
+    \fill (-3,-0.5) circle (2pt);
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (3.2,0.25) circle (2pt);
+    \fill (3,-0.5) circle (2pt);
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-2.75,0.5) to[out=45,in=135] (3.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt] (-3,-0.5) to[out=-45,in=-135] (3,-0.5);
+
+    \node[yshift=1.5cm] at (-3,0.5) {\Large $A$};
+    \node[yshift=2cm] at (3,0.5) {\Large $B$};
+  \end{tikzpicture}
+\end{center}
+
+\sectionline
+\section{全単射}
+\marginnote{\refbookE p57〜}
+
+全単射とは、
+\begin{shaded}
+  どんな$B$の元も、ただ1つの$A$の元の像になる
+\end{shaded}
+という性質である
+
+\begin{definition}{全単射}
+  集合$A$から集合$B$への写像$f$が単射かつ全射であるときは、\keyword{全単射}であるという
+\end{definition}
+
+これは、写像$f$により、集合$A$の要素と集合$B$の要素が「一対一に対応している」ことにほかならない
+
+\sectionline
+\section{同型写像}
+
+数学では、数学的構造を保つ写像が重要であり、特に、構造を保つ全単射写像のことは\keyword{同型写像}と呼ぶ
+
+\sectionline
+\section{逆写像}
+
+\begin{definition}{逆写像}
+  写像$f\colon A \to B$が全単射であるとき、対応が一対一であるので、逆向きの対応、すなわち、$B$から$A$への対応を考えることができる
+
+  この対応により定義される写像を$f$の\keyword{逆写像}と呼び、記号で$f^{-1}$と書く
+\end{definition}
+
+\sectionline
+\section{単射と全射の双対性}
+
+\begin{definition}{左逆写像}
+  写像$f\colon A \to B$に対して、写像$g\colon B \to A$が存在して、
+  \begin{equation*}
+    g \circ f = I_A
+  \end{equation*}
+  を満たすとき、$g$は$f$の\keyword{左逆写像}であるという
+\end{definition}
+
+\begin{definition}{右逆写像}
+  写像$f\colon A \to B$に対して、写像$g\colon B \to A$が存在して、
+  \begin{equation*}
+    f \circ g = I_B
+  \end{equation*}
+  を満たすとき、$g$は$f$の\keyword{右逆写像}であるという
+\end{definition}
+
+\begin{theorem}{全単射の特徴づけ}
+  写像$f\colon A \to B$に対して、次の2つは同値になる
+  \begin{enumerate}
+    \item $f$は全単射である
+    \item $f$の左逆写像であり、右逆写像でもある写像が存在する
+  \end{enumerate}
+\end{theorem}
+
+\sectionline
+
+「逆写像」という観点からみることにより、「単射」と「全射」は双対的な概念であることがわかる
+
+\begin{theorem}{単射の特徴づけ}
+  写像$f\colon A \to B$に対して、次の2つは同値になる
+  \begin{enumerate}
+    \item $f$は単射である
+    \item $f$の左逆写像が存在する
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}{全射の特徴づけ}
+  写像$f\colon A \to B$に対して、次の2つは同値になる
+  \begin{enumerate}
+    \item $f$は全射である
+    \item $f$の右逆写像が存在する
+  \end{enumerate}
+\end{theorem}
+
+\end{document}
