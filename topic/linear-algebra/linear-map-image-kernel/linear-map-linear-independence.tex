@@ -1,10 +1,10 @@
-\documentclass[../../../topic_linear-map-image-kernel]{subfiles}
+\documentclass[../../../topic_linear-algebra]{subfiles}
 
 \begin{document}
 
 \sectionline
 \section{線形写像とベクトルの線型独立性}
-\marginnote{\refbookA p65〜}
+\marginnote{\refbookA p65〜66}
 
 \begin{theorem}{線形写像とベクトルの線形独立性}
   $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \in \mathbb{R}^n$とする
@@ -21,5 +21,48 @@
 \romannum{ii}は、平行なベクトルを線型写像で写した結果、平行でなくなったりはしないということを述べている
 
 \sectionline
+
+\begin{theorem}{線型写像とベクトルの線型独立性}
+  線型写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$に対して、次の2つは同値になる
+  \begin{enumerate}[label=\romanlabel]
+    \item $\vb*{v} \neq \vb*{0}$ならば、$f(\vb*{v}) \neq \vb*{0}$
+    \item $\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$が線型独立ならば、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線型独立
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p66 命題2.3.2}
+\end{proof}
+
+\romannum{i}は、零写像と射影を除けば、$f$によってベクトルが「つぶれない」という性質を表している
+
+\todo{\refbookA p55 例2.1.15}
+
+\br
+
+\romannum{ii}は、たとえば平行四辺形の像が線分や1点になったりしないことなどを意味している
+
+\sectionline
+
+\begin{theorem}{線形写像の単射性}
+  線形写像$f$が単射であることと次は同値である
+  \begin{equation*}
+    f(\vb*{v}) = \vb*{0} \Longrightarrow \vb*{v} = \vb*{0}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p66 命題2.3.3}
+\end{proof}
+
+\sectionline
+\section{線形写像の単射性と全射性}
+\marginnote{\refbookA p67〜}
+
+線形写像$f$の単射性を表現行列$A$の言葉で述べる
+
+% \begin{theorem}{線形写像の単射性と表現行列}
+
+% \end{theorem}
 
 \end{document}
