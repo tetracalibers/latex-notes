@@ -82,7 +82,7 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
 
 \sectionline
 \section{逆行列の計算法と線形方程式}
-\marginnote{\refbookA p72〜}
+\marginnote{\refbookA p72〜73}
 
 正則行列$A$に対して、方程式$A\vb*{x} = \vb*{b}$のただ1つの解は次で与えられる
 \begin{equation*}
@@ -100,6 +100,56 @@ $A^{-1}$が計算できれば、行列のかけ算によって線型方程式の
 
 \begin{proof}
   \todo{\refbookA p72 命題2.4.6}
+\end{proof}
+
+上の定理の証明は、逆行列の計算法のヒントを含んでいる
+
+$A$の逆行列$B$を求めるには、$n$個の線形方程式
+\begin{equation*}
+  A\vb*{b}_i = \vb*{e}_i \quad ( 1    \leq i \leq n )
+\end{equation*}
+を解けばよい
+
+\br
+
+$A$は階数$n$の$n$次正方行列なので、行変形で$A$から$E$に到達することができる
+
+\br
+
+$\vb*{b}_i$を求めるには、行変形により
+\begin{equation*}
+  (A \mid \vb*{e}_i) \rightarrow \cdots \rightarrow (E \mid \vb*{b}_i)
+\end{equation*}
+とすればよい
+
+\br
+
+$i$ごとに掃き出し法を何度も実行しないといけないのかと思いきや、一度にまとめられる
+\begin{gather*}
+  (A \mid E) = (A \mid \vb*{e}_1, \cdots , \vb*{e}_n) \rightarrow \\ \cdots \rightarrow (E \mid \vb*{b}_1 , \cdots , \vb*{b}_n) = (E \mid B)
+\end{gather*}
+このようにすれば、行変形は1通りで十分である
+
+\sectionline
+\section{正則行列と対角行列}
+\marginnote{\refbookA p74〜75}
+
+\begin{theorem}{上三角行列の正則性}
+  対角成分がすべて0でない上三角行列は正則である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p74 命題2.4.9}
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{行基本変形と対角行列}
+  正則行列$A$に対して、行のスカラー倍以外の行基本変形を繰り返し行って対角行列にできる
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p75 命題2.4.12}
 \end{proof}
 
 \end{document}
