@@ -1,0 +1,115 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形部分空間の定義}
+\marginnote{\refbookA p93〜94}
+
+$\mathbb{R}^n$の部分集合であって、ベクトル演算で閉じた集合について考える
+
+原点を含み直線や平面などを一般化した概念である
+
+\begin{definition}{線形部分空間}
+  $\mathbb{R}^n$のベクトルからなる空集合でない集合$V$は、次が成り立つとき\keyword{線形部分空間}あるいは簡単に\keyword{部分空間}であるという
+  \begin{enumerate}[label=\romanlabel]
+    \item すべての$\vb*{u}, \vb*{v} \in V$に対して$\vb*{u} + \vb*{v} \in V$が成り立つ
+    \item すべての$c \in \mathbb{R},\,\vb*{u} \in V$に対して$c \vb*{u} \in V$が成り立つ
+  \end{enumerate}
+\end{definition}
+
+\subsection{線形部分空間の例：$\mathbb{R}^n$自身}
+
+たとえば、$\mathbb{R}^n$自身は明らかに$\mathbb{R}^n$の部分空間である
+
+\subsection{線形部分空間の例：零ベクトルだけからなる部分集合}
+
+零ベクトル$\vb*{0}$だけからなる部分集合$\{ \vb*{0} \}$も部分空間である
+
+\br
+
+$V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形部分空間の定義\romannum{ii}より
+\begin{equation*}
+  0 \cdot \vb*{v} = \vb*{0} \in V
+\end{equation*}
+よって部分空間は必ず$\vb*{0}$を含む
+
+\subsection{線形部分空間の例：ベクトルが張る空間}
+
+\begin{theorem}{ベクトルが張る空間は線形部分空間}
+  $\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \in \mathbb{R}^n$が張る空間$\langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \rangle$は部分空間である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p94 命題3.1.2}
+\end{proof}
+
+\br
+
+たとえば$\mathbb{R}^3$において座標を$(x, y, z)$とするとき、$xy$平面は$\mathbb{R}^3$の部分空間である
+
+\begin{definition}{座標部分空間}
+  $\{1, 2, \dots, n\}$の部分集合$I$に対して、$x_i \, (i \in I)$以外の座標がすべて0である部分集合は$\mathbb{R}^n$の部分集合である
+
+  このようなものを\keyword{座標部分空間}といい、$\mathbb{R}^I$と書く
+  \begin{equation*}
+    \mathbb{R}^I = \langle \vb*{e}_i \mid i \in I \rangle
+  \end{equation*}
+  と表すこともできる
+\end{definition}
+
+\br
+
+\begin{theorem}{部分空間の張る空間は部分空間}
+  $V \subset \mathbb{R}^n$を部分空間、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \in V$とすると、
+  \begin{equation*}
+    \langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \rangle \subset V
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p94 命題3.1.4}
+\end{proof}
+
+\subsection{線形部分空間の例：交わり}
+
+\begin{theorem}{線形部分空間の和空間は部分空間}
+  $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{交わり}$V \cap W$は$\mathbb{R}^n$の部分空間である
+\end{theorem}
+
+\subsection{線形部分空間の例：和空間}
+
+\begin{theorem}{線形部分空間の和空間は部分空間}
+  $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{和空間}
+  \begin{equation*}
+    V + W \coloneq \{ \vb*{v} + \vb*{w} \mid \vb*{v} \in V, \vb*{w} \in W \}
+  \end{equation*}
+  は$\mathbb{R}^n$の部分空間である
+\end{theorem}
+
+\sectionline
+\section{線形写像の核空間}
+\marginnote{\refbookA p94〜95}
+
+\begin{theorem}{線形写像の核空間は部分空間}
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、核空間$\Ker(f)$は$\mathbb{R}^n$の部分空間である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p69 問2.15}
+\end{proof}
+
+\sectionline
+
+すでに学んだように、斉次形方程式$A\vb*{x} = \vb*{0}$の解の自由度を$d$とすると、基本解$\vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_d \in \Ker(A)$が存在して、任意の$\vb*{u} \in \Ker(A)$に対して
+\begin{equation*}
+  \vb*{u} = c_1 \vb*{u}_1 + c_2 \vb*{u}_2 + \cdots + c_d \vb*{u}_d
+\end{equation*}
+を満たす$c_1, c_2, \dots, c_d \in \mathbb{R}$が一意的に定まる
+
+\br
+
+
+
+
+\end{document}
