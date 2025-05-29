@@ -81,6 +81,66 @@ $i$番目の式の$x_j$の係数を$a_{ij}$と書いている
 原則として上三角型を目指してこのような変形を繰り返すが、いつでも上三角型にできるわけではなく、\keyword{行階段行列}と呼ばれる形を作っていくのが\keyword{掃き出し法}と呼ばれる手法である
 
 \sectionline
+\section{成分を要にして掃き出す}
+\marginnote{\refbookB p76〜81}
+
+\begin{equation*}
+  A=\begin{pNiceMatrix}[last-col,code-for-last-col = \color{Cerulean}\scriptstyle]
+    2  & 1 & -1 & R_1 \\
+    4  & 5 & -3 & R_2 \\
+    -2 & 3 & 2  & R_3
+  \end{pNiceMatrix}
+\end{equation*}
+
+まず、$(1,1)$成分より下の成分が0になるように基本変形を適用する
+
+このことを、「$(1,1)$成分を\keyword{要}にして、1列を掃き出す」と表現する
+
+\begin{equation*}
+  \begin{pNiceMatrix}[margin,last-col,code-for-last-col = \color{Cerulean}\scriptstyle]
+    1 & 2 & 3  & R_1 \\
+    2 & 5 & 8  & R_2 \\
+    3 & 8 & 14 & R_3
+    \CodeAfter
+    \tikz \draw[thick,RoyalBlue] (1-1) circle (0.5em);
+  \end{pNiceMatrix} \rightarrow \begin{pNiceMatrix}[margin,last-col,code-for-last-col = \color{Cerulean}\scriptstyle]
+    1 & 2 & 3 & R_1                       \\
+    0 & 1 & 2 & R_2 \leftarrow R_2 - 2R_1 \\
+    0 & 2 & 5 & R_3 \leftarrow R_3 - 3R_1
+    \CodeAfter
+    \tikz \draw[thick,RoyalBlue] (1-1) circle (0.5em);
+  \end{pNiceMatrix}
+\end{equation*}
+
+\br
+
+以降のステップでは、第1行と第1列は変化させない
+
+今度は、$(2,2)$成分を要にして掃き出す
+
+\begin{equation*}
+  \begin{pNiceMatrix}[margin,last-col,code-for-last-col = \color{Cerulean}\scriptstyle]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{2-2}{3-3}
+    \Body
+    1 & 2 & 3 & R_1 \\
+    0 & 1 & 2 & R_2 \\
+    0 & 2 & 5 & R_3
+    \CodeAfter
+    \tikz \draw[thick,RoyalBlue] (2-2) circle (0.5em);
+  \end{pNiceMatrix} \rightarrow \begin{pNiceMatrix}[margin,last-col,code-for-last-col = \color{Cerulean}\scriptstyle]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{2-2}{3-3}
+    \Body
+    1 & 2 & 3 & R_1                       \\
+    0 & 1 & 2 & R_2 \leftarrow R_2 - 2R_1 \\
+    0 & 0 & 1 & R_3 \leftarrow R_3 - 2R_2
+    \CodeAfter
+    \tikz \draw[thick,RoyalBlue] (2-2) circle (0.5em);
+  \end{pNiceMatrix}
+\end{equation*}
+
+\sectionline
 \section{行階段行列}
 \marginnote{\refbookA p26〜28}
 
