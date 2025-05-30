@@ -142,16 +142,16 @@ $i$番目の式の$x_j$の係数を$a_{ij}$と書いている
 
 \sectionline
 \section{行階段行列}
-\marginnote{\refbookA p26〜28}
+\marginnote{\refbookA p26〜28 \\ \refbookB p81〜84}
 
 掃き出し法では、あるステップで下の成分がすべて0になって、
 \begin{equation*}
   \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
     [margin, extra-margin=2pt,no-cell-nodes]
-    \rowcolor{red!15} \spadesuit & * & * & * & * & * & * & *\\
-    0 & \rowcolor{red!15} \spadesuit & * & * & * & * & * & * \\
-    0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * & * & * \\
-    0 & 0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * & * \\
+    \rowcolor{carnationpink!40} \spadesuit & * & * & * & * & * & * & *\\
+    0 & \rowcolor{carnationpink!40} \spadesuit & * & * & * & * & * & * \\
+    0 & 0 & \rowcolor{carnationpink!40} \spadesuit & * & * & * & * & * \\
+    0 & 0 & 0 & \rowcolor{carnationpink!40} \spadesuit & * & * & * & * \\
     0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
   \end{pNiceArray}
 \end{equation*}
@@ -169,7 +169,7 @@ $i$番目の式の$x_j$の係数を$a_{ij}$と書いている
 
 \br
 
-零行でない行に対して、一番左の0でない成分$\spadesuit$を\keyword{主成分}と呼ぶ
+零行でない行に対して、一番左の0でない成分$\spadesuit$を\keyword{主成分}あるいは行に関する\keyword{要}と呼ぶ
 
 \br
 
@@ -179,10 +179,10 @@ $i$番目の式の$x_j$の係数を$a_{ij}$と書いている
 \begin{equation*}
   \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
     [margin, extra-margin=2pt,no-cell-nodes]
-    0 & \rowcolor{red!15} \spadesuit & * & * & * & * & * & * \\
-    0 & 0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * & * \\
-    0 & 0 & 0 & 0 & \rowcolor{red!15} \spadesuit & * & * & * \\
-    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{red!15} \spadesuit \\
+    0 & \rowcolor{carnationpink!40} \spadesuit & * & * & * & * & * & * \\
+    0 & 0 & 0 & \rowcolor{carnationpink!40} \spadesuit & * & * & * & * \\
+    0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} \spadesuit & * & * & * \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} \spadesuit \\
     0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
   \end{pNiceArray}
 \end{equation*}
@@ -207,7 +207,11 @@ $i$番目の式の$x_j$の係数を$a_{ij}$と書いている
   行列$A$を行階段行列に変形したとき、零行でない行の個数を$A$の\keyword{階数}（rank）と呼び、$\rank(A)$と書く
 \end{definition}
 
-変形の結果として得られる行階段行列は1通りとは限らないし、変形の途中の掃き出しの手順も1通りとは限らないが、階数は$A$のみによって定まる値であることが後に証明できる
+変形の結果として得られる行階段行列は1通りとは限らないし、変形の途中の掃き出しの手順も1通りとは限らないが、
+\begin{shaded}
+  階数は$A$のみによって定まる値である
+\end{shaded}
+ことが後に証明できる
 
 \sectionline
 
@@ -230,24 +234,24 @@ $A$が$m \times n$型ならば、行は$m$個なので、$\rank(A)$は0以上$m$
 
 \sectionline
 \section{簡約化された行階段行列}
-\marginnote{\refbookA p29〜30}
+\marginnote{\refbookA p29〜30 \\ \refbookB p82}
 
 必要に応じて、行階段行列をさらに変形して次のような形にする
 
 \begin{equation*}
   \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
     [margin, extra-margin=2pt,no-cell-nodes]
-    0 & \rowcolor{red!15} 1 & * & 0 & 0 & * & * & 0 \\
-    0 & 0 & 0 & \rowcolor{red!15} 1 & 0 & * & * & 0 \\
-    0 & 0 & 0 & 0 & \rowcolor{red!15} 1 & * & * & 0 \\
-    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{red!15} 1 \\
+    0 & \rowcolor{carnationpink!40} 1 & * & 0 & 0 & * & * & 0 \\
+    0 & 0 & 0 & \rowcolor{carnationpink!40} 1 & 0 & * & * & 0 \\
+    0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1 & * & * & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1 \\
     0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
   \end{pNiceArray}
 \end{equation*}
 
 行の主成分はすべて1で、主成分のある列の主成分以外の成分はすべて0である
 
-この形を\keyword{簡約化された行階段行列}と呼ぶ
+この形を\keyword{簡約化された行階段行列}あるいは\keyword{既約行階段行列}と呼ぶ
 
 \br
 

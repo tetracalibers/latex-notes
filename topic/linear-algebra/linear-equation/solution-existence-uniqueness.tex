@@ -56,12 +56,140 @@ $\vb*{b}=\vb*{0}$の場合、つまり
 
 \sectionline
 \section{解の存在条件}
+\marginnote{\refbookB p110〜111}
 
 まず、一般の$\vb*{b}$の場合の解の存在（問題A）について考える
 
 \br
 
-$\tilde{A}$は$A$の右端に1列追加して得られるので、掃き出しの過程を考えると、$\rank(\tilde{A})$は$\rank(A)$と等しいか、1だけ増えるかのどちらかであることがわかる
+拡大係数行列$\tilde{A}$は$A$の右端に1列追加して得られるので、掃き出しの過程を考えると、$\rank(\tilde{A})$は$\rank(A)$と等しいか、1だけ増えるかのどちらかであることがわかる
+
+\br
+
+また、方程式の拡大係数行列の行に関する基本変形は、元の連立方程式と同値な式への変形であるため、
+\begin{shaded}
+  基本変形によって得られる方程式の解は、元の方程式の解と同じ
+\end{shaded}
+となる
+
+\br
+
+そこで、$\tilde{A} = (A \mid \vb*{b})$の既約行階段形を$(P \mid \vb*{q})$とし、$A\vb*{x} = \vb*{b}$の代わりに
+\begin{equation*}
+  P\vb*{x} = \vb*{q}
+\end{equation*}
+を解くことを考える
+
+\br
+
+まず、
+\begin{equation*}
+  P = \begin{pmatrix}
+    P_1 \\
+    O
+  \end{pmatrix}, \quad
+  \vb*{q} = \begin{pmatrix}
+    \vb*{q}_1 \\
+    \vb*{q}_2
+  \end{pmatrix}
+\end{equation*}
+とおく
+
+ここで、$P_1$は$r \times n$行列（$r = \rank(P)$）とし、$\vb*{q}_1$は$r$次元列ベクトル、$\vb*{q}_2$は$m - r$次元列ベクトルとする
+
+\br
+
+すると、$P\vb*{x} = \vb*{q}$は
+\begin{equation*}
+  \begin{pmatrix}
+    P_1 \\
+    O
+  \end{pmatrix} \vb*{x}
+  = \begin{pmatrix}
+    P_1 \vb*{x} \\
+    \vb*{o}
+  \end{pmatrix}
+  = \begin{pmatrix}
+    \vb*{q}_1 \\
+    \vb*{q}_2
+  \end{pmatrix}
+\end{equation*}
+と表せる
+
+\br
+
+このとき、この方程式が解を持つには、$\vb*{q}_2 = \vb*{o}$でなければならない
+
+たとえば、
+\begin{equation*}\vb*{q}_2 = \begin{pmatrix}
+    0 \\
+    -1
+  \end{pmatrix}
+\end{equation*}
+だとしたら、
+\begin{equation*}
+  \begin{pmatrix}
+    P_1 \vb*{x} \\
+    0           \\
+    0
+  \end{pmatrix} = \begin{pmatrix}
+    \vb*{q}_1 \\
+    0         \\
+    -1
+  \end{pmatrix}
+\end{equation*}
+となり、$0 = -1$という矛盾が生じる時点で、この方程式は不能になる
+
+\br
+
+このような$\vb*{q}_2 \neq \vb*{0}$の場合、拡大係数行列の階数は、係数行列の階数$+1$となっている
+
+\begin{align*}
+  P                & = \begin{pNiceArray}{>{\strut}cccccc}% <-- % mandatory
+                         [margin, extra-margin=2pt,no-cell-nodes]
+                         \rowcolor{carnationpink!40} 1 & 0 & 0 & * & * & 0 \\
+                         0 & \rowcolor{carnationpink!40} 1 & 0 & * & * & 0 \\
+                         0 & 0 & \rowcolor{carnationpink!40} 1 & * & * & 0 \\
+                         0 & 0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1 \\
+                         0 & 0 & 0 & 0 & 0 & 0
+                       \end{pNiceArray}   \\
+  (P \mid \vb*{q}) & = \begin{pNiceArray}{>{\strut}cccccc|c}% <-- % mandatory
+                         [margin, extra-margin=2pt,no-cell-nodes]
+                         \rowcolor{carnationpink!40} 1 & 0 & 0 & * & * & 0 & 0 \\
+                         0 & \rowcolor{carnationpink!40} 1 & 0 & * & * & 0 & 0 \\
+                         0 & 0 & \rowcolor{carnationpink!40} 1 & * & * & 0 & 0 \\
+                         0 & 0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1 & 0 \\
+                         0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1
+                       \end{pNiceArray}
+\end{align*}
+
+\br
+
+一方、$\vb*{q}_2 = \vb*{o}$であれば、方程式は
+\begin{equation*}
+  P_1 \vb*{x} = \vb*{q}_1
+\end{equation*}
+となる
+
+ここで、$P_1$は$r = \rank(P)$個の行をもち、行数と階数が一致しているということは、すべての行に主成分が現れていることを意味する
+
+\br
+
+主成分は最も左側にある0でない成分なので、係数拡大行列にするために右に1列追加したとしても、主成分の数は増えることがない
+
+すなわち、$\vb*{q}_2 = \vb*{o}$の場合は係数行列と拡大係数行列の階数が一致する
+
+\sectionline
+
+以上の考察から、連立方程式$A\vb*{x} = \vb*{b}$の解が存在する条件は、
+\begin{shaded}
+  係数行列と係数拡大行列の階数が等しい
+\end{shaded}
+ことだとわかる
+
+\br
+
+そして、その階数$r$は、係数行列の行数とも一致していたため、次の2つの定理が得られる
 
 \begin{theorem}{解の存在条件}
   $A$を$m \times n$型行列、$\vb*{b} \in \mathbb{R}^m$とする
