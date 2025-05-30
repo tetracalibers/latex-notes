@@ -1,0 +1,46 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{一般解のパラメータ表示}
+\marginnote{\refbookA p33〜36}
+
+右端の列に主成分がない場合は、一般には無数個の解が存在する
+
+解の集合が直線を成していたり、もっと高い次元の図形になっていることがある
+
+\br
+
+解が1つに定まらない場合は、解の全体像を知ることが方程式を「解く」ことになる
+
+\sectionline
+
+係数行列$A$の$n$個の列が、$n$個の変数に対応していることを思い出そう
+
+\begin{definition}{主変数と自由変数}
+  行列$A$を行基本変形により行階段形にしたとき、主成分がある列に対応する変数を\keyword{主変数}と呼び、それ以外の変数を\keyword{自由変数}と呼ぶ
+\end{definition}
+
+\sectionline
+
+解が存在する場合には、
+\begin{equation*}
+  \vb*{x} = \vb*{x}_0 + t_1\vb*{u}_1 + t_2\vb*{u}_2 + \cdots + t_{n-r}\vb*{u}_{n-r}
+\end{equation*}
+という形の一般解の表示（問題Dの答え）が得られる
+
+ここで、$r$は行列$A$の階数である
+
+\sectionline
+
+自由変数、すなわちパラメータの個数を\keyword{解の自由度}と呼ぶ
+
+\begin{align*}
+  \text{解の自由度} & = \text{(変数の個数)} - \rank(A) \\
+               & = n - r
+\end{align*}
+
+これは、解全体の集合が何次元の空間なのかを表している（問題Cの答え）
+
+\end{document}

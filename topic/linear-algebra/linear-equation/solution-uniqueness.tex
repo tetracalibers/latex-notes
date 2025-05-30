@@ -1,0 +1,59 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{解の一意性}
+\marginnote{\refbookA p37〜38}
+
+ここまでの議論で、問題Bが解決している
+
+\begin{theorem}{解の一意性}
+  $A\vb*{x} = \vb*{b}$の解が存在するとき、
+  \begin{equation*}
+    \text{解が一意的である} \Longleftrightarrow \rank(A) = n
+  \end{equation*}
+  ここで、$n$は変数の個数である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p37 （定理1.5.8）}
+\end{proof}
+
+斉次形の場合の非自明解の存在問題も解決している
+
+\begin{theorem}{斉次形の非自明解の存在条件}
+  斉次形の方程式$A\vb*{x} = \vb*{0}$において、
+  \begin{equation*}
+    \text{自明解しか存在しない} \Longleftrightarrow \rank(A) = n
+  \end{equation*}
+  ここで、$n$は変数の個数である
+\end{theorem}
+
+\begin{proof}
+  斉次形の場合は自明解が常に存在するので、解の一意性は、それ以外の解がないということである $\qed$
+\end{proof}
+
+\sectionline
+
+自由変数を$x_{j_1}, \dots, x_{j_{n-r}}$とするとき、一般解の表示
+\begin{equation*}
+  \vb*{x} = \vb*{x}_0 + t_1\vb*{u}_1 + t_2\vb*{u}_2 + \cdots + t_{n-r}\vb*{u}_{n-r}
+\end{equation*}
+の$j_k$番目の成分は等式
+\begin{equation*}
+  x_{j_k} = t_k
+\end{equation*}
+を意味するので、解が与えられたとき、パラメータの値は直接に読み取れる
+
+\br
+
+このことから、
+\begin{equation*}
+  \vb*{x} = \vb*{x}_0 + t_1\vb*{u}_1 + t_2\vb*{u}_2 + \cdots + t_{n-r}\vb*{u}_{n-r}
+\end{equation*}
+によって解を表示する際の$n-r$個のパラメータの値は一意的に定まることがわかる
+
+この事実は、$\vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_{n-r} \in \mathbb{R}^m$が\keyword{線形独立}であると表現される
+
+\end{document}
