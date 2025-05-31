@@ -22,17 +22,203 @@
   行列$A$を行基本変形により行階段形にしたとき、主成分がある列に対応する変数を\keyword{主変数}と呼び、それ以外の変数を\keyword{自由変数}と呼ぶ
 \end{definition}
 
+\br
+
+たとえば、次のような既約行階段形に変形した拡大係数行列を考える
+
+\begin{equation*}
+  \tilde{A_\circ} =\begin{pNiceArray}{ccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    1 & & 3 & 4 & &                           \\
+    1 & 2 & 0 & 0 & -1 & -3 \\
+    0 & 0 & 1 & 0 & 2 & 1 \\
+    0 & 0 & 0 & 1 & 1 & 2 \\
+    0 & 0 & 0 & 0 & 0 & 0\\
+    \Hdotsfor{5}_{\displaystyle 5}
+    \CodeAfter
+    \tikz \draw[thick,Rhodamine] (1-1) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (2-3) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (3-4) circle (0.5em);
+  \end{pNiceArray}
+\end{equation*}
+
+変数を使って方程式の形に直すと、
+\begin{equation*}
+  \left\{
+  \begin{NiceArray}{rrrrrrrrrrc}[margin]
+    x_1                     & +                    & 2x_2                    & \color{lightgray}{+} & \color{lightgray}{0x_3} & \color{lightgray}{+} & \color{lightgray}{0x_4} & - & x_5  & = & -3 \\
+    \color{lightgray}{0x_1} & \color{lightgray}{+} & \color{lightgray}{0x_2} & +                    & x_3                     & \color{lightgray}{+} & \color{lightgray}{0x_4} & + & 2x_5 & = & 1  \\
+    \color{lightgray}{0x_1} & \color{lightgray}{+} & \color{lightgray}{0x_2} & \color{lightgray}{+} & \color{lightgray}{0x_3} & \color{lightgray}{+} & x_4                     & + & x_5  & = & 2
+    \CodeAfter
+    \tikz \draw[thick,Rhodamine] (1-1) circle (0.75em);
+    \tikz \draw[thick,Rhodamine] (2-5) circle (0.75em);
+    \tikz \draw[thick,Rhodamine] (3-7) circle (0.75em);
+  \end{NiceArray}
+  \right.
+\end{equation*}
+
+\br
+
+主成分がある列は$1,3,4$列なので、主変数は$x_1, x_3, x_4$である
+
+それ以外の$x_2, x_5$は自由変数となる
+
+\br
+
+\begin{center}
+  \systeme{
+    x_1 + 2x_2 - x_5 = -3,
+    x_3 + 2x_5 = 1,
+    x_4 + x_5 = 2
+  }
+\end{center}
+
+において、自由変数を含む項を左辺に移行すれば、
+
+\begin{center}
+  \systeme{
+    x_1 = -3 - 2x_2 + x_5,
+    x_3 = 1 - 2x_5,
+    x_4 = 2 - x_5
+  }
+\end{center}
+となる
+
+\br
+
+自由変数の値を自由に選んで、主変数の値をこの等式によって定めれば、方程式の解になる
+
+\br
+
+そこで、
+\begin{equation*}
+  x_2 = t_1, \quad x_5 =  t_2
+\end{equation*}
+とおけば、
+
+\begin{center}
+  \systeme{
+    x_1 = -3 - 2t_1 + t_2,
+    x_3 = 1 - 2t_2,
+    x_4 = 2 - t_2
+  }
+\end{center}
+
+すなわち、
+
+\begin{center}
+  \systeme{
+    x_1 = -3 - 2t_1 + t_2,
+    x_2 = t_1,
+    x_3 = 1 - 2t_2,
+    x_4 = 2 - t_2,
+    x_5 = t_2
+  }
+\end{center}
+
+と書ける
+
+\br
+
+これをベクトル形に直すことで、一般的な解のパラメータ表示を得られる
+
+\begin{equation*}
+  \vb*{x} = \begin{pmatrix}
+    -3 \\
+    0  \\
+    1  \\
+    2  \\
+    0
+  \end{pmatrix} + t_1 \begin{pmatrix}
+    -2 \\
+    1  \\
+    0  \\
+    0  \\
+    0
+  \end{pmatrix} + t_2 \begin{pmatrix}
+    1  \\
+    0  \\
+    -2 \\
+    -1 \\
+    1
+  \end{pmatrix}
+\end{equation*}
+
+\sectionline
+\marginnote{\refbookC p300〜301}
+
+一般化するために、$P\vb*{x} = \vb*{q}$を次のように表して考える
+\begin{equation*}
+  (P \mid \vb*{q}) = \begin{pmatrix}
+    \vb*{p}_1 & q_1     \\
+    \vdots    & \vdots  \\
+    \vb*{p}_r & q_r     \\
+    \vb*{0}   & q_{r+1} \\
+    \vdots    & \vdots  \\
+    \vb*{0}   & q_m
+  \end{pmatrix}
+\end{equation*}
+ここで、$\vb*{p}_1 \neq \vb*{0}, \dots, \vb*{p}_r \neq \vb*{0}$であるとする
+
+\br
+
+このとき、解を持つための条件は、
+\begin{equation*}
+  q_{r+1} = q_{r+2} = \cdots = q_m = 0
+\end{equation*}
+であった
+
+\br
+
+さて、$P$において、主成分を含む列を$j_1, j_2, \dots, j_r \quad (r = \rank(P))$とする
+
+\begin{equation*}
+  (P \mid \vb*{q}) =\begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    %\CodeBefore
+    %\rectanglecolor{carnationpink!40}{1-1}{4-5}
+    %\Body
+    j_1    &        & j_2    & \cdots & j_r    &        &        &                    \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star& q_1 \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star& q_2 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots     & \vdots \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star  & q_r \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0   & 0 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots & \vdots                  \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0& 0\\
+    \Hdotsfor{7}_{$n$}
+  \end{pNiceArray}
+\end{equation*}
+
+すると、主変数$x_{j_i} \, (i = 1, 2, \dots, r)$は、次のように表される
+
+\begin{gather*}
+  x_{j_i} + \sum_k \star x_k = q_i \quad (k > j_i \text{かつ} k \notin \{j_1, j_2, \dots, j_r\})  \\
+  \therefore  x_{j_i} = q_i - \sum_k \star x_k
+\end{gather*}
+
+ここで、$x_k$は$j_i$よりも右にある$\star$に対応する変数である
+
+既約行階段行列では、$j_i$列の主成分以外の要素はすべて0であるため、$\star$に対応する自由変数のみが残る（これが$k \notin \{j_1, j_2, \dots, j_r\}$とした意味である）
+
+\br
+
+つまり、$x_{j_1}, x_{j_2}, \dots, x_{j_r}$以外の自由変数$x_k$に勝手な数を与えるごとに、主変数$x_{j_1}, x_{j_2}, \dots, x_{j_r}$は定まる
+
+\br
+
+このような自由変数は$n-r$個あるので、$P\vb*{x} = \vb*{q}$の解は、$n-r$個のパラメータを用いて表せる
+
 \sectionline
 
-解が存在する場合には、
+まとめると、解が存在する場合には、
 \begin{equation*}
-  \vb*{x} = \vb*{x}_0 + t_1\vb*{u}_1 + t_2\vb*{u}_2 + \cdots + t_{n-r}\vb*{u}_{n-r}
+  \vb*{x} = \vb*{q} + \sum_{i=1}^{n-r} t_i \vb*{u}_i
 \end{equation*}
 という形の一般解の表示（問題Dの答え）が得られる
 
 ここで、$r$は行列$A$の階数である
 
 \sectionline
+\section{解の自由度}
 
 自由変数、すなわちパラメータの個数を\keyword{解の自由度}と呼ぶ
 
