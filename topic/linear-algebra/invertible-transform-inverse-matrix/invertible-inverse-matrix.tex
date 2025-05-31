@@ -14,30 +14,40 @@
   正方行列$A$は、それが正則な線形変換を与えるとき、\keyword{正則行列}であるという
 \end{definition}
 
+\sectionline
+
 「線形代数における鳩の巣原理」から、次のことがいえる
 
-\begin{theorem}{正則の判定と階数}
-  $n$次正方行列$A$に対して、次は同値である
-  \begin{enumerate}[label=\romanlabel]
-    \item $A$が正則行列
-    \item $\rank(A) = n$
-  \end{enumerate}
+\begin{theorem}{正則の判定と階数}\label{thm:invertible-iff-full-rank}
+  $n$次正方行列$A$に対して、
+  \begin{equation*}
+    A \text{が正則行列} \Longleftrightarrow \rank(A) = n
+  \end{equation*}
 \end{theorem}
 
-上の定理は、線形変換$f$（もしくは正方行列$A$）が\keyword{正則}かどうかについて、\keyword{階数}という1つの数値で判定できることを示している
+この定理は、線形変換$f$（もしくは正方行列$A$）が\keyword{正則}かどうかについて、\keyword{階数}という1つの数値で判定できることを示している
 
 \sectionline
 
 \begin{theorem}{正則の判定と線型独立性}
-  $n$次正方行列$A$に対して、次は同値である
-  \begin{enumerate}[label=\romanlabel]
-    \item $A = (\vb*{a}_1 , \vb*{a}_2 , \cdots , \vb*{a}_n)$が正則
-    \item $\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n$が線型独立
-  \end{enumerate}
+  $n$次正方行列
+  \begin{equation*}
+    A = (\vb*{a}_1 , \cdots , \vb*{a}_n)
+  \end{equation*}
+  に対して、次が成り立つ
+  \begin{equation*}
+    A \text{が正則行列} \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n \text{が線型独立}
+  \end{equation*}
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p71 命題2.4.4}
+  $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^n$が線型独立であることは、
+  \begin{equation*}
+    \rank(A) = n
+  \end{equation*}
+  と同値であることを\hyperref[thm:lin-indep-iff-rank-n]{以前}示した
+
+  さらに、\hyperref[thm:invertible-iff-full-rank]{先ほど示した定理}より、$\rank(A) =n$は$A$が正則行列であることと同値である $\qed$
 \end{proof}
 
 \sectionline
