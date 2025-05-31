@@ -201,6 +201,30 @@
       \draw[\ProofColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
     },%
 }
+\NewDocumentCommand{\patterntitle}{m}{
+  \tcbox[
+    enhanced,
+    empty,
+    boxsep=0pt,
+    left=0pt,right=0pt,
+    bottom=2pt,
+    fonttitle=\bfseries,
+    borderline south={0.5pt}{0pt}{\ProofColor},
+  ]{\textcolor{\ProofColor}{#1}}
+}
+\renewenvironment{quote}{%
+  \list{}{%
+    \leftmargin0.5cm   % this is the adjusting screw
+    \rightmargin\leftmargin
+  }
+  \item\relax
+}{\endlist}
+\newenvironment{subpattern}[1]{
+  \patterntitle{#1}
+  \begin{quote}
+    }{
+  \end{quote}
+}
 
 % === memo ===
 
