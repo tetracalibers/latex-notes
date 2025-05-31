@@ -1,4 +1,4 @@
-\documentclass[../../../topic_linear-equation]{subfiles}
+\documentclass[../../../topic_linear-algebra]{subfiles}
 
 \begin{document}
 
@@ -61,12 +61,36 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p40 （命題1.6.4）}
+  $A\vb*{x} = \vb*{0}$は、ベクトルの等式
+  \begin{equation*}
+    x_1 \vb*{a}_1 + x_2 \vb*{a}_2 + \cdots + x_n \vb*{a}_n = \vb*{0}
+  \end{equation*}
+  と同じものである
+
+  \begin{subpattern}{$\Longrightarrow$}
+    もし自明でない解があるならば、$x_1, x_2, \dots, x_n$のうち少なくとも1つは0ではない
+
+    $x_1 \vb*{a}_1 + x_2 \vb*{a}_2 + \cdots + x_n \vb*{a}_n = \vb*{0}$が成り立つもとで、0でない係数が存在するということは、$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n$が線形従属であることを意味する $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{$\Longleftarrow$}
+    対偶を示す
+
+    $\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n$が線形独立であれば、
+    \begin{equation*}
+      x_1 \vb*{a}_1 + x_2 \vb*{a}_2 + \cdots + x_n \vb*{a}_n = \vb*{0}
+    \end{equation*}
+    において、すべての係数$x_1, x_2, \dots, x_n$は0でなければならない
+
+    よって、0以外の解（非自明解）は存在しないことになる $\qed$
+  \end{subpattern}
 \end{proof}
 
 \sectionline
 
 斉次形方程式に自明でない解が存在することは、$\rank(A) \neq n$、すなわち解の自由度が0ではないことと同値であった
+
+\br
 
 一般に、斉次形の線型方程式$A\vb*{x} = \vb*{0}$の解の自由度は、$n$を変数の個数とするとき$n - \rank(A)$なので、次が成り立つ
 
