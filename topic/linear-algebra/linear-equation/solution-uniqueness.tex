@@ -17,8 +17,24 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p37 （定理1.5.8）}
+  \begin{subpattern}{$\Longleftarrow$}
+    $\rank(A) = n$であれば、解の自由度は$n-n=0$、すなわち自由変数が存在しないことになる
+
+    自由変数がなければ「各変数＝定数」という式に変形できることになるので、解は明らかに一意的である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{$\Longrightarrow$}
+    対偶$\rank(A) \neq n \Longrightarrow \text{解が一意的}$を示す
+
+    $\rank(A) \leq n$であるので、$\rank(A) \neq n$は$\rank(A) < n$を意味する
+
+    $\rank(A) < n$であれば、自由変数が1つ以上存在するので解は無数にある
+
+    よって、解は一意的ではない $\qed$
+  \end{subpattern}
 \end{proof}
+
+\sectionline
 
 斉次形の場合の非自明解の存在問題も解決している
 
@@ -31,7 +47,7 @@
 \end{theorem}
 
 \begin{proof}
-  斉次形の場合は自明解が常に存在するので、解の一意性は、それ以外の解がないということである $\qed$
+  斉次形の場合は自明解が常に存在するので、解の一意性$\rank(A) = n$は、それ以外の解がないということを意味している $\qed$
 \end{proof}
 
 \sectionline
