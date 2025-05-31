@@ -65,27 +65,47 @@
 
 \sectionline
 
-\begin{theorem}{線型写像とベクトルの線型独立性}
-  線型写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$に対して、次の2つは同値になる
-  \begin{enumerate}[label=\romanlabel]
-    \item $\vb*{v} \neq \vb*{0}$ならば、$f(\vb*{v}) \neq \vb*{0}$
-    \item $\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$が線型独立ならば、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線型独立
-  \end{enumerate}
+たとえば平行四辺形の像が線分や1点になったりしないことなどは、「$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$が線型独立ならば、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線型独立である」と表現できる
+
+\begin{theorem}{単射な線型写像と線型独立性}
+  線型写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$が単射であるとき、$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$が線型独立ならば、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線型独立である
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p66 命題2.3.2}
+  $f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n)$の線形結合
+  \begin{equation*}
+    c_1 f(\vb*{v}_1) + c_2 f(\vb*{v}_2) + \dots + c_n f(\vb*{v}_n) = \vb*{0}
+  \end{equation*}
+  を考える
+
+  $f$の線形性と零ベクトルの像$f(\vb*{0}) = \vb*{0}$より、次のように書き換えられる
+  \begin{equation*}
+    f(c_1 \vb*{v}_1 + c_2 \vb*{v}_2 + \dots + c_n \vb*{v}_n) = \vb*{0} = f(\vb*{0})
+  \end{equation*}
+
+  $f$は単射だから、上式より
+  \begin{equation*}
+    c_1 \vb*{v}_1 + c_2 \vb*{v}_2 + \dots + c_n \vb*{v}_n = \vb*{0}
+  \end{equation*}
+  が成り立つ
+
+  ここで、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n$は線型独立なので、$c_1 = c_2 = \dots = c_n = 0$である
+
+  よって、$f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n)$は線型独立である $\qed$
 \end{proof}
 
-\romannum{i}は、零写像と射影を除けば、$f$によってベクトルが「つぶれない」という性質を表している
+\sectionline
+
+零写像と射影を除けば、$f$によってベクトルが「つぶれない」という性質は、次のように表せる
+\begin{equation*}
+  \vb*{v} \neq 0 \Longrightarrow f(\vb*{v}) \neq \vb*{0}
+\end{equation*}
 
 \todo{\refbookA p55 例2.1.15}
 
-\br
+この条件は、実は線形写像が単射であることを意味している
 
-\romannum{ii}は、たとえば平行四辺形の像が線分や1点になったりしないことなどを意味している
-
-\sectionline
+対偶をとって、次のように表現できる
 
 \begin{theorem}{線形写像の単射性}
   線形写像$f$が単射であることと次は同値である
@@ -95,7 +115,42 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p66 命題2.3.3}
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$が単射
+    \item $f(\vb*{v}) = \vb*{0} \Longrightarrow \vb*{v} = \vb*{0}$
+  \end{enumerate}
+
+  \begin{subpattern}{(\romannum{i}) $\Longrightarrow$ (\romannum{ii})}
+    零ベクトルの像は零ベクトルであることから、$f(\vb*{v}) = \vb*{0}$は、
+    \begin{equation*}
+      f(\vb*{v}) = f(\vb*{0})
+    \end{equation*}
+    と書き換えられる
+
+    $f$の単射性により、この式から、
+    \begin{equation*}
+      \vb*{v} = \vb*{0}
+    \end{equation*}
+    がしたがう $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longrightarrow$ (\romannum{i})}
+    $f(\vb*{v}_1) = f(\vb*{v}_2)$を満たす$\vb*{v}_1, \vb*{v}_2 \in \mathbb{R}^n$を考える
+
+    このとき、$f$の線形性から、
+    \begin{equation*}
+      f(\vb*{v}_1 - \vb*{v}_2) = f(\vb*{v}_1) - f(\vb*{v}_2)
+    \end{equation*}
+    となる
+
+    仮定(\romannum{ii})より、
+    \begin{equation*}
+      f(\vb*{v}_1 - \vb*{v}_2) = \vb*{0} \Longrightarrow \vb*{v}_1 - \vb*{v}_2 = \vb*{0}
+    \end{equation*}
+    がいえるので、$\vb*{v}_1 = \vb*{v}_2$が成り立つ
+
+    $f(\vb*{v}_1) = f(\vb*{v}_2)$から$\vb*{v}_1 = \vb*{v}_2$が導かれたことで、$f$は単射であることが示された $\qed$
+  \end{subpattern}
 \end{proof}
 
 \sectionline
