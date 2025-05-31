@@ -169,10 +169,35 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p67 命題2.3.4}
+  \begin{subpattern}{(\romannum{i}) $\Longleftrightarrow$ (\romannum{ii})}
+    線形写像$f$は、表現行列$A$を用いて次のように表せる
+    \begin{equation*}
+      f(\vb*{x}) = A\vb*{x}
+    \end{equation*}
+
+    $f$が単射であることの言い換えは、
+    \begin{equation*}
+      f(\vb*{x}) = \vb*{0} \Longrightarrow \vb*{x} = \vb*{0}
+    \end{equation*}
+    であり、$A\vb*{x} = \vb*{0}$が自明解しか持たないことは、
+    \begin{equation*}
+      A\vb*{x} = \vb*{0} \Longrightarrow \vb*{x} = \vb*{0}
+    \end{equation*}
+    が成り立つということである
+
+    $f(\vb*{x}) = A\vb*{x}$であるから、これらの2つの条件は同値である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
+    斉次形の方程式$A\vb*{x} = \vb*{0}$に自明解しか存在しないことと
+    \begin{equation*}
+      \rank(A) = n
+    \end{equation*}
+    と同値であることは以前証明済み $\qed$
+  \end{subpattern}
 \end{proof}
 
-\romannum{i}は抽象的な概念、\romannum{ii}は方程式論的な言葉、\romannum{iii}は数値的な条件であり、これらは言い換えただけで同値であると述べている。
+\romannum{i}は抽象的な概念、\romannum{ii}は方程式論的な言葉、\romannum{iii}は数値的な条件であり、これらは同値な言い換えである
 
 \sectionline
 
@@ -188,7 +213,33 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p68 命題2.3.6}
+  \begin{subpattern}{(\romannum{i}) $\Longleftrightarrow$ (\romannum{ii})}
+    線形写像$f$は、表現行列$A$を用いて次のように表せる
+    \begin{equation*}
+      f(\vb*{x}) = A\vb*{x}
+    \end{equation*}
+
+    $f$が全射であることの言い換えは、
+    \begin{equation*}
+      \forall \vb*{b} \in \mathbb{R}^m, \exists \vb*{x} \in \mathbb{R}^n, f(\vb*{x}) = \vb*{b}
+    \end{equation*}
+    であり、これは
+    \begin{equation*}
+      \forall \vb*{b} \in \mathbb{R}^m, A\vb*{x} = \vb*{b} \text{に解が存在する}
+    \end{equation*}
+    と同値である
+
+    よって、これらの2つの条件は同値である $\qed$
+
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
+    $\rank(A) = m$が、次の条件
+    \begin{equation*}
+      ^{\forall}\vb*{b} \in \mathbb{R}^m, A\vb*{x} = \vb*{b} \text{の解が存在する}
+    \end{equation*}
+    ことと同値であることは、以前証明済み $\qed$
+  \end{subpattern}
 \end{proof}
 
 \sectionline
