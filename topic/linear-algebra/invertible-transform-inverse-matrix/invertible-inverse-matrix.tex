@@ -61,8 +61,61 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p71 問2.16}
+  $\vb*{x},\vb*{y} \in \mathbb{R}^n,\, c \in \mathbb{R}$とし、次の2つを示せばよい
+  \begin{enumerate}[label=\romanlabel]
+    \item $f^{-1}(\vb*{x} + \vb*{y}) = f^{-1}(\vb*{x}) + f^{-1}(\vb*{y})$
+    \item $f^{-1}(c\vb*{x}) = c f^{-1}(\vb*{x})$
+  \end{enumerate}
+
+  \begin{subpattern}{(\romannum{i})}
+    $f \circ f^{-1}$は恒等写像であるから、
+    \begin{align*}
+      \vb*{x}           & = f \circ f^{-1}(\vb*{x})           \\
+      \vb*{y}           & = f \circ f^{-1}(\vb*{y})           \\
+      \vb*{x} + \vb*{y} & = f \circ f^{-1}(\vb*{x} + \vb*{y})
+    \end{align*}
+    また、$f$は線形写像であるから、
+    \begin{equation*}
+      f \circ f^{-1}(\vb*{x} + \vb*{y}) = f(f^{-1}(\vb*{x}) + f^{-1}(\vb*{y}))
+    \end{equation*}
+    $f \circ f^{-1}(\vb*{v})$は、$f (f^{-1}(\vb*{v}))$を意味する記号なので、
+    \begin{equation*}
+      f(f^{-1}(\vb*{x}+\vb*{y})) = f(f^{-1}(\vb*{x}) + f^{-1}(\vb*{y}))
+    \end{equation*}
+    両辺を$f^{-1}$で写すと、
+    \begin{equation*}
+      f^{-1}(\vb*{x} + \vb*{y}) = f^{-1}(\vb*{x}) + f^{-1}(\vb*{y})
+    \end{equation*}
+    となり、(\romannum{i})が示された $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii})}
+    $f \circ f^{-1}$は恒等写像であるから、
+    \begin{align*}
+      \vb*{x}  & = f \circ f^{-1}(\vb*{x}) = f(f^{-1}(\vb*{x}))   \\
+      c\vb*{x} & = f \circ f^{-1}(c\vb*{x}) = f(f^{-1}(c\vb*{x}))
+    \end{align*}
+    $\vb*{x}= f(f^{-1}(\vb*{x}))$の両辺に$c$をかけた、次も成り立つ
+    \begin{equation*}
+      c\vb*{x} = c f(f^{-1}(\vb*{x}))
+    \end{equation*}
+    さらに、$f$は線形写像であるから、
+    \begin{equation*}
+      c f(f^{-1}(\vb*{x})) = f(c f^{-1}(\vb*{x}))
+    \end{equation*}
+    ここまでの$c\vb*{x}$の複数の表現により、次式が成り立つ
+    \begin{equation*}
+      f(f^{-1}(c\vb*{x})) = f(c f^{-1}(\vb*{x}))
+    \end{equation*}
+    両辺を$f^{-1}$で写すと、
+    \begin{equation*}
+      f^{-1}(c\vb*{x}) = c f^{-1}(\vb*{x})
+    \end{equation*}
+    となり、(\romannum{ii})が示された $\qed$
+  \end{subpattern}
 \end{proof}
+
+\sectionline
 
 $n$次正則行列$A$は、正則な線形変換$f\colon \mathbb{R}^n \to \mathbb{R}^n$と対応している
 
@@ -87,7 +140,15 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p71 問2.17}
+  $A$の逆行列が$B_1$と$B_2$の2つあるとする
+  \begin{equation*}
+    AB_1 = B_1A = E \quad \text{かつ} \quad AB_2 = B_2A = E
+  \end{equation*}
+  $AB_2 = E$の両辺に$B_1$をかけると、
+  \begin{equation*}
+    B_1 = B_1 AB_2 = (B_1 A) B_2 = E B_2 = B_2
+  \end{equation*}
+  よって、$B_1 = B_2$となり、逆行列は一意的である $\qed$
 \end{proof}
 
 \sectionline
