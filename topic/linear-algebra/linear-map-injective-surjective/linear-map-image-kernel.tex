@@ -3,50 +3,102 @@
 \begin{document}
 
 \sectionline
-\section{像空間と核空間}
+\section{線形写像の像と核}
+\marginnote{\refbookC p79〜84}
+
+写像の\keyword{像}や\keyword{逆像}を、線形写像の場合に考える
+
+\begin{definition}{線形写像による像}
+  線形写像$f\colon V \to W$に対して、$f$による$V$の像$f(V)$を、線形写像$f$の\keyword{像}といい、$\Im(f)$と表記する
+  \begin{equation*}
+    \Im(f) = f(V) = \{ f(\vb*{v}) \in W \mid \vb*{v} \in V \} \subset W
+  \end{equation*}
+\end{definition}
+
+線形写像による像は、\keyword{像空間}とも呼ばれる
+
+\br
+
+\begin{definition}{線形写像による核}
+  線形写像$f\colon V \to W$に対して、$f$による$\{\vb*{0}\}$の逆像$f^{-1}(\{\vb*{0}\})$を、線形写像$f$の\keyword{核}といい、$\Ker(f)$と表記する
+  \begin{equation*}
+    \Ker(f) = f^{-1}(\{\vb*{0}\}) = \{ \vb*{v} \in V \mid f(\vb*{v}) = \vb*{0} \} \subset V
+  \end{equation*}
+\end{definition}
+
+線形写像による核は、\keyword{核空間}あるいは\keyword{カーネル}とも呼ばれる
+
+\sectionline
+\section{像空間と全射性}
 \marginnote{\refbookA p68〜69}
 
 線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の\keyword{全射性}は、$\mathbb{R}^m$の部分集合である\keyword{像空間}$\Im(f)$と関係している
 
-$f$が全射であることは、$\Im(f) = \mathbb{R}^m$と同値である
+\begin{shaded}
+  全射な写像は、定義域の元の像で値域を「埋め尽くす」
+\end{shaded}
+
+ということから、$f$が全射であることは、$\Im(f) = \mathbb{R}^m$と同値だとわかる
 
 \sectionline
+\section{核空間と単射性}
 
-一方、$f$の\keyword{単射性}と関連して、$\mathbb{R}^n$の部分集合
+線形写像$f$が単射であることは、次の条件と同値であった
 \begin{equation*}
-  \Ker(f) = \{ \vb*{v} \in \mathbb{R}^n \mid f(\vb*{v}) = \vb*{0} \}
+  f(\vb*{v}) = \vb*{0} \Longrightarrow \vb*{v} = \vb*{0}
 \end{equation*}
-を考え、これを$f$の\keyword{核空間}あるいは\keyword{カーネル}と呼ぶ
 
-\br
-
-線形写像の単射性は、次のようにも言い換えられる
+この条件は、次のように言い換えることができる
+\begin{equation*}
+  \Ker(f) = \{ \vb*{0} \}
+\end{equation*}
 
 \begin{theorem}{線形写像の単射性}
-  線形写像$f$が単射であることと次は同値である
+  $f$を線形写像とするとき、
   \begin{equation*}
-    \Ker(f) = \{ \vb*{0} \}
+    f\text{が単射} \Longleftrightarrow \Ker(f) = \{ \vb*{0} \}
   \end{equation*}
 \end{theorem}
+
+\begin{proof}
+  $\Ker(f)$の定義は
+  \begin{equation*}
+    \Ker(f) = \{ \vb*{v} \in V \mid f(\vb*{v}) = \vb*{0} \}
+  \end{equation*}
+
+  これを踏まえて、次の2つが同値であることを示す
+  \begin{enumerate}[label=\romanlabel]
+    \item $f(\vb*{v}) = \vb*{0} \Longrightarrow \vb*{v} = \vb*{0}$
+    \item $\Ker(f) = \{ \vb*{0} \}$
+  \end{enumerate}
+
+  \begin{subpattern}{(\romannum{i}) $\Longrightarrow$ (\romannum{ii})}
+    このとき、$f(\vb*{v}) = \vb*{0}$が$\vb*{v} = \vb*{0}$を意味するので、$\Ker(f)$の元は零ベクトルのみになる
+
+    よって、$\Ker(f) = \{ \vb*{0} \}$が成り立つ $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longrightarrow$ (\romannum{i})}
+    $\Ker(f) = \{ \vb*{0} \}$であれば、$\Ker(f)$の元は零ベクトルのみである
+
+    よって、$f(\vb*{v}) = \vb*{0}$が成り立つとき、$\vb*{v} = \vb*{0}$が成り立つことになる
+
+    すなわち、$f(\vb*{v}) = \vb*{0} \Longrightarrow \vb*{v} = \vb*{0}$が成り立つ $\qed$
+  \end{subpattern}
+\end{proof}
 
 \sectionline
+\section{核空間と解空間}
 
-核空間$\Ker(f)$は、実はすでに馴染みのある概念である
-
-\begin{theorem}{核空間と表現行列}
-  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、
-  \begin{equation*}
-    \Ker(f) = \{ \vb*{v} \in \mathbb{R}^n \mid A\vb*{v} = \vb*{0} \}
-  \end{equation*}
-  と定めると、
-  \begin{equation*}
-    \Ker(f) = \Ker(A)
-  \end{equation*}
-\end{theorem}
-
-これは、斉次形の連立線形方程式$A\vb*{x} = \vb*{0}$の\keyword{解空間}そのものである
+線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、
+\begin{equation*}
+  \Ker(f) = \{ \vb*{v} \in \mathbb{R}^n \mid A\vb*{v} = \vb*{0} \}
+\end{equation*}
+と定めると、$f(\vb*{v}) = A\vb*{v}$という関係から、$\Ker(f)$と$\Ker(A)$は同じものを指す
 
 \br
+
+これは、斉次形の連立線形方程式$A\vb*{x} = \vb*{0}$の\keyword{解空間}そのものである
 
 $\Ker(A)$の元は、$A\vb*{x} = \vb*{0}$の基本解を使ってパラメータ表示できる
 
