@@ -49,23 +49,32 @@
   などと書く
 \end{definition}
 
-集合の言葉で述べると、次のようにも定義できる
+\sectionline
+\marginnote{\refbookE p76〜79}
 
-\begin{definition}{像と逆像}
-  写像$f\colon A \to B$があるとき、$A$の部分集合$A'$に対して、
-  \begin{equation*}
-    f(A') = \{ f(a) \mid a \in A' \}
-  \end{equation*}
-  とおき、$f(A')$を$A'$の$f$による\keyword{像}と呼ぶ
+$A$の要素の像で埋まる部分集合を考える
 
-  また、$B$の部分集合$B'$に対して、
+\begin{definition}{部分集合としての像}
+  写像$f\colon A \to B$があるとき、$A$の部分集合$A'$に対して、$f$による$A'$の元$a$の像$f(a)$からなる$B$の部分集合を、$f$による\keyword{像}と定義し、$f(A')$と表記する
   \begin{equation*}
-    f^{-1}(B') = \{ a \mid f(a) \in B' \}
+    f(A') = \{ f(a) \mid a \in A' \} \subset B
   \end{equation*}
-  とおき、$f^{-1}(B')$を$B'$の$f$による\keyword{逆像}と呼ぶ
 \end{definition}
 
-\keyword{値域}は、定義域$A$の像$f(A)$のことにほかならない
+\keyword{値域}は、定義域$A$の\keyword{像}$f(A)$のことにほかならない
+
+\sectionline
+
+$B$の要素に映るものをすべて集めた集合を考える
+
+\begin{definition}{逆像}
+  写像$f\colon A \to B$があるとき、$B$の部分集合$B'$に対して、$A$の元$a$であって、その像$f(a)$が$B'$に入るような元からなる$A$の部分集合を$f$による\keyword{逆像}と定義し、$f^{-1}(B')$と表記する
+  \begin{equation*}
+    f^{-1}(B') = \{ a \in A \mid f(a) \in B' \} \subset A
+  \end{equation*}
+\end{definition}
+
+\sectionline
 
 \begin{theorem}{像と逆像の性質}
   写像$f\colon A \to B$があるとき、$A$の部分集合$A_1, A_2$と$B$の部分集合$B_1, B_2$に対して、次が成り立つ
