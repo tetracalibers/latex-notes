@@ -3,50 +3,6 @@
 \begin{document}
 
 \sectionline
-\section{線型独立性}
-\marginnote{\refbookA p38〜40}
-
-線型独立性の定義式を移項することで、次の事実が得られる
-
-\begin{theorem}{線型結合の一意性}
-  線型独立性は、線形結合の一意性
-  \begin{gather*}
-    c_1 \vb*{a}_1 + \cdots + c_k \vb*{a}_k = c'_1 \vb*{a}_1 + \cdots + c'_k \vb*{a}_k \\ \Longrightarrow c_1 = c'_1, \dots, c_k = c'_k
-  \end{gather*}
-  と同値である
-\end{theorem}
-
-つまり、
-\begin{shaded}
-  線型独立性は、両辺の係数比較ができるという性質
-\end{shaded}
-であるとも理解できる
-
-\sectionline
-
-\begin{definition}{線形関係式}
-  ベクトル$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_k$に対する等式
-  \begin{equation*}
-    c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_k \vb*{a}_k = \vb*{0}
-  \end{equation*}
-  を、$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_k$の\keyword{線形関係式}という
-\end{definition}
-
-特に、$c_1 = c_2 = \cdots = c_k = 0$として得られる線形関係式を\keyword{自明な線形関係式}という
-
-これ以外の場合、つまり$c_i \neq 0$となるような$i$が少なくとも1つあるならば、これは\keyword{非自明な線形関係式}である
-
-\begin{theorem}{非自明な線形関係式の存在と線形従属}
-  ベクトルの集まりは、それらに対する非自明な線形関係式が存在するとき、そのときに限り線形従属である
-\end{theorem}
-
-\begin{proof}
-  ベクトルの集まりが線型独立であることは、それらに対する線形関係式はすべて自明であるというのが定義である
-
-  それを否定すると、「自明でない線形関係式が存在する」となる $\qed$
-\end{proof}
-
-\sectionline
 \section{非自明解の存在と有限従属性定理}
 \marginnote{\refbookA p40〜41}
 

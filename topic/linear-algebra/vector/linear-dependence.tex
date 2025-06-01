@@ -1,0 +1,87 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線型独立と線形従属}
+\marginnote{\refbookA p38〜40 \\ \refbookC p31〜32}
+
+線形従属なベクトルでは、その中の1つのベクトルが、他のベクトルの線形結合で表される
+
+\begin{theorem}{線形結合によるベクトルの表現}
+  $\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m \in K^n$を線型独立なベクトルとする
+
+  $K^n$のベクトル$\vb*{a}$と$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$が一次従属であるとき、$\vb*{a}$は$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$の線形結合で表される
+
+  すなわち、$c_1, c_2, \dots, c_m \in K$を用いて次のように書ける
+  \begin{equation*}
+    \vb*{a} = c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_m \vb*{a}_m
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{a}, \vb*{a}_1,\dots, \vb*{a}_m$が一次従属であるので、少なくとも1つは0でない係数$c, c_1, c_2, \dots, c_m$を用いて
+  \begin{equation*}
+    c \vb*{a} + c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_m \vb*{a}_m = \vb*{0}
+  \end{equation*}
+  が成り立つ
+
+  もし$c=0$だとすると、$c_1,c_2,\dots,c_m$のいずれかが0でないことになり、$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$が線型独立であることに矛盾する
+
+  よって、$c \neq 0$である
+
+  そのため、上式を$c$で割ることができ、$\vb*{a}$は
+  \begin{equation*}
+    \vb*{a} = -\frac{c_1}{c} \vb*{a}_1 - \frac{c_2}{c} \vb*{a}_2 - \cdots - \frac{c_m}{c} \vb*{a}_m
+  \end{equation*}
+  という$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$の線形結合で表せる $\qed$
+\end{proof}
+
+\sectionline
+
+線型独立なベクトルの線形結合は一意的である
+
+\begin{theorem}{線型結合の一意性}
+  線型独立性は、線形結合の一意性
+  \begin{gather*}
+    c_1 \vb*{a}_1 + \cdots + c_k \vb*{a}_k = c'_1 \vb*{a}_1 + \cdots + c'_k \vb*{a}_k \\ \Longrightarrow c_1 = c'_1, \dots, c_k = c'_k
+  \end{gather*}
+  と同値である
+\end{theorem}
+
+\begin{proof}
+  線型独立性の定義式を移項することで得られる $\qed$
+\end{proof}
+
+この定理から、
+\begin{shaded}
+  線型独立性は、両辺の係数比較ができるという性質
+\end{shaded}
+であるとも理解できる
+
+\sectionline
+\section{線形関係式}
+
+\begin{definition}{線形関係式}
+  ベクトル$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_k$に対する等式
+  \begin{equation*}
+    c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_k \vb*{a}_k = \vb*{0}
+  \end{equation*}
+  を、$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_k$の\keyword{線形関係式}という
+\end{definition}
+
+特に、$c_1 = c_2 = \cdots = c_k = 0$として得られる線形関係式を\keyword{自明な線形関係式}という
+
+これ以外の場合、つまり$c_i \neq 0$となるような$i$が少なくとも1つあるならば、これは\keyword{非自明な線形関係式}である
+
+\begin{theorem}{非自明な線形関係式の存在と線形従属}
+  ベクトルの集まりは、それらに対する非自明な線形関係式が存在するとき、そのときに限り線形従属である
+\end{theorem}
+
+\begin{proof}
+  ベクトルの集まりが線型独立であることは、それらに対する線形関係式はすべて自明であるというのが定義である
+
+  それを否定すると、「自明でない線形関係式が存在する」となる $\qed$
+\end{proof}
+
+\end{document}
