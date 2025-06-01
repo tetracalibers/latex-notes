@@ -159,7 +159,38 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
   \end{subpattern}
 \end{proof}
 
-\subsection{線形部分空間の例：線形写像の核空間}
+\subsection{線形部分空間の例：線形写像の像}
+\marginnote{\refbookC p82}
+
+\begin{theorem}{線形写像の像は部分空間}
+  線形写像$f\colon V \to W$の像$\Im(f)$は$W$の部分空間である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    $\vb*{u}, \vb*{v} \in \Im(f)$とすると、$\vb*{u} = f(\vb*{v}_1),\, \vb*{v} = f(\vb*{v}_2)$とおける
+
+    よって、$f$の線形性より
+    \begin{align*}
+      \vb*{u} + \vb*{v} & = f(\vb*{v}_1) + f(\vb*{v}_2) \\
+                        & = f(\vb*{v}_1 + \vb*{v}_2)
+    \end{align*}
+    となり、$\Im(f)$は和について閉じている $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍について}
+    $\vb*{u} \in \Im(f)$と$c \in \mathbb{R}$をとると、$\vb*{u} = f(\vb*{v})$とおける
+
+    よって、$f$の線形性より
+    \begin{align*}
+      c \vb*{u} & = c f(\vb*{v}) \\
+                & = f(c \vb*{v})
+    \end{align*}
+    となり、$\Im(f)$はスカラー倍について閉じている $\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{線形部分空間の例：線形写像の核}
 \marginnote{\refbookC p71〜72}
 
 \begin{theorem}{部分空間の零ベクトルと線形写像}\label{thm:linear-map-zero-preserving}
@@ -197,7 +228,7 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
 
 \marginnote{\refbookC p82}
 
-\begin{theorem}{線形写像の核空間は部分空間}
+\begin{theorem}{線形写像の核は部分空間}
   線形写像$f\colon V \to W$の核$\Ker(f)$は$V$の部分空間である
 \end{theorem}
 
