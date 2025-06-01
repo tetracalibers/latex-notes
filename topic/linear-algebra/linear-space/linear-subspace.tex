@@ -79,7 +79,7 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
 \end{theorem}
 
 \begin{proof}
-  \begin{subpattern}{和について}
+  \begin{subpattern}{\bfseries 和について}
     $\vb*{a}, \vb*{b} \in V \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$V$と$W$の両方に属していることになる
 
     つまり、$\vb*{a}, \vb*{b} \in V$かつ$\vb*{a}, \vb*{b} \in W$である
@@ -97,7 +97,7 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
     よって、$V \cap W$は和について閉じている $\qed$
   \end{subpattern}
 
-  \begin{subpattern}{スカラー倍について}
+  \begin{subpattern}{\bfseries スカラー倍について}
     $\vb*{a} \in V \cap W$と$c \in \mathbb{R}$をとる
 
     共通部分の定義より、$\vb*{a}$は$V$と$W$の両方に属しているので、部分空間の定義より
@@ -121,7 +121,7 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
 \end{theorem}
 
 \begin{proof}
-  \begin{subpattern}{和について}
+  \begin{subpattern}{\bfseries 和について}
     $\vb*{a}_1, \vb*{a}_2 \in V, \, \vb*{b}_1, \vb*{b}_2 \in W$とする
 
     $V$と$W$は部分空間なので、部分空間の定義より
@@ -139,7 +139,7 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
     上式で、和空間は和について閉じていることが示された $\qed$
   \end{subpattern}
 
-  \begin{subpattern}{スカラー倍について}
+  \begin{subpattern}{\bfseries スカラー倍について}
     $\vb*{a} \in V, \, \vb*{b} \in W$と$c \in \mathbb{R}$をとる
 
     $V$と$W$は部分空間なので、部分空間の定義より
@@ -159,19 +159,81 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
   \end{subpattern}
 \end{proof}
 
-\sectionline
-\section{線形写像の核空間}
-\marginnote{\refbookA p94〜95}
+\subsection{線形部分空間の例：線形写像の核空間}
+\marginnote{\refbookC p71〜72}
 
-\begin{theorem}{線形写像の核空間は部分空間}
-  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、核空間$\Ker(f)$は$\mathbb{R}^n$の部分空間である
+\begin{theorem}{部分空間の零ベクトルと線形写像}\label{thm:linear-map-zero-preserving}
+  部分空間$V,\,W$の間の線形写像$f\colon V \to W$に対して、$V$の零ベクトルを$\vb*{0}_V$、$W$の零ベクトルを$\vb*{0}_W$とすると、
+  \begin{equation*}
+    f(\vb*{0}_V) = \vb*{0}_W
+  \end{equation*}
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p69 問2.15}
+  任意の$\vb*{v} \in V,\, \vb*{w} \in W$に対して、
+  \begin{align*}
+    0  \cdot \vb*{v} & = \vb*{0}_V \\
+    0 \cdot \vb*{w}  & = \vb*{0}_W
+  \end{align*}
+  が成り立つ
+
+  \br
+
+  $f(\vb*{0}_V)$は、$f$の線形性により、次のように変形できる
+  \begin{equation*}
+    f(\vb*{0}_V) = f(0 \cdot \vb*{v}) = 0 \cdot f(\vb*{v})
+  \end{equation*}
+
+  ここで、$f(\vb*{v})$は、$f$による$\vb*{v} \in V$の像であるので、$W$に属する
+
+  そこで、$\vb*{w} = f(\vb*{v})$とおくと、
+  \begin{align*}
+    f(\vb*{0}_V) & = 0 \cdot f(\vb*{v}) \\
+                 & = 0 \cdot \vb*{w}    \\
+                 & = \vb*{0}_W
+  \end{align*}
+  となり、目標としていた式が示された $\qed$
+\end{proof}
+
+\marginnote{\refbookC p82}
+
+\begin{theorem}{線形写像の核空間は部分空間}
+  線形写像$f\colon V \to W$の核$\Ker(f)$は$V$の部分空間である
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:linear-map-zero-preserving]{前述の定理}の主張$f(\vb*{0}_V) = \vb*{0}_W$より、零ベクトルは核空間に属する
+  \begin{equation*}
+    \vb*{0} \in \Ker(f)
+  \end{equation*}
+
+  \begin{subpattern}{\bfseries 和について}
+    $\vb*{u}, \vb*{v} \in \Ker(f)$とすると、$f(\vb*{u}) = \vb*{0}$かつ$f(\vb*{v}) = \vb*{0}$である
+
+    よって、$f$の線形性より
+    \begin{align*}
+      f(\vb*{u} + \vb*{v}) & = f(\vb*{u}) + f(\vb*{v})     \\
+                           & = \vb*{0} + \vb*{0} = \vb*{0}
+    \end{align*}
+    したがって、$\vb*{u} + \vb*{v} \in \Ker(f)$である $\qed$
+
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍について}
+    $\vb*{u} \in \Ker(f)$と$c \in \mathbb{R}$をとると、$f(\vb*{u}) = \vb*{0}$である
+
+    よって、$f$の線形性より
+    \begin{align*}
+      f(c \vb*{u}) & = c f(\vb*{u})              \\
+                   & = c \cdot \vb*{0} = \vb*{0}
+    \end{align*}
+    したがって、$c \vb*{u} \in \Ker(f)$である $\qed$
+  \end{subpattern}
 \end{proof}
 
 \sectionline
+\section{線形写像の核空間}
+\marginnote{\refbookA p94〜95}
 
 すでに学んだように、斉次形方程式$A\vb*{x} = \vb*{0}$の解の自由度を$d$とすると、基本解$\vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_d \in \Ker(A)$が存在して、任意の$\vb*{u} \in \Ker(A)$に対して
 \begin{equation*}
