@@ -71,21 +71,93 @@ $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形�
   \todo{\refbookA p94 命題3.1.4}
 \end{proof}
 
-\subsection{線形部分空間の例：交わり}
+\subsection{線形部分空間の例：共通部分}
+\marginnote{\refbookC p22}
 
-\begin{theorem}{線形部分空間の和空間は部分空間}
-  $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{交わり}$V \cap W$は$\mathbb{R}^n$の部分空間である
+\begin{theorem}{線形部分空間の共通部分は部分空間}
+  $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{共通部分}$V \cap W$は$\mathbb{R}^n$の部分空間である
 \end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{和について}
+    $\vb*{a}, \vb*{b} \in V \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$V$と$W$の両方に属していることになる
+
+    つまり、$\vb*{a}, \vb*{b} \in V$かつ$\vb*{a}, \vb*{b} \in W$である
+
+    \br
+
+    $V$も$W$も部分空間なので、部分空間の定義より、
+    \begin{align*}
+      \vb*{a} + \vb*{b} & \in V \\
+      \vb*{a} + \vb*{b} & \in W
+    \end{align*}
+
+    $\vb*{a} + \vb*{b}$が$V$と$W$の両方に属していることから、$\vb*{a} + \vb*{b}$は$V \cap W$に属する
+
+    よって、$V \cap W$は和について閉じている $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{スカラー倍について}
+    $\vb*{a} \in V \cap W$と$c \in \mathbb{R}$をとる
+
+    共通部分の定義より、$\vb*{a}$は$V$と$W$の両方に属しているので、部分空間の定義より
+    \begin{align*}
+      c \vb*{a} & \in V \\
+      c \vb*{a} & \in W
+    \end{align*}
+
+    よって、$c \vb*{a}$は$V \cap W$に属するため、$V \cap W$はスカラー倍について閉じている $\qed$
+  \end{subpattern}
+\end{proof}
 
 \subsection{線形部分空間の例：和空間}
 
-\begin{theorem}{線形部分空間の和空間は部分空間}
+\begin{theorem}{線形部分空間の和は部分空間}
   $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{和空間}
   \begin{equation*}
     V + W \coloneq \{ \vb*{v} + \vb*{w} \mid \vb*{v} \in V, \vb*{w} \in W \}
   \end{equation*}
   は$\mathbb{R}^n$の部分空間である
 \end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{和について}
+    $\vb*{a}_1, \vb*{a}_2 \in V, \, \vb*{b}_1, \vb*{b}_2 \in W$とする
+
+    $V$と$W$は部分空間なので、部分空間の定義より
+    \begin{equation*}
+      \vb*{a}_1 + \vb*{a}_2 \in V, \quad \vb*{b}_1 + \vb*{b}_2 \in W
+    \end{equation*}
+
+    一方、和空間の定義より、$\vb*{a}_1 + \vb*{b}_1,\, \vb*{a}_2 + \vb*{b}_2$はそれぞれ$V+W$の元である
+
+    これらの元の和をとったときに、その和も$V + W$に属していれば、和空間は和について閉じているといえる
+    \begin{align*}
+      (\vb*{a}_1 + \vb*{b}_1) + (\vb*{a}_2 + \vb*{b}_2) & = (\vb*{a}_1 + \vb*{a}_2) + (\vb*{b}_1 + \vb*{b}_2) \\
+                                                        & \in V + W
+    \end{align*}
+    上式で、和空間は和について閉じていることが示された $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{スカラー倍について}
+    $\vb*{a} \in V, \, \vb*{b} \in W$と$c \in \mathbb{R}$をとる
+
+    $V$と$W$は部分空間なので、部分空間の定義より
+    \begin{align*}
+      c \vb*{a} & \in V \\
+      c \vb*{b} & \in W
+    \end{align*}
+
+    一方、和空間の定義より、$\vb*{a} + \vb*{b}$は$V + W$の元である
+
+    この元をスカラー倍したときに、そのスカラー倍も$V + W$に属していれば、和空間はスカラー倍について閉じているといえる
+    \begin{align*}
+      c(\vb*{a} + \vb*{b}) & = c \vb*{a} + c \vb*{b} \\
+                           & \in V + W
+    \end{align*}
+    上式で、和空間はスカラー倍について閉じていることが示された $\qed$
+  \end{subpattern}
+\end{proof}
 
 \sectionline
 \section{線形写像の核空間}
