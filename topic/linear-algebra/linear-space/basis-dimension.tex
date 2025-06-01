@@ -3,6 +3,28 @@
 \begin{document}
 
 \sectionline
+\section{基底の定義}
+\marginnote{\refbookA p96 \\ \refbookC p33〜}
+
+核空間の場合を参考にして、部分空間のパラメータ表示を与えるために基準として固定するベクトルの集合を定式化すると、\keyword{基底}という概念になる
+
+\br
+
+\keyword{基底}は、座標空間の「座標軸」に相当するものであり、部分空間を生成する独立なベクトルの集合として定義される
+
+\begin{definition}{基底}
+  $V$を$\mathbb{R}^n$の部分空間とする
+
+  ベクトルの集合$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \} \subset V$は、次を満たすとき$V$の\keyword{基底}であるという
+  \begin{enumerate}[label=\romanlabel]
+    \item $\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \}$は線型独立である
+    \item $V = \langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \rangle$
+  \end{enumerate}
+\end{definition}
+
+たとえば、基本ベクトルの集合$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は$\mathbb{R}^n$の基底であり、これを$\mathbb{R}^n$の\keyword{標準基底}という
+
+\sectionline
 \section{基底の存在}
 \marginnote{\refbookA p98〜99}
 
@@ -13,5 +35,20 @@
 \marginnote{\refbookA p99}
 
 \todo{\refbookA p99}
+
+\sectionline
+\section{線形写像の核空間と基底}
+
+核空間について先ほど述べたことは、基底の言葉で言い換えると次のようになる
+
+\begin{theorem}{斉次形方程式の基本解と核空間の基底}
+  $A$を$m \times n$型行列とし、$\vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_d$を$A\vb*{x} = \vb*{0}$の基本解とするとき、$\{ \vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_d \}$は$\Ker(A)$の基底である
+\end{theorem}
+
+\sectionline
+\section{線形写像の像空間と基底}
+\marginnote{\refbookA p96〜97}
+
+\todo{\refbookA p96〜97}
 
 \end{document}
