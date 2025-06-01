@@ -22,7 +22,49 @@
   \end{enumerate}
 \end{definition}
 
+\subsection{基底の例：標準基底}
+\marginnote{\refbookC p35}
+
 たとえば、基本ベクトルの集合$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は$\mathbb{R}^n$の基底であり、これを$\mathbb{R}^n$の\keyword{標準基底}という
+
+\begin{theorem}{数ベクトル空間の標準基底}
+  数ベクトル空間$K^n$において、基本ベクトルの集合$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は$K^n$の基底である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 部分空間を生成すること}
+    任意のベクトル$\vb*{v} \in K^n$は、次のように表せる
+    \begin{equation*}
+      \vb*{v} = v_1 \vb*{e}_1 + v_2 \vb*{e}_2 + \cdots + v_n \vb*{e}_n
+    \end{equation*}
+    したがって、$K^n$は$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$によって生成される $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 線型独立であること}
+    $\vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n$の線形関係式
+    \begin{equation*}
+      c_1 \vb*{e}_1 + c_2 \vb*{e}_2 + \cdots + c_n \vb*{e}_n = \vb*{0}
+    \end{equation*}
+    を考える
+
+    このとき、左辺は
+    \begin{equation*}
+      c_1 \vb*{e}_1 + c_2 \vb*{e}_2 + \cdots + c_n \vb*{e}_n = \begin{pmatrix}
+        c_1    \\
+        c_2    \\
+        \vdots \\
+        c_n
+      \end{pmatrix}
+    \end{equation*}
+    と書き換えられるので、これが零ベクトルになるためには、
+    \begin{equation*}
+      c_1 = 0, \quad c_2 = 0, \quad \cdots, \quad c_n = 0
+    \end{equation*}
+    でなければならない
+
+    よって、$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は線型独立である $\qed$
+  \end{subpattern}
+\end{proof}
 
 \sectionline
 \section{基底の存在}
