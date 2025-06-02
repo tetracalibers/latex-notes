@@ -1,0 +1,74 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形写像の像空間と列空間}
+\marginnote{\refbookA p96〜97}
+
+次の定理が成り立つことから、$\Im(A)$を$A$の\keyword{列空間}と呼ぶこともある
+
+\begin{theorem}{線形写像の像と表現行列の列空間の一致}
+  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の像空間$\Im(f)$は、表現行列の列ベクトルが張る空間である
+\end{theorem}
+
+\begin{proof}
+  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)$とするとき、$\vb*{v} \in \mathbb{R}^n$に対して
+  \begin{equation*}
+    f(\vb*{v}) = A \vb*{v} = v_1 \vb*{a}_1 + v_2 \vb*{a}_2 + \cdots + v_n \vb*{a}_n
+  \end{equation*}
+  なので、
+  \begin{align*}
+     & \phantom{\longleftrightarrow\,\,\,} \vb*{u} \in \Im(f)                                                                \\
+     & \Longleftrightarrow \exists \vb*{v} \in \mathbb{R}^n \suchthat \vb*{u} = f(\vb*{v})                                   \\
+     & \Longleftrightarrow \exists v_1, \dots, v_n \in \mathbb{R} \suchthat \vb*{u} = v_1 \vb*{a}_1 + \cdots + v_n \vb*{a}_n \\
+     & \Longleftrightarrow \vb*{u} \in \langle \vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n \rangle
+  \end{align*}
+  したがって、
+  \begin{equation*}
+    \Im(f) = \Im(A) = \langle \vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n \rangle
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+上述の証明の
+\begin{equation*}
+  \vb*{u} \in \Im(f)                                                               \Longleftrightarrow \exists \vb*{v} \in \mathbb{R}^n \suchthat \vb*{u} = f(\vb*{v})
+\end{equation*}
+
+という変形に着目すると、この定理は次のように線型方程式の文脈で言い換えられる
+
+\begin{theorem}{線形写像の像空間と方程式の解の存在}
+  $\vb*{b} \in \mathbb{R}^m$に対して
+  \begin{equation*}
+    \vb*{b} \in \Im(A) \Longleftrightarrow \text{方程式} A \vb*{x} = \vb*{b} \text{が解を持つ}
+  \end{equation*}
+\end{theorem}
+
+$\vb*{b} \in \mathbb{R}^m$が$\Im(A)$に属するかどうかを調べるためには\hyperref[thm:augmented-rank-solution-condition]{階数による判定条件}が使える
+
+\sectionline
+
+一方、後に論じるように、
+\begin{shaded}
+  ある線形写像の核空間として像空間をとらえる
+\end{shaded}
+こともできる
+
+扱う問題によってはそのような見方が有効になる
+
+\sectionline
+
+線形写像の像空間は表現行列の列ベクトルによって張られるが、列ベクトルの集合は一般には線型独立ではない
+
+像空間の基底を得るためには、列ベクトルの部分集合を考えるのが自然である
+
+\begin{theorem}{主列ベクトルによる像空間の基底の構成}
+  行列$A$の\hyperref[def:pivot-columns]{主列ベクトル}の集合は$\Im(A)$の基底である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p97 定理3.1.10}
+\end{proof}
+
+\end{document}
