@@ -150,7 +150,25 @@ $K^n$の$\{\vb*{0} \}$でない部分空間$V$の線型独立なベクトルは�
 
   以下同様に続けると、$\langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \rangle = V$となるまで、$V$に属するベクトルを選び続けることができる
 
+  \br
+
   ここで線型独立なベクトルを繰り返し選ぶ操作が無限に続かないこと（有限値$k$が存在すること）は、\hyperref[thm:finite-dependency]{有限従属性定理}により、$K^n$の中には$n$個を超える線型独立なベクトルの集合は存在しないことから保証される $\qed$
+\end{proof}
+
+\sectionline
+\section{次元の不変性}
+\marginnote{\refbookA p99 \\ \refbookC p37〜38}
+
+\begin{theorem}{次元の不変性}
+  $K^n$の部分空間$V$の基底をなすベクトルの個数（次元）は一定である
+
+  つまり、$\{ \vb*{v}_1, \dots, \vb*{v}_k \}$と$\{ \vb*{u}_1, \dots, \vb*{u}_l \}$がともに$V$の基底ならば、$k = l$である
+\end{theorem}
+
+\begin{proof}
+  $\vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_l \in \langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \rangle$であり、$\vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_l$は線型独立であるから、\hyperref[thm:abstract-finite-dependency]{有限従属性定理の抽象版}より、$l \leq k$である
+
+  同様にして$k \leq l$も成り立つので、$k = l$である $\qed$
 \end{proof}
 
 \sectionline
