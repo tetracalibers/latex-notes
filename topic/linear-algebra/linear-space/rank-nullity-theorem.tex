@@ -1,0 +1,28 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{次元定理}
+\marginnote{\refbookA p101}
+
+\begin{theorem}{線形写像の次元定理}
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とすると、次が成り立つ
+  \begin{equation*}
+    \rank(f) = n - \dim \Ker(f)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A$を$f$の表現行列とし、$\rank(f) = r$とする
+
+  このとき、$\Ker(f)$の次元は$A\vb*{x} = \vb*{0}$の解空間の自由度$n - r$と一致するため、
+  \begin{align*}
+    \dim \Ker(f)              & = n - r            \\
+                              & = n - \rank(f)     \\
+    \therefore \quad \rank(f) & = n - \dim \Ker(f)
+  \end{align*}
+  となり、定理が成り立つ $\qed$
+\end{proof}
+
+\end{document}
