@@ -1,0 +1,172 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形代数における鳩の巣原理}
+\marginnote{\refbookA p102〜103}
+
+\begin{theorem}{線形代数における鳩の巣原理の抽象版}\label{thm:abstract-linear-pigeonhole}
+  $V,\,W$を同じ次元の線形空間とするとき、線形写像$f\colon V \to W$に関して、次はすべて同値である
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$は単射
+    \item $f$は全射
+    \item $f$は線形同型
+    \item $\rank(f) = \dim V = \dim W$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  $\mathcal{V},\,\mathcal{W}$をそれぞれ$V,\,W$の基底として、線形写像の合成
+  \begin{equation*}
+    g\colon \mathbb{R}^n \xrightarrow{\Phi_\mathcal{V}} V \xrightarrow{f} W \xrightarrow{\Phi_\mathcal{W}^{-1}} \mathbb{R}^n
+  \end{equation*}
+  を考える
+
+  このとき、$g$は$\mathbb{R}^n$の線形変換である
+
+  \br
+
+  $f$が単射（全射）であると仮定すると、座標写像は全単射であるので、$f$との合成写像$g$も単射（全射）となる
+
+  \br
+
+  逆に、$g$が単射（全射）であると仮定した場合について考える
+
+  $f$は$g$を用いて次のように表現でき、
+  \begin{equation*}
+    f = \Phi_\mathcal{W} \circ g \circ \Phi_\mathcal{V}^{-1}
+  \end{equation*}
+  座標写像は全単射であるので、$g$との合成写像$f$も単射（全射）となる
+
+  \br
+
+  以上より、$f$が単射（全射）であることと、$g$が単射（全射）であることは同値である
+
+  \br
+
+  線形変換$g$に対して、\hyperref[thm:linear-pigeonhole]{線形代数における鳩の巣原理}より、
+  \begin{equation*}
+    g\text{が単射} \Longleftrightarrow g\text{が全射} \Longleftrightarrow g\text{が全単射}
+  \end{equation*}
+  が成り立つが、$g$の単射性・全射性は$f$についても成り立つことがわかったので、
+  \begin{equation*}
+    f\text{が単射} \Longleftrightarrow f\text{が全射} \Longleftrightarrow f\text{が線形同型}
+  \end{equation*}
+  がいえる
+
+  \br
+
+  最後に、階数に関する条件を示す
+
+  \hyperref[sec:image-and-surjectivity]{像空間と全射性の関係}により、$f$が全射であることは、$\Im(f) = W$と同値であるから、
+  \begin{equation*}
+    \dim \Im(f) = \dim W
+  \end{equation*}
+  より、
+  \begin{equation*}
+    \rank(f) = \dim W = \dim V
+  \end{equation*}
+  が得られる $\qed$
+\end{proof}
+
+\sectionline
+\section{次元による部分空間の比較}
+\marginnote{\refbookA p102 \\ \refbookC p41}
+
+次の事実は、数の一致で空間の一致が結論できる有用な結果である
+
+\begin{theorem}{次元の一致による部分空間の一致判定}\label{thm:equal-dim-implies-equal-subspace}
+  2つの線型空間について、$V \subset W$ならば、
+  \begin{equation*}
+    \dim V = \dim W \Longrightarrow V = W
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{v} \in V$をそのまま$W$の元と考えることで得られる写像を$\iota \colon V \to W$とする（包含写像）
+
+  \br
+
+  この包含写像は、$V$の元$\vb*{v}$を$W$の中にそのまま「埋め込む」操作を表しているため、$\iota(\vb*{v})$は$\vb*{v}$自身である
+  \begin{equation*}
+    \iota(\vb*{v}) = \vb*{v}
+  \end{equation*}
+  特に、$\iota(\vb*{v}) = \vb*{0}$は$\vb*{v} = \vb*{0}$そのものを意味する
+  \begin{equation*}
+    \iota(\vb*{v}) = \vb*{0} \Longleftrightarrow \vb*{v} = \vb*{0}
+  \end{equation*}
+  したがって、\hyperref[thm:injective-zero-test]{零ベクトルへの写像による単射性の判定}より、$\iota$は単射である
+
+  \br
+
+  また、$\iota$が単射であることと、仮定$\dim V = \dim W$を合わせると、\hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}より、$\iota$は全射であることがわかる
+
+  \br
+
+  よって、全射の定義より、すべての$\vb*{w} \in W$に対して$\iota(\vb*{v}) = \vb*{w}$となる$\vb*{v}$が存在する
+
+  すなわち、$W$の元はすべて$V$の元であり、$V \subset W$もふまえると、これは$V=W$を意味する $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{次元による部分空間の比較}
+  $K^n$の部分空間$V,\,W$について、$V \subseteq W$ならば、
+  \begin{equation*}
+    \dim V \leq \dim W
+  \end{equation*}
+  が成り立つ
+
+  等号が成立するのは、$V = W$のときに限る
+\end{theorem}
+
+\begin{proof}
+  $V \subseteq W$であることから、\hyperref[thm:basis-extension]{基底の延長}により、$V$の基底を延長して$W$の基底にできるので、
+  \begin{equation*}
+    \dim V \leq \dim W
+  \end{equation*}
+  が成り立つ
+
+  \br
+
+  等号が成立する場合については、前述の\hyperref[thm:equal-dim-implies-equal-subspace]{次元の一致による部分空間の一致判定}を参照 $\qed$
+\end{proof}
+
+\sectionline
+\section{核空間・像空間の次元}
+\marginnote{\refbookC p83〜84}
+
+\begin{theorem}{線形写像の単射性と核の次元}
+  線形写像$f\colon V \to W$について、
+  \begin{equation*}
+    f\text{が単射} \Longleftrightarrow \dim \Ker(f) = 0
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:injective-iff-trivial-kernel]{線形写像の単射性と核の関係}より、$f$が単射であることは次と同値である
+  \begin{equation*}
+    \Ker(f) = \{ \vb*{0} \}
+  \end{equation*}
+  \hyperref[def:dimension-of-vector-space]{次元の定義}より、$\{ \vb*{0} \}$の次元は0であるので、
+  \begin{equation*}
+    \dim \Ker(f) = 0
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{線形写像の全射性と像の次元}
+  線形写像$f\colon V \to W$について、
+  \begin{equation*}
+    f\text{が全射} \Longleftrightarrow \dim \Im(f) = \dim W
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}の主張そのものである $\qed$
+\end{proof}
+
+\end{document}
