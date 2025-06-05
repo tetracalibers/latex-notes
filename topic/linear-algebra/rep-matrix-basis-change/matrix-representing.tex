@@ -1,0 +1,206 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{基底に関する座標ベクトル}
+\marginnote{\refbookA p10 \\ \refbookC p95}
+
+$V$を線形空間とし、$\mathcal{V} = \{\vb*{v}_1, \vb*{v}_2, \ldots, \vb*{v}_n\}$をその基底とする
+
+$V$の任意のベクトル$\vb*{v}$は、
+\begin{equation*}
+  \vb*{v} = \sum_{i=1}^n x_i \vb*{v}_i
+\end{equation*}
+と一意的に書ける
+
+\br
+
+ここで、$\Phi_\mathcal{V}$を座標写像とすると、その定義から、
+\begin{equation*}
+  \Phi^{-1}_\mathcal{V}(\vb*{v}) = \begin{pmatrix}
+    x_1    \\
+    x_2    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+  \in \mathbb{R}^n
+\end{equation*}
+
+このベクトルを$\mathcal{V}$に関する$\vb*{v}$の\keyword{座標ベクトル}あるいは\keyword{成分表示}と呼び、
+\begin{equation*}
+  \vb*{v} = \begin{pmatrix}
+    x_1    \\
+    x_2    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}_{\mathcal{V}}
+\end{equation*}
+と書くことにする
+
+\sectionline
+\section{一般の基底に関する表現行列}
+\marginnote{\refbookA p104〜106 \\ \refbookC p95〜96}
+
+$V,\,W$をそれぞれ次元が$n,\,m$の線形空間とし、$f$を$V$から$W$への線形写像とする
+
+また、$\mathcal{V}, \, \mathcal{W}$をそれぞれ$V,\,W$の基底とする
+
+\br
+
+座標写像が線形同型写像であることは、\hyperref[thm:subspace-isomorphic-to-Kn]{任意の部分空間が数ベクトル空間と同型である}ことを意味していた
+
+よって、$V$から$W$への線形写像$f$は、数ベクトル空間との線形同型写像（座標写像）$\Phi_\mathcal{V}, \, \Phi_\mathcal{W}$を合成すれば、
+\begin{equation*}
+  f' = \Phi_\mathcal{W}^{-1} \circ f \circ \Phi_\mathcal{V} : \mathbb{R}^n \to \mathbb{R}^m
+\end{equation*}
+として、数ベクトル空間の間の写像と考えることができる
+
+\br
+
+この合成を図で整理して、次のように表す
+
+\begin{center}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & W \\
+    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"f'"] & \mathbb{R}^m \arrow[u,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{center}
+
+このような図を\keyword{図式}という
+
+\br
+
+下辺の矢印は、合成写像
+\begin{equation*}
+  \Phi^{-1}_{\mathcal{W}} \circ f \circ \Phi_{\mathcal{V}} : \mathbb{R}^n \to \mathbb{R}^m
+\end{equation*}
+を表していて、この写像は$\mathbb{R}^n$から$\mathbb{R}^m$への線形写像である
+
+\br
+
+左下の$\mathbb{R}^n$から右上の$W$への2通りの合成写像が一致するという意味で、この図式は\keyword{可換}であるという
+
+\sectionline
+
+数ベクトル空間の間の写像は、行列が定める線形写像であることから、この写像$f$は$m \times n$型行列$A$により表現される
+
+\begin{center}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & W \\
+    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A"] & \mathbb{R}^m \arrow[u,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{center}
+
+\br
+
+座標ベクトルの記法を用いると、写像$f$は次で与えられる
+\begin{equation*}
+  f\colon \begin{pmatrix}
+    x_1    \\
+    x_2    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}_{\mathcal{V}}
+  \mapsto \left( A \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix} \right)_\mathcal{W}
+\end{equation*}
+
+\sectionline
+
+このように、座標写像を用いることで、$V$から$W$への線形写像$f$から、$m \times n$型行列が得られる
+
+この行列$A$を、基底$\mathcal{V}, \, \mathcal{W}$に関する$f$の\keyword{表現行列}という
+
+\br
+
+つまり、
+\begin{shaded}
+  基底$\mathcal{V}, \, \mathcal{W}$を固定して考えるときは、$f$を$A$と同一視できる
+\end{shaded}
+ということになり、このとき、
+\begin{shaded}
+  表現行列は線形写像の「成分表示」
+\end{shaded}
+と解釈できる
+
+\sectionline
+\section{表現行列の構成}
+\marginnote{\refbookA p105 \\ \refbookC p96〜97}
+
+\hyperref[sec:matrix-rep-of-linear-maps]{数ベクトル空間の間の線形写像を定める行列}は、各基本ベクトル$\vb*{e}_j$の$f$による像
+\begin{equation*}
+  f(\vb*{e}_j) = \vb*{a}_j = \begin{pmatrix}
+    a_{1j} \\
+    a_{2j} \\
+    \vdots \\
+    a_{mj}
+  \end{pmatrix} \quad (1 \leq j \leq n)
+\end{equation*}
+を用いて、
+\begin{equation*}
+  \left( f(\vb*{e}_1), \ldots, f(\vb*{e}_n) \right) = \left( \vb*{a}_1, \ldots, \vb*{a}_n \right) = A
+\end{equation*}
+のように構成された
+
+\br
+
+この表現行列の構成を、部分空間$V,\,W$の基底をそれぞれ$\mathcal{V} = \{ \vb*{v}_1,\ldots, \vb*{v}_n\}, \, \mathcal{W} = \{\vb*{w}_1, \ldots, \vb*{w}_m\}$として一般化する
+
+\br
+
+このとき、$\vb*{a}_j$は座標写像$\Phi_{\mathcal{W}}$によって、
+\begin{equation*}
+  \Phi_{\mathcal{W}}(\vb*{a}_j) = \sum_{i=1}^m a_{ij} \vb*{w}_i \quad (1 \leq j \leq n)
+\end{equation*}
+のように$W$に写される
+
+\br
+
+また、$\vb*{e}_j$は座標写像$\Phi_{\mathcal{V}}$によって、
+\begin{equation*}
+  \Phi_{\mathcal{V}}(\vb*{e}_j) = \sum_{i=1}^n e_{ij} \vb*{v}_i \quad (1 \leq j \leq n)
+\end{equation*}
+のように$V$に写されるが、これは$\vb*{v}_j$そのものである
+
+たとえば、$j=1$のときは、
+\begin{equation*}
+  \Phi_{\mathcal{V}}(\vb*{e}_1) = \sum_{i=1}^n e_{i1} \vb*{v}_i = \vb*{v}_1
+\end{equation*}
+となる
+
+\br
+
+よって、$\vb*{e}_j \mapsto \vb*{a}_j$という写像は、
+\begin{equation*}
+  \vb*{v}_j \mapsto \Phi_{\mathcal{W}}(\vb*{a}_j)
+\end{equation*}
+という$V$から$W$への写像$f$に対応する
+
+（この対応は、可換図式からも明らか）
+
+\br
+
+記号を書き換えると、
+\begin{equation*}
+  f(\vb*{v}_j) = \Phi_{\mathcal{W}}(\vb*{a}_j) = \sum_{i=1}^m a_{ij} \vb*{w}_i
+\end{equation*}
+となり、右辺はさらに、
+\begin{equation*}
+  \sum_{i=1}^m a_{ij} \vb*{w}_i = (\vb*{w}_1, \ldots, \vb*{w}_m) \begin{pmatrix}
+    a_{1j} \\
+    \vdots \\
+    a_{mj}
+  \end{pmatrix}
+\end{equation*}
+と変形できるので、まとめると、
+\begin{equation*}
+  \left( f(\vb*{v}_1),\ldots, f(\vb*{v}_n) \right) = \left( \vb*{w}_1, \ldots, \vb*{w}_m \right) A
+\end{equation*}
+と表せる
+
+\end{document}
