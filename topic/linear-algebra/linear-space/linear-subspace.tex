@@ -30,13 +30,17 @@ $\mathbb{R}^n$の部分集合であって、ベクトル演算で閉じた集合
 
 零ベクトル$\vb*{0}$だけからなる部分集合$\{ \vb*{0} \}$も部分空間である
 
-\br
+\begin{theorem}{部分空間における零ベクトルの包含}\label{thm:subspace-contains-zero}
+  部分空間は必ず零ベクトル$\vb*{0}$を含む
+\end{theorem}
 
-$V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形部分空間の定義\romannum{ii}より
-\begin{equation*}
-  0 \cdot \vb*{v} = \vb*{0} \in V
-\end{equation*}
-よって部分空間は必ず$\vb*{0}$を含む
+\begin{proof}
+  $V$は空集合でないので、ある$\vb*{v} \in V$をとるとき、線形部分空間の定義\romannum{ii}より
+  \begin{equation*}
+    0 \cdot \vb*{v} = \vb*{0} \in V
+  \end{equation*}
+  よって部分空間は必ず$\vb*{0}$を含む $\qed$
+\end{proof}
 
 \subsection{線形部分空間の例：ベクトルが張る空間}
 

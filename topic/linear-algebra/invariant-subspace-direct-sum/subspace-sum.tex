@@ -119,4 +119,73 @@
   以上より、$U+W \subseteq H$と$H \subseteq U + W$が成り立つので、$U + W = H$が示された $\qed$
 \end{proof}
 
+\sectionline
+\section{和空間の包含関係}
+\marginnote{\refbookF p233}
+
+\begin{theorem}{和空間における部分空間の和集合の包含}
+  和空間は、和集合を部分集合として包含する
+
+  すなわち、$U,\,W$を$V$の部分空間とするとき、
+  \begin{equation*}
+    U + W \supset U \cup W
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:subspace-contains-zero]{部分空間はいずれも零ベクトルを含む}ので、
+  たとえば、$U = \{ \vb*{0} \}$の場合、
+  \begin{equation*}
+    U + W \supset W
+  \end{equation*}
+  同様に、
+  \begin{equation*}
+    U + W \supset U
+  \end{equation*}
+
+  よって、$U+W$は$U$または$W$を包含することがわかる
+
+  すなわち、
+  \begin{equation*}
+    U + W \supset U \cup W
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{和空間の最小包含性}
+  $U,\,W$を$V$の部分空間とする
+
+  和空間$U+W$は、$U$と$W$を含む部分空間のうち、最小のものである
+\end{theorem}
+
+\begin{proof}
+  $V$の任意の部分空間のうち、$U$と$W$の両方を包含するもの$V'$を考える
+
+  このとき、部分空間は和に閉じているため、$V'$は$U+W$も包含する
+  \begin{equation*}
+    V' \supset U + W
+  \end{equation*}
+
+  よって、$V'$の任意性から、$U + W$は$U$と$W$を含む部分空間のうち、最小のものとなる $\qed$
+\end{proof}
+
+\sectionline
+
+このように、和空間$U+W$は、$U$や$W$を部分空間として含むが、$U$や$W$より真に大きい（$U,\,W$を真部分集合として含む）とは限らない
+
+\br
+
+別の角度からいうと、
+\begin{equation*}
+  V = W_1 + W_2
+\end{equation*}
+という関係があるだけで、「$V$が$W_1$と$W_2$の和に分解された」というのは適当ではない
+
+\br
+
+和空間が持つこの欠陥を補うために、和空間の概念をより精密化したものが、次に述べる\keyword{直和}である
+
 \end{document}
