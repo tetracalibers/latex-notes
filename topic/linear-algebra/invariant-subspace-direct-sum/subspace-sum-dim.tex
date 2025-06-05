@@ -1,0 +1,92 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{部分空間の和の次元}
+\marginnote{\refbookA p103 \\ \refbookC p39〜41}
+
+\begin{theorem}{部分空間の和の次元}
+  $K^n$の部分空間$V, \, W$に対して、次が成り立つ
+  \begin{equation*}
+    \dim(V + W) = \dim V + \dim W - \dim(V \cap W)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\dim(V) = n, \, \dim(W) = m$とする
+
+  \br
+
+  $V \cap W$の基底$\mathcal{V} = \{ \vb*{u}_1,\dots, \vb*{u}_d \}$をとる
+
+  これを\hyperref[thm:basis-extension]{基底の延長の定理}に基づいて、$V$の基底
+  \begin{equation*}
+    \mathcal{V} \cup \{ \vb*{v}_1, \dots, \vb*{v}_{n-d} \}
+  \end{equation*}
+  に延長する
+
+  同様に、$\mathcal{V}$を$W$の基底
+  \begin{equation*}
+    \mathcal{V} \cup \{ \vb*{w}_1, \dots, \vb*{w}_{m-d} \}
+  \end{equation*}
+  に延長する
+
+  \br
+
+  このとき、$\vb*{u_1}, \dots, \vb*{u}_d, \vb*{v}_1, \dots, \vb*{v}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$が$V + W$の基底になることを示す
+
+  \begin{subpattern}{\bfseries $V+W$を生成すること}
+    $\vb*{v} \in V, \, \vb*{w} \in W$とすると、それぞれ基底の線形結合で表すことができる
+    \begin{align*}
+      \vb*{v} & = \sum_{i=1}^d a_i \vb*{u}_i + \sum_{j=1}^{n-d} b_j \vb*{v}_j \\
+      \vb*{w} & = \sum_{i=1}^d c_i \vb*{u}_i + \sum_{k=1}^{m-d} d_k \vb*{w}_k
+    \end{align*}
+
+    \br
+
+    $V+W$の任意の元は、$\vb*{v} + \vb*{w}$と書けるので、
+    \begin{equation*}
+      \vb*{v} + \vb*{w} = \sum_{i=1}^d (a_i + c_i) \vb*{u}_i + \sum_{j=1}^{n-d} b_j \vb*{v}_j + \sum_{k=1}^{m-d} d_k \vb*{w}_k
+    \end{equation*}
+    となり、$\{ \vb*{u}_1, \dots, \vb*{u}_d, \vb*{v}_1, \dots, \vb*{v}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d} \}$の線形結合で表せる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 線型独立であること}
+    $\vb*{u}_1, \dots, \vb*{u}_d, \vb*{v}_1, \dots, \vb*{v}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$が線型独立であることを示すために、次のような線形関係式を考える
+    \begin{equation*}
+      \sum_{i=1}^d c_i \vb*{u}_i + \sum_{j=1}^{n-d} c_{d+j} \vb*{v}_j + \sum_{k=1}^{m-d} c_{d+n-d+k} \vb*{w}_k = \vb*{0}
+    \end{equation*}
+
+    ここで、$c_i \in K$はスカラーである
+
+    \br
+
+    この式を$V$と$W$の基底の線型結合として考えると、$V$の基底$\vb*{u}_i, \, \vb*{v}_j$に関する部分と$W$の基底$\vb*{u}_i, \, \vb*{w}_k$に関する部分がそれぞれ線形独立であるため、結局どの項においても$c_i = 0$である必要がある
+
+    \br
+
+    よって、$\vb*{u}_1, \dots, \vb*{u}_d, \vb*{v}_1, \dots, \vb*{v}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$は線型独立である $\qed$
+  \end{subpattern}
+
+  \br
+
+  以上より、$\vb*{u}_1, \dots, \vb*{u}_d, \vb*{v}_1, \dots, \vb*{v}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$は$V + W$の基底であることが示された
+
+  \br
+
+  この基底をなすベクトルの個数（次元）について考えると、
+  \begin{align*}
+    \dim(V + W) & = d + (n - d) + (m - d) \\
+                & = n + m - d
+  \end{align*}
+  となる
+
+  ここで、$d = \dim(V \cap W)$なので、
+  \begin{equation*}
+    \dim(V + W) = \dim V + \dim W - \dim(V \cap W)
+  \end{equation*}
+  と書き換えられ、目的の式が得られた $\qed$
+\end{proof}
+
+\end{document}

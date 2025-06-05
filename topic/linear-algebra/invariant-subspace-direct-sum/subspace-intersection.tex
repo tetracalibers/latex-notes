@@ -1,0 +1,47 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{部分空間の共通部分}
+\marginnote{\refbookC p22}
+
+与えられた部分空間から、新しく部分空間を作ることができる
+
+\begin{theorem}{線形部分空間の共通部分は部分空間}
+  $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{共通部分}$U \cap W$は$V$の部分空間である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    $\vb*{a}, \vb*{b} \in U \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$U$と$W$の両方に属していることになる
+
+    つまり、$\vb*{a}, \vb*{b} \in U$かつ$\vb*{a}, \vb*{b} \in W$である
+
+    \br
+
+    $U$も$W$も部分空間なので、部分空間の定義より、
+    \begin{align*}
+      \vb*{a} + \vb*{b} & \in U \\
+      \vb*{a} + \vb*{b} & \in W
+    \end{align*}
+
+    $\vb*{a} + \vb*{b}$が$U$と$W$の両方に属していることから、$\vb*{a} + \vb*{b}$は$U \cap W$に属する
+
+    よって、$U \cap W$は和について閉じている $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍について}
+    $\vb*{a} \in U \cap W$と$c \in K$をとる
+
+    共通部分の定義より、$\vb*{a}$は$U$と$W$の両方に属しているので、部分空間の定義より
+    \begin{align*}
+      c \vb*{a} & \in U \\
+      c \vb*{a} & \in W
+    \end{align*}
+
+    よって、$c \vb*{a}$は$U \cap W$に属するため、$U \cap W$はスカラー倍について閉じている $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}

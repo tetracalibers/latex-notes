@@ -1,0 +1,122 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{部分空間の和}
+\marginnote{\refbookC p22〜23 \\ \refbookF p231〜232}
+
+\begin{theorem}{線形部分空間の和は部分空間}
+  $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{和空間}
+  \begin{equation*}
+    U + W \coloneq \{ \vb*{u} + \vb*{w} \mid \vb*{u} \in U, \vb*{w} \in W \}
+  \end{equation*}
+  は$V$の部分空間である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    $\vb*{a}_1, \vb*{a}_2 \in U, \, \vb*{b}_1, \vb*{b}_2 \in W$とする
+
+    $U$と$W$は部分空間なので、部分空間の定義より
+    \begin{equation*}
+      \vb*{a}_1 + \vb*{a}_2 \in U, \quad \vb*{b}_1 + \vb*{b}_2 \in W
+    \end{equation*}
+
+    一方、和空間の定義より、$\vb*{a}_1 + \vb*{b}_1,\, \vb*{a}_2 + \vb*{b}_2$はそれぞれ$U+W$の元である
+
+    これらの元の和をとったときに、その和も$U + W$に属していれば、和空間は和について閉じているといえる
+    \begin{align*}
+      (\vb*{a}_1 + \vb*{b}_1) + (\vb*{a}_2 + \vb*{b}_2) & = (\vb*{a}_1 + \vb*{a}_2) + (\vb*{b}_1 + \vb*{b}_2) \\
+                                                        & \in U + W
+    \end{align*}
+    上式で、和空間は和について閉じていることが示された $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍について}
+    $\vb*{a} \in U, \, \vb*{b} \in W$と$c \in K$をとる
+
+    $U$と$W$は部分空間なので、部分空間の定義より
+    \begin{align*}
+      c \vb*{a} & \in U \\
+      c \vb*{b} & \in W
+    \end{align*}
+
+    一方、和空間の定義より、$\vb*{a} + \vb*{b}$は$U + W$の元である
+
+    この元をスカラー倍したときに、そのスカラー倍も$U + W$に属していれば、和空間はスカラー倍について閉じているといえる
+    \begin{align*}
+      c(\vb*{a} + \vb*{b}) & = c \vb*{a} + c \vb*{b} \\
+                           & \in U + W
+    \end{align*}
+    上式で、和空間はスカラー倍について閉じていることが示された $\qed$
+  \end{subpattern}
+\end{proof}
+
+\sectionline
+
+部分空間を生成するベクトルを用いて、部分空間の和を表せる
+
+\begin{theorem}{部分空間の和と生成ベクトル}\label{thm:sum-of-subspaces-span}
+  $K^n$の2つの部分空間$U = \langle \vb*{u}_1, \dots, \vb*{u}_m \rangle$と
+  $W = \langle \vb*{w}_1, \dots, \vb*{w}_k \rangle$に対して、和空間$U + W$は
+  \begin{equation*}
+    U + W = \langle \vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_m, \vb*{w}_1, \vb*{w}_2, \dots, \vb*{w}_k \rangle
+  \end{equation*}
+  となる
+\end{theorem}
+
+\begin{proof}
+  和空間 $U + W$ は
+  \begin{equation*}
+    U + W = \{ \vb*{x} \in K^n \mid \vb*{x} = \vb*{u} + \vb*{w},\ \vb*{u} \in U,\ \vb*{w} \in W \}
+  \end{equation*}
+  と定義される
+
+  また、$\vb*{u}_1, \dots, \vb*{u}_m, \vb*{w}_1, \dots, \vb*{w}_k$ の張る部分空間は
+  \begin{equation*}
+    H = \langle \vb*{u}_1, \dots, \vb*{u}_m, \vb*{w}_1, \dots, \vb*{w}_k \rangle
+  \end{equation*}
+  である
+
+  これらが等しいことを示せばよい
+
+  \begin{subpattern}{$U+W \subseteq H$}
+    任意の $\vb*{x} \in U + W$ に対し、$\vb*{x} = \vb*{u} + \vb*{w}$（$\vb*{u} \in U$, $\vb*{w} \in W$）と書ける
+
+    すなわち、
+    \begin{align*}
+      \vb*{u} & = a_1 \vb*{u}_1 + \dots + a_m \vb*{u}_m & (a_i \in K) \\
+      \vb*{w} & = b_1 \vb*{w}_1 + \dots + b_k \vb*{w}_k & (b_j \in K)
+    \end{align*}
+
+    よって、
+    \begin{equation*}
+      \vb*{x} = \sum_{i=1}^m a_i \vb*{u}_i + \sum_{j=1}^k b_j \vb*{w}_j \in H
+    \end{equation*}
+  \end{subpattern}
+
+  \begin{subpattern}{$H \subseteq U + W$}
+    任意の $\vb*{x} \in H$ は
+    \begin{equation*}
+      \vb*{x} = \sum_{i=1}^m a_i \vb*{u}_i + \sum_{j=1}^k b_j \vb*{w}_j
+    \end{equation*}
+    と書ける
+
+    ここで
+    \begin{align*}
+      \vb*{u} & = \sum_{i=1}^m a_i \vb*{u}_i \in U \\
+      \vb*{w} & = \sum_{j=1}^k b_j \vb*{w}_j \in W
+    \end{align*}
+    とすれば、
+    \begin{equation*}
+      \vb*{x} = \vb*{u} + \vb*{w} \in U + W
+    \end{equation*}
+  \end{subpattern}
+
+  \br
+
+  以上より、$U+W \subseteq H$と$H \subseteq U + W$が成り立つので、$U + W = H$が示された $\qed$
+\end{proof}
+
+\end{document}
