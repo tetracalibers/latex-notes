@@ -1,0 +1,83 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{直和分解}
+\marginnote{\refbookA p113〜114 \\ \refbookF p233〜235}
+
+\begin{definition}{直和分解}
+  線形空間$V$の部分集合$W_1,\,W_2$に対して、任意の$\vb*{v} \in V$が$\vb*{w}_1 \in W_1, \, \vb*{w}_2 \in W_2$によって
+  \begin{equation*}
+    \vb*{v} = \vb*{w}_1 + \vb*{w}_2
+  \end{equation*}
+  と一意的に表されるとき、$V$は$W_1$と$W_2$の\keyword{直和}である（\keyword{直和}に分解される）といい、
+  \begin{equation*}
+    V = W_1 \oplus W_2
+  \end{equation*}
+  と書く
+\end{definition}
+
+この定義は、次のように言い換えることができる
+
+\begin{theorem}{直和分解の同値条件}
+  線形空間$V$の部分集合$W_1,\,W_2$に対して$V=W_1 \oplus W_2$が成り立つことと、
+  \begin{enumerate}[label=\romanlabel]
+    \item $V = W_1 + W_2$
+    \item $W_1 \cap W_2 = \{ \vb*{0} \}$
+  \end{enumerate}
+  の両方が成り立つことは同値である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{(\romannum{i}), (\romannum{ii}) $\Longrightarrow$ $V = W_1 \oplus W_2$}
+    $\vb*{w}_1,\,\vb*{w}_1' \in W_1, \, \vb*{w}_2,\,\vb*{w}_2' \in W_2$とする
+
+    仮定(\romannum{i})と和空間の定義より、
+    \begin{equation*}
+      \vb*{v} = \vb*{w}_1 + \vb*{w}_2 = \vb*{w}_1' + \vb*{w}_2'
+    \end{equation*}
+
+    この等式は、移項によって次のように変形できる
+    \begin{equation*}
+      \vb*{w}_1 - \vb*{w}_1' = \vb*{w}_2' - \vb*{w}_2
+    \end{equation*}
+    部分空間は和に閉じているため、左辺は$W_1$に、右辺は$W_2$に属する
+
+    よって、このベクトルは$W_1 \cap W_2$に属する
+
+    仮定$(\romannum{ii})$より、$W_1 \cap W_2$の元は零ベクトルであるので、
+    \begin{align*}
+      \vb*{w}_1 - \vb*{w}_1' & = \vb*{0} \\
+      \vb*{w}_2' - \vb*{w}_2 & = \vb*{0}
+    \end{align*}
+
+    したがって、
+    \begin{equation*}
+      \vb*{w}_1 = \vb*{w}_1', \quad \vb*{w}_2 = \vb*{w}_2'
+    \end{equation*}
+    となり、$\vb*{v}$の表現の一意性が示された $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{$V = W_1 \oplus W_2$ $\Longrightarrow$ (\romannum{i}), (\romannum{ii})}
+    和空間の定義をふまえると、(\romannum{i})は直和分解の定義に含まれる
+
+    \br
+
+    (\romannum{ii})を示すため、$\vb*{v} \in W_1 \cap W_2$とする
+
+    $\vb*{v}$は零ベクトルを用いて、
+    \begin{equation*}
+      \vb*{v} = \vb*{v} + \vb*{0} = \vb*{0} + \vb*{v}
+    \end{equation*}
+    と表せるが、直和分解の定義より、$\vb*{v}$の表現は一意的であるので、
+    \begin{equation*}
+      \vb*{v} = \vb*{0}
+    \end{equation*}
+    を得る
+
+    よって、$W_1 \cap W_2 = \{ \vb*{0} \}$が成り立つ $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}
