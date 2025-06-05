@@ -9,38 +9,38 @@
 与えられた部分空間から、新しく部分空間を作ることができる
 
 \begin{theorem}{線形部分空間の共通部分は部分空間}
-  $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{共通部分}$V \cap W$は$\mathbb{R}^n$の部分空間である
+  $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{共通部分}$U \cap W$は$V$の部分空間である
 \end{theorem}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 和について}
-    $\vb*{a}, \vb*{b} \in V \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$V$と$W$の両方に属していることになる
+    $\vb*{a}, \vb*{b} \in U \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$U$と$W$の両方に属していることになる
 
-    つまり、$\vb*{a}, \vb*{b} \in V$かつ$\vb*{a}, \vb*{b} \in W$である
+    つまり、$\vb*{a}, \vb*{b} \in U$かつ$\vb*{a}, \vb*{b} \in W$である
 
     \br
 
-    $V$も$W$も部分空間なので、部分空間の定義より、
+    $U$も$W$も部分空間なので、部分空間の定義より、
     \begin{align*}
-      \vb*{a} + \vb*{b} & \in V \\
+      \vb*{a} + \vb*{b} & \in U \\
       \vb*{a} + \vb*{b} & \in W
     \end{align*}
 
-    $\vb*{a} + \vb*{b}$が$V$と$W$の両方に属していることから、$\vb*{a} + \vb*{b}$は$V \cap W$に属する
+    $\vb*{a} + \vb*{b}$が$U$と$W$の両方に属していることから、$\vb*{a} + \vb*{b}$は$U \cap W$に属する
 
-    よって、$V \cap W$は和について閉じている $\qed$
+    よって、$U \cap W$は和について閉じている $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries スカラー倍について}
-    $\vb*{a} \in V \cap W$と$c \in \mathbb{R}$をとる
+    $\vb*{a} \in U \cap W$と$c \in K$をとる
 
-    共通部分の定義より、$\vb*{a}$は$V$と$W$の両方に属しているので、部分空間の定義より
+    共通部分の定義より、$\vb*{a}$は$U$と$W$の両方に属しているので、部分空間の定義より
     \begin{align*}
-      c \vb*{a} & \in V \\
+      c \vb*{a} & \in U \\
       c \vb*{a} & \in W
     \end{align*}
 
-    よって、$c \vb*{a}$は$V \cap W$に属するため、$V \cap W$はスカラー倍について閉じている $\qed$
+    よって、$c \vb*{a}$は$U \cap W$に属するため、$U \cap W$はスカラー倍について閉じている $\qed$
   \end{subpattern}
 \end{proof}
 
@@ -49,47 +49,47 @@
 \marginnote{\refbookC p22〜23 \\ \refbookF p231〜232}
 
 \begin{theorem}{線形部分空間の和は部分空間}
-  $V,\,W$を$\mathbb{R}^n$の部分空間とするとき、\keyword{和空間}
+  $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{和空間}
   \begin{equation*}
-    V + W \coloneq \{ \vb*{v} + \vb*{w} \mid \vb*{v} \in V, \vb*{w} \in W \}
+    U + W \coloneq \{ \vb*{u} + \vb*{w} \mid \vb*{u} \in U, \vb*{w} \in W \}
   \end{equation*}
-  は$\mathbb{R}^n$の部分空間である
+  は$V$の部分空間である
 \end{theorem}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 和について}
-    $\vb*{a}_1, \vb*{a}_2 \in V, \, \vb*{b}_1, \vb*{b}_2 \in W$とする
+    $\vb*{a}_1, \vb*{a}_2 \in U, \, \vb*{b}_1, \vb*{b}_2 \in W$とする
 
-    $V$と$W$は部分空間なので、部分空間の定義より
+    $U$と$W$は部分空間なので、部分空間の定義より
     \begin{equation*}
-      \vb*{a}_1 + \vb*{a}_2 \in V, \quad \vb*{b}_1 + \vb*{b}_2 \in W
+      \vb*{a}_1 + \vb*{a}_2 \in U, \quad \vb*{b}_1 + \vb*{b}_2 \in W
     \end{equation*}
 
-    一方、和空間の定義より、$\vb*{a}_1 + \vb*{b}_1,\, \vb*{a}_2 + \vb*{b}_2$はそれぞれ$V+W$の元である
+    一方、和空間の定義より、$\vb*{a}_1 + \vb*{b}_1,\, \vb*{a}_2 + \vb*{b}_2$はそれぞれ$U+W$の元である
 
-    これらの元の和をとったときに、その和も$V + W$に属していれば、和空間は和について閉じているといえる
+    これらの元の和をとったときに、その和も$U + W$に属していれば、和空間は和について閉じているといえる
     \begin{align*}
       (\vb*{a}_1 + \vb*{b}_1) + (\vb*{a}_2 + \vb*{b}_2) & = (\vb*{a}_1 + \vb*{a}_2) + (\vb*{b}_1 + \vb*{b}_2) \\
-                                                        & \in V + W
+                                                        & \in U + W
     \end{align*}
     上式で、和空間は和について閉じていることが示された $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries スカラー倍について}
-    $\vb*{a} \in V, \, \vb*{b} \in W$と$c \in \mathbb{R}$をとる
+    $\vb*{a} \in U, \, \vb*{b} \in W$と$c \in K$をとる
 
-    $V$と$W$は部分空間なので、部分空間の定義より
+    $U$と$W$は部分空間なので、部分空間の定義より
     \begin{align*}
-      c \vb*{a} & \in V \\
+      c \vb*{a} & \in U \\
       c \vb*{b} & \in W
     \end{align*}
 
-    一方、和空間の定義より、$\vb*{a} + \vb*{b}$は$V + W$の元である
+    一方、和空間の定義より、$\vb*{a} + \vb*{b}$は$U + W$の元である
 
-    この元をスカラー倍したときに、そのスカラー倍も$V + W$に属していれば、和空間はスカラー倍について閉じているといえる
+    この元をスカラー倍したときに、そのスカラー倍も$U + W$に属していれば、和空間はスカラー倍について閉じているといえる
     \begin{align*}
       c(\vb*{a} + \vb*{b}) & = c \vb*{a} + c \vb*{b} \\
-                           & \in V + W
+                           & \in U + W
     \end{align*}
     上式で、和空間はスカラー倍について閉じていることが示された $\qed$
   \end{subpattern}
@@ -100,65 +100,65 @@
 部分空間を生成するベクトルを用いて、部分空間の和を表せる
 
 \begin{theorem}{部分空間の和と生成ベクトル}\label{thm:sum-of-subspaces-span}
-  $K^n$の2つの部分空間$V = \langle \vb*{v}_1, \dots, \vb*{v}_m \rangle$と
-  $W = \langle \vb*{w}_1, \dots, \vb*{w}_k \rangle$に対して、和空間$V + W$は
+  $K^n$の2つの部分空間$U = \langle \vb*{u}_1, \dots, \vb*{u}_m \rangle$と
+  $W = \langle \vb*{w}_1, \dots, \vb*{w}_k \rangle$に対して、和空間$U + W$は
   \begin{equation*}
-    V + W = \langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_m, \vb*{w}_1, \vb*{w}_2, \dots, \vb*{w}_k \rangle
+    U + W = \langle \vb*{u}_1, \vb*{u}_2, \dots, \vb*{u}_m, \vb*{w}_1, \vb*{w}_2, \dots, \vb*{w}_k \rangle
   \end{equation*}
   となる
 \end{theorem}
 
 \begin{proof}
-  和空間 $V + W$ は
+  和空間 $U + W$ は
   \begin{equation*}
-    V + W = \{ \vb*{x} \in K^n \mid \vb*{x} = \vb*{v} + \vb*{w},\ \vb*{v} \in V,\ \vb*{w} \in W \}
+    U + W = \{ \vb*{x} \in K^n \mid \vb*{x} = \vb*{u} + \vb*{w},\ \vb*{u} \in U,\ \vb*{w} \in W \}
   \end{equation*}
   と定義される
 
-  また、$\vb*{v}_1, \dots, \vb*{v}_m, \vb*{w}_1, \dots, \vb*{w}_k$ の張る部分空間は
+  また、$\vb*{u}_1, \dots, \vb*{u}_m, \vb*{w}_1, \dots, \vb*{w}_k$ の張る部分空間は
   \begin{equation*}
-    H = \langle \vb*{v}_1, \dots, \vb*{v}_m, \vb*{w}_1, \dots, \vb*{w}_k \rangle
+    H = \langle \vb*{u}_1, \dots, \vb*{u}_m, \vb*{w}_1, \dots, \vb*{w}_k \rangle
   \end{equation*}
   である
 
   これらが等しいことを示せばよい
 
-  \begin{subpattern}{$V+W \subseteq H$}
-    任意の $\vb*{x} \in V + W$ に対し、$\vb*{x} = \vb*{v} + \vb*{w}$（$\vb*{v} \in V$, $\vb*{w} \in W$）と書ける
+  \begin{subpattern}{$U+W \subseteq H$}
+    任意の $\vb*{x} \in U + W$ に対し、$\vb*{x} = \vb*{u} + \vb*{w}$（$\vb*{u} \in U$, $\vb*{w} \in W$）と書ける
 
     すなわち、
     \begin{align*}
-      \vb*{v} & = a_1 \vb*{v}_1 + \dots + a_m \vb*{v}_m & (a_i \in K) \\
+      \vb*{u} & = a_1 \vb*{u}_1 + \dots + a_m \vb*{u}_m & (a_i \in K) \\
       \vb*{w} & = b_1 \vb*{w}_1 + \dots + b_k \vb*{w}_k & (b_j \in K)
     \end{align*}
 
     よって、
     \begin{equation*}
-      \vb*{x} = \sum_{i=1}^m a_i \vb*{v}_i + \sum_{j=1}^k b_j \vb*{w}_j \in H
+      \vb*{x} = \sum_{i=1}^m a_i \vb*{u}_i + \sum_{j=1}^k b_j \vb*{w}_j \in H
     \end{equation*}
   \end{subpattern}
 
-  \begin{subpattern}{$H \subseteq V + W$}
+  \begin{subpattern}{$H \subseteq U + W$}
     任意の $\vb*{x} \in H$ は
     \begin{equation*}
-      \vb*{x} = \sum_{i=1}^m a_i \vb*{v}_i + \sum_{j=1}^k b_j \vb*{w}_j
+      \vb*{x} = \sum_{i=1}^m a_i \vb*{u}_i + \sum_{j=1}^k b_j \vb*{w}_j
     \end{equation*}
     と書ける
 
     ここで
     \begin{align*}
-      \vb*{v} & = \sum_{i=1}^m a_i \vb*{v}_i \in V, \\
+      \vb*{u} & = \sum_{i=1}^m a_i \vb*{u}_i \in U \\
       \vb*{w} & = \sum_{j=1}^k b_j \vb*{w}_j \in W
     \end{align*}
     とすれば、
     \begin{equation*}
-      \vb*{x} = \vb*{v} + \vb*{w} \in V + W
+      \vb*{x} = \vb*{u} + \vb*{w} \in U + W
     \end{equation*}
   \end{subpattern}
 
   \br
 
-  以上より、$V+W \subseteq H$と$H \subseteq V + W$が成り立つので、$V + W = H$が示された $\qed$
+  以上より、$U+W \subseteq H$と$H \subseteq U + W$が成り立つので、$U + W = H$が示された $\qed$
 \end{proof}
 
 \sectionline
