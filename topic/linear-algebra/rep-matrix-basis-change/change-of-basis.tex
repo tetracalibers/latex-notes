@@ -1,0 +1,101 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形変換の表現行列}
+\marginnote{\refbookA p106〜107}
+
+$V$を$n$次元の線形空間とし、$f$を$V$の線形変換、すなわち$V$から$V$自身への線形写像とする
+
+$V$の基底$\mathcal{V}$を選ぶとき、次の可換図式によって$n$次正方行列$A$が定められる
+\begin{center}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & V \\
+    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A"] & \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"]
+  \end{tikzcd}
+\end{center}
+
+写像の定義される空間と、写す先の空間が同じなので、どちらに対しても同じ基底を用いることができる
+
+\br
+
+もちろん、考える問題によっては別な基底を用いても構わないが、線形変換に対しては1つの基底を用いるのが自然である
+
+\sectionline
+\section{数ベクトル空間の基底変換行列}
+\marginnote{\refbookA p108〜109}
+
+$V = \mathbb{R}^n$とし、標準基底$\mathcal{E}$によって行列$A$で表現される線形変換を$f$とする
+
+別な基底$\mathcal{V}$によって$f$を表現する行列を$B$とするとき、$B$をどうやって計算すればよいかを考える
+
+\br
+
+$B$を定める原理は、\hyperref[sec:construction-of-matrix-rep]{表現行列の構成}で議論したように、
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) B
+\end{equation*}
+
+ここで、$\vb*{v}_i$や$f(\vb*{v}_i)$は$\mathbb{R}^n$の元なので、$(f(\vb*{v}_1), \ldots, f(\vb*{v}_n))$や$(\vb*{v}_1, \ldots, \vb*{v}_n)$は$n$次の正方行列であるとみなせる
+
+そこで、
+\begin{equation*}
+  P = (\vb*{v}_1, \ldots, \vb*{v}_n)
+\end{equation*}
+とおくとき、次に示すように$P$は正則行列である
+
+\begin{theorem}{基底変換行列の正則性}
+  基底の変換行列は正則行列である
+\end{theorem}
+
+\begin{proof}
+  $P$の列ベクトルは基底であるため、線形独立である
+
+  \hyperref[thm:invertible-iff-col-indep]{列ベクトルの線型独立性による正則の判定}で示したように、正則行列であることは、列ベクトルが線形独立であることと同値である $\qed$
+\end{proof}
+
+また、$B$を決める式
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) B
+\end{equation*}
+の左辺は、次のように書ける
+\begin{align*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) & = (A\vb*{v}_1, \ldots, A\vb*{v}_n) \\
+                                       & = A (\vb*{v}_1, \ldots, \vb*{v}_n) \\
+                                       & = A P
+\end{align*}
+
+よって、$B$を決める式は、
+\begin{equation*}
+  AP = PB
+\end{equation*}
+となり、$P$は正則である（逆行列が存在する）ので、両辺に左から$P^{-1}$をかけて、
+\begin{equation*}
+  B = P^{-1} A P
+\end{equation*}
+が得られる
+
+\br
+
+行列$P$は、標準基底$\mathcal{E}$から基底$\mathcal{V}$への\keyword{基底変換行列}と呼ばれる
+
+\sectionline
+
+\begin{definition}{行列の相似}
+  正方行列$A,\,B$に対して、正則行列$P$が存在して、
+  \begin{equation*}
+    B = P^{-1} A P
+  \end{equation*}
+  が成り立つとき、$A$と$B$は\keyword{相似}であるという
+\end{definition}
+
+$A$と$B$が相似であるとき、$A$と$B$は1つの線形変換$f$を異なる規定によって表現して得られた行列であるという関係にある
+
+\sectionline
+\section{線形空間の基底変換行列}
+\marginnote{\refbookA p110〜111}
+
+
+
+\end{document}
