@@ -276,7 +276,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 
 そこで、以上の議論を究極にまで押し進めると、次の定理になる
 
-\begin{theorem}{一次元部分空間への直和分解}
+\begin{theorem}{一次元部分空間への直和分解}\label{thm:diagonalizable-by-1d-invariant-sum}
   $n$次元部分空間$V$が、$n$個の$f$不変の1次元部分空間の直和に分解できるとき、すなわち、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_n$
@@ -297,6 +297,58 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 \section{一次元不変部分空間}
 \marginnote{\refbookF p246〜247}
 
+$W$を一次元部分空間とすると、これは基底$\vb*{w} \neq \vb*{0}$で張られる空間であるので、
+\begin{equation*}
+  W = \langle \vb*{w} \rangle = \{ \alpha \vb*{w} \mid \alpha \in K \}
+\end{equation*}
 
+この一次元部分空間$W$が$f$不変であるとは、定義より、
+\begin{equation*}
+  \forall \vb*{w} \in W \Longrightarrow f(\vb*{w}) \in W
+\end{equation*}
+であり、これで$W$の元は$\alpha \vb*{w}$とも$f(\vb*{w})$とも表せることになるので、
+\begin{equation*}
+  f(\vb*{w}) = \alpha \vb*{w} \quad (\alpha \in K)
+\end{equation*}
+がいえる
+
+\br
+
+以上をふまえて、\hyperref[thm:diagonalizable-by-1d-invariant-sum]{一次元部分空間への直和分解}という定理をより具体的に整理してみる
+
+\br
+
+$\dim(V) = n$とすると、$V$上の線形変換$f$の表現行列$A$を\hyperref[sec:construction-of-matrix-rep]{構成}する式は、
+\begin{equation*}
+  (f(\vb*{w}_1), \ldots, f(\vb*{w}_n)) = (\vb*{w}_1, \ldots, \vb*{w}_n) A
+\end{equation*}
+となるが、ここで、
+\begin{equation*}
+  (f(\vb*{w}_1), \ldots, f(\vb*{w}_n)) = (\alpha_1 \vb*{w}_1, \ldots, \alpha_n \vb*{w}_n)
+\end{equation*}
+であるので、
+\begin{equation*}
+  (f(\vb*{w}_1), \ldots, f(\vb*{w}_n)) = (\vb*{w}_1, \ldots, \vb*{w}_n) \begin{pmatrix}
+    \alpha_1 & 0        & \cdots & 0        \\
+    0        & \alpha_2 & \cdots & 0        \\
+    \vdots   & \vdots   & \ddots & \vdots   \\
+    0        & 0        & \cdots & \alpha_n
+  \end{pmatrix}
+\end{equation*}
+と書き換えられる
+
+\br
+
+したがって、$f$は基底$\vb*{w}_1, \ldots, \vb*{w}_n$について、次の\keyword{対角行列}で表される
+\begin{equation*}
+  \begin{pmatrix}
+    \alpha_1 & 0        & \cdots & 0        \\
+    0        & \alpha_2 & \cdots & 0        \\
+    \vdots   & \vdots   & \ddots & \vdots   \\
+    0        & 0        & \cdots & \alpha_n
+  \end{pmatrix}
+\end{equation*}
+
+ここで現れたスカラー$\alpha_i$やベクトル$\vb*{w}_i$と、線形写像$f$との関係が、\keyword{固有値}・\keyword{固有ベクトル}と行列の\keyword{対角化}という話題に発展する
 
 \end{document}
