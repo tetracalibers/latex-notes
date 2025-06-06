@@ -1,0 +1,138 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{不変部分空間}
+\marginnote{\refbookA p114 \\ \refbookF p238〜239}
+
+$V$上の線形変換$f$について、「変換$f$で写しても変わらない」という性質を考える
+
+\begin{definition}{$f$不変}
+  $f$を線形空間$V$の線形変換とする
+
+  $V$の部分空間$W$に対して、
+  \begin{equation*}
+    f(W) \subset W
+  \end{equation*}
+  すなわち、
+  \begin{equation*}
+    \forall\vb*{w} \in W \Longrightarrow f(\vb*{w}) \in W
+  \end{equation*}
+  が成り立つとき、$W$は\keyword{$f$不変}な部分空間であるという
+
+  \br
+
+  また、$V=\mathbb{R}^n$で、$f$が正方行列$A$によって定まっているときは、$f$不変な部分空間$W$を\keyword{$A$不変}な部分空間ともいう
+\end{definition}
+
+\sectionline
+\section{写像の制限と不変部分空間}
+\marginnote{\refbookA p114 \\ \refbookF p240〜242、p363〜364}
+
+\begin{definition}{写像の制限}
+  写像$f\colon X \to Y$において、$X$のある部分集合$S$が与えられたとき、定義域を$S$に限定したものを$f$の$S$に対する\keyword{制限}といい、
+  \begin{equation*}
+    f|_S\colon S \to Y
+  \end{equation*}
+  と表す
+\end{definition}
+
+\sectionline
+
+\begin{theorem}{不変部分空間による線形変換のブロック構造表現}
+  $V$を$n$次元線形空間とし、線形変換$f\colon V \to V$を考える
+
+  このとき、$V$のある部分空間$W$が$f$不変ならば、$V$の適当な基底について、$f$は
+  \begin{equation*}
+    \begin{pmatrix}
+      * & * \\
+      O & *
+    \end{pmatrix} \text{または}
+    \begin{pmatrix}
+      * & O \\
+      * & *
+    \end{pmatrix}
+  \end{equation*}
+  という形の行列で表すことができる
+\end{theorem}
+
+\begin{proof}
+  $\dim(W) = r$とし、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を\hyperref[thm:basis-extension]{延長}して$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$をとる
+
+  このとき、\hyperref[sec:construction-of-matrix-rep]{表現行列の構成法}より、
+  \begin{equation*}
+    f(\vb*{v}_j) = \sum_{i=1}^r a_{ij} \vb*{v}_i + \sum_{i=r+1}^n a_{ij} \vb*{v}_i \quad (1 \leq j \leq n)
+  \end{equation*}
+  とおける
+
+  \br
+
+  ここで、$W$は$f$不変であることは、$1 \leq j \leq r$の範囲では$f(\vb*{v}_j) \in W$であることを意味する
+
+  $W$の元$f(\vb*{v}_j)$は、$W$の基底だけを用いて表現できるので、
+  \begin{equation*}
+    f(\vb*{v}_j) = \sum_{i=1}^r a_{ij} \vb*{v}_i \quad (1 \leq j \leq r)
+  \end{equation*}
+  すなわち、もともとの$f(\vb*{v}_j)$の式において、
+  \begin{equation*}
+    \sum_{i=r+1}^n a_{ij} \vb*{v}_i = \vb*{0} \quad (1 \leq j \leq r)
+  \end{equation*}
+  となっている
+
+  $\vb*{v}_i$は基底なので線型独立であり、したがって、
+  \begin{equation*}
+    a_{ij} = 0 \quad (1 \leq j \leq r, \, r+1 \leq i \leq n)
+  \end{equation*}
+  が成り立つ
+
+  \br
+
+  この条件より、$f$の表現行列$(a_{ij})$は、
+  \begin{equation*}
+    \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{2}^{r} & \Hdotsfor{2}^{n-r} \\
+      \Block{2-2}<\large>{*} & & \Block{2-2}<\large>{*} && \Vdotsfor{2}^{r}  \\
+      &&& \\
+      \hline
+      \Block{2-2}<\large>{O}& & \Block{2-2}<\large>{*} && \Vdotsfor{2}^{n-r} \\
+      &&&
+    \end{pNiceArray}
+  \end{equation*}
+  というような形になる
+
+  \br
+
+  また、$V$の基底として、順序を変えた$\vb*{v}_{r+1}, \ldots, \vb*{v}_n, \vb*{v}_1, \ldots, \vb*{v}_r$を取ることもできる
+
+  この場合は、
+  \begin{equation*}
+    f(\vb*{v}_j) = \sum_{i=1}^r a_{ij} \vb*{v}_i + \sum_{i=r+1}^n a_{ij} \vb*{v}_i \quad (r+1 \leq j \leq n)
+  \end{equation*}
+  とおくと、$r+1 \leq j \leq n$の範囲（$V$の基底の後半部分）で
+  \begin{equation*}
+    \sum_{i=1}^r a_{ij} \vb*{v}_i = \vb*{0}
+  \end{equation*}
+  となるので、すなわち、
+  \begin{equation*}
+    a_{ij} = 0 \quad (r+1 \leq j \leq n, \, 1 \leq i \leq r)
+  \end{equation*}
+  よって、$f$の表現行列$(a_{ij})$は、
+  \begin{equation*}
+    \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{2}^{n-r} & \Hdotsfor{2}^{r} \\
+      \Block{2-2}<\large>{*} & & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{n-r}  \\
+      &&& \\
+      \hline
+      \Block{2-2}<\large>{*}& & \Block{2-2}<\large>{*} && \Vdotsfor{2}^{r} \\
+      &&&
+    \end{pNiceArray}
+  \end{equation*}
+  という形になる
+
+  \br
+
+  以上より、2通りの$f$の表現行列の形が得られた $\qed$
+\end{proof}
+
+\end{document}
