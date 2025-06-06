@@ -1,0 +1,68 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{固有値と固有ベクトル}
+\marginnote{\refbookA p183〜184 \\ \refbookC p178〜179 \\ \refbookF p251〜252}
+
+与えられた線形写像を表現する行列を単純化（\keyword{対角化}）する上で、一次元不変部分空間への直和分解が本質的な役割を果たす
+
+\br
+
+一次元の$f$不変部分空間$W$の基底$\vb*{a}$とは、
+\begin{shaded}
+  ある$\lambda \in K$について$f(\vb*{a}) = \lambda \vb*{a}$
+\end{shaded}
+となるような$\vb*{0}$以外のベクトルだった
+
+\begin{definition}{固有値と固有ベクトル}
+  体$K$上の線形空間$V$上の線形変換$f\colon V \to V$に対して、
+  \begin{equation*}
+    f(\vb*{a}) = \lambda \vb*{a} \quad (\vb*{a} \neq \vb*{0})
+  \end{equation*}
+  となるベクトル$\vb*{a} \in V$が存在するとき、このようなスカラー$\lambda \in K$を、線形変換$f$の\keyword{固有値}という
+
+  また、このようなベクトル$\vb*{a}$を、$f$の固有値$\lambda$に属する\keyword{固有ベクトル}という
+\end{definition}
+
+線形変換$f$の表現行列を$A$とすると、これは正方行列であり、$f(\vb*{a}) = A\vb*{a}$と表せる
+
+よって、固有値と固有ベクトルの定義は、次のようにも書ける
+
+\begin{definition}{行列の固有値と固有ベクトル}
+  正方行列$A$に対して、
+  \begin{equation*}
+    A\vb*{a} = \lambda \vb*{a} \quad (\vb*{a} \neq \vb*{0})
+  \end{equation*}
+  となるベクトル$\vb*{a}$とスカラー$\lambda$が存在するとき、このようなスカラー$\lambda$を行列$A$の\keyword{固有値}という
+
+  また、このようなベクトル$\vb*{a}$を、行列$A$の固有値$\lambda$に属する\keyword{固有ベクトル}という
+\end{definition}
+
+\sectionline
+\section{固有ベクトルによる行列の対角化}
+\marginnote{\refbookA p184〜185}
+
+\hyperref[sec:1d-invariant-subspaces]{一次元不変部分空間}に関する議論で見たように、
+\begin{equation*}
+  f(\vb*{a}_i) = \lambda_i \vb*{a}_i \quad (i = 1, \dots, n)
+\end{equation*}
+となるような$\vb*{a}_i$を基底として用いると、線形変換$f$は次のような対角行列で表現できた
+\begin{equation*}
+  \begin{pmatrix}
+    \lambda_1 & 0         & \cdots & 0         \\
+    0         & \lambda_2 & \cdots & 0         \\
+    \vdots    & \vdots    & \ddots & \vdots    \\
+    0         & 0         & \cdots & \lambda_n
+  \end{pmatrix}
+\end{equation*}
+
+そして、このような$\vb*{a}_i$を\keyword{固有ベクトル}、$\lambda_i$を\keyword{固有値}として定義したため、このことは、
+\begin{shaded}
+  行列$A$の固有ベクトルからなる基底が存在すれば、
+  $A$は\keyword{対角化}できる
+\end{shaded}
+と言い換えられる
+
+\end{document}
