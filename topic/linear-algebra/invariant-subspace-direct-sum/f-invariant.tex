@@ -30,17 +30,7 @@ $V$上の線形変換$f$について、「変換$f$で写しても変わらな�
 \section{写像の制限と不変部分空間}
 \marginnote{\refbookA p114 \\ \refbookF p240〜242、p363〜364}
 
-\begin{definition}{写像の制限}
-  写像$f\colon X \to Y$において、$X$のある部分集合$S$が与えられたとき、定義域を$S$に限定したものを$f$の$S$に対する\keyword{制限}といい、
-  \begin{equation*}
-    f|_S\colon S \to Y
-  \end{equation*}
-  と表す
-\end{definition}
-
-\sectionline
-
-\begin{theorem}{不変部分空間による線形変換のブロック構造表現}
+\begin{theorem}{不変部分空間による線形変換のブロック型行列表現}\label{thm:block-matrix-by-invariant-subspace}
   $V$を$n$次元線形空間とし、線形変換$f\colon V \to V$を考える
 
   このとき、$V$のある部分空間$W$が$f$不変ならば、$V$の適当な基底について、$f$は
@@ -134,5 +124,179 @@ $V$上の線形変換$f$について、「変換$f$で写しても変わらな�
 
   以上より、2通りの$f$の表現行列の形が得られた $\qed$
 \end{proof}
+
+$V$の基底を$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$ととった場合、$f(\vb*{v}_j) \in W$は
+\begin{equation*}
+  f(\vb*{v}_j) = \sum_{i=1}^r a_{ij} \vb*{v}_i \quad (1 \leq j \leq r)
+\end{equation*}
+だけで表現できた
+
+この$1 \leq i \leq r,\, 1 \leq j \leq r$の部分は、$f$の表現行列
+\begin{equation*}
+  A = (a_{ij}) = \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+    \Hdotsfor{2}^{r} & \Hdotsfor{2}^{n-r} \\
+    \Block{2-2}<\large>{A_{11}} & & \Block{2-2}<\large>{A_{12}} && \Vdotsfor{2}^{r}  \\
+    &&& \\
+    \hline
+    \Block{2-2}<\large>{O}& & \Block{2-2}<\large>{A_{22}} && \Vdotsfor{2}^{n-r} \\
+    &&&
+  \end{pNiceArray}
+\end{equation*}
+の、$A_{11}$の部分に対応する
+
+\br
+
+つまり、この行列$A_{11}$は、$\vb*{v}_1, \ldots, \vb*{v}_r$で張られる$V$の部分空間$W$から$W$への線形写像$f'$を、基底$\vb*{v}_1, \ldots, \vb*{v}_r$について表現する行列になっている
+
+\br
+
+$f'$は、$f$の定義域を$W$に制限したものになっているが、$W$の元に限定して考える限り、実質的には$f$と区別がないものである
+
+この意味で、写像$f'$を、写像$f$の$W$への\keyword{制限}と呼び、$f|_W$と表記する
+
+\begin{definition}{写像の制限}
+  写像$f\colon X \to Y$において、$X$のある部分集合$S$が与えられたとき、定義域を$S$に限定したものを$f$の$S$に対する\keyword{制限}といい、
+  \begin{equation*}
+    f|_S\colon S \to Y
+  \end{equation*}
+  と表す
+\end{definition}
+
+同様に、$V$の基底を$\vb*{v}_{r+1}, \ldots, \vb*{v}_n, \vb*{v}_1, \ldots, \vb*{v}_r$ととった場合、$f(\vb*{v}_j) \in W$は
+\begin{equation*}
+  \sum_{i=r+1}^n a_{ij} \vb*{v}_i \quad (r+1 \leq j \leq n)
+\end{equation*}
+だけで表現できた
+
+この$r+1 \leq i \leq n,\, r+1 \leq j \leq n$の部分は、$f$の表現行列
+\begin{equation*}
+  A = (a_{ij}) = \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+    \Hdotsfor{2}^{n-r} & \Hdotsfor{2}^{r} \\
+    \Block{2-2}<\large>{A_{11}} & & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{n-r}  \\
+    &&& \\
+    \hline
+    \Block{2-2}<\large>{A_{21}}& & \Block{2-2}<\large>{A_{22}} && \Vdotsfor{2}^{r} \\
+    &&&
+  \end{pNiceArray}
+\end{equation*}
+の、$A_{22}$の部分に対応する
+
+つまり、この場合は、$A_{22}$が変換$f$の$W$への制限$f|_W$を表現する行列になっている
+
+\sectionline
+\section{不変部分空間への直和分解}
+\marginnote{\refbookA p114 \\ \refbookF p242〜245}
+
+\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明では、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を\hyperref[thm:basis-extension]{延長}したものを$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$とした
+
+このとき、
+\begin{equation*}
+  W' = \langle \vb*{v}_{r+1}, \ldots, \vb*{v}_n \rangle
+\end{equation*}
+とおくと、$V$の基底が$W, \, W'$の基底を合わせたものになっているため、\hyperref[thm:direct-sum-and-basis]{直和の基底に関する定理}より、
+\begin{equation*}
+  V = W \oplus W'
+\end{equation*}
+となる
+
+\br
+
+ここで、もし$W'$も$f$不変であれば、右上の$A_{12}$も零行列になって、表現行列は
+\begin{equation*}
+  A = (a_{ij}) = \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+    \Hdotsfor{2}^{r} & \Hdotsfor{2}^{n-r} \\
+    \Block{2-2}<\large>{A_{11}} & & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{r}  \\
+    &&& \\
+    \hline
+    \Block{2-2}<\large>{O}& & \Block{2-2}<\large>{A_{22}} && \Vdotsfor{2}^{n-r} \\
+    &&&
+  \end{pNiceArray}
+\end{equation*}
+という\keyword{ブロック対角型}になる
+
+\begin{theorem}{不変部分空間への直和分解}
+  線形空間$V$と、$V$上の線形変換$f$に対し、$V$が$f$不変な部分空間$W_1$と$W_2$の直和に分解することができれば、すなわち、
+  \begin{enumerate}[label=\romanlabel]
+    \item $V = W_1 \oplus W_2$
+    \item $W_1, W_2$は$f$不変な$V$の部分空間
+  \end{enumerate}
+  となる$W_1,\,W_2$が存在すれば、適当な$V$の基底について、$f$は次のような形の行列で表せる
+
+  \begin{equation*}
+    \begin{pNiceArray}{ccccc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{3}^{\dim(W_1)} & \Hdotsfor{2}^{\dim(W_2)} \\
+      \Block[borders={bottom,top,right,left,tikz=dashed}]{3-3}<\large>{*} & & & \Block{3-2}<\large>{O} && \Vdotsfor{3}^{\dim(W_1)}  \\
+      &&&& \\
+      &&&& \\
+      \Block{2-3}<\large>{O} && & \Block[borders={bottom,top,right,left,tikz=dashed}]{2-2}<\large>{*} && \Vdotsfor{2}^{\dim(W_2)} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+  または
+  \begin{equation*}
+    \begin{pNiceArray}{ccccc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{2}^{\dim(W_2)} & \Hdotsfor{3}^{\dim(W_1)} \\
+      \Block[borders={bottom,top,right,left,tikz=dashed}]{2-2}<\large>{*} & & \Block{2-3}<\large>{O} &&& \Vdotsfor{2}^{\dim(W_2)}  \\
+      &&&& \\
+      \Block{3-2}<\large>{O} && \Block[borders={bottom,top,right,left,tikz=dashed}]{3-3}<\large>{*} &&& \Vdotsfor{3}^{\dim(W_1)} \\
+      &&&& \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $W_1$の基底、$W_2$の基底をこの順に並べるか、その反対の順に並べて、$V$の基底を構成することで、\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明と同様に示される $\qed$
+\end{proof}
+
+\sectionline
+
+さらに、$V$をより細かい部分空間の直和に分解できる場合には、次のようになる
+
+\begin{theorem}{複数の不変部分空間への直和分解}
+  線形空間$V$と、$V$上の線形変換$f$について、
+  \begin{enumerate}[label=\romanlabel]
+    \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_k$
+    \item 各部分空間$W_i$は$f$不変な$V$の部分空間
+  \end{enumerate}
+  であるならば、適当な$V$の基底に対し、$f$は次のような形の行列で表せる
+  \begin{equation*}
+    \begin{pNiceArray}{cccc}[margin,columns-width=1em]
+      \Block[borders={bottom,top,right,left,tikz=dashed}]{1-1}<\large>{*} & & & O \\
+      & \Block[borders={bottom,top,right,left,tikz=dashed}]{1-1}<\large>{*} & & \\
+      & & \ddots & \\
+      O & & & \Block[borders={bottom,top,right,left,tikz=dashed}]{1-1}<\large>{*} \\
+    \end{pNiceArray}
+  \end{equation*}
+\end{theorem}
+
+対角線上の各正方形の大きさは、各部分空間$W_i$の次元に対応する
+
+\br
+
+そこで、以上の議論を究極にまで押し進めると、次の定理になる
+
+\begin{theorem}{一次元部分空間への直和分解}
+  $n$次元部分空間$V$が、$n$個の$f$不変の1次元部分空間の直和に分解できるとき、すなわち、
+  \begin{enumerate}[label=\romanlabel]
+    \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_n$
+    \item $W_i \, (i=1,2,\ldots,n)$は$f$不変な1次元部分空間
+  \end{enumerate}
+  となるときは、$f$は次のような\keyword{対角行列}で表せる
+  \begin{equation*}
+    \begin{pNiceArray}{cccc}[margin]
+      * & & & O \\
+      & * & & \\
+      & & \ddots & \\
+      O & & & * \\
+    \end{pNiceArray}
+  \end{equation*}
+\end{theorem}
+
+\sectionline
+\section{一次元不変部分空間}
+\marginnote{\refbookF p246〜247}
+
+
 
 \end{document}
