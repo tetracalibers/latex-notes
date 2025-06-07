@@ -41,8 +41,98 @@
 \end{definition}
 
 \sectionline
+\section{異なる固有値に属する固有ベクトル}
+\marginnote{\refbookA p186〜187 \\ \refbookF p265〜266}
+
+\begin{theorem}{異なる固有値に属する固有ベクトルの非一致性}
+  異なる固有値$\alpha_i,\, \alpha_j \, (\alpha_i \neq \alpha_j)$に属する固有ベクトル$\vb*{p}_i, \vb*{p}_j$は異なるベクトルである
+\end{theorem}
+
+\begin{proof}
+  固有値と固有ベクトルの定義より、
+  \begin{equation*}
+    \left\{
+    \begin{array}{rcl}
+      A\vb*{p}_i & = & \alpha_i \vb*{p}_i \\
+      A\vb*{p}_j & = & \alpha_j \vb*{p}_j
+    \end{array}
+    \right.
+  \end{equation*}
+  である
+
+  もし$\vb*{p}_i = \vb*{p}_j$ならば、
+  \begin{gather*}
+    \alpha_i \vb*{p}_i              = \alpha_j \vb*{p}_i \\
+    \therefore \quad (\alpha_i - \alpha_j) \vb*{p}_i = \vb*{0}
+  \end{gather*}
+  となるが、$\vb*{p}_i$は固有ベクトルであり$\vb*{0}$ではないので、$\alpha_i - \alpha_j = 0$となる
+
+  すなわち、
+  \begin{equation*}
+    \alpha_i = \alpha_j
+  \end{equation*}
+  が成立し、これは$\alpha_i \neq \alpha_j$に反する
+
+  よって、$\vb*{p}_i \neq \vb*{p}_j$でなければならない $\qed$
+\end{proof}
+
+この定理を発展させて、次のことがいえる
+
+\begin{theorem}{異なる固有値に属する固有ベクトルの線型独立性}\label{thm:eigenvectors-of-distinct-eigenvalues-are-independent}
+  $\alpha_1, \alpha_2, \ldots, \alpha_k$が行列$A$の相異なる固有値であるとすると、それぞれに属する固有ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_k$は線型独立である
+\end{theorem}
+
+\begin{proof}
+  固有値の個数$k$についての数学的帰納法によって証明する
+
+  \br
+
+  $k=1$のとき、$\vb*{p}_1$は固有ベクトルゆえ$\vb*{0}$ではないので、$\{\vb*{p}_1\}$は線型独立である
+
+  \br
+
+  $k \geq 2$として、$(k-1)$個以下の固有ベクトルについて定理の主張が成り立つと仮定する
+
+  このとき、線形関係式
+  \begin{equation*}
+    c_1 \vb*{p}_1 + c_2 \vb*{p}_2 + \cdots + c_k \vb*{p}_k = \vb*{0}
+  \end{equation*}
+  を考える
+
+  両辺に$A$をかけると、$A\vb*{p}_i = \alpha_i \vb*{p}_i$より、
+  \begin{equation*}
+    c_1 \alpha_1 \vb*{p}_1 + c_2 \alpha_2 \vb*{p}_2 + \cdots + c_k \alpha_k \vb*{p}_k = \vb*{0}
+  \end{equation*}
+  この等式から、初めの線形関係式の$\alpha_k$倍を引いて
+  \begin{equation*}
+    c_1 (\alpha_1 - \alpha_k) \vb*{p}_1 + \cdots + c_{k-1} (\alpha_{k-1} - \alpha_k) \vb*{p}_{k-1} = \vb*{0}
+  \end{equation*}
+
+  ここで、帰納法の仮定より、$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_{k-1}$は線型独立であるため、係数はすべて0でなければならない
+  \begin{equation*}
+    c_1 (\alpha_1 - \alpha_k) = 0, \quad \ldots, \quad c_{k-1} (\alpha_{k-1} - \alpha_k) = 0
+  \end{equation*}
+
+  さらに、$\alpha_1, \alpha_2, \ldots, \alpha_k$は相異なる固有値であるため、$\alpha_i - \alpha_k \neq 0$ ($i = 1, \ldots, k-1$)である
+
+  よって、
+  \begin{equation*}
+    c_1 = 0, \quad \ldots, \quad c_{k-1} = 0
+  \end{equation*}
+  が成り立つ
+
+  この結果を初めの線形関係式に代入すると、
+  \begin{equation*}
+    c_k \vb*{p}_k = \vb*{0}
+  \end{equation*}
+  が残るが、$\vb*{p}_k$は固有ベクトルであり$\vb*{0}$ではないため、$c_k = 0$も成り立つ
+
+  以上より、$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_k$は線型独立である $\qed$
+\end{proof}
+
+\sectionline
 \section{固有ベクトルによる行列の対角化}
-\marginnote{\refbookA p184〜185}
+\marginnote{\refbookA p184〜185 \\ \refbookF p264〜265、p267}
 
 \hyperref[sec:1d-invariant-subspaces]{一次元不変部分空間}に関する議論で見たように、
 \begin{equation*}
@@ -58,11 +148,118 @@
   \end{pmatrix}
 \end{equation*}
 
-そして、このような$\vb*{a}_i$を\keyword{固有ベクトル}、$\lambda_i$を\keyword{固有値}として定義したため、このことは、
+そして、このような$\vb*{a}_i$を\keyword{固有ベクトル}、$\lambda_i$を\keyword{固有値}として定義したため、
 \begin{shaded}
-  行列$A$の固有ベクトルからなる基底が存在すれば、
+  行列$A$の固有ベクトルからなる基底が存在すれば、\\
   $A$は\keyword{対角化}できる
 \end{shaded}
 と言い換えられる
+
+\sectionline
+
+線形変換$f$の表現行列を$A$とすると、$A$は正方行列である
+
+\br
+
+たとえば基底を$A$の固有ベクトルに変換した際に、この\hyperref[thm:similarity-under-basis-change]{線形変換$f$の表現行列が$P^{-1}AP$に変化する}として、この行列$P^{-1}AP$が対角行列となる場合が、$A$が\keyword{対角化}できるということである
+
+\begin{definition}{対角化可能}
+  与えられた正方行列$A$が適当な正則行列$P$により
+  \begin{equation*}
+    P^{-1}AP = \begin{pNiceArray}{cccc}[margin]
+      \lambda_1 & & & O \\
+      & \lambda_2 & & \\
+      & & \ddots & \\
+      O & & & \lambda_n \\
+    \end{pNiceArray}
+  \end{equation*}
+  と変形できるとき、$A$は\keyword{対角化可能}であるという
+\end{definition}
+
+\sectionline
+
+行列$A$の固有ベクトルからなる基底が存在すれば、$A$は\keyword{対角化可能}である、ということを定式化しよう
+
+\begin{theorem}{対角化可能性と固有ベクトルの線型独立性}\label{thm:diagonalizable-iff-n-indep-eigenvectors}
+  $n$次元正方行列$A$が対角化可能であるための必要十分条件は、線型独立な$n$個の$A$の固有ベクトルが存在することである
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 線型独立な$A$の固有ベクトルが存在 $\Longrightarrow$ $A$は対角化可能}
+    $A$の固有ベクトルを$\vb*{a}_i \, (i = 1, \dots, n)$、それに対応する固有値を$\alpha_i$とすると、固有値と固有ベクトルの定義より、次式が成り立つ
+    \begin{equation*}
+      f(\vb*{a}_i) = \alpha_i \vb*{a}_i \quad (i = 1, \dots, n)
+    \end{equation*}
+    仮定より$\vb*{a}_i$は線型独立であり、一次元部分空間$\{ c \vb*{a}_i \mid c \in K \}$は$\vb*{a}_i$によって張られる空間である
+
+    よって、$\vb*{a}_i$を基底として用いることができるので、\hyperref[sec:1d-invariant-subspaces]{一次元不変部分空間}に関する議論で見たように、$A$は対角行列で表現できる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $A$は対角化可能 $\Longrightarrow$ 線型独立な$A$の固有ベクトルが存在}
+    $A$が対角化可能であることから、ある正則行列$P$が存在して、
+    \begin{equation*}
+      P^{-1}AP = \begin{pNiceArray}{cccc}[margin]
+        \alpha_1 & & & O \\
+        & \alpha_2 & & \\
+        & & \ddots & \\
+        O & & & \alpha_n \\
+      \end{pNiceArray}
+    \end{equation*}
+    が成り立つので、両辺に$P$をかけて、
+    \begin{equation*}
+      AP = P \begin{pNiceArray}{cccc}[margin]
+        \alpha_1 & & & O \\
+        & \alpha_2 & & \\
+        & & \ddots & \\
+        O & & & \alpha_n \\
+      \end{pNiceArray}
+    \end{equation*}
+    が成り立つ
+
+    ここで、$P$を$n$個の列ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$を横に並べたもの、すなわち、
+    \begin{equation*}
+      P = (\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n)
+    \end{equation*}
+    とみなせば、上の等式は、
+    \begin{equation*}
+      \left\{
+      \begin{array}{c}
+        A\vb*{p}_1 = \alpha_1 \vb*{p}_1 \\
+        A\vb*{p}_2 = \alpha_2 \vb*{p}_2 \\
+        \vdots                          \\
+        A\vb*{p}_n = \alpha_n \vb*{p}_n
+      \end{array}
+      \right.
+    \end{equation*}
+    という関係を意味する
+
+    これはすなわち、$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$がそれぞれの固有値$\alpha_1, \alpha_2, \ldots, \alpha_n$に属する$A$の固有ベクトルであることを意味する
+
+    さらに、\hyperref[thm:invertible-iff-col-indep]{$P$は正則であるため、その列ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$は線型独立}である $\qed$
+  \end{subpattern}
+\end{proof}
+
+この定理と、\hyperref[thm:eigenvectors-of-distinct-eigenvalues-are-independent]{異なる固有値に属する固有ベクトルの線型独立性}から、次の定理が得られる
+
+\begin{theorem}{固有値の相異性と対角化可能性}
+  $n$次正方行列$A$が異なる$n$個の固有値$\alpha_1, \ldots, \alpha_n$をもつならば、$A$は対角化可能である
+
+  すなわち、ある$n$次正則行列$P$によって、
+  \begin{equation*}
+    P^{-1}AP = \begin{pNiceArray}{cccc}[margin]
+      \alpha_1 & & & O \\
+      & \alpha_2 & & \\
+      & & \ddots & \\
+      O & & & \alpha_n \\
+    \end{pNiceArray}
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  $n$個の異なる固有値$\alpha_1, \ldots, \alpha_n$に属する固有ベクトル$\vb*{p}_1, \ldots, \vb*{p}_n$は線型独立である
+
+  よって、固有ベクトルの線型独立性より、対角化可能性が導かれる $\qed$
+\end{proof}
 
 \end{document}
