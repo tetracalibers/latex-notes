@@ -94,8 +94,137 @@ $A$と$B$が相似であるとき、$A$と$B$は1つの線形変換$f$を異な�
 
 \sectionline
 \section{線形空間の基底変換行列}
-\marginnote{\refbookA p110〜111}
+\marginnote{\refbookA p110〜111 \\ \refbookF p215〜219}
 
+$V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{v}_n\}$を別な基底$\mathcal{V}' = \{\vb*{v}'_1, \ldots, \vb*{v}'_n\}$に取り替えることを考える
 
+\br
+
+このとき、$\{\vb*{v}_1, \ldots, \vb*{v}_n\}$が$V$の基底であることから、$V$の元である$\vb*{v}'_1, \ldots, \vb*{v}'_n$は、$\{\vb*{v}_1, \ldots, \vb*{v}_n\}$の線形結合で表される
+
+そこで、
+\begin{equation*}
+  \vb*{v}'_i = p_{1i} \vb*{v}_1 + p_{2i} \vb*{v}_2 + \cdots + p_{ni} \vb*{v}_n
+\end{equation*}
+すなわち、
+\begin{equation*}
+  (\vb*{v}'_1, \ldots, \vb*{v}'_n) = (\vb*{v}_1, \ldots, \vb*{v}_n) (p_{ij})
+\end{equation*}
+とおく
+
+\br
+
+このとき、写像$f\colon V \to V$を
+\begin{equation*}
+  \left\{
+  \begin{array}{rcl}
+    f(\vb*{v}_1) & = & \vb*{v}'_1 \\
+    f(\vb*{v}_2) & = & \vb*{v}'_2 \\
+    \vdots       &   & \vdots     \\
+    f(\vb*{v}_n) & = & \vb*{v}'_n
+  \end{array}
+  \right.
+\end{equation*}
+を満たすものとして定義する
+
+これはすなわち、基底$\mathcal{V}$を構成するそれぞれのベクトルを、基底$\mathcal{V}'$を構成するベクトルに順に写す線形変換であり、
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n) ) = (\vb*{v}'_1, \ldots, \vb*{v}'_n)
+\end{equation*}
+を満たすものである
+
+\br
+
+すると、行列$P = (p_{ij})$を定める式は、
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) P
+\end{equation*}
+と書ける
+
+よって、$P$は基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$を表す線形写像$f$の表現行列である
+
+この意味で、$P$を基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の\keyword{基底変換行列}と呼ぶ
+
+\begin{theorem}{線形空間の基底変換行列}
+  $V$を線形空間とし、$\mathcal{V} = \{\vb*{v}_i\}_{i=1}^n,\, \mathcal{V}' = \{\vb*{v}'_i\}_{i=1}^n$を$V$の基底とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列$P$は、
+  \begin{equation*}
+    (\vb*{v}'_1, \ldots, \vb*{v}'_n) = (\vb*{v}_1, \ldots, \vb*{v}_n) P
+  \end{equation*}
+  により定まる
+\end{theorem}
+
+\sectionline
+
+一方、この行列$P$はベクトルの成分表示の変換に用いることもできる
+
+\begin{theorem}{座標ベクトルの変換則}
+  基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とし、ベクトル$\vb*{a} \in V$の$\mathcal{V},\, \mathcal{V}'$に関する座標ベクトルをそれぞれ$\vb*{x},\, \vb*{x}'$とするとき、
+  \begin{equation*}
+    \vb*{x} = P \vb*{x}'
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  ベクトル$\vb*{a}$の2種類の基底$\vb*{v}_1, \ldots, \vb*{v}_n$と$\vb*{v}'_1, \ldots, \vb*{v}'_n$に関する成分
+  \begin{equation*}
+    \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix},\quad
+    \begin{pmatrix}
+      x'_1   \\
+      x'_2   \\
+      \vdots \\
+      x'_n
+    \end{pmatrix}
+  \end{equation*}
+  を考えると、$\vb*{a}$の2通りの表現
+  \begin{align*}
+    \vb*{a} & = x_1 \vb*{v}_1 + x_2 \vb*{v}_2 + \cdots + x_n \vb*{v}_n \\
+            & = (\vb*{v}_1, \ldots, \vb*{v}_n) \begin{pmatrix}
+                                                 x_1    \\
+                                                 x_2    \\
+                                                 \vdots \\
+                                                 x_n
+                                               \end{pmatrix}
+  \end{align*}
+  \begin{align*}
+    \vb*{a} & = x'_1 \vb*{v}'_1 + x'_2 \vb*{v}'_2 + \cdots + x'_n \vb*{v}'_n \\
+            & = (\vb*{v}'_1, \ldots, \vb*{v}'_n) \begin{pmatrix}
+                                                   x'_1   \\
+                                                   x'_2   \\
+                                                   \vdots \\
+                                                   x'_n
+                                                 \end{pmatrix}              \\
+            & = (\vb*{v}_1, \ldots, \vb*{v}_n) P \begin{pmatrix}
+                                                   x'_1   \\
+                                                   x'_2   \\
+                                                   \vdots \\
+                                                   x'_n
+                                                 \end{pmatrix}
+  \end{align*}
+  が得られる
+
+  どちらも$(\vb*{v}_1, \ldots, \vb*{v}_n)$との積の形、すなわち$\vb*{v}_1, \ldots, \vb*{v}_n$の線形結合として表されている
+
+  ここで、基底$\vb*{v}_1, \ldots, \vb*{v}_n$の線型独立性から、その\hyperref[thm:lin-indep-iff-unique-lincomb]{線形結合は一意的である}ので、係数比較ができて、
+  \begin{equation*}
+    \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix} = P \begin{pmatrix}
+      x'_1   \\
+      x'_2   \\
+      \vdots \\
+      x'_n
+    \end{pmatrix}
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
 
 \end{document}
