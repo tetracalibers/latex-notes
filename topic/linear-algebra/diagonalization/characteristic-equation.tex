@@ -1,0 +1,48 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{特性方程式}
+\marginnote{\refbookA p184、p188〜191 \\ \refbookF p258〜260}
+
+$\lambda$が$n$次正方行列$A$の固有値であることは、
+\begin{equation*}
+  A\vb*{x} = \lambda \vb*{x} \quad (\vb*{x} \neq \vb*{0})
+\end{equation*}
+となるような$\vb*{x} \in K^n$が存在することである
+
+\br
+
+ここで、$A\vb*{x} = \lambda \vb*{x}$を次のように変形することができる
+\begin{align*}
+  A\vb*{x} - \lambda \vb*{x}  & = \vb*{0} \\
+  A\vb*{x} - \lambda E\vb*{x} & = \vb*{0} \\
+  (A - \lambda E)\vb*{x}      & = \vb*{0}
+\end{align*}
+
+$\vb*{x} \neq \vb*{0}$という条件により、$(A - \lambda E)\vb*{x} = \vb*{0}$は非自明な解を持つ必要がある
+
+\begin{theorem}{固有ベクトルの斉次形方程式による定義}
+  固有値$\lambda$の固有ベクトルとは、斉次形方程式
+  \begin{equation*}
+    (A - \lambda E)\vb*{x} = \vb*{0}
+  \end{equation*}
+  の非自明な解のことである
+\end{theorem}
+
+固有値を求める上で重要となるこの定理は、行列式を使って言い換えることができる
+
+\begin{theorem}{固有値の方程式による定義}
+  行列$A$の固有値$\lambda$は、$x$についての$n$次方程式
+  \begin{equation*}
+    \det(A - x E) = 0
+  \end{equation*}
+  の$K$に含まれる解である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookF p258}
+\end{proof}
+
+\end{document}
