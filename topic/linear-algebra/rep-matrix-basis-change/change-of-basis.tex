@@ -12,7 +12,7 @@ $V$の基底$\mathcal{V}$を選ぶとき、次の可換図式によって$n$次�
 \begin{center}
   \begin{tikzcd}
     V \arrow[r,"f"] & V \\
-    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A"] & \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"]
+    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A\cdot"] & \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"]
   \end{tikzcd}
 \end{center}
 
@@ -153,6 +153,22 @@ $V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{
   により定まる
 \end{theorem}
 
+この行列$P$は、座標写像を介して考えると、次の可換図式で定まるものである
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[dd, "P\cdot"] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] & \\
+    & V \\
+    \mathbb{R}^n \arrow[ru,"{\Phi_{\mathcal{V}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+つまり、$P$は、
+\begin{equation*}
+  \Phi_{\mathcal{V}}^{-1} \circ \Phi_{\mathcal{V}'} \colon \mathbb{R}^n \to \mathbb{R}^n
+\end{equation*}
+の標準基底に関する表現行列である
+
 \sectionline
 
 一方、この行列$P$はベクトルの成分表示の変換に用いることもできる
@@ -226,5 +242,87 @@ $V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{
   \end{equation*}
   が成り立つ $\qed$
 \end{proof}
+
+\sectionline
+\section{基底の変換による表現行列の変化}
+\marginnote{\refbookA p112〜113 \\ \refbookF p215、p223〜224}
+
+$f\colon V \to W$を線形写像とする
+
+\begin{equation*}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & W
+  \end{tikzcd}
+\end{equation*}
+
+$V$の基底$\mathcal{V}$と$W$の基底$\mathcal{W}$に関する$f$の表現行列を$A$とする
+
+\begin{equation*}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & W \\
+    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A\cdot"] & \mathbb{R}^m \arrow[u,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+また、$V$の基底$\mathcal{V}'$と$W$の基底$\mathcal{W}'$に基底を変えるとき、$f$の表現行列を$B$とする
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[d,"{\Phi_{\mathcal{V}'}}"] \arrow[r,"B\cdot"] & \mathbb{R}^m \arrow[d,"{\Phi_{\mathcal{W}'}}"] \\
+    V \arrow[r,"f"] & W
+  \end{tikzcd}
+\end{equation*}
+
+基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とするとき、次の可換図式で整理できる
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[dd,"P\cdot"] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] \arrow[rrr,"B\cdot"] &&& \mathbb{R}^m \arrow[dd,"Q\cdot"] \arrow[ld,"{\Phi_{\mathcal{W}'}}"] \\
+    & V \arrow[r,"f"] & W & \\
+    \mathbb{R}^n \arrow[ru,"{\Phi_{\mathcal{V}}}"] \arrow[rrr,"A\cdot"] &&& \mathbb{R}^m \arrow[lu,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+ここで、行列$A$によって表現される写像を$F_A$、他の行列についても同様に表すと、
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[dd,"F_P"] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] \arrow[rrr,"F_B"] &&& \mathbb{R}^m \arrow[dd,"F_Q"] \arrow[ld,"{\Phi_{\mathcal{W}'}}"] \\
+    & V \arrow[r,"f"] & W & \\
+    \mathbb{R}^n \arrow[ru,"{\Phi_{\mathcal{V}}}"] \arrow[rrr,"F_A"] &&& \mathbb{R}^m \arrow[lu,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+このとき、左上の$\mathbb{R}^n$から右下の$\mathbb{R}^m$への写像は、
+\begin{equation*}
+  F_A \circ F_P,\quad F_Q \circ F_B
+\end{equation*}
+という2通りの表現ができる
+
+すなわち、
+\begin{equation*}
+  F_A \circ F_P = F_Q \circ F_B
+\end{equation*}
+
+合成写像は行列の積に対応するので、
+\begin{equation*}
+  AP = QB
+\end{equation*}
+
+ここで、$Q$は$\mathbb{R}^m \to \mathbb{R}^m$の標準基底に関する表現行列であるから、正則行列である
+
+そこで、左から$Q^{-1}$をかけて、
+\begin{equation*}
+  B = Q^{-1} AP
+\end{equation*}
+が得られる
+
+\begin{theorem}{表現行列の変換法則}
+  線形写像$f\colon V \to W$の基底$\mathcal{V},\, \mathcal{W}$に関する表現行列を$A$とし、同じ線形写像$f$の別な基底$\mathcal{V}',\, \mathcal{W}'$に関する表現行列を$B$とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とすると、
+  \begin{equation*}
+    B = Q^{-1} A P
+  \end{equation*}
+  が成り立つ
+\end{theorem}
 
 \end{document}
