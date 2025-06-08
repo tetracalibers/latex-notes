@@ -1,0 +1,23 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{計量線形空間}
+\marginnote{\refbookF p173〜174 \\ \refbookC p111〜117}
+
+内積の概念は、双線形性、対称性、正定値性を満たすものとして抽象化できる
+
+\begin{definition}{計量線形空間}
+  体$K$上の線形空間$V$において、その任意の要素$\vb*{a},\, \vb*{b} \in V$に対し、次の性質
+  \begin{enumerate}[label=\romanlabel]
+    \item $(\vb*{a}, \vb*{b}_1 + \vb*{b}_2) = (\vb*{a}, \vb*{b}_1) + (\vb*{a}, \vb*{b}_2)$ \\
+          $(\vb*{a}_1 + \vb*{a}_2, \vb*{b}) = (\vb*{a}_1, \vb*{b}) + (\vb*{a}_2, \vb*{b})$
+    \item $(c\vb*{a}, \vb*{b}) = c(\vb*{a}, \vb*{b})$
+    \item $(\vb*{a}, \vb*{b}) = \overline{(\vb*{b}, \vb*{a})}$
+    \item $(\vb*{a}, \vb*{a}) \geq 0, (\vb*{a}, \vb*{a}) = 0 \Longrightarrow \vb*{a} = \vb*{0}$
+  \end{enumerate}
+  を満たす$K$の要素$(\vb*{a},\vb*{b})$がただ一つ定まるとき、$(\vb*{a},\vb*{b})$を\keyword{内積}と呼び、$V$は\keyword{計量線形空間}、または単に\keyword{計量空間}であるという
+\end{definition}
+
+\end{document}
