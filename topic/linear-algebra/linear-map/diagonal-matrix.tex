@@ -3,29 +3,6 @@
 \begin{document}
 
 \sectionline
-\section{行列と複素数}
-
-\begin{equation*}
-  I = \begin{pmatrix}
-    0 & -1 \\
-    1 & 0
-  \end{pmatrix}
-\end{equation*}
-とおき、
-\begin{equation*}
-  aE + bI = \begin{pmatrix}
-    a & -b \\
-    b & a
-  \end{pmatrix} \quad (a, b \in \mathbb{R})
-\end{equation*}
-という形の行列を\keyword{複素数}と呼ぶことにより、複素数の定義ができる
-
-この定義では、通常は$a + bi$と書かれるものを行列として実現している
-
-\br
-
-\todo{\refbookD p43〜49}
-\sectionline
 \section{対角行列}
 
 \begin{definition}{対角成分}
@@ -58,30 +35,6 @@
 
 \begin{proof}
   \todo{\refbookA p63 （問2.8）}
-\end{proof}
-
-\sectionline
-\section{トレース}
-\marginnote{\refbookA p64}
-
-\begin{definition}{トレース}
-  正方行列$A=(a_{ij})$に対して、対角成分の和
-  \begin{equation*}
-    \sum_{i=1}^n a_{ii}
-  \end{equation*}
-  を$A$の\keyword{トレース}と呼び、$\tr(A)$と表す
-\end{definition}
-
-\begin{theorem}{トレースの性質}
-  \begin{enumerate}[label=\romanlabel]
-    \item $\tr(A+B) = \tr(A) + \tr(B)$
-    \item $\tr(cA) = c\tr(A)$
-    \item $\tr(AB) = \tr(BA)$
-  \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-  \todo{\refbookA p64 問2.9}
 \end{proof}
 
 \end{document}
