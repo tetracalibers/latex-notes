@@ -1,0 +1,180 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ベクトルの正射影}
+\marginnote{\refbookF p184〜185}
+
+正規直交基底をつくるにあたって、次の概念が重要になる
+
+\begin{definition}{正射影}
+  $\vb*{0}$でないベクトル$\vb*{a}$が与えられているとき、ベクトル$\vb*{x}$に対し、
+  \begin{enumerate}[label=\romanlabel]
+    \item $\vb*{p}$が$\vb*{a}$と平行
+    \item $\vb*{x - p}$が$\vb*{a}$と直交
+  \end{enumerate}
+  という条件を満たすベクトル$\vb*{p}$を、$\vb*{x}$の$\vb*{a}$への\keyword{正射影}という
+\end{definition}
+
+\begin{theorem}{正射影の公式}
+  ベクトル$\vb*{x}$のベクトル$\vb*{a}$への正射影$\vb*{p}$は、次のように表される
+  \begin{equation*}
+    \vb*{p} = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})} \vb*{a} = \frac{(\vb*{x}, \vb*{a})}{\|\vb*{a}\|^2} \vb*{a}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{p}$が$\vb*{a}$と平行であることから、
+  \begin{equation*}
+    \vb*{p} = k \vb*{a} \quad (k \in K)
+  \end{equation*}
+  また、$\vb*{x - p}$が$\vb*{a}$と直交することから、
+  \begin{equation*}
+    (\vb*{x-p},\vb*{a}) = 0
+  \end{equation*}
+  よって、
+  \begin{equation*}
+    (\vb*{x} - k \vb*{a}, \vb*{a}) = 0
+  \end{equation*}
+  内積の双線形性より、
+  \begin{equation*}
+    (\vb*{x}, \vb*{a}) - k (\vb*{a}, \vb*{a}) = 0
+  \end{equation*}
+  ここで、正射影の定義より$\vb*{a} \neq \vb*{0}$なので、$(\vb*{a}, \vb*{a}) \neq 0$である
+
+  よって、$(\vb*{a}, \vb*{a})$で割ることができ、
+  \begin{equation*}
+    k = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})}
+  \end{equation*}
+  と$k$が定まる
+
+  最初の式に代入すると、
+  \begin{equation*}
+    \vb*{p} = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})} \vb*{a}
+  \end{equation*}
+  が得られる $\qed$
+\end{proof}
+
+\sectionline
+\section{グラム・シュミットの直交化法}
+\marginnote{\refbookC p119〜120 \\ \refbookF p182〜184 \\ \refbookA p82〜83}
+
+計量空間$V$の線型独立なベクトル$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$から、正規直交系をつくる方法を考える
+
+\subsection{正規化}
+
+まずは、$\vb*{a}_1$から、ノルムが1であるベクトルをつくる（\keyword{正規化}）
+
+そのためには、
+\begin{equation*}
+  \vb*{e}_1 = \frac{\vb*{a}_1}{\|\vb*{a}_1\|}
+\end{equation*}
+とすればよい
+
+ここで、$\vb*{e}_1$は$\vb*{a}_1$をスカラー倍しただけなので、$\vb*{e}_1$と$\vb*{a}_1$は平行である
+
+\subsection{直交化}
+
+次に、$\vb*{e}_1$と直交するような$\vb*{e}_2$をつくる
+
+そのために、$\vb*{a}_2$から、$\vb*{a}_2$の$\vb*{e}_1$への正射影を引いたものは、$\vb*{e}_1$と直交することを利用する
+
+\br
+
+$\vb*{a}_2$の$\vb*{e}_1$への正射影は、次のように計算できる
+\begin{equation*}
+  \frac{(\vb*{a}_2, \vb*{e}_1)}{\|\vb*{e}_1|^2} \vb*{e}_1 = (\vb*{a}_2, \vb*{e}_1) \vb*{e}_1
+\end{equation*}
+
+そこで、
+\begin{equation*}
+  \vb*{u}_2 = \vb*{a}_2 - (\vb*{a}_2, \vb*{e}_1) \vb*{e}_1
+\end{equation*}
+とおくと、$\vb*{u}_2$は$\vb*{e}_1$と直交する
+
+\br
+
+$\vb*{a}_2$と$\vb*{a}_1$が、したがって$\vb*{a}_2$と$\vb*{e}_1$が線型独立であることから、$\vb*{u}_2 \neq \vb*{0}$である
+
+なぜなら、もし$\vb*{u}_2 = \vb*{0}$ならば、$\vb*{a}_2$は$\vb*{e}_1$の線形結合で表されることになり、$\vb*{a}_1, \vb*{a}_2$は線型従属になるからである
+
+\br
+
+そこで、$\vb*{u}_2$を次のように正規化することができ、
+\begin{equation*}
+  \vb*{e}_2 = \frac{\vb*{u}_2}{\|\vb*{u}_2\|}
+\end{equation*}
+とすれば、$\vb*{e}_2$は$\vb*{e}_1$と直交するノルムが1のベクトルになる
+
+\sectionline
+
+以上の手順を繰り返すことで、線型独立なベクトル$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$から、正規直交系$\vb*{e}_1, \vb*{e}_2, \ldots, \vb*{e}_n$を得ることができる
+
+\br
+
+このような方法を\keyword{グラム・シュミットの直交化法}という
+
+\begin{theorem}{グラム・シュミットの直交化法}
+  計量空間$V$の線型独立なベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$から、正規直交系$\vb*{e}_1, \ldots, \vb*{e}_n$を次のように構成できる
+  \begin{gather*}
+    \vb*{u}_k = \vb*{a}_k - \sum_{j=1}^{k-1} (\vb*{a}_k, \vb*{e}_j) \vb*{e}_j \\
+    \vb*{e}_k = \frac{\vb*{u}_k}{\|\vb*{u}_k\|}
+  \end{gather*}
+  ここで、$k = 1, 2, \ldots, n$である
+\end{theorem}
+
+\sectionline
+
+さらに、次の定理により、グラム・シュミットの直交化法は、線型独立なベクトルから正規直交系を得るだけでなく、任意の基底から正規直交基底を得る手法としても利用できる
+
+\begin{theorem}{グラム・シュミットの直交化と生成空間の不変性}
+  計量空間$V$の線型独立なベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$から、グラム・シュミットの直交化法を用いて得られた正規直交系を$\vb*{e}_1, \ldots, \vb*{e}_n$とすると、$\vb*{a}_1,\ldots,\vb*{a}_n$が張る空間と$\vb*{e}_1,\ldots,\vb*{e}_n$が張る空間は一致する
+  \begin{equation*}
+    \langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle = \langle \vb*{e}_1, \ldots, \vb*{e}_n \rangle
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  グラム・シュミットの直交化法では、各ステップ $k$ において、まず $\vb*{a}_k$ からその前に得られた直交ベクトル $\vb*{e}_1, \ldots, \vb*{e}_{k-1}$ への射影を引くことで、$\vb*{a}_k$ に直交するベクトルを構成する
+
+  すなわち、
+  \begin{equation*}
+    \vb*{u}_k = \vb*{a}_k - \sum_{j=1}^{k-1} (\vb*{a}_k, \vb*{e}_j) \vb*{e}_j
+  \end{equation*}
+  と定義し、その後これを正規化して $\vb*{e}_k$ とする
+
+  \br
+
+  ここで、$\vb*{u}_k$は右辺の形から明らかなように、$\vb*{a}_k$ と $\vb*{e}_1, \ldots, \vb*{e}_{k-1}$ の線型結合である
+
+  そしてさらに各 $\vb*{e}_j$（$j < k$）は、それ以前の $\vb*{a}_1, \ldots, \vb*{a}_j$ の線型結合であることから、$\vb*{u}_k$ は結局 $\vb*{a}_1, \ldots, \vb*{a}_k$ の線型結合として書ける
+
+  したがって、$\vb*{e}_k$ も $\vb*{a}_1, \ldots, \vb*{a}_k$ の線型結合となり、$\vb*{e}_1, \ldots, \vb*{e}_n$ はすべて $\vb*{a}_1, \ldots, \vb*{a}_n$ の線型結合である
+
+  \br
+
+  よって、すべての $\vb*{e}_k$ は $\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$ に属することになり、
+  \begin{equation*}
+    \langle \vb*{e}_1, \ldots, \vb*{e}_n \rangle \subset \langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle
+  \end{equation*}
+  が成り立つ
+
+  \br
+
+  両辺の部分空間の次元を考えると、$\vb*{a}_1, \ldots, \vb*{a}_n$ が線型独立であるため、$\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$ の次元は $n$ である
+
+  一方、$\vb*{e}_1, \ldots, \vb*{e}_n$ も\hyperref[thm:orthogonal-set-is-independent]{直交系であることから線型独立}であるため、$\langle \vb*{e}_1, \ldots, \vb*{e}_n \rangle$ の次元も $n$ である
+
+  よって、\hyperref[thm:equal-dim-implies-equal-subspace]{部分空間の次元が等しいことから、両者は一致}する $\qed$
+\end{proof}
+
+\sectionline
+
+このように、グラム・シュミットの直交化法は、内積が定められている空間（計量空間）には正規直交基底が存在することを示している
+
+\begin{theorem}{正規直交基底の存在}
+  $\{\vb*{0}\}$でない任意の計量空間は正規直交基底を持つ
+\end{theorem}
+
+\end{document}
