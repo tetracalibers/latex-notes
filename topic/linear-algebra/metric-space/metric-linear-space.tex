@@ -20,4 +20,33 @@
   を満たす$K$の要素$(\vb*{a},\vb*{b})$がただ一つ定まるとき、$(\vb*{a},\vb*{b})$を\keyword{内積}と呼び、$V$は\keyword{計量線形空間}、または単に\keyword{計量空間}であるという
 \end{definition}
 
+内積の定義に
+\begin{equation*}
+  (\vb*{a}, c\vb*{b}) = c(\vb*{a}, \vb*{b})
+\end{equation*}
+が含まれていないことに注意しよう
+
+この式は、(\romannum{ii})と(\romannum{iii})から導ける上、$K = \mathbb{C}^n$の場合には成り立たない
+
+\br
+
+$K = \mathbb{C}^n$の場合を含め、一般に次が成り立つ
+
+\begin{theorem}{内積の共役線形性}\label{thm:conjugate-linearity-of-inner-product}
+  計量空間$V$の要素$\vb*{a},\,\vb*{b}$の内積と$c \in K$について、次の性質が成り立つ
+  \begin{equation*}
+    (\vb*{a},c\vb*{b}) = \overline{c}(\vb*{a},\vb*{b}) \quad (c \in K)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  計量線形空間の定義の(\romannum{ii})と(\romannum{iii})を用いて、
+  \begin{align*}
+    (\vb*{a},c\vb*{b}) & = \overline{(c\vb*{b},\vb*{a})}            \\
+                       & = \overline{c}\overline{(\vb*{b},\vb*{a})} \\
+                       & = \overline{c}(\vb*{a},\vb*{b})
+  \end{align*}
+  となる $\qed$
+\end{proof}
+
 \end{document}
