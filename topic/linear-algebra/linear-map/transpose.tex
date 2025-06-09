@@ -6,6 +6,38 @@
 \section{行列の転置}
 \marginnote{\refbookA p78 \\ \refbookF p30}
 
+行列$A=(a_{ij})$に対し、その成分の行と列の位置を交換してできる行列を\keyword{転置行列}という
 
+\begin{definition}{転置行列}
+  $A = (a_{ij})$を$m \times n$型行列とするとき、$(i,j)$成分が$a_{ji}$である$n \times m$型行列を$A$の\keyword{転置行列}と呼び、$\transpose{A}$と表す
+\end{definition}
+
+文字$t$を左肩に書くのは、右肩に書くと$t$乗に見えてしまうからである
+
+$t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合もある
+
+\sectionline
+
+\keyword{転置}は「行と列の入れ替え」であるので、明らかに次が成り立つ
+
+\begin{theorem}{転置操作の反復不変性}
+  $\transpose{A}$に対して、転置をもう一度して得られる行列は$A$と一致する
+  \begin{equation*}
+    {}^t ({}^t A) = {}^t\transpose{A} = A
+  \end{equation*}
+\end{theorem}
+
+\sectionline
+
+\begin{theorem}{転置と行列の積}
+  行列$A,\,B$の積$AB$が定義できるとき、
+  \begin{equation*}
+    {}^t (AB) = \transpose{B} \transpose{A}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p78 命題2.5.3}
+\end{proof}
 
 \end{document}
