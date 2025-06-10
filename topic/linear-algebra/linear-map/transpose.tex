@@ -18,6 +18,25 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 
 \sectionline
 
+特別な場合として、$n$次の数ベクトル$\vb*{v}$を$n \times 1$型行列とみて転置したもの${}^t\vb*{v}$は$1 \times n$型行列となる
+
+すなわち、数ベクトルの転置は\keyword{横ベクトル}になる
+
+\br
+
+このことを利用して、たとえば
+\begin{equation*}
+  \begin{pmatrix}
+    v_1    \\
+    v_2    \\
+    \vdots \\
+    v_n
+  \end{pmatrix}
+\end{equation*}
+を${}^t (v_1,\,v_2,\,\ldots,\,v_n)$と表記することもある
+
+\sectionline
+
 \keyword{転置}は「行と列の入れ替え」であるので、明らかに次が成り立つ
 
 \begin{theorem}{転置操作の反復不変性}
@@ -29,7 +48,7 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 
 \sectionline
 
-\begin{theorem}{転置と行列の積}
+\begin{theorem}{転置と行列積の順序反転性}\label{thm:transpose-of-product}
   行列$A,\,B$の積$AB$が定義できるとき、
   \begin{equation*}
     {}^t (AB) = \transpose{B} \transpose{A}

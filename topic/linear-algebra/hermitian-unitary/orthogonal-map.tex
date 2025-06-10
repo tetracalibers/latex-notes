@@ -1,0 +1,86 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{直交変換}
+\marginnote{\refbookA p77〜82}
+
+体$\mathbb{R}^n$上の計量空間において、内積を保つ線形変換を\keyword{直交変換}という
+
+\begin{definition}{直交変換}
+  体$\mathbb{R}^n$上の計量空間$V$における線形変換$f$が\keyword{直交変換}であるとは、任意の$\vb*{u},\,\vb*{v} \in V$に対し、
+  \begin{equation*}
+    (f(\vb*{u}),f(\vb*{v})) = (\vb*{u},\vb*{v})
+  \end{equation*}
+  が成り立つことである
+\end{definition}
+
+直交変換は、ベクトルの長さを変えない変換でもある
+
+\begin{theorem}{直交変換とノルム保存性}
+  計量空間$V$における線形変換を$f$が直交変換であることと、任意の$\vb*{v} \in V$に対し
+  \begin{equation*}
+    \|f(\vb*{v})\| = \|\vb*{v}\|
+  \end{equation*}
+  が成り立つことは同値である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $f$が直交変換$\Longrightarrow$ $f$はノルムを保つ}
+    直交変換の定義より、
+    \begin{equation*}
+      (f(\vb*{v}),f(\vb*{v})) = (\vb*{v},\vb*{v}) = \|\vb*{v}\|^2
+    \end{equation*}
+    ここで、$\|f(\vb*{v})\| = \sqrt{(f(\vb*{v}),f(\vb*{v}))}$であるから、
+    \begin{equation*}
+      \|f(\vb*{v})\| = \|\vb*{v}\|
+    \end{equation*}
+    が成り立つ $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $f$はノルムを保つ$\Longrightarrow$ $f$は直交変換}
+    任意の$\vb*{v} \in V$に対し、
+    \begin{equation*}
+      \|f(\vb*{v})\| = \|\vb*{v}\|
+    \end{equation*}
+    が成り立つというのが仮定である
+
+    そこで、$\vb*{a},\,\vb*{b} \in V$とすると、
+    \begin{equation*}
+      \|\vb*{a} + \vb*{b} \| = \|f(\vb*{a}) + f(\vb*{b})\|
+    \end{equation*}
+    両辺を二乗して、
+    \begin{equation*}
+      \|\vb*{a} + \vb*{b} \|^2 = \|f(\vb*{a}) + f(\vb*{b})\|^2
+    \end{equation*}
+    このとき、左辺は次のように展開できる
+    \begin{align*}
+      \|\vb*{a} + \vb*{b} \|^2 & = (\vb*{a} + \vb*{b},\vb*{a} + \vb*{b})                      \\
+                               & = (\vb*{a},\vb*{a}) + 2(\vb*{a},\vb*{b}) + (\vb*{b},\vb*{b}) \\
+                               & = \|\vb*{a}\|^2 + 2(\vb*{a},\vb*{b}) + \|\vb*{b}\|^2
+    \end{align*}
+    右辺も同様に、
+    \begin{multline*}
+      \|f(\vb*{a}) + f(\vb*{b})\|^2 \\= \|f(\vb*{a})\|^2 + 2(f(\vb*{a}),f(\vb*{b})) + \|f(\vb*{b})\|^2
+    \end{multline*}
+
+    さて、仮定より、$\|f(\vb*{a})\| = \|\vb*{a}\|$と$\|f(\vb*{b})\| = \|\vb*{b}\|$が成り立つことから、
+    \begin{equation*}
+      \|\vb*{a} + \vb*{b} \|^2 = \|f(\vb*{a}) + f(\vb*{b})\|^2
+    \end{equation*}
+    という等式の両辺を展開した結果、残る項は
+    \begin{equation*}
+      2 (\vb*{a},\vb*{b}) = 2(f(\vb*{a}),f(\vb*{b}))
+    \end{equation*}
+    だけとなる
+
+    したがって、
+    \begin{equation*}
+      (\vb*{a},\vb*{b}) = (f(\vb*{a}),f(\vb*{b}))
+    \end{equation*}
+    が成り立つので、$f$は直交変換である $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}
