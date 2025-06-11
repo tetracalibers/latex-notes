@@ -24,6 +24,42 @@
 
 \sectionline
 
+\hyperref[thm:transpose-involution]{転置を二回行うと元に戻る}ことと同様に、次が成り立つ
+
+\begin{theorem}{随伴行列の自己反転性}
+  複素正方行列$A$に対し、随伴行列を二回とると元に戻る
+  \begin{equation*}
+    (A^*)^* = A
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  随伴行列の定義より、
+  \begin{equation*}
+    (A^*)^* = {}^t\overline{A^*} = {}^t\overline{{}^t\overline{A}}
+  \end{equation*}
+
+  $A = (a_{ij})$とすると、$A$の各成分を共役複素数にした行列は、
+  \begin{equation*}
+    \overline{A} = (\overline{a_{ij}})
+  \end{equation*}
+  これを転置すると、
+  \begin{equation*}
+    {}^t\overline{A} = (\overline{a_{ji}})
+  \end{equation*}
+  さらに、もう一度各成分の複素共役をとると、
+  \begin{equation*}
+    {}^t\overline{{}^t\overline{A}} = (\overline{\overline{a_{ji}}}) = (a_{ji})
+  \end{equation*}
+  したがって、
+  \begin{equation*}
+    (A^*)^* = {}^t\overline{{}^t\overline{A}} = (a_{ij}) = A
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\sectionline
+
 転置行列と複素共役の性質から、次の性質が成り立つ
 
 \begin{theorem}{積に対するエルミート共役の順序反転性}
@@ -35,6 +71,60 @@
 
 \begin{proof}
   \todo{}
+\end{proof}
+
+\sectionline
+
+随伴行列と\hyperref[def:standard-inner-product-Cn]{標準内積}は、次のような関係で結ばれる
+
+\begin{theorem}{随伴公式}
+  複素行列$A$と計量空間上のベクトル$\vb*{u},\,\vb*{v}$に対し、
+  \begin{equation*}
+    (A\vb*{u}, \vb*{v}) = (\vb*{u}, A^*\vb*{v})
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:inner-product-as-transpose-product]{転置を用いて内積を表す}と、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = {}^t(A\vb*{u}) \overline{\vb*{v}}
+  \end{equation*}
+  \hyperref[thm:transpose-of-product]{転置と行列積の順序反転性}より、${}^t(A\vb*{u}) = {}^t\vb*{u} \transpose{A}$なので、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = ({}^t\vb*{u} \transpose{A}) \overline{\vb*{v}}
+  \end{equation*}
+  行列の積の結合法則を用いて、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = {}^t\vb*{u} (\transpose{A}\overline{\vb*{v}})
+  \end{equation*}
+
+  ここで、$\overline{{}^t \overline{A}}$は、$A=(a_{ij})$とすると、
+  \begin{enumerate}
+    \item $\overline{A} = (\overline{a_{ij}})$
+    \item ${}^t\overline{A} = (\overline{a_{ji}})$
+    \item $\overline{{}^t\overline{A}} = (\overline{\overline{a_{ji}}}) = (a_{ji}) = {}^t A$
+  \end{enumerate}
+  となり、${}^t A$と一致する
+
+  これを用いて書き換えると、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = {}^t\vb*{u} (\overline{{}^t \overline{A}} \overline{\vb*{v}})
+  \end{equation*}
+  複素共役の積の性質$\overline{z_1} \cdot \overline{z_2} = \overline{z_1 z_2}$を用いて、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = {}^t\vb*{u} \overline{{}^t \overline{A} \vb*{v}}
+  \end{equation*}
+
+  この時点で、右辺を内積として書き直すと、$A\vb*{v}$の複素共役がなくなることに注意して、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = (\vb*{u}, {}^t \overline{A} \vb*{v})
+  \end{equation*}
+
+  随伴行列の定義$A^* = {}^t \overline{A}$より、
+  \begin{equation*}
+    (A\vb*{u},\vb*{v}) = (\vb*{u}, A^* \vb*{v})
+  \end{equation*}
+  となり、目的の等式が得られた $\qed$
 \end{proof}
 
 \sectionline
