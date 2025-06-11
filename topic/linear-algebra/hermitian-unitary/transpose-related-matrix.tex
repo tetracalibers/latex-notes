@@ -3,23 +3,117 @@
 \begin{document}
 
 \sectionline
-\section{対称行列と交代行列}
-\marginnote{\refbookF p30}
+\section{転置行列と随伴行列}
+\marginnote{\refbookF p275}
 
-転置に関するさまざまな性質をもつ行列には、それぞれ名前が付けられている
+複素正方行列$A$の転置行列において、各成分をその共役複素数に置き換えた行列を\keyword{随伴行列}という
 
-\begin{definition}{対称行列}
-  正方行列$A$が次を満たすとき、$A$を\keyword{対称行列}という
+\begin{definition}{随伴行列}
+  複素正方行列$A = (a_{ij})$に対し、$\overline{a_{ji}}$を$(i,j)$成分にもつ行列${}^t\overline{A}$を$A$の\keyword{随伴行列}といい、$A^*$と表す
+\end{definition}
+
+実数$x$の複素共役は$\overline{x} = x$であるので、$A$が実行列のときは、
+\begin{equation*}
+  A^* = {}^t A
+\end{equation*}
+すなわち、
+\begin{shaded}
+  実行列の世界では、随伴行列は転置行列
+\end{shaded}
+にすぎない
+
+\sectionline
+
+転置行列と複素共役の性質から、次の性質が成り立つ
+
+\begin{theorem}{積に対するエルミート共役の順序反転性}
+  複素行列$A\,B$の積$AB$が定義できるとき、
   \begin{equation*}
-    \transpose{A} = A
+    (AB)^* = B^* A^*
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{}
+\end{proof}
+
+\sectionline
+\section{対称行列とエルミート行列}
+\marginnote{\refbookF p275〜276}
+
+\begin{definition}{エルミート行列}
+  複素正方行列$A$が次を満たすとき、$A$を\keyword{エルミート行列}という
+  \begin{equation*}
+    A^* = A
   \end{equation*}
 \end{definition}
 
-\begin{definition}{交代行列}
-  正方行列$A$が次を満たすとき、$A$を\keyword{交代行列}という
+$A$が実正方行列のときは、
+\begin{equation*}
+  A\text{がエルミート行列} \Longleftrightarrow {}^tA = A
+\end{equation*}
+となり、このような$A$は\hyperref[def:symmetric-matrix]{対称行列}、あるいは\keyword{実対称行列}と呼ばれる
+
+\sectionline
+\section{直交行列とユニタリ行列}
+\marginnote{\refbookF p275〜276}
+
+\begin{definition}{ユニタリ行列}
+  複素正方行列$A$が次を満たすとき、$A$を\keyword{ユニタリ行列}という
   \begin{equation*}
-    \transpose{A} = -A
+    A^* = A^{-1}
   \end{equation*}
 \end{definition}
+
+$A$が実正方行列のときは、
+\begin{equation*}
+  A\text{がユニタリ行列} \Longleftrightarrow {}^tA = A^{-1}
+\end{equation*}
+となり、このような$A$は\keyword{直交行列}と呼ばれる
+
+\begin{definition}{直交行列}
+  実正方行列$A$が次を満たすとき、$A$を\keyword{直交行列}という
+  \begin{equation*}
+    {}^t A = A^{-1}
+  \end{equation*}
+\end{definition}
+
+直交行列という名前の由来は、次のように考えられる
+
+\br
+
+$A$を$n$個の列ベクトルを横一列に並べたものとみなし、
+\begin{equation*}
+  A = (\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n)
+\end{equation*}
+とおくと、${}^t A = A^{-1}$、すなわち${}^tAA = E$は、
+\begin{equation*}
+  \begin{pmatrix}
+    {}^t \vb*{a}_1 \\
+    {}^t \vb*{a}_2 \\
+    \vdots         \\
+    {}^t \vb*{a}_n
+  \end{pmatrix} \left(
+  \vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n
+  \right) = \begin{pmatrix}
+    1      & 0      & \cdots & 0      \\
+    0      & 1      & \cdots & 0      \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0      & 0      & \cdots & 1
+  \end{pmatrix}
+\end{equation*}
+と表される
+
+\br
+
+これは、ベクトル$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$が、次の性質
+\begin{equation*}
+  {}^t \vb*{a}_i \vb*{a}_j =(\vb*{a}_i, \vb*{a}_j) = \delta_{ij}
+\end{equation*}
+を満たすことを意味する
+
+\br
+
+すなわち、直交行列$A$の列ベクトル$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$は、互いに直交する単位ベクトルである
 
 \end{document}
