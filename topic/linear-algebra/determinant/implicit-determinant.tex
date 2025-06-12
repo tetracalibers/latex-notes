@@ -1,0 +1,97 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列式の特徴づけ}
+\marginnote{\refbookA p162〜163 \\ \refbookF p123〜127}
+
+$n$個の与えられた$n$次実ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$に対して、ある実数が定まるとき、これを$F(\vb*{a}_1, \ldots, \vb*{a}_n)$と表すことにする
+
+\begin{theorem}{多重線形性と交代性による行列式の特徴づけ}
+  写像$F\colon \mathbb{R}^n \times \cdots \times \mathbb{R}^n \to \mathbb{R}$が多重線形性と交代性を満たすならば、
+  \begin{equation*}
+    F(\vb*{a}_1, \ldots, \vb*{a}_n) = F(\vb*{e}_1, \ldots, \vb*{e}_n) \det(\vb*{a}_1, \ldots, \vb*{a}_n)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  多重線形性により、
+  \begin{align*}
+    F(\vb*{a}_1, \ldots, \vb*{a}_n) & = F \left( \sum_{i=1}^n a_{i_1 1} \vb*{e}_{i_1}, \ldots, \sum_{i=1}^n a_{i_n n} \vb*{e}_{i_n} \right) \\
+                                    & = \sum_{i_1, \ldots, i_n} a_{i_1 1} \cdots a_{i_n n} F(\vb*{e}_{i_1}, \ldots, \vb*{e}_{i_n})
+  \end{align*}
+
+  和において、各$i_k \, (1 \leq k \leq n)$は行番号なのでそれぞれ1から$n$まで動く
+
+  \br
+
+  ここで、\hyperref[thm:det-zero-if-columns-repeat]{交代性から導かれる定理}より、$(i_1, \ldots, i_n)$に同じ添字が2つ以上ある場合には$F(\vb*{e}_{i_1}, \ldots, \vb*{e}_{i_n}) = 0$である
+
+  したがって、この和は$(i_1, \ldots, i_n)$がすべて異なる場合、すなわち$(i_1, \ldots, i_n)$が$(1, \ldots, n)$の置換である場合にのみ寄与する
+
+  \br
+
+  よって、$(i_1, \ldots, i_n)$にわたる和は、実際には$n$次の置換
+  \begin{equation*}
+    \sigma = \begin{pmatrix}
+      1   & 2   & \cdots & n   \\
+      i_1 & i_2 & \cdots & i_n
+    \end{pmatrix} \in S_n
+  \end{equation*}
+  にわたる和であるとみなせる
+
+  \br
+
+  この対応により、$(i_1, \ldots, i_n)$と$\sigma \in S_n$を同一視すると、
+  \begin{equation*}
+    F(\vb*{e}_{i_1}, \ldots, \vb*{e}_{i_n}) = F(\vb*{e}_{\sigma(1)}, \ldots, \vb*{e}_{\sigma(n)})
+  \end{equation*}
+
+  さらに、$(\vb*{e}_{\sigma(1)}, \ldots, \vb*{e}_{\sigma(n)})$を$(\vb*{e}_1, \ldots, \vb*{e}_n)$に並び替えることを考える
+
+  すなわち、$\sigma$の逆置換$\sigma^{-1}$を考えることになる
+
+  交代性によって、1回の互換につき$(-1)$倍されるが、全体の符号は互換の回数によって定まるので、$\sgn(\sigma^{-1}) = \sgn(\sigma)$となる
+  \begin{equation*}
+    F(\vb*{e}_{\sigma(1)}, \ldots, \vb*{e}_{\sigma(n)}) = \sgn(\sigma) F(\vb*{e}_1, \ldots, \vb*{e}_n)
+  \end{equation*}
+
+  \br
+
+  以上より、
+  \begin{align*}
+     & \phantom{=} F(\vb*{a}_1, \ldots, \vb*{a}_n)                                                                                \\
+     & = \sum_{\sigma \in S_n} a_{\sigma(1) 1} \cdots a_{\sigma(n) n} F(\vb*{e}_{\sigma(1)}, \ldots, \vb*{e}_{\sigma(n)})         \\
+     & = \sum_{\sigma \in S_n} a_{\sigma(1) 1} \cdots a_{\sigma(n) n} \sgn(\sigma) F(\vb*{e}_1, \ldots, \vb*{e}_n)                \\
+     & = \left( \sum_{\sigma \in S_n} \sgn(\sigma) a_{\sigma(1) 1} \cdots a_{\sigma(n) n} \right) F(\vb*{e}_1, \ldots, \vb*{e}_n) \\
+     & = \det(\vb*{a}_1, \ldots, \vb*{a}_n) F(\vb*{e}_1, \ldots, \vb*{e}_n)
+  \end{align*}
+  となり、目的の等式が示された $\qed$
+\end{proof}
+
+ここで、$F(\vb*{e}_1, \ldots, \vb*{e}_n) = 1$であれば、
+\begin{equation*}
+  F(\vb*{a}_1, \ldots, \vb*{a}_n) = \det(\vb*{a}_1, \ldots, \vb*{a}_n)
+\end{equation*}
+と表せることになる
+
+\br
+
+この$F(\vb*{e}_1, \ldots, \vb*{e}_n) = 1$を\keyword{正規化}の条件といい、行列式は
+\begin{enumerate}[label=\romanlabel]
+  \item 双線形性
+  \item 交代性
+  \item 正規化の条件
+\end{enumerate}
+によって特徴づけられる
+
+\br
+
+すなわち、行列式は、この3つの条件を満たすような
+\begin{shaded}
+  $n$個の列ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$で定まる関数
+\end{shaded}
+として定義することもできる
+
+\end{document}
