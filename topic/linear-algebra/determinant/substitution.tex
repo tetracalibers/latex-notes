@@ -1,0 +1,421 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{置換と互換}
+\marginnote{\refbookA p155〜158}
+
+たとえば、$(1,2,3,4)$を並び替えた列$(i,j,k,l)$があるとして、
+\begin{align*}
+  1 & \longmapsto i \\
+  2 & \longmapsto j \\
+  3 & \longmapsto k \\
+  4 & \longmapsto l
+\end{align*}
+というように、番号を並び替える操作そのものを写像とみなし、\keyword{置換}と呼ぶ
+
+\begin{definition}{置換}
+  集合$\{ 1,2,\ldots,n \}$からそれ自身への写像$\sigma$が全単射であるとき、$\sigma$は$n$次の\keyword{置換}であるという
+\end{definition}
+
+たとえば、
+\begin{equation*}
+  \sigma(1) = 2, \quad \sigma(2) = 3, \quad \sigma(3) = 1
+\end{equation*}
+によって3次の置換を定めることができる
+
+この置換を、
+\begin{equation*}
+  \sigma = \begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 3 & 1
+  \end{pmatrix}
+\end{equation*}
+と表記する
+
+\subsection{置換の積}
+
+写像とみる利点の1つは、積が定義できることである
+
+\br
+
+もう1つの置換
+\begin{equation*}
+  \tau = \begin{pmatrix}
+    1 & 2 & 3 \\
+    1 & 3 & 2
+  \end{pmatrix}
+\end{equation*}
+が与えられたとき、合成写像$\sigma \circ \tau$は、
+\begin{gather*}
+  1 \overset{\tau}{\longmapsto} 1 \overset{\sigma}{\longmapsto} 2 \\
+  2 \overset{\tau}{\longmapsto} 3 \overset{\sigma}{\longmapsto} 1 \\
+  3 \overset{\tau}{\longmapsto} 2 \overset{\sigma}{\longmapsto} 3
+\end{gather*}
+なので、
+\begin{equation*}
+  \sigma \tau = \begin{pmatrix}
+    1 & 2 & 3 \\
+    2 & 1 & 3
+  \end{pmatrix}
+\end{equation*}
+である
+
+通常、合成の記号$\circ$を書かずに$\sigma \tau$と表記する
+
+\br
+
+なお、$\sigma\tau$と$\tau\sigma$は一般に異なる
+
+\br
+
+写像の合成の結合法則から、置換の積でも結合法則が成り立つ
+
+\begin{theorem}{置換の積の結合法則}
+  \begin{equation*}
+    (\sigma \tau) \rho = \sigma (\tau \rho)
+  \end{equation*}
+\end{theorem}
+
+\subsection{逆置換}
+
+置換$\sigma$は、定義より全単射であるので、逆写像$\sigma^{-1}$が存在する
+
+これを\keyword{逆置換}と呼ぶ
+
+\subsection{置換の集合}
+
+すべての$n$次の置換からなる集合は\keyword{群}と呼ばれる構造を持っている
+
+これを\keyword{$n$次対称群}と呼び、記号$S_n$で表す
+
+\subsection{互換}
+
+置換の中で最も基本的なのは、2文字だけを交換する置換である
+
+\begin{definition}{互換}
+  $1 \leq i \neq j \leq n$のとき、$\sigma(i) = j,\, \sigma(j) = i$であって、$k$が$i,\,j$以外のとき$\sigma(k)=k$とすることで得られる置換を
+  \begin{equation*}
+    \sigma = (ij)
+  \end{equation*}
+  と書き、このような置換を\keyword{互換}という
+\end{definition}
+
+たとえば、
+\begin{equation*}
+  (24) = \begin{pmatrix}
+    1 & 2 & 3 & 4 & 5 \\
+    1 & 4 & 3 & 2 & 5
+  \end{pmatrix}
+\end{equation*}
+
+\subsection{互換の逆置換}
+
+互換は$(ij)$と書いても$(ji)$と書いても同じ操作を表す
+
+$i$と$j$を交換してから$j$と$i$を交換すると元に戻るが、この$(ij)$と$(ji)$は互換としては同じなので、
+\begin{shaded}
+  互換の逆置換は自分自身
+\end{shaded}
+である
+
+\subsection{置換の一行表示}
+
+置換を表す2行の表示は、下の行だけで情報としては十分なので、たとえば
+\begin{equation*}
+  \sigma = \begin{pmatrix}
+    1 & 2 & 3 & 4 & 5 \\
+    1 & 4 & 3 & 2 & 5
+  \end{pmatrix}
+\end{equation*}
+を$\sigma = 14325$などと書いてしまうと便利である
+
+これを$\sigma$の\keyword{一行表示}と呼ぶ
+
+\subsection{互換と置換の積}
+
+一行表示を用いた場合、互換と置換の積はたとえば次のように書ける
+
+$\sigma = 14325$とすると、
+\begin{equation*}
+  (12)\sigma = 24315,\quad \sigma(12) = 41325
+\end{equation*}
+
+$(12)\sigma$は、$\sigma = 14325$に互換$(12)$を作用させて、$24315$となる
+
+\br
+
+$\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さらに置換$\sigma$を作用させることを意味する
+
+置換$\sigma$は、4と2を入れ替える置換なので、$21345$に対して$\sigma$を作用させると、$41325$となる
+
+\br
+
+この例の結果を一般的に述べると、次のようになる
+
+\begin{theorem}{互換と置換の積}
+  $\sigma \in S_n$に対して、$\tau = (ij)$を左からかけた$\tau\sigma$の一行表示は、$\sigma$の数字$i$と$j$を交換したものである
+
+  また、$\tau$を右からかけた$\sigma\tau$の一行表示は、$\sigma$の$i$番目の数字と$j$番目の数字を交換したものである
+\end{theorem}
+
+\subsection{互換の積への分解}
+
+たとえば、$\sigma = 2413$とすると、これは、
+\begin{enumerate}
+  \item $1234$の3と4を交換して$1243$
+  \item $1243$の1と2を交換して$2143$
+  \item $2143$の2と3を交換して$2413$
+\end{enumerate}
+というように、互換に分解して考えることができる
+
+数式でまとめると、
+\begin{equation*}
+  \sigma = (34)(12)(23)
+\end{equation*}
+
+\begin{theorem}{互換の積への置換の分解}
+  任意の置換$\sigma$は、いくつかの互換の積として書ける
+\end{theorem}
+
+\begin{proof}
+  $n$に対する帰納法を用いる
+
+  \br
+
+  $n=1$のときは、互換の定義における$i,\,j$の条件を満たさず、$i,\,j$以外の$k$について$\sigma(k)=k$とすることで得られる置換に相当するので、1つの互換とみなせる
+
+  \br
+
+  $(n-1)$次以下の置換が互換の積で書けることを仮定する
+
+  $\sigma$を$n$次の置換とし、$\sigma(n)$の値を$c$とする
+
+  \br
+
+  $c=n$すなわち$\sigma(c)=c$の場合、$\sigma$は$c$をまったく動かしていないため、実質的に$c-1$までの数字だけを並び替えていることになる
+
+  そのため、$\sigma$は$c-1$すなわち$(n-1)$次の置換とみなせるため、帰納法の仮定より、互換の積として書ける
+
+  \br
+
+  $c \neq n$の場合、$\sigma(c)$を$d$とし、$d$と$c$を交換する互換$\tau = (cd)$を考える
+
+  このとき、$\tau\sigma$は、$\sigma$の数字$c$と$d$を交換したものであるので、
+  \begin{equation*}
+    \tau\sigma = \begin{pmatrix}
+      1 & 2 & \cdots & c-1 & c         & \cdots & n \\
+      1 & 2 & \cdots & c-1 & \sigma(c) & \cdots & n
+    \end{pmatrix}
+  \end{equation*}
+  $c$が$n$に一致しないという仮定をふまえると、
+  \begin{equation*}
+    \tau\sigma(n) = n
+  \end{equation*}
+  であることが読み取れる
+
+  よって、$\tau\sigma$は実質的に$(n-1)$次の置換とみなせるので、帰納法の仮定より、互換の積として書ける
+  \begin{equation*}
+    \tau\sigma = \tau_1 \tau_2 \cdots \tau_m
+  \end{equation*}
+  ゆえに、
+  \begin{equation*}
+    \sigma = \tau^{-1}\tau_1 \tau_2 \cdots \tau_m
+  \end{equation*}
+  であるが、互換の逆置換は自分自身であるので、
+  \begin{equation*}
+    \sigma = \tau \tau_1 \tau_2 \cdots \tau_m
+  \end{equation*}
+  と書ける $\qed$
+\end{proof}
+
+\sectionline
+\section{置換の符号と偶奇}
+\marginnote{\refbookA p177〜179、p158 \\ \refbookF p103}
+
+すべての置換は互換の積に分解できるが、その方法は一通りではない
+
+しかし、互換の積の個数の偶奇性は、置換が与えられれば定まる
+
+\br
+
+このことを証明するために、置換と多項式の関係を考察する
+
+\subsection{置換の多項式への作用}
+
+置換$\sigma \in S_n$と$n$変数多項式$f = f(x_1, x_2, \ldots, x_n)$が与えられたとき、変数$x_i$に$x_{\sigma(i)}$を代入することにより、式$\sigma f$を
+\begin{equation*}
+  (\sigma f)(x_1, \ldots, x_n) = f(x_{\sigma(1)}, \ldots, x_{\sigma(n)})
+\end{equation*}
+と定める
+
+\begin{theorem}{置換作用の結合法則}\label{thm:permutation-action-associativity}
+  $f = f(x_1,\ldots,x_n)$を$n$変数の多項式とし、$\sigma, \tau \in S_n$とするとき、
+  \begin{equation*}
+    (\sigma \tau) f = \sigma (\tau f)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  式$\tau f$は、
+  \begin{equation*}
+    (\tau f)(x_1, \ldots, x_n) = f(x_{\tau(1)}, \ldots, x_{\tau(n)})
+  \end{equation*}
+  である
+
+  さらに$\sigma$を作用させると、$x_{\tau(i)}$は$x_{\sigma(\tau(i))} = x_{(\sigma\tau)(i)}$に置き換わるので、
+  \begin{align*}
+    (\sigma(\tau f)) & = f(x_{(\sigma\tau)(1)}, \ldots, x_{(\sigma\tau)(n)}) \\
+                     & = ((\sigma\tau) f)(x_1, \ldots, x_n)
+  \end{align*}
+  が成り立つ $\qed$
+\end{proof}
+
+\subsection{互換の差積への作用}
+
+次のような$n$変数の多項式を\keyword{差積}と呼ぶ
+
+\begin{equation*}
+  \begin{NiceArray}{llll}
+    (x_1 - x_2) & (x_1 - x_3) & \cdots & (x_1 - x_n)     \\
+                & (x_2 - x_3) & \cdots & (x_2 - x_n)     \\
+                &             & \ddots &                 \\
+                &             &        & (x_{n-1} - x_n) \\
+  \end{NiceArray}
+\end{equation*}
+
+\begin{definition}{差積}
+  次のような$n$変数の多項式を\keyword{差積}と呼ぶ
+  \begin{equation*}
+    \Delta_n = \prod_{1 \leq i < j \leq n} (x_i - x_j)
+  \end{equation*}
+\end{definition}
+
+置換の符号を理解するために、差積を使うことができる
+
+その第一歩となるのが、次の定理である
+
+\begin{theorem}{互換による差積の符号変化}\label{thm:transposition-negates-delta}
+  $\tau$を互換とするとき、
+  \begin{equation*}
+    \tau \Delta_n = - \Delta_n
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $i<j$として、$\tau = (ij)$とすると、各因子$x_s - x_t \, (1 \leq s < t \leq n)$の変化は次のようになる
+
+  \begin{subpattern}{\bfseries $x_i - x_j$は$x_j - x_i$になる}
+    $x_i$と$x_j$を入れ替えることで、その差が逆転して符号が反転する
+    \begin{equation*}
+      x_j - x_i = -(x_i - x_j)
+    \end{equation*}
+    よって、この項は$-1$倍の効果をもたらす
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $s < i < j$のとき、$x_s - x_i$と$x_s - x_j$が入れ替わる}
+    この場合、$s$は$i,\, j$より前の添字である
+
+    \begin{itemize}
+      \item 互換前： $(x_s - x_i)(x_s - x_j)$
+      \item 互換後： $(x_s - x_j)(x_s - x_i)$
+    \end{itemize}
+
+    2つの項が交換されるだけなので、積の絶対値は変わらず、符号にも影響しない
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $i < j < s$のとき、$x_i - x_s$と$x_j - x_s$が入れ替わる}
+    この場合、$s$ は $i,\, j$ より後の添字である
+
+    \begin{itemize}
+      \item 互換前： $(x_i - x_s)(x_j - x_s)$
+      \item 互換後： $(x_j - x_s)(x_i - x_s)$
+    \end{itemize}
+
+    この場合も、並び順だけが入れ替わり、符号には影響しない
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $i < s < j$のとき、$x_i - x_s$と$x_s - x_j$は…}
+    この場合、$s$は$i$と$j$の間にある添字である
+
+    \begin{itemize}
+      \item 互換前： $(x_i - x_s)(x_s - x_j)$
+      \item 互換後： $(x_j - x_s)(x_s - x_i)$
+    \end{itemize}
+
+    互換前の積を変形してみると、
+    \begin{align*}
+      (x_i - x_s)(x_s - x_j) & = -(x_i - x_s)(x_j - x_s) \\
+                             & = (x_s - x_i)(x_j - x_s)  \\
+                             & = (x_j - x_s)(x_s - x_i)
+    \end{align*}
+    という形で、互換後の積が得られる
+
+    よって、この場合も積の符号は変わらない
+  \end{subpattern}
+
+  以上をふまえると、符号が反転するのは$x_i - x_j$の項だけである
+
+  よって、1回の互換$(ij)$によって、差積全体は$(-1)$倍される $\qed$
+\end{proof}
+
+\subsection{置換の符号}
+
+\begin{theorem}{置換による差積の符号変化}
+  置換$\sigma \in S_n$が$s$個の互換の積として書けるならば、
+  \begin{equation*}
+    \sigma \Delta_n = (-1)^s \Delta_n
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  置換$\sigma$を$s$個の互換の積$\sigma = \tau_1 \cdots \tau_s$と書いたとき、
+  \begin{equation*}
+    \sigma \Delta_n = (\tau_1 \cdots \tau_s) \Delta_n
+  \end{equation*}
+  \hyperref[thm:permutation-action-associativity]{置換作用の結合法則}を用いて、
+  \begin{equation*}
+    \sigma \Delta_n = (\tau_1 \cdots \tau_{s-1}) (\tau_s \Delta_n)
+  \end{equation*}
+  \hyperref[thm:transposition-negates-delta]{互換による差積の符号変化}を繰り返し用いると、
+  \begin{align*}
+    \sigma \Delta_n & = (\tau_1 \cdots \tau_{s-1}) (-\Delta_n)  \\
+                    & = (-1)(\tau_1 \cdots \tau_{s-1}) \Delta_n \\
+                    & = (-1)^s \Delta_n
+  \end{align*}
+  が最終的に得られる $\qed$
+\end{proof}
+
+この定理における$\sigma\Delta_n$は、$\sigma$をどのような互換の積として表すかとは無関係に、$\sigma$が与えられれば決まる多項式である
+
+\br
+
+そして、$(-1)^s$という部分から、$\sigma$を互換の積で表したとき、その個数$s$が偶数であれば符号は$+$に、奇数であれば符号は$-$になることがわかる
+
+\br
+
+このようにして、次の定理が示されたことになる
+
+\begin{theorem}{置換の符号の存在}
+  置換$\sigma$を互換の積として書くとき、用いられる互換の個数の偶奇は$\sigma$のみによって決まる
+\end{theorem}
+
+そこで、置換の符号を次のように定義する
+
+\begin{definition}{置換の符号}
+  置換$\sigma \in S_n$を互換の積$\sigma = \tau_1 \cdots \tau_i$として書いたとき、$\sigma$の\keyword{符号}を
+  \begin{equation*}
+    \sgn(\sigma) = (-1)^i
+  \end{equation*}
+  と定義する
+\end{definition}
+
+そして、互換の個数の偶奇をそのまま、置換の偶奇として定める
+
+\begin{definition}{偶置換と奇置換}
+  置換$\sigma \in S_n$の符号$\sgn(\sigma)$が$+1$であれば$\sigma$を\keyword{偶置換}と呼び、$-1$であれば\keyword{奇置換}と呼ぶ
+\end{definition}
+
+\end{document}
