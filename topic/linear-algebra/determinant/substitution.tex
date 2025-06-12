@@ -281,7 +281,7 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 \sectionline
 \section{置換の符号と偶奇}
-\marginnote{\refbookA p177〜179、p158 \\ \refbookF p103}
+\marginnote{\refbookA p177〜179、p158〜159 \\ \refbookF p103}
 
 すべての置換は互換の積に分解できるが、その方法は一通りではない
 
@@ -466,5 +466,80 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 \begin{definition}{偶置換と奇置換}
   置換$\sigma \in S_n$の符号$\sgn(\sigma)$が$+1$であれば$\sigma$を\keyword{偶置換}と呼び、$-1$であれば\keyword{奇置換}と呼ぶ
 \end{definition}
+
+\sectionline
+\section{置換の性質}
+\marginnote{\refbookA p157、159}
+
+\begin{theorem}{逆置換の符号}\label{thm:sign-of-inverse-permutation}
+  \begin{equation*}
+    \sgn(\sigma^{-1}) = \sgn(\sigma)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  置換$\sigma$を互換の積として書くと、逆置換はその互換の順序を逆にしたものになる
+
+  すなわち、$\sigma = \tau_1 \cdots \tau_s$とすると、
+  \begin{equation*}
+    \sigma^{-1} = \tau_s^{-1} \cdots \tau_1^{-1}
+  \end{equation*}
+  であるが、互換の逆置換は自分自身であるので、
+  \begin{equation*}
+    \sgn(\sigma^{-1}) = (-1)^s = \sgn(\sigma)
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{置換の符号の乗法性}\label{thm:sign-multiplicativity}
+  \begin{equation*}
+    \sgn(\sigma \tau) = \sgn(\sigma) \sgn(\tau)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  それぞれを互換の積$\sigma = \tau_1 \cdots \tau_i$、$\tau = \rho_1 \cdots \rho_j$と書くと、
+  \begin{equation*}
+    \sigma \tau = \tau_1 \cdots \tau_i \rho_1 \cdots \rho_j
+  \end{equation*}
+  である
+
+  このとき、$\sgn(\sigma) = (-1)^i, \, \sgn(\tau) = (-1)^j$なので、
+  \begin{equation*}
+    \sgn(\sigma \tau) = (-1)^{i+j} = (-1)^i (-1)^j = \sgn(\sigma) \sgn(\tau)
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{置換群の左右作用に対する和の不変性}\label{thm:sum-invariance-under-permutation-action}
+  $f$を$S_n$上の関数とするとき、任意の$\tau \in S_n$に対して、次が成り立つ
+  \begin{equation*}
+    \sum_{\sigma \in S_n} f(\tau\sigma) = \sum_{\sigma \in S_n} f(\sigma) = \sum_{\sigma \in S_n} f(\sigma\tau)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\tau$を固定して、$\sigma$をすべての置換（$S_n$の元）全体にわたって動かすとき、$\tau\sigma$も$S_n$の全体を動く
+
+  言い換えると、写像$S_n \to S_n$を$\sigma \longmapsto \tau\sigma$と定めると、これは全単射である
+
+  したがって、
+  \begin{equation*}
+    \sum_{\sigma \in S_n} f(\sigma) = \sum_{\sigma \in S_n} f(\tau\sigma)
+  \end{equation*}
+  が成り立つ
+
+  \br
+
+  同様に、写像$S_n \to S_n$を$\sigma \longmapsto \sigma\tau$と定めると、これも全単射であるので、同様に、
+  \begin{equation*}
+    \sum_{\sigma \in S_n} f(\sigma) = \sum_{\sigma \in S_n} f(\sigma\tau)
+  \end{equation*}
+  が成り立つことがわかる $\qed$
+\end{proof}
 
 \end{document}
