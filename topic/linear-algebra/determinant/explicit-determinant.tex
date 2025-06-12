@@ -1,0 +1,125 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列式の定義}
+\marginnote{\refbookA p159 \\ \refbookF p107〜108}
+
+ある正方行列の\keyword{行列式}は、
+\begin{enumerate}
+  \item 各列から1つずつ、行に重複がないように成分を選ぶ
+  \item それらをかけ合わせる
+  \item 符号をつけて足す
+\end{enumerate}
+という手順で定まる値である
+
+\begin{definition}{行列式}
+  $n$次正方行列$A = (a_{ij})$に対して、
+  \begin{equation*}
+    \sum_{\sigma \in S_n} \sgn(\sigma) \prod_{i=1}^n a_{i,\sigma(i)}
+  \end{equation*}
+  で定められる値を$A$の\keyword{行列式}と呼び、$|A|$あるいは$\det(A)$と表記する
+\end{definition}
+
+\sectionline
+\section{三角行列の行列式}
+\marginnote{\refbookF p111〜112 \\ \refbookA p160}
+
+\keyword{三角行列}の場合、各列から1つずつ、0でない成分を重複なく選び出す方法は、対角成分をすべて選ぶしかない
+
+\begin{theorem}{三角行列の行列式}
+  三角行列の行列式は、対角成分の積である
+  \begin{equation*}
+    \left|\begin{matrix}
+      a_{11}           & a_{12} & \dots  & a_{1n} \\
+                       & a_{22} & \dots  & a_{2n} \\
+                       &        & \ddots & \vdots \\
+      \text{\Large{0}} &        &        & a_{nn}
+    \end{matrix}\right| = a_{11} a_{22} \cdots a_{nn}
+  \end{equation*}
+  \begin{equation*}
+    \left|\begin{matrix}
+      a_{11} &        &        & \text{\Large{0}} \\
+      a_{21} & a_{22}                             \\
+      \vdots &        & \ddots                    \\
+      a_{n1} & a_{n2} & \dots  & a_{nn}
+    \end{matrix}\right| = a_{11} a_{22} \cdots a_{nn}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  行列式において、
+  \begin{equation*}
+    a_{1,\sigma(1)} a_{2,\sigma(2)} \cdots a_{n,\sigma(n)} = 0
+  \end{equation*}
+  となる項は、和をとったときに消えてしまう
+
+  したがって、
+  \begin{equation*}
+    a_{1,\sigma(1)} a_{2,\sigma(2)} \cdots a_{n,\sigma(n)} \neq 0
+  \end{equation*}
+  すなわち
+  \begin{equation*}
+    a_{1,\sigma(1)} \neq 0, \ldots, a_{n,\sigma(n)} \neq 0
+  \end{equation*}
+  となるような選び方を考える
+
+  \begin{subpattern}{\bfseries 上三角行列の場合}
+    上三角行列の定義より、$i > j$ならば$a_{ij} = 0$である
+
+    $a_{ij} \neq 0$とするには、$i \leq j$でなければならないので、$a_{i,\sigma(i)}$においては、
+    \begin{equation*}
+      i \leq \sigma(i)
+    \end{equation*}
+    である必要がある
+
+    そして、この条件を満たす置換は、\hyperref[thm:identity-permutation-characterized-by-monotonicity]{恒等置換しか存在しない}ので、
+    \begin{equation*}
+      \sigma(i) = i
+    \end{equation*}
+    より、$a_{ii}$の積によって行列式の値が構成される
+
+    また、恒等置換は0（偶数）回の互換で構成されるので、各項の符号は正となる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 下三角行列の場合}
+    下三角行列の定義より、$i < j$ならば$a_{ij} = 0$である
+
+    $a_{ij} \neq 0$とするには、$i \geq j$でなければならないので、$a_{i,\sigma(i)}$においては、
+    \begin{equation*}
+      i \geq \sigma(i)
+    \end{equation*}
+    である必要がある
+
+    そして、この条件を満たす置換も、\hyperref[thm:identity-permutation-characterized-by-monotonicity]{恒等置換しか存在しない}ので、上三角行列の場合と同様の結果が得られる $\qed$
+  \end{subpattern}
+\end{proof}
+
+\sectionline
+
+\keyword{対角行列}は、上三角行列でもあり下三角行列でもあるので、上の定理の特別な場合として次が成り立つ
+
+\begin{theorem}{対角行列の行列式}
+  対角行列の行列式は、対角成分の積である
+  \begin{equation*}
+    \left|\begin{matrix}
+      a_{11}                                                   \\
+       & a_{22}           &        & \text{\Large{0}}          \\
+       &                  & \ddots                             \\
+       & \text{\Large{0}} &        & \ddots                    \\
+       &                  &        &                  & a_{nn}
+    \end{matrix}\right| = a_{11} a_{22} \cdots a_{nn}
+  \end{equation*}
+\end{theorem}
+
+特に、対角成分がすべて1の場合が\keyword{単位行列}である
+
+\begin{theorem}{単位行列の行列式}
+  単位行列の行列式は1である
+  \begin{equation*}
+    | E | = 1
+  \end{equation*}
+\end{theorem}
+
+\end{document}

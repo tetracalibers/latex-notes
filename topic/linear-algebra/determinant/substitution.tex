@@ -78,6 +78,55 @@
   \end{equation*}
 \end{theorem}
 
+\subsection{恒等置換}
+
+恒等写像
+\begin{gather*}
+  \id\colon \{ 1,2,\ldots,n \} \longmapsto \{ 1,2,\ldots,n \} \\
+  \id(i) = i \quad (1 \leq i \leq n)
+\end{gather*}
+は置換であるので、これを\keyword{恒等置換}と呼び、
+\begin{equation*}
+  e = \id
+\end{equation*}
+と書く
+
+\br
+
+任意の置換$\sigma$に対して、明らかに
+\begin{equation*}
+  \sigma e = e \sigma = \sigma
+\end{equation*}
+が成り立つ
+
+\br
+
+また、次の性質はのちに行列式の性質を議論する際に重要になる
+
+\begin{theorem}{恒等置換の単調性による特徴づけ}\label{thm:identity-permutation-characterized-by-monotonicity}
+  $i \leq \sigma(i)$（あるいは$i \geq \sigma(i)$）を満たす置換$\sigma$は恒等置換しか存在しない
+\end{theorem}
+
+\begin{proof}
+  $\sigma$が恒等置換でないと仮定する
+
+  条件$i \leq \sigma(i)$より、「元の位置より後ろに移される」、すなわち「すべてが自分以上に移る」ことになる
+
+  たとえば、1を2に、2を3に、$\ldots$、$n-1$を$n$に写す置換を考える
+
+  しかし、集合$\{ 1,2,\ldots,n \}$の要素は$n$個しかないので、$n$を$n+1$に写すことはできない
+
+  そこで、$n$を$n$に写すとすると、$n-1$も$n$も$n$に写ることになり、これは置換が全単射であるという定義に反する
+
+  \br
+
+  $i \geq \sigma(i)$の場合も、「元の位置より前に移される」、すなわち「すべてが自分以下に移る」ことになると考えると、同様の矛盾が生じる
+
+  \br
+
+  よって、$\sigma$は恒等置換でなければならない $\qed$
+\end{proof}
+
 \subsection{逆置換}
 
 置換$\sigma$は、定義より全単射であるので、逆写像$\sigma^{-1}$が存在する
