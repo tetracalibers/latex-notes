@@ -42,7 +42,42 @@ $\vb*{x} \neq \vb*{0}$という条件により、$(A - \lambda E)\vb*{x} = \vb*{
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookF p258}
+  $\lambda$が$A$の固有値であることは、斉次形方程式$(A - \lambda E)\vb*{x} = \vb*{0}$が非自明解を持つことと言い換えられる
+
+  そして、\hyperref[thm:homogeneous-solution-iff-det-zero]{斉次形方程式が非自明解を持つことは、行列式が0になることと同値}である
+
+  すなわち、
+  \begin{equation*}
+    \det(A - \lambda E) = 0
+  \end{equation*}
+  が成り立ち、つまり$x = \lambda$は方程式$\det(A - xE) = 0$の解である $\qed$
 \end{proof}
+
+\sectionline
+
+$n$次正方行列$A$に対し、$\det(A-xE)$は、$x$についての$n$次式になる
+
+\br
+
+実際、$A = (a_{ij})$とおいて、
+\begin{equation*}
+  \det(A - xE ) = \left|\begin{matrix}
+    a_{11} - x & a_{12}     & \cdots & a_{1n}     \\
+    a_{21}     & a_{22} - x & \cdots & a_{2n}     \\
+    \vdots     & \vdots     & \ddots & \vdots     \\
+    a_{n1}     & a_{n2}     & \cdots & a_{nn} - x
+  \end{matrix}\right|
+\end{equation*}
+を展開することを考える
+
+すべての列（あるいはすべての行）から、$x$を含む成分をとった場合の積が
+\begin{multline*}
+  (a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x) \\
+  = (-1)^n x^n + (-1)^{n-1}(a_{11} + a_{22} + \cdots + a_{nn})x^{n-1} \\+
+  \cdots + a_{11}a_{22}\cdots a_{nn}
+\end{multline*}
+であり、$x$についての最高次は、ここに現れる$(-1)^n x^n$である
+
+\todo{\refbookF p259、\refbookA p190}
 
 \end{document}
