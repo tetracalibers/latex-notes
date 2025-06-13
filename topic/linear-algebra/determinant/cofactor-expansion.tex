@@ -4,8 +4,323 @@
 
 \sectionline
 \section{余因子展開}
-\marginnote{\refbookA p166〜169 \\ \refbookF p133〜139}
+\marginnote{\refbookA p142〜144、p166〜169 \\ \refbookF p133〜139}
 
-\todo{}
+3次正方行列において、第1列を次のようにとらえる
+\begin{equation*}
+  \begin{pmatrix}
+    a_{11} \\
+    a_{21} \\
+    a_{31}
+  \end{pmatrix} = a_{11} \begin{pmatrix}
+    1 \\
+    0 \\
+    0
+  \end{pmatrix} + a_{21} \begin{pmatrix}
+    0 \\
+    1 \\
+    0
+  \end{pmatrix} + a_{31} \begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix}
+\end{equation*}
+
+これをふまえて、3次行列式を、第1列に関する線形性を用いて、次のような和に分解してみる
+\begin{align*}
+   & \phantom{=\,\,} \left| \begin{matrix}
+                              a_{11} & a_{12} & a_{13} \\
+                              a_{21} & a_{22} & a_{23} \\
+                              a_{31} & a_{32} & a_{33}
+                            \end{matrix} \right|                                                                \\
+   & = \left| \begin{matrix}
+                a_{11} & a_{12} & a_{13} \\
+                0      & a_{22} & a_{23} \\
+                0      & a_{32} & a_{33}
+              \end{matrix} \right| + \left| \begin{matrix}
+                                              0      & a_{12} & a_{13} \\
+                                              a_{21} & a_{22} & a_{23} \\
+                                              0      & a_{32} & a_{33}
+                                            \end{matrix} \right| + \left| \begin{matrix}
+                                                                            0      & a_{12} & a_{13} \\
+                                                                            0      & a_{22} & a_{23} \\
+                                                                            a_{31} & a_{32} & a_{33}
+                                                                          \end{matrix} \right|                  \\
+   & = a_{11} \left| \begin{matrix}
+                       1 & a_{12} & a_{13} \\
+                       0 & a_{22} & a_{23} \\
+                       0 & a_{32} & a_{33}
+                     \end{matrix} \right| + a_{21} \left| \begin{matrix}
+                                                            0 & a_{12} & a_{13} \\
+                                                            1 & a_{22} & a_{23} \\
+                                                            0 & a_{32} & a_{33}
+                                                          \end{matrix} \right| + a_{31} \left| \begin{matrix}
+                                                                                                 0 & a_{12} & a_{13} \\
+                                                                                                 0 & a_{22} & a_{23} \\
+                                                                                                 1 & a_{32} & a_{33}
+                                                                                               \end{matrix} \right|
+\end{align*}
+
+\br
+
+ここで、たとえば、
+\begin{equation*}
+  \left| \begin{matrix}
+    1 & a_{12} & a_{13} \\
+    0 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+をどのように表せるかを考える
+
+\br
+
+まず、$(1,1)$成分を要にして第1行の掃き出しを行えば、
+\begin{equation*}
+  \left| \begin{matrix}
+    1 & a_{12} & a_{13} \\
+    0 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right| = \left| \begin{matrix}
+    1 & 0      & 0      \\
+    0 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+が得られる
+
+\br
+
+そこで、
+\begin{equation*}
+  \vb*{u}_1 = \begin{pmatrix}
+    a_{22} \\
+    a_{32}
+  \end{pmatrix},\quad
+  \vb*{u}_2 = \begin{pmatrix}
+    a_{23} \\
+    a_{33}
+  \end{pmatrix}
+\end{equation*}
+とおき、
+\begin{equation*}
+  F(\vb*{u}_1, \vb*{u}_2) = \left| \begin{matrix}
+    1 & 0      & 0      \\
+    0 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right| = F(\vb*{e}_1, \vb*{e}_2) \cdot \left| \begin{matrix}
+    a_{22} & a_{23} \\
+    a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+とみなす
+
+\br
+
+ここで、
+\begin{equation*}
+  F(\vb*{e}_1, \vb*{e}_2) = \left| \begin{matrix}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    0 & 0 & 1
+  \end{matrix} \right| = 1
+\end{equation*}
+であるから、結局、
+\begin{equation*}
+  \left| \begin{matrix}
+    1 & a_{12} & a_{13} \\
+    0 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right| = \left| \begin{matrix}
+    a_{22} & a_{23} \\
+    a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+が得られる
+
+\br
+
+2項めの行列式も同様に、掃き出し法によって、
+\begin{equation*}
+  \left| \begin{matrix}
+    0 & a_{12} & a_{13} \\
+    1 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right| = \left| \begin{matrix}
+    0 & a_{12} & a_{13} \\
+    1 & 0      & 0      \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+これを、
+\begin{equation*}
+  \vb*{u}_1 = \begin{pmatrix}
+    a_{12} \\
+    a_{32}
+  \end{pmatrix},\quad
+  \vb*{u}_2 = \begin{pmatrix}
+    a_{13} \\
+    a_{33}
+  \end{pmatrix}
+\end{equation*}
+の関数$F(\vb*{u}_1, \vb*{u}_2)$とみなす
+
+\br
+
+交代性より、
+\begin{multline*}
+  F(\vb*{e}_1,\vb*{e}_2) = \left| \begin{matrix}
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    0 & 0 & 1
+  \end{matrix} \right| = \det(\vb*{e}_2, \vb*{e}_1, \vb*{e}_3) \\
+  = -\det(\vb*{e}_1, \vb*{e}_2, \vb*{e}_3) = -1
+\end{multline*}
+なので、
+\begin{equation*}
+  \left| \begin{matrix}
+    0 & a_{12} & a_{13} \\
+    1 & a_{22} & a_{23} \\
+    0 & a_{32} & a_{33}
+  \end{matrix} \right| = -\left| \begin{matrix}
+    a_{12} & a_{13} \\
+    a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+
+\br
+
+最後の項の行列式も同様にして、
+\begin{equation*}
+  \left| \begin{matrix}
+    0 & a_{12} & a_{13} \\
+    0 & a_{22} & a_{23} \\
+    1 & a_{32} & a_{33}
+  \end{matrix} \right| = \left| \begin{matrix}
+    0 & a_{12} & a_{13} \\
+    0 & 0      & 0      \\
+    1 & a_{32} & a_{33}
+  \end{matrix} \right|= \left| \begin{matrix}
+    a_{12} & a_{13} \\
+    a_{32} & a_{33}
+  \end{matrix} \right|
+\end{equation*}
+と表せる
+
+\br
+
+以上より、3次行列式は、次のような2次行列式の和に分解できる
+\begin{multline*}
+  \left| \begin{matrix}
+    a_{11} & a_{12} & a_{13} \\
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33}
+  \end{matrix} \right| \\ = a_{11} \left| \begin{matrix}
+    a_{22} & a_{23} \\
+    a_{32} & a_{33}
+  \end{matrix} \right| - a_{21} \left| \begin{matrix}
+    a_{12} & a_{13} \\
+    a_{32} & a_{33}
+  \end{matrix} \right| + a_{31} \left| \begin{matrix}
+    a_{12} & a_{13} \\
+    a_{32} & a_{33}
+  \end{matrix} \right|
+\end{multline*}
+
+\sectionline
+
+このような行列式の展開を一般化したものが、\keyword{余因子展開}である
+
+\begin{definition}{余因子}
+  $n$次正方行列$A = (a_{ij})$から、第$i$行と第$j$列を取り除いて$(n-1)$次の正方行列$\Delta_{ij}$を作り、その行列式に符号$(-1)^{i+j}$をかけたものを、$A$の$(i,j)$\keyword{余因子}と呼び、$\tilde{a}_{ij}$と書く
+  \begin{equation*}
+    \tilde{a}_{ij} = (-1)^{i+j} \det(\Delta_{ij})
+  \end{equation*}
+\end{definition}
+
+\begin{theorem}{余因子展開}
+  $\det(A)$は次のように\keyword{余因子展開}できる
+  \begin{description}
+    \item[第$j$列に関する展開]~\\ $\det(A) = \tilde{a}_{1j} a_{1j} + \tilde{a}_{2j} a_{2j} + \cdots + \tilde{a}_{nj} a_{nj}$
+    \item[第$i$行に関する展開]~\\ $\det(A) = \tilde{a}_{i1} a_{i1} + \tilde{a}_{i2} a_{i2} + \cdots + \tilde{a}_{in} a_{in}$
+  \end{description}
+\end{theorem}
+
+\begin{proof}
+  列に関する展開だけを示せば、行の方は\hyperref[thm:determinant-transpose-invariance]{行列式の対称性}よりしたがう
+
+  \br
+
+  行列$A$を$A = (\vb*{a}_1, \ldots, \vb*{a}_n)$のように列ベクトル表示する
+
+  すると、
+  \begin{equation*}
+    \vb*{a}_j = a_{1j} \vb*{e}_1 + \cdots + a_{nj} \vb*{e}_n
+  \end{equation*}
+  なので、行列式の多重線形性を用いて、
+  \begin{align*}
+    \det(A) & = | \vb*{a}_1, \ldots, \vb*{a}_j, \ldots, \vb*{a}_n |                       \\
+            & = \sum_{i=1}^{n} | \vb*{a}_1, \ldots, a_{ij} \vb*{e}_i, \ldots, \vb*{a}_n | \\
+            & = \sum_{i=1}^{n} a_{ij} | \vb*{a}_1, \ldots, \vb*{e}_i, \ldots, \vb*{a}_n |
+  \end{align*}
+
+  $| \vb*{a}_1, \ldots, \vb*{e}_i, \ldots, \vb*{a}_n |$に対して、$(i,j)$成分を要にして第$i$行を掃き出す操作を行うと、
+  \begin{equation*}
+    \left| \begin{matrix}
+      a_{11} & \cdots & 0 & \cdots & a_{1n} \\
+      \vdots & \ddots & 0 & \ddots & \vdots \\
+      a_{i1} & \cdots & 1 & \cdots & a_{in} \\
+      \vdots & \ddots & 0 & \ddots & \vdots \\
+      a_{n1} & \cdots & 0 & \cdots & a_{nn}
+    \end{matrix} \right| = \left| \begin{matrix}
+      a_{11} & \cdots & 0 & \cdots & a_{1n} \\
+      \vdots & \ddots & 0 & \ddots & \vdots \\
+      0      & \cdots & 1 & \cdots & 0      \\
+      \vdots & \ddots & 0 & \ddots & \vdots \\
+      a_{n1} & \cdots & 0 & \cdots & a_{nn}
+    \end{matrix} \right|
+  \end{equation*}
+
+  \br
+
+  さらに、$i$行目を1つ上の行と順に交換して1行目まで移動し、次に$j$列目を1つ左の列と順に交換して1列目まで移動する
+
+  \br
+
+  行や列の交換から生じる符号の変化は、$(i-1)+(j-1)$の交換を行っているので、$(-1)^{i+j-2} = (-1)^2(-1)^{i+j} = (-1)^{i+j}$となる
+
+  \br
+
+  よって、次のような形が得られる
+  \begin{align*}
+    | \vb*{a}_1, \ldots, \vb*{e}_i, \ldots, \vb*{a}_n | & =  (-1)^{i+j} \left| \begin{matrix}
+                                                                                 1      & 0      & \cdots & 0      & 0      \\
+                                                                                 0      & a_{11} & \cdots & \cdots & a_{1n} \\
+                                                                                 \vdots & \vdots & \ddots & \ddots & \vdots \\
+                                                                                 \vdots & \vdots & \ddots & \ddots & \vdots \\
+                                                                                 0      & a_{n1} & \cdots & \cdots & a_{nn}
+                                                                               \end{matrix} \right| \\
+                                                        & = (-1)^{i+j} \left| \begin{matrix}
+                                                                                a_{11} & \cdots & \cdots & a_{1n} \\
+                                                                                \vdots & \ddots & \ddots & \vdots \\
+                                                                                \vdots & \ddots & \ddots & \vdots \\
+                                                                                a_{n1} & \cdots & \cdots & a_{nn}
+                                                                              \end{matrix} \right|
+  \end{align*}
+
+  ここで現れる行列式は、第1行・第1列に移動させた第$i$行・第$j$列を取り除いた$(n-1)$次正方行列の行列式である
+
+  よって、符号の部分も合わせて、余因子の定義より、次のように書ける
+  \begin{equation*}
+    | \vb*{a}_1, \ldots, \vb*{e}_i, \ldots, \vb*{a}_n | = \tilde{a}_{ij}
+  \end{equation*}
+
+  したがって、行列$A$の行列式は、
+  \begin{equation*}
+    \det(A) = \sum_{i=1}^{n} a_{ij} \tilde{a}_{ij}
+  \end{equation*}
+  と書けることが示された $\qed$
+\end{proof}
 
 \end{document}
