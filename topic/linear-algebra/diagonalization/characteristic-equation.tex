@@ -3,7 +3,7 @@
 \begin{document}
 
 \sectionline
-\section{特性方程式}
+\section{特性多項式と特性方程式}
 \marginnote{\refbookA p184、p188〜191 \\ \refbookF p258〜260}
 
 $\lambda$が$n$次正方行列$A$の固有値であることは、
@@ -55,11 +55,7 @@ $\vb*{x} \neq \vb*{0}$という条件により、$(A - \lambda E)\vb*{x} = \vb*{
 
 \sectionline
 
-$n$次正方行列$A$に対し、$\det(A-xE)$は、$x$についての$n$次式になる
-
-\br
-
-実際、$A = (a_{ij})$とおいて、
+$A = (a_{ij})$とおいて、
 \begin{equation*}
   \det(A - xE ) = \left|\begin{matrix}
     a_{11} - x & a_{12}     & \cdots & a_{1n}     \\
@@ -68,16 +64,103 @@ $n$次正方行列$A$に対し、$\det(A-xE)$は、$x$についての$n$次式�
     a_{n1}     & a_{n2}     & \cdots & a_{nn} - x
   \end{matrix}\right|
 \end{equation*}
-を展開することを考える
+を展開すると、$x$についての$n$次式になる
 
-すべての列（あるいはすべての行）から、$x$を含む成分をとった場合の積が
-\begin{multline*}
-  (a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x) \\
-  = (-1)^n x^n + (-1)^{n-1}(a_{11} + a_{22} + \cdots + a_{nn})x^{n-1} \\+
-  \cdots + a_{11}a_{22}\cdots a_{nn}
-\end{multline*}
-であり、$x$についての最高次は、ここに現れる$(-1)^n x^n$である
+特に、すべての列（あるいはすべての行）から、$x$を含む成分をとった場合の積は、
+\begin{equation*}
+  (a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)
+\end{equation*}
+であるので、これを展開して現れる項を中心に考察する
 
-\todo{\refbookF p259、\refbookA p190}
+\subsection{$n$次の項}
+
+$(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$の各因子から、$-x$だけを選んでかけ合わせたものが
+\begin{equation*}
+  (-1)^n x^n
+\end{equation*}
+であり、これが最高次の項となる
+
+\subsection{$n-1$次の項}
+
+$(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を選び、残りの因子からは$-x$を選んでかけ合わせたものが
+\begin{equation*}
+  (-1)^{n-1} (a_{11} + a_{22} + \cdots + a_{nn}) x^{n-1}
+\end{equation*}
+である
+
+これは、\hyperref[def:trace]{トレースの定義}より、
+\begin{equation*}
+  (-1)^{n-1} \tr(A) x^{n-1}
+\end{equation*}
+とも書き換えられる
+
+\subsection{$n-2$次以下の項}
+
+行列式では、各列から1つずつ、行に重複がないように成分を選ぶ必要がある
+
+そして、今取り上げている行列式では$x$を含む成分が対角線上にあるので、$n-1$次の場合は、対角成分以外を選ぶことができなかった
+（対角成分以外から$x$でない数$a_{ij}$を得ようとすると、同じ行もしくは列から2つ成分を選ぶことになってしまう）
+
+\br
+
+しかし、$n-2$次以下の項では、$x$を含まない成分を$2$個以上選ぶことができるので、対角成分以外からも成分を選ぶことができる
+
+そのため、$n-2$次以下の項は、上の展開式以外からも現れることになり、単純に計算はできない
+
+\subsection{定数項}
+
+定数項は、多項式において$x=0$とおくことで得られるので、$\det(A - xE)$に$x=0$を代入した
+\begin{equation*}
+  \det(A)
+\end{equation*}
+が定数項となる
+
+\sectionline
+
+多項式の最高次の係数に$(-1)^n$がつくのは面倒なので、$\det(A - xE)$の代わりに、その$(-1)^n$倍である
+\begin{equation*}
+  \det(xE - A)
+\end{equation*}
+を考えることが多い
+
+\br
+
+実際、$\det(xE - A)$を展開すると、
+\begin{equation*}
+  \det(xE - A) = \left| \begin{matrix}
+    x - a_{11} & -a_{12}    & \cdots & -a_{1n}    \\
+    -a_{21}    & x - a_{22} & \cdots & -a_{2n}    \\
+    \vdots     & \vdots     & \ddots & \vdots     \\
+    -a_{n1}    & -a_{n2}    & \cdots & x - a_{nn}
+  \end{matrix} \right|
+\end{equation*}
+となり、$x$の前に$(-1)$がつかずに済む
+
+\sectionline
+
+\begin{definition}{特性多項式}
+  $A$を正方行列、$x$を変数として、
+  \begin{equation*}
+    \Phi_A(x) = \det(xE - A)
+  \end{equation*}
+  とおく
+
+  これを\keyword{特性多項式}あるいは\keyword{固有多項式}と呼ぶ
+\end{definition}
+
+\begin{theorem}{特性多項式の構造}
+  $A$を$n$次正方行列とすると、特性多項式は、次のような$n$次多項式である
+  \begin{equation*}
+    \Phi_A(x) = x^n - \tr(A) x^{n-1} + \cdots + (-1)^n \det(A)
+  \end{equation*}
+\end{theorem}
+
+\begin{definition}{特性方程式}
+  特性多項式$\Phi_A(x)$の根を求める方程式
+  \begin{equation*}
+    \Phi_A(x) = 0
+  \end{equation*}
+  を、\keyword{特性方程式}あるいは\keyword{固有方程式}と呼ぶ
+\end{definition}
 
 \end{document}
