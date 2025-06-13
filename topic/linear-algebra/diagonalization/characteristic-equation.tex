@@ -163,4 +163,80 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
   を、\keyword{特性方程式}あるいは\keyword{固有方程式}と呼ぶ
 \end{definition}
 
+\sectionline
+\section{固有値の重複度}
+\marginnote{\refbookA p192 \\ \refbookF p270}
+
+たとえば、次の方程式
+\begin{equation*}
+  (x-2)^3 (x-1) = 0
+\end{equation*}
+の解は、$x=2$と$x=1$である
+
+ここで、左辺を、
+\begin{equation*}
+  (x-2)(x-2)(x-2)(x-1) = 0
+\end{equation*}
+とみなすと、
+\begin{align*}
+  x & = 2 \\
+  x & = 2 \\
+  x & = 2 \\
+  x & = 1
+\end{align*}
+というように解が重複していることがわかる
+
+このように、「何回同じ解が現れるか？」を数えたものを\keyword{重複度}という
+
+\begin{definition}{方程式の解の重複度}
+  多項式$f(x)$で表される方程式$f(x) = 0$において、$f(x)$が$(x-\alpha)^m$で割り切れるが、$(x-\alpha)^{m+1}$では割り切れないような定数$\alpha$と自然数$m$が存在するとき、$\alpha$はこの方程式の\keyword{$m$重解}あるいは\keyword{$m$重根}であるといい、$m$を$\alpha$の\keyword{重複度}と呼ぶ
+\end{definition}
+
+上の定義は難しく聞こえるが、「ちょうど$m$回だけ$(x-\alpha)$がかかっている」ということの言い換えにすぎない
+
+\br
+
+たとえば、
+\begin{equation*}
+  (x-2)^3 (x-1)
+\end{equation*}
+を$(x-2)^3$で割ると、
+\begin{equation*}
+  (x - 1)
+\end{equation*}
+として割り切れるが、$(x-2)^4$で割ると、
+\begin{equation*}
+  \frac{(x-2)^3 (x-1)}{(x-2)^4} = \frac{x-1}{x-2} = \frac{A}{x-1} + \frac{B}{x-2}
+\end{equation*}
+というように部分分数分解できるので、余りが出ていることがわかる
+（多項式の割り算における\keyword{余り}とは、$f(x) = g(x)q(x) + r(x)$の$r(x)$のことである）
+
+\br
+
+つまり、$f(x)$に因数$(x-\alpha)$が$m$個含まれている場合、$f(x)$は$(x-\alpha)^m$で割り切れるが、$m$個以上は含まれていないので、$(x-\alpha)^{m+1}$で割ると余りが出てしまう
+
+これはすなわち、「ちょうど$m$回だけ$(x-\alpha)$がかかっている」ということである
+
+\sectionline
+
+ここまでの議論を応用して、固有値の\keyword{重複度}を定義する
+
+\begin{definition}{固有値の重複度}
+  特性多項式を因数分解して、
+  \begin{equation*}
+    \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
+  \end{equation*}
+  とする
+
+  ここで、$\alpha_1,\ldots, \alpha_s$は相異なるものとする
+
+  $k_i$は1以上の整数であり、これを固有値$\alpha_i$の\keyword{重複度}と呼ぶ
+
+  $\Phi_A(x)$は$n$次多項式であるから、
+  \begin{equation*}
+    \sum_{i=1}^s k_i = n
+  \end{equation*}
+  が成り立つ
+\end{definition}
+
 \end{document}
