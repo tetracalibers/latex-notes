@@ -129,6 +129,8 @@
 以降、列に対して成り立つ性質は行に対しても成り立つとし、列の場合のみを記載する
 
 \sectionline
+\section{行列式の値が零になる条件}
+\marginnote{\refbookF p118}
 
 \begin{theorem}{列の重複による行列式の零化}\label{thm:det-zero-if-columns-repeat}
   $A = (\vb*{a}_1, \ldots, \vb*{a}_n)$の$n$個の列の中に、まったく同じものがあれば、
@@ -161,6 +163,39 @@
   \end{equation*}
   より、$\det A = 0$が成り立つ $\qed$
 \end{proof}
+
+\sectionline
+
+\begin{theorem}{列ベクトルの線形従属性による行列式の零化}
+  $A = (\vb*{a}_1, \ldots, \vb*{a}_n)$の$n$個の列ベクトルが線形従属であるとすれば、
+  \begin{equation*}
+    \det(A) = 0
+  \end{equation*}
+  となる
+\end{theorem}
+
+\begin{proof}
+  列ベクトルのうち1つ$\vb*{a}_i$が、残りのいくつかの線型結合で表されるとすると、
+  \begin{equation*}
+    \det(\ldots, \vb*{a}_i, \ldots) = \det(\ldots, \sum_{j=1}^{k} c_j \vb*{a}_{j}, \ldots)
+  \end{equation*}
+  行列式の多重線形性より、
+  \begin{equation*}
+    \det(\ldots, \sum_{j=1}^{k} c_j \vb*{a}_{j}, \ldots) = \sum_{j=1}^{k} c_j \det(\ldots, \vb*{a}_{j}, \ldots)
+  \end{equation*}
+
+  \br
+
+  ここで、$\vb*{a}_j$は$\vb*{a}_i$以外のいずれかの列ベクトルであるため、右辺の行列式では列ベクトルの重複が生じている
+
+  よって、行列式の値は0になる $\qed$
+\end{proof}
+
+この定理の対偶をとることにより、次の定理が得られる
+
+\begin{theorem}{非零行列式による列ベクトルの線形独立性}\label{thm:lin-indep-if-det-nonzero}
+  $A = (\vb*{a}_1, \ldots, \vb*{a}_n)$の行列式の値が0でないならば、$A$の$n$個の列ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$は線形独立である
+\end{theorem}
 
 \sectionline
 \section{基本変形と行列式}
