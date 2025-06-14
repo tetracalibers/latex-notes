@@ -4,8 +4,28 @@
 
 \sectionline
 \section{固有空間}
-\marginnote{\refbookC p182〜185 \\ \refbookA p187}
+\marginnote{\refbookC p182〜185 \\ \refbookG p2 \\ \refbookA p187 \\ \refbookF p251〜252、p262}
 
-\todo{}
+線形空間$V$の中に、行列の固有ベクトルが「どれくらい」あるかを調べるため、各固有値$\alpha$に対して、$\alpha$の固有ベクトルと$\vb*{0}$からなる$V$の部分集合を考える
+
+\br
+
+$\alpha$が$A$の固有値ならば、方程式
+\begin{equation*}
+  (\alpha E - A)\vb*{x} = \vb*{0}
+\end{equation*}
+の解空間、すなわち\keyword{核空間}$\Ker(\alpha E - A)$は、固有値$\alpha$を持つ$A$の固有ベクトルのすべてと$\vb*{0}$からなる
+
+\br
+
+核空間は$V$の部分空間であり、これを固有値$\alpha$の\keyword{固有空間}と呼ぶ
+
+\begin{definition}{固有空間}
+  $\alpha$が$A$の固有値であるとき、
+  \begin{equation*}
+    W(\alpha) = \Ker(\alpha E - A)
+  \end{equation*}
+  を固有値$\alpha$の\keyword{固有空間}と呼ぶ
+\end{definition}
 
 \end{document}
