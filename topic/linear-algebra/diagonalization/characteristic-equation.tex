@@ -221,7 +221,7 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
 
 ここまでの議論を応用して、固有値の\keyword{重複度}を定義する
 
-\begin{definition}{固有値の重複度}
+\begin{definition}{固有値の重複度}\label{def:algebraic-multiplicity}
   特性多項式を因数分解して、
   \begin{equation*}
     \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
@@ -238,5 +238,119 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
   \end{equation*}
   が成り立つ
 \end{definition}
+
+\sectionline
+\section{相似な行列の特性多項式}
+\marginnote{\refbookF p269〜271 \\ \refbookA p190〜191}
+
+\hyperref[thm:determinant-multiplicativity]{行列式の乗法性}により、正方行列$A,\,B$が、ある正則行列$P$に対して
+\begin{equation*}
+  B = P^{-1}AP
+\end{equation*}
+となる（$A$と$B$が\hyperref[def:similar-matrices]{相似}である）ならば、次のように$A$と$B$の特性多項式は一致する
+\begin{align*}
+  \det(xE - B) & = \det(xE - P^{-1}AP)       \\
+               & = \det(xPP^{-1} - P^{-1}AP) \\
+               & = \det(P^{-1}P(x - A))      \\
+               & = \det(P^{-1}P(xE - A))     \\
+               & = \det(E(xE - A))           \\
+               & = \det(E)\det(xE - A)       \\
+               & = \det(xE - A)
+\end{align*}
+
+\begin{theorem}{相似な行列の特性多項式}
+  相似な行列の特性多項式は一致する
+\end{theorem}
+
+この事実は、すなわち次の事実を意味する
+
+\begin{theorem}{相似な行列の固有値}
+  相似な行列の固有値は重複度も含めて一致する
+\end{theorem}
+
+\sectionline
+
+$n$次元正方行列$A = (a_{ij})$の特性多項式が、
+\begin{equation*}
+  \Phi_A(x) = x^n - \tr(A)x^{n-1} + \cdots + (-1)^n \det(A)
+\end{equation*}
+であることを思い出すと、次のことがいえる
+
+\begin{theorem}{相似な行列のトレースと行列式}
+  $A$と$B$が相似ならば、
+  \begin{align*}
+    \tr(A)  & = \tr(B)  \\
+    \det(A) & = \det(B)
+  \end{align*}
+\end{theorem}
+
+\br
+
+さらに、$A$が\hyperref[def:diagonalizable]{対角化可能}であるときには、
+\begin{equation*}
+  B = P^{-1}AP = \begin{pmatrix}
+    \alpha_1 & 0        & \cdots & 0        \\
+    0        & \alpha_2 & \cdots & 0        \\
+    \vdots   & \vdots   & \ddots & \vdots   \\
+    0        & 0        & \cdots & \alpha_n
+  \end{pmatrix}
+\end{equation*}
+という行列$B$と$A$が相似であるので、
+\begin{align*}
+  \tr(A)  & = \tr(B) = \alpha_1 + \alpha_2 + \cdots + \alpha_n \\
+  \det(A) & = \det(B) = \alpha_1 \alpha_2 \cdots \alpha_n
+\end{align*}
+であることがわかる
+
+\br
+
+つまり、
+\begin{itemize}
+  \item 行列$A$のトレースは$A$の固有値の和
+  \item 行列$A$の行列式は$A$の固有値の積
+\end{itemize}
+となるのである
+
+\sectionline
+
+さて、$A$と$B$が\hyperref[def:similar-matrices]{相似}であるとき、$A$と$B$は\hyperref[thm:similarity-under-basis-change]{1つの線形変換$f$を異なる基底によって表現}して得られた行列であるという関係にある
+
+\br
+
+このとき、$A$と$B$の特性多項式が一致するということは、次のように言い換えられる
+
+\begin{theorem}{特性多項式の基底不変性}
+  線形空間$V$の線形変換$f$に対して、$V$のある基底に関する表現行列$A$の特性多項式$\Phi_A(x)$は、基底の選び方によらず$f$のみによって決まる
+\end{theorem}
+
+\sectionline
+
+また、\hyperref[thm:distinct-eigenvalues-imply-diagonalizable]{$n$次正方行列が異なる$n$個の固有値をもつとき、$A$は対角化可能}であった
+
+ここで、「異なる$n$個の固有値をもつ」ということは、特性多項式が次のように因数分解できることと言い換えられる
+\begin{equation*}
+  \Phi_A(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_n)
+\end{equation*}
+この形は、\hyperref[def:algebraic-multiplicity]{固有値の重複度}の定義において、$k_i = 1$とした形だが、
+\begin{equation*}
+  \sum_{i=1}^s k_i = n
+\end{equation*}
+という条件があることから、$k_i$がすべて1でないと、$n$個の異なる$\alpha_i$は得られないからである
+
+\br
+
+よって、$A$が対角化可能であるときのトレースと行列式に関する考察と合わせて、次のようにまとめられる
+
+\begin{theorem}{固有値とトレース・行列式の関係}
+  $A$の特性方程式を
+  \begin{equation*}
+    \Phi_A(x) = (x - \alpha_1) \cdots (x - \alpha_n)
+  \end{equation*}
+  とするとき、
+  \begin{align*}
+    \tr(A)  & = \alpha_1 + \cdots + \alpha_n \\
+    \det(A) & = \alpha_1 \cdots \alpha_n
+  \end{align*}
+\end{theorem}
 
 \end{document}
