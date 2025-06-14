@@ -3,23 +3,23 @@
 \begin{document}
 
 \sectionline
-\section{直交変換}
+\section{ユニタリ変換}
 \marginnote{\refbookA p77〜82}
 
-体$\mathbb{R}^n$上の計量空間において、内積を保つ線形変換を\keyword{直交変換}という
+体$\mathbb{C}^n$上の計量空間において、内積を保つ線形変換を\keyword{ユニタリ変換}という
 
-\begin{definition}{直交変換}
-  体$\mathbb{R}^n$上の計量空間$V$における線形変換$f$が\keyword{直交変換}であるとは、任意の$\vb*{u},\,\vb*{v} \in V$に対し、
+\begin{definition}{ユニタリ変換}
+  体$\mathbb{C}^n$上の計量空間$V$における線形変換$f$が\keyword{ユニタリ変換}であるとは、任意の$\vb*{u},\,\vb*{v} \in V$に対し、
   \begin{equation*}
     (f(\vb*{u}),f(\vb*{v})) = (\vb*{u},\vb*{v})
   \end{equation*}
   が成り立つことである
 \end{definition}
 
-直交変換は、ベクトルの長さを変えない変換でもある
+ユニタリ変換は、ベクトルの長さを変えない変換でもある
 
-\begin{theorem}{直交変換とノルム保存性}
-  計量空間$V$における線形変換を$f$が直交変換であることと、任意の$\vb*{v} \in V$に対し
+\begin{theorem}{ユニタリ変換とノルム保存性}
+  計量空間$V$における線形変換を$f$がユニタリ変換であることと、任意の$\vb*{v} \in V$に対し
   \begin{equation*}
     \|f(\vb*{v})\| = \|\vb*{v}\|
   \end{equation*}
@@ -27,8 +27,8 @@
 \end{theorem}
 
 \begin{proof}
-  \begin{subpattern}{\bfseries $f$が直交変換$\Longrightarrow$ $f$はノルムを保つ}
-    直交変換の定義より、
+  \begin{subpattern}{\bfseries $f$がユニタリ変換$\Longrightarrow$ $f$はノルムを保つ}
+    ユニタリ変換の定義より、
     \begin{equation*}
       (f(\vb*{v}),f(\vb*{v})) = (\vb*{v},\vb*{v}) = \|\vb*{v}\|^2
     \end{equation*}
@@ -39,7 +39,7 @@
     が成り立つ $\qed$
   \end{subpattern}
 
-  \begin{subpattern}{\bfseries $f$はノルムを保つ$\Longrightarrow$ $f$は直交変換}
+  \begin{subpattern}{\bfseries $f$はノルムを保つ$\Longrightarrow$ $f$はユニタリ変換}
     任意の$\vb*{v} \in V$に対し、
     \begin{equation*}
       \|f(\vb*{v})\| = \|\vb*{v}\|
@@ -79,7 +79,7 @@
     \begin{equation*}
       (\vb*{a},\vb*{b}) = (f(\vb*{a}),f(\vb*{b}))
     \end{equation*}
-    が成り立つので、$f$は直交変換である $\qed$
+    が成り立つので、$f$はユニタリ変換である $\qed$
   \end{subpattern}
 \end{proof}
 
