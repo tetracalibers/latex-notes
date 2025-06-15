@@ -4,7 +4,7 @@
 
 \sectionline
 \section{固有空間}
-\marginnote{\refbookC p182〜185 \\ \refbookG p2 \\ \refbookA p187 \\ \refbookF p251〜252、p262}
+\marginnote{\refbookC p182〜185 \\ \refbookG p2、p4〜5 \\ \refbookA p187 \\ \refbookF p251〜252、p262、p271〜273}
 
 線形空間$V$の中に、行列の固有ベクトルが「どれくらい」あるかを調べるため、各固有値$\alpha$に対して、$\alpha$の固有ベクトルと$\vb*{0}$からなる$V$の部分集合を考える
 
@@ -27,5 +27,80 @@ $\alpha$が$A$の固有値ならば、方程式
   \end{equation*}
   を固有値$\alpha$の\keyword{固有空間}と呼ぶ
 \end{definition}
+
+\subsection{固有空間の次元}
+
+\begin{theorem}{固有空間の次元と固有値の重複度}
+  $A$の固有値$\alpha_i$の重複度$k_i$と、固有空間$W(\alpha_i)$の次元$\dim W(\alpha_i)$に対し、次の不等式が成立する
+  \begin{equation*}
+    \dim W(\alpha_i) \leq k_i \quad (1 \leq i \leq s)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $W(\alpha_i)$の基底$\vb*{v}_1,\ldots,\vb*{v}_m$をとる
+
+  $\vb*{v}_1,\ldots,\vb*{v}_m,\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$が$K^n$の基底となるように、$n-m$個のベクトル$\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$を追加して\hyperref[thm:basis-extension]{基底を延長}する
+
+  \br
+
+  $P = (\vb*{v}_1,\ldots,\vb*{v}_m,\vb*{v}_{m+1},\ldots,\vb*{v}_{n})$とするとき、
+  \begin{equation*}
+    AP = (A\vb*{v}_1,\ldots,A\vb*{v}_m,A\vb*{v}_{m+1},\ldots,A\vb*{v}_{n})
+  \end{equation*}
+  ここで、$W(\alpha_i)$の基底$\vb*{v}_1,\ldots,\vb*{v}_m$は$A$の固有ベクトルであるので、固有値と固有ベクトルの定義より、
+  \begin{align*}
+    AP & = (\alpha_i\vb*{v}_1,\ldots,\alpha_i\vb*{v}_m,A\vb*{v}_{m+1},\ldots,A\vb*{v}_{n})                                                      \\
+       & = (\vb*{v}_1,\ldots,\vb*{v}_{n})\begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+                                           \Hdotsfor{3}^{m} & \Hdotsfor{2}^{n-m} \\
+                                           \alpha_i & & & \Block{3-2}<\large>{B} && \Vdotsfor{3}^{m}  \\
+                                           & \ddots &&& \\
+                                           & & \alpha_i&& \\
+                                           \hline
+                                           \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{C} && \Vdotsfor{2}^{n-m} \\
+                                           &&&&
+                                         \end{pNiceArray} \\
+       & = P\begin{pmatrix}
+              \alpha_iE_m & B \\
+              O           & C
+            \end{pmatrix}
+  \end{align*}
+
+  基底の線型独立性より、\hyperref[thm:invertible-iff-col-indep]{線型独立な列ベクトルを並べた行列$P$は正則}であるので、
+  \begin{equation*}
+    P^{-1}AP = \begin{pmatrix}
+      \alpha_iE_m & B \\
+      O           & C
+    \end{pmatrix}
+  \end{equation*}
+
+  この行列の特性多項式を考えると、
+  \begin{align*}
+    \Phi_{P^{-1}AP}(x) & = \det(xE - P^{-1}AP)                                                                   \\
+                       & = \begin{vNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},margin,columns-width =1.5em]
+                             x-\alpha_i & & & \Block{3-2}{-B} &   \\
+                             & \ddots &&& \\
+                             & & x-\alpha_i&& \\
+                             \hline
+                             \Block{2-3}<\large>{O} && & \Block{2-2}{xE'-C} &\\
+                             &&&&
+                           \end{vNiceArray} \\
+                       & = \begin{vNiceArray}{ccc}[xdots={horizontal-labels,line-style = <->},margin,columns-width =1.5em]
+                             x-\alpha_i & & \\
+                             & \ddots & \\
+                             & & x-\alpha_i
+                           \end{vNiceArray} \det(xE' - C)    \\
+                       & = (x-\alpha_i)^m \det(xE' - C)
+  \end{align*}
+  より、固有値$\alpha_i$の重複度$k_i$は$m$以上となる
+  \begin{equation*}
+    m \leq k_i
+  \end{equation*}
+  $m$は$W(\alpha)_i$の基底を構成するベクトルの個数、すなわち$\dim W(\alpha_i)$であるので、
+  \begin{equation*}
+    \dim W(\alpha_i) \leq k_i
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
 
 \end{document}
