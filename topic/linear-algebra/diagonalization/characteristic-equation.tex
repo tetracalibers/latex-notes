@@ -165,7 +165,7 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
 
 \sectionline
 \section{固有値の重複度}
-\marginnote{\refbookA p192 \\ \refbookF p270}
+\marginnote{\refbookA p192 \\ \refbookF p270 \\ \refbookG p2}
 
 たとえば、次の方程式
 \begin{equation*}
@@ -239,6 +239,16 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
   が成り立つ
 \end{definition}
 
+ここで、特性多項式が
+\begin{equation*}
+  \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
+\end{equation*}
+と因数分解できることは、\keyword{代数学の基本定理}によって保証されている
+
+\begin{theorem}{代数学の基本定理}
+  定数でない任意の1変数多項式は、複素計数の1次式の積に分解できる
+\end{theorem}
+
 \sectionline
 \section{相似な行列の特性多項式}
 \marginnote{\refbookF p269〜271 \\ \refbookA p190〜191}
@@ -302,14 +312,13 @@ $n$次元正方行列$A = (a_{ij})$の特性多項式が、
 \end{align*}
 であることがわかる
 
-\br
-
-つまり、
-\begin{itemize}
-  \item 行列$A$のトレースは$A$の固有値の和
-  \item 行列$A$の行列式は$A$の固有値の積
-\end{itemize}
-となるのである
+\begin{theorem}{対角化可能行列の固有値による不変量の表現}
+  行列$A$が対角化可能であるとき、
+  \begin{itemize}
+    \item $A$のトレースは$A$の固有値の和
+    \item $A$の行列式は$A$の固有値の積
+  \end{itemize}
+\end{theorem}
 
 \sectionline
 
@@ -324,33 +333,47 @@ $n$次元正方行列$A = (a_{ij})$の特性多項式が、
 \end{theorem}
 
 \sectionline
+\section{対角化可能な行列の特性多項式}
+\marginnote{\refbookG p4}
 
-また、\hyperref[thm:distinct-eigenvalues-imply-diagonalizable]{$n$次正方行列が異なる$n$個の固有値をもつとき、$A$は対角化可能}であった
+$A$が$P$によって対角化されたとして、
+\begin{equation*}
+  P^{-1}AP= \diag(c_1,\ldots, c_n)
+\end{equation*}
+とすると、$A$の特性多項式は、
+\begin{align*}
+  \Phi_A(x) & = \Phi_{P^{-1}AP}(x)                          \\
+            & = \det(xE - P^{-1}AP)                         \\
+            & = \left| \begin{matrix}
+                         x - c_1 & 0       & \cdots & 0       \\
+                         0       & x - c_2 & \cdots & 0       \\
+                         \vdots  & \vdots  & \ddots & \vdots  \\
+                         0       & 0       & \cdots & x - c_n
+                       \end{matrix} \right| \\
+            & = (x - c_1)(x - c_2) \cdots (x - c_n)
+\end{align*}
+となる
 
-ここで、「異なる$n$個の固有値をもつ」ということは、特性多項式が次のように因数分解できることと言い換えられる
+一般の場合の特性多項式
 \begin{equation*}
-  \Phi_A(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_n)
+  (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
 \end{equation*}
-この形は、\hyperref[def:algebraic-multiplicity]{固有値の重複度}の定義において、$k_i = 1$とした形だが、
-\begin{equation*}
-  \sum_{i=1}^s k_i = n
-\end{equation*}
-という条件があることから、$k_i$がすべて1でないと、$n$個の異なる$\alpha_i$は得られないからである
+と見比べると、各$1 \leq i \leq s$に対して、$c_1,\ldots,c_n$の中には$\alpha_i$が$k_i$個あることがわかる
 
 \br
 
-よって、$A$が対角化可能であるときのトレースと行列式に関する考察と合わせて、次のようにまとめられる
+つまり、対角成分として現れた数たち$c_1,\ldots,c_n$は、重複度を含めて、特性多項式$\Phi_A(x)$の根と一致する
 
-\begin{theorem}{固有値とトレース・行列式の関係}
-  $A$の特性方程式を
-  \begin{equation*}
-    \Phi_A(x) = (x - \alpha_1) \cdots (x - \alpha_n)
-  \end{equation*}
-  とするとき、
-  \begin{align*}
-    \tr(A)  & = \alpha_1 + \cdots + \alpha_n \\
-    \det(A) & = \alpha_1 \cdots \alpha_n
-  \end{align*}
+\begin{theorem}{対角化と特性多項式の根}
+  対角化可能な行列$A$を対角化して得られる対角行列の対角成分たちは、重複度を含めて特性多項式の根と一致する
+\end{theorem}
+
+また、\hyperref[thm:diagonalizable-iff-n-indep-eigenvectors]{対角化可能性と固有ベクトルの線型独立性}の証明過程を振り返ると、次のようにまとめられる
+
+\begin{theorem}{対角化行列の列ベクトルと固有ベクトルの対応}
+  対角化可能な行列$A$を対角化する正則行列$P$の列ベクトルはすべて$A$の固有ベクトルであり、固有値$\alpha_i$のものが$k_i$個ある
+
+  ここで、$k_i$は$\alpha_i$の重複度である
 \end{theorem}
 
 \end{document}
