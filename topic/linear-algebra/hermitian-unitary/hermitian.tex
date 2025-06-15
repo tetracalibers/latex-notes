@@ -1,0 +1,36 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{対称行列とエルミート行列}
+\marginnote{\refbookF p275〜276}
+
+\begin{definition}{エルミート行列}
+  複素正方行列$A$が次を満たすとき、$A$を\keyword{エルミート行列}という
+  \begin{equation*}
+    A^* = A
+  \end{equation*}
+\end{definition}
+
+$A$が実正方行列のときは、
+\begin{equation*}
+  A\text{がエルミート行列} \Longleftrightarrow {}^tA = A
+\end{equation*}
+となり、このような$A$は\hyperref[def:symmetric-matrix]{対称行列}、あるいは\keyword{実対称行列}と呼ばれる
+
+\sectionline
+\section{エルミート変換}
+\marginnote{\refbookC p126〜131}
+
+\begin{definition}{エルミート変換}
+  体$\mathbb{C}$上の計量空間$V$における線形空間$f$が\keyword{エルミート変換}であるとは、任意の$\vb*{u},\,\vb*{v} \in V$に対し、
+  \begin{equation*}
+    (f(\vb*{u}), \vb*{v}) = (\vb*{u}, f(\vb*{v}))
+  \end{equation*}
+  が成り立つことである
+\end{definition}
+
+体$\mathbb{R}$上のエルミート変換は、\keyword{対称変換}と呼ばれる
+
+\end{document}

@@ -3,6 +3,80 @@
 \begin{document}
 
 \sectionline
+\section{直交行列とユニタリ行列}
+\marginnote{\refbookF p275〜276 \\ \refbookA p204}
+
+\begin{definition}{ユニタリ行列}
+  複素正方行列$A$が次を満たすとき、$A$を\keyword{ユニタリ行列}という
+  \begin{equation*}
+    A^* = A^{-1}
+  \end{equation*}
+\end{definition}
+
+$A$が実正方行列のときは、
+\begin{equation*}
+  A\text{がユニタリ行列} \Longleftrightarrow {}^tA = A^{-1}
+\end{equation*}
+となり、このような$A$は\keyword{直交行列}と呼ばれる
+
+\begin{definition}{直交行列}
+  実正方行列$A$が次を満たすとき、$A$を\keyword{直交行列}という
+  \begin{equation*}
+    {}^t A = A^{-1}
+  \end{equation*}
+\end{definition}
+
+直交行列という名前の由来は、次のように考えられる
+
+\br
+
+$A$を$n$個の列ベクトルを横一列に並べたものとみなし、
+\begin{equation*}
+  A = (\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n)
+\end{equation*}
+とおくと、${}^t A = A^{-1}$、すなわち${}^tAA = E$は、
+\begin{equation*}
+  \begin{pmatrix}
+    {}^t \vb*{a}_1 \\
+    {}^t \vb*{a}_2 \\
+    \vdots         \\
+    {}^t \vb*{a}_n
+  \end{pmatrix} \left(
+  \vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n
+  \right) = \begin{pmatrix}
+    1      & 0      & \cdots & 0      \\
+    0      & 1      & \cdots & 0      \\
+    \vdots & \vdots & \ddots & \vdots \\
+    0      & 0      & \cdots & 1
+  \end{pmatrix}
+\end{equation*}
+と表される
+
+\br
+
+これは、ベクトル$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$が、次の性質
+\begin{equation*}
+  {}^t \vb*{a}_i \vb*{a}_j =(\vb*{a}_i, \vb*{a}_j) = \delta_{ij}
+\end{equation*}
+を満たすことを意味する
+
+\br
+
+すなわち、直交行列$A$の列ベクトル$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$は、互いに直交する単位ベクトルである
+
+\br
+
+この事実は、複素行列に対しても成立する
+
+\begin{theorem}{todo}
+  複素正方行列$U$を$U = (\vb*{u}_1, \ldots, \vb*{u}_n)$と列ベクトル分解するとき、
+  \begin{equation*}
+    U\text{がユニタリ行列} \Longleftrightarrow (\vb*{u}_i, \vb*{u}_j) = \delta_{ij}
+  \end{equation*}
+  すなわち、ユニタリ行列の列ベクトルは、互いに直交する単位ベクトルである
+\end{theorem}
+
+\sectionline
 \section{ユニタリ変換}
 \marginnote{\refbookA p77〜82 \\ \refbookC p126〜131}
 
@@ -89,6 +163,20 @@
 
 \subsection{ユニタリ変換の表現行列}
 
-\todo{「計量同型」を学んでから}
+ユニタリ変換の表現行列は、\keyword{ユニタリ行列}である
+
+\begin{theorem}{todo}
+  計量空間上の線形変換$f$がユニタリ変換であることと、$f$の表現行列$A$がユニタリ行列であることは同値である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $f$がユニタリ変換$\Longrightarrow$ $A$がユニタリ行列}
+
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $A$がユニタリ行列$\Longrightarrow$ $f$がユニタリ変換}
+
+  \end{subpattern}
+\end{proof}
 
 \end{document}
