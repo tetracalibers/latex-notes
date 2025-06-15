@@ -30,7 +30,7 @@ $\alpha$が$A$の固有値ならば、方程式
 
 \subsection{固有空間の次元}
 
-\begin{theorem}{固有空間の次元と固有値の重複度}
+\begin{theorem}{固有空間の次元と固有値の重複度}\label{thm:geom-mult-leq-alg-mult}
   $A$の固有値$\alpha_i$の重複度$k_i$と、固有空間$W(\alpha_i)$の次元$\dim W(\alpha_i)$に対し、次の不等式が成立する
   \begin{equation*}
     \dim W(\alpha_i) \leq k_i \quad (1 \leq i \leq s)
@@ -102,5 +102,25 @@ $\alpha$が$A$の固有値ならば、方程式
   \end{equation*}
   が成り立つ $\qed$
 \end{proof}
+
+この定理の証明過程で登場した特性方程式
+\begin{equation*}
+  \Phi_{P^{-1}AP}(x) = (x-\alpha_i)^m \det(xE' - C)
+\end{equation*}
+において、$\det(xE' - C)$からも$(x-\alpha_i)$が現れれば、$\alpha_i$の重複度$k_i$は$m$より大きくなることがわかる
+
+\sectionline
+
+$W(\alpha)$の基底を構成するベクトルの個数は、固有値$\alpha$に属する線型独立な固有ベクトルの個数ともいえる
+
+また、固有値$\alpha$の重複度が$k$であることは、特性方程式が$x=\alpha$を$k$重解にもつことを意味する
+
+\br
+
+以上をふまえると、前述の定理は、特性方程式の視点で次のように言い換えられる
+
+\begin{theorem}{固有値の重複度と固有ベクトルの最大数}
+  正方行列$A$の特性方程式$\Phi_A(x) = 0$が$x=\alpha$を$k$重解にもつとき、固有値$\alpha$に属する線型独立な固有ベクトルは、$k$個以下しかとれない
+\end{theorem}
 
 \end{document}

@@ -23,12 +23,106 @@
 
 \begin{proof}
   \begin{subpattern}{\bfseries 対角化可能 $\Longrightarrow$ 固有空間の次元と重複度が一致}
-    \todo{\refbookA p193}
+    $A$が対角化可能であるので、正則行列$P$により$P^{-1}AP$が対角行列になる
+
+    このとき、\hyperref[thm:diagonalization-columns-are-eigenvectors]{$P$の列ベクトルからなる$A$の固有ベクトルの集合}には、固有値$\alpha_i$を持つものが$k_i$個含まれる
+
+    \br
+
+    各$i$に対して、$k_i$個の線型独立なベクトルが$W(\alpha_i)$に含まれることになるため、
+    \begin{equation*}
+      \dim W(\alpha_i) \geq k_i
+    \end{equation*}
+    がいえる
+
+    \br
+
+    一方、\hyperref[thm:geom-mult-leq-alg-mult]{固有空間の次元と固有値の重複度の不等式}より、
+    \begin{equation*}
+      \dim W(\alpha_i) \leq k_i
+    \end{equation*}
+
+    したがって、
+    \begin{equation*}
+      \dim W(\alpha_i) = k_i
+    \end{equation*}
+    が成り立つ $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries 固有空間の次元と重複度が一致 $\Longrightarrow$ 対角化可能}
-    \todo{\refbookA p194}
+    $\dim W(\alpha_i) = k_i$が成り立つとし、$W(\alpha_i)$の基底$\mathcal{V}_i$をとる
+
+    $\mathcal{V}_i$は$k_i$個の元からなり、これらは$W(\alpha_i)$の基底であることから、線形独立な固有ベクトルである
+
+    \br
+
+    さらに、\hyperref[thm:eigenvectors-of-distinct-eigenvalues-are-independent]{異なる固有値に対応する固有ベクトルは線形独立}であるから、$i\neq j$とし$\mathcal{V}_i$と$\mathcal{V}_j$のベクトルは互いに線形独立である
+
+    そこで、すべての$\mathcal{V}_i$を併せた集合
+    \begin{equation*}
+      \mathcal{V} = \bigcup_{i=1}^s \mathcal{V}_i
+    \end{equation*}
+    を考えると、$\mathcal{V}$のベクトルは線型独立である
+
+    \br
+
+    このとき、$\mathcal{V}$の元の個数は
+    \begin{equation*}
+      \sum_{i=1}^s k_i = n
+    \end{equation*}
+    である
+
+    \br
+
+    したがって、\hyperref[thm:diagonalizable-iff-n-indep-eigenvectors]{線型独立な$n$個の固有ベクトルが存在するため、$A$は対角化可能}である $\qed$
   \end{subpattern}
+\end{proof}
+
+\sectionline
+
+次の補題をもとに、対角化可能性を特性方程式の言葉で述べることができる
+
+\begin{theorem}{特性方程式の単根性と固有空間の次元}
+  特性方程式$\Phi_A(x)$において$\alpha_i$が単根ならば、すなわち$k_i = 1$ならば、
+  \begin{equation*}
+    \dim W(\alpha_i) = 1
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\alpha_i$は固有値なので、$\alpha_i \neq \vb*{0}$より、$W(\alpha_i) \neq \{\vb*{0}\}$がいえる
+
+  これはつまり、
+  \begin{equation*}
+    \dim W(\alpha_i) \geq 1
+  \end{equation*}
+  ということだが、\hyperref[thm:geom-mult-leq-alg-mult]{固有空間の次元と固有値の重複度に関する不等式}より、
+  \begin{equation*}
+    \dim W(\alpha_i) \leq k_i = 1
+  \end{equation*}
+  も成り立つ
+
+  したがって、
+  \begin{equation*}
+    \dim W(\alpha_i) = 1
+  \end{equation*}
+  である $\qed$
+\end{proof}
+
+\br
+
+\begin{theorem}{特性方程式の単根性と対角化可能性}
+  特性方程式$\Phi_A(x)$が重根を持たなければ、$A$は対角化可能である
+\end{theorem}
+
+\begin{proof}
+  重根を持たないということは、各固有値の重複度$k_i$は1である
+
+  よって、
+  \begin{gather*}
+    \dim W(\alpha_i) = 1
+  \end{gather*}
+  となり、$k_i$と$\dim W(\alpha_i)$が一致するので、$A$は対角化可能である  $\qed$
 \end{proof}
 
 \end{document}
