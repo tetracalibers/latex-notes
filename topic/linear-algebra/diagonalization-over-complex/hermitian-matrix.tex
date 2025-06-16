@@ -19,4 +19,116 @@ $A$が実正方行列のときは、
 \end{equation*}
 となり、このような$A$は\hyperref[def:symmetric-matrix]{対称行列}、あるいは\keyword{実対称行列}と呼ばれる
 
+\sectionline
+\section{エルミート行列の固有値}
+\marginnote{\refbookF p282〜283 \\ \refbookA p201、p203}
+
+行列の成分が実数であっても、特性方程式の根は一般には実数とは限らない
+
+つまり、固有値は一般には複素数であるが、エルミート行列については次が成り立つ
+
+\begin{theorem}{エルミート行列の固有値の実数性}
+  エルミート行列の固有値はすべて実数である
+\end{theorem}
+
+\begin{proof}
+  エルミート行列$A$の固有ベクトルを$\vb*{v}$とし、その固有値を$\alpha \in \mathbb{C}^n$とすると、
+  \begin{equation*}
+    A\vb*{v} = \alpha \vb*{v}
+  \end{equation*}
+  より、次が成り立つ
+  \begin{align*}
+    (A\vb*{v}, \vb*{v}) & = (\alpha \vb*{v}, \vb*{v}) \\
+                        & = \alpha (\vb*{v}, \vb*{v})
+  \end{align*}
+  \br
+
+  一方、\hyperref[thm:adjoint-identity]{随伴公式}から、次のようにも書ける
+  \begin{equation*}
+    (A\vb*{v}, \vb*{v}) = (\vb*{v}, A^*\vb*{v})
+  \end{equation*}
+  $A$がエルミート行列であることから、$A^* = A$なので、
+  \begin{align*}
+    (A\vb*{v}, \vb*{v}) & = (\vb*{v}, A\vb*{v})      \\
+                        & = (\vb*{v}, \alpha\vb*{v})
+  \end{align*}
+  \hyperref[thm:conjugate-linearity-of-inner-product]{内積の共役線形性}に注意して、
+  \begin{equation*}
+    (A\vb*{v}, \vb*{v}) = \overline{\alpha}(\vb*{v}, \vb*{v})
+  \end{equation*}
+
+  \br
+
+  ここまでで得られた$(A\vb*{v}, \vb*{v})$の2通りの表現をまとめると、
+  \begin{equation*}
+    \alpha (\vb*{v}, \vb*{v}) = \overline{\alpha}(\vb*{v}, \vb*{v})
+  \end{equation*}
+  移項して、
+  \begin{equation*}
+    (\alpha - \overline{\alpha})(\vb*{v}, \vb*{v}) = 0
+  \end{equation*}
+  ここで、$\vb*{v}$は固有ベクトルなので、$\vb*{v} \neq \vb*{0}$である
+
+  よって、$(\vb*{v}, \vb*{v}) \neq 0$で両辺を割ることができ、次を得る
+  \begin{equation*}
+    \alpha = \overline{\alpha}
+  \end{equation*}
+  すなわち、$\alpha$は実数である $\qed$
+\end{proof}
+
+\sectionline
+
+エルミート行列では、固有値が実数であることがうまく活きて、次の性質も成り立つ
+
+\begin{theorem}{エルミート行列の固有値の直交性}
+  エルミート行列の相異なる固有値を持つ固有ベクトルは直交する
+
+  すなわち、エルミート行列$A$の固有ベクトル$\vb*{u},\,\vb*{v}$がそれぞれ固有値$\alpha,\,\beta \in \mathbb{R}^n$を持つとし、$\alpha \neq \beta$ならば、
+  \begin{equation*}
+    (\vb*{u}, \vb*{v}) = 0
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  固有値と固有ベクトルの定義より、
+  \begin{align*}
+    A\vb*{u} & = \alpha \vb*{u} \\
+    A\vb*{v} & = \beta \vb*{v}
+  \end{align*}
+  が成り立つ
+
+  \br
+
+  一方、\hyperref[thm:adjoint-identity]{随伴公式}より、
+  \begin{equation*}
+    (A\vb*{u}, \vb*{v}) = (\vb*{u}, A^*\vb*{v})
+  \end{equation*}
+  であるが、$A$はエルミート行列なので、$A^* = A$が成り立つ
+  \begin{equation*}
+    (A\vb*{u}, \vb*{v}) = (\vb*{u}, A\vb*{v})
+  \end{equation*}
+  先ほどの固有値と固有ベクトルの関係を代入して、
+  \begin{equation*}
+    (\alpha \vb*{u}, \vb*{v}) = (\vb*{u}, \beta \vb*{v})
+  \end{equation*}
+  ここで、$\alpha,\,\beta$は実数なので、\hyperref[thm:conjugate-linearity-of-inner-product]{内積の共役線形性}を考慮しても、
+  \begin{equation*}
+    \alpha (\vb*{u}, \vb*{v}) = \beta (\vb*{u}, \vb*{v})
+  \end{equation*}
+  として、スカラーをそのまま外に出すことができる
+
+  \br
+
+  よって、
+  \begin{equation*}
+    (\alpha - \beta)(\vb*{u}, \vb*{v}) = 0
+  \end{equation*}
+  であるが、$\alpha \neq \beta$なので、$(\alpha - \beta) \neq 0$で両辺を割ることができ、
+  \begin{equation*}
+    (\vb*{u}, \vb*{v}) = 0
+  \end{equation*}
+  を得る $\qed$
+\end{proof}
+
 \end{document}
