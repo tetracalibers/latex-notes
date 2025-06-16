@@ -4,8 +4,70 @@
 
 \sectionline
 \section{正規行列}
-\marginnote{\refbookC p197〜200 \\ \refbookF p287〜292}
+\marginnote{\refbookC p197〜200 \\ \refbookF p287〜292 \\ \refbookA p209}
 
-\todo{}
+エルミート行列の対角化について議論するために、エルミート行列・ユニタリ行列を含むより包括的な概念として\keyword{正規行列}を導入する
+
+\begin{definition}{正規行列}
+  複素正方行列$A$が次を満たすとき、$A$を\keyword{正規行列}という
+  \begin{equation*}
+    A A^* = A^* A
+  \end{equation*}
+\end{definition}
+
+\subsection{正規行列の例}
+
+$A$をエルミート行列とすると、$A^* = A$なので、
+\begin{align*}
+  A A^* & = A^2 \\
+  A^* A & = A^2
+\end{align*}
+となり、正規行列の定義を満たす
+
+\begin{theorem}{エルミート行列の正規行列性}
+  エルミート行列は正規行列である
+\end{theorem}
+
+\br
+
+また、$A$をユニタリ行列とすると、$A^* = A^{-1}$なので、
+\begin{align*}
+  A A^* & = A A^{-1} = E \\
+  A^* A & = A^{-1} A = E
+\end{align*}
+となり、こちらも正規行列の定義を満たす
+
+\begin{theorem}{ユニタリ行列の正規行列性}
+  ユニタリ行列は正規行列である
+\end{theorem}
+
+\subsection{正規行列の性質}
+
+\begin{theorem}{todo}
+  複素正方行列$A$が正規行列であることは、任意の$\vb*{v} \in \mathbb{C}^n$に対し、
+  \begin{equation*}
+    \|A\vb*{v}\| = \|A^*\vb*{v}\|
+  \end{equation*}
+  が成り立つことと同値である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p262 問6.9 (1)}
+\end{proof}
+
+\br
+
+\begin{theorem}{todo}
+  $A$を正規行列とするとき、$\vb*{v}$が$A$の固有値$\alpha$の固有ベクトルならば、$\vb*{v}$は$A^*$の固有値$\overline{\alpha}$の固有ベクトルである
+
+  すなわち、
+  \begin{equation*}
+    A\vb*{v} = \alpha \vb*{v} \Longrightarrow A^*\vb*{v} = \overline{\alpha} \vb*{v}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p262 問6.9 (2)}
+\end{proof}
 
 \end{document}
