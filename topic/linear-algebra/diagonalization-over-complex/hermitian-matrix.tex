@@ -131,4 +131,44 @@ $A$が実正方行列のときは、
   を得る $\qed$
 \end{proof}
 
+\subsection{エルミート行列の対角化に向けた考察}
+
+$H$を$n$次エルミート行列とすると、その固有値は$n$個の実数として$\alpha_1,\ldots,\alpha_n$とおける
+
+そして、$\alpha_i$に属する固有ベクトル$\vb*{v}_i$をとると、$\vb*{v}_1, \ldots, \vb*{v}_n$はどの2つも互いに直交する
+
+\br
+
+そこで、それぞれを次のように正規化する
+\begin{equation*}
+  \vb*{u}_i = \frac{\vb*{v}_i}{\|\vb*{v}_i\|} \quad (i = 1, \ldots, n)
+\end{equation*}
+すると、$\vb*{u}_1, \ldots, \vb*{u}_n$は互いに直交する単位ベクトルであるので、
+\begin{equation*}
+  U = (\vb*{u}_1, \ldots, \vb*{u}_n)
+\end{equation*}
+とおけば、\hyperref[thm:unitary-iff-columns-orthonormal]{$U$はユニタリ行列となる}
+
+\br
+
+$\vb*{u}_i$は$H$の各固有ベクトル$\vb*{v}_i$をスカラー倍したものなので、
+\begin{equation*}
+  H\vb*{u}_i = \alpha_i \vb*{u}_i
+\end{equation*}
+という関係が成り立つ
+
+つまり、$U$の列ベクトル$\vb*{u}_1, \ldots, \vb*{u}_n$はそれぞれ$H$の固有値$\alpha_1, \ldots, \alpha_n$に属する固有ベクトルである
+
+\br
+
+さらに、ユニタリ行列はその\hyperref[def:unitary-matrix]{定義}から明らかに正則行列であるので、\hyperref[thm:diagonalization-columns-are-eigenvectors]{対角化行列の列ベクトルと固有ベクトルの対応}を振り返ると、
+\begin{shaded}
+  エルミート行列はユニタリ行列を用いて対角化できる
+\end{shaded}
+という「予感」がしてくる
+
+\br
+
+まだ「予感」としかいえないのは、エルミート行列の固有値$\alpha_1, \ldots, \alpha_n$が重複している可能性があるからである
+
 \end{document}

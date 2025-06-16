@@ -6,7 +6,7 @@
 \section{ユニタリ行列と直交行列}
 \marginnote{\refbookF p275〜276、p279〜282 \\ \refbookA p204}
 
-\begin{definition}{ユニタリ行列}
+\begin{definition}{ユニタリ行列}\label{def:unitary-matrix}
   複素正方行列$A$が次を満たすとき、$A$を\keyword{ユニタリ行列}という
   \begin{equation*}
     A^* = A^{-1}
@@ -166,7 +166,7 @@ $A$を$n$個の列ベクトルを横一列に並べたものとみなし、
 
 この事実は、複素行列に対しても成立する
 
-\begin{theorem}{ユニタリ行列の列ベクトルの直交正規性}
+\begin{theorem}{ユニタリ行列の列ベクトルの直交正規性}\label{thm:unitary-iff-columns-orthonormal}
   複素正方行列$A$を$A = (\vb*{a}_1, \ldots, \vb*{a}_n)$と列ベクトル分解するとき、
   \begin{equation*}
     A\text{がユニタリ行列} \Longleftrightarrow (\vb*{a}_i, \vb*{a}_j) = \delta_{ij}
