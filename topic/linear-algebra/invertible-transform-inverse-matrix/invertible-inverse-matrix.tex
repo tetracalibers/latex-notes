@@ -215,6 +215,55 @@ $i$ごとに掃き出し法を何度も実行しないといけないのかと�
 
 \sectionline
 
+\begin{theorem}{ブロック対角行列の正則性}\label{thm:block-diagonal-invertibility}
+  次のようなブロック対角行列$M$において、対角ブロック$A,\,B$が正則であれば、$M$も正則である
+  \begin{equation*}
+    M = \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{2}^{l} & \Hdotsfor{2}^{n-l} \\
+      \Block{2-2}<\large>{A} & & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{l}  \\
+      &&& \\
+      \hline
+      \Block{2-2}<\large>{O}& & \Block{2-2}<\large>{B} && \Vdotsfor{2}^{n-l} \\
+      &&&
+    \end{pNiceArray}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A$と$B$が正則であるから、逆行列$A^{-1}$と$B^{-1}$が存在する
+
+  それらを用いて、次のような積を考える
+  \begin{align*}
+    \begin{pmatrix}
+      A & O \\
+      O & B
+    \end{pmatrix} \begin{pmatrix}
+                    A^{-1} & O      \\
+                    O      & B^{-1}
+                  \end{pmatrix} & = \begin{pmatrix}
+                                      A A^{-1} & O        \\
+                                      O        & B B^{-1}
+                                    \end{pmatrix} \\
+                                  & = \begin{pmatrix}
+                                        E_l & O       \\
+                                        O   & E_{n-l}
+                                      \end{pmatrix}    \\
+                                  & = E_n
+  \end{align*}
+  この等式は、$M$の逆行列の存在を示している
+  \begin{equation*}
+    M \begin{pmatrix}
+      A^{-1} & O      \\
+      O      & B^{-1}
+    \end{pmatrix} = E_n
+  \end{equation*}
+  つまり、対角ブロックがそれぞれ正則であれば、それらの逆行列を並べることで全体の逆行列が構成できる
+
+  このようにして、$M$が正則であることがわかる $\qed$
+\end{proof}
+
+\sectionline
+
 \begin{theorem}{行基本変形と対角行列}
   正則行列$A$に対して、行のスカラー倍以外の行基本変形を繰り返し行って対角行列にできる
 \end{theorem}
