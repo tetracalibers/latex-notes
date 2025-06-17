@@ -43,7 +43,7 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 
 \subsection{正規行列の性質}
 
-\begin{theorem}{todo}
+\begin{theorem}{正規行列と随伴によるノルム保存性}
   複素正方行列$A$が正規行列であることは、任意の$\vb*{v} \in \mathbb{C}^n$に対し、
   \begin{equation*}
     \|A\vb*{v}\| = \|A^*\vb*{v}\|
@@ -57,7 +57,7 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 
 \br
 
-\begin{theorem}{todo}
+\begin{theorem}{正規行列における固有ベクトルの随伴対応}
   $A$を正規行列とするとき、$\vb*{v}$が$A$の固有値$\alpha$の固有ベクトルならば、$\vb*{v}$は$A^*$の固有値$\overline{\alpha}$の固有ベクトルである
 
   すなわち、
@@ -68,6 +68,337 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 
 \begin{proof}
   \todo{\refbookA p262 問6.9 (2)}
+\end{proof}
+
+\sectionline
+\section{正規行列の対角化}
+\marginnote{\refbookF p287〜292}
+
+$A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょうど$k$個存在することは、
+\begin{equation*}
+  \dim \{\vb*{x} \mid A\vb*{x} = \alpha \vb*{x} \} = k
+\end{equation*}
+と表せる
+
+これは、固有値$\alpha$の\keyword{固有空間}の次元が$k$であること、噛み砕くと、固有値$\alpha$の固有ベクトル$\vb*{x}$の集合が部分空間であり、$k$個の固有ベクトルがこの部分空間の基底を成す（線型独立である）ことを意味する
+
+\br
+
+固有空間は\keyword{核空間}$\Ker(A - \alpha E)$と定義されるため、この次元が$k$であることは、次のようにも書ける
+\begin{equation*}
+  \dim \Ker(A - \alpha E) = k
+\end{equation*}
+
+\br
+
+正規行列について、一般に次が成り立つ
+
+\begin{theorem}{正規行列における固有空間の次元と固有値の重複度の一致}\label{thm:normal-matrix-eigenvalue-multiplicity}
+  $n$次複素正方行列$A$が正規行列であるとき、$\Phi_A(x)$における固有値$\alpha$の重複度$k$について、次の等式が成り立つ
+  \begin{equation*}
+    k = n - \rank(A - \alpha E)
+  \end{equation*}
+
+  \hyperref[thm:rank-nullity-theorem]{次元定理}を用いて言い換えると、$\alpha$の固有空間$W(\alpha)$について、
+  \begin{equation*}
+    \dim W(\alpha) = k
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  $l = n- \rank(A - \alpha E)$とおく（$l$が重複度$k$に等しいことを示すことが目標）
+
+  すなわち、
+  \begin{equation*}
+    \rank(A - \alpha E) = n - l
+  \end{equation*}
+  であると仮定する
+
+  \br
+
+  また、固有値$\alpha$の固有ベクトルは、斉次形方程式
+  \begin{equation*}
+    (A - \alpha E)\vb*{x} = \vb*{0}
+  \end{equation*}
+  の非自明解である
+
+  この方程式の解空間は$\Ker(A - \alpha E)$であるが、次元定理より、
+  \begin{equation*}
+    \dim \Ker(A - \alpha E) = n - \rank(A - \alpha E) = l
+  \end{equation*}
+  であるので、$\Ker(A - \alpha E)$は次元$l$の部分空間である
+
+  \br
+
+  すなわち、方程式$(A - \alpha E)\vb*{x} = \vb*{0}$を満たす$l$個の線型独立なベクトルが存在する
+
+  \br
+
+  これらを$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_l$とすると、これらはすべて固有値$\alpha$の固有ベクトルである
+
+  これらが正規直交系でない場合は、グラム・シュミットの直交化法を用いて正規直交系に変換し、それを改めて$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_l$とする
+
+  \br
+
+  次に、これら$l$個のベクトルを補う形で、正規直交基底$\vb*{v}_1, \ldots, \vb*{v}_l, \vb*{v}_{l+1}, \ldots, \vb*{v}_n$を作る
+
+  これらを用いて、行列$U$を
+  \begin{equation*}
+    U = (\vb*{v}_1, \vb*{v}_2, \ldots, \vb*{v}_l, \vb*{v}_{l+1}, \ldots, \vb*{v}_n)
+  \end{equation*}
+  とおくと、$U$はユニタリ行列である
+
+  \br
+
+  さらに、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_l$は$A$の固有値$\alpha$に属する固有ベクトルであることから、
+  \begin{equation*}
+    U^{-1}AU = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{3}^{l} & \Hdotsfor{2}^{n-l} \\
+      \alpha & & & \Block{3-2}<\large>{B} && \Vdotsfor{3}^{l}  \\
+      & \ddots &&& \\
+      & & \alpha&& \\
+      \hline
+      \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{C} && \Vdotsfor{2}^{n-l} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+  ユニタリ行列$U$の定義より、$U^{-1} = U^*$が成り立つので、
+  \begin{equation*}
+    U^*AU = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{3}^{l} & \Hdotsfor{2}^{n-l} \\
+      \alpha & & & \Block{3-2}<\large>{B} && \Vdotsfor{3}^{l}  \\
+      & \ddots &&& \\
+      & & \alpha&& \\
+      \hline
+      \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{C} && \Vdotsfor{2}^{n-l} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+
+  \br
+
+  ここで、両辺の随伴行列をつくることを考える
+
+  左辺は、\hyperref[thm:adjoint-of-product]{積の随伴行列をつくると積の順序が入れ替わる}ことに注意して、
+  \begin{equation*}
+    (U^*AU)^* = U^* A^* (U^*)^* = U^* A^* U
+  \end{equation*}
+  右辺は、転置してから各成分を共役複素数に置き換えればよいので、
+  \begin{equation*}
+    U^* A^* U = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{3}^{l} & \Hdotsfor{2}^{n-l} \\
+      \overline{\alpha} & & & \Block{3-2}<\large>{O} && \Vdotsfor{3}^{l}  \\
+      & \ddots &&& \\
+      & & \overline{\alpha}&& \\
+      \hline
+      \Block{2-3}<\large>{B^*} && & \Block{2-2}<\large>{C^*} && \Vdotsfor{2}^{n-l} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+
+  \br
+
+  一方、$A$が正規行列であることから、$\vb*{v}_1,\ldots,\vb*{v}_l$は、$A^*$の固有値$\overline{\alpha}$に属する固有ベクトルでもあるので、
+  \begin{equation*}
+    U^{-1}A^*U = U^*A^*U = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{3}^{l} & \Hdotsfor{2}^{n-l} \\
+      \overline{\alpha} & & & \Block{3-2}<\large>{B'} && \Vdotsfor{3}^{l}  \\
+      & \ddots &&& \\
+      & & \overline{\alpha}&& \\
+      \hline
+      \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{C'} && \Vdotsfor{2}^{n-l} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+  とも表せる
+
+  \br
+
+  ここで、$B$と$C$は$l\times(n-l)$型行列、$B'$と$C'$は$(n-l)\times l$型行列であり、型が一致するので成分を比較できる
+
+  よって、
+  \begin{equation*}
+    B^* = O, \quad C^* = C'
+  \end{equation*}
+  0の複素共役は0であることから、$B^* = O$より、
+  \begin{equation*}
+    B = O
+  \end{equation*}
+  がしたがう
+
+  \br
+
+  このことをふまえて、あらためて$U^*AU$を表すと、
+  \begin{equation*}
+    U^*AU = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{3}^{l} & \Hdotsfor{2}^{n-l} \\
+      \alpha & & & \Block{3-2}<\large>{O} && \Vdotsfor{3}^{l}  \\
+      & \ddots &&& \\
+      & & \alpha&& \\
+      \hline
+      \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{C} && \Vdotsfor{2}^{n-l} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+  となる
+
+  \br
+
+  ここで、\hyperref[thm:char-poly-of-similar-matrices]{$A$と$U^*AU$の特性多項式は一致する}ので、実際に計算すると、
+  \begin{align*}
+    \det(xE - A) & =\det(xE - U^*AU)                                                                       \\
+                 & = \begin{vNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},margin,columns-width =1.5em]
+                       x-\alpha & & & \Block{3-2}{O} &   \\
+                       & \ddots &&& \\
+                       & & x-\alpha&& \\
+                       \hline
+                       \Block{2-3}<\large>{O} && & \Block{2-2}<\small>{xE_{n-l}-C} &\\
+                       &&&&
+                     \end{vNiceArray} \\
+                 & = \begin{vNiceArray}{ccc}[xdots={horizontal-labels,line-style = <->},margin,columns-width =1.5em]
+                       x-\alpha & & \\
+                       & \ddots & \\
+                       & & x-\alpha
+                     \end{vNiceArray} \det(xE_{n-l} - C)    \\
+                 & = (x-\alpha)^l \det(xE_{n-l} - C)
+  \end{align*}
+
+  \br
+
+  また、$\alpha E - U^*AU$を考えると、
+  \begin{equation*}
+    \alpha E - U^*AU = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1.5em]
+      \Hdotsfor{3}^{l} & \Hdotsfor{2}^{n-l} \\
+      0 & & & \Block{3-2}<\large>{O} && \Vdotsfor{3}^{l}  \\
+      & \ddots &&& \\
+      & & 0&& \\
+      \hline
+      \Block{2-3}<\large>{O} && & \Block{2-2}<\small>{\alpha E_{n-l} -C} && \Vdotsfor{2}^{n-l} \\
+      &&&&
+    \end{pNiceArray}
+  \end{equation*}
+  より、
+  \begin{equation*}
+    \rank(\alpha E - U^*AU) = \rank(\alpha E_{n-l} - C)
+  \end{equation*}
+  ここで、$A$と$U^*AU$は相似な行列であり、\hyperref[thm:eigenvalues-of-similar-matrices]{相似な行列の固有値（特性方程式の根）は重複度も含めて一致する}ので、
+  \begin{equation*}
+    \rank(\alpha E - U^*AU)  = \rank(\alpha E - A) = n -l
+  \end{equation*}
+  よって、
+  \begin{equation*}
+    \rank(\alpha E_{n-l} - C) = n - l
+  \end{equation*}
+  つまり、$\alpha E_{n-l} - C$は\hyperref[thm:invertible-iff-full-rank]{行列の階数が次数$n-l$に等しいので、正則行列}である
+
+  ゆえにその行列式は、
+  \begin{equation*}
+    \det(\alpha E_{n-l} - C) \neq 0
+  \end{equation*}
+  となることから、$x = \alpha$は方程式$\det(x E_{n-l} - C) = 0$の解ではないことがわかる
+
+  \br
+
+  よって、$\det(xE - A) = 0$の解$x = \alpha$は、$(x-\alpha)^l$の部分から現れることになるため、$x = \alpha$は$l$重解である
+
+  したがって、$\alpha$の重複度$k$は$l$に等しいことが示された $\qed$
+\end{proof}
+
+\br
+
+\hyperref[thm:diagonalizable-iff-eigenspace-dim-equals-multiplicity]{固有空間の次元と重複度が一致すれば対角化可能}であることから、正規行列は対角化可能である
+
+さらに、上の定理の証明過程から、正規行列は\keyword{ユニタリ行列}によって対角化できることもわかる
+
+\begin{theorem}{正規行列とユニタリ対角化}
+  複素正方行列$A$について、$A$が正規行列であることと、$A$がユニタリ行列を用いて対角化できることは同値である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 正規行列 $\Longrightarrow$ ユニタリ行列を用いて対角化可能}
+    \hyperref[thm:normal-matrix-eigenvalue-multiplicity]{正規行列における固有空間の次元と固有値の重複度の一致}の定理の証明過程より明らか $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries ユニタリ行列を用いて対角化可能 $\Longrightarrow$ 正規行列}
+    $A$がユニタリ行列$U$を用いて、次のように対角化されたとする
+    \begin{equation*}
+      U^* AU =  \begin{pNiceArray}{ccc}
+        \alpha_1 & & O \\
+        &  \ddots & \\
+        O & & \alpha_n \\
+      \end{pNiceArray}
+    \end{equation*}
+
+    このとき、両辺に左から$U$をかけ、右から$U^*$をかけると、ユニタリ行列の定義より$U^*U = UU^* = E$であることから、
+    \begin{equation*}
+      A = U \begin{pNiceArray}{ccc}
+        \alpha_1 & & O \\
+        &  \ddots & \\
+        O & & \alpha_n \\
+      \end{pNiceArray} U^*
+    \end{equation*}
+    と変形できる
+
+    \br
+
+    よって、$A^*$は、\hyperref[thm:adjoint-of-product]{積の随伴行列をつくると積の順序が入れ替わる}ことに注意して、
+    \begin{align*}
+      A^* & = (U^*)^* \begin{pNiceArray}{ccc}
+                        \overline{\alpha_1} & & O \\
+                        &  \ddots & \\
+                        O & & \overline{\alpha_n} \\
+                      \end{pNiceArray} U^* \\
+          & = U \begin{pNiceArray}{ccc}
+                  \overline{\alpha_1} & & O \\
+                  &  \ddots & \\
+                  O & & \overline{\alpha_n} \\
+                \end{pNiceArray} U^*
+    \end{align*}
+
+    \br
+
+    以上をふまえて、$AA^*$と$A^*A$をそれぞれ計算すると、
+    \begin{align*}
+      AA^* & = U \begin{pNiceArray}{ccc}
+                   \alpha_1 & & O \\
+                   &  \ddots & \\
+                   O & & \alpha_n \\
+                 \end{pNiceArray} U^* U \begin{pNiceArray}{ccc}
+                                          \overline{\alpha_1} & & O \\
+                                          &  \ddots & \\
+                                          O & & \overline{\alpha_n} \\
+                                        \end{pNiceArray} U^* \\
+           & = U \begin{pNiceArray}{ccc}
+                   \alpha_1 \overline{\alpha_1} & & O \\
+                   &  \ddots & \\
+                   O & & \alpha_n \overline{\alpha_n} \\
+                 \end{pNiceArray} U^*
+    \end{align*}
+    \begin{align*}
+      A^*A & = U \begin{pNiceArray}{ccc}
+                   \overline{\alpha_1} & & O \\
+                   &  \ddots & \\
+                   O & & \overline{\alpha_n} \\
+                 \end{pNiceArray} U^* U \begin{pNiceArray}{ccc}
+                                          \alpha_1 & & O \\
+                                          &  \ddots & \\
+                                          O & & \alpha_n \\
+                                        \end{pNiceArray} U^* \\
+           & = U \begin{pNiceArray}{ccc}
+                   \overline{\alpha_1} \alpha_1 & & O \\
+                   &  \ddots & \\
+                   O & & \overline{\alpha_n} \alpha_n \\
+                 \end{pNiceArray} U^*
+    \end{align*}
+    となり、$\alpha_i \overline{\alpha_i} = \overline{\alpha_i} \alpha_i$なので、たしかに、
+    \begin{equation*}
+      AA^* = A^*A
+    \end{equation*}
+    が成り立つ
+
+    これは、$A$が正規行列であることを意味する $\qed$
+  \end{subpattern}
 \end{proof}
 
 \end{document}

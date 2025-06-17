@@ -4,9 +4,55 @@
 
 \sectionline
 \section{次元定理}
-\marginnote{\refbookA p101}
+\marginnote{\refbookA p101 \\ \refbookF p82〜83}
 
-\begin{theorem}{線形写像の次元定理}
+連立方程式$A\vb*{x}=\vb*{b}$の\hyperref[sec:degrees-of-freedom]{解の自由度}は、
+\begin{equation*}
+  \text{解の自由度} = (\text{変数の個数}) - \rank(A)
+\end{equation*}
+で表された
+
+この関係は、$\vb*{b} =\vb*{0}$、すなわち斉次形の場合にも成り立つ
+
+\br
+
+そこで、変数の個数を$n$とおくと、次のようにも書き換えられる
+\begin{equation*}
+  \rank(A) = n - (A\vb*{x} =\vb*{0}\text{の解の自由度})
+\end{equation*}
+
+\br
+
+線型方程式と階数に関するこの関係を、線形写像と次元の言葉で言い換えたい
+
+\br
+
+次のような線形写像
+\begin{equation*}
+  \begin{array}{llll}
+    f\colon & \mathbb{R}^n          & \longrightarrow & \mathbb{R}^m          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & \vb*{x}               & \longmapsto     & A\vb*{x}
+  \end{array}
+\end{equation*}
+を考えると、
+\begin{itemize}
+  \item 写像$f$は、行列$A$に対応する
+  \item 変数の個数は、$\vb*{x}$の動く空間$\mathbb{R}^n$の次元$n$に対応する
+  \item $A\vb*{x} = \vb*{0}$の解の自由度は、写像$f$で$\vb*{0}$になってしまうものの次元に対応する
+\end{itemize}
+という関係が読み取れる
+
+\br
+
+ここで、写像$f$で$\vb*{0}$になってしまう\keyword{縮退}するものは、写像$f$の\keyword{核}$\Ker(f)$である
+
+このことを用いて関係式を表現し直すと、次のようになる
+\begin{equation*}
+  \rank(f) = n - \dim \Ker(f)
+\end{equation*}
+
+\begin{theorem}{線形写像の次元定理}\label{thm:rank-nullity-theorem}
   $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とすると、次が成り立つ
   \begin{equation*}
     \rank(f) = n - \dim \Ker(f)

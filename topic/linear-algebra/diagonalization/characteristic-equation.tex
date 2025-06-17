@@ -125,6 +125,10 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
 
 \br
 
+$(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変えることはないので、どちらの行列式を使っても求まる固有値（0になる$x$の値）は同じである
+
+\br
+
 実際、$\det(xE - A)$を展開すると、
 \begin{equation*}
   \det(xE - A) = \left| \begin{matrix}
@@ -268,13 +272,13 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
                & = \det(xE - A)
 \end{align*}
 
-\begin{theorem}{相似な行列の特性多項式}
+\begin{theorem}{相似な行列の特性多項式}\label{thm:char-poly-of-similar-matrices}
   相似な行列の特性多項式は一致する
 \end{theorem}
 
 この事実は、すなわち次の事実を意味する
 
-\begin{theorem}{相似な行列の固有値}
+\begin{theorem}{相似な行列の固有値}\label{thm:eigenvalues-of-similar-matrices}
   相似な行列の固有値は重複度も含めて一致する
 \end{theorem}
 
