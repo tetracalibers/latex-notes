@@ -8,7 +8,7 @@
 
 対角化の次善の策として、\keyword{三角化}という方法がある
 
-\begin{theorem}{三角化定理}
+\begin{theorem}{三角化定理}\label{thm:triangularization-theorem}
   $A$を$n$次複素正方行列とするとき、ある正則行列$P$が存在して、$P^{-1}AP$が上三角行列になる
 
   その対角成分は重複度を含めて$A$の固有値と一致する
@@ -114,19 +114,143 @@
 \end{proof}
 
 \sectionline
+\section{QR分解}
+\marginnote{\refbookC p135 \\ \refbookF p294〜295}
+
+任意の正則行列は、ユニタリ行列（直交行列）と上三角行列の積に分解することができる
+
+この分解は\keyword{QR分解}と呼ばれ、行列の数値計算等で利用されている
+
+\begin{theorem}{正則行列に対するQR分解の存在}
+  任意の$n$次複素\keyword{正則}行列$A$に対して、$A=QR$となるユニタリ行列$Q$と上三角行列$R$が存在する
+\end{theorem}
+
+\begin{proof}
+  $A$は\hyperref[thm:invertible-iff-col-indep]{正則行列であるので、その列ベクトルは線型独立}である
+
+  そこで、$A = (\vb*{a}_1,\ldots,\vb*{a}_n)$とおくと、$\vb*{a}_1,\ldots,\vb*{a}_n$からグラム・シュミットの直交化法を用いて、正規直交基底$\vb*{u}_1,\ldots,\vb*{u}_n$を作ることができる
+
+  \br
+
+  このとき、次のように\hyperref[thm:expansion-in-orthonormal-basis]{正規直交基底を用いた線形結合で$\vb*{a}_j$を表す}ことができる
+  \begin{equation*}
+    \vb*{a}_j = \sum_{i=1}^j (\vb*{a}_j, \vb*{u}_i) \vb*{u}_i \quad (j = 1,\ldots,n)
+  \end{equation*}
+  この等式は、次のように書き換えられる
+  \begin{equation*}
+    \vb*{a}_j = (\vb*{u}_1,\ldots,\vb*{u}_n) \begin{pmatrix}
+      (\vb*{a}_j, \vb*{u}_1) \\
+      \vdots                 \\
+      (\vb*{a}_j, \vb*{u}_j) \\
+      0                      \\
+      \vdots                 \\
+      0
+    \end{pmatrix}
+  \end{equation*}
+  そこで、
+  \begin{equation*}
+    r_{jk} = \begin{cases*}
+      (\vb*{a}_j, \vb*{u}_k) & ($1 \leq k \leq j$) \\
+      0                      & ($j < k \leq n$)
+    \end{cases*}
+  \end{equation*}
+  とおくと、行列$R = (r_{jk})$は上三角行列である
+
+  \br
+
+  また、$\vb*{u}_1,\ldots,\vb*{u}_n$は\hyperref[thm:unitary-iff-columns-orthonormal]{正規直交系であるので、これらを列ベクトルとした行列$Q = (\vb*{u}_1,\ldots,\vb*{u}_n)$はユニタリ行列}である
+
+  \br
+
+  したがって、$A = QR$となる $\qed$
+\end{proof}
+
+\br
+
+この定理の証明において、$\vb*{a}_1,\ldots,\vb*{a}_n$から正規直交基底を構成するところを工夫すると、正則行列だけでなく、任意の複素正方行列もユニタリ行列と上三角行列の積で表せることがわかる
+
+\begin{theorem}{QR分解の存在}
+  任意の$n$次複素正方行列$A$に対して、$A=QR$となるユニタリ行列$Q$と上三角行列$R$が存在する
+\end{theorem}
+
+\begin{proof}
+  $A$の列ベクトルは線型独立であるとは限らないが、グラム・シュミットの直交化法は線形従属なベクトルに対しても適用できる
+
+  ただし、\hyperref[sec:gram-schmidt-with-dependent-vectors]{線形従属なベクトルにグラム・シュミットの直交化法を適用}すると、零ベクトルが得られることがある
+
+  \br
+
+  零ベクトルは基底として使うことはできないため除外し、残った正規直交ベクトルを$\vb*{u}_1,\ldots,\vb*{u}_k$とする
+
+  ここに$n-k$個のベクトルを補う形で、正規直交基底$\vb*{u}_1,\ldots,\vb*{u}_k,\vb*{u}_{k+1},\ldots,\vb*{u}_n$を構成する
+
+  \br
+
+  この場合も、正規直交基底を用いた線形結合で任意のベクトル$\vb*{a}_j$を表すことができるので、
+  \begin{equation*}
+    \vb*{a}_j = (\vb*{u}_1,\ldots,\vb*{u}_n) \begin{pmatrix}
+      (\vb*{a}_j, \vb*{u}_1) \\
+      \vdots                 \\
+      (\vb*{a}_j, \vb*{u}_k) \\
+      0                      \\
+      \vdots                 \\
+      0
+    \end{pmatrix}
+  \end{equation*}
+  となり、以降は$A$が正則な場合と同様に示すことができる $\qed$
+\end{proof}
+
+\sectionline
 \section{ユニタリ行列による三角化}
-\marginnote{\refbookF p294〜295 \\ \refbookC p196}
+\marginnote{\refbookF p295 \\ \refbookC p196}
 
 \hyperref[thm:unitary-diagonalization-of-normal]{ユニタリ行列によって対角化できる行列は正規行列}であった
 
 したがって、正規行列以外の行列は、ユニタリ行列によって対角化することはできないが、ユニタリ行列によって三角化することはできる
 
-\begin{theorem}{todo}
+\begin{theorem}{シューア分解の存在}
   $n$次複素正方行列$A$に対して、適当なユニタリ行列$U$により、$U^{-1}AU$を上三角行列（$A$の\keyword{シューア形}）にすることができる
 \end{theorem}
 
 \begin{proof}
-  \todo{}
+  任意の正則行列$P$はQR分解でき、ユニタリ行列$U$と上三角行列$T$を用いて、$P = UT$と表せる
+
+  このとき、$P$の列ベクトルを$\vb*{p}_1,\ldots,\vb*{p}_n$、$U$の列ベクトルを$\vb*{u}_1,\ldots,\vb*{u}_n$とすると、
+  \begin{equation*}
+    (\vb*{p}_1,\ldots,\vb*{p}_n) = (\vb*{u}_1,\ldots,\vb*{u}_n) T
+  \end{equation*}
+  となり、$P$の列ベクトルは$P$の正則性より線型独立、$U$の列ベクトルは正規直交性から線型独立であるので、$T$は$\vb*{u}_1,\ldots,\vb*{u}_n$から$\vb*{p}_1,\ldots,\vb*{p}_n$への基底変換行列とみなせる
+
+  よって、基底変換行列$T$は正則であるので、その逆行列を用いて、
+  \begin{equation*}
+    U = P T^{-1}
+  \end{equation*}
+  と書くことができる
+
+  \br
+
+  また、$U$はユニタリ行列であるので、その定義から正則である
+
+  $U$の逆行列は、\hyperref[thm:inverse-of-product]{正則行列の積に対する逆行列の公式}と、\hyperref[thm:inverse-of-inverse]{逆行列の逆行列をとると元に戻る}ことを用いて、
+  \begin{equation*}
+    U^{-1} =(P T^{-1})^{-1} = (T^{-1})^{-1} P^{-1} = T P^{-1}
+  \end{equation*}
+  と計算できる
+
+  \br
+
+  これらを用いると、
+  \begin{align*}
+    U^{-1}AU & = (T P^{-1})A P T^{-1} \\
+             & = T (P^{-1}AP) T^{-1}
+  \end{align*}
+  となり、ここで、
+  \begin{itemize}
+    \item $T$は上三角行列
+    \item $P^{-1}AP$は\hyperref[thm:triangularization-theorem]{三角化定理}より、上三角行列
+    \item $T^{-1}$は\hyperref[thm:inverse-of-upper-triangular]{上三角行列の逆行列}より、上三角行列
+  \end{itemize}
+  であることと、\hyperref[thm:product-of-upper-triangular]{上三角行列の積は上三角行列}になることから、$U^{-1}AU$も上三角行列になる $\qed$
 \end{proof}
 
 \end{document}

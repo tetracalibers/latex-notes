@@ -134,6 +134,7 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
 このような$B$を$A$の\keyword{逆行列}と呼び、$A^{-1}$と書く
 
 \sectionline
+\section{逆行列の性質}
 
 \begin{theorem}{逆行列の一意性}
   正方行列$A$に対して、$A$の逆行列が存在するならば、それは一意的である
@@ -149,6 +150,51 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
     B_1 = B_1 AB_2 = (B_1 A) B_2 = E B_2 = B_2
   \end{equation*}
   よって、$B_1 = B_2$となり、逆行列は一意的である $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{逆行列に対する逆行列}\label{thm:inverse-of-inverse}
+  正則行列$A$の逆行列$A^{-1}$は正則であり、その逆行列は$A$である
+  \begin{equation*}
+    (A^{-1})^{-1} = A
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A$の逆行列が$A^{-1}$であることから、
+  \begin{equation*}
+    AA^{-1} = A^{-1}A = E
+  \end{equation*}
+  この式は、$A^{-1}$が正則であり、その逆行列が$A$であることを示す式でもある $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{正則行列の積に対する逆行列}\label{thm:inverse-of-product}
+  正則行列$A,\,B$の積$AB$は正則であり、その逆行列は次のようになる
+  \begin{equation*}
+    (AB)^{-1} = B^{-1} A^{-1}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    (AB)(B^{-1} A^{-1}) & = A(B B^{-1}) A^{-1} \\
+                        & = A E A^{-1}         \\
+                        & = E
+  \end{align*}
+  であり、同様に
+  \begin{align*}
+    (B^{-1} A^{-1})(AB) & = B^{-1} (A^{-1} A) B \\
+                        & = B^{-1} E B          \\
+                        & = E
+  \end{align*}
+  であるので、
+  \begin{equation*}
+    (AB)^{-1} = B^{-1} A^{-1}
+  \end{equation*}
+  が成り立つ $\qed$
 \end{proof}
 
 \sectionline
