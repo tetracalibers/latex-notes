@@ -1,0 +1,56 @@
+\documentclass[b5paper,12pt,notitlepage]{jsreport}
+
+\title{深層学習の整理帳}
+\author{tomixy}
+
+\usepackage{subfiles}
+
+\usepackage[dvipsnames,rgb]{xcolor}
+\input{topic_preamble.tex}
+
+% === ニューラルネットワークの図用の設定 ===
+
+\tikzset{
+>=latex, % for default LaTeX arrow head
+node/.style={thick,circle,draw=blue,minimum size=22,inner sep=0.5,outer sep=0.6},
+node in/.style={node,green!20!black,draw=green!30!black,fill=green!25},
+node hidden/.style={node,blue!20!black,draw=blue!30!black,fill=blue!20},
+node convol/.style={node,orange!20!black,draw=orange!30!black,fill=orange!20},
+node out/.style={node,red!20!black,draw=red!30!black,fill=red!20},
+connect/.style={thick,blue!60!black}, %,line cap=round
+connect arrow/.style={-{Latex[length=4,width=3.5]},thick,CadetBlue,shorten <=0.5,shorten >=1},
+node 1/.style={node in}, % node styles, numbered for easy mapping with \nstyle
+node 2/.style={node hidden},
+node 3/.style={node out}
+}
+
+\def\nstyle{int(\lay<\Nnodlen?min(2,\lay):3)} % map layer number onto 1, 2, or 3
+% NEURAL NETWORK with coefficients, uniform arrows
+% NEURAL NETWORK with coefficients, uniform arrows
+\newcommand\setAngles[3]{%
+  \pgfmathanglebetweenpoints{\pgfpointanchor{#2}{center}}{\pgfpointanchor{#1}{center}}%
+  \pgfmathsetmacro\angmin{\pgfmathresult}%
+  \pgfmathanglebetweenpoints{\pgfpointanchor{#2}{center}}{\pgfpointanchor{#3}{center}}%
+  \pgfmathsetmacro\angmax{\pgfmathresult}%
+  \pgfmathsetmacro\dang{\angmax-\angmin}%
+  \pgfmathsetmacro\dang{\dang<0?\dang+360:\dang}%
+}
+
+% === 参考文献 ===
+
+\newcommand{\refbookA}{\refbook{ニューラルネットワーク自作入門}}
+\newcommand{\refbookB}{\refbook{なっとく！ディープラーニング}}
+\newcommand{\refbookC}{\refbook{ゼロから作るDeep Learning}}
+
+% ---
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\subfile{topic/deep-learning/neural-network-basic}
+
+\newpage
+
+\end{document}

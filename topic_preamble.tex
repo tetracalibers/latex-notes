@@ -1,7 +1,5 @@
 % === color ===
 
-\usepackage[dvipsnames]{xcolor}
-
 % ref: https://latexcolor.com/
 \definecolor{hotpink}{rgb}{1.0, 0.41, 0.71}
 \definecolor{carnationpink}{rgb}{1.0, 0.65, 0.79}
@@ -92,8 +90,13 @@
   fit,
   patterns,
   decorations.pathreplacing,
-  cd
+  cd,
+  petri,
+  positioning
 }
+
+\usepackage{ifthen}
+\usepackage{listofitems} % for \readlist to create arrays
 
 \usepackage{witharrows}
 \usepackage{nicematrix}

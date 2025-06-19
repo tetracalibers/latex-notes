@@ -1,0 +1,47 @@
+\documentclass[../../../topic_deep-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ニューロン}
+\marginnote{\refbookA p48〜}
+
+\keyword{ニューロン}は動物の脳の基本ユニットである
+
+脳はほとんどがニューロンで作られており、
+\begin{shaded}
+  電気信号がニューロンから別のニューロンに渡される
+\end{shaded}
+ことの連鎖で、たとえば光、音、熱などを感知することができる
+
+\subsection{ニューロンのモデル化}
+
+ニューロンはまず電気的な入力を受け取り、その後に別の電気信号を放出する
+
+これは、
+\begin{shaded}
+  入力を受け取り、処理を行い、何かを出力する
+\end{shaded}
+という\keyword{関数}としてモデル化できる
+
+\sectionline
+
+観察によれば、ニューロンは入力にすぐには反応せずに、入力が大きくなって出力を引き起こすまで、入力を抑制する
+
+この現象を、科学者たちは
+\begin{shaded}
+  入力が\keyword{閾値}に達するとニューロンが\keyword{発火}する
+\end{shaded}
+と表現する
+
+直観的には、ニューロンは小さなノイズ信号は通過させず、強く意図的な信号のみを通過させる
+
+\br
+
+入力信号を受け取り、出力信号を生成するが、何らかの閾値を考慮した関数を\keyword{活性化関数}という
+
+単純な\keyword{階段関数}も活性化関数だが、境界が滑らかな\keyword{シグモイド関数}などの方がよく使われる
+
+
+
+\end{document}

@@ -1,0 +1,468 @@
+\documentclass[../../../topic_deep-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{パーセプトロン}
+\marginnote{\refbookC p21〜}
+
+\keyword{パーセプトロン}は、複数の信号を入力として受け取り、一つの信号を出力するアルゴリズム
+
+\br
+
+ここでいう\keyword{信号}とは、電流や川のような「流れ」をもつものをイメージするとよい
+
+電流が導線を流れ、電子を先に送り出すように、パーセプトロンの信号も流れを作り、情報を先へと伝達していく
+
+\br
+
+ただし、パーセプトロンの信号は、「流す／流さない」のニ値の値である
+
+ここでは、0を「流さない」、1を「流す」とする
+
+\subsection{一つの入力を受け取るパーセプトロン}
+
+$x_1$は入力信号、$y_1$は出力信号、$w_1$は重みを表す
+
+図中の円は\keyword{ニューロン}や\keyword{ノード}と呼ばれる
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm, y=1.4cm]
+    % ノード
+    \node[node in] (N1-1) at (1, 0) {$x_1$};
+    \node[node out] (N2-1) at (2, 0) {$y_1$};
+
+    % 接続（矢印）
+    \draw[connect arrow] (N1-1) -- (N2-1) node[midway, above,Plum] {$w_1$};
+
+    % ラベル
+    \node[above=1em] at (N1-1) {input};
+    \node[above=1em] at (N2-1) {output};
+  \end{tikzpicture}
+\end{center}
+
+入力信号は、ニューロンに送られる際に、それぞれに固有の重みが乗算される
+
+ニューロンでは、送られた信号の総和が計算され、その総和がある限界値（閾値$\theta$）を超えた場合にのみ1を出力する（ニューロンが\keyword{発火}する）
+
+\begin{equation*}
+  y = \begin{cases}
+    0 & (w_1 x_1 \leq \theta) \\
+    1 & (w_1 x_1 > \theta)
+  \end{cases}
+\end{equation*}
+
+\subsection{二つの入力を受け取るパーセプトロン}
+
+パーセプトロンは、複数ある入力信号のそれぞれに固有の重みを持つ
+
+そしてその重みは、各信号の重要性をコントロールする要素として働く
+
+つまり、重みが大きければ大きいほど、その重みに対応する信号の重要性が高くなる
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm,y=1.4cm]
+    \message{^^JNeural network with uniform arrows}
+    \readlist\Nnod{2,1}
+
+    \foreachitem \N \in \Nnod{ % loop over layers
+      \def\lay{\Ncnt} % alias of index of current layer
+      \pgfmathsetmacro\prev{int(\Ncnt-1)} % previous layer index
+      \message{^^J Layer \lay, N=\N, prev=\prev ->}
+
+      % NODES
+      \foreach \i [evaluate={\y=\N/2-\i; \x=\lay; \n=\nstyle;}] in {1,...,\N}{ % nodes
+          \message{N\lay-\i, }
+          \ifnum \lay=1
+            \node[node \n] (N\lay-\i) at (\x,\y) {$x_\i$};
+          \else
+            \node[node \n] (N\lay-\i) at (\x,\y) {$y_\i$};
+          \fi
+        }
+
+      % CONNECTIONS
+      \foreach \i in {1,...,\N}{ % nodes in current layer
+          \ifnum\lay>1
+          \setAngles{N\prev-1}{N\lay-\i}{N\prev-\Nnod[\prev]} % for receiving node
+
+          \ifnum\Nnod[\prev]=1
+          \foreach \j in {1}{
+              \pgfmathsetmacro\ang{\angmin}
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,Plum] {$w_\j^{(\lay)}$};
+            }
+          \else
+          \foreach \j [evaluate={\ang=\angmin+\dang*(\j-1)/(\Nnod[\prev]-1);}] in {1,...,\Nnod[\prev]}{
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,Plum] {$w_\j$};
+            }
+          \fi
+          \fi
+        }
+    }
+  \end{tikzpicture}
+\end{center}
+
+\begin{equation*}
+  y = \begin{cases}
+    0 & (w_1 x_1 + w_2 x_2 \leq \theta) \\
+    1 & (w_1 x_1 + w_2 x_2 > \theta)
+  \end{cases}
+\end{equation*}
+
+\sectionline
+\section{ベクトルと行列を用いた表現}
+
+\subsection{複数の出力}
+
+次のような場合は、それぞれ同じ入力を受け取る3つの独立したコンポーネントとして動作する
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm,y=1.4cm]
+    \message{^^JNeural network with uniform arrows}
+    \readlist\Nnod{1,3}
+
+    \foreachitem \N \in \Nnod{ % loop over layers
+      \def\lay{\Ncnt} % alias of index of current layer
+      \pgfmathsetmacro\prev{int(\Ncnt-1)} % previous layer index
+      \message{^^J Layer \lay, N=\N, prev=\prev ->}
+
+      % NODES
+      \foreach \i [evaluate={\y=\N/2-\i; \x=\lay; \n=\nstyle;}] in {1,...,\N}{ % nodes
+          \message{N\lay-\i, }
+          \ifnum \lay=1
+            \node[node \n] (N\lay-\i) at (\x,\y) {$x_\i$};
+          \else
+            \node[node \n] (N\lay-\i) at (\x,\y) {$y_\i$};
+          \fi
+        }
+
+      % CONNECTIONS
+      \foreach \i in {1,...,\N}{ % nodes in current layer
+          \ifnum\lay>1
+          \setAngles{N\prev-1}{N\lay-\i}{N\prev-\Nnod[\prev]} % for receiving node
+
+          \ifnum\Nnod[\prev]=1
+          \foreach \j in {1}{
+              \pgfmathsetmacro\ang{\angmin}
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,Plum] {$w_\i$};
+            }
+          \else
+          \foreach \j [evaluate={\ang=\angmin+\dang*(\j-1)/(\Nnod[\prev]-1);}] in {1,...,\Nnod[\prev]}{
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+
+              % ref: https://tex.stackexchange.com/questions/745061/how-to-use-a-variable-in-hsl-model-color-definition-for-a-color-wheel-with-xco
+              \definecolor{arrowcolor}{Hsb}{\inteval{180+\i*36},1,0.8} % color of arrow
+
+              \ifnum\i=\j
+                \draw[connect arrow,arrowcolor!60] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,arrowcolor] {$w_\j$};
+              \else
+                \draw[connect arrow,arrowcolor!60] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+              \fi
+            }
+          \fi
+          \fi
+        }
+    }
+  \end{tikzpicture}
+\end{center}
+
+\begin{equation*}
+  \begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    y_3
+  \end{pmatrix} = \begin{pmatrix}
+    w_1 x_1 \\
+    w_2 x_1 \\
+    w_3 x_1
+  \end{pmatrix}
+\end{equation*}
+
+\subsection{複数の入力と出力}
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm,y=1.4cm]
+    \message{^^JNeural network with uniform arrows}
+    \readlist\Nnod{3,3}
+
+    \foreachitem \N \in \Nnod{ % loop over layers
+      \def\lay{\Ncnt} % alias of index of current layer
+      \pgfmathsetmacro\prev{int(\Ncnt-1)} % previous layer index
+      \message{^^J Layer \lay, N=\N, prev=\prev ->}
+
+      % NODES
+      \foreach \i [evaluate={\y=\N/2-\i; \x=\lay; \n=\nstyle;}] in {1,...,\N}{ % nodes
+          \message{N\lay-\i, }
+          \ifnum \lay=1
+            \node[node \n] (N\lay-\i) at (\x,\y) {$x_\i$};
+          \else
+            \node[node \n] (N\lay-\i) at (\x,\y) {$y_\i$};
+          \fi
+        }
+
+      % CONNECTIONS
+      \foreach \i in {1,...,\N}{ % nodes in current layer
+          \ifnum\lay>1
+          \setAngles{N\prev-1}{N\lay-\i}{N\prev-\Nnod[\prev]} % for receiving node
+
+          \ifnum\Nnod[\prev]=1
+          \foreach \j in {1}{
+              \pgfmathsetmacro\ang{\angmin}
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+            }
+          \else
+          \foreach \j [evaluate={\ang=\angmin+\dang*(\j-1)/(\Nnod[\prev]-1);}] in {1,...,\Nnod[\prev]}{
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+
+              % ref: https://tex.stackexchange.com/questions/745061/how-to-use-a-variable-in-hsl-model-color-definition-for-a-color-wheel-with-xco
+              \definecolor{arrowcolor}{Hsb}{\inteval{180+\i*36},1,0.8} % color of arrow
+              \draw[connect arrow,arrowcolor] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+            }
+          \fi
+          \fi
+        }
+    }
+  \end{tikzpicture}
+\end{center}
+
+「3つの重みが各出力ノードに渡される」という見方で、3つの独立した内積として考えてみる
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm,y=1.4cm]
+    \message{^^JNeural network with uniform arrows}
+    \readlist\Nnod{3,3}
+
+    \foreachitem \N \in \Nnod{ % loop over layers
+      \def\lay{\Ncnt} % alias of index of current layer
+      \pgfmathsetmacro\prev{int(\Ncnt-1)} % previous layer index
+      \message{^^J Layer \lay, N=\N, prev=\prev ->}
+
+      % NODES
+      \foreach \i [evaluate={\y=\N/2-\i; \x=\lay; \n=\nstyle;}] in {1,...,\N}{ % nodes
+          \message{N\lay-\i, }
+          \ifnum \lay=1
+            \node[node \n] (N\lay-\i) at (\x,\y) {$x_\i$};
+          \else
+            \node[node \n] (N\lay-\i) at (\x,\y) {$y_\i$};
+          \fi
+        }
+
+      % CONNECTIONS
+      \foreach \i in {1,...,\N}{ % nodes in current layer
+          \ifnum\lay>1
+          \setAngles{N\prev-1}{N\lay-\i}{N\prev-\Nnod[\prev]} % for receiving node
+
+          \ifnum\Nnod[\prev]=1
+          \foreach \j in {1}{
+              \pgfmathsetmacro\ang{\angmin}
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+            }
+          \else
+          \foreach \j [evaluate={\ang=\angmin+\dang*(\j-1)/(\Nnod[\prev]-1);}] in {1,...,\Nnod[\prev]}{
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+
+              % ref: https://tex.stackexchange.com/questions/745061/how-to-use-a-variable-in-hsl-model-color-definition-for-a-color-wheel-with-xco
+              \definecolor{arrowcolor}{Hsb}{\inteval{180+\i*36},1,0.8} % color of arrow
+
+              \ifnum\i=1
+                \draw[connect arrow,arrowcolor] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,arrowcolor] {$w_{1\j}$};
+              \else
+                \draw[connect arrow,arrowcolor!40] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+              \fi
+            }
+          \fi
+          \fi
+        }
+    }
+  \end{tikzpicture}
+\end{center}
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm,y=1.4cm]
+    \message{^^JNeural network with uniform arrows}
+    \readlist\Nnod{3,3}
+
+    \foreachitem \N \in \Nnod{ % loop over layers
+      \def\lay{\Ncnt} % alias of index of current layer
+      \pgfmathsetmacro\prev{int(\Ncnt-1)} % previous layer index
+      \message{^^J Layer \lay, N=\N, prev=\prev ->}
+
+      % NODES
+      \foreach \i [evaluate={\y=\N/2-\i; \x=\lay; \n=\nstyle;}] in {1,...,\N}{ % nodes
+          \message{N\lay-\i, }
+          \ifnum \lay=1
+            \node[node \n] (N\lay-\i) at (\x,\y) {$x_\i$};
+          \else
+            \node[node \n] (N\lay-\i) at (\x,\y) {$y_\i$};
+          \fi
+        }
+
+      % CONNECTIONS
+      \foreach \i in {1,...,\N}{ % nodes in current layer
+          \ifnum\lay>1
+          \setAngles{N\prev-1}{N\lay-\i}{N\prev-\Nnod[\prev]} % for receiving node
+
+          \ifnum\Nnod[\prev]=1
+          \foreach \j in {1}{
+              \pgfmathsetmacro\ang{\angmin}
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+            }
+          \else
+          \foreach \j [evaluate={\ang=\angmin+\dang*(\j-1)/(\Nnod[\prev]-1);}] in {1,...,\Nnod[\prev]}{
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+
+              % ref: https://tex.stackexchange.com/questions/745061/how-to-use-a-variable-in-hsl-model-color-definition-for-a-color-wheel-with-xco
+              \definecolor{arrowcolor}{Hsb}{\inteval{180+\i*36},1,0.8} % color of arrow
+
+              \ifnum\i=2
+                \draw[connect arrow,arrowcolor] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,arrowcolor] {$w_{2\j}$};
+              \else
+                \draw[connect arrow,arrowcolor!40] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+              \fi
+            }
+          \fi
+          \fi
+        }
+    }
+  \end{tikzpicture}
+\end{center}
+
+\begin{center}
+  \begin{tikzpicture}[x=2.2cm,y=1.4cm]
+    \message{^^JNeural network with uniform arrows}
+    \readlist\Nnod{3,3}
+
+    \foreachitem \N \in \Nnod{ % loop over layers
+      \def\lay{\Ncnt} % alias of index of current layer
+      \pgfmathsetmacro\prev{int(\Ncnt-1)} % previous layer index
+      \message{^^J Layer \lay, N=\N, prev=\prev ->}
+
+      % NODES
+      \foreach \i [evaluate={\y=\N/2-\i; \x=\lay; \n=\nstyle;}] in {1,...,\N}{ % nodes
+          \message{N\lay-\i, }
+          \ifnum \lay=1
+            \node[node \n] (N\lay-\i) at (\x,\y) {$x_\i$};
+          \else
+            \node[node \n] (N\lay-\i) at (\x,\y) {$y_\i$};
+          \fi
+        }
+
+      % CONNECTIONS
+      \foreach \i in {1,...,\N}{ % nodes in current layer
+          \ifnum\lay>1
+          \setAngles{N\prev-1}{N\lay-\i}{N\prev-\Nnod[\prev]} % for receiving node
+
+          \ifnum\Nnod[\prev]=1
+          \foreach \j in {1}{
+              \pgfmathsetmacro\ang{\angmin}
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+              \draw[connect arrow] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+            }
+          \else
+          \foreach \j [evaluate={\ang=\angmin+\dang*(\j-1)/(\Nnod[\prev]-1);}] in {1,...,\Nnod[\prev]}{
+              \setAngles{N\lay-1}{N\prev-\j}{N\lay-\N}
+              \ifnum\N=1
+                \pgfmathsetmacro\angout{\angmin}
+              \else
+                \pgfmathsetmacro\angout{\angmin+(\dang-360)*(\i-1)/(\N-1)}
+              \fi
+
+              % ref: https://tex.stackexchange.com/questions/745061/how-to-use-a-variable-in-hsl-model-color-definition-for-a-color-wheel-with-xco
+              \definecolor{arrowcolor}{Hsb}{\inteval{180+\i*36},1,0.8} % color of arrow
+
+              \ifnum\i=3
+                \draw[connect arrow,arrowcolor] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang}) node [midway,above,arrowcolor] {$w_{3\j}$};
+              \else
+                \draw[connect arrow,arrowcolor!40] (N\prev-\j.{\angout}) -- (N\lay-\i.{\ang});
+              \fi
+            }
+          \fi
+          \fi
+        }
+    }
+  \end{tikzpicture}
+\end{center}
+
+\begin{align*}
+  \begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    y_3
+  \end{pmatrix} & = \begin{pmatrix}
+                      w_{11} x_1 + w_{12} x_2 + w_{13} x_3 \\
+                      w_{21} x_1 + w_{22} x_2 + w_{23} x_3 \\
+                      w_{31} x_1 + w_{32} x_2 + w_{33} x_3
+                    \end{pmatrix} \\
+                  & = \begin{pmatrix}
+                        w_{11} & w_{12} & w_{13} \\
+                        w_{21} & w_{22} & w_{23} \\
+                        w_{31} & w_{32} & w_{33}
+                      \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3
+  \end{pmatrix}                                         \\
+\end{align*}
+
+\end{document}
