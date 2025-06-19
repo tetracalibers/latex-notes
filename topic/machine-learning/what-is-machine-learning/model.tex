@@ -1,0 +1,65 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{意思決定のプロセス}
+\marginnote{\refbookMA p8〜9、p15}
+
+経験に基づいて意思決定を行うために人間が用いるプロセスは\keyword{記憶・定式化・予測フレームワーク}と呼ばれ、次の3つのステップで構成されている
+
+\begin{enumerate}
+  \item \textbf{記憶}：過去の同じような状況を思い出す
+  \item \textbf{定式化}：全般的なルールを定式化する
+  \item \textbf{予測}：このルールを使って将来起こるかもしれないことを予測する
+\end{enumerate}
+
+コンピュータに「記憶・定式化・予測」フレームワークを使わせることで、コンピュータに私たちと同じように考えさせることができる
+
+\begin{enumerate}
+  \item \textbf{記憶}：巨大なデータテーブルを調べる
+  \item \textbf{定式化}：さまざまなルールや式を調べてデータに最適な\keyword{モデル}を作成する
+  \item \textbf{予測}：モデルを使って未来（未知）のデータについて予測を行う
+\end{enumerate}
+
+\sectionline
+\section{モデルとアルゴリズム}
+\marginnote{\refbookMA p9、p15〜16}
+
+コンピュータはデータを使って\keyword{モデル}を構築するという方法で問題を解く
+
+\begin{definition}{モデル}
+  データを表すルールの集まりであり、予測を行うために使うことができる
+\end{definition}
+
+モデルは、次のようなものと考えることができる
+\begin{shaded}
+  既存のデータをできる限り厳密に模倣する一連のルールを使って現実を表すもの
+\end{shaded}
+
+\br
+
+そして、最適なモデルとは、次のようなものである
+\begin{shaded}
+  新しいデータに最もうまく\keyword{汎化}するもの
+\end{shaded}
+
+\br
+
+最適なモデルを構築するために、さまざまなアルゴリズムを学ぶ必要がある
+
+\keyword{アルゴリズム}は、モデルを構築するために使ったプロセスのこと
+
+\begin{definition}{アルゴリズム}
+  問題を解いたり計算を行ったりするために使われる手続き（一連のステップ）
+\end{definition}
+
+\sectionline
+\section{特徴量}
+\marginnote{\refbookMA p13}
+
+\begin{definition}{特徴量}
+  モデルが予測を行うために使うことができるデータの特性や属性
+\end{definition}
+
+\end{document}
