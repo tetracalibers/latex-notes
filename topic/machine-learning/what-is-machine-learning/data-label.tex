@@ -1,0 +1,58 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{データと特徴量}
+\marginnote{\refbookMA p13、p19}
+
+データがテーブルに含まれている場合、各行はデータ点である
+
+たとえば、動物のデータセットがある場合、各行は異なる動物を表している
+
+\br
+
+このテーブル内の各動物は、その動物の\keyword{特徴量}によって説明される
+
+\begin{definition}{特徴量}
+  モデルが予測を行うために使うことができるデータの特性や属性
+\end{definition}
+
+データがテーブルに含まれている場合、特徴量はテーブルの列であり、特徴量は各データを説明する
+
+\sectionline
+\section{予測とラベル}
+\marginnote{\refbookMA p19〜20}
+
+特徴量の中には、\keyword{ラベル}と呼ばれる特別なものがある
+
+一般に、特定の特徴量を他の特徴量に基づいて予測しようとしているなら、その特徴量はラベルである
+
+\br
+
+機械学習モデルの目標は、
+\begin{shaded}
+  データに含まれている\keyword{ラベル}を推測すること
+\end{shaded}
+であり、モデルが行う推測を\keyword{予測}と呼ぶ
+
+\sectionline
+\section{ラベル付きデータとラベルなしデータ}
+\marginnote{\refbookMA p20〜21}
+
+データには、大きく分けて、
+\begin{itemize}
+  \item \keyword{ラベル付きデータ}：ラベルが付いているデータ
+  \item \keyword{ラベルなしデータ}：ラベルが付いていないデータ
+\end{itemize}
+の2種類がある
+
+\br
+
+予測したいと思うような列を持たないデータセットは、ラベルなしデータである
+
+\br
+
+ラベル付きデータとラベルなしデータは、\keyword{教師あり学習}と\keyword{教師なし学習}という2種類の機械学習を生み出している
+
+\end{document}
