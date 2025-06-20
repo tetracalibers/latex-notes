@@ -1,0 +1,32 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{パラメータとハイパーパラメータ}
+\marginnote{\refbookMA p78}
+
+回帰モデルは、\keyword{重み}と\keyword{バイアス}によって定義され、これらはモデルの\keywordJE{パラメータ}{parameter}である
+
+\br
+
+しかし、モデルを訓練する「前に」調整できるつまみは他にもいろいろある
+
+\begin{itemize}
+  \item \keywordJE{学習率}{learning rate}：モデルを訓練する前に選択する非常に小さな値で、訓練時にモデルを微小変化させるのに役立つ
+  \item \keyword{エポック数}：ループの繰り返し回数
+  \item \keyword{次数}（多項式回帰の場合）
+\end{itemize}
+
+これらのつまみは\keywordJE{ハイパーパラメータ}{hyperparameter}と呼ばれる
+
+\br
+
+パラメータとハイパーパラメータは、大まかには次のように見分けられる
+
+\begin{itemize}
+  \item \keyword{ハイパーパラメータ}：訓練プロセスの「前に」設定する数量
+  \item \keyword{パラメータ}：訓練プロセスの「最中に」モデルが作成または変更する数量
+\end{itemize}
+
+\end{document}
