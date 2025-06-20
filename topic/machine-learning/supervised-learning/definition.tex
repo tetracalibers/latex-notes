@@ -1,0 +1,51 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{教師あり学習}
+\marginnote{\refbookMA p21}
+
+\keyword{教師あり学習}は、ラベル付きデータを扱う機械学習であり、その目標は\keyword{ラベル}を予測すること
+
+ラベルが付いていない新しいデータが渡された場合、教師あり学習モデルはそのデータ点のラベルを予測する
+
+\br
+
+意思決定を行うためのフレームワーク「記憶・定式化・予測」は、教師あり学習の仕組みそのもの
+
+\begin{enumerate}
+  \item データセットを記憶する
+  \item 特徴と考えられるものをモデル（ルール）として定式化する
+  \item 新しいデータが与えられたときに、そのデータのラベルを予測する
+\end{enumerate}
+
+\sectionline
+\section{回帰モデルと分類モデル}
+\marginnote{\refbookMA p22〜23}
+
+教師あり学習モデルでは、数値と状態の2種類のデータが使われる
+
+\begin{itemize}
+  \item \keyword{数値データ}：数値を用いるあらゆる種類のデータ
+  \item \keyword{カテゴリ値データ}：カテゴリ（状態）を用いるあらゆる種類のデータ
+\end{itemize}
+
+\br
+
+そして、この2種類のデータから、次の2種類の機械学習モデルが生まれた
+
+\begin{itemize}
+  \item \keyword{回帰モデル}：数値データを予測する機械学習モデル
+  \item \keyword{分類モデル}：カテゴリ値データを予測する機械学習モデル
+\end{itemize}
+
+\br
+
+\keyword{回帰モデル}は数値のラベルを予測するモデルであり、この数値を特徴量に基づいて予測する
+
+\br
+
+\keyword{分類モデル}は状態の有限集合に含まれている状態を予測するモデルである（カテゴリ値データでは、各データ点に有限のカテゴリ集合が紐づけられる）
+
+\end{document}
