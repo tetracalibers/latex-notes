@@ -1,0 +1,73 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{教師なし学習}
+\marginnote{\refbookMA p25〜26}
+
+\keyword{教師なし学習}は、ラベルなしデータを扱う機械学習である
+
+ラベル（予測の目的変数または正解値）がないデータから、できるだけ多くの情報を抽出することが目標となる
+
+\br
+
+たとえば、ラベルが付いていない動物の画像のデータセットからは、それぞれの画像が表している動物の種類はわからないため、新しい画像がどの動物なのかを予測することはできない
+
+しかし、2つの画像が似ているかどうかなど、他にできることがある
+
+\br
+
+つまり、教師なし学習アルゴリズムは、類似性に基づいてデータを分類できるが、それぞれのグループが何を表すのかはわからない
+
+\sectionline
+\section{教師なし学習によるデータの前処理}
+\marginnote{\refbookMA p26}
+
+実際には、教師なし学習はラベルが付いている場合でも利用できる
+
+教師なし学習を使ってデータの\keyword{前処理}を行うと、教師あり学習の手法の効果を高めることができる
+
+\sectionline
+\section{教師なし学習の種類}
+\marginnote{\refbookMA p26}
+
+教師なし学習には、大きく分けて3種類の学習法がある
+
+\begin{itemize}
+  \item \keyword{クラスタリング}：データを類似性に基づいてクラスタに分類する
+  \item \keyword{次元削減}：データを単純化し、より少ない特徴量でデータを正確に説明する
+  \item \keyword{生成学習}：既存のデータに似ている新しいデータ点を生成する
+\end{itemize}
+
+\sectionline
+\section{クラスタリング}
+\marginnote{\refbookMA p26〜30}
+
+\keyword{クラスタリング}は、データセット内の要素を類似性の高いデータ点ごとにクラスタ（グループ）に分割する
+
+\br
+
+特徴量が3つを超えると、その次元を可視化できなくなるため、人間がクラスタを目で確認するのは不可能になる
+
+コンピュータを使うことで、巨大なデータセットに対してもクラスタリングを行うことができる
+
+\sectionline
+\section{次元削減}
+\marginnote{\refbookMA p30〜32}
+
+\todo{}
+
+\sectionline
+\section{行列分解と特異値分解}
+\marginnote{\refbookMA p32〜34}
+
+\todo{}
+
+\sectionline
+\section{生成学習}
+\marginnote{\refbookMA p34}
+
+\todo{}
+
+\end{document}
