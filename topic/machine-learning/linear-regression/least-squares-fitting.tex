@@ -1,0 +1,141 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{二乗誤差と最小二乗法}
+\marginnote{\refbookSA p123〜127}
+
+データの総数を$N$とすると、二乗誤差は、次のような数式で表される
+
+\begin{equation*}
+  J(\vb*{w}) = \sum_{n=1}^N \left( y_n - f(\vb*{x}_n) \right)^2
+\end{equation*}
+
+$n$番目の実際の出力$y_n$と、$n$番目の入力を使ったときのモデルの出力$f(\vb*{x}_n)$との差を見ている
+
+符号を正にするために二乗し、それをすべてのデータについて合計したものが二乗誤差である
+
+\br
+
+この誤差関数$J(\vb*{w})$を最小にするパラメータを探すことが目標となる
+
+\subsection{モデルの式を整理する}
+
+まずは、モデルの式を整理する
+
+\begin{equation*}
+  f(\vb*{x}) = w_0 + \sum_{d=1}^{D} w_d x_d
+\end{equation*}
+
+右辺はベクトルの内積で書けそうだが、$w_0$が余分なので、$x_0=1$と定義して、次のように書き換える
+
+\begin{equation*}
+  f(\vb*{x}) = \sum_{d=0}^{D} w_d x_d
+\end{equation*}
+
+そして、次のようなベクトルを導入する
+
+\begin{equation*}
+  \vb*{w} = \begin{bmatrix}
+    w_0    \\
+    w_1    \\
+    \vdots \\
+    w_D
+  \end{bmatrix},\quad
+  \vb*{x}' = \begin{bmatrix}
+    1      \\
+    x_1    \\
+    x_2    \\
+    \vdots \\
+    x_D
+  \end{bmatrix},\quad
+  \vb*{x}'_n = \begin{bmatrix}
+    1       \\
+    x_{n,1} \\
+    x_{n,2} \\
+    \vdots  \\
+    x_{n,D}
+  \end{bmatrix}
+\end{equation*}
+
+すると、先ほどのモデルの式は、次のように$\vb*{w}$と$\vb*{x}'$の内積で表せる
+
+\begin{equation*}
+  f(\vb*{x}) = \vb*{w}^\top\vb*{x}'
+\end{equation*}
+
+\subsection{$N$個分のデータをまとめる}
+
+$N$個分のデータをまとめた出力$\vb*{y}$と入力$X$を、それぞれ次のように書く
+
+\begin{equation*}
+  \vb*{y} = \begin{bmatrix}
+    y_1    \\
+    y_2    \\
+    \vdots \\
+    y_N
+  \end{bmatrix},\quad
+  X = \begin{bmatrix}
+    1      & x_{1,1} & x_{1,2} & \cdots & x_{1,D} \\
+    1      & x_{2,1} & x_{2,2} & \cdots & x_{2,D} \\
+    \vdots & \vdots  & \vdots  & \ddots & \vdots  \\
+    1      & x_{N,1} & x_{N,2} & \cdots & x_{N,D}
+  \end{bmatrix} = \begin{bmatrix}
+    (\vb*{x}'_1)^\top \\
+    (\vb*{x}'_2)^\top \\
+    \vdots            \\
+    (\vb*{x}'_N)^\top
+  \end{bmatrix}
+\end{equation*}
+
+$X$は$N\times(D+1)$行列で、定数項の分だけ列が一つ増えている
+
+\br
+
+この定数項の列を含まず、データだけを並べたものは\keyword{データ行列}と呼ばれる
+
+ただし、ここでは定数項の列を含めた$X$もデータ行列と呼ぶことにする
+
+\subsection{誤差関数をベクトルと行列で表す}
+
+ここまでの記号を使って、誤差関数$J(\vb*{w})$を書き直す
+
+\br
+
+まずは$n$番目のデータにのみ注目すると、実際の値とモデルの差は、
+\begin{equation*}
+  \begin{WithArrows}
+    y_n - f(\vb*{x}_n) & = y_n - \vb*{w}^\top\vb*{x}'_n \Arrow{内積の順番を変える} \\
+    & = y_n - (\vb*{x}'_n)^\top \vb*{w}
+  \end{WithArrows}
+\end{equation*}
+
+ベクトルと行列を使うと、$N$個のデータに対しては次のように書ける
+\begin{equation*}
+  \vb*{z} = \begin{bmatrix}
+    y_1 - (\vb*{x}'_1)^\top \vb*{w} \\
+    y_2 - (\vb*{x}'_2)^\top \vb*{w} \\
+    \vdots                          \\
+    y_N - (\vb*{x}'_N)^\top \vb*{w}
+  \end{bmatrix} = \vb*{y} - X\vb*{w}
+\end{equation*}
+
+この二乗をとった形は、$\vb*{z}$自身との内積で書き表せる
+\begin{equation*}
+  J(\vb*{w}) = \vb*{z}^\top \vb*{z} = (\vb*{y} - X\vb*{w})^\top (\vb*{y} - X\vb*{w})
+\end{equation*}
+
+\subsection{ベクトルの微分で最小化問題を解く}
+
+誤差関数を最小にする$\vb*{w}$を求めるには、
+\begin{equation*}
+  \frac{\partial J(\vb*{w})}{\partial \vb*{w}} = 0
+\end{equation*}
+を解けばよい
+
+\br
+
+\todo{\refbookSA p125〜127}
+
+\end{document}

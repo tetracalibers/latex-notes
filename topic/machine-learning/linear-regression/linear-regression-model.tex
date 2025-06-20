@@ -4,10 +4,69 @@
 
 \sectionline
 \section{線形回帰}
-\marginnote{\refbookMA p40〜}
+\marginnote{\refbookMA p40 \\ \refbookSA p112、p121〜122}
 
 できる限り多くのデータ点の近くを通る直線を求めることで、その直線の式を使って新たなデータを大まかに予測することができる
 
 このような手法を\keyword{線形回帰}という
+
+\br
+
+線形回帰は、次のような手順で行われる
+
+\begin{enumerate}
+  \item モデルとして直線や平面を仮定する
+  \item 誤差を測る指標（\keyword{誤差関数}）を設定する
+  \item 誤差が最小になるようにモデルのパラメータを調整する
+\end{enumerate}
+
+\sectionline
+\section{モデルを表す式}
+\marginnote{\refbookSA p122〜123 \\ \refbookMA p42}
+
+線形回帰では、モデルとして一次式を使う
+
+\begin{equation*}
+  f(\vb*{x}) = w_0 + \sum_{d=1}^{D} w_d x_d
+\end{equation*}
+
+この式では、$D$個の特徴量$x_1,\ldots,x_D$を持つデータを考えている
+
+\br
+
+モデルを表す式において、それぞれの特徴量にかける係数$w_1,\ldots,w_D$を\keywordJE{重み}{weight}と呼ぶ
+
+\br
+
+また、モデルを表す式では、どの特徴量にも結びつかない定数$w_0$がある
+
+この定数を\keywordJE{バイアス}{bias}と呼ぶ
+
+\sectionline
+\section{誤差関数}
+\marginnote{\refbookMA p65〜 \\ \refbookSA p123}
+
+どんな直線が適合するといえるのか、「データに当てはまる基準」も自分で設定することになる
+
+誤差が少ない、すなわち「当てはまりがよい」ほど小さい値をとるような関数を\keywordJE{誤差関数}{error function}と呼ぶ
+
+\begin{definition}{誤差関数}
+  モデルの性能がどれくらいかを明らかにする指標であり、性能が悪いモデルに大きな値を割り当て、性能がよいモデルに小さな値を割り当てる関数
+\end{definition}
+
+誤差関数は、\keywordJE{損失関数}{loss function}や\keywordJE{コスト関数}{cost function}、最適化問題としての側面に注目した場合は\keyword{目的関数}と呼ばれることもある
+
+\br
+
+誤差関数を定義する一般的な方法としては、次の2つがある
+
+\begin{itemize}
+  \item \keywordJE{絶対誤差}{absolute error}：直線からデータ点までの垂直距離を合計したもの
+  \item \keywordJE{二乗誤差}{square error}：直線からデータ点までの垂直距離の二乗を合計したもの
+\end{itemize}
+
+線形回帰では、誤差関数を最小にするモデル（直線）を探すことになる
+
+誤差関数として\keyword{二乗誤差}を用いた場合、その最小化問題は\keyword{最小二乗法}と呼ばれる
 
 \end{document}
