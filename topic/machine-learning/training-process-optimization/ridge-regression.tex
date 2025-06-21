@@ -1,0 +1,32 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{リッジ回帰}
+\marginnote{\refbookMA p99 \\ \refbookSA p139〜140}
+
+正則化項として\keyword{\en{L2}ノルム}を使ってモデルを訓練する場合、そのモデルを\keywordJE{リッジ回帰}{ridge regression}と呼ぶ
+
+「ridge」は山の尾根などを表す英単語であり、誤差関数の形状から名付けられている
+
+\br
+
+リッジ回帰では、「パラメータのノルムは小さいほどよい」という条件を課すことで、モデルの複雑さを抑える
+
+\br
+
+具体的には、ノルムの二乗（\keyword{\en{L2}ノルム}）すなわち、自分自身との内積
+\begin{equation*}
+  \vb*{w}^\top \vb*{w}
+\end{equation*}
+を正則化項として加える
+
+\br
+
+すると、誤差関数は次のように修正される
+\begin{equation*}
+  J^{\text{Ridge}}(\vb*{w}) = (\vb*{y} - X\vb*{w})^\top (\vb*{y} - X\vb*{w}) + \lambda \vb*{w}^\top \vb*{w}
+\end{equation*}
+
+\end{document}

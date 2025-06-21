@@ -1,0 +1,32 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ラッソ回帰}
+\marginnote{\refbookMA p99 \\ \refbookSA p141〜144}
+
+正則化項として\keyword{\en{L1}ノルム}を使ってモデルを訓練する場合、そのモデルを\keywordJE{ラッソ回帰}{lasso regression}と呼ぶ
+
+「\en{lasso}」は、「least absolute shrinkage and selection operator」の略である
+
+\br
+
+ラッソ回帰では、「ベクトルの各要素の絶対値の和が小さい」という条件を課すことで、モデルの複雑さを抑える
+
+\br
+
+具体的には、\en{L1}ノルム
+\begin{equation*}
+  \sum_{d=1}^D |w_d|
+\end{equation*}
+を正則化項として加える
+
+\br
+
+すると、誤差関数は次のように修正される
+\begin{equation*}
+  J^{\text{Lasso}}(\vb*{w}) = (\vb*{y} - X\vb*{w})^\top (\vb*{y} - X\vb*{w}) + \lambda \sum_{d=1}^D |w_d|
+\end{equation*}
+
+\end{document}
