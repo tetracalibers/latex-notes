@@ -1,0 +1,41 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{正則化}
+\marginnote{\refbookMA p93〜97、p99}
+
+複雑なモデルは多くのパラメータを持ち、柔軟に調整することができる
+
+しかし、モデルを柔軟にしすぎると過学習を起こす可能性がある
+
+そこで、パラメータに制限（条件）をつけることで過学習を防ぐ手法として、\keywordJE{正則化}{regularization}がある
+
+\begin{definition}{正則化}
+  モデルの複雑さにペナルティを科す（モデルに格納できる情報の量を調整するか、モデルに格納できる情報の種類を制限する）ことで、最終的に過学習を防ぐ手法
+\end{definition}
+
+複数のモデルをテストし、性能と複雑さのバランスが最もよいものを選ぶことでモデルの最適化を図る方法もあるが、正則化を用いる場合は、モデルを何種類も訓練する必要はない
+
+\br
+
+正則化では、モデルを訓練するのは1回だけだが、モデルを訓練しながら次の2つの最適化も試みる
+
+\begin{itemize}
+  \item 性能を向上させる
+  \item 複雑さを減らす
+\end{itemize}
+
+そのために、性能の指標と複雑度の指標を数値化し、それらを組み合わせた上で最適化問題を解くという方法をとる
+
+\begin{itemize}
+  \item \keywordJE{回帰誤差}{regression error}：モデルの性能（品質）の指標
+  \item \keywordJE{正規化項}{regularization term}：モデルの複雑度の指標
+\end{itemize}
+
+\keyword{回帰誤差}として使われるのは、絶対誤差や二乗誤差などである
+
+\keyword{正規化項}として使われるのは、モデルの\keyword{\en{L1}ノルム}や\keyword{\en{L2}ノルム}である
+
+\end{document}
