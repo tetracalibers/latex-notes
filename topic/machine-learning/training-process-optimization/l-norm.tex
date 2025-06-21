@@ -1,0 +1,26 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{L1ノルムとL2ノルム}
+\marginnote{\refbookMA p97〜98}
+
+\keywordJE{\en{L1}ノルム}{L1 norm}と\keywordJE{\en{L2}ノルム}{L2 norm}は、モデルの複雑度を数値化するために用いられる
+
+\br
+
+係数の数が多いモデルや、係数の値が大きいモデルは、複雑になる傾向がある
+
+そのため、次の二つの数値が、モデルの複雑度を表す指標となる
+
+\begin{itemize}
+  \item \keyword{\en{L1}ノルム}：係数の絶対値の合計
+  \item \keyword{\en{L2}ノルム}：係数の二乗の合計
+\end{itemize}
+
+絶対値と二乗を使うのは、負の係数をなくすためである
+
+そうしないと、大きな負の値によって大きな正の値が相殺され、非常に複雑なモデルでもこれらの値が小さくなってしまうリスクがある
+
+\end{document}
