@@ -1,0 +1,141 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{基本行列の正則性}
+\marginnote{\refbookF p62 \\ \refbookA p86}
+
+行基本変形も列基本変形も、基本行列によって定式化できる
+
+この考えをさらに進めるため、基本行列の性質を述べる
+
+\begin{theorem}{基本行列の正則性}
+  基本行列は正則である
+\end{theorem}
+
+\begin{proof}
+  基本行列の表す変形を考えれば、
+  \begin{align*}
+    F(i,j)F(i,j)           & = E                          \\
+    G(i;c)G(i;\frac{1}{c}) & = G(i;\frac{1}{c})G(i;c) = E \\
+    H(i,j;c)H(i;-c)        & = H(i,;-c)H(i,j;c) = E
+  \end{align*}
+  が成り立つことがわかる
+
+  したがって、基本行列は逆行列を持つので正則である $\qed$
+\end{proof}
+
+つまり、各々の基本変形は可逆の変形、すなわち逆に戻ることのできる変形である
+
+\sectionline
+\section{基本行列の積と逆行列}
+\marginnote{\refbookF p62〜63 \\ \refbookA p86}
+
+行基本変形が基本行列を左からかけることに対応することから、行基本変形とは線形写像であり、基本行列はその表現行列であるという見方もできる
+
+\br
+
+そのため、行基本変形の合成は、基本行列の積として表現できる
+
+\br
+
+このことから、行についての連続する複数の基本変形の繰り返しも可逆であることがいえる
+
+\begin{theorem}{基本行列の積による行変形の構成}\label{thm:row-operation-by-elementary-matrices}
+  行列の行変形$A \to B$に対し、$B=PA$を満たす正則行列$P$が存在する
+
+  このとき、$P$はいくつかの基本行列の積である
+\end{theorem}
+
+\begin{proof}
+  行基本変形を$A \xrightarrow{\alpha_k} \cdots \xrightarrow{\alpha_1} B$と合成して得られる行変形は、$E_{\alpha_1} \cdots E_{\alpha_k}$を左からかけることで実現される
+
+  すなわち、
+  \begin{equation*}
+    B = E_{\alpha_1} \cdots E_{\alpha_k} A
+  \end{equation*}
+  が成り立つ
+
+  個々の基本行列$E_{\alpha_1},\ldots,E_{\alpha_k}$は正則であるので、これらの積$P = E_{\alpha_1} \cdots E_{\alpha_k}$も正則である $\qed$
+\end{proof}
+
+\br
+
+上の証明から、正則行列$P$に対して、その逆行列を$P^{-1}$とすると、
+\begin{equation*}
+  P^{-1}B = P^{-1}E_{\alpha_1} \cdots E_{\alpha_k} A = P^{-1}PA = A
+\end{equation*}
+が成り立つことになる
+
+\br
+
+ここで、$B = E$の場合を考えると、$P^{-1}E = A$となるので、次のことがいえる
+
+\begin{theorem}{単位行列への行変形による逆行列の構成}
+  正方行列$A$の単位行列への行変形$A \to E$に対応する基本変形の積は、$A$の逆行列を与える
+\end{theorem}
+
+つまり、任意の正方行列は行基本変形だけで単位行列に変形でき、その基本行列の積から逆行列を求めることができる
+
+\sectionline
+\section{行基本変形による階数の不変性}
+\marginnote{\refbookA p86}
+
+\hyperref[thm:row-operation-by-elementary-matrices]{基本行列の積による行変形の構成}から、\hyperref[thm:row-operation-preserves-dependence]{行変形によって列ベクトルの線形関係が保たれる}ことに対して別の証明を与えることができる
+
+\begin{theorem}{行基本変形による線型独立性の不変性（再掲）}
+  行変形はベクトルの線形関係を保つ
+
+  すなわち、行列$A = (\vb*{a}_1, \dots, \vb*{a}_n)$に行の変形を施して$B = (\vb*{b}_1, \dots, \vb*{b}_n)$が得られたとするとき、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0} \Longleftrightarrow \sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}
+  \end{equation*}
+
+  特に、
+  \begin{equation*}
+    \{ \vb*{a}_1, \dots, \vb*{a}_n \} \text{が線型独立} \Longleftrightarrow \{ \vb*{b}_1, \dots, \vb*{b}_n \} \text{が線型独立}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $P$を基本行列の積（正則行列）とすると、$B = PA$が成り立つ
+
+  \br
+
+  よって、$\vb*{b}_i = P \vb*{a}_i$であり、線形関係式
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0}
+  \end{equation*}
+  に左から$P$をかけることで、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}
+  \end{equation*}
+  が得られる
+
+  \br
+
+  逆に、$\displaystyle\sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}$が成り立つとき、$P^{-1}$を左からかけることで、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0}
+  \end{equation*}
+  が得られる
+
+  \br
+
+  したがって、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0} \Longleftrightarrow \sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\br
+
+上の事実は、\hyperref[thm:rank-equals-max-indep-cols]{行列$A$の階数が$A$の線型独立な列ベクトルの最大個数}であることと合わせると、次のように言い換えられる
+
+\begin{theorem}{行基本変形による階数の不変性}
+  行の基本変形で行列の階数は変化しない
+\end{theorem}
+
+\end{document}
