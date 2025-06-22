@@ -1,0 +1,140 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行基本変形と基本行列}
+\marginnote{\refbookA p85〜86 \\ \refbookF p58〜61}
+
+基本変形を行列のかけ算によって実現することができる
+
+\begin{definition}{基本行列}
+  基本変形$\alpha$を単位行列$E$に行った結果を$E_\alpha$とするとき、$E_\alpha$を$\alpha$に対応する\keyword{基本行列}と呼ぶ
+\end{definition}
+
+行基本変形とは、次の3種類の操作であった
+
+\begin{enumerate}[label=\romanlabel]
+  \item 2つの行を交換する
+  \item ある行に0でない数をかける
+  \item ある行の定数倍を他の行に加える
+\end{enumerate}
+
+これらに対応して、行基本変形を表現する基本行列は、次の3種類がある
+
+\begin{enumerate}[label=\romanlabel]
+  \item $F(i,j)$：$E$の$i$行と$j$行を交換したもの（$i\neq j$）
+  \item $G(i;c)$：$E$の$(i,j)$成分を1から$c$に置き換えたもの（$c\neq 0$）
+  \item $H(i,j;c)$：$E$の$(i,j)$成分を0から$c$に置き換えたもの（$i \neq j$）
+\end{enumerate}
+
+\begin{equation*}
+  F(i,j) = \begin{pmatrix}
+    1                                                \\
+     & \ddots                                        \\
+     &        & 0      & \dots & 1                   \\
+     &        & \vdots &       & \vdots              \\
+     &        & 1      & \dots & 0                   \\
+     &        &        &       &        & \ddots     \\
+     &        &        &       &        &        & 1
+  \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+  G(i;c) = \begin{pmatrix}
+    1                                            \\
+     & \ddots                                    \\
+     &        & c &                              \\
+     &        &   & \ddots                       \\
+     &        &   &        & \ddots              \\
+     &        &   &        &        & \ddots     \\
+     &        &   &        &        &        & 1
+  \end{pmatrix}
+\end{equation*}
+
+\begin{equation*}
+  H(i,j;c) = \begin{pmatrix}
+    1                                            \\
+     & \ddots                                    \\
+     &        & 1 & \dots  & c                   \\
+     &        &   & \ddots & \vdots              \\
+     &        &   &        & 1                   \\
+     &        &   &        &        & \ddots     \\
+     &        &   &        &        &        & 1
+  \end{pmatrix}
+\end{equation*}
+
+\sectionline
+
+行に関する基本変形は、基本行列を左からかけることに他ならない
+
+\begin{theorem}{基本行列による行基本変形の表現}
+  行列$A$に行基本変形$\alpha$を行って得られる行列を$B$とすると、
+  \begin{equation*}
+    B = E_\alpha A
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{e}_k$を$k$列目が1で他が0の横ベクトルとし、$A$の$k$行目の行ベクトルを$\vb*{a}_k$とする
+
+  \begin{subpattern}{\bfseries 行の交換}
+    基本行列$F(i,j)$の$k$行目は、
+    \begin{equation*}
+      (F(i,j))_{k,*} = \begin{cases}
+        \vb*{e}_j & (k=i)        \\
+        \vb*{e}_i & (k=j)        \\
+        \vb*{e}_k & (k \neq i,j)
+      \end{cases}
+    \end{equation*}
+    よって、$F(i,j)A$の$k$行目は、
+    \begin{equation*}
+      (F(i,j)A)_{k,*} = \begin{cases}
+        \vb*{a}_j & (k=i)        \\
+        \vb*{a}_i & (k=j)        \\
+        \vb*{a}_k & (k \neq i,j)
+      \end{cases}
+    \end{equation*}
+    となり、$i$行目と$j$行目が交換されていることがわかる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 行の定数倍}
+    基本行列$G(i;c)$の$k$行目は、
+    \begin{equation*}
+      (G(i;c))_{k,*} = \begin{cases}
+        c \vb*{e}_i & (k=i)      \\
+        \vb*{e}_k   & (k \neq i)
+      \end{cases}
+    \end{equation*}
+    よって、$G(i;c)A$の$k$行目は、
+    \begin{equation*}
+      (G(i;c)A)_{k,*} = \begin{cases}
+        c \vb*{a}_i & (k=i)      \\
+        \vb*{a}_k   & (k \neq i)
+      \end{cases}
+    \end{equation*}
+    となり、$i$行目が$c$倍されていることがわかる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 行の定数倍の加算}
+    基本行列$H(i,j;c)$の$k$行目は、
+    \begin{equation*}
+      (H(i,j;c))_{k,*} = \begin{cases}
+        \vb*{e}_i + c \vb*{e}_j & (k=i)        \\
+        \vb*{e}_j               & (k=j)        \\
+        \vb*{e}_k               & (k \neq i,j)
+      \end{cases}
+    \end{equation*}
+    よって、$H(i,j;c)A$の$k$行目は、
+    \begin{equation*}
+      (H(i,j;c)A)_{k,*} = \begin{cases}
+        \vb*{a}_i + c \vb*{a}_j & (k=i)        \\
+        \vb*{a}_j               & (k=j)        \\
+        \vb*{a}_k               & (k \neq i,j)
+      \end{cases}
+    \end{equation*}
+    となり、$i$行目に$j$行目の$c$倍が加えられていることがわかる $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}

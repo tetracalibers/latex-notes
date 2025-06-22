@@ -1,0 +1,47 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{列基本変形と基本行列}
+\marginnote{\refbookA p87 \\ \refbookF p61〜62}
+
+行基本変形と同様に、列に関する基本変形を考えることもできる
+
+\begin{enumerate}[label=\romanlabel]
+  \item 2つの列を交換する
+  \item ある列に0でない数をかける
+  \item ある列の定数倍を他の列に加える
+\end{enumerate}
+
+列に関する基本変形は、基本行列を右からかけることで実現できる
+
+\begin{theorem}{基本行列による列基本変形の表現}
+  行列$A$に列基本変形$\alpha$を行って得られる行列を$B$とすると、
+  \begin{equation*}
+    B = A E_\alpha
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  転置すると$A$になるような行列$A'$を考える
+  \begin{equation*}
+    A' = {}^t(A)
+  \end{equation*}
+
+  転置すると行と列が入れ替わるので、$A'$に「行」基本変形を施した行列を転置すれば、$A$に同じ基本変形を列に関して施した行列が得られる
+
+  \br
+
+  適用したい基本変形を$\alpha$とし、これを列に関して施す基本行列が$E_\alpha$なら、これを行に関して施す基本行列は${}^t(E_\alpha)$となる
+
+  \br
+
+  よって、
+  \begin{equation*}
+    B = {}^t({}^t(E_\alpha)A') = {}^t(A'){}^t({}^t(E_\alpha))  = AE_{\alpha}
+  \end{equation*}
+  というように、\hyperref[thm:transpose-of-product]{積の転置を取ると積の順序が入れ替わる}ことから、行基本変形の場合とは積の順序が逆転することがいえる $\qed$
+\end{proof}
+
+\end{document}
