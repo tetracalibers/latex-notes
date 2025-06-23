@@ -4,8 +4,62 @@
 
 \sectionline
 \section{線形写像の空間}
-\marginnote{\refbookH p163〜165}
+\marginnote{\refbookH p159〜160、p163}
 
-\todo{}
+$V,\,W$をともに有限次元$K$上の線形空間とする
+
+\br
+
+$V$から$W$への線形写像全体の集合を$\Hom(V,W)$と書く
+
+特に、$V$の線形変換全体の集合は$\End(V)$と書く
+
+\br
+
+このとき、$\Hom(V,W)$に線型空間の構造（和とスカラー倍）を次のように導入する
+
+\begin{definition}{線形写像の和とスカラー倍}
+  線形写像$f,g\in\Hom(V,W)$と$c\in K$に対して、和とスカラー倍を次のように定義する
+  \begin{align*}
+    (f+g)(v) & \coloneq f(v) + g(v) \\
+    (cf)(v)  & \coloneq c\cdot f(v)
+  \end{align*}
+\end{definition}
+
+\br
+
+これらの演算は、再び$V \to W$の線形写像を定めることが確認できる
+
+\begin{theorem}{線形写像全体による線形空間}
+  線形写像全体の集合$\Hom(V,W)$は$K$上の線形空間である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 加法が線形性を満たす}
+    $f,g$をともに線形写像とし、任意の$v_1,v_2\in V$と$a,b\in K$に対して、
+    \begin{align*}
+       & \phantom{ = } (f+g)(av_1 + bv_2)          \\
+       & = f(av_1 + bv_2) + g(av_1 + bv_2)         \\
+       & = af(v_1) + bf(v_2) + ag(v_1) + bg(v_2)   \\
+       & = a(f(v_1) + g(v_1)) + b(f(v_2) + g(v_2)) \\
+       & = a(f+g)(v_1) + b(f+g)(v_2)
+    \end{align*}
+    よって、$f+g$は線形写像である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍が線形性を満たす}
+    $f$を線形写像とし、任意の$v_1,v_2\in V$と$a,b,c\in K$に対して、
+    \begin{align*}
+      (cf)(av_1 + bv_2) & = c f(av_1 + bv_2)          \\
+                        & = c\cdot(f(av_1 + bv_2))    \\
+                        & = c\cdot(f(av_1) + f(bv_2)) \\
+                        & = c\cdot(af(v_1) + bf(v_2)) \\
+                        & = a(cf)(v_1) + b(cf)(v_2)
+    \end{align*}
+    よって、$cf$は線形写像である $\qed$
+  \end{subpattern}
+
+  線型空間の公理をすべて満たすことも、容易に確認できる $\qed$
+\end{proof}
 
 \end{document}
