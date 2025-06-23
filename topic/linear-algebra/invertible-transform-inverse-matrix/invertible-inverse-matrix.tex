@@ -248,6 +248,26 @@ $i$ごとに掃き出し法を何度も実行しないといけないのかと�
 このようにすれば、行変形は1通りで十分である
 
 \sectionline
+\section{正則行列と転置行列}
+\marginnote{\refbookA p88}
+
+\begin{theorem}{正則行列の転置の正則性}\label{thm:transpose-of-invertible}
+  正則行列$A$に対して、その転置行列${}^t A$も正則である
+\end{theorem}
+
+\begin{proof}
+  $A$が正則であることから、その逆行列$A^{-1}$が存在し、
+  \begin{equation*}
+    A^{-1}A = E
+  \end{equation*}
+  両辺の転置をとると、右辺の単位行列は転置しても単位行列であり、左辺には\hyperref[thm:inverse-of-product]{正則行列の積に対する逆行列の公式}を用いて、
+  \begin{equation*}
+    {}^t(A^{-1}A) = {}^t A {}^t (A^{-1}) = E
+  \end{equation*}
+  この等式より、${}^t A$の逆行列は${}^t (A^{-1})$であることがわかる $\qed$
+\end{proof}
+
+\sectionline
 \section{正則行列と対角行列}
 \marginnote{\refbookA p74〜75}
 
