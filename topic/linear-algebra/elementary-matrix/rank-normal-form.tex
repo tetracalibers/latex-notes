@@ -1,0 +1,81 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{階数標準形}
+\marginnote{\refbookA p87〜88 \\ \refbookF p75〜78}
+
+任意の行列$A$は、行基本変形により、次のような\hyperref[sec:reduced-row-echelon-form]{既約行階段行列}に変形できる
+\begin{equation*}
+  \begin{pNiceArray}{>{\strut}cccccccc}% <-- % mandatory
+    [margin, extra-margin=2pt,no-cell-nodes]
+    0 & \rowcolor{carnationpink!40} 1 & * & 0 & 0 & * & * & 0 \\
+    0 & 0 & 0 & \rowcolor{carnationpink!40} 1 & 0 & * & * & 0 \\
+    0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1 & * & * & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & \rowcolor{carnationpink!40} 1 \\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+ここからさらに、列の交換によって、主成分のある列を左に集めることができる
+\begin{equation*}
+  \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+    \Hdotsfor{3}^{r} & \Hdotsfor{2}^{n-r} \\
+    1 & & & \Block{3-2}<\large>{*} && \Vdotsfor{3}^{r}  \\
+    & \ddots &&& \\
+    & & 1&& \\
+    \hline
+    \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{n-r} \\
+    &&&&
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+ここで、$r$は零行ではない行の個数、すなわち$A$の階数である
+
+\br
+
+さらに、列の掃き出しで、左上のブロックの成分$*$をすべて0にできる
+\begin{equation*}
+  \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+    \Hdotsfor{3}^{r} & \Hdotsfor{2}^{n-r} \\
+    1 & & & \Block{3-2}<\large>{O} && \Vdotsfor{3}^{r}  \\
+    & \ddots &&& \\
+    & & 1&& \\
+    \hline
+    \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{n-r} \\
+    &&&&
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+この形を、$A$の\keyword{階数標準形}という
+
+この形を得るまでの過程をまとめると、次のことがいえる
+
+\begin{theorem}{基本変形による階数標準形の構成}
+  任意の行列は、行と列の基本変形を繰り返すことで、階数標準形に変形できる
+\end{theorem}
+
+\br
+
+ここで、$P$を行基本変形に対応する基本行列の積、$Q$を列基本変形に対応する基本行列の積とすると、$A$の階数標準形は$PAQ$で与えられる
+
+\br
+
+\hyperref[thm:invertible-as-product-of-elementary]{基本行列の積は任意の正則行列を表す}ので、次のようにまとめられる
+
+\begin{theorem}{正則行列による階数標準形の構成}
+  $m \times n$型行列$A$に対して、行変形に対応する$m$次正則行列$P$、列変形に対応する$n$次正則行列$Q$が存在し、
+  \begin{equation*}
+    B = PAQ
+  \end{equation*}
+  が階数標準形となる
+\end{theorem}
+
+\end{document}
