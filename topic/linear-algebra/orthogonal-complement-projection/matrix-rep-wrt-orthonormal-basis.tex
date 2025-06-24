@@ -1,0 +1,77 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{正規直交基底と表現行列}
+\marginnote{\refbookI p1〜3}
+
+$\mathbb{R}^n$から$\mathbb{R}^m$への線形写像は、ある$m \times n$型行列$A$によって表現される
+
+\br
+
+これを定める基本的な方法は、
+\begin{enumerate}
+  \item 定義域$\mathbb{R}^n$に一つの\keyword{正規直交基底}（互いに直交する単位ベクトル）$\{\vb*{u}_1,\ldots,\vb*{u}_n\}$を定める
+  \item それぞれが写像されるべき$m$次元ベクトル（\keyword{像}）$\vb*{a}_1,\ldots,\vb*{a}_n$を指定する
+\end{enumerate}
+という手順であり、このとき、行列$A$は
+\begin{equation*}
+  A = \begin{pmatrix}
+    \vb*{a}_1 \\
+    \vdots    \\
+    \vb*{a}_n
+  \end{pmatrix} \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_n
+  \end{pmatrix} = \vb*{a}_1 \vb*{u}_1^\top + \cdots + \vb*{a}_n \vb*{u}_n^\top
+\end{equation*}
+と書くことができる（$\top$は転置を表す）
+
+\br
+
+実際、両辺に$\vb*{u}_i$をかけると、
+\begin{equation*}
+  A \vb*{u}_i = \sum_{j=1}^n \vb*{a}_j \vb*{u}_j^\top \vb*{u}_i
+  = \sum_{j=1}^n \vb*{a}_j \delta_{ij}
+  = \vb*{a}_i
+\end{equation*}
+より、
+\begin{equation*}
+  A \vb*{u}_i = \vb*{a}_i \quad (i = 1, \ldots, n)
+\end{equation*}
+が成り立つことがわかる
+
+\sectionline
+
+特に、$\mathbb{R}^n$の正規直交基底として\keyword{標準基底}$\{\vb*{e}_1,\ldots,\vb*{e}_n\}$を選ぶと、行列$A$は次のように表せる
+\begin{align*}
+  A & = \sum_{i=1}^n \vb*{a}_i \vb*{e}_i^\top                               \\
+    & = \begin{pmatrix}
+          \vb*{a}_{11} \\
+          \vdots       \\
+          \vb*{a}_{m1}
+        \end{pmatrix} \begin{pmatrix}
+                        1 & \cdots & 0 \\
+                      \end{pmatrix} + \cdots + \begin{pmatrix}
+                                                 \vb*{a}_{1n} \\
+                                                 \vdots       \\
+                                                 \vb*{a}_{mn}
+                                               \end{pmatrix} \begin{pmatrix}
+                                                               0 & \cdots & 1
+                                                             \end{pmatrix} \\
+    & = \begin{pmatrix}
+          \vb*{a}_{11} & \cdots & \vb*{a}_{1n} \\
+          \vdots       & \ddots & \vdots       \\
+          \vb*{a}_{m1} & \cdots & \vb*{a}_{mn}
+        \end{pmatrix}
+\end{align*}
+
+\br
+
+すなわち、表現行列$A$は、
+\begin{shaded}
+  \keyword{像}$\vb*{a}_1,\ldots,\vb*{a}_n$を列として順に並べた行列$\begin{pmatrix}  \vb*{a}_1 & \cdots & \vb*{a}_n\end{pmatrix}$
+\end{shaded}
+となる
+
+\end{document}
