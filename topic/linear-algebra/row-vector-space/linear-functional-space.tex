@@ -1,0 +1,94 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形関数の集合}
+\marginnote{\refbookA p121〜122}
+
+${}^t\mathbb{R}^n$上の線形関数全体の集合を$({}^t\mathbb{R}^n)^*$と書く
+
+\br
+
+$\vb*{v} \in \mathbb{R}^n$を与えたとき、${}^t\mathbb{R}^n$上の線形関数$\langle -, \vb*{v} \rangle$が得られる
+
+（ここで、$-$はプレースホルダーであり、ここに具体的な値を入れられることを意味する）
+
+\begin{theorem}{線形関数の空間の基底と次元の一致}
+  $\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$を$\mathbb{R}^n$の基底とするとき、$\{ \langle -, \vb*{v}_1 \rangle, \ldots, \langle -, \vb*{v}_n \rangle \}$は$({}^t\mathbb{R}^n)^*$の基底である
+
+  よって、
+  \begin{equation*}
+    \dim({}^t\mathbb{R}^n)^* = \dim \mathbb{R}^n = n
+  \end{equation*}
+\end{theorem}
+
+\br
+
+$({}^t\mathbb{R}^n)^*$は、もとの縦ベクトル空間$\mathbb{R}^n$と自然に同一視できる
+
+\begin{theorem}{線形関数の空間と縦ベクトル空間の同型性}
+  写像$\iota\colon \mathbb{R}^n \to ({}^t\mathbb{R}^n)^*$を$\vb*{v} \mapsto \langle -, \vb*{v} \rangle$と定めると、これは線形同型写像である
+\end{theorem}
+
+\begin{proof}
+  $\vb*{v}$によって定まる線形関数$l_{\vb*{v}} = \langle -, \vb*{v} \rangle \in ({}^t\mathbb{R}^n)^*$を考える
+
+  このとき、写像$\iota$は$\vb*{v} \mapsto l_{\vb*{v}}$と定義できる
+
+  \begin{subpattern}{\bfseries 写像$\iota$は線形}
+    写像$\vb*{v} \mapsto l_{\vb*{v}}$は、関数を返す写像である
+
+    写した結果の関数が、和やスカラー倍と作用の順序を入れ替えても同じになることを確認する
+
+    \br
+
+    任意の入力$\phi$とすると、
+    \begin{align*}
+      l_{\vb*{v}_1 + \vb*{v}_2}(\phi) & = \langle \phi, \vb*{v}_1 + \vb*{v}_2 \rangle = \langle \phi, \vb*{v}_1 \rangle + \langle \phi, \vb*{v}_2 \rangle \\
+                                      & = l_{\vb*{v}_1}(\phi) + l_{\vb*{v}_2}(\phi)                                                                       \\
+      l_{c \vb*{v}}(\phi)             & = \langle \phi, c \vb*{v} \rangle = c \langle \phi, \vb*{v} \rangle = c l_{\vb*{v}}(\phi)
+    \end{align*}
+    任意の入力に対して等しい結果になることは、関数そのものが等しいことを意味する
+
+    和やスカラー倍を先に計算しても作用後に計算しても、同じ関数が得られるので、写像$\iota$は線形である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 写像$\iota$は単射}
+    写像$\iota$が「違う入力は違う出力になる」こと、すなわち単射であることを確認する
+
+    そのためには、$\iota$が零でないベクトルは零でない関数に移すこと、すなわち
+    \begin{equation*}
+      \vb*{v} \neq \vb*{0} \Longrightarrow l_{\vb*{v}} \neq 0
+    \end{equation*}
+    を示せばよい
+
+    \br
+
+    $\vb*{v} \neq \vb*{0}$ならば、$\vb*{v}$の成分のうち少なくとも1つは非零である
+
+    その成分を$k$番目の成分とし、横ベクトル$\phi = {}^t\vb*{e}_k$を考える
+
+    ここで、${}^t\vb*{e}_k$は$k$番目の成分が1で他の成分が0の横ベクトルである
+
+    すると、
+    \begin{align*}
+      l_{\vb*{v}}(\phi) & = \langle \phi, \vb*{v} \rangle = \phi(\vb*{v}) = {}^t\vb*{e}_k \begin{pmatrix}
+                                                                                            v_1    \\
+                                                                                            \vdots \\
+                                                                                            v_n
+                                                                                          \end{pmatrix} = v_k
+    \end{align*}
+    ここで、$v_k \neq 0$なので、$l_{\vb*{v}}(\phi) \neq 0$となる
+
+    したがって、$\iota$は単射である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 写像$\iota$は全射}
+    $\dim({}^t\mathbb{R}^n)^* = \dim \mathbb{R}^n = n$より、$\iota$は全射である $\qed$
+  \end{subpattern}
+
+  以上より、$({}^t\mathbb{R}^n)^*$と$\mathbb{R}^n$は同じ次元をもち、写像$\iota\colon \mathbb{R}^n \to ({}^t\mathbb{R}^n)^*$が単射かつ全射であることから、\hyperref[thm:abstract-linear-pigeonhole]{線形代数の鳩の巣原理}より、$\iota$は線形同型写像である $\qed$
+\end{proof}
+
+\end{document}
