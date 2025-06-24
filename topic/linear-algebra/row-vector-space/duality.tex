@@ -1,0 +1,47 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{双対性}
+\marginnote{\refbookA p122}
+
+$\{ \phi_i \}_{i=1}^n$を${}^t\mathbb{R}^n$の基底とする
+
+\br
+
+写像$\iota$を$\vb*{v}_i \mapsto \langle -, \vb*{v}_i \rangle$と定めると、
+\begin{equation*}
+  \psi_i(\phi_j) = \langle \phi_j, \vb*{v}_i \rangle = \delta_{ij}
+\end{equation*}
+を満たす$\psi_i \in ({}^t\mathbb{R}^n)^*$が、各$1 \leq i \leq n$に対して定まるといえる
+
+\br
+
+一方で、$\iota$が単射であることから、$\iota(\vb*{v}_i) = \psi_i$を満たす$\vb*{v}_i$が一意的に存在する
+
+単射とは、$\iota(\vb*{v}_i) = \iota(\vb*{v}_j) \Longrightarrow \vb*{v}_i = \vb*{v}_j$
+という性質であり、ある$\psi_i$に対して、$\iota(\vb*{v}_i) = \psi_i$を満たす$\vb*{v}_i$はただ一つしか存在しないことを意味する
+
+\br
+
+したがって、$\iota(\vb*{v}_i)$は、$\phi \in {}^t\mathbb{R}^n$に対して$\langle \phi, \vb*{v}_i \rangle$を返す線形関数である
+\begin{equation*}
+  \iota(\vb*{v}_i) = \psi_i(\phi) = \langle \phi, \vb*{v}_i \rangle
+\end{equation*}
+
+\br
+
+$\{ \vb*{v}_i \}_{i=1}^n$は$\mathbb{R}^n$の基底であり、これを$\{ \phi_i \}_{i=1}^n$の\keyword{双対基底}という
+
+\br
+
+定義を考えると、$\{ \vb*{v}_i \}_{i=1}^n$の双対基底は$\{ \phi_i \}_{i=1}^n$になっていることがわかる
+
+\br
+
+このように、縦ベクトル空間と横ベクトル空間とは、表と裏のような関係になっていて、裏の裏は表である
+
+こういう状況を\keyword{双対性}と呼ぶ
+
+\end{document}
