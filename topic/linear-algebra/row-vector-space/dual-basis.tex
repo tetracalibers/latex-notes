@@ -1,0 +1,95 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{双対基底}
+\marginnote{\refbookA p120〜121 \\ \refbookG p58〜59}
+
+$\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、
+\begin{equation*}
+  \phi_i(\vb*{v}_j) = \delta_{ij} \quad (i,j=1,\ldots,n)
+\end{equation*}
+を満たす線形写像$\phi_i:\mathbb{R}^n \to \mathbb{R}$を考える
+
+\br
+
+このとき、任意のベクトル $\vb*{v} \in \mathbb{R}^n$を
+\begin{equation*}
+  \vb*{v} = \sum_{j=1}^n a_j \vb*{v}_j
+\end{equation*}
+とおくと、
+\begin{equation*}
+  \phi_i(\vb*{v}) = \phi_i\left(\sum_{j=1}^{n} a_j \vb*{v}_j\right) = \sum_{j=1}^{n} a_j \phi_i(\vb*{v}_j) = \sum_{j=1}^{n} a_j \delta_{ij} = a_i
+\end{equation*}
+となるから、$\phi_i$は基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に関する第$i$座標を表す関数である
+
+\br
+
+任意の線形関数$\phi \in {}^t\mathbb{R}^n$は、座標関数の線型結合として一意的に表現できるから、次が成り立つ
+
+\begin{theorem}{${}^t\mathbb{R}^n$の双対基底の存在}
+  $\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、$\phi_i(\vb*{v}_j) = \delta_{ij}$によって$\phi_i \in {}^t\mathbb{R}^n$を定める
+
+  このとき、任意の$\phi \in {}^t\mathbb{R}^n$を$\phi_1,\ldots,\phi_n$の線形結合
+  \begin{equation*}
+    \phi = \sum_{i=1}^{n} \phi(\vb*{v}_i) \phi_i
+  \end{equation*}
+  として一意的に書くことができる
+
+  すなわち、$\{ \phi_1,\ldots,\phi_n \}$は${}^t \mathbb{R}^n$の基底である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $\phi_1,\ldots,\phi_n$が線型独立}
+    線形関係式
+    \begin{equation*}
+      \sum_{j=1}^{n} c_j \phi_j = 0
+    \end{equation*}
+    があるとすると、
+    \begin{equation*}
+      \begin{WithArrows}
+        \left( \displaystyle\sum_{j=1}^{n} c_j \phi_j \right)(\vb*{v}_i) & = 0 \Arrow{$\phi$の線形性} \\
+        \displaystyle\sum_{j=1}^{n} c_j \phi_j(\vb*{v}_i) & = 0 \Arrow{$\phi_j(\vb*{v}_i) = \delta_{ij}$} \\
+        \displaystyle\sum_{j=1}^{n} c_j \delta_{ij} & = 0
+      \end{WithArrows}
+    \end{equation*}
+    左辺の和は、$\delta_{ij}$の定義より、$j=i$の項のみ生き残って、
+    \begin{equation*}
+      c_i = 0 \quad (i=1,\ldots,n)
+    \end{equation*}
+    が得られる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{$\langle \phi_1, \ldots, \phi_n \rangle = {}^t\mathbb{R}^n$}
+    任意の$\vb*{v} \in \mathbb{R}^n$に対して、
+    \begin{equation*}
+      \vb*{v} =\sum_{i=1}^{n} c_i \vb*{v}_i
+    \end{equation*}
+    と書く
+
+    \br
+
+    $\psi \in {}^t\mathbb{R}^n$を任意にとると、$\psi$と$\phi$の線形性により、
+    \begin{align*}
+      \psi(\vb*{v}) & = \psi\left(\sum_{i=1}^{n} c_i \vb*{v}_i\right)              \\
+                    & = \sum_{i=1}^{n} c_i \psi(\vb*{v}_i)                         \\
+                    & = \sum_{i=1}^{n} \phi_i(\vb*{v}) \psi(\vb*{v}_i)             \\
+                    & = \sum_{i=1}^{n} \psi(\vb*{v}_i) \phi_i(\vb*{v})             \\
+                    & = \left( \sum_{i=1}^n \psi(\vb*{v}_i)\phi_i\right) (\vb*{v})
+    \end{align*}
+
+    よって、
+    \begin{equation*}
+      \psi = \sum_{i=1}^{n} \psi(\vb*{v}_i) \phi_i
+    \end{equation*}
+
+    上式で、任意の$\psi \in {}^t\mathbb{R}^n$を$\phi_1,\ldots,\phi_n$の線形結合で書けることが示せたので、$\langle \phi_1, \ldots, \phi_n \rangle$は${}^t\mathbb{R}^n$を張ることがわかる $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
+$\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、上の定理で定まる${}^t\mathbb{R}^n$の基底$\{ \phi_1,\ldots,\phi_n \}$を\keyword{双対基底}という
+
+\end{document}
