@@ -3,9 +3,157 @@
 \begin{document}
 
 \sectionline
-\section{射影}
-\marginnote{\refbookI p4〜9}
+\section{直交射影と反射影}
+\marginnote{\refbookI p4〜5}
 
-\todo{}
+$\mathbb{R}^n$上の点$P$に対して、部分空間$\mathcal{U}$上の点$Q \in \mathcal{U}$のうち、$\overrightarrow{PQ}$が$\mathcal{U}$に直交するような点$Q$を、点$P$の$\mathcal{U}$への\keyword{直交射影}あるいは\keyword{正射影}という
+
+\br
+
+また、$\overrightarrow{QP}$を点$Q$の$\mathcal{U}$からの\keyword{反射影}という
+
+\br
+
+射影前のベクトルを$\vb*{p}$、射影後のベクトルを$\vb*{q}$とすると、直交射影とは、$\vb*{q}$と$\vb*{q} - \vb*{p}$が直交するように射影することである
+
+\begin{center}
+  \tdplotsetmaincoords{70}{110} % 視点の角度設定
+  \begin{tikzpicture}[tdplot_main_coords, scale=3]
+    % 平面サイズと傾きの設定
+    \def\planesize{1.1}
+    \tdplotsetrotatedcoords{-20}{30}{0} % (theta, phi, psi)：傾きの設定
+
+    % 原点と点の定義
+    \coordinate (O) at (0, 0, 0);
+    \coordinate (P) at (0.75, 0.75, 1.75); % 空間上の点 P
+    \coordinate (Q) at (0.75, 0.75, 0.75); % 任意の平面上の点（Pの直交射影として仮置き）
+
+    % 座標軸
+    %\draw[axis] (O) -- (2.6, 0, 0) node[anchor=north east]{$x$};
+    %\draw[axis] (O) -- (0, 1.4, 0) node[anchor=north west]{$y$};
+    %\draw[axis] (O) -- (0, 0, 1.8) node[anchor=south]{$z$};
+
+    % 直角
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = P--Q--O};
+
+    % 傾いた平面の描画（tdplot_rotated_coords環境内）
+    \begin{scope}[tdplot_rotated_coords]
+      \filldraw[SkyBlue!40, draw=none, opacity=0.6,postaction={pattern=crosshatch dots}, pattern color=SkyBlue!60]
+      (-\planesize,-\planesize,0) --
+      ( \planesize,-\planesize,0) --
+      ( \planesize, \planesize,0) --
+      (-\planesize, \planesize,0) -- cycle;
+      \node[SkyBlue] at (\planesize*0.85,-\planesize*0.85,0) {$\mathcal{U}$};
+    \end{scope}
+
+    \draw[vector, Rhodamine] (O) -- (P) node[midway, left=1pt]{$\vb*{p}$};
+    \draw[vector, Cerulean] (O) -- (Q) node[pos=0.35, right=3pt]{$\vb*{q}$};
+    \draw[vector, Orchid] (P) -- (Q) node[pos=0.4, right=1pt]{$\overrightarrow{PQ} = \vb*{q} - \vb*{p}$};
+
+    % 点
+    \filldraw[Rhodamine] (P) circle (0.5pt) node[anchor=south]{$P$};
+    \filldraw[Cerulean] (Q) circle (0.5pt) node[anchor=west]{$Q$};
+    \filldraw[gray] (O) circle (0.5pt) node[anchor=north east]{$O$};
+  \end{tikzpicture}
+\end{center}
+
+このとき、次のような関係が成り立っている
+\begin{gather*}
+  \overrightarrow{OP} = \overrightarrow{OQ} + \overrightarrow{QP} \\
+  \overrightarrow{OQ} \in \mathcal{U}, \quad \overrightarrow{QP} \in \mathcal{U}^\perp
+\end{gather*}
+
+ここで、$\mathcal{U}^\perp$は部分空間$\mathcal{U}$に直交するベクトルの全体であり、$\mathcal{U}$の\keyword{直交補空間}と呼ばれる
+
+$\mathbb{R}^n$の部分空間$\mathcal{U}$の直交補空間$\mathcal{U}^\perp$も、$\mathbb{R}^n$の部分空間となる
+
+\br
+
+$\overrightarrow{OP}$は$\mathbb{R}^n$の任意のベクトルを表すことから、
+$\mathbb{R}^n$のベクトルは、$\mathcal{U}$への射影$\overrightarrow{OQ}$と、$\mathcal{U}$からの反射影$\overrightarrow{QP}$の和として表されることがわかる
+
+\br
+
+このような表し方は一意的であり、$\overrightarrow{OP}$の$\mathcal{U}$と$\mathcal{U}^\perp$への\keyword{直和分解}という
+
+\sectionline
+
+点$Q$を$\mathcal{U}$上の別の点$Q'$に移動した場合を考える
+
+\begin{center}
+  \tdplotsetmaincoords{70}{110} % 視点の角度設定
+  \begin{tikzpicture}[tdplot_main_coords, scale=3]
+
+    % 平面サイズと傾きの設定
+    \def\planesize{1.1}
+    \tdplotsetrotatedcoords{-20}{30}{0} % (theta, phi, psi)：傾きの設定
+
+    % 原点と点の定義
+    \coordinate (O) at (0, 0, 0);
+    \coordinate (P) at (0.75, 0.75, 1.75); % 空間上の点 P
+    \coordinate (Q) at (0.75, 0.75, 0.75); % 射影点 Q（平面上）
+    \coordinate (Qp) at ($(Q)+(-0.1, 0.55, 0)$);   % Q'：平面上の別の点（仮に設定）
+
+    % 座標軸
+    %\draw[axis] (O) -- (2.6, 0, 0) node[anchor=north east]{$x$};
+    %\draw[axis] (O) -- (0, 1.4, 0) node[anchor=north west]{$y$};
+    %\draw[axis] (O) -- (0, 0, 1.8) node[anchor=south]{$z$};
+
+    % 直角マーク（P-Q-O）
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = P--Q--O};
+    % 直角マーク（Q-Q'-P）
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = Qp--Q--P};
+
+    % 傾いた平面（tdplot_rotated_coords環境内）
+    \begin{scope}[tdplot_rotated_coords]
+      \filldraw[SkyBlue!40, draw=none, opacity=0.6, postaction={pattern=crosshatch dots}, pattern color=SkyBlue!60]
+      (-\planesize,-\planesize,0) --
+      ( \planesize,-\planesize,0) --
+      ( \planesize, \planesize,0) --
+      (-\planesize, \planesize,0) -- cycle;
+      \node[SkyBlue] at (\planesize*0.85,-\planesize*0.85,0) {$\mathcal{U}$};
+    \end{scope}
+
+    % ベクトル描画
+    \draw[vector, Rhodamine] (O) -- (P);
+    \draw[vector, Cerulean] (O) -- (Q);
+    \draw[vector, Orchid] (P) -- (Q);
+
+    % Q'関連のベクトルと点
+    \draw[vector, Orchid, dashed] (P) -- (Qp) node[pos=0.5, right=2pt]{$\overrightarrow{PQ'}$};
+    \draw[vector, Cerulean, dashed] (Q) -- (Qp) node[pos=0.5, above=1pt]{$\overrightarrow{QQ'}$};
+
+    % 点描画
+    \filldraw[Rhodamine] (P) circle (0.5pt) node[anchor=south]{$P$};
+    \filldraw[Cerulean] (Q) circle (0.5pt) node[anchor=south east]{$Q$};
+    \filldraw[Cerulean] (Qp) circle (0.5pt) node[anchor=south west]{$Q'$};
+    \filldraw[gray] (O) circle (0.5pt) node[anchor=north east]{$O$};
+  \end{tikzpicture}
+\end{center}
+
+このとき、三平方の定理より、
+\begin{equation*}
+  \| \overrightarrow{PQ'} \|^2 = \| \overrightarrow{PQ} \|^2 + \| \overrightarrow{QQ'} \|^2 > \| \overrightarrow{PQ} \|^2
+\end{equation*}
+となるから、
+\begin{shaded}
+  射影した点$Q$は、点$P$から最短となる$\mathcal{U}$上の点
+\end{shaded}
+であることがわかる
 
 \end{document}

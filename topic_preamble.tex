@@ -91,11 +91,18 @@
 \usetikzlibrary{
   fit,
   patterns,
+  patterns.meta,
   decorations.pathreplacing,
   cd,
   petri,
-  positioning
+  positioning,
+  calc,
+  angles
 }
+\usepackage{tikz-3dplot}
+
+\tikzstyle{axis}=[->, >=Stealth]
+\tikzstyle{vector}=[->,>=Stealth,very thick, line cap=round]
 
 \usepackage{ifthen}
 \usepackage{listofitems} % for \readlist to create arrays
