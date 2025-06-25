@@ -4,7 +4,7 @@
 
 \sectionline
 \section{射影行列}
-\marginnote{\refbookI p5〜7}
+\marginnote{\refbookI p5〜6}
 
 任意のベクトル$\vb*{x} \in \mathbb{R}^n$は、$\vb*{u} \in \mathcal{U}$、$\vb*{u}^\perp \in \mathcal{U}^\perp$を用いて
 \begin{equation*}
@@ -116,5 +116,81 @@ $\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解される�
 \end{align*}
 
 $P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$をそれぞれ、部分空間$\mathcal{U}$、およびその直交補空間$\mathcal{U}^{\perp}$への\keyword{射影行列}と呼ぶ
+
+\sectionline
+\section{単位行列の射影行列への分解}
+\marginnote{\refbookI p6}
+
+\hyperref[sec:orthogonal-projection-and-reflection]{直交射影と反射影}の章で示した、
+\begin{gather*}
+  \overrightarrow{OP} = \overrightarrow{OQ} + \overrightarrow{QP} \\
+  \overrightarrow{OQ} \in \mathcal{U}, \quad \overrightarrow{QP} \in \mathcal{U}^\perp
+\end{gather*}
+という関係は、射影行列を用いて、次のようにも表せる
+\begin{align*}
+  \overrightarrow{OP} & = P_{\mathcal{U}}\overrightarrow{OP} + P_{\mathcal{U}^{\perp}}\overrightarrow{OP} \\
+                      & = (P_{\mathcal{U}} + P_{\mathcal{U}^{\perp}})\overrightarrow{OP}
+\end{align*}
+
+\begin{center}
+  \tdplotsetmaincoords{70}{110} % 視点の角度設定
+  \begin{tikzpicture}[tdplot_main_coords, scale=3]
+    % 平面サイズと傾きの設定
+    \def\planesize{1.1}
+    \tdplotsetrotatedcoords{-20}{30}{0} % (theta, phi, psi)：傾きの設定
+
+    % 原点と点の定義
+    \coordinate (O) at (0, 0, 0);
+    \coordinate (P) at (0.75, 0.75, 1.75); % 空間上の点 P
+    \coordinate (Q) at (0.75, 0.75, 0.75); % 任意の平面上の点（Pの直交射影として仮置き）
+
+    % 座標軸
+    %\draw[axis] (O) -- (2.6, 0, 0) node[anchor=north east]{$x$};
+    %\draw[axis] (O) -- (0, 1.4, 0) node[anchor=north west]{$y$};
+    %\draw[axis] (O) -- (0, 0, 1.8) node[anchor=south]{$z$};
+
+    % 直角
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = P--Q--O};
+
+    % 傾いた平面の描画（tdplot_rotated_coords環境内）
+    \begin{scope}[tdplot_rotated_coords]
+      \filldraw[SkyBlue!40, draw=none, opacity=0.6,postaction={pattern=crosshatch dots}, pattern color=SkyBlue!60]
+      (-\planesize,-\planesize,0) --
+      ( \planesize,-\planesize,0) --
+      ( \planesize, \planesize,0) --
+      (-\planesize, \planesize,0) -- cycle;
+      \node[SkyBlue] at (\planesize*0.85,-\planesize*0.85,0) {$\mathcal{U}$};
+    \end{scope}
+
+    \draw[vector, Rhodamine] (O) -- (P) node[midway, left=1pt]{$\overrightarrow{OP}$};
+    \draw[vector, Cerulean] (O) -- (Q) node[pos=0.35, right=3pt]{$P_{\mathcal{U}}\overrightarrow{OP}$};
+    \draw[vector, Orchid] (Q) -- (P) node[pos=0.6, right=1pt]{$P_{\mathcal{U}^{\perp}}\overrightarrow{OP}$};
+
+    % 点
+    \filldraw[Rhodamine] (P) circle (0.5pt) node[anchor=south]{$P$};
+    \filldraw[Cerulean] (Q) circle (0.5pt) node[anchor=west]{$Q$};
+    \filldraw[gray] (O) circle (0.5pt) node[anchor=north east]{$O$};
+  \end{tikzpicture}
+\end{center}
+
+$\mathbb{R}^n$内のすべての点$P$に対して、$\overrightarrow{OP} = (P_{\mathcal{U}} + P_{\mathcal{U}^{\perp}})\overrightarrow{OP}$が成り立つことから、
+\begin{equation*}
+  P_{\mathcal{U}} + P_{\mathcal{U}^{\perp}} = E
+\end{equation*}
+が成り立っている
+
+\br
+
+これはすなわち、単位行列$E$が、部分空間$\mathcal{U}$その直交補空間$\mathcal{U}^{\perp}$への射影行列の和に分解できることを意味する
+\begin{equation*}
+  E = \underbrace{\vb*{u}_1 \vb*{u}_1^\top + \cdots + \vb*{u}_r \vb*{u}_r^\top}_{P_{\mathcal{U}}} + \underbrace{\vb*{u}_{r+1} \vb*{u}_{r+1}^\top + \cdots + \vb*{u}_n \vb*{u}_n^\top}_{P_{\mathcal{U}^{\perp}}}
+\end{equation*}
+
+この式により、単位行列$E$自体を、空間全体$\mathbb{R}^n$への射影行列と考えることもできる
 
 \end{document}
