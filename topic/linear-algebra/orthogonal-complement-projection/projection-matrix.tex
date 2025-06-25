@@ -1,0 +1,120 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{射影行列}
+\marginnote{\refbookI p5〜7}
+
+任意のベクトル$\vb*{x} \in \mathbb{R}^n$は、$\vb*{u} \in \mathcal{U}$、$\vb*{u}^\perp \in \mathcal{U}^\perp$を用いて
+\begin{equation*}
+  \vb*{x} = \vb*{u} + \vb*{u}^\perp
+\end{equation*}
+と一意的に分解できる（\keyword{直和分解}）
+
+\br
+
+ここで、$\vb*{x}$の$\mathcal{U}$への射影を表すのは、$\vb*{u}$である
+
+つまり、$\mathcal{U}$への射影とは$\vb*{x}$のうち、$\mathcal{U}$に含まれる成分$\vb*{u}$だけを取り出す操作といえる
+
+そこで、部分空間$\mathcal{U}$へ射影する写像を$P_{\mathcal{U}}$とすると、
+\begin{equation*}
+  P_{\mathcal{U}}\vb*{x} = \vb*{u}
+\end{equation*}
+
+\br
+
+このとき、$\vb*{x}$がもともと$\mathcal{U}$の元である場合は、$\vb*{u}^\perp = \vb*{0}$の場合と考えて、
+\begin{equation*}
+  \vb*{x} = \vb*{u} + \vb*{0} = \vb*{u}
+\end{equation*}
+つまり、射影しても変わらない
+\begin{equation*}
+  P_{\mathcal{U}}\vb*{x} = \vb*{u} = \vb*{x} \quad (\vb*{x} \in \mathcal{U})
+\end{equation*}
+
+\br
+
+一方、$\vb*{x}$が$\mathcal{U}$の直交補空間$\mathcal{U}^{\perp}$の元の場合は、$\vb*{u} = \vb*{0}$の場合と考えて、
+\begin{equation*}
+  P_{\mathcal{U}}\vb*{x} = \vb*{u} = \vb*{0} \quad (\vb*{x} \in \mathcal{U}^{\perp})
+\end{equation*}
+
+\br
+
+まとめると、
+\begin{equation*}
+  P_{\mathcal{U}}\vb*{x} = \begin{cases}
+    \vb*{x} & (\vb*{x} \in \mathcal{U})         \\
+    \vb*{0} & (\vb*{x} \in \mathcal{U}^{\perp})
+  \end{cases}
+\end{equation*}
+
+\br
+
+同様に、直交補空間$\mathcal{U}^\perp$へ射影する写像を$P_{\mathcal{U}^\perp}$とすると、
+\begin{equation*}
+  P_{\mathcal{U}^{\perp}}\vb*{x} = \begin{cases}
+    \vb*{0} & (\vb*{x} \in \mathcal{U})         \\
+    \vb*{x} & (\vb*{x} \in \mathcal{U}^{\perp})
+  \end{cases}
+\end{equation*}
+
+\sectionline
+
+$\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解されることから、\hyperref[thm:direct-sum-and-basis]{$\mathbb{R}^n$の基底は$\mathcal{U}$の基底と$\mathcal{U}^\perp$の基底を合わせたもの}になる
+
+\br
+
+そこで、部分空間$\mathcal{U}$の正規直交基底$\{\vb*{u}_1, \ldots, \vb*{u}_r\}$を選ぶと、これを$\mathbb{R}^n$の正規直交基底$\{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}$に拡張できる
+
+ここで、$\{ \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}$は$\mathcal{U}^\perp$の正規直交基底になる
+
+\br
+
+このとき、
+\begin{equation*}
+  P_{\mathcal{U}}\vb*{x} = \begin{cases}
+    \vb*{x} & (\vb*{x} \in \mathcal{U})         \\
+    \vb*{0} & (\vb*{x} \in \mathcal{U}^{\perp})
+  \end{cases}
+\end{equation*}
+という式は、$P_{\mathcal{U}}$が$\mathbb{R}^n$の正規直交基底
+\begin{equation*}
+  \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
+\end{equation*}
+を、それぞれ次のように写像することを意味する
+\begin{equation*}
+  \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{0}, \ldots, \vb*{0} \}
+\end{equation*}
+
+\br
+
+同様に、
+\begin{equation*}
+  P_{\mathcal{U}^{\perp}}\vb*{x} = \begin{cases}
+    \vb*{0} & (\vb*{x} \in \mathcal{U})         \\
+    \vb*{x} & (\vb*{x} \in \mathcal{U}^{\perp})
+  \end{cases}
+\end{equation*}
+という式は、$P_{\mathcal{U}^{\perp}}$が$\mathbb{R}^n$の正規直交基底
+\begin{equation*}
+  \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
+\end{equation*}
+を、それぞれ次のように写像することを意味する
+\begin{equation*}
+  \{ \vb*{0}, \ldots, \vb*{0}, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
+\end{equation*}
+
+\br
+
+ゆえに、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$は次のように表現できる
+\begin{align*}
+  P_{\mathcal{U}}         & = \vb*{u}_1 \vb*{u}_1^\top + \cdots + \vb*{u}_r \vb*{u}_r^\top         \\
+  P_{\mathcal{U}^{\perp}} & = \vb*{u}_{r+1} \vb*{u}_{r+1}^\top + \cdots + \vb*{u}_n \vb*{u}_n^\top
+\end{align*}
+
+$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$をそれぞれ、部分空間$\mathcal{U}$、およびその直交補空間$\mathcal{U}^{\perp}$への\keyword{射影行列}と呼ぶ
+
+\end{document}
