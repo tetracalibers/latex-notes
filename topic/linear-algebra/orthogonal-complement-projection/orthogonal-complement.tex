@@ -6,6 +6,45 @@
 \section{直交補空間}
 \marginnote{\refbookC p136〜140}
 
-\todo{}
+内積を導入すると、ベクトルの長さや直交性が利用できるようになる
+
+直交性は、ベクトルだけでなく、部分空間に対しても拡張できる
+
+\br
+
+計量空間の部分空間に直交するベクトルの集合を、\keyword{直交補空間}と呼ぶ
+
+\begin{definition}{直交補空間}
+  計量空間$V$の部分空間$W$に対し、$W$の\keyword{直交補空間}$W^\perp$を次のように定義する
+  \begin{equation*}
+    W^\perp \coloneq \{ \vb*{v} \in V \mid \forall \vb*{w} \in W, (\vb*{v}, \vb*{w}) = 0 \}
+  \end{equation*}
+\end{definition}
+
+\br
+
+直交補空間もまた、計量空間の部分空間になっている
+
+\begin{theorem}{直交補空間の部分空間性}
+  計量空間$V$の部分空間$W$の直交補空間$W^\perp$は、計量空間$V$の部分空間である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    $\vb*{a}_1, \vb*{a}_2 \in W^\perp$とすると、任意の$\vb*{b} \in W$に対して、
+    \begin{equation*}
+      (\vb*{a}_1 + \vb*{a}_2, \vb*{b}) = (\vb*{a}_1, \vb*{b}) + (\vb*{a}_2, \vb*{b}) = 0 + 0 = 0
+    \end{equation*}
+    となるので、$\vb*{a}_1 + \vb*{a}_2 \in W^\perp$である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍について}
+    $\vb*{a} \in W^\perp$とすると、任意のスカラー$c \in K$と任意の$\vb*{b} \in W$に対して、
+    \begin{equation*}
+      (c\vb*{a}, \vb*{b}) = c(\vb*{a}, \vb*{b}) = c \cdot 0 = 0
+    \end{equation*}
+    となるので、$c\vb*{a} \in W^\perp$である $\qed$
+  \end{subpattern}
+\end{proof}
 
 \end{document}
