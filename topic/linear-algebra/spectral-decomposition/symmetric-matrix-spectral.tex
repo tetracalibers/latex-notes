@@ -1,0 +1,83 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{対称行列の固有ベクトルの正規直交化}
+\marginnote{\refbookI p113〜115}
+
+$n$次対称行列$A$の固有値を$\lambda_1,\ldots,\lambda_n$とする
+
+対称行列の場合、異なる固有値に対する固有ベクトルは互いに直交する
+
+\br
+
+$n$個の固有値に重複するものがあると、重複する固有値に対しては対応する固有ベクトルも重複することになる
+
+しかし、それらの任意の線型結合も同じ固有値に対する固有ベクトルとなるので、それらをグラム・シュミットの直交化法によって、互いに直交するように選ぶことができる
+
+\br
+
+この結果、対称行列の固有ベクトル$\{ \vb*{u_1}, \ldots, \vb*{u_n} \}$を正規直交系となるように選ぶことができ、これは$\mathbb{R}^n$の正規直交基底となる
+
+\sectionline
+\section{対称行列のスペクトル分解}
+\marginnote{\refbookI p18}
+
+固有値と固有ベクトルの関係式
+\begin{equation*}
+  A\vb*{u}_i = \lambda_i\vb*{u}_i \quad (\vb*{u}_i \neq \vb*{0})
+\end{equation*}
+は、$A$が正規直交基底$\{ \vb*{u_1}, \ldots, \vb*{u_n} \}$をそれぞれ$\lambda_1 \vb*{u_1}, \ldots, \lambda_n \vb*{u_n}$に写像することを意味する
+
+\br
+
+よって、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$A$は次のように表される
+\begin{equation*}
+  A = \lambda_1 \vb*{u}_1 \vb*{u}_1^\top + \cdots + \lambda_n \vb*{u}_n \vb*{u}_n^\top
+\end{equation*}
+
+このように、対称行列は、その固有値と固有ベクトルによって表すことができ、この式を\keyword{スペクトル分解}あるいは\keyword{固有値分解}と呼ぶ
+
+\begin{theorem}{対称行列のスペクトル分解}
+  $n$次対称行列$A$は、その固有値と固有ベクトルによって表すことができる
+  \begin{equation*}
+    A = \sum_{i=1}^n \lambda_i \vb*{u}_i \vb*{u}_i^\top
+  \end{equation*}
+  ここで、$\lambda_i$は固有値、$\vb*{u}_i$は対応する固有ベクトルの正規直交系である
+\end{theorem}
+
+\br
+
+各$\vb*{u}_i\vb*{u}_i^\top$は、各固有ベクトル$\vb*{u}_i$の方向（$A$の\keyword{主軸}）への射影行列である
+
+よって、スペクトル分解とは、
+\begin{shaded}
+  $A$を各主軸方向への射影行列の線形結合で表す
+\end{shaded}
+ものである
+
+\br
+
+このことから、対称行列による空間の変換は、
+\begin{enumerate}
+  \item 各点を主軸方向に射影する
+  \item それを固有値倍する
+  \item それらをすべての主軸にわたって足し合わせる
+\end{enumerate}
+という操作の結果と解釈することができる
+
+\sectionline
+\section{単位行列のスペクトル分解}
+\marginnote{\refbookI p18}
+
+単位行列$E$も対称行列の一種である
+
+\br
+
+単位行列の固有値はすべて$1$であるので、単位行列のスペクトル分解は次のように表される
+\begin{equation*}
+  E = \sum_{i=1}^n \vb*{u}_i \vb*{u}_i^\top
+\end{equation*}
+
+\end{document}
