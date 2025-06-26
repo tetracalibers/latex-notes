@@ -3,9 +3,132 @@
 \begin{document}
 
 \sectionline
-\section{対称行列と一般の射影行列}
+\section{射影行列の冪等性と対称性}
 \marginnote{\refbookI p7}
 
-\todo{}
+「一度射影した点をもう一度射影しても変化しない」という性質は、次のような数式として表現できる
+
+\begin{theorem}{射影行列の冪等性}
+  射影行列$P_{\mathcal{U}}$は\keyword{冪等}である
+  \begin{equation*}
+    P_{\mathcal{U}}^2 = P_{\mathcal{U}}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    P_{\mathcal{U}}^2 & = \left( \sum_{i=1}^{r} \vb*{u}_i\vb*{u}_i^\top \right) \left( \sum_{j=1}^{r} \vb*{u}_j\vb*{u}_j^\top \right) \\
+                      & = \sum_{i=1}^{r} \sum_{j=1}^{r} \vb*{u}_i\vb*{u}_i^\top \vb*{u}_j\vb*{u}_j^\top                               \\
+                      & = \sum_{i=1}^{r} \sum_{j=1}^{r} \vb*{u}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{u}_j^\top                           \\
+                      & = \sum_{i=1}^{r} \sum_{j=1}^{r} \delta_{ij}\vb*{u}_i \vb*{u}_j^\top
+  \end{align*}
+  ここで、$\delta_{ij}$を含むことから、$i = j$の場合のみ項が残り、
+  \begin{equation*}
+    P_{\mathcal{U}}^2 = \sum_{i=1}^{r} \vb*{u}_i \vb*{u}_i^\top = P_{\mathcal{U}}
+  \end{equation*}
+  が得られる $\qed$
+\end{proof}
+
+\br
+
+この$P_{\mathcal{U}}^2 = P_{\mathcal{U}}$という式は、一般の（必ずしも直交射影でない）射影の定義として用いられる
+
+\br
+
+次の性質は、射影が直交射影であることを示すものである
+
+\begin{theorem}{射影行列の対称性}
+  射影行列$P_{\mathcal{U}}$は、対称行列である
+  \begin{equation*}
+    P_{\mathcal{U}}^\top = P_{\mathcal{U}}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{equation*}
+    P_{\mathcal{U}}^\top = \left( \sum_{i=1}^{r} \vb*{u}_i\vb*{u}_i^\top \right)^\top
+  \end{equation*}
+
+  \hyperref[thm:transpose-distributes-over-sum]{和の転置は転置の和}であることを用いて、
+  \begin{equation*}
+    P_{\mathcal{U}}^\top = \sum_{i=1}^{r} (\vb*{u}_i\vb*{u}_i^\top)^\top
+  \end{equation*}
+
+  また、\hyperref[thm:transpose-of-product]{積の転置は転置の積だが、積の順序が入れ替わる}ことに注意して、
+  \begin{equation*}
+    P_{\mathcal{U}}^\top = \sum_{i=1}^{r} (\vb*{u}_i^\top)^\top \vb*{u}_i^\top
+  \end{equation*}
+
+  \hyperref[thm:transpose-involution]{転置の転置をとると元に戻る}ので、
+  \begin{equation*}
+    P_{\mathcal{U}}^\top = \sum_{i=1}^{r} \vb*{u}_i \vb*{u}_i^\top = P_{\mathcal{U}}
+  \end{equation*}
+  が得られる $\qed$
+\end{proof}
+
+\sectionline
+
+射影行列は冪等かつ対称であるが、その逆も成り立つ
+
+\begin{theorem}{対称性と冪等性による射影行列の特徴づけ}
+  対称かつ冪等な行列は、ある部分空間への射影行列となる
+\end{theorem}
+
+\begin{proof}
+  $n$次対称行列$P$は、$n$個の\hyperref[thm:eigenvalues-of-hermitian-are-real]{実数の固有値}$\lambda_1,\ldots,\lambda_n$を持つ
+
+  これらに属する固有ベクトルを$\vb*{u}_1, \ldots, \vb*{u}_n$とすると、$\vb*{u}_i$は\hyperref[thm:hermitian-eigenvectors-orthogonality]{互いに直交}する
+
+  \br
+
+  固有値と固有ベクトルの関係から、
+  \begin{equation*}
+    P\vb*{u}_i = \lambda_i \vb*{u}_i
+  \end{equation*}
+  両辺に左から$P$をかけると、
+  \begin{gather*}
+    P^2\vb*{u}_i = \lambda_i P\vb*{u}_i = \lambda_i \cdot \lambda_i \vb*{u}_i = \lambda_i^2 \vb*{u}_i \\
+    \therefore \quad P^2\vb*{u}_i = \lambda_i^2 \vb*{u}_i
+  \end{gather*}
+
+  \br
+
+  ここで、$P$は冪等なので、$P^2 = P$が成り立つ
+  \begin{equation*}
+    P^2\vb*{u}_i = P\vb*{u}_i = \lambda_i \vb*{u}_i
+  \end{equation*}
+  これを用いると、
+  \begin{equation*}
+    \lambda_i \vb*{u}_i = \lambda_i^2 \vb*{u}_i
+  \end{equation*}
+  固有ベクトル$\vb*{u}_i$は零ベクトルではないので、
+  \begin{equation*}
+    \lambda_i = \lambda_i^2
+  \end{equation*}
+  よって、
+  \begin{align*}
+    \lambda_i^2 - \lambda_i  & = 0     \\
+    \lambda_i(\lambda_i - 1) & = 0     \\
+    \lambda_i                & = 0 , 1
+  \end{align*}
+  すなわち、固有値は$0$か$1$のいずれかである
+
+  \br
+
+  そこで、
+  \begin{align*}
+    \lambda_1 = \cdots = \lambda_r     & = 1 \\
+    \lambda_{r+1} = \cdots = \lambda_n & = 0
+  \end{align*}
+  とおくと、
+  \begin{equation*}
+    P\vb*{u}_i = \begin{cases}
+      \vb*{u}_i & (i = 1,\ldots,r)   \\
+      0         & (i = r+1,\ldots,n)
+    \end{cases}
+  \end{equation*}
+
+  よって、$P$は$\{\vb*{u}_1, \ldots, \vb*{u}_r\}$の張る部分空間への射影行列である $\qed$
+\end{proof}
 
 \end{document}
