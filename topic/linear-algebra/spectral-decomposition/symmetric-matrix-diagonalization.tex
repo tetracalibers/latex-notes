@@ -1,0 +1,122 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{対称行列のランクと固有値}
+\marginnote{\refbookI p19}
+
+$n$次対称行列$A$の列の任意の線形結合
+\begin{equation*}
+  c_1\vb*{a}_1 + \cdots + c_n\vb*{a}_n = \begin{pmatrix}
+    \vb*{a}_1 & \cdots & \vb*{a}_n
+  \end{pmatrix} \begin{pmatrix}
+    c_1    \\
+    \vdots \\
+    c_n
+  \end{pmatrix} = A\vb*{c}
+\end{equation*}
+を考える
+
+\br
+
+$A$の$n$個の固有値のうち、0でないものの個数を$r$とすれば、$A$の\hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解の式}において、$\lambda_{r+1}, \ldots, \lambda_n = 0$とおいて、
+\begin{align*}
+  A\vb*{c} & = \lambda_1\vb*{u}_1\vb*{u}_1^\top\vb*{c} + \cdots + \lambda_r\vb*{u}_r\vb*{u}_r^\top\vb*{c}     \\
+           & = \lambda_1(\vb*{u}_1^\top\vb*{c})\vb*{u}_1 + \cdots + \lambda_r(\vb*{u}_r^\top\vb*{c})\vb*{u}_r
+\end{align*}
+すなわち、$A$の列の任意の線形結合は、互いに直交する$\vb*{u}_1, \ldots, \vb*{u}_r$の線形結合で書ける
+
+\br
+
+\hyperref[thm:orthogonal-set-is-independent]{互いに直交するベクトルは線型独立}であることから、
+\begin{itemize}
+  \item $\vb*{a}_1, \ldots, \vb*{a}_n$の張る部分空間（線形結合の集合）の次元は$r$である
+  \item $n$本の列のうち、$r$本しか線型独立ではない
+\end{itemize}
+ということがいえる
+
+\br
+
+行列$A$の\hyperref[thm:rank-equals-max-indep-cols]{$n$本の列のうち、線型独立なものの個数}を$A$の\keyword{ランク}あるいは\keyword{階数}というので、
+
+\begin{shaded}
+  行列$A$のランク$r$は、非零の固有値の個数に等しい
+\end{shaded}
+
+$A$は対称行列であるから、行についても同じことがいえる
+
+\sectionline
+\section{スペクトル分解による対称行列の対角化}
+\marginnote{\refbookI p19〜20}
+
+スペクトル分解の式を用いることで、対称行列の対角化について簡潔に議論できるようになる
+
+\br
+
+対称行列$A$のスペクトル分解の式
+\begin{equation*}
+  A = \lambda_1 \vb*{u}_1 \vb*{u}_1^\top + \cdots + \lambda_n \vb*{u}_n \vb*{u}_n^\top
+\end{equation*}
+は、次のように書き換えられる
+\begin{align*}
+  A & = \begin{pmatrix}
+          \lambda_1\vb*{u}_1 & \cdots & \lambda_n\vb*{u}_n
+        \end{pmatrix} \begin{pmatrix}
+                        \vb*{u}_1^\top \\
+                        \vdots         \\
+                        \vb*{u}_n^\top
+                      \end{pmatrix} \\
+    & = \begin{pmatrix}
+          \vb*{u}_1 & \cdots & \vb*{u}_n
+        \end{pmatrix} \begin{pmatrix}
+                        \lambda_1 &        &           \\
+                                  & \ddots &           \\
+                                  &        & \lambda_n
+                      \end{pmatrix} \begin{pmatrix}
+                                      \vb*{u}_1^\top \\
+                                      \vdots         \\
+                                      \vb*{u}_n^\top
+                                    \end{pmatrix}     \\
+    & = U \begin{pmatrix}
+            \lambda_1 &        &           \\
+                      & \ddots &           \\
+                      &        & \lambda_n
+          \end{pmatrix} U^\top
+\end{align*}
+
+ここで、
+\begin{equation*}
+  U = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_n
+  \end{pmatrix}
+\end{equation*}
+は、\hyperref[thm:unitary-iff-columns-orthonormal]{列が正規直交系をなす}ことから\keyword{直交行列}である
+
+\br
+
+そして、$U$が直交行列であれば、その\hyperref[thm:transpose-of-orthogonal]{転置$U^\top$も直交行列}である
+
+それゆえ、直交行列の行も正規直交系をなす
+
+\br
+
+$A$の式の両辺に左から$U^\top$、右から$U$をかけると、
+\begin{equation*}
+  U^\top A U  = U^\top U \begin{pmatrix}
+    \lambda_1 &        &           \\
+              & \ddots &           \\
+              &        & \lambda_n
+  \end{pmatrix} U^\top U
+\end{equation*}
+直交行列の定義$U^\top U = E$より、
+\begin{equation*}
+  U^\top A U =\begin{pmatrix}
+    \lambda_1 &        &           \\
+              & \ddots &           \\
+              &        & \lambda_n
+  \end{pmatrix}
+\end{equation*}
+として、対称行列$A$は、直交行列$U$によって対角化できることがわかる
+
+\end{document}

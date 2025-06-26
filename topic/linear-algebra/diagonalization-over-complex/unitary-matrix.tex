@@ -209,4 +209,39 @@ $A$を$n$個の列ベクトルを横一列に並べたものとみなし、
   となり、$A$がユニタリ行列であることは、$(\vb*{a}_i, \vb*{a}_j) = \delta_{ij}$へと同値変形できる $\qed$
 \end{proof}
 
+\subsection{ユニタリ行列と随伴・転置}
+
+\begin{theorem}{ユニタリ行列の随伴不変性}
+  ユニタリ行列$U$の随伴行列$U^*$もユニタリ行列である
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:adjoint-involution]{随伴行列を二回とると元に戻る}ので、
+  \begin{equation*}
+    (U^*)^* = U
+  \end{equation*}
+  また、ユニタリ行列の定義より、
+  \begin{equation*}
+    U^* = U^{-1}
+  \end{equation*}
+  したがって、
+  \begin{align*}
+    (U^*)^* & = U          \\
+    U       & = (U^*)^{-1}
+  \end{align*}
+  すなわち、
+  \begin{equation*}
+    U^* = (U^*)^{-1}
+  \end{equation*}
+  となるので、$U^*$もユニタリ行列である $\qed$
+\end{proof}
+
+\br
+
+上の定理は、実行列の世界では、次の定理に対応する
+
+\begin{theorem}{直交行列の転置不変性}\label{thm:transpose-of-orthogonal}
+  直交行列$Q$の転置行列${}^tQ$も直交行列である
+\end{theorem}
+
 \end{document}
