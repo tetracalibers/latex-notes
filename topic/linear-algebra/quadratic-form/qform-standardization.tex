@@ -1,0 +1,64 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{実二次形式の標準化}
+\marginnote{\refbookA p210 \\ \refbookF p298〜299}
+
+$A$が実対称行列であることから、$A$は適当な直交行列$P$を用いて対角化できる
+\begin{equation*}
+  B = P^{-1}AP = \begin{pmatrix}
+    \alpha_1 &        &          \\
+             & \ddots &          \\
+             &        & \alpha_n
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+与えられた二次形式$Q(\vb*{x}) = {}^t \vb*{x} A \vb*{x}$に対して、$\vb*{y} = P^{-1}\vb*{x}$、すなわち$\vb*{x} = P\vb*{y}$という変数の変換を行うと、
+\begin{equation*}
+  \begin{WithArrows}
+    {}^t \vb*{x} A \vb*{x} & = {}^t (P\vb*{y}) A (P\vb*{y}) \\
+    & = {}^t \vb*{y} {}^t P A P \vb*{y} \Arrow{直交行列の定義${}^t P = P^{-1}$} \\
+    & = {}^t \vb*{y} (P^{-1}AP) \vb*{y} \\
+    & = {}^t \vb*{y} B \vb*{y}
+  \end{WithArrows}
+\end{equation*}
+となるので、変数$\vb*{y}$に関する係数行列は$B = P^{-1}AP$である
+
+\br
+
+$B$の形から、実際に${}^t \vb*{y} B \vb*{y}$を計算してみると、
+\begin{align*}
+  {}^t \vb*{y} B \vb*{y} & = \begin{pmatrix}
+                               y_1 & \cdots & y_n
+                             \end{pmatrix} \begin{pmatrix}
+                                             \alpha_1 &        &          \\
+                                                      & \ddots &          \\
+                                                      &        & \alpha_n
+                                           \end{pmatrix} \begin{pmatrix}
+                                                           y_1    \\
+                                                           \vdots \\
+                                                           y_n
+                                                         \end{pmatrix} \\
+                         & = \alpha_1 y_1^2 + \cdots + \alpha_n y_n^2
+\end{align*}
+となり、\keyword{交叉項}$y_iy_j \, (i \neq j)$が現れない形に書き換わったことがわかる
+
+\br
+
+このような交叉項のない形を実二次形式の\keyword{標準形}という
+
+\begin{theorem}{実二次形式の直交対角化と標準形}
+  実二次形式$Q(\vb*{x}) = {}^t \vb*{x} A \vb*{x}$に対して、$A$を対角化する直交行列$P$による座標変換$\vb*{x} = P\vb*{y}$を行えば、
+  \begin{equation*}
+    Q(\vb*{x}) = \alpha_1 y_1^2 + \cdots + \alpha_n y_n^2
+  \end{equation*}
+  という、変数$\vb*{y}$に関する交叉項のない形（実二次形式の\keyword{標準形}）にできる
+
+  ここで、$\alpha_1, \ldots, \alpha_n$は重複を含めて$A$の固有値と一致する
+\end{theorem}
+
+\end{document}

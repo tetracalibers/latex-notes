@@ -1,0 +1,165 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{二次式の平方完成}
+
+乗法公式$(x + k) ^2 = x^2 + 2kx + k^2$を利用した次の形を、二次式の\keyword{平方完成}という
+\begin{equation*}
+  (x + k) ^2 - k^2 = x^2 - 2kx
+\end{equation*}
+
+\br
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}[local bounding box=leftTermA]
+      \fill[SkyBlue] (0,0) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[SkyBlue] (1,1) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[Rhodamine] (0,1) rectangle +(1,1) node[white, midway] {$x^2$};
+    \end{scope}
+
+    \begin{scope}[local bounding box=rightTermA, shift={(3.5,0)}]
+      \fill[SkyBlue] (0,0) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[SkyBlue] (1,1) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[lightslategray] (1,0) rectangle +(1,1) node[white, midway] {$k^2$};
+      \fill[Rhodamine] (0,1) rectangle +(1,1) node[white, midway] {$x^2$};
+    \end{scope}
+
+    \begin{scope}[local bounding box=rightTermB, shift={(7,0)}]
+      \draw[SkyBlue,dashed] (0,0) rectangle +(1,1) node[white, midway] {$kx$};
+      \draw[SkyBlue,dashed] (1,1) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[lightslategray] (1,0) rectangle +(1,1) node[white, midway] {$k^2$};
+      \draw[Rhodamine,dashed] (0,1) rectangle +(1,1) node[white, midway] {$x^2$};
+    \end{scope}
+
+    % leftTermA = rightTermA + rightTermB
+    \path (leftTermA.east) -- (rightTermA.west) node[midway] {$=$};
+    \path (rightTermA.east) -- (rightTermB.west) node[midway] {$-$};
+  \end{tikzpicture}
+\end{center}
+
+\sectionline
+\section{斉次二次式と行列}
+\marginnote{\refbookC p254〜256、\refbookF p297}
+
+2つの文字$x,y$の斉次二次式は、一般に次のように表される
+\begin{equation*}
+  ax^2 + 2bxy + cy^2 \quad (a,b,c \neq 0)
+\end{equation*}
+
+この式は、次のように行列の積として表すことができる
+\begin{align*}
+  ax^2 + 2bxy + cy^2 & = ax^2 + byx + bxy + cy^2                    \\
+                     & = (ax + by)x + (bx + cy)y                    \\
+                     & = \begin{pmatrix}
+                           ax + by & bx + cy
+                         \end{pmatrix} \begin{pmatrix}
+                                         x \\
+                                         y
+                                       \end{pmatrix}               \\
+                     & = \begin{pmatrix}
+                           x & y
+                         \end{pmatrix} \begin{pmatrix}
+                                         a & b \\
+                                         b & c
+                                       \end{pmatrix} \begin{pmatrix}
+                                                       x \\
+                                                       y
+                                                     \end{pmatrix}
+\end{align*}
+
+すなわち、
+\begin{equation*}
+  A = \begin{pmatrix}
+    a & b \\
+    b & c
+  \end{pmatrix},\, \vb*{x} = \begin{pmatrix}
+    x \\
+    y
+  \end{pmatrix}
+\end{equation*}
+とおくと、
+\begin{equation*}
+  ax^2 + 2bxy + cy^2 = {}^t\vb*{x} A \vb*{x}
+\end{equation*}
+
+ここで、$A$は\keyword{実対称行列}になっている
+
+\br
+
+このような斉次二次式を一般化したものが、$n$個の文字$x_1, \ldots, x_n$についての\keyword{二次形式}である
+
+\sectionline
+\section{二次形式}
+\marginnote{\refbookA p209〜210、\refbookF p297〜298、\refbookC p256〜257}
+
+$n$個の変数$x_1, \ldots, x_n$の斉次二次式を\keyword{二次形式}という
+
+\br
+
+各項の係数を$a_{ij}$とすると、一般の二次形式（$n$変数斉次二次式）は次のように書くことができる
+\begin{equation*}
+  Q(\vb*{x}) = \sum_{i=1}^n a_{ii}x_i^2 + 2 \sum_{i < j} a_{ij}x_ix_j
+\end{equation*}
+ここで、各変数は可変、すなわち$x_ix_j = x_jx_i$であるので、$i\neq j$の場合は、$i <j$を満たす項だけの和として書き、それを2倍している
+
+\br
+
+あえて展開して書くと、次のようになる
+\begin{equation*}
+  Q(\vb*{x}) = \sum_{i=1}^n a_{ii}x_{ii}x_{ii} + \sum_{i<j} a_{ij}x_ix_j + \sum_{i<j} a_{ji}x_jx_i
+\end{equation*}
+
+\br
+
+$i<j$においては$x_ix_j = x_jx_i$であり、その係数についても$a_{ij} = a_{ji}$が成り立つので、行列$A = (a_{ij})$は対称行列である
+\begin{equation*}
+  a_{ij} = \begin{cases}
+    a_{ii}          & (i = j) \\
+    a_{ij} = a_{ji} & (i < j)
+  \end{cases}
+\end{equation*}
+
+\br
+
+このように$a_{ij}$を定めた上で、$\sum$を1つにまとめることができる
+\begin{equation*}
+  Q(\vb*{x}) = \sum_{i, j=1}^n a_{ij}x_ix_j
+\end{equation*}
+
+\begin{definition}{二次形式の係数行列}
+  二次形式は対称行列$A = (a_{ij})$によって、次のように表される
+  \begin{equation*}
+    Q(\vb*{x}) = \sum_{i, j=1}^n a_{ij}x_ix_j
+  \end{equation*}
+  このとき、$A$を二次形式$Q(\vb*{x})$の\keyword{係数行列}という
+\end{definition}
+
+\br
+
+$i$が$A$の行番号、$j$が列番号であるので、$x_i$は横ベクトル、$x_j$は縦ベクトルの成分である
+\begin{align*}
+  Q(\vb*{x}) & = \sum_{i, j=1}^n x_ia_{ij}x_j   \\
+             & = \begin{pmatrix}
+                   x_1 & \cdots & x_n
+                 \end{pmatrix} A \begin{pmatrix}
+                                   x_1    \\
+                                   \vdots \\
+                                   x_n
+                                 \end{pmatrix}
+\end{align*}
+
+そこで、$\vb*{x}$を縦ベクトルとみるとき、二次形式$Q(\vb*{x})$とその係数行列は次のような関係にある
+\begin{equation*}
+  Q(\vb*{x}) = {}^t\vb*{x} A \vb*{x}
+\end{equation*}
+
+この関係を用いて、任意の対称行列$A$から二次形式を作ることができる
+
+\br
+
+$Q(\vb*{x})$から$A$を作り、$A$から$Q(\vb*{x})$を作ることができるので、$n$変数の二次形式$Q(\vb*{x})$と$n$次の対称行列$A$は対応し、さらにこの対応は一対一である
+
+\end{document}
