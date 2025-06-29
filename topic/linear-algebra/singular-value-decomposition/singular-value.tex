@@ -1,0 +1,63 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{特異値と特異ベクトル}
+\marginnote{\refbookI p28〜29}
+
+\hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解}は対称行列に対するものだったが、これを任意の長方行列に拡張したものが\keyword{特異値分解}である
+
+特異値分解によって、任意の行列がその\keyword{特異値}と\keyword{特異ベクトル}によって表せる
+
+\begin{definition}{特異値と特異ベクトル}
+  零行列ではない任意の$m \times n$行列$A$に対して、
+  \begin{equation*}
+    A\vb*{v}       = \sigma \vb*{u}, \quad
+    A^\top \vb*{u} = \sigma \vb*{v}
+  \end{equation*}
+  となる正の数$\sigma$を\keyword{特異値}と呼び、
+  \begin{itemize}
+    \item \keyword{左特異ベクトル}：$m$次元ベクトル$\vb*{u} \, (\neq \vb*{0})$
+    \item \keyword{右特異ベクトル}：$n$次元ベクトル$\vb*{v} \, (\neq \vb*{0})$
+  \end{itemize}
+  を合わせて\keyword{特異ベクトル}と呼ぶ
+\end{definition}
+
+\subsection{特異ベクトルと固有ベクトルの関係}
+
+特異値と特異ベクトルの関係式
+\begin{equation*}
+  A\vb*{v} = \sigma \vb*{u}, \quad A^\top \vb*{u} = \sigma \vb*{v}
+\end{equation*}
+において、第1式の両辺に$A^\top$を左からかけると、
+\begin{equation*}
+  \begin{WithArrows}
+    A^\top A \vb*{v} & = \sigma A^\top \vb*{u} \Arrow{第$2$式を代入} \\
+    & = \sigma^2 \vb*{v}
+  \end{WithArrows}
+\end{equation*}
+また、第2式の両辺に$A$を左からかけると、
+\begin{equation*}
+  \begin{WithArrows}
+    A A^\top \vb*{u} & = \sigma A \vb*{v} \Arrow{第$1$式を代入} \\
+    & = \sigma^2 \vb*{u}
+  \end{WithArrows}
+\end{equation*}
+
+得られた結果をまとめると、
+\begin{equation*}
+  A A^\top \vb*{u} = \sigma^2 \vb*{u} , \quad A^\top A \vb*{v} = \sigma^2 \vb*{v}
+\end{equation*}
+ここで、$A$は任意の長方行列だが、\hyperref[thm:symmetric-products-of-any-matrix]{$A A^\top$と$A^\top A$は対称行列}となる
+
+\br
+
+すなわち、
+\begin{itemize}
+  \item 左特異ベクトル$\vb*{u}$は$m$次対称行列$A A^\top$の固有ベクトル
+  \item 右特異ベクトル$\vb*{v}$は$n$次対称行列$A^\top A$の固有ベクトル
+\end{itemize}
+であり、特異値の2乗$\sigma^2$はそれぞれの固有値に対応する
+
+\end{document}

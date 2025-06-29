@@ -16,7 +16,7 @@
 
 $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合もある
 
-\sectionline
+\subsection{ベクトルの転置}
 
 特別な場合として、$n$次の数ベクトル$\vb*{v}$を$n \times 1$型行列とみて転置したもの${}^t\vb*{v}$は$1 \times n$型行列となる
 
@@ -35,7 +35,7 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 \end{equation*}
 を${}^t (v_1,\,v_2,\,\ldots,\,v_n)$と表記することもある
 
-\sectionline
+\subsection{転置の性質}
 
 \keyword{転置}は「行と列の入れ替え」であるので、明らかに次が成り立つ
 
@@ -91,5 +91,27 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
     \transpose{A} = -A
   \end{equation*}
 \end{definition}
+
+\subsection{対称行列の性質}
+
+\begin{theorem}{任意の行列の積で構成される対称行列}\label{thm:symmetric-products-of-any-matrix}
+  $A$ を任意の実行列（長方行列）とするとき、$A^\top A$および$AA^\top$は対称行列である
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:transpose-of-product]{積の転置をとると順序が入れ替わる}ことに注意して、
+  \begin{equation*}
+    (A^\top A)^\top = A^\top(A^\top)^\top = A^\top A
+  \end{equation*}
+  よって、$A^\top A$は対称行列である
+
+  \br
+
+  同様に、
+  \begin{equation*}
+    (AA^\top)^\top = (A^\top)^\top A^\top = AA^\top
+  \end{equation*}
+  よって、$AA^\top$も対称行列である $\qed$
+\end{proof}
 
 \end{document}
