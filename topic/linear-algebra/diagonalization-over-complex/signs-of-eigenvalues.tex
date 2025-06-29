@@ -1,0 +1,68 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{固有値の符号}
+\marginnote{\refbookI p22}
+
+対角化の応用では、固有値の符号が重要となることがある
+
+\begin{itemize}
+  \item \keyword{半正値}行列：すべての固有値が非負（正または零）である行列
+  \item \keyword{正値}行列：すべての固有値が正である行列
+\end{itemize}
+
+\subsection{エルミート行列との積の固有値}
+
+\hyperref[thm:symmetric-products-of-any-matrix]{任意の行列は、自身の転置行列との積で対称行列を作る}ことができるが、複素行列（エルミート行列）の世界でも同様のことが成り立ち、さらに固有値の符号についても重要な性質がある
+
+\begin{theorem}{随伴積による半正値エルミート行列の構成}
+  任意の行列$A$に対して、$AA^*$および$A^*A$はともに半正値エルミート行列である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries エルミート行列であること}
+    \hyperref[thm:adjoint-of-product]{積をエルミート行列にすると積の順番が入れ替わる}ことに注意して、\hyperref[thm:symmetric-products-of-any-matrix]{対称行列の場合}と同様に示せる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 半正値行列であること}
+    エルミート行列$AA^*$の固有ベクトルを$\vb*{u}$とし、その固有値を$\lambda \in \mathbb{C}$とすると、
+    \begin{equation*}
+      AA^* \vb*{u} = \lambda \vb*{u}
+    \end{equation*}
+    両辺で$\vb*{u}$との内積をとると、
+    \begin{equation*}
+      (\vb*{u}, AA^* \vb*{u}) = \lambda (\vb*{u}, \vb*{u}) = \lambda \|\vb*{u}\|^2
+    \end{equation*}
+    この左辺は、\hyperref[thm:adjoint-identity]{随伴公式}を用いて、
+    \begin{equation*}
+      \begin{WithArrows}
+        (\vb*{u}, AA^* \vb*{u}) & = (\vb*{u}, A(A^*\vb*{u})) \Arrow{外側の$A$に\\ 随伴公式を適用}  \\
+        & = (A^* \vb*{u}, A^* \vb*{u}) \\
+        & = \|A^* \vb*{u}\|^2 \geq 0
+      \end{WithArrows}
+    \end{equation*}
+    となるので、
+    \begin{equation*}
+      \|A^* \vb*{u}\|^2 = \lambda \|\vb*{u}\|^2 \geq 0
+    \end{equation*}
+    ここで、固有ベクトルは零ベクトルではないので、$\|\vb*{u}\|^2 >0$である
+
+    よって、$\lambda \|\vb*{u}\|^2 \geq 0$の両辺を$\|\vb*{u}\|^2$で割ることにより、
+    \begin{equation*}
+      \lambda \geq 0
+    \end{equation*}
+    が得られる
+
+    \br
+
+    $A^*A$についても同様に、
+    \begin{equation*}
+      (\vb*{u}, A^*A \vb*{u}) = (A\vb*{u}, A\vb*{u}) = \|A\vb*{u}\|^2 \geq 0
+    \end{equation*}
+    から、$\lambda \geq 0$が得られる $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}
