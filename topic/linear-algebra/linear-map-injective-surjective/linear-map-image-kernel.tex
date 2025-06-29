@@ -3,30 +3,44 @@
 \begin{document}
 
 \sectionline
-\section{線形写像の像と核}
+\section{線形写像の像}
 \marginnote{\refbookC p79〜84}
 
-写像の\keyword{像}や\keyword{逆像}を、線形写像の場合に考える
+写像の\keyword{像}を、線形写像の場合に考える
+
+線形写像$f$の像は、$\vb*{v} \in V$に対して、$f(\vb*{v})$の値が取りうる集合である
 
 \begin{definition}{線形写像の像}
-  線形写像$f\colon V \to W$に対して、$f$による$V$の像$f(V)$を、線形写像$f$の\keyword{像}といい、$\Im(f)$と表記する
+  線形写像$f\colon V \to W$に対して、$f$による$V$の像$f(V)$を、線形写像$f$の\keyword{像}や\keyword{像空間}といい、$\Im(f)$と表記する
   \begin{equation*}
     \Im(f) = f(V) = \{ f(\vb*{v}) \in W \mid \vb*{v} \in V \} \subset W
   \end{equation*}
 \end{definition}
 
-線形写像による像は、\keyword{像空間}とも呼ばれる
+線形写像の像は、
+\begin{shaded}
+  写像によって何が出力されるか
+\end{shaded}
+を表す
 
-\br
+\sectionline
+\section{線形写像の核}
+\marginnote{\refbookC p79〜84}
+
+線形写像$f$の\keyword{核}は、$f(\vb*{v}) = \vb*{0}$となるベクトル$\vb*{v} \in V$全体の集合として定義される
 
 \begin{definition}{線形写像の核}
-  線形写像$f\colon V \to W$に対して、$f$による$\{\vb*{0}\}$の逆像$f^{-1}(\{\vb*{0}\})$を、線形写像$f$の\keyword{核}といい、$\Ker(f)$と表記する
+  線形写像$f\colon V \to W$に対して、$f$による$\{\vb*{0}\}$の逆像$f^{-1}(\{\vb*{0}\})$を、線形写像$f$の\keyword{核}や\keyword{核空間}、あるいは\keyword{カーネル}といい、$\Ker(f)$と表記する
   \begin{equation*}
     \Ker(f) = f^{-1}(\{\vb*{0}\}) = \{ \vb*{v} \in V \mid f(\vb*{v}) = \vb*{0} \} \subset V
   \end{equation*}
 \end{definition}
 
-線形写像による核は、\keyword{核空間}あるいは\keyword{カーネル}とも呼ばれる
+線形写像の核は、
+\begin{shaded}
+  どのような成分が写像によって失われるか
+\end{shaded}
+を表す
 
 \sectionline
 \section{像空間と全射性}\label{sec:image-and-surjectivity}
