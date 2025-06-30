@@ -6,6 +6,14 @@
 alias pdf2htmlEX='docker run -ti --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htmlex:0.18.8.rc2-master-20200820-alpine-3.12.0-x86_64 --dest-dir ./public --process-outline 0 --zoom 1.5'
 ```
 
+### for Topic Note
+
+#### topic_linear-algebra
+
+```bash
+cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
+```
+
 ### for "Imaging Math"
 
 #### (master)
