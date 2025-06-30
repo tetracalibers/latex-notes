@@ -4,7 +4,7 @@
 
 \sectionline
 \section{部分空間の和}
-\marginnote{\refbookC p22〜23 \\ \refbookF p231〜232}
+\marginnote{\refbookC p22〜23 \\ \refbookF p231〜232 \\ \refbookG p6}
 
 \begin{theorem}{線形部分空間の和は部分空間}
   $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{和空間}
@@ -53,9 +53,23 @@
   \end{subpattern}
 \end{proof}
 
-3つ以上の部分空間の和も、同様に定義される
+\br
 
-\sectionline
+3つ以上の部分空間の和も同様に考えて、一般に\keyword{和空間}は次のように定義される
+
+\begin{definition}{和空間}
+  線形空間$V$と、その部分空間$V_1,\ldots,V_k$が与えられたときに、
+  \begin{equation*}
+    \vb*{v} = \vb*{v}_1 + \cdots + \vb*{v}_k \quad (\vb*{v}_i \in V_i, i = 1, \ldots, k)
+  \end{equation*}
+  と表されるベクトル$\vb*{v}$全体がなす集合を$V_1,\ldots,V_k$の\keyword{和空間}といい、
+  \begin{equation*}
+    \sum_{i=1}^k V_i
+  \end{equation*}
+  と書く
+\end{definition}
+
+\subsection{和空間を張るベクトル}
 
 部分空間を生成するベクトルを用いて、部分空間の和を表せる
 

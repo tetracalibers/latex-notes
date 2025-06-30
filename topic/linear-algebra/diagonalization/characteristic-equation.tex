@@ -223,7 +223,17 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 
 \sectionline
 
-ここまでの議論を応用して、固有値の\keyword{重複度}を定義する
+特性多項式が
+\begin{equation*}
+  \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
+\end{equation*}
+と因数分解できることは、\keyword{代数学の基本定理}によって保証されている
+
+\begin{theorem}{代数学の基本定理}
+  定数でない任意の1変数多項式は、複素計数の1次式の積に分解できる
+\end{theorem}
+
+そこで、固有値の\keyword{重複度}を次のように定義する
 
 \begin{definition}{固有値の重複度}\label{def:algebraic-multiplicity}
   特性多項式を因数分解して、
@@ -242,16 +252,6 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
   \end{equation*}
   が成り立つ
 \end{definition}
-
-ここで、特性多項式が
-\begin{equation*}
-  \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
-\end{equation*}
-と因数分解できることは、\keyword{代数学の基本定理}によって保証されている
-
-\begin{theorem}{代数学の基本定理}
-  定数でない任意の1変数多項式は、複素計数の1次式の積に分解できる
-\end{theorem}
 
 \sectionline
 \section{相似な行列の特性多項式}
