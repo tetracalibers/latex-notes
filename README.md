@@ -14,6 +14,12 @@ alias pdf2htmlEX='docker run -ti --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htm
 cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
 ```
 
+#### topic_mapping
+
+```bash
+cp ./out/topic_mapping.pdf ./public/topic_mapping.pdf
+```
+
 ### for "Imaging Math"
 
 #### (master)
