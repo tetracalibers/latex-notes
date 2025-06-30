@@ -6,7 +6,7 @@
 \section{特異値と特異ベクトル}
 \marginnote{\refbookI p28〜29}
 
-特異値分解によって、任意の行列がその\keyword{特異値}と\keyword{特異ベクトル}によって表せる
+スペクトル分解の拡張である特異値分解では、任意の行列がその\keyword{特異値}と\keyword{特異ベクトル}によって表せる
 
 \begin{definition}{特異値と特異ベクトル}
   零行列ではない任意の$m \times n$行列$A$に対して、
@@ -56,6 +56,16 @@
   \item 左特異ベクトル$\vb*{u}$は$m$次対称行列$A A^\top$の固有ベクトル
   \item 右特異ベクトル$\vb*{v}$は$n$次対称行列$A^\top A$の固有ベクトル
 \end{itemize}
-であり、特異値の2乗$\sigma^2$はそれぞれの固有値に対応する
+であり、特異値の2乗$\sigma^2$は\hyperref[thm:svd-singular-value-vector-correspondence]{$A A^\top, A^\top A$共通の固有値}である
+
+\subsection{特異ベクトルの正規直交化}
+
+$A$の特異値を$\sigma_1 \geq \cdots \geq \sigma_r > 0$とする
+
+ここで、重複があってもよい
+
+\br
+
+対応する$r$本の左特異ベクトル$\vb*{u}_1, \ldots, \vb*{u}_r$と$r$本の右特異ベクトル$\vb*{v}_1, \ldots, \vb*{v}_r$は、どちらも\hyperref[sec:orthogonalization-eigenvectors-symmetric]{対称行列の固有ベクトルであるから、それぞれを正規直交系に}選ぶことができる
 
 \end{document}
