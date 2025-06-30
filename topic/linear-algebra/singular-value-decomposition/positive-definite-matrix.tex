@@ -1,0 +1,206 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{正定値行列と半正定値行列}
+\marginnote{\refbookI p29 \\ \refbookK p137〜138}
+
+固有値がすべて0以上になる対称行列は、応用上さまざまな場面で現れる
+
+\begin{itemize}
+  \item \keyword{半正定値}行列：すべての固有値が非負（正または零）である対称行列
+  \item \keyword{正定値}行列：すべての固有値が正である対称行列
+\end{itemize}
+
+\br
+
+\begin{definition}{正定値行列}
+  $A$をエルミート行列（対称行列）とし、任意のベクトル$\vb*{x} \in \mathbb{C}^n$（$\vb*{x} \in \mathbb{R}^n$）に対して、
+  \begin{equation*}
+    (A\vb*{x}, \vb*{x}) > 0
+  \end{equation*}
+  が成り立つとき、$A$は\keyword{正定値行列}であるという
+\end{definition}
+
+\begin{theorem}{正定値性と固有値の正実性}
+  エルミート行列$A$が正定値行列であることと、$A$のすべての固有値が正の実数であることは同値である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 正定値行列 $\Longrightarrow$ 固有値が正}
+    $A$の固有値を$\lambda$、対応する固有ベクトルを$\vb*{x}$とすると、
+    \begin{equation*}
+      A\vb*{x} = \lambda \vb*{x}
+    \end{equation*}
+    両辺で$\vb*{x}$との内積をとると、
+    \begin{equation*}
+      (A\vb*{x}, \vb*{x}) = \lambda (\vb*{x}, \vb*{x}) = \lambda \|\vb*{x}\|^2
+    \end{equation*}
+    $A$が正定値行列であることから、$(A\vb*{x}, \vb*{x}) > 0$が成り立ち、
+    \begin{equation*}
+      \lambda \|\vb*{x}\|^2 > 0
+    \end{equation*}
+
+    \br
+
+    ここで、固有ベクトルは零ベクトルではないので、$\|\vb*{x}\|^2 >0$である
+
+    よって、$\lambda \|\vb*{x}\|^2 > 0$の両辺を$\|\vb*{x}\|^2$で割ることにより、
+    \begin{equation*}
+      \lambda > 0
+    \end{equation*}
+    が得られる $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 固有値が正 $\Longrightarrow$ 正定値行列}
+    $A$の固有値を$\lambda_1,\ldots,\lambda_n >0$とする
+
+    $A$はエルミート行列であることから、ユニタリ行列$U$を用いて次のように対角化できる
+    \begin{equation*}
+      A = U D U^{-1} = UDU^* = U \begin{pmatrix}
+        \lambda_1 &        &           \\
+                  & \ddots &           \\
+                  &        & \lambda_n
+      \end{pmatrix} U^*
+    \end{equation*}
+
+    \hyperref[thm:inner-product-adjoint-form]{随伴による内積の表現}より、
+    \begin{equation*}
+      (A\vb*{x}, \vb*{x}) = \vb*{x}^* A \vb*{x} = \vb*{x}^* U D U^* \vb*{x}
+    \end{equation*}
+    ここで、$\vb*{y} = U^* \vb*{x}$とおくと、
+    \begin{equation*}
+      \vb*{y}^* = (U^* \vb*{x})^* = \vb*{x}^* U
+    \end{equation*}
+    となるので、次のように書き換えられる
+    \begin{equation*}
+      (A\vb*{x}, \vb*{x}) = \vb*{y}^* D \vb*{y} = (D\vb*{y}, \vb*{y})
+    \end{equation*}
+
+    \br
+
+    左辺の内積を計算すると、
+    \begin{align*}
+      (D\vb*{y}, \vb*{y}) & = \begin{pmatrix}
+                                \lambda_1 y_1 &        &               \\
+                                              & \ddots &               \\
+                                              &        & \lambda_n y_n
+                              \end{pmatrix} \begin{pmatrix}
+                                              y_1    \\
+                                              \vdots \\
+                                              y_n
+                                            \end{pmatrix}         \\
+                          & = \lambda_1 |y_1|^2 + \cdots + \lambda_n |y_n|^2
+    \end{align*}
+    $\lambda_1,\ldots,\lambda_n > 0$であることから、すべての項が正になるので、
+    \begin{equation*}
+      (A\vb*{x}, \vb*{x}) = (D\vb*{y}, \vb*{y}) > 0
+    \end{equation*}
+    よって、$A$は正定値行列である $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
+半正定値行列は、正定値行列の条件に等号を含むようにしたものである
+
+\begin{definition}{半正定値行列}
+  $A$をエルミート行列（対称行列）とし、任意のベクトル$\vb*{x} \in \mathbb{C}^n$（$\vb*{x} \in \mathbb{R}^n$）に対して、
+  \begin{equation*}
+    (A\vb*{x}, \vb*{x}) \geq 0
+  \end{equation*}
+  が成り立つとき、$A$は\keyword{半正定値行列}であるという
+\end{definition}
+
+\begin{theorem}{半正定値性と固有値の非負実性}
+  エルミート行列$A$が半正定値行列であることと、$A$のすべての固有値が非負の実数であることは同値である
+\end{theorem}
+
+\sectionline
+\section{対称行列の構成}
+\marginnote{\refbookI p29}
+
+\hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解}は対称行列に対するものだったが、これを任意の長方行列に拡張したものが\keyword{特異値分解}である
+
+\br
+
+対称行列から任意の行列へ議論を拡張するにあたって、次の定理が重要となる
+
+\begin{theorem}{自身の随伴行列との積で構成されるエルミート行列}
+  $A$を任意の複素行列（長方行列）とするとき、$A^* A$および$AA^*$はエルミート行列である
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:adjoint-of-product]{積をエルミート行列にすると順序が入れ替わる}ことに注意して、
+  \begin{equation*}
+    (A^* A)^* = A^* (A^*)^* = A^* A
+  \end{equation*}
+  よって、$A^* A$はエルミート行列である
+
+  \br
+
+  同様に、
+  \begin{equation*}
+    (AA^*)^* = (A^*)^* A^* = AA^*
+  \end{equation*}
+  よって、$AA^*$もエルミート行列である $\qed$
+\end{proof}
+
+\br
+
+$A$を実行列とすれば、次が成り立つ
+
+\begin{theorem}{自身の転置行列との積で構成される対称行列}\label{thm:symmetric-products-of-any-matrix}
+  $A$を任意の実行列（長方行列）とするとき、$A^\top A$および$AA^\top$は対称行列である
+\end{theorem}
+
+\sectionline
+
+$A^* A$および$AA^*$という形の行列には、さらに重要な性質がある
+
+\begin{theorem}{随伴積による半正値エルミート行列の構成}
+  任意の行列$A$に対して、$AA^*$および$A^*A$はともに半正値エルミート行列である
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 半正値行列であること}
+    エルミート行列$AA^*$の固有ベクトルを$\vb*{u}$とし、その固有値を$\lambda \in \mathbb{C}$とすると、
+    \begin{equation*}
+      AA^* \vb*{u} = \lambda \vb*{u}
+    \end{equation*}
+    両辺で$\vb*{u}$との内積をとると、
+    \begin{equation*}
+      (\vb*{u}, AA^* \vb*{u}) = \lambda (\vb*{u}, \vb*{u}) = \lambda \|\vb*{u}\|^2
+    \end{equation*}
+    この左辺は、\hyperref[thm:adjoint-identity]{随伴公式}を用いて、
+    \begin{equation*}
+      \begin{WithArrows}
+        (\vb*{u}, AA^* \vb*{u}) & = (\vb*{u}, A(A^*\vb*{u})) \Arrow{外側の$A$に\\ 随伴公式を適用}  \\
+        & = (A^* \vb*{u}, A^* \vb*{u}) \\
+        & = \|A^* \vb*{u}\|^2 \geq 0
+      \end{WithArrows}
+    \end{equation*}
+    となるので、
+    \begin{equation*}
+      \|A^* \vb*{u}\|^2 = \lambda \|\vb*{u}\|^2 \geq 0
+    \end{equation*}
+    ここで、固有ベクトルは零ベクトルではないので、$\|\vb*{u}\|^2 >0$である
+
+    よって、$\lambda \|\vb*{u}\|^2 \geq 0$の両辺を$\|\vb*{u}\|^2$で割ることにより、
+    \begin{equation*}
+      \lambda \geq 0
+    \end{equation*}
+    が得られる
+
+    \br
+
+    $A^*A$についても同様に、
+    \begin{equation*}
+      (\vb*{u}, A^*A \vb*{u}) = (A\vb*{u}, A\vb*{u}) = \|A\vb*{u}\|^2 \geq 0
+    \end{equation*}
+    から、$\lambda \geq 0$が得られる $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}
