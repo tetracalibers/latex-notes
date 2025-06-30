@@ -118,7 +118,7 @@
 \end{theorem}
 
 \sectionline
-\section{対称行列の構成}
+\section{対称行列を構成する行列積}
 \marginnote{\refbookI p29}
 
 \hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解}は対称行列に対するものだったが、これを任意の長方行列に拡張したものが\keyword{特異値分解}である
@@ -157,49 +157,100 @@ $A$を実行列とすれば、次が成り立つ
 
 \sectionline
 
-$A^* A$および$AA^*$という形の行列には、さらに重要な性質がある
+$A^* A$および$AA^*$という形の行列には、さらに固有値に関する重要な性質がある
 
-\begin{theorem}{随伴積による半正値エルミート行列の構成}
-  任意の行列$A$に対して、$AA^*$および$A^*A$はともに半正値エルミート行列である
+\begin{theorem}{自身の随伴行列との積で構成される半正値行列}
+  任意の行列$A$に対して、$AA^*$および$A^*A$はともに半正値行列である
 \end{theorem}
 
 \begin{proof}
-  \begin{subpattern}{\bfseries 半正値行列であること}
-    エルミート行列$AA^*$の固有ベクトルを$\vb*{u}$とし、その固有値を$\lambda \in \mathbb{C}$とすると、
-    \begin{equation*}
-      AA^* \vb*{u} = \lambda \vb*{u}
-    \end{equation*}
-    両辺で$\vb*{u}$との内積をとると、
-    \begin{equation*}
-      (\vb*{u}, AA^* \vb*{u}) = \lambda (\vb*{u}, \vb*{u}) = \lambda \|\vb*{u}\|^2
-    \end{equation*}
-    この左辺は、\hyperref[thm:adjoint-identity]{随伴公式}を用いて、
-    \begin{equation*}
-      \begin{WithArrows}
-        (\vb*{u}, AA^* \vb*{u}) & = (\vb*{u}, A(A^*\vb*{u})) \Arrow{外側の$A$に\\ 随伴公式を適用}  \\
-        & = (A^* \vb*{u}, A^* \vb*{u}) \\
-        & = \|A^* \vb*{u}\|^2 \geq 0
-      \end{WithArrows}
-    \end{equation*}
-    となるので、
-    \begin{equation*}
-      \|A^* \vb*{u}\|^2 = \lambda \|\vb*{u}\|^2 \geq 0
-    \end{equation*}
-    ここで、固有ベクトルは零ベクトルではないので、$\|\vb*{u}\|^2 >0$である
+  エルミート行列$AA^*$の固有ベクトルを$\vb*{u}$とし、その固有値を$\lambda \in \mathbb{C}$とすると、
+  \begin{equation*}
+    AA^* \vb*{u} = \lambda \vb*{u}
+  \end{equation*}
+  両辺で$\vb*{u}$との内積をとると、
+  \begin{equation*}
+    (\vb*{u}, AA^* \vb*{u}) = \lambda (\vb*{u}, \vb*{u}) = \lambda \|\vb*{u}\|^2
+  \end{equation*}
+  この左辺は、\hyperref[thm:adjoint-identity]{随伴公式}を用いて、
+  \begin{equation*}
+    \begin{WithArrows}
+      (\vb*{u}, AA^* \vb*{u}) & = (\vb*{u}, A(A^*\vb*{u})) \Arrow{外側の$A$に\\ 随伴公式を適用}  \\
+      & = (A^* \vb*{u}, A^* \vb*{u}) \\
+      & = \|A^* \vb*{u}\|^2 \geq 0
+    \end{WithArrows}
+  \end{equation*}
+  となるので、
+  \begin{equation*}
+    \|A^* \vb*{u}\|^2 = \lambda \|\vb*{u}\|^2 \geq 0
+  \end{equation*}
+  ここで、固有ベクトルは零ベクトルではないので、$\|\vb*{u}\|^2 >0$である
 
-    よって、$\lambda \|\vb*{u}\|^2 \geq 0$の両辺を$\|\vb*{u}\|^2$で割ることにより、
-    \begin{equation*}
-      \lambda \geq 0
-    \end{equation*}
-    が得られる
+  よって、$\lambda \|\vb*{u}\|^2 \geq 0$の両辺を$\|\vb*{u}\|^2$で割ることにより、
+  \begin{equation*}
+    \lambda \geq 0
+  \end{equation*}
+  が得られる
 
-    \br
+  \br
 
-    $A^*A$についても同様に、
+  $A^*A$についても同様に、
+  \begin{equation*}
+    (\vb*{u}, A^*A \vb*{u}) = (A\vb*{u}, A\vb*{u}) = \|A\vb*{u}\|^2 \geq 0
+  \end{equation*}
+  から、$\lambda \geq 0$が得られる $\qed$
+\end{proof}
+
+\br
+
+\begin{theorem}{特異値と左右特異ベクトルの対応関係}
+  $A$を$O$でない任意の行列とするとき、$A^\top A$と$AA^\top$は共通の正の固有値$\sigma^2$を持ち、それぞれの固有ベクトル$\vb*{u},\vb*{v}$は次の関係を満たす
+  \begin{equation*}
+    A \vb*{v} = \sigma \vb*{u}, \quad A^\top \vb*{u} = \sigma \vb*{v}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $AA^\top$の固有値が$\sigma^2$と仮定した場合}
+    $AA^\top$の固有値が非負の固有値$\sigma^2$を持ち、対応する固有ベクトルが$\vb*{u}$であるとすると、
     \begin{equation*}
-      (\vb*{u}, A^*A \vb*{u}) = (A\vb*{u}, A\vb*{u}) = \|A\vb*{u}\|^2 \geq 0
+      AA^\top \vb*{u} = \sigma^2 \vb*{u}
     \end{equation*}
-    から、$\lambda \geq 0$が得られる $\qed$
+    この両辺に左から$A^\top$をかけて、
+    \begin{equation*}
+      A^\top AA^\top \vb*{u} = A^\top \sigma^2 \vb*{u}
+    \end{equation*}
+    ここで、$\vb*{v} = \dfrac{A^\top\vb*{u}}{\sigma}$とおくと、$A^\top \vb*{u} = \sigma \vb*{v}$となるので、
+    \begin{align*}
+      A^\top A\sigma\vb*{v} & = \sigma^3 \vb*{v} \\
+      A^\top A \vb*{v}      & = \sigma^2 \vb*{v}
+    \end{align*}
+    よって、$\sigma^2$は$A^\top A$の固有値でもあり、対応する固有ベクトル$\vb*{v}$は
+    \begin{equation*}
+      A^\top \vb*{u} = \sigma \vb*{v}
+    \end{equation*}
+    を満たす $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $A^\top A$の固有値が$\sigma^2$と仮定した場合}
+    $A^\top A$の固有値が非負の固有値$\sigma^2$を持ち、対応する固有ベクトルが$\vb*{v}$であるとすると、
+    \begin{equation*}
+      A^\top A \vb*{v} = \sigma^2 \vb*{v}
+    \end{equation*}
+    この両辺に左から$A$をかけて、
+    \begin{equation*}
+      AA^\top A \vb*{v} = A\sigma^2 \vb*{v}
+    \end{equation*}
+    ここで、$\vb*{u} = \dfrac{A\vb*{v}}{\sigma}$とおくと、$A\vb*{v} = \sigma \vb*{u}$となるので、
+    \begin{align*}
+      AA^\top\sigma\vb*{u} & = \sigma^3 \vb*{u} \\
+      AA^\top \vb*{u}      & = \sigma^2 \vb*{u}
+    \end{align*}
+    よって、$\sigma^2$は$AA^\top$の固有値でもあり、対応する固有ベクトル$\vb*{u}$は
+    \begin{equation*}
+      A\vb*{v} = \sigma \vb*{u}
+    \end{equation*}
+    を満たす $\qed$
   \end{subpattern}
 \end{proof}
 
