@@ -1,0 +1,38 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{頻度的立場の確率}
+\marginnote{\refbookB p62〜63}
+
+実際には、6回サイコロを投げたときに、必ず1が1回出るわけではない
+
+\br
+
+サイコロを何回も（膨大な回数を繰り返し）投げれば、やがて1が出る確率は$\dfrac{1}{6}$に近づいていく
+
+\br
+
+一般的に述べると、$n$回中$k$回だけ1が出た場合の割合$\dfrac{k}{n}$は、$n$が大きくなるにつれて一定値$\dfrac{1}{6}$に近づいていく
+
+確率に対するこのような考え方を\keyword{頻度的立場}という
+
+\begin{definition}{頻度的立場による確率}
+  試行を$n$回繰り返して行った場合に、ある事象$A$の起こった回数を$k(n)$とする
+
+  \br
+
+  試行回数$n$を増やしていくとき、割合$\dfrac{k(n)}{n}$が一定値$p$に近づくならば、$p$を事象$A$の起こる\keyword{確率}と定義する
+  \begin{equation*}
+    P(A) = p = \lim_{n \to \infty} \frac{k(n)}{n}
+  \end{equation*}
+
+  このように定義される確率を\keyword{統計的確率}あるいは\keyword{経験的確率}という
+\end{definition}
+
+\br
+
+この立場の客観性を保証するものは、多数回の試行あるいは大量データによる結果であり、理論的な根拠になっているものは\keyword{大数の法則}である
+
+\end{document}
