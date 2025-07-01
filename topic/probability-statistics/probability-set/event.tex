@@ -1,0 +1,119 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{事象}
+\marginnote{\refbookB p65}
+
+実験や観測の結果、実際に起こったことを\keyword{事象}という
+
+\begin{definition}{事象}
+  標本空間の部分空間$\Omega$の部分集合を\keyword{事象}といい、$A$や$B$などと表す
+\end{definition}
+
+起こりうる場合の集合（標本空間）から、実際に起こったものだけを取り出したものが事象であるので、事象は標本空間の部分集合といえる
+
+\sectionline
+\section{空事象と全事象}
+\marginnote{\refbookB p65}
+
+\subsection{空事象}
+
+決して起こらないことを事象の一つとみなしたものを\keyword{空事象}という
+
+\begin{definition}{空事象}
+  空集合である事象を\keyword{空事象}といい、$\emptyset$と表す
+\end{definition}
+
+事象とは、実際に起こったことだけを取り出した集合なので、決して起こらないことは空集合となる
+
+\subsection{全事象}
+
+一方、起こりうるすべての場合が起こるとき、標本空間そのものを事象とみなすことができる
+
+\begin{definition}{全事象}
+  起こりうるすべての場合からなる事象を\keyword{全事象}という
+
+  集合としてみれば、全事象は標本空間そのものなので、標本空間と同じく$\Omega$や$U$で表す
+\end{definition}
+
+\sectionline
+\section{事象と集合演算}
+\marginnote{\refbookB p65〜67}
+
+\subsection{和事象と積事象}
+
+「$A$または$B$が起こる」という事象を\keyword{和事象}という
+
+\begin{definition}{和事象}
+  事象$A$と事象$B$の和集合を$A \cup B$と表し、事象$A$と事象$B$の\keyword{和事象}という
+\end{definition}
+
+\br
+
+一方、「$A$と$B$が同時に起こる」という事象を\keyword{積事象}という
+
+\begin{definition}{積事象}
+  事象$A$と事象$B$の共通部分を$A \cap B$と表し、事象$A$と事象$B$の\keyword{積事象}という
+\end{definition}
+
+\subsection{余事象}
+
+「$A$が起こらない」という事象を\keyword{余事象}という
+
+\begin{definition}{余事象}
+  標本空間の中で、$A$が起こらないという事象を$A$の\keyword{余事象}といい、$A^c$で表す
+\end{definition}
+
+\br
+
+標本空間を全体集合とすると、余事象は補集合に対応する
+
+\begin{theorem}{余事象との和事象・積事象}
+  \begin{align*}
+    A \cup A^c & = \Omega    \\
+    A \cap A^c & = \emptyset
+  \end{align*}
+\end{theorem}
+
+\begin{theorem}{余事象の余事象}
+  \begin{equation*}
+    (A^c)^c = A
+  \end{equation*}
+\end{theorem}
+
+\subsection{事象の差}
+
+「$A$は起こるが$B$は起こらない」という事象は、「$A$と$B^c$が同時に起こる」事象として表せる
+
+\begin{definition}{事象の差}
+  次の事象を、事象$A$と$B$の\keyword{差}という
+  \begin{equation*}
+    A - B = A \cap B^c
+  \end{equation*}
+\end{definition}
+
+\sectionline
+\section{排反}
+\marginnote{\refbookB p67}
+
+事象$A$と事象$B$が同時に起こることがないとき、$A$と$B$は互いに\keyword{排反}であるという
+
+\begin{definition}{排反}
+  $A \cap B = \emptyset$であるとき、事象$A$と事象$B$は\keyword{排反}、あるいは\keyword{互いに素}であるという
+\end{definition}
+
+\sectionline
+\section{同様に確からしい}
+\marginnote{\refbookB p67}
+
+頻度的立場の確率は、次の\keyword{等確率性}（\keyword{同様に確からしい}）を前提としている
+
+\begin{definition}{同様に確からしい}
+  標本空間に属するどの根元事象も同じ程度に起こると期待されるとき、これらの事象は\keyword{同様に確からしい}という
+\end{definition}
+
+以降、特に断りがなければ「同様に確からしい」事象を扱うことにする
+
+\end{document}
