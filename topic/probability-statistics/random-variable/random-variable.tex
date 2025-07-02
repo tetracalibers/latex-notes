@@ -1,0 +1,61 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{確率変数}
+\marginnote{\refbookB p75〜77}
+
+\subsection{離散的な例}
+
+サイコロを投げて出る目の値を$X$とすると、$X$のとりうる値は$1, 2, 3, 4, 5, 6$のいずれかである
+
+\br
+
+$X$が出るという事象が同様に確からしいならば、$X$は確率$\dfrac{1}{6}$で、$1, 2, 3, 4, 5, 6$のいずれかの値をとる
+
+\br
+
+ここで、$X$が$i$となる確率を$P(X = i)$と表すことにすると、
+\begin{equation*}
+  P(X = 1) = \cdots = P(X = 6) = \frac{1}{6}
+\end{equation*}
+が成り立つ
+
+\br
+
+この場合、標本空間は$\Omega = \{1, 2, 3, 4, 5, 6\}$であり、$X$は$\Omega$上の値をとる関数あるいは変数と考えられる
+
+\subsection{連続的な例}
+
+ルーレットを回して最初の位置から$X$度のところで止まったとすると、$X$のとりうる値は$0 < X \leq 360$を満たすすべての実数である
+
+\br
+
+$X$度のところで止まるという事象が同様に確からしいとすると、たとえば$X$が$30 \leq X < 90$という値をとる確率は、区間幅$90 - 30 = 60$に比例することになる
+
+\br
+
+そこで、$X$が$a \leq X < b$という値をとる確率を$P(a \leq X < b)$と表すことにすると、
+\begin{equation*}
+  P(30 \leq X < 90) = \frac{60}{360} = \frac{1}{6}
+\end{equation*}
+となる
+
+\br
+
+この場合、標本空間は$\Omega = \{x\mid 0 < x \leq 360\}$であり、$X$は$\Omega$上の値をとる関数あるいは変数と考えられる
+
+\subsection{確率変数の定義}
+
+このように、$X=k$となる確率$P(X=k)$や、$a \leq X < b$となる確率$P(a \leq X < b)$が定まっている変数$X$を\keyword{確率変数}という
+
+\begin{definition}{確率変数}
+  試行の結果に応じていろいろな値をとる変数$X$が考えられ、変数$X$がある値をとる場合の確率が定まるとき、$X$を\keyword{確率変数}という
+
+  また、確率変数が離散的な値をとるときは\keyword{離散型確率変数}、連続的な値をとるときは\keyword{連続型確率変数}という
+\end{definition}
+
+確率変数は、標本空間上の実数値関数ともいえる
+
+\end{document}
