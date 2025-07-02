@@ -3,12 +3,8 @@
 \begin{document}
 
 \sectionline
-\section{確率の公理と確率空間の定義}
-\marginnote{\refbookB p67〜70}
-
-ここでは、集合を使って確率を定義する
-
-\subsection{事象と集合を同一視する}
+\section{事象と集合の同一視}
+\marginnote{\refbookB p67}
 
 \keyword{事象}という概念を導入することにより、実験や観測による結果を\keyword{集合}に対応させることができた
 \begin{equation*}
@@ -16,7 +12,13 @@
 \end{equation*}
 いわば、確率のもととなる事柄を集合に閉じ込めたことになる
 
-\subsection{集合演算に関する閉性を持たせる}
+\br
+
+このような集合を使って、確率を定義することができる
+
+\sectionline
+\section{定義をつくる：集合演算に関する閉性の保証}
+\marginnote{\refbookB p68}
 
 確率が定義される事象の全体$\mathscr{A}$を考える
 
@@ -48,7 +50,9 @@
 \end{equation*}
 と表される
 
-\subsection{補足：$\sigma$-加法族}
+\sectionline
+\section{集合族と$\sigma$-加法族}
+\marginnote{\refbookB p68〜69}
 
 $\mathscr{A}$は事象の全体、つまり、部分集合の全体なので、集合の集まりである
 
@@ -58,11 +62,13 @@ $\mathscr{A}$は事象の全体、つまり、部分集合の全体なので、�
 
 そして、先ほどの3つの条件を満たす集合族$\mathscr{A}$を\keyword{$\sigma$-加法族}という
 
-\subsection{どの立場の確率でも成り立つ性質を抽出する}
+\sectionline
+\section{定義をつくる：どの立場の確率でも成り立つ性質の抽出}
+\marginnote{\refbookB p69〜70}
 
-ある事象$A$の確率$P(A)$が満たすべき条件を考えてみる
+ある事象$A$の確率$P(A)$が満たすべき条件を考える
 
-\br
+\subsection{確率の値のとりうる範囲}
 
 確率$P(A)$は、事象$A$が起こる可能性を表すので、
 \begin{itemize}
@@ -77,13 +83,14 @@ $\mathscr{A}$は事象の全体、つまり、部分集合の全体なので、�
 \begin{equation*}
   0 \leq P(A) \leq 1
 \end{equation*}
+
 しかし、この不等式だけでは、$P(A)$が0や1になるのはどんな場合なのかを示すことはできない
 
 \br
 
 「事象が必ず起こるときの確率は1」「事象が全く起こらないときの確率は0」という、直観的には当たり前の事実も確率の定義に含める必要がある
 
-\br
+\subsection{全事象の確率}
 
 事象$A$がいつも起こるときは、事象$A$は起こりうるすべての場合を含んでいることになるので、$A$は全事象である
 
@@ -92,7 +99,7 @@ $\mathscr{A}$は事象の全体、つまり、部分集合の全体なので、�
   P(\Omega) = 1
 \end{equation*}
 
-\br
+\subsection{空事象の確率}
 
 同様に、「事象が全く起こらないときの確率は0」という事実は、次のように表される
 \begin{equation*}
@@ -100,7 +107,7 @@ $\mathscr{A}$は事象の全体、つまり、部分集合の全体なので、�
 \end{equation*}
 しかし、実はこの式は確率の定義の他の条件から導出できるので、定義には加えないことにする
 
-\br
+\subsection{排反な事象の確率}
 
 最後に、「互いに排反な事象は別々に起こる」という性質も、確率の定義に含めることが重要である
 
@@ -119,7 +126,9 @@ $A$または$B$が起こる確率は、
   P(A_1 \cup A_2 \cup \cdots \cup A_n \cdots) = P(A_1) + P(A_2) + \cdots + P(A_n) + \cdots
 \end{equation*}
 
-\subsection{確率と確率空間の定義}
+\sectionline
+\section{確率と確率空間の定義}
+\marginnote{\refbookB p70}
 
 以上の議論から、確率を次のように定義する
 
