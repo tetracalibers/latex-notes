@@ -49,24 +49,38 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
 
 つまり、$C$の$(i, j)$成分を計算するときは、$A$の第$i$行、$B$の第$j$列だけを見ればよい
 
+\tikzset{highlight/.style={rectangle,
+      fill=CarnationPink!30,
+      rounded corners,
+      fit=#1}}
 \begin{equation*}
-  \begin{pmatrix}
-           &        &       &        \\
-           &        &       &        \\
-    a_{i1} & a_{i2} & \dots & a_{im} \\
-           &        &       &        \\
-           &        &       &
-  \end{pmatrix}
-  \begin{pmatrix}
-     & b_{1j} & \\
-     & b_{2j} & \\
-     & \vdots & \\
-     & b_{mj} &
-  \end{pmatrix} = \begin{pmatrix}
-          & \vdots                                  &       \\
-    \dots & \displaystyle\sum_{k=1}^m a_{ik} b_{kj} & \dots \\
-          & \vdots                                  &
-  \end{pmatrix}
+  \begin{NiceArray}{*{6}{c}@{\hspace{6mm}}*{5}{c}}[nullify-dots]
+    \CodeBefore [create-cell-nodes]
+    \SubMatrix({2-7}{6-last})
+    \SubMatrix({7-2}{last-6})
+    \SubMatrix({7-7}{last-last})
+    \begin{tikzpicture}
+      \node [highlight = (9-2) (9-6), inner sep=4pt] { } ;
+      \node [highlight = (2-9) (6-9), inner sep=3pt] { } ;
+      \node [highlight = (9-9), shape=circle, inner sep=2pt, fill=Rhodamine!35] {} ;
+    \end{tikzpicture}
+    \Body
+     &        &        &        &        &        &        &        & j\text{\bfseries 列}                   \\
+     &        &        &        &        &        & b_{11} & \Cdots & b_{1j}              & \Cdots & b_{1n} \\
+     &        &        &        &        &        & \Vdots &        & \Vdots              &        & \Vdots \\
+     &        &        &        &        &        &        &        & b_{kj}                                \\
+     &        &        &        &        &        &        &        & \Vdots                                \\
+     &        &        &        &        &        & b_{n1} & \Cdots & b_{mj}              & \Cdots & b_{mn} \\[3mm]
+     & a_{11} & \Cdots &        &        & a_{1m}                                                           \\
+     & \Vdots &        &        &        & \Vdots &        &        & \Vdots                                \\
+    i\text{\bfseries 行}
+     & a_{i1} & \Cdots & a_{ik} & \Cdots & a_{im} & \Cdots &        & c_{ij}                                \\
+     & \Vdots &        &        &        & \Vdots                                                           \\
+     & a_{n1} & \Cdots &        &        & a_{nm}                                                           \\
+    \CodeAfter
+    \tikz \draw[CarnationPink, thick, <->, shorten >=0.5em, shorten <=0.5em](9-4.north) to[bend left] (4-9.west);
+    \tikz \path [decoration={text along path, text={{$\displaystyle\sum_{k=1}^m a_{ik} b_{kj}$}{}}, text color=Rhodamine, text align=center, raise=4ex}, decorate](9-4.north) to [bend left] (4-9.west);
+  \end{NiceArray}
 \end{equation*}
 
 \br
