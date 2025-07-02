@@ -1,0 +1,31 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{独立な試行の確率}
+\marginnote{\refbookD p33}
+
+2つの試行が互いに他方の結果に影響を及ぼさないとき、これらの試行は\keyword{独立}であるという
+
+\br
+
+このとき、$A$が起きたかどうかが$B$の起きやすさに影響しないので、
+\begin{equation*}
+  P(B|A) = P(B)
+\end{equation*}
+が成り立つ
+
+よって、確率の乗法定理は次のように書き換えられる
+\begin{equation*}
+  P(A \cap B) = P(A) \cdot P(B)
+\end{equation*}
+
+\begin{theorem}{独立な試行の確率}
+  2つの独立な試行$S,T$を行うとき、「試行$S$では事象$A$が起こり、試行$T$では事象$B$が起こる」という事象を$C$とすると、事象$C$の確率は、
+  \begin{equation*}
+    P(C) = P(A) \cdot P(B)
+  \end{equation*}
+\end{theorem}
+
+\end{document}

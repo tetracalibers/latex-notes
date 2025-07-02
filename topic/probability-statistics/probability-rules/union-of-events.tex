@@ -1,0 +1,78 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{割合としての確率}
+\marginnote{\refbookD p28〜29}
+
+確率を最も馴染みのある考え方でとらえると、\keyword{確率}とはある事象が起こる可能性であり、
+\begin{shaded}
+  起こりうるすべての場合のうち、ある事象が起こる場合の\keyword{割合}
+\end{shaded}
+として計算できる
+
+\br
+
+たとえば、起こりうるすべての場合が$n(U)$通り、事象$A$が起こる場合が$n(A)$通りあるとすると、
+\begin{equation*}
+  P(A) = \frac{n(A)}{n(U)}
+\end{equation*}
+が、事象$A$が起こる確率となる（ここで、$U$は標本空間である）
+
+\br
+
+ここで注意が必要なのは、割り算は全体を「均等に」分けることを前提とした演算であることだ
+
+\br
+
+標本空間に含まれるすべての場合の数で割ったものを確率とみなすには、どの事象も同程度に起こりうる（\keyword{同様に確からしい}）という仮定が必要になる
+
+\sectionline
+\section{和事象の確率}
+\marginnote{\refbookD p30〜31}
+
+$A$または$B$が起こる場合が$n(A \cup B)$通りあるとすると、その確率は、次の割合で表される
+\begin{equation*}
+  P(A \cup B) = \frac{n(A \cup B)}{n(U)}
+\end{equation*}
+
+ここで、$n(A \cup B)$は、$n(A)$と$n(B)$の和から、$A$と$B$の重なっている部分$n(A \cap B)$を引いたものとなる
+\begin{equation*}
+  n(A \cup B) = n(A) + n(B) - n(A \cap B)
+\end{equation*}
+
+よって、和事象$A \cup B$の確率は、
+\begin{align*}
+  P(A \cup B) & = \frac{n(A \cup B)}{n(U)}                                         \\
+              & = \frac{n(A) + n(B) - n(A \cap B)}{n(U)}                           \\
+              & = \frac{n(A)}{n(U)} + \frac{n(B)}{n(U)} - \frac{n(A \cap B)}{n(U)} \\
+              & = P(A) + P(B) - P(A \cap B)
+\end{align*}
+として求められる
+
+\begin{theorem}{和事象の確率}
+  和事象$A \cup B$の確率は、
+  \begin{equation*}
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+  \end{equation*}
+\end{theorem}
+
+\sectionline
+\section{排反な事象と確率の加法定理}
+\marginnote{\refbookD p32}
+
+和事象の確率において、事象$A$と$B$が互いに排反である（つまり、同時に起こることはない）ならば、$n(A \cap B) = 0$となるので、
+\begin{equation*}
+  P(A \cup B) = P(A) + P(B)
+\end{equation*}
+が成り立つ
+
+\begin{theorem}{確率の加法定理}
+  互いに排反な事象$A,B$の和事象$A \cup B$の確率は、
+  \begin{equation*}
+    P(A \cup B) = P(A) + P(B)
+  \end{equation*}
+\end{theorem}
+
+\end{document}

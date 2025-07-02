@@ -1,0 +1,33 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{条件つき確率}
+\marginnote{\refbookD p38〜39}
+
+事象$A$が起こったときに事象$B$が起こる確率を\keyword{条件つき確率}という
+
+\begin{definition}{条件つき確率}
+  事象$A$が起こったときに事象$B$が起こる確率を$P(B|A)$あるいは$P_A(B)$と表し、これを$A$が起こったときの$B$が起こる\keyword{条件つき確率}という
+\end{definition}
+
+\br
+
+条件つき確率では、標本空間「全体」ではなく、その一部分である「Aが起きた場合」に限定して考える
+
+その中でBも起こる割合だから、「AかつB」の確率を「A」の中での割合でみればよい
+\begin{equation*}
+  P(B|A) = \frac{P(A \cap B)}{P(A)}
+\end{equation*}
+
+\br
+
+\begin{theorem}{条件つき確率}
+  事象$A$が起こったときの事象$B$が起こる条件つき確率は、
+  \begin{equation*}
+    P(B|A) = \frac{P(A \cap B)}{P(A)}
+  \end{equation*}
+\end{theorem}
+
+\end{document}
