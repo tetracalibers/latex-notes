@@ -8,16 +8,34 @@ alias pdf2htmlEX='docker run -ti --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htm
 
 ### for Topic Note
 
-#### topic_linear-algebra
+#### 線形代数の整理帳
 
 ```bash
 cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
 ```
 
-#### topic_mapping
+#### 写像の整理帳
 
 ```bash
 cp ./out/topic_mapping.pdf ./public/topic_mapping.pdf
+```
+
+#### 確率統計の整理帳
+
+```bash
+cp ./out/topic_probability-statistics.pdf ./public/topic_probability-statistics.pdf
+```
+
+#### 機械学習の整理帳
+
+```bash
+cp ./out/topic_machine-learning.pdf ./public/topic_machine-learning.pdf
+```
+
+#### 深層学習の整理帳
+
+```bash
+cp ./out/topic_deep-learning.pdf ./public/topic_deep-learning.pdf
 ```
 
 ### for "Imaging Math"
