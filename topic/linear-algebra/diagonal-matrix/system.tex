@@ -1,0 +1,100 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{入出力の視点}
+\marginnote{\refbookL p42}
+
+ベクトルと行列を使うことで、入力$\vb*{x}$と出力$\vb*{y}$の関係を多次元の場合でも簡潔に表すことができる
+\begin{equation*}
+  \vb*{y} = A \vb*{x}
+\end{equation*}
+
+この式は、たとえば$\vb*{x}$と$\vb*{y}$をともに3次元ベクトルとすると、
+\begin{align*}
+  \begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    y_3
+  \end{pmatrix} & = \begin{pmatrix}
+                      a_{11} & a_{12} & a_{13} \\
+                      a_{21} & a_{22} & a_{23} \\
+                      a_{31} & a_{32} & a_{33}
+                    \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3
+  \end{pmatrix}                                        \\
+                  & = \begin{pmatrix}
+                        a_{11}x_1 + a_{12}x_2 + a_{13}x_3 \\
+                        a_{21}x_1 + a_{22}x_2 + a_{23}x_3 \\
+                        a_{31}x_1 + a_{32}x_2 + a_{33}x_3
+                      \end{pmatrix}
+\end{align*}
+のように計算される
+
+\br
+
+ここで、たとえば2行目に注目すると、
+\begin{equation*}
+  y_2 = a_{21}x_1 + a_{22}x_2 + a_{23}x_3
+\end{equation*}
+となり、$y_2$の計算に$\vb*{x}$のすべての成分$x_1, x_2, x_3$が使われていることがわかる
+
+\br
+
+\begin{shaded}
+  各行に対応する出力$y_i$は、入力$\vb*{x}$のすべての成分に依存している
+\end{shaded}
+
+この依存関係を、次のようなダイアグラムで表すことにする
+
+\br
+
+\begin{center}
+  \scalebox{1.1}{\begin{tikzpicture}[
+      x=2.2cm,y=1.4cm,
+      connect arrow/.style={-{Latex},thick}]
+
+      \def\r{0.2cm};
+
+      % input nodes
+
+      \coordinate (N1-1) at (1,1);
+      \coordinate (N1-2) at (1,0);
+      \coordinate (N1-3) at (1,-1);
+
+      \filldraw[Rhodamine!60, opacity=0.6] (N1-1) circle (\r) node[left=0.5ex,lightslategray,opacity=1] {$x_1$};
+      \filldraw[Cerulean!60, opacity=0.6] (N1-2) circle (\r) node[left=0.5ex,lightslategray,opacity=1] {$x_2$};
+      \filldraw[LimeGreen!80, opacity=0.6] (N1-3) circle (\r) node[left=0.5ex,lightslategray,opacity=1] {$x_3$};
+
+      % output nodes
+
+      \coordinate (N2-1) at (2,1);
+      \coordinate (N2-2) at (2,0);
+      \coordinate (N2-3) at (2,-1);
+
+      \filldraw[Orchid!80,opacity=0.6] (N2-1) circle (\r) node[right=0.5ex,lightslategray,opacity=1] {$y_1$};
+      \filldraw[Orchid!80,opacity=0.6] (N2-2) circle (\r) node[right=0.5ex,lightslategray,opacity=1] {$y_2$};
+      \filldraw[Orchid!80,opacity=0.6] (N2-3) circle (\r) node[right=0.5ex,lightslategray,opacity=1] {$y_3$};
+
+      % Connections from input to output nodes
+
+      \draw[connect arrow,Rhodamine!60] (N1-1.east) -- (N2-1.west);
+      \draw[connect arrow,Rhodamine!60] (N1-1.east) -- (N2-2.west);
+      \draw[connect arrow,Rhodamine!60] (N1-1.east) -- (N2-3.west);
+
+      \draw[connect arrow,Cerulean!60] (N1-2.east) -- (N2-1.west);
+      \draw[connect arrow,Cerulean!60] (N1-2.east) -- (N2-2.west);
+      \draw[connect arrow,Cerulean!60] (N1-2.east) -- (N2-3.west);
+
+      \draw[connect arrow,LimeGreen!80] (N1-3.east) -- (N2-1.west);
+      \draw[connect arrow,LimeGreen!80] (N1-3.east) -- (N2-2.west);
+      \draw[connect arrow,LimeGreen!80] (N1-3.east) -- (N2-3.west);
+    \end{tikzpicture}}
+\end{center}
+
+
+\end{document}
