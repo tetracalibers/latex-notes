@@ -4,7 +4,7 @@
 
 \sectionline
 \section{対角行列の嬉しさ：入出力の視点}
-\marginnote{\refbookL p42}
+\marginnote{\refbookL p42、p51}
 
 ベクトルと行列を使うことで、入力$\vb*{x}$と出力$\vb*{y}$の関係を多次元の場合でも簡潔に表すことができる
 \begin{equation*}
@@ -181,6 +181,108 @@ $A$が対角行列の場合、$\vb*{y} = A \vb*{x}$は次のような形にな�
 
 \subsection{ブロック対角行列による入出力}
 
-\todo{}
+ブロック対角行列は、
+\begin{shaded}
+  各ブロックごとに独立に変換される
+\end{shaded}
+という形の写像を表している
+
+\br
+
+たとえば、
+\begin{equation*}
+  \begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    y_3 \\
+    y_4
+  \end{pmatrix} = \begin{pmatrix}
+    a_{11} & a_{12} & 0      & 0      \\
+    a_{21} & a_{22} & 0      & 0      \\
+    0      & 0      & a_{33} & a_{34} \\
+    0      & 0      & a_{43} & a_{44}
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+    x_4
+  \end{pmatrix}
+\end{equation*}
+というブロック対角行列は、次のように分けて考えることができる
+\begin{align*}
+  \begin{pmatrix}
+    y_1 \\
+    y_2
+  \end{pmatrix} & = \begin{pmatrix}
+                      a_{11} & a_{12} \\
+                      a_{21} & a_{22}
+                    \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\
+    x_2
+  \end{pmatrix}                    \\
+  \begin{pmatrix}
+    y_3 \\
+    y_4
+  \end{pmatrix} & = \begin{pmatrix}
+                      a_{33} & a_{34} \\
+                      a_{43} & a_{44}
+                    \end{pmatrix}
+  \begin{pmatrix}
+    x_3 \\
+    x_4
+  \end{pmatrix}
+\end{align*}
+
+\br
+
+ダイアグラムで表すと、2つの独立なサブシステムに分解されている様子が見える
+\begin{center}
+  \scalebox{1.1}{\begin{tikzpicture}[
+      x=2.2cm,y=1.4cm,
+      connect arrow/.style={-{Latex},thick}]
+
+      \def\r{0.2cm};
+
+      % input nodes
+
+      \coordinate (N1-1) at (1,1);
+      \coordinate (N1-2) at (1,0);
+      \coordinate (N1-3) at (1,-1);
+      \coordinate (N1-4) at (1,-2);
+
+      \draw[Rhodamine,thick] (N1-1) circle (\r) node[left=0.7ex,lightslategray] {$x_1$};
+      \draw[Cerulean,thick] (N1-2) circle (\r) node[left=0.7ex,lightslategray] {$x_2$};
+      \draw[LimeGreen,thick] (N1-3) circle (\r) node[left=0.7ex,lightslategray] {$x_3$};
+      \draw[BurntOrange,thick] (N1-4) circle (\r) node[left=0.7ex,lightslategray] {$x_4$};
+
+      % output nodes
+
+      \coordinate (N2-1) at (2,1);
+      \coordinate (N2-2) at (2,0);
+      \coordinate (N2-3) at (2,-1);
+      \coordinate (N2-4) at (2,-2);
+
+      \draw[Orchid,thick] (N2-1) circle (\r) node[right=0.7ex,lightslategray] {$y_1$};
+      \draw[Orchid,thick] (N2-2) circle (\r) node[right=0.7ex,lightslategray] {$y_2$};
+      \draw[Orchid,thick] (N2-3) circle (\r) node[right=0.7ex,lightslategray] {$y_3$};
+      \draw[Orchid,thick] (N2-4) circle (\r) node[right=0.7ex,lightslategray] {$y_4$};
+
+      % Connections from input to output nodes
+
+      \draw[connect arrow,Rhodamine!60] (N1-1.east) -- (N2-1.west);
+      \draw[connect arrow,Rhodamine!60] (N1-1.east) -- (N2-2.west);
+
+      \draw[connect arrow,Cerulean!60] (N1-2.east) -- (N2-1.west);
+      \draw[connect arrow,Cerulean!60] (N1-2.east) -- (N2-2.west);
+
+      \draw[connect arrow,LimeGreen!80] (N1-3.east) -- (N2-3.west);
+      \draw[connect arrow,LimeGreen!80] (N1-3.east) -- (N2-4.west);
+
+      \draw[connect arrow,BurntOrange!80] (N1-4.east) -- (N2-3.west);
+      \draw[connect arrow,BurntOrange!80] (N1-4.east) -- (N2-4.west);
+    \end{tikzpicture}}
+\end{center}
 
 \end{document}

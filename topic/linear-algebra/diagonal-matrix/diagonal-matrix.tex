@@ -64,8 +64,21 @@
 
 \sectionline
 \section{ブロック対角行列}
-\marginnote{\refbookL p50〜51}
+\marginnote{\refbookL p50}
 
-\todo{}
+対角行列の概念は、行列の各成分が数ではなく行列の場合にも拡張できる
+
+\begin{definition}{ブロック対角行列}
+  対角線上のブロックがすべて正方行列で、それ以外のブロックが零行列であるものを\keyword{ブロック対角行列}という
+  \begin{equation*}
+    \diag(A_1,A_2,\ldots,A_k) = \begin{pmatrix}
+      A_1    & O      & \cdots & O      \\
+      O      & A_2    & \cdots & O      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      O      & O      & \cdots & A_k
+    \end{pmatrix}
+  \end{equation*}
+  ここで、対角成分に対応する行列$A_1, A_2, \ldots, A_k$を\keyword{対角ブロック}という
+\end{definition}
 
 \end{document}
