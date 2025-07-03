@@ -134,7 +134,6 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
 このような$B$を$A$の\keyword{逆行列}と呼び、$A^{-1}$と書く
 
 \sectionline
-\section{逆行列の性質}
 
 \begin{theorem}{逆行列の一意性}
   正方行列$A$に対して、$A$の逆行列が存在するならば、それは一意的である
@@ -153,6 +152,10 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
 \end{proof}
 
 \sectionline
+\section{逆行列の性質}
+\marginnote{\refbookL p46}
+
+「$A$の取り消し」を取り消すには、$A$すればよい
 
 \begin{theorem}{逆行列に対する逆行列}\label{thm:inverse-of-inverse}
   正則行列$A$の逆行列$A^{-1}$は正則であり、その逆行列は$A$である
@@ -170,6 +173,8 @@ $f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像�
 \end{proof}
 
 \sectionline
+
+「$B$して$A$したもの」を元に戻すには、まず$A$を取り消してから$B$を取り消す必要がある
 
 \begin{theorem}{正則行列の積に対する逆行列}\label{thm:inverse-of-product}
   正則行列$A,\,B$の積$AB$は正則であり、その逆行列は次のようになる
@@ -292,6 +297,8 @@ $i$ごとに掃き出し法を何度も実行しないといけないのかと�
 \sectionline
 \section{正則行列と対角行列}
 \marginnote{\refbookA p74〜75}
+
+\todo{\refbookL p46〜47}
 
 \begin{theorem}{ブロック対角行列の正則性}\label{thm:block-diagonal-invertibility}
   次のようなブロック対角行列$M$において、対角ブロック$A,\,B$が正則であれば、$M$も正則である
