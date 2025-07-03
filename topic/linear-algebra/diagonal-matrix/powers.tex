@@ -1,0 +1,50 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{対角行列の嬉しさ：冪乗の計算}
+\marginnote{\refbookL p42}
+
+$A$が対角行列の場合、$\vb*{y} = A\vb*{x}$は、行ごとのサブシステムとして各行を独立に計算できた
+\begin{align*}
+  y_1 & = a_{11} x_1    \\
+      & \vdotswithin{=} \\
+  y_n & = a_{nn} x_n
+\end{align*}
+
+\br
+
+このように各行に分けて「1次元問題が$n$本あるだけ」と考えると、対角行列どうしの積や冪乗も、簡単に計算できることがわかる
+
+\begin{equation*}
+  \begin{pmatrix}
+    a_1 &        &     \\
+        & \ddots &     \\
+        &        & a_n
+  \end{pmatrix} \begin{pmatrix}
+    b_1 &        &     \\
+        & \ddots &     \\
+        &        & b_n
+  \end{pmatrix} = \begin{pmatrix}
+    a_1 b_1 &        &         \\
+            & \ddots &         \\
+            &        & a_n b_n
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+\begin{equation*}
+  \begin{pmatrix}
+    a_1 &        &     \\
+        & \ddots &     \\
+        &        & a_n
+  \end{pmatrix}^k = \begin{pmatrix}
+    a_1^k &        &       \\
+          & \ddots &       \\
+          &        & a_n^k
+  \end{pmatrix}
+\end{equation*}
+
+\end{document}
