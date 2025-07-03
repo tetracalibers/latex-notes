@@ -3,7 +3,7 @@
 \begin{document}
 
 \sectionline
-\section{入出力の視点}
+\section{対角行列の嬉しさ：入出力の視点}
 \marginnote{\refbookL p42}
 
 ベクトルと行列を使うことで、入力$\vb*{x}$と出力$\vb*{y}$の関係を多次元の場合でも簡潔に表すことができる
@@ -11,7 +11,9 @@
   \vb*{y} = A \vb*{x}
 \end{equation*}
 
-この式は、たとえば$\vb*{x}$と$\vb*{y}$をともに3次元ベクトルとすると、
+\subsection{一般の行列による入出力}
+
+たとえば$\vb*{x}$と$\vb*{y}$をともに3次元ベクトルとすると、$\vb*{y} = A \vb*{x}$は、
 \begin{align*}
   \begin{pmatrix}
     y_1 \\
@@ -33,7 +35,6 @@
                         a_{31}x_1 + a_{32}x_2 + a_{33}x_3
                       \end{pmatrix}
 \end{align*}
-のように計算される
 
 \br
 
@@ -66,9 +67,9 @@
       \coordinate (N1-2) at (1,0);
       \coordinate (N1-3) at (1,-1);
 
-      \filldraw[Rhodamine!60, opacity=0.6] (N1-1) circle (\r) node[left=0.5ex,lightslategray,opacity=1] {$x_1$};
-      \filldraw[Cerulean!60, opacity=0.6] (N1-2) circle (\r) node[left=0.5ex,lightslategray,opacity=1] {$x_2$};
-      \filldraw[LimeGreen!80, opacity=0.6] (N1-3) circle (\r) node[left=0.5ex,lightslategray,opacity=1] {$x_3$};
+      \draw[Rhodamine,thick] (N1-1) circle (\r) node[left=0.7ex,lightslategray] {$x_1$};
+      \draw[Cerulean,thick] (N1-2) circle (\r) node[left=0.7ex,lightslategray] {$x_2$};
+      \draw[LimeGreen,thick] (N1-3) circle (\r) node[left=0.7ex,lightslategray] {$x_3$};
 
       % output nodes
 
@@ -76,9 +77,9 @@
       \coordinate (N2-2) at (2,0);
       \coordinate (N2-3) at (2,-1);
 
-      \filldraw[Orchid!80,opacity=0.6] (N2-1) circle (\r) node[right=0.5ex,lightslategray,opacity=1] {$y_1$};
-      \filldraw[Orchid!80,opacity=0.6] (N2-2) circle (\r) node[right=0.5ex,lightslategray,opacity=1] {$y_2$};
-      \filldraw[Orchid!80,opacity=0.6] (N2-3) circle (\r) node[right=0.5ex,lightslategray,opacity=1] {$y_3$};
+      \draw[Orchid,thick] (N2-1) circle (\r) node[right=0.7ex,lightslategray] {$y_1$};
+      \draw[Orchid,thick] (N2-2) circle (\r) node[right=0.7ex,lightslategray] {$y_2$};
+      \draw[Orchid,thick] (N2-3) circle (\r) node[right=0.7ex,lightslategray] {$y_3$};
 
       % Connections from input to output nodes
 
@@ -96,5 +97,90 @@
     \end{tikzpicture}}
 \end{center}
 
+\subsection{対角行列による入出力}
+
+$A$が対角行列の場合、$\vb*{y} = A \vb*{x}$は次のような形になる
+\begin{align*}
+  \begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    y_3
+  \end{pmatrix} & = \begin{pmatrix}
+                      a_{11} & 0      & 0      \\
+                      0      & a_{22} & 0      \\
+                      0      & 0      & a_{33}
+                    \end{pmatrix}
+  \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3
+  \end{pmatrix}                             \\
+                  & = \begin{pmatrix}
+                        a_{11}x_1 \\
+                        a_{22}x_2 \\
+                        a_{33}x_3
+                      \end{pmatrix}
+\end{align*}
+
+ベクトルの各行に注目すると、各出力$y_i$は、入力$\vb*{x}$の対応する成分$x_i$のみに依存していることがわかる
+
+\br
+
+\begin{center}
+  \scalebox{1.1}{\begin{tikzpicture}[
+      x=2.2cm,y=1.4cm,
+      connect arrow/.style={-{Latex},thick}]
+
+      \def\r{0.2cm};
+
+      % input nodes
+
+      \coordinate (N1-1) at (1,1);
+      \coordinate (N1-2) at (1,0);
+      \coordinate (N1-3) at (1,-1);
+
+      \draw[Rhodamine,thick] (N1-1) circle (\r) node[left=0.7ex,lightslategray] {$x_1$};
+      \draw[Cerulean,thick] (N1-2) circle (\r) node[left=0.7ex,lightslategray] {$x_2$};
+      \draw[LimeGreen,thick] (N1-3) circle (\r) node[left=0.7ex,lightslategray] {$x_3$};
+
+      % output nodes
+
+      \coordinate (N2-1) at (2,1);
+      \coordinate (N2-2) at (2,0);
+      \coordinate (N2-3) at (2,-1);
+
+      \draw[Orchid,thick] (N2-1) circle (\r) node[right=0.7ex,lightslategray] {$y_1$};
+      \draw[Orchid,thick] (N2-2) circle (\r) node[right=0.7ex,lightslategray] {$y_2$};
+      \draw[Orchid,thick] (N2-3) circle (\r) node[right=0.7ex,lightslategray] {$y_3$};
+
+      % Connections from input to output nodes
+
+      \draw[connect arrow,Rhodamine!60] (N1-1.east) -- (N2-1.west);
+
+      \draw[connect arrow,Cerulean!60] (N1-2.east) -- (N2-2.west);
+
+      \draw[connect arrow,LimeGreen!80] (N1-3.east) -- (N2-3.west);
+    \end{tikzpicture}}
+\end{center}
+
+このように、$A$が対角行列の場合、$\vb*{y} = A \vb*{x}$は独立な$n$本のサブシステム
+\begin{align*}
+  y_1 & = a_{11} x_1    \\
+      & \vdotswithin{=} \\
+  y_n & = a_{nn} x_n
+\end{align*}
+に分割されている
+
+\br
+
+つまり、対角行列を使って関係を表現できれば、
+\begin{shaded}
+  見た目は$n$次元問題でも、実質は1次元問題が$n$本あるだけ
+\end{shaded}
+という状況になり、問題を大きく単純化できる
+
+\subsection{ブロック対角行列による入出力}
+
+\todo{}
 
 \end{document}

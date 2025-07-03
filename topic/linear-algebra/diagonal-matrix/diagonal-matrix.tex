@@ -3,28 +3,7 @@
 \begin{document}
 
 \sectionline
-\section{スカラー行列}
-
-\begin{definition}{スカラー行列}
-  $c$をスカラーとするとき、$cE$の形の行列を\keyword{スカラー行列}という
-  \begin{equation*}
-    cE = \begin{pmatrix}
-      c      & 0      & \cdots & 0      \\
-      0      & c      & \cdots & 0      \\
-      \vdots & \vdots & \ddots & \vdots \\
-      0      & 0      & \cdots & c
-    \end{pmatrix}
-  \end{equation*}
-\end{definition}
-
-行列$A$にスカラー行列をかけることは、
-\begin{equation*}
-  (cE)A = A(cE) = cA
-\end{equation*}
-のように、スカラー$c$をかけるのと同じである
-
-\sectionline
-\section{対角行列}
+\section{対角行列とスカラー行列}
 
 \begin{definition}{対角行列}
   対角成分以外の成分がすべて0である正方行列を\keyword{対角行列}と呼ぶ
@@ -40,6 +19,35 @@
   \end{equation*}
 \end{definition}
 
+\br
+
+対角行列の特別な場合として、すべての対角成分が同じ値である行列は\keyword{スカラー行列}と呼ばれる
+
+\begin{definition}{スカラー行列}
+  $c$をスカラーとするとき、$cE$の形の行列を\keyword{スカラー行列}という
+  \begin{equation*}
+    cE = \begin{pmatrix}
+      c      & 0      & \cdots & 0      \\
+      0      & c      & \cdots & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \cdots & c
+    \end{pmatrix}
+  \end{equation*}
+\end{definition}
+
+\sectionline
+\section{対角行列とスカラー倍}
+
+行列$A$にスカラー行列をかけることは、
+\begin{equation*}
+  (cE)A = A(cE) = cA
+\end{equation*}
+のように、スカラー$c$をかけるのと同じである
+
+\br
+
+発展して、対角行列の場合には次のことがいえる
+
 \begin{theorem}{対角行列と列ベクトルのスカラー倍}
   右から対角行列をかけると、各列ベクトルがスカラー倍になる
 
@@ -53,5 +61,11 @@
 \begin{proof}
   \todo{\refbookA p63 （問2.8）}
 \end{proof}
+
+\sectionline
+\section{ブロック対角行列}
+\marginnote{\refbookL p50〜51}
+
+\todo{}
 
 \end{document}
