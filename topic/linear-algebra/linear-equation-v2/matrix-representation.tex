@@ -1,0 +1,64 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{連立一次方程式の行列表記}
+\marginnote{\refbookA p22〜25}
+
+未知数$x_1, x_2, \dots, x_n$に関する連立方程式として
+\begin{equation*}
+  \left\{
+  \begin{alignedat}{12}
+    a_{11} & x_1    & {}+{} & a_{12} & x_2 & {}+{} & \cdots & {}+{} & a_{1n} & x_n & {}={} & b_1    \\
+    a_{21} & x_1    & {}+{} & a_{22} & x_2 & {}+{} & \cdots & {}+{} & a_{2n} & x_n & {}={} & b_2    \\
+           & \vdots &       & \vdots &     &       &        &       & \vdots &     &       & \vdots \\
+    a_{m1} & x_1    & {}+{} & a_{m2} & x_2 & {}+{} & \cdots & {}+{} & a_{mn} & x_n & {}={} & b_m    \\
+  \end{alignedat}
+  \right.
+\end{equation*}
+を考える
+
+$a_{ij}$などは与えられた定数であり、\keyword{係数}と呼ばれる
+
+$i$番目の式の$x_j$の係数を$a_{ij}$と書いている
+
+\br
+
+ここで、係数だけを集めて行列を作る
+\begin{equation*}
+  A = \begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+           & \vdots &        & \vdots \\
+    a_{m1} & a_{m2} & \cdots & a_{mn}
+  \end{pmatrix}
+\end{equation*}
+
+すると、先ほどの連立方程式は、ベクトル形で
+\begin{equation*}
+  x_1 \vb*{a}_1 + x_2 \vb*{a}_2 + \cdots + x_n \vb*{a}_n = \vb*{b}
+\end{equation*}
+と書ける
+
+\br
+
+また、$n$個の未知数$x_1, x_2, \dots, x_n$からベクトルを作る
+\begin{equation*}
+  \vb*{x} = \begin{pmatrix}
+    x_1    \\
+    x_2    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+\end{equation*}
+
+すると、ベクトル形の方程式の左辺のベクトルを、行列$A$とベクトル$\vb*{x}$の積と考えて、$A\vb*{x}$と表記できる
+
+こうして、もとの連立一次方程式は、行列形の方程式
+\begin{equation*}
+  A\vb*{x} = \vb*{b}
+\end{equation*}
+に書き換えられる
+
+\end{document}

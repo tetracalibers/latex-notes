@@ -1,0 +1,40 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列の階数}
+\marginnote{\refbookA p28〜29}
+
+行階段行列に変形することで、重要な量が読み取れる
+
+\begin{definition}{行列の階数}
+  行列$A$を行階段行列に変形したとき、零行でない行の個数を$A$の\keyword{階数}（rank）と呼び、$\rank(A)$と書く
+\end{definition}
+
+変形の結果として得られる行階段行列は1通りとは限らないし、変形の途中の掃き出しの手順も1通りとは限らないが、
+\begin{shaded}
+  階数は$A$のみによって定まる値である
+\end{shaded}
+ことが後に証明できる
+
+\sectionline
+
+$A$が$m \times n$型ならば、行は$m$個なので、$\rank(A)$は0以上$m$以下の整数である
+
+\br
+
+行階段行列において、零行でない行の個数は主成分の個数と一致するので、階数は行階段行列に変形したときの主成分の個数でもある
+
+\br
+
+行基本行列の主成分は各列に高々1つなので、主成分の個数は列の個数$n$を超えない
+
+\br
+
+したがって、次の重要な評価が成り立つ
+\begin{equation*}
+  0 \leq \rank(A) \leq \min(m,n)
+\end{equation*}
+
+\end{document}

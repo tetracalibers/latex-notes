@@ -1,0 +1,101 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{拡大係数行列}
+\marginnote{\refbookB p99〜100}
+
+次のような連立一次方程式を考える
+
+\br
+
+\begin{center}
+  \systeme{
+    x + y =3,
+    -x + z= -1,
+    -2x - y + 2z = -4
+  }
+\end{center}
+
+\br
+
+0や1の係数を省略せずに書くと、
+
+\br
+
+\begin{center}
+  \systeme{
+    1x + 1y + 0z = 3,
+    -1x + 0y + 1z = -1,
+    -2x - 1y + 2z = -4
+  }
+\end{center}
+
+\br
+
+となるので、これを行列で表すと、
+
+\begin{equation*}
+  \begin{pmatrix}
+    1  & 1  & 0 \\
+    -1 & 0  & 1 \\
+    -2 & -1 & 2
+  \end{pmatrix} \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix} = \begin{pmatrix}
+    3  \\
+    -1 \\
+    -4
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+左辺の行列は、連立方程式の係数だけを取り出した行列になっているので、\keyword{係数行列}と呼ばれる
+\begin{equation*}
+  A = \begin{pmatrix}
+    1  & 1  & 0 \\
+    -1 & 0  & 1 \\
+    -2 & -1 & 2
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+また、右辺のベクトルは定数項をまとめたものになっているので、\keyword{定数項ベクトル}と呼ばれる
+\begin{equation*}
+  \vb*{b} = \begin{pmatrix}
+    3  \\
+    -1 \\
+    -4
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+連立方程式の解を求める過程の式変形（行基本変形）によって、係数行列$A$と定数項ベクトル$\vb*{b}$の成分が変化していく
+
+\br
+
+そこで、変形の過程で変化する数（操作の対象）を、次のように1つの行列$(A \mid \vb*{b})$としてまとめてしまおう
+
+\begin{equation*}
+  \begin{pNiceArray}{ccc|c}
+    1 & 1 & 0 & 3 \\
+    -1 & 0 & 1 & -1\\
+    -2 & -1 & 2 & -4
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+このように、係数行列と定数項ベクトルを1つの行列としてまとめたものを\keyword{拡大係数行列}という
+
+\br
+
+拡大係数行列に対して行基本変形を繰り返し行うことで、連立一次方程式の解を求めることができる
+
+\end{document}

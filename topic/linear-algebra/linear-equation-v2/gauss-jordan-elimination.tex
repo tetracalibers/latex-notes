@@ -1,0 +1,255 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{拡大係数行列の変形と単位行列}
+\marginnote{\refbookB p100}
+
+連立方程式に対する式変形の結果として得られる形にはさまざまなパターンがあるが、まずは最も単純な場合を考える
+
+\br
+
+たとえば、最終的に次のような形になれば、解$x,y,z$が求まったことになる
+（$\bigstar$はそれぞれ異なる数でよい）
+
+\begin{center}
+  \systeme{
+    x = \bigstar ,
+    y = \bigstar ,
+    z = \bigstar
+  }
+\end{center}
+
+\br
+
+この理想形を拡大係数行列で表すと、次のようになる
+\begin{equation*}
+  \begin{pNiceArray}{ccc|c}
+    1 & 0 & 0 & \bigstar \\
+    0 & 1 & 0 & \bigstar \\
+    0 & 0 & 1 & \bigstar
+  \end{pNiceArray}
+\end{equation*}
+
+つまり、$(A\mid \vb*{b})$という拡大係数行列に対して、$(E \mid \bigstar)$という形を目指して行基本変形を施すことで、連立方程式を解くことができる
+
+\sectionline
+\section{掃き出し法}
+\marginnote{\refbookB p100 \\ \refbookA p18〜21}
+
+具体的には、次のような手順によって、拡大係数行列を変形していく
+
+ここで述べる手順は\keyword{掃き出し法}と呼ばれるものである
+
+\br
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=1cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1  & 1  & 0 & 3  & R_1 \\
+        -1 & 0  & 1 & -1 & R_2 \\
+        -2 & -1 & 2 & -4 & R_3
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x + y =3,
+      -x + z= -1,
+      -2x - y + 2z = -4
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\br
+
+まず、$(1,1)$成分より下の成分が0になるように基本変形を適用する
+
+このことを、「$(1,1)$成分を\keyword{要}にして第1列を掃き出す」と表現する
+
+\br
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=1cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        \CodeBefore
+        \rectanglecolor{carnationpink!30}{1-1}{3-1}
+        \Body
+        1  & 1  & 0 & 3  &           \\
+        0  & 1  & 1 & 2  & R_2 + R_1 \\
+        -2 & -1 & 2 & -4 &
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x + y =3,
+      y + z = 2,
+      -2x - y + 2z = -4
+    }
+  \end{tcolorbox}
+
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        \CodeBefore
+        \rectanglecolor{carnationpink!30}{1-1}{3-1}
+        \Body
+        1 & 1 & 0 & 3 &            \\
+        0 & 1 & 1 & 2 &            \\
+        0 & 1 & 2 & 2 & R_3 + 2R_1
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x + y =3,
+      y + z = 2,
+      y + 2z = 2
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\br
+
+今度は、$(2,2)$成分を要にして第2列を掃き出す
+
+\br
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=1cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        \CodeBefore
+        \rectanglecolor{carnationpink!30}{2-2}{3-2}
+        \Body
+        1 & 1 & 0 & 3 &           \\
+        0 & 1 & 1 & 2 &           \\
+        0 & 0 & 1 & 0 & R_3 - R_2
+        \CodeAfter
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x + y =3,
+      y + z = 2,
+      z = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\br
+
+これで、対角成分がすべて1になった
+
+最後に、対角成分以外の成分を0にするための行基本変形を施す
+
+\br
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=1cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & 1 & 0 & 3 &           \\
+        0 & 1 & 0 & 2 & R_2 - R_3 \\
+        0 & 0 & 1 & 0 &
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+        \tikz \draw[thick,magenta] (3-3) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x + y =3,
+      y = 2,
+      z = 0
+    }
+  \end{tcolorbox}
+
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & 0 & 0 & 1 & R_1 - R_2 \\
+        0 & 1 & 0 & 2 &           \\
+        0 & 0 & 1 & 0 &
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+        \tikz \draw[thick,magenta] (3-3) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x = 1,
+      y = 2,
+      z = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\sectionline
+\section{拡大係数行列の変形と上三角形}
+\marginnote{\refbookB p100}
+
+ところで、先ほどの例では、対角成分以外の成分を0にしなくても、対角成分がすべて1になった時点で、解は十分に読み取れる形になっている
+
+\br
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=1cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4]
+        \CodeBefore
+        \cellcolor{carnationpink!30}{1-1}
+        \cellcolor{carnationpink!30}{2-2}
+        \cellcolor{carnationpink!30}{3-3}
+        \cellcolor{carnationpink!30}{1-2}
+        \cellcolor{carnationpink!30}{1-3}
+        \cellcolor{carnationpink!30}{2-3}
+        \Body
+        1 & 1 & 0 & 3 \\
+        0 & 1 & 1 & 2 \\
+        0 & 0 & 1 & 0
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+        \tikz \draw[thick,magenta] (3-3) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x + y =3,
+      y + z = 2,
+      z = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\br
+
+この時点でも、$z=0$を代入すれば$y=2$が得られ、さらに$y=2$を代入すれば$x=1$が得られることがすぐにわかる
+
+\br
+
+このとき、係数行列は上三角行列になっているので、この形の方程式は\keyword{上三角形}と呼ばれる
+
+\br
+
+上三角形を目指すことが、掃き出し法の基本方針である
+
+しかし、いつでも上三角形に変形できるわけではない
+
+\end{document}

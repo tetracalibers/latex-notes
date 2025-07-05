@@ -1,0 +1,287 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{解が無限個ある場合}
+\marginnote{\refbookB p101}
+
+掃き出し法によって、係数行列を単位行列に変形できない場合もある
+
+\begin{itemize}
+  \item 解が一意に定まらない場合（解が無限個ある場合）
+  \item 解が存在しない場合
+\end{itemize}
+
+まずは、解が一意に定まらない場合を見てみよう
+
+\br
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1 & R_1 \\
+        2 & 1  & 0  & 2 & R_2 \\
+        1 & 0  & -1 & 1 & R_3
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      2x + y = 2,
+      x - z = 1
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+$(1,1)$成分を要にして第1列を掃き出す：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1 &            \\
+        0 & 3  & 6  & 0 & R_2 - 2R_1 \\
+        0 & 1  & 2  & 0 & R_3 - R_1
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      3y + 6z = 0,
+      y + 2z = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+$(2,2)$成分を1にする：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1 &                 \\
+        0 & 1  & 2  & 0 & \frac{1}{3} R_2 \\
+        0 & 1  & 2  & 0 &
+        \CodeAfter
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      y + 2z = 0,
+      y + 2z = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+$(2,2)$成分を要にして第2列を掃き出す：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1 &           \\
+        0 & 1  & 2  & 0 &           \\
+        0 & 0  & 0  & 0 & R_3 - R_2
+        \CodeAfter
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      y + 2z = 0,
+      0 = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+1を対角成分として持つ列の対角成分以外を0にする：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        \CodeBefore
+        \cellcolor{carnationpink!30}{1-1}
+        \cellcolor{carnationpink!30}{2-2}
+        \cellcolor{carnationpink!30}{1-2}
+        \cellcolor{carnationpink!30}{1-3}
+        \cellcolor{carnationpink!30}{2-3}
+        \Body
+        1 & 0 & -1 & 1 & R_1 - R_2 \\
+        0 & 1 & 2  & 0 &           \\
+        0 & 0 & 0  & 0 &
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x -z = 1,
+      y + 2z = 0,
+      0 = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\br
+
+この連立方程式は、実質的に2本の方程式しか持たないことがわかる
+
+\begin{center}
+  \systeme{
+    x - z = 1,
+    y + 2z = 0
+  }
+\end{center}
+
+$x,y$について解くと、
+
+\begin{center}
+  \systeme{
+    x = z + 1,
+    y = -2z
+  }
+\end{center}
+
+となるので、$z$に任意の数$z=\alpha$を与えて解が得られる
+
+\begin{equation*}
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix} = \begin{pmatrix}
+    \alpha + 1 \\
+    -2\alpha   \\
+    \alpha
+  \end{pmatrix} = \alpha \begin{pmatrix}
+    1  \\
+    -2 \\
+    1
+  \end{pmatrix} + \begin{pmatrix}
+    1 \\
+    0 \\
+    0
+  \end{pmatrix}
+\end{equation*}
+
+\sectionline
+\section{解が存在しない場合}
+\marginnote{\refbookB p104}
+
+次のような連立一次方程式を考える
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1 & R_1 \\
+        2 & 1  & 0  & 1 & R_2 \\
+        1 & 0  & -1 & 1 & R_3
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      2x + y = 1,
+      x - z = 1
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+$(1,1)$成分を要にして第1列を掃き出す：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1  &            \\
+        0 & 3  & 6  & -1 & R_2 - 2R_1 \\
+        0 & 1  & 2  & 0  & R_3 - R_1
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      3y + 6z = -1,
+      y + 2z = 0
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+$(2,2)$成分を1にするため、第2行と第3行を入れ替える：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        1 & -1 & -3 & 1  &     \\
+        0 & 1  & 2  & 0  & R_3 \\
+        0 & 3  & 6  & -1 & R_2
+        \CodeAfter
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      y + 2z = 0,
+      3y + 6z = -1
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+$(2,2)$成分を要にして第2列を掃き出す：
+
+\begin{tcbraster}[raster columns=2, raster equal height=rows,size=small, empty, raster column skip=1cm, raster row skip=0.5cm]
+  \begin{tcolorbox}
+    \begin{equation*}
+      \begin{pNiceMatrix}[margin,vlines = 4,last-col, code-for-last-col = \color{BurntOrange}]
+        \CodeBefore
+        \cellcolor{carnationpink!30}{1-1}
+        \cellcolor{carnationpink!30}{2-2}
+        \cellcolor{carnationpink!30}{1-2}
+        \cellcolor{carnationpink!30}{1-3}
+        \cellcolor{carnationpink!30}{2-3}
+        \Body
+        1 & -1 & -3 & 1  &            \\
+        0 & 1  & 2  & 0  &            \\
+        0 & 0  & 0  & -1 & R_3 - 3R_2
+        \CodeAfter
+        \tikz \draw[thick,magenta] (1-1) circle (0.5em);
+        \tikz \draw[thick,magenta] (2-2) circle (0.5em);
+      \end{pNiceMatrix}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}
+    \systeme{
+      x - y - 3z = 1,
+      y + 2z = 0,
+      0 = -1
+    }
+  \end{tcolorbox}
+\end{tcbraster}
+
+\br
+
+$0 = -1$という式が現れたので、この連立方程式には解が存在しない
+
+\end{document}
