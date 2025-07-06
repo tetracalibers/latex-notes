@@ -1,0 +1,400 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{単射と全射}
+\marginnote{\refbookL p118〜119}
+
+ここまで、$\vb*{y} = A\vb*{x}$という関係について、次の2つの観点で議論してきた
+
+\begin{enumerate}[label=\romanlabel]
+  \item 同じ結果$\vb*{y}$が出るような原因$\vb*{x}$は唯一か
+  \item どんな結果$\vb*{y}$にも、それが出るような原因$\vb*{x}$が存在するか
+\end{enumerate}
+
+$\vb*{y} = A\vb*{x}$を方程式と捉えると、(\romannum{i})は解の一意性、(\romannum{ii})は解の存在に対応する
+
+\subsection{単射}
+
+(\romannum{i})は、次のようにも言い換えられる
+
+\begin{enumerate}[label=\romanlabel]
+  \item 異なる原因$\vb*{x},\vb*{x}'$が、$A$で同じ結果に写ることがないか
+\end{enumerate}
+
+(\romannum{i})の条件が成り立つとき、「線形写像$\vb*{y} = A\vb*{x}$は\keyword{単射}である」という
+
+\subsection{全射}
+
+(\romannum{ii})は、次のようにも言い換えられる
+
+\begin{enumerate}[label=\romanlabel,start=2]
+  \item 元の空間全体（\keyword{定義域}）を$A$で写した領域$\Im A$が、行き先の空間全体（\keyword{値域}）に一致するか
+\end{enumerate}
+
+(\romannum{ii})の条件が成り立つとき、「線形写像$\vb*{y} = A\vb*{x}$は\keyword{全射}である」という
+
+\subsection{全単射}
+
+(\romannum{i})と(\romannum{ii})の両方が成り立つときは、「線形写像$\vb*{y} = A\vb*{x}$は\keyword{全単射}である」という
+
+\sectionline
+\section{零ベクトルと単射性}
+\marginnote{\refbookA p65〜66 \\ \refbookC p71〜73}
+
+零写像と射影を除けば、$f$によってベクトルが「つぶれない」という性質は、次のように表せる
+\begin{equation*}
+  \vb*{v} \neq 0 \Longrightarrow f(\vb*{v}) \neq \vb*{o}
+\end{equation*}
+
+\todo{\refbookA p55 例2.1.15}
+
+この条件は、実は線形写像が単射であることを意味している
+
+対偶をとって、次のように表現できる
+
+\begin{theorem}{零ベクトルへの写像による単射性の判定}\label{thm:injective-zero-test}
+  線形写像$f$が単射であることと次は同値である
+  \begin{equation*}
+    f(\vb*{v}) = \vb*{o} \Longrightarrow \vb*{v} = \vb*{o}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$が単射
+    \item $f(\vb*{v}) = \vb*{o} \Longrightarrow \vb*{v} = \vb*{o}$
+  \end{enumerate}
+
+  \begin{subpattern}{(\romannum{i}) $\Longrightarrow$ (\romannum{ii})}
+    零ベクトルの像は零ベクトルであることから、$f(\vb*{v}) = \vb*{o}$は、
+    \begin{equation*}
+      f(\vb*{v}) = f(\vb*{o})
+    \end{equation*}
+    と書き換えられる
+
+    $f$の単射性により、この式から、
+    \begin{equation*}
+      \vb*{v} = \vb*{o}
+    \end{equation*}
+    がしたがう $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longrightarrow$ (\romannum{i})}
+    $f(\vb*{v}_1) = f(\vb*{v}_2)$を満たす$\vb*{v}_1, \vb*{v}_2 \in \mathbb{R}^n$を考える
+
+    このとき、$f$の線形性から、
+    \begin{equation*}
+      f(\vb*{v}_1 - \vb*{v}_2) = f(\vb*{v}_1) - f(\vb*{v}_2)
+    \end{equation*}
+    となる
+
+    仮定(\romannum{ii})より、
+    \begin{equation*}
+      f(\vb*{v}_1 - \vb*{v}_2) = \vb*{o} \Longrightarrow \vb*{v}_1 - \vb*{v}_2 = \vb*{o}
+    \end{equation*}
+    がいえるので、$\vb*{v}_1 = \vb*{v}_2$が成り立つ
+
+    $f(\vb*{v}_1) = f(\vb*{v}_2)$から$\vb*{v}_1 = \vb*{v}_2$が導かれたことで、$f$は単射であることが示された $\qed$
+  \end{subpattern}
+\end{proof}
+
+\sectionline
+\section{核・像と単射・全射}
+\marginnote{\refbookL p119}
+
+先ほどの定理で、線形写像$f$によって「潰れない」という条件が、単射性と同値であることが示された
+
+つまり、線形写像$f$の核$\Ker f$が、$f$の単射性と関係しそうである
+
+\br
+
+また、線形写像$f$の像$\Im f$が値域と一致するかどうかが、$f$の全射性と関係する
+
+\br
+
+\begin{center}
+  \begin{tikzpicture}[scale=0.7]
+    % for main regions
+    \def\OuterWidth{3.5}
+    \def\OuterHeight{6}
+    \def\OuterDistance{3}
+
+    \def\InnerOffsetX{0.75}
+    \def\InnerOffsetTop{1.2}
+    \def\InnerOffsetBottom{0.75}
+
+    % Define main regions
+    \coordinate (V-nw) at (0,\OuterHeight);
+    \coordinate (V-se) at (\OuterWidth,0);
+    \coordinate (V-ne) at (\OuterWidth,\OuterHeight);
+    \coordinate (W-nw) at ($(\OuterWidth + \OuterDistance,\OuterHeight)$);
+    \coordinate (W-se) at ($(\OuterWidth*2 + \OuterDistance,0)$);
+    \coordinate (W-sw) at (\OuterWidth + \OuterDistance,0);
+
+    % Draw outer boxes for V and W
+    \filldraw[thick, lightslategray!10, draw=lightslategray] (V-nw) rectangle (V-se);
+    \filldraw[thick, lightslategray!10, draw=lightslategray] (W-nw) rectangle (W-se);
+
+    % Define inner shaded boxes
+    \coordinate (Ker-nw) at ($(V-nw) + (\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Ker-se) at ($(V-se) + (-\InnerOffsetX,\InnerOffsetBottom)$);
+    \coordinate (Ker-ne) at ($(V-ne) + (-\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Im-nw) at ($(W-nw) + (\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Im-se) at ($(W-se) + (-\InnerOffsetX,\InnerOffsetBottom)$);
+    \coordinate (Im-sw) at ($(W-sw) + (\InnerOffsetX,\InnerOffsetBottom)$);
+
+    % Shaded regions: Ker f and Im f
+    \filldraw[SkyBlue!40,draw=Cerulean] (Ker-nw) rectangle (Ker-se);
+    \filldraw[carnationpink!40,draw=Rhodamine] (Im-nw) rectangle (Im-se);
+
+    % Labels
+    \node at ($(Ker-nw)!0.5!(Ker-nw -| Ker-se)$) {\large$\Ker f$};
+    \node at ($(Im-nw)!0.5!(Im-nw -| Im-se)$) {\large$\Im f$};
+    \node (V) at ($(V-nw)!0.5!(V-nw -| V-se)+(0,0.5)$) {\Large$V$};
+    \node (W) at ($(W-nw)!0.5!(W-nw -| W-se)+(0,0.5)$) {\Large$W$};
+
+    % Define identity element points
+    \coordinate (x) at ([yshift=1ex]$(Ker-nw)!0.5!(Ker-se)$);
+    \coordinate (fx) at ([yshift=1ex]$(Im-nw)!0.5!(Im-se)$);
+
+    % Draw points
+    \fill (x) circle (3pt);
+    \fill[Cerulean] (fx) circle (3pt);
+    \node[below] at (x) {$\vb*{x}$};
+    \node[below, Cerulean] at (fx) {$\vb*{o}$};
+
+    % Arrow for function f
+    \draw[->, thick] ($(V) + (0.5*\OuterWidth+0.5, 0)$) -- ($(W) + (-0.5*\OuterWidth-0.5,0)$) node[midway, above] {\large$f$};
+
+    % Dotted arrows connecting box corners and points
+    \draw[densely dashed, thick, Rhodamine] (V-ne) -- (Im-nw);
+    \draw[densely dashed, thick, Rhodamine] (V-se) -- (Im-sw);
+    \draw[densely dashed, thick, Cerulean] (Ker-ne) -- (fx);
+    \draw[densely dashed, thick, Cerulean] (Ker-se) -- (fx);
+  \end{tikzpicture}
+\end{center}
+
+\subsection{単射となるときの核}
+
+線形写像$f$が単射であるとは、「潰れない」ということなので、次のような状況である
+
+\begin{center}
+  \begin{tikzpicture}[scale=0.7]
+    % for main regions
+    \def\OuterWidth{3.5}
+    \def\OuterHeight{6}
+    \def\OuterDistance{3}
+
+    \def\InnerOffsetX{0.75}
+    \def\InnerOffsetTop{1.2}
+    \def\InnerOffsetBottom{0.75}
+
+    % Define main regions
+    \coordinate (V-nw) at (0,\OuterHeight);
+    \coordinate (V-se) at (\OuterWidth,0);
+    \coordinate (V-ne) at (\OuterWidth,\OuterHeight);
+    \coordinate (W-nw) at ($(\OuterWidth + \OuterDistance,\OuterHeight)$);
+    \coordinate (W-se) at ($(\OuterWidth*2 + \OuterDistance,0)$);
+    \coordinate (W-sw) at (\OuterWidth + \OuterDistance,0);
+
+    % Draw outer boxes for V and W
+    \filldraw[thick, lightslategray!10, draw=lightslategray] (V-nw) rectangle (V-se);
+    \filldraw[thick, lightslategray!10, draw=lightslategray] (W-nw) rectangle (W-se);
+
+    % Define inner shaded boxes
+    \coordinate (Ker-nw) at ($(V-nw) + (\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Ker-se) at ($(V-se) + (-\InnerOffsetX,\InnerOffsetBottom)$);
+    \coordinate (Ker-ne) at ($(V-ne) + (-\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Im-nw) at ($(W-nw) + (\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Im-se) at ($(W-se) + (-\InnerOffsetX,\InnerOffsetBottom)$);
+    \coordinate (Im-sw) at ($(W-sw) + (\InnerOffsetX,\InnerOffsetBottom)$);
+
+    % Shaded regions: Ker f and Im f
+    \filldraw[carnationpink!40,draw=Rhodamine] (Im-nw) rectangle (Im-se);
+
+    % Labels
+    \node at ($(Im-nw)!0.5!(Im-nw -| Im-se)$) {\large$\Im f$};
+    \node (V) at ($(V-nw)!0.5!(V-nw -| V-se)+(0,0.5)$) {\Large$V$};
+    \node (W) at ($(W-nw)!0.5!(W-nw -| W-se)+(0,0.5)$) {\Large$W$};
+
+    % Define identity element points
+    \coordinate (x) at ([yshift=1ex]$(Ker-nw)!0.5!(Ker-se)$);
+    \coordinate (fx) at ([yshift=1ex]$(Im-nw)!0.5!(Im-se)$);
+
+    % Draw points
+    \fill[Cerulean] (x) circle (3pt);
+    \fill[Cerulean] (fx) circle (3pt);
+    \node[above] at (x) {\large$\Ker f$};
+    \node[below, Cerulean] at (fx) {$\vb*{o}$};
+
+    % Arrow for function f
+    \draw[->, thick] ($(V) + (0.5*\OuterWidth+0.5, 0)$) -- ($(W) + (-0.5*\OuterWidth-0.5,0)$) node[midway, above] {\large$f$};
+
+    % Dotted arrows connecting box corners and points
+    \draw[densely dashed, thick, Rhodamine] (V-ne) -- (Im-nw);
+    \draw[densely dashed, thick, Rhodamine] (V-se) -- (Im-sw);
+    \draw[densely dashed, thick, Cerulean] (x) -- (fx);
+  \end{tikzpicture}
+\end{center}
+
+\br
+
+つまり、$\Ker f$が零ベクトル$\vb*{o}$のみを含む状態であればよい
+
+\begin{theorem}{線形写像の単射性と核の関係}\label{thm:injective-iff-trivial-kernel}
+  $f$を線形写像とするとき、
+  \begin{equation*}
+    f\text{が単射} \Longleftrightarrow \Ker f = \{ \vb*{o} \}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\Ker f$の定義は
+  \begin{equation*}
+    \Ker f = \{ \vb*{v} \in V \mid f(\vb*{v}) = \vb*{o} \}
+  \end{equation*}
+
+  これを踏まえて、次の2つが同値であることを示す
+  \begin{enumerate}[label=\romanlabel]
+    \item $f(\vb*{v}) = \vb*{o} \Longrightarrow \vb*{v} = \vb*{o}$
+    \item $\Ker f = \{ \vb*{o} \}$
+  \end{enumerate}
+
+  \begin{subpattern}{(\romannum{i}) $\Longrightarrow$ (\romannum{ii})}
+    このとき、$f(\vb*{v}) = \vb*{o}$が$\vb*{v} = \vb*{o}$を意味するので、$\Ker f$の元は零ベクトルのみになる
+
+    よって、$\Ker f = \{ \vb*{o} \}$が成り立つ $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longrightarrow$ (\romannum{i})}
+    $\Ker f = \{ \vb*{o} \}$であれば、$\Ker f$の元は零ベクトルのみである
+
+    よって、$f(\vb*{v}) = \vb*{o}$が成り立つとき、$\vb*{v} = \vb*{o}$が成り立つことになる
+
+    すなわち、$f(\vb*{v}) = \vb*{o} \Longrightarrow \vb*{v} = \vb*{o}$が成り立つ $\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{全射となるときの像}\label{sec:image-and-surjectivity}
+
+線形写像$f$が全射であるとは、$\Im f$が行き先の空間全体を埋め尽くす状態である
+
+このような状態であれば、たしかに$f(\vb*{x})$が$\Im f$からはみ出してしまうことはない
+
+\begin{center}
+  \begin{tikzpicture}[scale=0.7]
+    % for main regions
+    \def\OuterWidth{3.5}
+    \def\OuterHeight{6}
+    \def\OuterDistance{3}
+
+    \def\InnerOffsetX{0.75}
+    \def\InnerOffsetTop{1.2}
+    \def\InnerOffsetBottom{0.75}
+
+    % Define main regions
+    \coordinate (V-nw) at (0,\OuterHeight);
+    \coordinate (V-se) at (\OuterWidth,0);
+    \coordinate (V-ne) at (\OuterWidth,\OuterHeight);
+    \coordinate (W-nw) at ($(\OuterWidth + \OuterDistance,\OuterHeight)$);
+    \coordinate (W-se) at ($(\OuterWidth*2 + \OuterDistance,0)$);
+    \coordinate (W-sw) at (\OuterWidth + \OuterDistance,0);
+
+    % Draw outer boxes for V and W
+    \filldraw[thick, lightslategray!10, draw=lightslategray] (V-nw) rectangle (V-se);
+
+    % Define inner shaded boxes
+    \coordinate (Ker-nw) at ($(V-nw) + (\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Ker-se) at ($(V-se) + (-\InnerOffsetX,\InnerOffsetBottom)$);
+    \coordinate (Ker-ne) at ($(V-ne) + (-\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Im-nw) at ($(W-nw) + (\InnerOffsetX,-\InnerOffsetTop)$);
+    \coordinate (Im-se) at ($(W-se) + (-\InnerOffsetX,\InnerOffsetBottom)$);
+    \coordinate (Im-sw) at ($(W-sw) + (\InnerOffsetX,\InnerOffsetBottom)$);
+
+    % Shaded regions: Ker f and Im f
+    \filldraw[SkyBlue!40,draw=Cerulean] (Ker-nw) rectangle (Ker-se);
+    \filldraw[carnationpink!40,draw=Rhodamine] (W-nw) rectangle (W-se);
+
+    % Labels
+    \node at ($(Ker-nw)!0.5!(Ker-nw -| Ker-se)$) {\large$\Ker f$};
+    \node (V) at ($(V-nw)!0.5!(V-nw -| V-se)+(0,0.5)$) {\Large$V$};
+    \node (W) at ($(W-nw)!0.5!(W-nw -| W-se)+(0,0.5)$) {\large$\Im f$};
+
+    % Define identity element points
+    \coordinate (x) at ([yshift=1ex]$(Ker-nw)!0.5!(Ker-se)$);
+    \coordinate (fx) at ([yshift=1ex]$(Im-nw)!0.5!(Im-se)$);
+
+    % Draw points
+    \fill (x) circle (3pt);
+    \fill[Cerulean] (fx) circle (3pt);
+    \node[below] at (x) {$\vb*{x}$};
+    \node[below, Cerulean] at (fx) {$\vb*{o}$};
+
+    % Arrow for function f
+    \draw[->, thick] ($(V) + (0.5*\OuterWidth+0.5, 0)$) -- ($(W) + (-0.5*\OuterWidth-0.5,0)$) node[midway, above] {\large$f$};
+
+    % Dotted arrows connecting box corners and points
+    \draw[densely dashed, thick, Rhodamine] (V-ne) -- (W-nw);
+    \draw[densely dashed, thick, Rhodamine] (V-se) -- (W-sw);
+    \draw[densely dashed, thick, Cerulean] (Ker-ne) -- (fx);
+    \draw[densely dashed, thick, Cerulean] (Ker-se) -- (fx);
+  \end{tikzpicture}
+\end{center}
+
+\br
+
+この状況を式で表すと、線形写像$f\colon V \to W$が全射であるとは、
+\begin{equation*}
+  \Im f = W
+\end{equation*}
+という条件と同値である
+
+\subsection{単射・全射との離れ具合}
+
+$\Ker f$が零ベクトルの集合に一致するなら$f$は単射であり、$\Im f$が写り先全体に一致するなら$f$は全射である
+
+\br
+
+このことから、$\Ker f$と$\Im f$は、それぞれ単射・全射と「どれくらいかけ離れているか」を測る尺度とも捉えられる
+
+\br
+
+\begin{center}
+  \begin{tikzpicture}[scale=1.4]
+    \coordinate (Vtop) at (0,4);
+    \coordinate (Vbottom) at (0,0);
+    \coordinate (Wtop) at (3,4);
+    \coordinate (Wbottom) at (3,0);
+    \coordinate (Ker-top) at (0,1.5);
+    \coordinate (Im-top) at (3,2.5);
+
+    % Nodes
+    \node[above] at (Vtop) {\large $V$};
+    \node[above] at (Wtop) {\large $W$};
+
+    % Dotted arrows
+    \draw[densely dashed, Rhodamine] (Vtop) -- (Im-top);
+    \draw[densely dashed, Rhodamine] (Ker-top) -- (Wbottom);
+    \draw[densely dashed, Cerulean] (Vbottom) -- (Wbottom);
+
+    \draw[line width=2pt, SkyBlue] (Ker-top) -- (Vbottom);
+    \draw[line width=2pt, lightslategray] (Wtop) -- (Im-top);
+
+    \draw[line width=4pt, line cap=round, carnationpink] (Vtop) -- (Ker-top);
+    \draw[line width=4pt, line cap=round, carnationpink] (Im-top) -- (Wbottom);
+
+    % points
+    \fill[SkyBlue] (Wbottom) circle (2pt);
+
+    % Ker f = 単射とのずれ
+    \draw[Cerulean, <->, Straight Barb-Straight Barb, very thick] ([xshift=-1.5ex]Ker-top) -- ([xshift=-1.5ex]Vbottom) node[midway,left, align=center] {$\Ker f$\\[-1ex] \bfseries\small "単射とのずれ"};
+    % Im f
+    \draw[Rhodamine, <->, Straight Barb-Straight Barb, very thick, shorten <= 0.25ex] ([xshift=1.5ex]Im-top) -- ([xshift=1.5ex]Wbottom) node[midway,right=0.5ex, align=center] {$\Im f$};
+    % 全射とのずれ
+    \draw[lightslategray, <->, Straight Barb-Straight Barb, very thick] ([xshift=1.5ex]Wtop) -- ([xshift=1.5ex]Im-top) node[midway,right, align=center] {\bfseries\small "全射とのずれ"};
+  \end{tikzpicture}
+\end{center}
+
+\end{document}

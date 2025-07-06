@@ -1,0 +1,94 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形写像の単射性と表現行列}
+\marginnote{\refbookA p67〜68}
+
+線形写像$f$が単射であることを、表現行列$A$の性質として述べると、次のような言い換えができる
+
+\begin{theorem}{線形写像の単射性と表現行列}
+  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値である
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$は単射
+    \item $A\vb*{x} = \vb*{o}$は自明な解しか持たない
+    \item $\rank(A) = n$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{(\romannum{i}) $\Longleftrightarrow$ (\romannum{ii})}
+    線形写像$f$は、表現行列$A$を用いて次のように表せる
+    \begin{equation*}
+      f(\vb*{x}) = A\vb*{x}
+    \end{equation*}
+
+    $f$が単射であることの言い換えは、
+    \begin{equation*}
+      f(\vb*{x}) = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
+    \end{equation*}
+    であり、$A\vb*{x} = \vb*{o}$が自明解しか持たないことは、
+    \begin{equation*}
+      A\vb*{x} = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
+    \end{equation*}
+    が成り立つということである
+
+    $f(\vb*{x}) = A\vb*{x}$であるから、これらの2つの条件は同値である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
+    斉次形の方程式$A\vb*{x} = \vb*{o}$に自明解しか存在しないことと
+    \begin{equation*}
+      \rank(A) = n
+    \end{equation*}
+    と同値であることは\hyperref[thm:homogeneous-trivial-iff-full-col-rank]{以前}証明済み $\qed$
+  \end{subpattern}
+\end{proof}
+
+\sectionline
+\section{線形写像の全射性と表現行列}
+\marginnote{\refbookA p67〜68}
+
+単射性と対比して、全射性についても表現行列の言葉で整理する
+
+\begin{theorem}{線形写像の全射性と表現行列}
+  線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値である
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$は全射
+    \item 任意の$\vb*{b} \in \mathbb{R}^m$に対して、$A\vb*{x} = \vb*{b}$には解が存在する
+    \item $\rank(A) = m$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{(\romannum{i}) $\Longleftrightarrow$ (\romannum{ii})}
+    線形写像$f$は、表現行列$A$を用いて次のように表せる
+    \begin{equation*}
+      f(\vb*{x}) = A\vb*{x}
+    \end{equation*}
+
+    $f$が全射であることの言い換えは、
+    \begin{equation*}
+      \forall \vb*{b} \in \mathbb{R}^m, \exists \vb*{x} \in \mathbb{R}^n, f(\vb*{x}) = \vb*{b}
+    \end{equation*}
+    であり、これは
+    \begin{equation*}
+      \forall \vb*{b} \in \mathbb{R}^m, A\vb*{x} = \vb*{b} \text{に解が存在する}
+    \end{equation*}
+    と同値である
+
+    よって、これらの2つの条件は同値である $\qed$
+
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
+    $\rank(A) = m$が、次の条件
+    \begin{equation*}
+      ^{\forall}\vb*{b} \in \mathbb{R}^m, A\vb*{x} = \vb*{b} \text{の解が存在する}
+    \end{equation*}
+    ことと同値であることは、\hyperref[thm:full-row-rank-solvable]{以前}証明済み $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}

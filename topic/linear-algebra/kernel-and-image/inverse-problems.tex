@@ -1,0 +1,36 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形写像と逆問題}
+
+$\vb*{y} = A\vb*{x}$という形の式は、$\vb*{x}$と$\vb*{y}$の次元が同じならば、連立一次方程式として捉えることができた
+\begin{equation*}
+  \begin{pmatrix}
+    y_1    \\
+    \vdots \\
+    y_n
+  \end{pmatrix} = \begin{pmatrix}
+    a_{11} & \cdots & a_{1n} \\
+    \vdots & \ddots & \vdots \\
+    a_{n1} & \cdots & a_{nn}
+  \end{pmatrix} \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+\end{equation*}
+そして、このような形の連立方程式を解くことは、「$\vb*{y}$から$\vb*{x}$を推定する」という逆問題を解くことに相当する
+
+\br
+
+一方、$\vb*{y} = A\vb*{x}$という式は、線形写像を表す式とみることもできる
+
+一般に、線形写像$\vb*{y} = A\vb*{x}$の表現行列$A$は$m \times n$行列であり、$\vb*{y}$は$m$次元ベクトル、$\vb*{x}$は$n$次元ベクトルである
+
+\br
+
+ここでは、$\vb*{x}$と$\vb*{y}$の次元が異なる場合の、「$\vb*{y}$から$\vb*{x}$を推定する」という逆問題を考えてみることにする
+
+\end{document}

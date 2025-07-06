@@ -1,0 +1,77 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{手がかりが多すぎる場合}
+\marginnote{\refbookL p114〜115}
+
+今度は、$\vb*{y}$の方が$\vb*{x}$より次元が大きい、すなわち$m > n$の場合を考える
+
+このとき、表現行列$A$は縦長の行列となる
+\begin{equation*}
+  \begin{pmatrix}
+    y_1    \\
+    \vdots \\
+    \vdots \\
+    y_m
+  \end{pmatrix} = \begin{pmatrix}
+    a_{11} & \cdots & a_{1n} \\
+    \vdots & \ddots & \vdots \\
+    \vdots & \ddots & \vdots \\
+    a_{m1} & \cdots & a_{mn}
+  \end{pmatrix} \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+\end{equation*}
+
+$m > n$の場合は、「知りたい量はたった$n$個しかないのに、手がかりが$m$個もある」という状況になっている
+
+この場合、手がかりどうしが矛盾することもある
+
+\subsection{$m > n$の場合の線形写像の写し方}
+
+$m > n$のとき、$A$は、元より次元の高い空間に写す線形写像を表す
+
+そのため、写り先の空間すべてをカバーすることはできない
+
+\br
+
+はみ出した$\vb*{y}$については、
+\begin{shaded}
+  そこに写ってきてくれる$\vb*{x}$が存在しない
+\end{shaded}
+ことになる
+
+\br
+
+現実の応用では、ノイズがのることで、はみ出した$\vb*{y}$が観測されることがある
+
+そうなると、「手がかり$y_1,\ldots,y_m$すべてに符号する$\vb*{x}$は存在しない」ということになってしまう
+
+\sectionline
+\section{線形写像の像}
+\marginnote{\refbookL p115 \\ \refbookC p79〜84}
+
+与えられた$A$に対して、$\vb*{x}$をいろいろ動かしたときに$A$で写り得る$\vb*{y} = A\vb*{x}$の集合を$A$の\keyword{像}といい、$\Im A$で表す
+
+\br
+
+別の言い方をすると、$\Im A$は、元の空間全体を$A$で写した領域である
+
+$\Im A$上にない$\vb*{y}$については、$\vb*{y} = A\vb*{x}$となるような$\vb*{x}$は存在しない
+
+\subsection{$\Im f$の定義}
+
+$A$が線形写像$f$の表現行列であるとすると、$\Im f$を次のように定義できる
+
+\begin{definition}{線形写像の像}
+  線形写像$f\colon V \to W$に対して、$f$による$V$の像$f(V)$を、線形写像$f$の\keyword{像}や\keyword{像空間}といい、$\Im(f)$と表記する
+  \begin{equation*}
+    \Im(f) = f(V) = \{ f(\vb*{v}) \in W \mid \vb*{v} \in V \} \subset W
+  \end{equation*}
+\end{definition}
+
+\end{document}

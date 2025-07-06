@@ -1,0 +1,172 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{手がかりが足りない場合}
+\marginnote{\refbookL p112〜113}
+
+手がかりとなる情報を$\vb*{y}$とし、知りたい情報を$\vb*{x}$とする
+
+\br
+
+まずは、$\vb*{y}$の方が$\vb*{x}$より次元が小さい、すなわち$m < n$の場合を考える
+
+このとき、表現行列$A$は横長の行列となる
+\begin{equation*}
+  \begin{pmatrix}
+    y_1    \\
+    \vdots \\
+    y_m
+  \end{pmatrix} = \begin{pmatrix}
+    a_{11} & \cdots & \cdots & a_{1n} \\
+    \vdots & \ddots & \vdots & \vdots \\
+    a_{m1} & \cdots & \cdots & a_{mn}
+  \end{pmatrix} \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+\end{equation*}
+
+$m < n$の場合は、「知りたい量が$n$個もあるのに、手がかりはたった$m$個しかない」という状況になっている
+
+\br
+
+見方を変えると、$A$を作用させたことによって「情報の一部が欠落してしまった」ともいえる
+
+\subsection{$m < n$の場合の線形写像の写し方}
+
+$m < n$のとき、$A$は、元より次元の低い空間に写す線形写像を表す
+
+そのため、$\vb*{x}$はこの線形写像によって「潰される」ことになる
+
+\br
+
+「潰される」とはどのようなことかというと、空間を張る$\vb*{x}$それぞれの居場所を、写す先では全員分用意することができないので、
+\begin{shaded}
+  複数の$\vb*{x}$を同じ$\vb*{y}$に写すしかない
+\end{shaded}
+ということである
+
+\br
+
+複数の$\vb*{x}$が同じ$\vb*{y}$に写ってしまうと、結果$\vb*{y}$から元の$\vb*{x}$を特定することはできなくなる（つまり、情報が失われている）
+
+\sectionline
+\section{線形写像の核}
+\marginnote{\refbookL p112〜114 \\ \refbookC p79〜84}
+
+次の図は、$1\times 3$行列$A$による線形写像を表している
+
+同じ平面上の点がすべて同じ点に写されることで、平面の集まりである立体（3次元）が、点の集まりである直線（1次元）へと「潰されている」ことがわかる
+
+\begin{center}
+  \tdplotsetmaincoords{70}{120}
+  \begin{tikzpicture}
+
+    % グローバル座標定義
+    \coordinate (A); % x
+    \coordinate (B); % x'
+    \coordinate (C); % T(v)
+
+    %----------------------------
+    % 左側: R^3 における T の前像
+    %----------------------------
+    \begin{scope}[tdplot_main_coords,scale=1.2]
+      \foreach \z/\col [count=\i] in {-1/lightslategray!40, -0.5/SkyBlue!60, 0/lightslategray!40, 0.5/carnationpink!60} {
+          \filldraw[\col,opacity=0.6]
+          (-1.2,-1.2,\z) -- (1.2,-1.2,\z) -- (1.2,1.2,\z) -- (-1.2,1.2,\z) -- cycle;
+
+          \ifnum\i=2
+            \coordinate (Os) at (-1.2,1.2,\z);
+            \coordinate (Oe) at (1.2,1.2,\z);
+
+            % 平面上にラベル
+            \node[SkyBlue,left] at (1.0,-1.25,\z) {$\Ker{A}$};
+          \fi
+
+          \ifnum\i=4
+            \coordinate (O) at (0,0,\z);
+            \coordinate (A) at (-0.7,0.8,\z);
+            \coordinate (B) at (0.5,0.8,\z);
+
+            \draw[->, -Straight Barb, carnationpink, thick, shorten >=0.5ex] (O) to (A);
+            \draw[->, -Straight Barb, carnationpink, thick, shorten >=0.5ex] (O) to (B);
+
+            \fill[lightgray] (O) circle (1.5pt) node[left] {$O$};
+            \fill[Rhodamine] (A) circle (2pt) node[below] {$\vb*{x}$};
+            \fill[Rhodamine] (B) circle (2pt) node[below] {$\vb*{x}'$};
+          \fi
+        }
+    \end{scope}
+
+    % 傾きを大きくする（例: y = 1.2x）
+    \def\slope{1.2}
+
+    %----------------------------
+    % 右側: R^2 への写像後（傾いた直線 + 点）
+    %----------------------------
+    \begin{scope}[xshift=5cm]
+
+      % 点を通る直線（範囲広め）
+      \draw[very thick, lightslategray!40] (-1.5,-1.5*\slope) -- (1.5,1.5*\slope);
+
+      % y
+      \coordinate (C) at (0.6,{0.6*\slope});
+      \fill[Rhodamine] (C) circle (3pt) node[below right] {$\vb*{y}$};
+
+      % o
+      \coordinate (Oy) at (-0.6,-0.6*\slope);
+      \fill[Cerulean] (Oy) circle (3pt) node[below right] {$\vb*{o}$};
+
+      % 他の点を並べる（y = slope * x）
+      \foreach \x in {-1.2, 0, 1.2} {
+          \pgfmathsetmacro{\y}{\slope*\x}
+          \fill[lightslategray!40] (\x,\y) circle (3pt);
+        }
+    \end{scope}
+
+    %----------------------------
+    % 矢印: x, x' → T(v)
+    %----------------------------
+    \draw[vector, thick, shorten <= 3pt, shorten >=0.75ex, bend left=10,densely dashed, Rhodamine!80] (A) to (C);
+    \draw[vector, thick, shorten <= 3pt, shorten >=1ex, bend right=10,densely dashed, Rhodamine!80] (B) to (C);
+
+    \draw[vector, thick, shorten >=0.5ex, densely dashed,SkyBlue] (Os) to (Oy);
+    \draw[vector, thick, shorten >=0.75ex, densely dashed, SkyBlue] (Oe) to (Oy);
+
+    \draw[->, -Straight Barb, thick, shorten >=1ex, carnationpink] ([xshift=1ex]Oy) to ([xshift=1ex]C);
+
+  \end{tikzpicture}
+\end{center}
+
+このとき、$A\vb*{x} = \vb*{o}$に写ってくるような$\vb*{x}$の集合を、$A$の\keyword{核}あるいは\keyword{カーネル}といい、$\Ker A$と表す
+
+\subsection{$\Ker A$の次元}
+
+上の図では、零ベクトル$\vb*{o}$（写り先の1次元空間の原点）に潰されている青い平面が$\Ker A$に相当する
+
+平面なので、この$\Ker A$は2次元である
+
+\br
+
+もしも$m < n$でない場合、つまり潰れない写像の場合は、$A\vb*{x} = \vb*{o}$に写る$\vb*{x}$は零ベクトル$\vb*{o}$だけなので、$\Ker A$は0次元となる
+
+\subsection{$\Ker A$に平行な方向の成分}
+
+\todo{\refbookL p114}
+
+\subsection{$\Ker f$の定義}
+
+$A$が線形写像$f$の表現行列であるとすると、$\Ker f$を次のように定義できる
+
+\begin{definition}{線形写像の核}
+  線形写像$f\colon V \to W$に対して、$f$による$\{\vb*{o}\}$の逆像$f^{-1}(\{\vb*{o}\})$を、線形写像$f$の\keyword{核}や\keyword{核空間}、あるいは\keyword{カーネル}といい、$\Ker(f)$と表記する
+  \begin{equation*}
+    \Ker(f) = f^{-1}(\{\vb*{o}\}) = \{ \vb*{v} \in V \mid f(\vb*{v}) = \vb*{o} \} \subset V
+  \end{equation*}
+\end{definition}
+
+\end{document}

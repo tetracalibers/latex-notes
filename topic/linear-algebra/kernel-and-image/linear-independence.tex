@@ -1,0 +1,97 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形写像の像と線型独立性}
+\marginnote{\refbookA p65〜66 \\ \refbookC p71〜73}
+
+\begin{theorem}{線形写像と線形独立性}
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \in \mathbb{R}^n$とする
+
+  ベクトル$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n$の$f$による像
+  \begin{equation*}
+    f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n)
+  \end{equation*}
+  が線型独立であるとき、$\{ \vb*{v}_1, \dots, \vb*{v}_n \}$も線型独立である
+\end{theorem}
+
+\begin{proof}
+  $\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n$の線形結合
+  \begin{equation*}
+    c_1 \vb*{v}_1 + c_2 \vb*{v}_2 + \dots + c_n \vb*{v}_n = \vb*{0}
+  \end{equation*}
+  を考える
+
+  この両辺を$f$で写すと、$f$の線形性と零ベクトルの像$f(\vb*{0}) = \vb*{0}$を使って
+  \begin{equation*}
+    c_1 f(\vb*{v}_1) + c_2 f(\vb*{v}_2) + \dots + c_n f(\vb*{v}_n) = f(\vb*{0}) = \vb*{0}
+  \end{equation*}
+
+  仮定より$f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n)$は線型独立なので、$c_1 = c_2 = \dots = c_n = 0$である
+
+  よって、
+  \begin{equation*}
+    c_1 \vb*{v}_1 + c_2 \vb*{v}_2 + \dots + c_n \vb*{v}_n = \vb*{0}
+  \end{equation*}
+  を満たす$c_1, c_2, \dots, c_n$は0しかないので、$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$は線型独立である $\qed$
+\end{proof}
+
+\sectionline
+
+次の定理は、平行なベクトルを線型写像で写した結果、平行でなくなったりはしないということを述べている
+
+\begin{theorem}{線形写像と線形従属性}
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \in \mathbb{R}^n$とする
+
+  $\{\vb*{v}_1, \dots, \vb*{v}_n\}$が線形従属ならば、$\{ f(\vb*{v}_1),  \dots, f(\vb*{v}_n) \}$は線形従属である
+\end{theorem}
+
+\begin{proof}
+  $\{\vb*{v}_1, \dots, \vb*{v}_n\}$が線形従属であるとは、少なくとも1つは0でないある定数$k_1, k_2, \dots, k_n$が存在して
+  \begin{equation*}
+    k_1 \vb*{v}_1 + k_2 \vb*{v}_2 + \dots + k_n \vb*{v}_n = \vb*{0}
+  \end{equation*}
+  が成り立つことを意味する
+
+  この両辺を$f$で写すと、線形性より
+  \begin{equation*}
+    k_1 f(\vb*{v}_1) + k_2 f(\vb*{v}_2) + \dots + k_n f(\vb*{v}_n) = f(\vb*{0}) = \vb*{0}
+  \end{equation*}
+  が成り立つ
+
+  よって、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線形従属である $\qed$
+\end{proof}
+
+\sectionline
+
+たとえば平行四辺形の像が線分や1点になったりしないことなどは、「$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$が線型独立ならば、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線型独立である」と表現できる
+
+\begin{theorem}{単射な線型写像は線型独立性を保つ}\label{thm:injective-preserves-independence}
+  線型写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$が単射であるとき、$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$が線型独立ならば、$\{ f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n) \}$も線型独立である
+\end{theorem}
+
+\begin{proof}
+  $f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n)$の線形結合
+  \begin{equation*}
+    c_1 f(\vb*{v}_1) + c_2 f(\vb*{v}_2) + \dots + c_n f(\vb*{v}_n) = \vb*{0}
+  \end{equation*}
+  を考える
+
+  $f$の線形性と零ベクトルの像$f(\vb*{0}) = \vb*{0}$より、次のように書き換えられる
+  \begin{equation*}
+    f(c_1 \vb*{v}_1 + c_2 \vb*{v}_2 + \dots + c_n \vb*{v}_n) = \vb*{0} = f(\vb*{0})
+  \end{equation*}
+
+  $f$は単射だから、上式より
+  \begin{equation*}
+    c_1 \vb*{v}_1 + c_2 \vb*{v}_2 + \dots + c_n \vb*{v}_n = \vb*{0}
+  \end{equation*}
+  が成り立つ
+
+  ここで、$\vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n$は線型独立なので、$c_1 = c_2 = \dots = c_n = 0$である
+
+  よって、$f(\vb*{v}_1), f(\vb*{v}_2), \dots, f(\vb*{v}_n)$は線型独立である $\qed$
+\end{proof}
+
+\end{document}
