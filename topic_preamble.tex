@@ -23,6 +23,13 @@
 
 \usepackage{awesomebox}
 
+\newenvironment{supplnote}{
+  \begin{awesomeblock}{1pt}{\faPaw}{lightgray}
+    \small
+    }{
+  \end{awesomeblock}
+}
+
 % === math ===
 
 \usepackage{physics}
@@ -84,6 +91,20 @@
 \usepackage{titling}
 \renewcommand{\maketitlehooka}{\textsf}
 
+% === figure ===
+
+\usepackage{here} % figure環境のHオプション（画像を強制的にその場に表示する）を提供
+\usepackage{caption}
+
+% figure環境内で図の\captionを、table環境内で表の\captionを使う
+% ref: http://tony.in.coocan.jp/latex/index.html#captype
+\makeatletter%% プリアンブルで定義する場合は必須
+\newcommand{\figcap}[1]{\def\@captype{figure}\caption{#1}}
+\newcommand{\tblcap}[1]{\def\@captype{table}\caption{#1}}
+\newcommand{\figcapstar}[1]{\def\@captype{figure}\caption*{#1}}
+\newcommand{\tblcapstar}[1]{\def\@captype{table}\caption*{#1}}
+\makeatother%% プリアンブルで定義する場合は必須
+
 % === tikz ===
 
 \usepackage[dvipdfmx]{graphicx}
@@ -95,6 +116,7 @@
   patterns.meta,
   decorations.text,
   decorations.pathreplacing,
+  decorations.footprints,
   cd,
   petri,
   positioning,
@@ -176,6 +198,29 @@
   right=0.25cm,
   left=0.25cm,
   #1
+}
+
+\DeclareTColorBox{emphabox}{O{CadetBlue}}{%
+  enhanced,
+  breakable,
+  interior hidden,
+  frame hidden,
+  grow sidewards by=-5mm,
+  beforeafter skip=\baselineskip,
+  frame code={%
+      \draw[line width=1pt,#1] ($(frame.north west)!0.3!(frame.north east)$) -- (frame.north west) -- ($(frame.north west)!0.3!(frame.south west)$);
+      \draw[line width=1pt,#1] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east) -- ($(frame.south east)!0.3!(frame.north east)$);
+      \draw[rosepink, fill=carnationpink, decorate, decoration={footprints,foot length=7pt,foot of=felis silvestris, foot angle=5, foot sep=2pt}] ($(frame.south east)!0.3!(frame.south west)$) -- (frame.south east);
+    }
+}
+
+\DeclareTColorBox{spacebox}{}{%
+  enhanced,
+  breakable,
+  interior hidden,
+  frame hidden,
+  grow sidewards by=-5mm,
+  beforeafter skip=\baselineskip,
 }
 
 \newcommand{\ProofColor}{coolgrey}

@@ -1,0 +1,219 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{移動の表現としてのベクトル}
+
+平面上のある点の位置を表すのに、よく使われるのが\keyword{直交座標系}である。
+
+直交座標系では、$x$軸と$y$軸を垂直に張り、
+\begin{itemize}
+  \item 原点$O$からの$x$軸方向の移動量（$x$座標）
+  \item 原点$O$からの$y$軸方向の移動量（$y$座標）
+\end{itemize}
+という2つの数の組で点の位置を表す。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[b]{0.49\columnwidth}
+    \centering
+    \scalebox{0.9}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        % 0.5刻みのグリッド
+        \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        \draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+        \draw[axis] (0, \ymin) -- (0, \ymax) node[above] {$y$};
+
+        % 原点
+        \node at (0, 0) [below left] {$O$};
+
+        % x軸方向の移動量
+        \draw[dashed, very thick, Rhodamine] (0, 0) -- (\vx, 0) node[below, midway] {$a$};
+        % y軸方向の移動量
+        \draw[dashed, very thick, Cerulean] (\vx,0) -- (\vx, \vy) node[right, midway] {$b$};
+
+        % 点
+        \draw (\vx, \vy) node[circle, fill, inner sep=1.5pt] {};
+        \node at (\vx, \vy) [above right] {$(a,b)$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries「位置の特定」という視点}
+  \end{minipage}
+  \begin{minipage}[b]{0.49\columnwidth}
+    \centering
+    \scalebox{0.9}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        % 平面
+        \draw[dotted, lightslategray] (\xmin, \ymin) -- (\xmax, \ymin) -- (\xmax, \ymax) -- (\xmin, \ymax) -- cycle;
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries「移動」という視点}
+  \end{minipage}
+\end{figure}
+
+\br
+
+座標とは、「$x$軸方向の移動」と「$y$軸方向の移動」という2回の移動を行った結果である。
+
+右にどれくらい、上にどれくらい、という考え方で平面上の「位置」を特定しているわけだが、単に「移動」を表したいだけなら、点から点へ向かう矢印で一気に表すこともできる。
+
+\br
+
+ある地点から別のある地点への「移動」を表す矢印を\keyword{ベクトル}という。
+
+\br
+
+ベクトルが示す、ある地点からこのように移動すれば、この地点にたどり着く…といった「移動」の情報は、相対的な「位置関係」を表す上で役に立つ。
+
+\subsection{平行移動してもベクトルは同じ}
+
+座標は「位置」を表すものだが、ベクトルは「移動」を表すものにすぎない。
+
+座標は「原点からの」移動量によって位置を表すが、ベクトルは始点の位置にはこだわらない。
+
+\br
+
+たとえば、次の2つのベクトルは始点の位置は異なるが、同じ向きに同じだけ移動している矢印なので、同じベクトルとみなせる。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+      \def\vx{1.5}
+      \def\vy{2}
+      \def\sx{2.5}
+      \def\sy{1}
+
+      \draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+      \draw[axis] (0, \ymin) -- (0, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (0, 0) [below left] {$O$};
+
+      % ベクトル
+      \draw[vector, very thick, magenta] (0, 0) -- (\vx, \vy);
+
+      % 平行移動したベクトル
+      \draw[vector, very thick, magenta] (\sx, \sy) -- ($(\sx,\sy)+(\vx,\vy)$);
+
+      % 平行移動を表す破線
+      \draw[dashed, lightslategray] (0, 0) -- (\sx, \sy);
+      \draw[dashed, lightslategray] (\vx, \vy) -- ($(\vx,\vy)+(\sx,\sy)$);
+    \end{tikzpicture}
+  }
+\end{center}
+
+このような「同じ向きに同じだけ移動している矢印」は、平面内では平行な関係にある。
+
+つまり、平行移動して重なる矢印は、同じベクトルとみなすことができる。
+
+\subsection{移動の合成とベクトルの分解}
+
+ベクトルは、各方向への移動の合成として考えることもできる。
+
+純粋に「縦」と「横」に分解した場合は直交座標の考え方によく似ているが、必ずしも直交する方向のベクトルに分解する必要はない。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{1.5}
+        \def\vy{2}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0);
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean, shorten >=0.25em] (\vx, 0) -- (\vx, \vy);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries 「縦」と「横」に分解}
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-1}
+        \def\xmax{4}
+        \def\ymin{-1}
+        \def\ymax{4}
+        \def\vx{1.5}
+        \def\vy{2}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange, shorten >=0.25em, shorten <=0.25em] (A) -- (B);
+
+        % x軸方向のベクトル
+        \draw[vector, dashed, very thick, Rhodamine] (0,0) -- (\vx, 0.75);
+        % y軸方向のベクトル
+        \draw[vector, dashed, very thick, Cerulean, shorten >=0.25em] (\vx, 0.75) -- (\vx, \vy);
+
+        % 点A
+        \draw (A) node[circle, fill, inner sep=1.5pt] {};
+        \node at (A) [below left] {$A$};
+
+        % 点B
+        \draw (B) node[circle, fill, inner sep=1.5pt] {};
+        \node at (B) [above right] {$B$};
+      \end{tikzpicture}
+    }
+    \caption*{\bfseries 他の分解も考えられる}
+  \end{minipage}
+\end{figure}
+
+\end{document}

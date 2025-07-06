@@ -1,0 +1,51 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{一次結合}
+
+ベクトルを「引き伸ばす」スカラー倍と、「つなぎ合わせる」足し算を組み合わせることで、あるベクトルを他のベクトルを使って表すことができる。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.45\columnwidth}
+    \centering
+    \scalebox{1.2}{
+      \begin{tikzpicture}
+        \def\xmin{-0.5}
+        \def\xmax{3.5}
+        \def\ymin{0}
+        \def\ymax{3}
+        \def\ax{2.5}
+        \def\ay{2}
+
+        \coordinate (S) at (0.5,0.5);
+
+        % 透明なグリッド（bounding boxの調整用）
+        \draw[dotted, opacity=0] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+        % ベクトル
+        \draw[vector, very thick, BurntOrange] (S) -- ++(\ax,\ay) node[midway, auto] {$\vb*{a}_3$};
+
+        % x成分とy成分
+        \draw[vector, dashed, very thick, CarnationPink] (S) -- ++(\ax,0) node[below, pos=0.7] {$\lambda_1 \vb*{a}_1$};
+        \draw[vector, dashed, very thick, SkyBlue] (S) -- ++(0,\ay) node[left, pos=0.6] {$\lambda_2 \vb*{a}_2$};
+
+        % 基底ベクトル
+        \draw[vector, very thick, Rhodamine] ([yshift=0cm]S) -- ++(1,0) node[below, pos=0.4] {$\vb*{a}_1$};
+        \draw[vector, very thick, Cerulean] ([xshift=0cm]S) -- ++(0,0.5) node[left, near start] {$\vb*{a}_2$};
+      \end{tikzpicture}
+    }
+  \end{minipage}
+  \begin{minipage}{0.45\columnwidth}
+    \large
+    \begin{equation*}
+      \textcolor{BurntOrange}{\vb*{a}_3} = \textcolor{CarnationPink}{\lambda_1} \textcolor{Rhodamine}{\vb*{a}_1} + \textcolor{SkyBlue}{\lambda_2} \textcolor{Cerulean}{\vb*{a}_2}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
+
+このように、スカラー倍と和のみを使った形を\keyword{一次結合}もしくは\keyword{線形結合}という。
+
+\end{document}
