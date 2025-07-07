@@ -3,131 +3,44 @@
 \begin{document}
 
 \sectionline
-\section{線形関係式}
+\section{線形従属}
 
-\begin{definition}{線形関係式}
-  ベクトル$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_k$に対する等式
+ベクトルの組を考え、どれか1つのベクトルがほかのベクトルの線形結合で表せるとき、それらのベクトルの組は\keyword{線形従属}であるという。
+
+\begin{definition}{線形従属}
+  $k$個のベクトル$\{ \vb*{a}_1, \ldots, \vb*{a}_k \}$が\keyword{線形従属}であるとは、少なくとも1つは$0$でない$k$個の係数$\{c_1, \ldots, c_k\}$を用意すれば、それらを使った線形結合を零ベクトル$\vb*{o}$にできることをいう。
   \begin{equation*}
-    c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_k \vb*{a}_k = \vb*{0}
+    c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_k\vb*{a}_{k} = \vb*{o}
   \end{equation*}
-  を、$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_k$の\keyword{線形関係式}という
 \end{definition}
 
-特に、$c_1 = c_2 = \cdots = c_k = 0$として得られる線形関係式を\keyword{自明な線形関係式}という
+たとえば、$c_1$が$0$でないとき、線形結合を零ベクトルにできるということは、次のような式変形ができることになる。
+\begin{equation*}
+  \vb*{a}_1 = -\frac{c_2}{c_1} \vb*{a}_2 - \frac{c_3}{c_1} \vb*{a}_3 - \cdots - \frac{c_k}{c_1} \vb*{a}_{k}
+\end{equation*}
+つまり、ベクトル$\vb*{a}_1$をほかのベクトルの線形結合で表せている。
 
-これ以外の場合、つまり$c_i \neq 0$となるような$i$が少なくとも1つあるならば、これは\keyword{非自明な線形関係式}である
+\subsection{「従属」という言葉を味わう}
 
-\sectionline
-\section{線型独立と線形従属}
-\marginnote{\refbookA p38〜40 \\ \refbookC p31〜32}
+自分自身をほかのベクトルを使って表現できるということは、ほかのベクトルに依存している（従っている）ということになる。
 
-線形従属なベクトルでは、その中の1つのベクトルが、他のベクトルの線形結合で表される
+\br
 
-\begin{theorem}{線形結合によるベクトルの表現}\label{thm:dep-vec-is-lincomb}
-  $\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m \in K^n$を線型独立なベクトルとする
+たとえば、$\vb*{a}_1$と$\vb*{a}_2$の線形結合で表せるベクトル$\vb*{a}_3$は、 この2つのベクトル$\vb*{a}_1 ,\, \vb*{a}_2$に従っているといえる。
+\begin{equation*}
+  \vb*{a}_3 = 2 \vb*{a}_1 + \vb*{a}_2
+\end{equation*}
 
-  $K^n$のベクトル$\vb*{a}$と$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$が一次従属であるとき、$\vb*{a}$は$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$の線形結合で表される
+しかし、「$\vb*{a}_3$が$\vb*{a}_1 ,\, \vb*{a}_2$に従っている」という一方的な主従関係になっているわけではない。その逆もまた然りである。
 
-  すなわち、$c_1, c_2, \dots, c_m \in K$を用いて次のように書ける
-  \begin{equation*}
-    \vb*{a} = c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_m \vb*{a}_m
-  \end{equation*}
-\end{theorem}
+なぜなら、次のような式変形もできるからだ。
+\begin{equation*}
+  \vb*{a}_2 = \vb*{a}_3 - 2 \vb*{a}_1
+\end{equation*}
+この式で見れば、今度は$\vb*{a}_2$が$\vb*{a}_1 ,\, \vb*{a}_3$に従っていることになる。
 
-\begin{proof}
-  $\vb*{a}, \vb*{a}_1,\dots, \vb*{a}_m$が一次従属であるので、少なくとも1つは0でない係数$c, c_1, c_2, \dots, c_m$を用いて
-  \begin{equation*}
-    c \vb*{a} + c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_m \vb*{a}_m = \vb*{0}
-  \end{equation*}
-  が成り立つ
+\br
 
-  もし$c=0$だとすると、$c_1,c_2,\dots,c_m$のいずれかが0でないことになり、$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$が線型独立であることに矛盾する
-
-  よって、$c \neq 0$である
-
-  そのため、上式を$c$で割ることができ、$\vb*{a}$は
-  \begin{equation*}
-    \vb*{a} = -\frac{c_1}{c} \vb*{a}_1 - \frac{c_2}{c} \vb*{a}_2 - \cdots - \frac{c_m}{c} \vb*{a}_m
-  \end{equation*}
-  という$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$の線形結合で表せる $\qed$
-\end{proof}
-
-\sectionline
-
-\begin{theorem}{非自明な線形関係式の存在と線形従属}
-  ベクトルの集まりは、それらに対する非自明な線形関係式が存在するとき、そのときに限り線形従属である
-\end{theorem}
-
-\begin{proof}
-  ベクトルの集まりが線型独立であることは、それらに対する線形関係式はすべて自明であるというのが定義である
-
-  それを否定すると、「自明でない線形関係式が存在する」となる $\qed$
-\end{proof}
-
-\sectionline
-
-線型独立なベクトルの線形結合は一意的である
-
-\begin{theorem}{線型独立性における線形結合の一意性}\label{thm:lin-indep-iff-unique-lincomb}
-  線型独立性は、線形結合の一意性
-  \begin{gather*}
-    c_1 \vb*{a}_1 + \cdots + c_k \vb*{a}_k = c'_1 \vb*{a}_1 + \cdots + c'_k \vb*{a}_k \\ \Longrightarrow c_1 = c'_1, \dots, c_k = c'_k
-  \end{gather*}
-  と同値である
-\end{theorem}
-
-\begin{proof}
-  線型独立性の定義式を移項することで得られる $\qed$
-\end{proof}
-
-この定理から、
-\begin{shaded}
-  線型独立性は、両辺の係数比較ができるという性質
-\end{shaded}
-であるとも理解できる
-
-\sectionline
-
-$k=1$の場合に、次の定理が成り立つ
-
-\begin{theorem}{単一ベクトルの線型独立性と零ベクトル}\label{thm:single-vec-indep-iff-nonzero}
-  \begin{equation*}
-    \vb*{a}_1\text{が線型独立} \Longleftrightarrow \vb*{a}_1 \neq \vb*{0}
-  \end{equation*}
-\end{theorem}
-
-\begin{proof}
-  \begin{subpattern}{$\Longrightarrow$}
-    $\vb*{a}_1$が線型独立であるとする
-
-    すると、$\vb*{a}_1$に対する線形関係式
-    \begin{equation*}
-      c_1 \vb*{a}_1 = \vb*{0}
-    \end{equation*}
-    が成り立つのは、$c_1 = 0$のときだけである
-
-    \br
-
-    ここで、$\vb*{a}_1 = \vb*{0}$と仮定すると、$c_1 \vb*{0} = \vb*{0}$が成り立つので、$c_1$は任意の値をとることができる
-
-    これは、$\vb*{a}_1$に対する線形関係式が$c_1 =0$のときだけ成り立つという線型独立性の定義に反する
-
-    よって、$\vb*{a}_1 \neq \vb*{0}$である $\qed$
-  \end{subpattern}
-
-  \begin{subpattern}{$\Longleftarrow$}
-    $\vb*{a}_1 \neq \vb*{0}$とする
-
-    このとき、もし$\vb*{a}_1$に対する線形関係式
-    \begin{equation*}
-      c_1 \vb*{a}_1 = \vb*{0}
-    \end{equation*}
-    が成り立つとしたら、$\vb*{a}_1 \neq \vb*{0}$なので、$c_1$は必ず0でなければならない
-
-    したがって、$\vb*{a}_1$に対する線形関係式は$c_1 = 0$のときだけ成り立つ
-
-    これは、$\vb*{a}_1$が線型独立であることを意味する $\qed$
-  \end{subpattern}
-\end{proof}
+このように、線形従属とは、「どちらがどちらに従う」という主従関係ではなく、ベクトルの組の中での相互の依存関係を表すものである。
 
 \end{document}

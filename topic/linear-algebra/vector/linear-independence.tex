@@ -1,0 +1,140 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形独立}
+
+線形従属は、いずれかのベクトルをほかのベクトルで表現できること、つまり基底の候補としては無駄が含まれている。
+そこで、その逆を考える。
+
+\br
+
+互いに互いを表現できるような無駄なベクトルが含まれておらず、各々が独立している（無関係である）ベクトルの組は\keyword{線形独立}であるという。
+
+\begin{definition}{線形独立}
+  $k$個のベクトル$\{ \vb*{a}_1, \ldots, \vb*{a}_k \}$が\keyword{線形独立}であるとは、$k$個の係数$\{c_1, \ldots, c_k\}$がすべて$0$であるときしか、それらを使った線形結合を零ベクトル$\vb*{o}$にできないことをいう。
+  \begin{gather*}
+    c_1 \vb*{a}_1 + \cdots + c_k\vb*{a}_{k} = \vb*{o} \Longrightarrow c_1 = \cdots = c_k = 0
+  \end{gather*}
+\end{definition}
+
+たとえば、係数$c_1$が$0$でないとすると、
+\begin{equation*}
+  \vb*{a}_1 = -\frac{c_2}{c_1} \vb*{a}_2 - \frac{c_3}{c_1} \vb*{a}_3 - \cdots - \frac{c_k}{c_1} \vb*{a}_{k}
+\end{equation*}
+のように、$\vb*{a}_1$をほかのベクトルで表現できてしまう。これでは線形従属である。
+
+ほかの係数についても同様で、どれか1つでも係数が$0$でなければ、いずれかのベクトルをほかのベクトルで表現できてしまうのである。
+
+このような式変形ができないようにするには、係数はすべて$0$でなければならない。
+
+\br
+
+このように、線形独立には、互いに互いを表現できないようにする条件が課されているため、線形独立なベクトルの組は無駄なベクトルを含まず、基底の候補となり得る。
+
+\subsection{線形結合の一意性の言い換え}
+\marginnote{\refbookL p17〜18}
+
+基底にできるベクトルの条件は、次のようなものだった。
+
+\begin{enumerate}[label=\romanlabel]
+  \item 基底が決まれば、その線形結合であらゆるベクトルを表せる
+  \item 基底が決まれば、1つのベクトルの線形結合は一通りに定まる
+\end{enumerate}
+
+このうち、(\romannum{ii})の条件について、2次元平面のイメージにとどまらず一般的に考察してみよう。
+
+\br
+
+(\romannum{ii})の条件は、次のように言い換えることができる。
+
+\begin{enumerate}[label=\romanlabel, start=2]
+  \item 同じ基底を用いた線形結合で表されるベクトルは、同じベクトルである
+\end{enumerate}
+
+このことを数式で表すと、
+\begin{equation*}
+  x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = x_1' \vb*{a}_1 + \cdots + x_n' \vb*{a}_n \Longrightarrow \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix} = \begin{pmatrix}
+    x_1'   \\
+    \vdots \\
+    x_n'
+  \end{pmatrix}
+\end{equation*}
+となるが、これは実は$\vb*{a}_1,\ldots,\vb*{a}_n$が線型独立であることを意味している。
+
+\br
+
+なぜなら、$\Longrightarrow$の左側の等式を移項して、
+\begin{equation*}
+  (x_1 - x_1') \vb*{a}_1 + \cdots + (x_n - x_n') \vb*{a}_n = \vb*{o}
+\end{equation*}
+ここで$u_i = x_i - x_i'$とおくと、
+\begin{equation*}
+  u_1 \vb*{a}_1 + \cdots + u_n \vb*{a}_n = \vb*{o}
+\end{equation*}
+
+\br
+
+また、$\Longrightarrow$の右側の$x_i = x_i'$という条件は、$u_i = 0$と書き換えられるので、
+\begin{equation*}
+  \begin{pmatrix}
+    u_1    \\
+    \vdots \\
+    u_n
+  \end{pmatrix} = \begin{pmatrix}
+    0      \\
+    \vdots \\
+    0
+  \end{pmatrix}
+\end{equation*}
+すなわち、
+\begin{equation*}
+  u_1 = \cdots = u_n = 0
+\end{equation*}
+
+\br
+
+まとめると、
+\begin{equation*}
+  u_1 \vb*{a}_1 + \cdots + u_n \vb*{a}_n = \vb*{o} \Longrightarrow u_1 = \cdots = u_n = 0
+\end{equation*}
+となり、これは線型独立の定義式そのものである。
+
+\begin{theorem}{線型独立性における線形結合の一意性}\label{thm:lin-indep-iff-unique-lincomb}
+  線型独立性は、線形結合の一意性
+  \begin{gather*}
+    c_1 \vb*{a}_1 + \cdots + c_k \vb*{a}_k = c'_1 \vb*{a}_1 + \cdots + c'_k \vb*{a}_k \\ \Longrightarrow c_1 = c'_1, \dots, c_k = c'_k
+  \end{gather*}
+  と同値である。
+\end{theorem}
+
+この定理から、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      線型独立性は、両辺の係数比較ができるという性質
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+であるとも理解できる。
+
+\br
+
+また、基底となるベクトルの条件は、次のように言い換えられる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    基底となるベクトルは、
+    \begin{enumerate}[label=\romanlabel]
+      \item その線形結合であらゆるベクトルを表せる
+      \item 線型独立である（線形結合が一意的である）
+    \end{enumerate}
+  \end{spacebox}
+\end{emphabox}
+
+\end{document}
