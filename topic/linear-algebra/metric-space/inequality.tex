@@ -1,0 +1,57 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{コーシー・シュワルツの不等式}
+
+内積の公理だけを用いて、次の重要な不等式を導くことができる。
+
+\begin{theorem}{コーシー・シュワルツの不等式（ベクトルの内積）}
+  計量空間$V$上のベクトル$\vb*{u}, \vb*{v}$に対して、次が成り立つ。
+  \begin{equation*}
+    (\vb*{u}, \vb*{v})^2 \leq (\vb*{u}, \vb*{u}) (\vb*{v}, \vb*{v})
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  内積の正定値性より、任意の$t\in \mathbb{R}$に対して、
+  \begin{equation*}
+    (\vb*{u} - t\vb*{v}, \vb*{u} - t\vb*{v}) \geq 0
+  \end{equation*}
+  が成り立つ。
+
+  ここで、内積の双線形性を用いて左辺を展開すると、
+  \begin{equation*}
+    (\vb*{u}, \vb*{u}) - 2t(\vb*{u}, \vb*{v}) + t^2(\vb*{v}, \vb*{v}) \geq 0
+  \end{equation*}
+  これは$t$についての2次式であり、実数全体で非負ということは判別式が非正でなければならない。
+  \begin{align*}
+    (-2(\vb*{u}, \vb*{v}))^2 - 4(\vb*{u}, \vb*{u})(\vb*{v}, \vb*{v}) & \leq 0                                     \\
+    4(\vb*{u}, \vb*{v})^2                                            & \leq 4(\vb*{u}, \vb*{u})(\vb*{v}, \vb*{v})
+  \end{align*}
+  よって、両辺を4で割ると
+  \begin{equation*}
+    (\vb*{u}, \vb*{v})^2 \leq (\vb*{u}, \vb*{u})(\vb*{v}, \vb*{v})
+  \end{equation*}
+  が得られる。 $\qed$
+\end{proof}
+
+この不等式は、$\vb*{u}$と$\vb*{v}$の近さを測って掛け合わせても、$\vb*{u}$自身、$\vb*{v}$自身との近さの積には勝てないことを表している。
+\begin{equation*}
+  (\vb*{u}, \vb*{v})(\vb*{u}, \vb*{v}) \leq (\vb*{u}, \vb*{u})(\vb*{v}, \vb*{v})
+\end{equation*}
+内積（の絶対値や2乗）は2つのベクトルが似ているほど大きくなり、2つのベクトルが完全に一致する場合に最大となることを示唆しているようにも捉えられる。
+
+\br
+
+このコーシー・シュワルツの不等式は、両辺の平方根をとることで、次のようにも書ける。
+
+\begin{theorem}{コーシー・シュワルツの不等式（ベクトルのノルム）}
+  計量空間$V$上のベクトル$\vb*{u}, \vb*{v}$に対して、次が成り立つ。
+  \begin{equation*}
+    |(\vb*{u}, \vb*{v})| \leq \|\vb*{u}\| \|\vb*{v}\|
+  \end{equation*}
+\end{theorem}
+
+\end{document}

@@ -1,0 +1,180 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ベクトルのなす角}
+
+コーシー・シュワルツの不等式は、絶対値の性質から、次のように書き換えられる。
+\begin{equation*}
+  - \| \vb*{u} \| \| \vb*{v} \| \leq (\vb*{u}, \vb*{v}) \leq \| \vb*{u} \| \| \vb*{v} \|
+\end{equation*}
+
+$\vb*{u},\,\vb*{v}$が$\vb*{o}$でないときには、
+\begin{equation*}
+  -1 \leq \frac{(\vb*{u}, \vb*{v})}{\|\vb*{u}\| \|\vb*{v}\|} \leq 1
+\end{equation*}
+となるので、
+\begin{equation*}
+  \cos \theta = \frac{(\vb*{u}, \vb*{v})}{\|\vb*{u}\| \|\vb*{v}\|} \quad (0 \leq \theta \leq \pi)
+\end{equation*}
+を介して$\vb*{u},\,\vb*{v}$の\keyword{なす角}を定義できる。
+
+\begin{definition}{ベクトルのなす角}
+  計量空間$V$上のベクトル$\vb*{u},\vb*{v}$に対して、
+  \begin{equation*}
+    \cos \theta = \frac{(\vb*{u}, \vb*{v})}{\|\vb*{u}\| \|\vb*{v}\|} \quad (0 \leq \theta \leq \pi)
+  \end{equation*}
+  により定まる$\theta$を$\vb*{u},\,\vb*{v}$の\keyword{なす角}という。
+\end{definition}
+
+\sectionline
+\section{内積が表す「関係の強さ」}
+
+ベクトルのなす角の式から、内積の幾何的な解釈を捉えることができる。
+\begin{equation*}
+  (\vb*{u}, \vb*{v}) = \| \vb*{u} \| \| \vb*{v} \| \cos \theta
+\end{equation*}
+この式を、次のような図でイメージしてみよう。
+
+\begin{center}
+  \begin{tikzpicture}[scale=2.5]
+    % Coordinates
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (1.7,0);          % Vector v
+    \coordinate (U) at (1.2,0.7);        % Vector u
+
+    % Projection of u onto v
+    \coordinate (P) at ($(O)!(U)!(V)$);          % foot of perpendicular
+
+    % Right angle mark
+    \draw pic[draw=lightslategray, angle radius=1ex]
+      {right angle=U--P--O};
+
+    % Draw angle between u and v
+    \draw pic[
+        draw=black,
+        ->,
+        angle radius=7.5mm,
+        angle eccentricity=1.5,
+        "$\theta$"
+      ] {angle=V--O--U};
+
+    % Dashed line for projection
+    \draw[densely dashed, thick, lightslategray] (U) -- (P);
+
+    % Draw vectors
+    \draw[vector, Periwinkle!75] (O) -- (U) node[above] {$\vb*{u}$};
+    \draw[vector, Periwinkle!75] (O) -- (V) node[right] {$\vb*{v}$};
+
+    \draw[<->, thick, Straight Barb-Straight Barb, Rhodamine] ([yshift=-0.5ex]O) -- ([yshift=-0.5ex]V) node[below, pos=0.85] {$\|\vb*{v}\|$};
+    \draw[<->, thick, Straight Barb-Straight Barb, Cerulean] ([yshift=-1ex]O) -- ([yshift=-1ex]P) node[below, midway] {$\|\vb*{u}\|\cos\theta$};
+  \end{tikzpicture}
+\end{center}
+
+この図から、内積は次のようにも解釈できる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $\vb*{u}$の$\vb*{v}$との内積とは、$\vb*{v}$自身の長さと、$\vb*{u}$の$\vb*{v}$方向の長さの積である
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+ここで、「$\vb*{u}$の$\vb*{v}$方向の長さ」は、後に\keyword{正射影}という量として定義する。
+
+\subsection{自分自身との内積の再解釈}
+
+$\vb*{v}$と$\vb*{u}$が平行でまったく同じ方向を向いている場合、「$\vb*{u}$の$\vb*{v}$方向の長さ」は、$\vb*{u}$の長さそのものである。
+\begin{equation*}
+  \| \vb*{u} \| \cos \theta = \| \vb*{u} \|
+\end{equation*}
+
+また、このとき、$\vb*{v}$と$\vb*{u}$は互いに正の数のスカラー倍で表すことができるので、
+\begin{equation*}
+  \| \vb*{v} \| = k \| \vb*{u} \| \quad (k > 0)
+\end{equation*}
+
+すると、内積は、
+\begin{equation*}
+  (\vb*{u}, \vb*{v}) = k \| \vb*{u} \|^2
+\end{equation*}
+
+\br
+
+ここで、$\vb*{v} = \vb*{u}$の場合は、$\vb*{u}$を特にスケーリングしなくても$\vb*{v}$に一致するので、$k=1$である。
+\begin{equation*}
+  (\vb*{u}, \vb*{u}) = \| \vb*{u} \|^2
+\end{equation*}
+
+このように$\vb*{u}$の$\vb*{u}$方向の長さは$\vb*{u}$自身の長さであることから、自分自身との内積は$\text{\bfseries 長さ}^2$となる。
+
+その平方根をとれば長さが得られるということで、ベクトルのノルムの定義
+\begin{equation*}
+  \| \vb*{u} \| = \sqrt{(\vb*{u}, \vb*{u})}
+\end{equation*}
+を自然に解釈することができる。
+
+\subsection{平行の度合いと内積}
+
+同じ方向を向いているベクトルどうしは、平行に近ければ近いほど、これらは互いに似ていて「関係性の強い」ベクトルだといえる。
+
+\br
+
+2つのベクトルが同方向で完全に平行なとき、なす角$\theta$は0であるので、$\cos \theta$の値は$1$（$\cos\theta$の最大値）となる。
+
+つまり、同方向で平行に近い「似た」ベクトルほど、内積の値は最大値に近くなる。
+
+\subsection{逆方向と内積の符号}
+
+一方、2つのベクトルが完全に平行で、逆の方向を向いているなら、片方のベクトルはもう片方のベクトルを負の数を使ってスカラー倍したものになる。
+
+\br
+
+逆向きのベクトルどうしは、近い方向どころかむしろ「かけ離れた方向を向いている」といえる。
+
+内積が「向きの似ている度合い」なら、「近い方向を向いている」度合いを正の数で、「かけ離れた方向を向いている」度合いを負の数で表すのが自然である。
+
+\br
+
+実際、2つのベクトルが逆向きで完全に平行なとき、$\cos \theta$の値は$-1$（$\cos\theta$の最小値）となる。
+
+つまり、逆方向に近い「かけ離れた」ベクトルほど、内積の値は最小値に近くなる。
+
+\sectionline
+\section{ベクトルの直交}
+
+「同じ向きに近い」場合と「逆向きに近い」場合が切り替わるのは、2つのベクトルどうしが垂直なときである。
+
+ならば、内積の正と負が切り替わる境界、すなわち内積が$0$になる場合とは、2つのベクトルが直交する場合であるのが自然ではないだろうか。
+
+\br
+
+別な考え方として、完全に垂直な2つのベクトルは、互いに全く影響を与えない方向を向いている。
+
+2つのベクトルが直交している場合、2つのベクトルは互いに全く関係がないものとして、関係の強さを表す内積の値は$0$にしたい。
+
+\br
+
+実際、内積の定義はこの解釈に沿うものになっている。
+
+$\vb*{u}$と$\vb*{v}$のなす角が直角であるとき、$\cos \theta = 0$となるので、内積も0になる。
+
+\br
+
+幾何学的なイメージができない高次元の場合についても、内積が0になること、すなわち2つのベクトルが無関係であることを\keyword{直交}の定義としてしまおう。
+
+\begin{definition}{ベクトルの直交}
+  計量空間$V$上のベクトル$\vb*{u},\vb*{v}$に対して、
+  \begin{equation*}
+    (\vb*{u}, \vb*{v}) = 0
+  \end{equation*}
+  が成り立つとき、$\vb*{u}$と$\vb*{v}$は\keyword{直交}するといい、
+  \begin{equation*}
+    \vb*{u} \perp \vb*{v}
+  \end{equation*}
+  と表記する。
+\end{definition}
+
+\end{document}

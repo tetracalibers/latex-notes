@@ -3,7 +3,7 @@
 \begin{document}
 
 \sectionline
-\section{直交基底}
+\section{直交系と直交基底}
 \marginnote{\refbookC p117〜118 \\ \refbookF p181〜182}
 
 \begin{definition}{直交系と直交基底}
@@ -97,7 +97,7 @@
 \end{proof}
 
 \sectionline
-\section{正規直交基底}
+\section{正規直交系と正規直交基底}
 \marginnote{\refbookC p117〜119 \\ \refbookF p181〜182}
 
 \begin{definition}{正規直交系と正規直交基底}
@@ -161,47 +161,5 @@
 
   この場合分けとそれぞれの結果は、クロネッカーのデルタ記号の定義と一致する $\qed$
 \end{proof}
-
-\sectionline
-
-計量空間$V$の正規直交基底を用いると、内積を\hyperref[def:standard-inner-product-Cn]{標準内積}のように計算できる
-
-\br
-
-計量空間$V$の正規直交基底を$\vb*{e}_1, \vb*{e}_2, \ldots, \vb*{e}_n$とし、任意のベクトル$\vb*{a}\,\vb*{b} \in V$を
-\begin{align*}
-  \vb*{a} & = \alpha_1 \vb*{e}_1 + \alpha_2 \vb*{e}_2 + \cdots + \alpha_n \vb*{e}_n \\
-  \vb*{b} & = \beta_1 \vb*{e}_1 + \beta_2 \vb*{e}_2 + \cdots + \beta_n \vb*{e}_n
-\end{align*}
-とすると、$\vb*{a}$と$\vb*{b}$の内積は、
-\begin{equation*}
-  (\vb*{a},\vb*{b}) = (\sum_{i=1}^n \alpha_i \vb*{e}_i, \sum_{j=1}^n \beta_j \vb*{e}_j)
-\end{equation*}
-内積の双線形性より、
-\begin{equation*}
-  (\vb*{a},\vb*{b}) = \sum_{i=1}^n \sum_{j=1}^n (\alpha_i \vb*{e}_i, \beta_j \vb*{e}_j)
-\end{equation*}
-\hyperref[thm:conjugate-linearity-of-inner-product]{内積の共役線形性}に注意して、スカラーを外に出すと、
-\begin{equation*}
-  (\vb*{a},\vb*{b}) = \sum_{i=1}^n \sum_{j=1}^n \alpha_i \overline{\beta_j} (\vb*{e}_i, \vb*{e}_j)
-\end{equation*}
-ここで、正規直交基底の内積はクロネッカーのデルタ記号を用いて表現できるので、
-\begin{equation*}
-  (\vb*{a},\vb*{b}) = \sum_{i=1}^n \sum_{j=1}^n \alpha_i \overline{\beta_j} \delta_{ij}
-\end{equation*}
-この式は、$i=j$のときのみ項が残り、$\delta_{ii} = 1$をふまえると、
-\begin{equation*}
-  (\vb*{a},\vb*{b}) = \sum_{i=1}^n \alpha_i \overline{\beta_i}
-\end{equation*}
-となり、標準内積と一致する
-
-\br
-
-このように、
-\begin{shaded}
-  正規直交基底を用いると、\\
-  $V$の内積が$K^n$の標準内積と同様に計算できる
-\end{shaded}
-ことがわかる
 
 \end{document}

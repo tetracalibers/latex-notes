@@ -1,0 +1,113 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{$\mathbb{R}^n$上の内積}
+
+内積の公理と、正規直交基底の内積をもとに、$\mathbb{R}^n$上の内積を作ることができる。
+
+\br
+
+まず、任意のベクトル$\vb*{a},\vb*{b} \in \mathbb{R}^n$を、正規直交基底の一次結合として表そう。
+\begin{align*}
+  \vb*{a} & = a_1 \vb*{e}_1 + \cdots + a_n \vb*{e}_n = \sum_{i=1}^n a_i \vb*{e}_i \\
+  \vb*{b} & = b_1 \vb*{e}_1 + \cdots + b_n \vb*{e}_n = \sum_{j=1}^n b_j \vb*{e}_j
+\end{align*}
+
+これらの内積を、双線形性を使って展開していく。
+
+\br
+
+まず、和に関する双線形性より、「足してから内積を計算」と「内積を計算してから足す」は同じ結果になるので、シグマ記号$\sum$を内積の外に出すことができる。
+
+また、スカラー倍に関する双線形性より、定数$a_i, \, b_j$も内積の外に出すことができる。
+\begin{align*}
+  (\vb*{a}, \vb*{b}) & = \Biggl( \sum_{i=1}^n a_i \vb*{e}_i, \sum_{j=1}^n b_j \vb*{e}_j \Biggr) \\
+                     & = \sum_{i=1}^n \sum_{j=1}^n a_i b_j (\vb*{e}_i, \vb*{e}_j)
+\end{align*}
+
+正規直交基底の内積$(\vb*{e}_i, \vb*{e}_j)$はクロネッカーのデルタ$\delta_{ij}$で表せるので、次のように書き換えられる。
+\begin{align*}
+  (\vb*{a}, \vb*{b}) & = \sum_{i=1}^n \sum_{j=1}^n a_i b_j (\vb*{e}_i, \vb*{e}_j) \\
+                     & = \sum_{i=1}^n \sum_{j=1}^n a_i b_j \delta_{ij}
+\end{align*}
+
+ここで、$\delta_{ij}$は$i \neq j$のとき$0$になるので、$i = j$の項しか残らない。
+\begin{align*}
+  (\vb*{a}, \vb*{b}) & = \sum_{i=1}^n \sum_{j=1}^n a_i b_j \delta_{ij} \\
+                     & = \sum_{i=1}^n a_i b_i \delta_{ii}
+\end{align*}
+
+$\delta_{ii}$は常に$1$なので、最終的に次のような式が得られる。
+\begin{align*}
+  (\vb*{a}, \vb*{b}) & = \sum_{i=1}^n a_i b_i
+\end{align*}
+
+\begin{definition}{$\mathbb{R}^n$上の内積}
+  $\vb*{a} = (a_i)_{i=1}^n,\, \vb*{b} = (b_i)_{i=1}^n \in \mathbb{R}^n$に対して、
+  \begin{equation*}
+    (\vb*{a}, \vb*{b}) = \sum_{i=1}^n a_i b_i
+  \end{equation*}
+  を$\mathbb{R}^n$上の\keyword{内積}と呼ぶ。
+\end{definition}
+
+数ベクトルの同じ位置にある数どうしをかけ算して、それらを足し合わせる、という形になっている。
+
+\subsection{$\mathbb{R}^n$上の内積の性質}
+\marginnote{\refbookA p76}
+
+逆に、このように定義した$\mathbb{R}^n$上の内積が、内積の公理を満たしていることを確認してみよう。
+
+\begin{theorem}{$\mathbb{R}^n$上の内積の双線形性}
+  $\vb*{u},\,\vb*{v},\,\vb*{u}_1,\,\vb*{u}_2,\,\vb*{v}_1,\,\vb*{v}_2 \in \mathbb{R}^n,\,c\in \mathbb{R}$に対して、以下が成立する
+  \begin{enumerate}[label=\romanlabel]
+    \item $(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) = (\vb*{u}_1, \vb*{v}) + (\vb*{u}_2, \vb*{v})$
+    \item $(c\vb*{u}, \vb*{v}) = c(\vb*{u}, \vb*{v})$
+    \item $(\vb*{u}, \vb*{v}_1 + \vb*{v}_2) = (\vb*{u}, \vb*{v}_1) + (\vb*{u}, \vb*{v}_2)$
+    \item $(\vb*{u}, c\vb*{v}) = c(\vb*{u}, \vb*{v})$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  行列のかけ算と和に関する分配法則、行列のスカラー倍についての性質から従う $\qed$
+\end{proof}
+
+\br
+
+\begin{theorem}{$\mathbb{R}^n$上の内積の対称性}
+  $\vb*{u}, \vb*{v} \in \mathbb{R}^n$に対して、次が成り立つ
+  \begin{equation*}
+    (\vb*{u}, \vb*{v}) = (\vb*{v}, \vb*{u})
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  実数同士の乗算は可換であることから、$\mathbb{R}^n$上の内積の定義により
+  \begin{equation*}
+    (\vb*{u}, \vb*{v}) = \sum_{i=1}^n u_i v_i = \sum_{i=1}^n v_i u_i = (\vb*{v}, \vb*{u})
+  \end{equation*}
+  となり、明らかに成り立つ $\qed$
+\end{proof}
+
+\br
+
+\begin{theorem}{$\mathbb{R}^n$上の内積の正値性}
+  $\vb*{u} \in \mathbb{R}^n$に対して、
+  \begin{equation*}
+    (\vb*{u}, \vb*{u}) \geq 0
+  \end{equation*}
+  であり、$\vb*{u} = \vb*{0}$のときに限り、等号が成立する
+\end{theorem}
+
+\begin{proof}
+  内積の定義より、
+  \begin{equation*}
+    (\vb*{u}, \vb*{u}) = \sum_{i=1}^n u_i^2 \geq 0
+  \end{equation*}
+  である
+
+  ここで現れた$u_i^2$は、$u_i$が0のときに限り0になるので、$\vb*{u} = \vb*{0}$のときに限り、等号が成立する $\qed$
+\end{proof}
+
+\end{document}
