@@ -1,0 +1,47 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{次元の不変性}
+\marginnote{\refbookA p99 \\ \refbookC p37〜38}
+
+\begin{theorem}{次元の不変性}
+  $K^n$の部分空間$V$の基底をなすベクトルの個数（次元）は一定である。
+
+  つまり、$\{ \vb*{v}_1, \dots, \vb*{v}_k \}$と$\{ \vb*{u}_1, \dots, \vb*{u}_l \}$がともに$V$の基底ならば、$k = l$である。
+\end{theorem}
+
+\begin{proof}
+  $\vb*{u}_1, \dots, \vb*{u}_l \in \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であり、$\vb*{u}_1, \dots, \vb*{u}_l$は線型独立であるから、\hyperref[thm:abstract-finite-dependency]{有限従属性定理の抽象版}より、$l \leq k$である。
+
+  同様にして$k \leq l$も成り立つので、$k = l$である。 $\qed$
+\end{proof}
+
+\sectionline
+\section{線型独立なベクトルと次元}
+\marginnote{\refbookA p100}
+
+\begin{theorem}{線形独立なベクトルの最大個数と空間の次元}
+  線形空間$V$中の線型独立なベクトルの最大個数は$\dim V$と等しい。
+\end{theorem}
+
+\begin{proof}
+  $V$の基底を$\{ \vb*{v}_1,\dots, \vb*{v}_k \}$とすると、$V$には$k$個の線型独立なベクトルが存在する。
+
+  また、$V = \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であるため、\hyperref[thm:abstract-finite-dependency]{有限従属性定理の抽象版}より、$V$中の線型独立なベクトルの個数は$k$を超えることはない。
+
+  つまり、$k$は$V$に含まれる線型独立なベクトルの最大個数である。 $\qed$
+\end{proof}
+
+\sectionline
+
+\begin{theorem}{線形空間を生成するベクトルの最小個数と次元}
+  線形空間$V$を張るベクトルの最小個数は$\dim V$と等しい。
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p100 問3.3}
+\end{proof}
+
+\end{document}

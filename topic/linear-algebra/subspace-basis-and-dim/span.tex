@@ -1,0 +1,104 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ベクトルが張る空間}\label{sec:span-of-vectors}
+\marginnote{\refbookA p6〜8、\refbookL p135}
+
+$m \times n$型行列$A$で写れる範囲を$\Im A$として定義した。
+
+$\vb*{x}$を$n$次元ベクトルとすると、$\Im A$は次のようなものといえる。
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $\vb*{x}$をいろいろ動かしたときの、\\
+      $\vb*{y} = A\vb*{x}$が動ける範囲が$\Im A$
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+ここで、$A$を列ベクトルを並べたもの$A= (\vb*{a}_1,\ldots, \vb*{a}_n)$として書き、$\vb*{x}$も成分$x_1,\ldots,x_n$で書けば、
+\begin{equation*}
+  \vb*{y} = \begin{pmatrix}
+    \vb*{a}_1 & \cdots & \vb*{a}_n
+  \end{pmatrix} \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+  = x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n
+\end{equation*}
+
+つまり、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      数$x_1, \ldots, x_n$をいろいろ動かしたときの、\\
+      $x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n$が動ける範囲が$\Im A$
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+であり、この線形結合が動ける範囲を「ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$の\keyword{張る空間}」という。
+
+\begin{definition}{ベクトルが張る空間}\label{def:span-of-vectors}
+  $k$個のベクトル$\vb*{a}_1, \dots, \vb*{a}_k \in \mathbb{R}^n$を与えたとき、$\vb*{a}_1, \dots, \vb*{a}_k$の線形結合全体の集合を
+  \begin{equation*}
+    \langle \vb*{a}_1, \dots, \vb*{a}_k \rangle
+  \end{equation*}
+  あるいは
+  \begin{equation*}
+    \Span\{\vb*{a}_1, \dots, \vb*{a}_k\}
+  \end{equation*}
+  によって表し、これを$\vb*{a}_1, \dots, \vb*{a}_k$が\keyword{張る空間}という。
+\end{definition}
+
+\subsection{ベクトルが張る空間は部分空間}
+
+\begin{theorem}{ベクトルが張る空間は部分空間}
+  $\vb*{v}_1,\dots, \vb*{v}_k \in \mathbb{R}^n$が張る空間$\langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$は部分空間である
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p94 命題3.1.2}
+\end{proof}
+
+\br
+
+\begin{theorem}{部分空間の張る空間は部分空間}
+  $V \subset \mathbb{R}^n$を部分空間、$\vb*{v}_1, \dots, \vb*{v}_k \in V$とすると、
+  \begin{equation*}
+    \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle \subset V
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p94 命題3.1.4}
+\end{proof}
+
+\subsection{ベクトルが張る空間の幾何的解釈}
+
+ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$の張る空間$\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$は、$\vb*{a}_1, \ldots, \vb*{a}_n$で定まる平面の一般化といえる。
+（ここで、点は0次元平面、直線は1次元平面と考える。）
+
+\begin{itemize}
+  \item $\vb*{a}_1, \ldots, \vb*{a}_n$がすべて$\vb*{o}$なら、$\vb*{o}$ただ一点が$\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$
+  \item $\vb*{a}_1, \ldots, \vb*{a}_n$がすべて一直線上にあれば、その直線が$\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$
+  \item $\vb*{a}_1, \ldots, \vb*{a}_n$がすべて平面上にあれば、その平面が$\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$
+\end{itemize}
+
+\br
+
+たとえば$\mathbb{R}^3$において座標を$(x, y, z)$とするとき、$xy$平面は$\mathbb{R}^3$の部分空間である。
+
+\begin{definition}{座標部分空間}
+  $\{1, 2, \dots, n\}$の部分集合$I$に対して、$x_i \, (i \in I)$以外の座標がすべて0である部分集合は$\mathbb{R}^n$の部分集合である。
+
+  このようなものを\keyword{座標部分空間}といい、$\mathbb{R}^I$と書く。
+  \begin{equation*}
+    \mathbb{R}^I = \langle \vb*{e}_i \mid i \in I \rangle
+  \end{equation*}
+  と表すこともできる。
+\end{definition}
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{基底と次元}
+\marginnote{\refbookA p96、p99〜100 \\ \refbookC p33〜35}
+
+部分空間のパラメータ表示を与えるために基準として固定するベクトルの集合を定式化すると、\keyword{基底}という概念になる。
+
+\br
+
+\keyword{基底}は、座標空間の「座標軸」に相当するものであり、部分空間を生成する独立なベクトルの集合として定義される。
+
+\begin{definition}{基底}
+  $V$を$\mathbb{R}^n$の部分空間とする。
+  ベクトルの集合$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \} \subset V$は、次を満たすとき$V$の\keyword{基底}であるという。
+  \begin{enumerate}[label=\romanlabel]
+    \item $\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \}$は線型独立である
+    \item $V = \langle \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \rangle$
+  \end{enumerate}
+\end{definition}
+
+\br
+
+線形空間$V$の基底$\{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_k \}$を1つ見つけたら、ベクトルの個数を数えて、$V$の\keyword{次元}が$k$であるとする。
+
+\begin{definition}{次元}\label{def:dimension-of-vector-space}
+  線形空間$V$の基底をなすベクトルの個数を$V$の\keyword{次元}といい、$\dim V$と書く。
+
+  また、$\dim\{\vb*{o}\} = 0$と定義する。
+\end{definition}
+
+\subsection{基底の例：標準基底}
+\marginnote{\refbookC p35}
+
+たとえば、基本ベクトルの集合$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は$\mathbb{R}^n$の基底であり、これを$\mathbb{R}^n$の\keyword{標準基底}という。
+
+標準基底$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は$n$個のベクトルからなるため、$\mathbb{R}^n$の次元は$n$である。
+
+\begin{theorem}{数ベクトル空間の標準基底}
+  数ベクトル空間$K^n$において、基本ベクトルの集合$\{ \vb*{e}_1, \vb*{e}_2, \dots, \vb*{e}_n \}$は$K^n$の基底である。
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 部分空間を生成すること}
+    任意のベクトル$\vb*{v} \in K^n$は、次のように表せる。
+    \begin{equation*}
+      \vb*{v} = v_1 \vb*{e}_1 + \cdots + v_n \vb*{e}_n
+    \end{equation*}
+    したがって、$K^n$は$\{ \vb*{e}_1, \dots, \vb*{e}_n \}$によって生成される。 $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 線型独立であること}
+    $\vb*{e}_1, \dots, \vb*{e}_n$の線形関係式
+    \begin{equation*}
+      c_1 \vb*{e}_1 + \cdots + c_n \vb*{e}_n = \vb*{o}
+    \end{equation*}
+    を考える。
+
+    このとき、左辺は
+    \begin{equation*}
+      c_1 \vb*{e}_1 + \cdots + c_n \vb*{e}_n = \begin{pmatrix}
+        c_1    \\
+        \vdots \\
+        c_n
+      \end{pmatrix}
+    \end{equation*}
+    と書き換えられるので、これが零ベクトルになるためには、
+    \begin{equation*}
+      c_1 = 0, \quad ,\cdots, \quad c_n = 0
+    \end{equation*}
+    でなければならない。
+
+    よって、$\{ \vb*{e}_1, \dots, \vb*{e}_n \}$は線型独立である。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{基底と次元の定義の裏付け}
+
+このように基底と次元を定義するにあたって、次の保証が必要になる。
+
+\begin{enumerate}[label=\romanlabel]
+  \item 任意の部分空間に、基底の定義を満たす有限個のベクトルが存在すること（基底の存在）
+  \item 任意の部分空間に対して、基底をなすベクトルの個数が、基底の選び方によらず一定であること（次元の不変性）
+\end{enumerate}
+
+\end{document}
