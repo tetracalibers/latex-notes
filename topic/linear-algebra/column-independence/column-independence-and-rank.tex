@@ -1,0 +1,60 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{列ベクトルの線型独立性と階数}
+\marginnote{\refbookA p40〜41}
+
+斉次形方程式$A\vb*{x} = \vb*{o}$の非自明解の存在に対して、次の解釈もできる。
+
+\begin{theorem}{斉次形方程式の非自明解の存在と線形従属}
+  $m \times n$型行列$A$の列ベクトルを$\vb*{a}_1, \dots, \vb*{a}_n$とするとき、
+  \begin{equation*}
+    A\vb*{x} = \vb*{o}\text{に自明でない解がある}
+    \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n\text{が線形従属}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A\vb*{x} = \vb*{o}$は、ベクトルの等式
+  \begin{equation*}
+    x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = \vb*{o}
+  \end{equation*}
+  と同じものである。
+
+  \begin{subpattern}{$\Longrightarrow$}
+    もし自明でない解があるならば、$x_1, \dots, x_n$のうち少なくとも1つは0ではない。
+
+    $x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = \vb*{o}$が成り立つもとで、0でない係数が存在するということは、$\vb*{a}_1, \dots, \vb*{a}_n$が線形従属であることを意味する。 $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{$\Longleftarrow$}
+    対偶を示す。
+
+    $\vb*{a}_1, \dots, \vb*{a}_n$が線形独立であれば、
+    \begin{equation*}
+      x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = \vb*{o}
+    \end{equation*}
+    において、すべての係数$x_1, \dots, x_n$は0でなければならない。
+
+    よって、0以外の解（非自明解）は存在しないことになる。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\sectionline
+
+斉次形方程式に自明でない解が存在することは、$\rank(A) \neq n$、すなわち解の自由度が0ではないことと同値であった。
+
+\br
+
+一般に、斉次形の線型方程式$A\vb*{x} = \vb*{o}$の解の自由度は、$n$を変数の個数とするとき$n - \rank(A)$なので、次が成り立つ。
+
+\begin{theorem}{列ベクトルの線型独立性と階数}\label{thm:lin-indep-iff-rank-n}
+  $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$に対して、$A=(\vb*{a}_1, \dots, \vb*{a}_n)$とおくと、
+  \begin{equation*}
+    \vb*{a}_1, \dots, \vb*{a}_n\text{が線型独立} \Longleftrightarrow \rank(A) = n
+  \end{equation*}
+\end{theorem}
+
+\end{document}

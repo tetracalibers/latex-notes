@@ -1,0 +1,32 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{有限従属性定理}
+
+次の事実は、\keyword{次元}の概念を議論する際の基礎になる。
+
+\begin{theorem}{有限従属性定理}\label{thm:finite-dependency}
+  $\mathbb{R}^m$内の$m$個よりも多いベクトルからなる集合は線形従属である。
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p41 （系1.6.6）}
+\end{proof}
+
+\br
+
+この結論は、幾何的な直観からは自然だといえる。
+
+たとえば、平面$\mathbb{R}^2$内の3つ以上のベクトルがあれば、自動的に線形従属になる。
+
+\br
+
+また、同じことを線型方程式の文脈に言い換えると、次のようになる。
+
+\begin{theorem}{有限従属性定理の線型方程式版}
+  斉次線型方程式$A\vb*{x} = \vb*{o}$において、変数の個数が方程式の個数よりも多いときには、非自明な解が存在する。
+\end{theorem}
+
+\end{document}

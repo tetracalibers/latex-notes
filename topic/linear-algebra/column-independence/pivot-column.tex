@@ -1,0 +1,32 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{主列ベクトルと掃き出し法}
+\marginnote{\refbookA p42〜44}
+
+\begin{definition}{主列ベクトル}\label{def:pivot-columns}
+  行列$A = (\vb*{a}_1, \dots, \vb*{a}_n)$を行階段形にしたときに、主成分のある列番号を$i_1,\dots, i_r$とする。
+  ここで、$r$は$A$の階数である。
+
+  このとき、$\vb*{a}_{i_1}, \dots, \vb*{a}_{i_r}$を\keyword{主列ベクトル}という。
+\end{definition}
+
+\br
+
+\begin{theorem}{主列ベクトルと線型独立性}
+  行列の主列ベクトルの集合は線型独立である。
+
+  また、主列ベクトル以外の列ベクトルは、主列ベクトルの線形結合である。
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p43 （命題 1.6.11）}
+\end{proof}
+
+\br
+
+掃き出し法は、行列の列ベクトルの中から、$\rank A$個の線型独立な列ベクトルを選び出す方法を与えていることになる。
+
+\end{document}
