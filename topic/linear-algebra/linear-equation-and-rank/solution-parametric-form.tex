@@ -6,25 +6,21 @@
 \section{一般解のパラメータ表示}
 \marginnote{\refbookA p33〜36}
 
-右端の列に主成分がない場合は、一般には無数個の解が存在する
+解が1つに定まらない場合は、解の全体像を知ることが方程式を「解く」ことになる。
 
-解の集合が直線を成していたり、もっと高い次元の図形になっていることがある
+無数個の解が存在する場合、解の集合が直線を成していたり、もっと高い次元の図形になっていることがある。
 
-\br
+\subsection{主変数と自由変数}
 
-解が1つに定まらない場合は、解の全体像を知ることが方程式を「解く」ことになる
-
-\sectionline
-
-係数行列$A$の$n$個の列が、$n$個の変数に対応していることを思い出そう
+係数行列$A$の$n$個の列が、$n$個の変数に対応していることを思い出そう。
 
 \begin{definition}{主変数と自由変数}
-  行列$A$を行基本変形により行階段形にしたとき、主成分がある列に対応する変数を\keyword{主変数}と呼び、それ以外の変数を\keyword{自由変数}と呼ぶ
+  行列$A$を行基本変形により行階段形にしたとき、\hyperref[sec:def-pivot]{主成分}がある列に対応する変数を\keyword{主変数}と呼び、それ以外の変数を\keyword{自由変数}と呼ぶ。
 \end{definition}
 
 \br
 
-たとえば、次のような既約行階段形に変形した拡大係数行列を考える
+たとえば、次のような既約行階段形に変形した拡大係数行列を考える。
 
 \begin{equation*}
   \tilde{A_\circ} =\begin{pNiceArray}{ccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
@@ -58,12 +54,13 @@
 
 \br
 
-主成分がある列は$1,3,4$列なので、主変数は$x_1, x_3, x_4$である
+主成分がある列は$1,3,4$列なので、主変数は$x_1, x_3, x_4$である。
 
-それ以外の$x_2, x_5$は自由変数となる
+それ以外の$x_2, x_5$は自由変数となる。
 
-\br
+\subsection{自由変数とパラメータ}
 
+先ほどの方程式
 \begin{center}
   \systeme{
     x_1 + 2x_2 - x_5 = -3,
@@ -71,9 +68,7 @@
     x_4 + x_5 = 2
   }
 \end{center}
-
 において、自由変数を含む項を左辺に移行すれば、
-
 \begin{center}
   \systeme{
     x_1 = -3 - 2x_2 + x_5,
@@ -81,11 +76,13 @@
     x_4 = 2 - x_5
   }
 \end{center}
-となる
+となる。
 
 \br
 
-自由変数の値を自由に選んで、主変数の値をこの等式によって定めれば、方程式の解になる
+自由変数$x_2,x_5$に任意の値を代入したときの主変数$x_1,x_3,x_4$の値はすべてこの方程式の解になる。
+
+自由変数の値は定まらないので、任意の値を取りうる文字として表すしかない。
 
 \br
 
@@ -115,11 +112,11 @@
   }
 \end{center}
 
-と書ける
+と書ける。
 
 \br
 
-これをベクトル形に直すことで、一般的な解のパラメータ表示を得られる
+これをベクトル形に直すことで、一般的な解のパラメータ表示が得られる。
 
 \begin{equation*}
   \vb*{x} = \begin{pmatrix}
@@ -143,112 +140,75 @@
   \end{pmatrix}
 \end{equation*}
 
-\sectionline
-\marginnote{\refbookC p300〜301}
+\subsection{各行の方程式から得られる一般解}
 
-\todo{\refbookF p66〜69}
-
-\br
-
-一般化するために、$P\vb*{x} = \vb*{q}$を次のように表して考える
-\begin{equation*}
-  (P \mid \vb*{q}) = \begin{pmatrix}
-    \vb*{p}_1 & q_1     \\
-    \vdots    & \vdots  \\
-    \vb*{p}_r & q_r     \\
-    \vb*{0}   & q_{r+1} \\
-    \vdots    & \vdots  \\
-    \vb*{0}   & q_m
-  \end{pmatrix}
-\end{equation*}
-ここで、$\vb*{p}_1 \neq \vb*{0}, \dots, \vb*{p}_r \neq \vb*{0}$であるとする
+先ほどの具体例を一般化して考えてみよう。
 
 \br
 
-このとき、解を持つための条件は、
+次のように変形された係数拡大行列のうち、係数行列部分において主成分を含む列を$j_1, j_2, \dots, j_r$とする。
 \begin{equation*}
-  q_{r+1} = q_{r+2} = \cdots = q_m = 0
-\end{equation*}
-であった
-
-\br
-
-さて、$P$において、主成分を含む列を$j_1, j_2, \dots, j_r \quad (r = \rank(P))$とする
-
-\begin{equation*}
-  (P \mid \vb*{q}) =\begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
-    %\CodeBefore
-    %\rectanglecolor{carnationpink!40}{1-1}{4-5}
-    %\Body
+  \tilde{A}\text{\bfseries の変形後} = \begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{1-1}{1-7}
+    \rectanglecolor{carnationpink!40}{2-3}{2-7}
+    \rectanglecolor{carnationpink!40}{4-5}{4-7}
+    \Body
     j_1    &        & j_2    & \cdots & j_r    &        &        &                    \\
-    1      & \star  & 0      & \cdots & 0      & \star     & \star& q_1 \\
-    0      & 0      & 1      & \cdots & 0      & \star     & \star& q_2 \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star& b_1 \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star& b_2 \\
     \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots     & \vdots \\
-    0      & 0      & 0      & \cdots & 1      & \star      & \star  & q_r \\
-    0      & 0      & 0      & \cdots & 0      & 0      & 0   & 0 \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star  & b_r \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0   & 0\\
     \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots & \vdots                  \\
     0      & 0      & 0      & \cdots & 0      & 0      & 0& 0\\
     \Hdotsfor{7}_{$n$}
   \end{pNiceArray}
 \end{equation*}
 
-すると、主変数$x_{j_i} \, (i = 1, 2, \dots, r)$は、次のように表される
-
+すると、各行の方程式は次のような形になる。
 \begin{gather*}
-  x_{j_i} + \sum_k \star x_k = q_i \quad (k > j_i \text{かつ} k \notin \{j_1, j_2, \dots, j_r\})  \\
-  \therefore  x_{j_i} = q_i - \sum_k \star x_k
+  x_{j_i} + \sum_k \star x_k = b_i \\
+  (k > j_i , k \notin \{j_1, j_2, \dots, j_r\})
 \end{gather*}
 
-ここで、$x_k$は$j_i$よりも右にある$\star$に対応する変数である
-
-既約行階段行列では、$j_i$列の主成分以外の要素はすべて0であるため、$\star$に対応する自由変数のみが残る（これが$k \notin \{j_1, j_2, \dots, j_r\}$とした意味である）
+ここで、$x_k$は$j_i$列よりも右にある、$\star$に対応する変数である。
 
 \br
 
-つまり、$x_{j_1}, x_{j_2}, \dots, x_{j_r}$以外の自由変数$x_k$に勝手な数を与えるごとに、主変数$x_{j_1}, x_{j_2}, \dots, x_{j_r}$は定まる
+既約行階段形では、主成分を含む列の主成分以外の要素はすべて0であるため、$\star$に対応する自由変数のみが残る。
+
+そのため、$k \notin \{j_1, j_2, \dots, j_r\}$という条件によって、$\star$だけを残すようにしている。
 
 \br
 
-このような自由変数は$n-r$個あるので、$P\vb*{x} = \vb*{q}$の解は、$n-r$個のパラメータを用いて表せる
-
-\sectionline
-
-まとめると、解が存在する場合には、$r$を行列$A$の階数として
+移項して主変数$x_{j_i}$について解いた形にすると、各行から得られる解は、
 \begin{equation*}
-  \vb*{x} = \vb*{q} + \sum_{i=1}^{n-r} t_i \vb*{u}_i
+  x_{j_i} = b_i - \sum_k \star x_k
 \end{equation*}
-という形の一般解の表示（問題Dの答え）が得られる
+となる。
 
 \br
+
+この式から、$x_{j_1}, x_{j_2}, \dots, x_{j_r}$以外の自由変数$x_k$に勝手な数を与えるごとに、主変数$x_{j_1}, x_{j_2}, \dots, x_{j_r}$が定まることがわかる。
+
+\br
+
+このような自由変数は$n-r$個あるので、$A\vb*{x} = \vb*{b}$の解は、$n-r$個のパラメータを用いて表すことができる。
+
+\subsection{基本解と特殊解}
 \marginnote{\refbookB p103}
 
-ここで、パラメータ$t_i$をかけた列ベクトル$\vb*{u}_i$を連立方程式の\keyword{基本解}と呼ぶ
-
-また、パラメータをかけていない列ベクトル$\vb*{q}$は、連立方程式の定数項から決まる解であり、これを\keyword{特殊解}と呼ぶ
-
-\sectionline
-\section{解の自由度}\label{sec:degrees-of-freedom}
-\marginnote{\refbookB p113〜114}
-
-連立一次方程式の一般解は、基本解の線形結合と特殊解の和で表された
-
-そして、基本解の線形結合は、基本解の個数の分だけパラメータを用いて表された
+自由変数$\star$をパラメータ$t_i$とおき、各行の方程式から得られる解を縦に並べてベクトルの形にまとめると、
+\begin{equation*}
+  \vb*{x} = \vb*{b}' + \sum_{i=1}^{n-r} t_i \vb*{u}_i
+\end{equation*}
+という形の一般解の表示が得られる。
 
 \br
 
-パラメータの個数は、自由変数の個数でもあり、基本解の個数でもある
+ここで、パラメータ$t_i$をかけた列ベクトル$\vb*{u}_i$を連立方程式の\keyword{基本解}という。
 
-\br
-
-このとき、パラメータの個数は、解を表す自由度と考えられる
-
-そこで、解を表すパラメータの個数を\keyword{解の自由度}と呼ぶ
-
-\begin{align*}
-  \text{解の自由度} & = \text{(変数の個数)} - \rank(A) \\
-               & = n - r
-\end{align*}
-
-解の自由度は、解全体のなす集合の大きさ、すなわち何次元の空間なのかを表している（問題Cの答え）
+また、パラメータをかけていない列ベクトル$\vb*{b}'$は、連立方程式の定数項$\vb*{b}$に行基本変形を施した結果として得られるベクトルであり、これを\keyword{特殊解}という。
 
 \end{document}

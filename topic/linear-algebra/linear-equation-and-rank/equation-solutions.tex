@@ -1,0 +1,205 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{拡大係数行列と連立方程式の同値変形}
+\marginnote{\refbookF p66〜69}
+
+$A$を$m$行$n$列の行列、$\vb*{b} \in \mathbb{R}^m$とするとき、線形方程式
+\begin{equation*}
+  A\vb*{x} = \vb*{b}
+\end{equation*}
+は、$n$個の文字$x_1, \dots, x_n$に関する$m$本の連立方程式である。
+
+$\vb*{x}$は未知数$x_1, x_2, \dots, x_n$を成分とするベクトルである。
+
+\br
+
+このとき、$A$は方程式の\keyword{係数行列}と呼ばれ、$A$の右端に列ベクトル$\vb*{b}$を追加して得られる$m$行$(n+1)$列の行列
+\begin{equation*}
+  \tilde{A} = (A \mid \vb*{b})
+\end{equation*}
+を\keyword{拡大係数行列}という。
+
+\br
+
+\hyperref[sec:forms-in-gaussian-elimination]{掃き出し法による連立一次方程式の解法}では、拡大係数行列$\tilde{A}$のうち、係数行列$A$の部分を\hyperref[sec:reduced-row-echelon-form]{既約行階段形}に変形することで、解を読み取ることを目指した。
+\begin{equation*}
+  \tilde{A}\text{\bfseries の変形後} = \begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{1-1}{1-7}
+    \rectanglecolor{carnationpink!40}{2-3}{2-7}
+    \rectanglecolor{carnationpink!40}{4-5}{4-7}
+    \Body
+    j_1    &        & j_2    & \cdots & j_r    &        &        &                    \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star& b_1 \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star& b_2 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots     & \vdots \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star  & b_r \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0   & b_{r+1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots & \vdots                  \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0& b_m\\
+    \Hdotsfor{7}_{$n$}
+  \end{pNiceArray}
+\end{equation*}
+
+途中の行基本変形を表現する基本行列を順に$P_1,P_2,\ldots,P_k$として、
+\begin{equation*}
+  P = P_k \cdots P_2 P_1
+\end{equation*}
+とおくと、行基本変形を施した後の行列は、
+\begin{equation*}
+  P \tilde{A} = P(A \mid \vb*{b}) = (PA \mid P\vb*{b})
+\end{equation*}
+すなわち、
+\begin{equation*}
+  PA       = \begin{pNiceArray}{ccccccc}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{1-1}{1-7}
+    \rectanglecolor{carnationpink!40}{2-3}{2-7}
+    \rectanglecolor{carnationpink!40}{4-5}{4-7}
+    \Body
+    j_1    &        & j_2    & \cdots & j_r    &        &                       \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star\\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots      \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0    \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots               \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0\\
+    \Hdotsfor{7}_{$n$}
+  \end{pNiceArray},
+  P\vb*{b} = \begin{pNiceArray}{c}[margin]
+    b_1 \\
+    b_2 \\
+    \vdots \\
+    b_r \\
+    b_{r+1} \\
+    \vdots \\
+    b_m
+  \end{pNiceArray}
+\end{equation*}
+と表せる。
+
+\br
+
+つまり、
+\begin{equation*}
+  A\vb*{x} = \vb*{b} \Longrightarrow PA\vb*{x} = P\vb*{b}
+\end{equation*}
+であり、\hyperref[thm:row-operation-by-elementary-matrices]{基本行列の積$P$は正則}であるから、両辺に左から$P^{-1}$をかけることで$A\vb*{x} = \vb*{b}$に戻せるので、
+\begin{equation*}
+  A\vb*{x} = \vb*{b} \Longleftrightarrow PA\vb*{x} = P\vb*{b}
+\end{equation*}
+よって、与えられた連立方程式は、係数部分を既約行階段形に変形した形の連立方程式と同値である。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      行基本変形によって得られる方程式の解は、\\
+      元の方程式の解と同じ
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+これが、掃き出し法による連立一次方程式の解法の根拠となる。
+
+変形後の拡大係数行列から、解を読み取ればよい。
+
+\sectionline
+\section{連立方程式の解のパターン}
+\marginnote{\refbookA p25}
+
+方程式を解くということは、次のような問題に答えることである。
+
+\begin{enumerate}[label=\Alph*.]
+  \item {\bfseries 解の存在}：解は存在するか？
+  \item {\bfseries 解の一意性}：解が存在する場合、それはただ1つの解か？
+  \item {\bfseries 解の自由度}：解が複数存在する場合、どれくらい多く存在するのか？
+  \item {\bfseries 解のパラメータ表示}：解全体の集合をいかにしてわかりやすく表示できるか？
+\end{enumerate}
+
+連立方程式において、解が1つに定まらない場合を\keyword{不定}、そもそも解が存在しない場合を\keyword{不能}と呼ぶ。
+
+不定の場合は、問題Cと問題Dに答えることが方程式を「解く」ことになる。
+
+\br
+
+不能かどうかを判断するのが問題A、不定かどうかを判断するのが問題Bだが、これらは次のように変形された拡大係数行列から判断することができる。
+\begin{equation*}
+  \tilde{A}\text{\bfseries の変形後} = \begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{1-1}{1-7}
+    \rectanglecolor{carnationpink!40}{2-3}{2-7}
+    \rectanglecolor{carnationpink!40}{4-5}{4-7}
+    \Body
+    j_1    &        & j_2    & \cdots & j_r    &        &        &                    \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star& b_1 \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star& b_2 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots     & \vdots \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star  & b_r \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0   & b_{r+1} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots & \vdots                  \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0& b_m\\
+    \Hdotsfor{7}_{$n$}
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+このような係数拡大行列において、方程式の解が存在するのは、
+\begin{equation*}
+  b_{r+1} = \cdots = b_m = 0
+\end{equation*}
+の場合に限る。
+
+つまり、
+\begin{equation*}
+  \tilde{A}\text{\bfseries の変形後} = \begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{1-1}{1-7}
+    \rectanglecolor{carnationpink!40}{2-3}{2-7}
+    \rectanglecolor{carnationpink!40}{4-5}{4-7}
+    \Body
+    j_1    &        & j_2    & \cdots & j_r    &        &        &                    \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star& b_1 \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star& b_2 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots     & \vdots \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star  & b_r \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0   & 0\\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots & \vdots                  \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0& 0\\
+    \Hdotsfor{7}_{$n$}
+  \end{pNiceArray}
+\end{equation*}
+というような形に変形された場合、$0 = 0$という常に成り立つ等式の本数だけ解の不定性（解が定まらない変数）が残るが、解は存在する。
+
+\br
+
+仮に$b_{r+1}, \ldots, b_m$のうち、1つでも0でないものがある場合、解は存在しない。
+
+\br
+
+たとえば、
+\begin{equation*}
+  \tilde{A}\text{\bfseries の変形後} = \begin{pNiceArray}{ccccccc|c}[first-row,code-for-first-row=\color{Rhodamine},last-row,code-for-last-row=\color{Cerulean},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{carnationpink!40}{1-1}{1-7}
+    \rectanglecolor{carnationpink!40}{2-3}{2-7}
+    \rectanglecolor{carnationpink!40}{4-5}{4-7}
+    \Body
+    j_1    &        & j_2    & \cdots & j_r    &        &        &                    \\
+    1      & \star  & 0      & \cdots & 0      & \star     & \star& b_1 \\
+    0      & 0      & 1      & \cdots & 0      & \star     & \star& b_2 \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots      & \vdots     & \vdots \\
+    0      & 0      & 0      & \cdots & 1      & \star      & \star  & b_r \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0   & 0\\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots& \vdots & \vdots                  \\
+    0      & 0      & 0      & \cdots & 0      & 0      & 0& -1\\
+    \Hdotsfor{7}_{$n$}
+  \end{pNiceArray}
+\end{equation*}
+という形が得られた場合は、$0 =-1$という常に成り立たない等式が含まれているので、連立されたすべての方程式を満たす解は存在しないことになる。
+
+\end{document}
