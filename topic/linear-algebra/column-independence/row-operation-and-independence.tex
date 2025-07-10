@@ -6,17 +6,17 @@
 \section{列ベクトルの線型独立性と行基本変形}
 \marginnote{\refbookA p42〜44}
 
-行列の階数は、行基本変形を施した結果である行階段形からわかる。
+\hyperref[thm:lin-indep-iff-rank-n]{列ベクトルの線型独立性と階数}では、列ベクトルの線型独立性を行列の階数で言い換えられることを示した。
 
 \br
 
-このとき、行階段形に至るまでの行変形の仕方は一通りとは限らない。
+行列の階数は、行基本変形を施した結果である行階段形からわかるものである。
 
-では、変形の仕方によって階数が変わることはないのだろうか？
+もしも行基本変形によって列ベクトルの線型独立性が変化するとしたら、階数との関係も変わってしまうのではないだろうか。
 
 \br
 
-その問いに答える第一歩となるのが、次の定理である。
+この心配が杞憂であることは、次の定理からわかる。
 
 \begin{theorem}{行基本変形による線型独立性の不変性}\label{thm:row-operation-preserves-dependence}
   行変形は列ベクトルの線形関係を保つ。
@@ -33,7 +33,35 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p42 （命題 1.6.8）}
+  \hyperref[thm:row-operation-by-elementary-matrices]{基本行列の積による行変形の構成}より、$P$を基本行列の積（正則行列）とすると、$B = PA$が成り立つ。
+
+  \br
+
+  よって、$\vb*{b}_i = P \vb*{a}_i$であり、線形関係式
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0}
+  \end{equation*}
+  に左から$P$をかけることで、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}
+  \end{equation*}
+  が得られる。
+
+  \br
+
+  逆に、$\displaystyle\sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}$が成り立つとき、$P^{-1}$を左からかけることで、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0}
+  \end{equation*}
+  が得られる。
+
+  \br
+
+  したがって、
+  \begin{equation*}
+    \sum_{i=1}^n c_i \vb*{a}_i = \vb*{0} \Longleftrightarrow \sum_{i=1}^n c_i \vb*{b}_i = \vb*{0}
+  \end{equation*}
+  が成り立つ。 $\qed$
 \end{proof}
 
 \end{document}
