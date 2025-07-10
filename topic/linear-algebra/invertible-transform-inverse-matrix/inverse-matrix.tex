@@ -1,0 +1,40 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{逆行列}
+\marginnote{\refbookL p43〜44}
+
+「写り先$\vb*{y}$から元の点$\vb*{x}$を答える」という写像に対応する行列を\keyword{逆行列}といい、$A^{-1}$と表す。
+
+\br
+
+この行列$A^{-1}$は、
+\begin{itemize}
+  \item どんな$\vb*{x}$を持ってきても、$A\vb*{x} = \vb*{y}$ならば$A^{-1}\vb*{y} = \vb*{x}$
+  \item どんな$\vb*{y}$を持ってきても、$A^{-1}\vb*{y} = \vb*{x}$ならば$A\vb*{x} = \vb*{y}$
+\end{itemize}
+となるような行列である。
+
+\begin{center}
+  \begin{tikzcd}
+    \vb*{x} \arrow[r,bend left,"A" font=\normalsize] & \vb*{y} \arrow[l,bend left,"A^{-1}" font=\normalsize]
+  \end{tikzcd}
+\end{center}
+
+別の言い方をすると、
+\begin{itemize}
+  \item $A$して$A^{-1}$したら元に戻る
+  \item $A^{-1}$して$A$したら元に戻る
+\end{itemize}
+となるような行列$A^{-1}$を逆行列として定義する。
+
+\begin{definition}{逆行列}
+  正方行列$A$に対して、次式を満たす行列$X$を$A$の\keyword{逆行列}といい、$A^{-1}$と表す。
+  \begin{equation*}
+    AX = XE = E
+  \end{equation*}
+\end{definition}
+
+\end{document}

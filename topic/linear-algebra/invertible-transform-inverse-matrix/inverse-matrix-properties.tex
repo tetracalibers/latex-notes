@@ -1,0 +1,165 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列の演算と逆行列}
+
+\subsection{逆行列の逆行列}
+\marginnote{\refbookL p46}
+
+「$A$の取り消し」を取り消すには、$A$すればよい。
+
+\begin{theorem}{逆行列に対する逆行列}\label{thm:inverse-of-inverse}
+  正則行列$A$の逆行列$A^{-1}$は正則であり、その逆行列は$A$である。
+  \begin{equation*}
+    (A^{-1})^{-1} = A
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A$の逆行列が$A^{-1}$であることから、
+  \begin{equation*}
+    AA^{-1} = A^{-1}A = E
+  \end{equation*}
+  この式は、$A^{-1}$が正則であり、その逆行列が$A$であることを示す式でもある。 $\qed$
+\end{proof}
+
+\subsection{行列の積の逆行列}
+\marginnote{\refbookL p46}
+
+「$B$して$A$したもの」を元に戻すには、まず$A$を取り消してから$B$を取り消す必要がある。
+
+\begin{theorem}{正則行列の積に対する逆行列}\label{thm:inverse-of-product}
+  正則行列$A,\,B$の積$AB$は正則であり、その逆行列は次のようになる。
+  \begin{equation*}
+    (AB)^{-1} = B^{-1} A^{-1}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    (AB)(B^{-1} A^{-1}) & = A(B B^{-1}) A^{-1} \\
+                        & = A E A^{-1}         \\
+                        & = E
+  \end{align*}
+  であり、同様に
+  \begin{align*}
+    (B^{-1} A^{-1})(AB) & = B^{-1} (A^{-1} A) B \\
+                        & = B^{-1} E B          \\
+                        & = E
+  \end{align*}
+  であるので、
+  \begin{equation*}
+    (AB)^{-1} = B^{-1} A^{-1}
+  \end{equation*}
+  が成り立つ。 $\qed$
+\end{proof}
+
+\subsection{転置行列の正則性}
+\marginnote{\refbookA p88}
+
+\begin{theorem}{正則行列の転置の正則性}\label{thm:transpose-of-invertible}
+  正則行列$A$に対して、その転置行列${}^t A$も正則である。
+\end{theorem}
+
+\begin{proof}
+  $A$が正則であることから、その逆行列$A^{-1}$が存在し、
+  \begin{equation*}
+    A^{-1}A = E
+  \end{equation*}
+  両辺の転置をとると、右辺の単位行列は転置しても単位行列であり、左辺には\hyperref[thm:inverse-of-product]{正則行列の積に対する逆行列の公式}を用いて、
+  \begin{equation*}
+    {}^t(A^{-1}A) = {}^t A {}^t (A^{-1}) = E
+  \end{equation*}
+  この等式より、${}^t A$の逆行列は${}^t (A^{-1})$であることがわかる。 $\qed$
+\end{proof}
+
+\sectionline
+\section{三角行列の正則性}
+\marginnote{\refbookA p74}
+
+\begin{theorem}{上三角行列の正則性}
+  対角成分がすべて0でない上三角行列は正則である。
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p74 命題2.4.9}
+\end{proof}
+
+\br
+
+\begin{theorem}{正則な上三角行列の逆行列}\label{thm:inverse-of-upper-triangular}
+  正則な上三角行列は、その逆行列も上三角行列である。
+\end{theorem}
+
+\begin{proof}
+  \todo{}
+\end{proof}
+
+\br
+
+正則な上三角行列と関連して、次の事実が成り立つ。
+
+\begin{theorem}{行基本変形と対角行列}
+  正則行列$A$に対して、行のスカラー倍以外の行基本変形を繰り返し行って対角行列にできる。
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookA p75 命題2.4.12}
+\end{proof}
+
+\sectionline
+\section{正則行列と対角行列}
+\marginnote{\refbookA p74〜75}
+
+\todo{\refbookL p46〜47}
+
+\begin{theorem}{ブロック対角行列の正則性}\label{thm:block-diagonal-invertibility}
+  次のようなブロック対角行列$M$において、対角ブロック$A,\,B$が正則であれば、$M$も正則である。
+  \begin{equation*}
+    M = \begin{pNiceArray}{cc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+      \Hdotsfor{2}^{l} & \Hdotsfor{2}^{n-l} \\
+      \Block{2-2}<\large>{A} & & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{l}  \\
+      &&& \\
+      \hline
+      \Block{2-2}<\large>{O}& & \Block{2-2}<\large>{B} && \Vdotsfor{2}^{n-l} \\
+      &&&
+    \end{pNiceArray}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A$と$B$が正則であるから、逆行列$A^{-1}$と$B^{-1}$が存在する。
+
+  それらを用いて、次のような積を考える。
+  \begin{align*}
+    \begin{pmatrix}
+      A & O \\
+      O & B
+    \end{pmatrix} \begin{pmatrix}
+                    A^{-1} & O      \\
+                    O      & B^{-1}
+                  \end{pmatrix} & = \begin{pmatrix}
+                                      A A^{-1} & O        \\
+                                      O        & B B^{-1}
+                                    \end{pmatrix} \\
+                                  & = \begin{pmatrix}
+                                        E_l & O       \\
+                                        O   & E_{n-l}
+                                      \end{pmatrix}    \\
+                                  & = E_n
+  \end{align*}
+  この等式は、$M$の逆行列の存在を示している。
+  \begin{equation*}
+    M \begin{pmatrix}
+      A^{-1} & O      \\
+      O      & B^{-1}
+    \end{pmatrix} = E_n
+  \end{equation*}
+  つまり、対角ブロックがそれぞれ正則であれば、それらの逆行列を並べることで全体の逆行列が構成できる。
+
+  このようにして、$M$が正則であることがわかる。 $\qed$
+\end{proof}
+
+\end{document}

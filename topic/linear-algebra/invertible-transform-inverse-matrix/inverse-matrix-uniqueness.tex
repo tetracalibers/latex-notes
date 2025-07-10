@@ -1,0 +1,26 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{逆行列の一意性}
+
+逆行列は、存在するとしてもただ1つしか存在しない。
+
+\begin{theorem}{逆行列の一意性}
+  正方行列$A$に対して、$A$の逆行列が存在するならば、それは一意的である。
+\end{theorem}
+
+\begin{proof}
+  $A$の逆行列が$B_1$と$B_2$の2つあるとする。
+  \begin{equation*}
+    AB_1 = B_1A = E \quad \text{かつ} \quad AB_2 = B_2A = E
+  \end{equation*}
+  $AB_2 = E$の両辺に$B_1$をかけると、
+  \begin{equation*}
+    B_1 = B_1 AB_2 = (B_1 A) B_2 = E B_2 = B_2
+  \end{equation*}
+  よって、$B_1 = B_2$となり、逆行列は一意的である。 $\qed$
+\end{proof}
+
+\end{document}

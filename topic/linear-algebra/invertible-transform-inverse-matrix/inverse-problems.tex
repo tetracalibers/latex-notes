@@ -1,0 +1,38 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形変換と逆問題}
+
+$\vb*{y} = A\vb*{x}$という形の式は、$\vb*{x}$と$\vb*{y}$の次元が同じならば、連立一次方程式として捉えることができた。
+\begin{equation*}
+  \begin{pmatrix}
+    y_1    \\
+    \vdots \\
+    y_n
+  \end{pmatrix} = \begin{pmatrix}
+    a_{11} & \cdots & a_{1n} \\
+    \vdots & \ddots & \vdots \\
+    a_{n1} & \cdots & a_{nn}
+  \end{pmatrix} \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+\end{equation*}
+そして、このような形の連立方程式を解くことは、「$\vb*{y}$から$\vb*{x}$を推定する」という逆問題を解くことに相当する。
+
+\br
+
+一方、$\vb*{y} = A\vb*{x}$という式は、線形写像を表す式とみることもできる。
+
+特に、$\mathbb{R}^n$からそれ自身への線形写像$f$を$\mathbb{R}^n$の\keyword{線形変換}と呼ぶのだった。
+
+\br
+
+言い換えると、表現行列$A$で表される線形写像$\vb*{y} = A\vb*{x}$が線形変換と呼べるのは、$\vb*{x}$と$\vb*{y}$の次元が同じ場合である。
+
+このように、線形変換と連立一次方程式を関連づけて考えることができる。
+
+\end{document}

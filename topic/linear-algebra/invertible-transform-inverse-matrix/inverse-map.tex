@@ -1,0 +1,88 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{逆写像と逆行列の対応}
+\marginnote{\refbookA p71〜72}
+
+一般に、写像$f$が全単射であれば、\keyword{逆写像}$f^{-1}$が存在する。
+
+\begin{theorem}{逆写像の線形性}
+  $f$を$\mathbb{R}^n$の正則な線形変換とするとき、逆写像$f^{-1}$は線形である
+\end{theorem}
+
+\begin{proof}
+  $\vb*{x},\vb*{y} \in \mathbb{R}^n,\, c \in \mathbb{R}$とし、次の2つを示せばよい
+  \begin{enumerate}[label=\romanlabel]
+    \item $f^{-1}(\vb*{x} + \vb*{y}) = f^{-1}(\vb*{x}) + f^{-1}(\vb*{y})$
+    \item $f^{-1}(c\vb*{x}) = c f^{-1}(\vb*{x})$
+  \end{enumerate}
+
+  \begin{subpattern}{(\romannum{i})}
+    $f \circ f^{-1}$は恒等写像であるから、
+    \begin{align*}
+      \vb*{x}           & = f \circ f^{-1}(\vb*{x})           \\
+      \vb*{y}           & = f \circ f^{-1}(\vb*{y})           \\
+      \vb*{x} + \vb*{y} & = f \circ f^{-1}(\vb*{x} + \vb*{y})
+    \end{align*}
+    また、$f$は線形写像であるから、
+    \begin{equation*}
+      f \circ f^{-1}(\vb*{x} + \vb*{y}) = f(f^{-1}(\vb*{x}) + f^{-1}(\vb*{y}))
+    \end{equation*}
+    $f \circ f^{-1}(\vb*{v})$は、$f (f^{-1}(\vb*{v}))$を意味する記号なので、
+    \begin{equation*}
+      f(f^{-1}(\vb*{x}+\vb*{y})) = f(f^{-1}(\vb*{x}) + f^{-1}(\vb*{y}))
+    \end{equation*}
+    両辺を$f^{-1}$で写すと、
+    \begin{equation*}
+      f^{-1}(\vb*{x} + \vb*{y}) = f^{-1}(\vb*{x}) + f^{-1}(\vb*{y})
+    \end{equation*}
+    となり、(\romannum{i})が示された $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{(\romannum{ii})}
+    $f \circ f^{-1}$は恒等写像であるから、
+    \begin{align*}
+      \vb*{x}  & = f \circ f^{-1}(\vb*{x}) = f(f^{-1}(\vb*{x}))   \\
+      c\vb*{x} & = f \circ f^{-1}(c\vb*{x}) = f(f^{-1}(c\vb*{x}))
+    \end{align*}
+    $\vb*{x}= f(f^{-1}(\vb*{x}))$の両辺に$c$をかけた、次も成り立つ
+    \begin{equation*}
+      c\vb*{x} = c f(f^{-1}(\vb*{x}))
+    \end{equation*}
+    さらに、$f$は線形写像であるから、
+    \begin{equation*}
+      c f(f^{-1}(\vb*{x})) = f(c f^{-1}(\vb*{x}))
+    \end{equation*}
+    ここまでの$c\vb*{x}$の複数の表現により、次式が成り立つ
+    \begin{equation*}
+      f(f^{-1}(c\vb*{x})) = f(c f^{-1}(\vb*{x}))
+    \end{equation*}
+    両辺を$f^{-1}$で写すと、
+    \begin{equation*}
+      f^{-1}(c\vb*{x}) = c f^{-1}(\vb*{x})
+    \end{equation*}
+    となり、(\romannum{ii})が示された $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
+$n$次正則行列$A$は、正則な線形変換$f\colon \mathbb{R}^n \to \mathbb{R}^n$と対応している。
+
+逆写像$f^{-1}$が存在し、線形であるから、ある$n$次正方行列$B$が対応するはずである。
+
+\br
+
+$f \circ f^{-1} = f^{-1} \circ f = \id_{\mathbb{R}^n}$であり、線形写像の合成は行列の積に対応するから、
+\begin{equation*}
+  AB = BA = E
+\end{equation*}
+が成り立つ。
+
+\br
+
+このように、逆写像の性質から、逆行列の定義式を導くこともできる。
+
+\end{document}
