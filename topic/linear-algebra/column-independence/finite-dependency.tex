@@ -3,30 +3,117 @@
 \begin{document}
 
 \sectionline
-\section{有限従属性定理}
+\section{非自明解の存在と有限従属性}
+\marginnote{\refbookA p40〜41}
 
-次の事実は、\keyword{次元}の概念を議論する際の基礎になる。
+斉次形方程式$A\vb*{x} = \vb*{o}$の非自明解の存在に対して、次の解釈もできる。
+
+\begin{theorem}{斉次形方程式の非自明解の存在と線形従属}
+  $m \times n$型行列$A$の列ベクトルを$\vb*{a}_1, \dots, \vb*{a}_n$とするとき、
+  \begin{equation*}
+    A\vb*{x} = \vb*{o}\text{に自明でない解がある}
+    \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n\text{が線形従属}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $A\vb*{x} = \vb*{o}$は、ベクトルの等式
+  \begin{equation*}
+    x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = \vb*{o}
+  \end{equation*}
+  と同じものである。
+
+  \begin{subpattern}{$\Longrightarrow$}
+    もし自明でない解があるならば、$x_1, \dots, x_n$のうち少なくとも1つは0ではない。
+
+    $x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = \vb*{o}$が成り立つもとで、0でない係数が存在するということは、$\vb*{a}_1, \dots, \vb*{a}_n$が線形従属であることを意味する。 $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{$\Longleftarrow$}
+    対偶を示す。
+
+    $\vb*{a}_1, \dots, \vb*{a}_n$が線形独立であれば、
+    \begin{equation*}
+      x_1 \vb*{a}_1 + \cdots + x_n \vb*{a}_n = \vb*{o}
+    \end{equation*}
+    において、すべての係数$x_1, \dots, x_n$は0でなければならない。
+
+    よって、0以外の解（非自明解）は存在しないことになる。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
+この命題の否定をとると、
+\begin{equation*}
+  A\vb*{x} = \vb*{o}\text{には自明解しか存在しない}
+  \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n\text{が線形独立}
+\end{equation*}
+となる。
+
+\br
+
+ここで、\hyperref[thm:homogeneous-trivial-iff-full-col-rank]{斉次形方程式の非自明解の存在条件}より、斉次形方程式$A\vb*{x} = \vb*{o}$において自明解しか存在しないことは、$\rank(A) = n$、すなわち\hyperref[sec:degrees-of-freedom]{解の自由度}が0であることと同値であった。
+
+\br
+
+つまり、次が成り立つことがわかる。
+
+\begin{theorem}{列ベクトルの線型独立性と階数}\label{thm:lin-indep-iff-rank-n}
+  $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$に対して、$A=(\vb*{a}_1, \dots, \vb*{a}_n)$とおくと、
+  \begin{equation*}
+    \vb*{a}_1, \dots, \vb*{a}_n\text{が線型独立} \Longleftrightarrow \rank(A) = n
+  \end{equation*}
+\end{theorem}
+
+\subsection{有限従属性（方程式の視点）}
+
+$\rank(A) = n$が成り立つ条件をさらに言い換えてみよう。
+
+\br
+
+$\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$に対して、$A=(\vb*{a}_1, \dots, \vb*{a}_n)$とおくと、$A$は$m \times n$型行列である。
+
+\br
+
+\hyperref[thm:rank-bounds]{階数のとりうる値の範囲}より、
+\begin{equation*}
+  \rank A \leq \min(m,n)
+\end{equation*}
+であるから、もしも列の方が行よりも多い、つまり$n > m$であれば、$\rank A \leq m < n$となり、$\rank A = n$が成り立つことはない。
+
+\br
+
+よって、次の関係がいえる。
+\begin{align*}
+  A\vb*{x} = \vb*{o}\text{に自明でない解がある} & \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n\text{が線形従属} \\
+                                      & \Longleftrightarrow \rank A \neq n
+\end{align*}
+
+ここで$n$は変数の個数、$m$は方程式の個数であるので、$n > m$という状況を次のようにまとめることができる。
+
+\begin{theorem}{斉次形方程式における有限従属性}
+  斉次線型方程式$A\vb*{x} = \vb*{o}$において、変数の個数が方程式の個数よりも多いときには、非自明な解が存在する。
+\end{theorem}
+
+\subsection{有限従属性（ベクトルの集合における視点）}
+
+連立方程式の文脈に限定せず、より抽象的に言い換えたものが次の定理である。
 
 \begin{theorem}{有限従属性定理}\label{thm:finite-dependency}
   $\mathbb{R}^m$内の$m$個よりも多いベクトルからなる集合は線形従属である。
 \end{theorem}
 
-\begin{proof}
-  \todo{\refbookA p41 （系1.6.6）}
-\end{proof}
+$n > m$の場合、$\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$は線形従属となることを述べている。
 
 \br
 
 この結論は、幾何的な直観からは自然だといえる。
 
-たとえば、平面$\mathbb{R}^2$内の3つ以上のベクトルがあれば、自動的に線形従属になる。
+たとえば、平面$\mathbb{R}^2$内に3つ以上のベクトルがあれば、自動的に線形従属になる。
 
 \br
 
-また、同じことを線型方程式の文脈に言い換えると、次のようになる。
-
-\begin{theorem}{有限従属性定理の線型方程式版}
-  斉次線型方程式$A\vb*{x} = \vb*{o}$において、変数の個数が方程式の個数よりも多いときには、非自明な解が存在する。
-\end{theorem}
+この事実は、\keyword{次元}の概念を議論する際の基礎となる。
 
 \end{document}
