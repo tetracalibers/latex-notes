@@ -6,41 +6,33 @@
 \section{線形写像の階数}
 \marginnote{\refbookA p100}
 
-行列の階数のさらに本質的な意味を明らかにするのが次の結果である
+次の定理は、行列の階数のさらに本質的な意味を明らかにし、行列の階数が行変形の仕方によらずに決まることを念押しするような定理である。
 
 \begin{theorem}{行列の階数と像空間の次元の一致}
-  行列の階数は像空間の次元である
+  行列の階数は像空間の次元である。
 
   すなわち、$A$を$m \times n$型行列とするとき、
   \begin{equation*}
-    \rank(A) = \dim \Im(A)
+    \rank A = \dim \Im A
   \end{equation*}
 \end{theorem}
 
 \begin{proof}
-  \hyperref[thm:pivot-cols-form-basis]{定理「主列ベクトルによる像空間の基底の構成」}より、$A$の主列ベクトル$\vb*{a}_{i_1}, \vb*{a}_{i_2}, \dots, \vb*{a}_{i_r}$は$\Im(A)$の基底を成す
+  \hyperref[thm:pivot-cols-form-basis]{主列ベクトルによる像空間の基底の構成}で示したように、$A$の主列ベクトル$\vb*{a}_{i_1}, \vb*{a}_{i_2}, \dots, \vb*{a}_{i_r}$は$\Im A$の基底を成す。
 
-  よってその個数$r = \rank(A)$は$\Im(A)$の次元である $\qed$
+  よってその個数$r = \rank A$は$\Im A$の次元である。 $\qed$
 \end{proof}
 
-この定理は、$A$の階数が行変形の仕方によらずに決まることを念押しするような定理である
-
 \br
 
-列ベクトルの言葉で階数の解釈を与える\hyperref[thm:rank-equals-max-indep-cols]{定理「階数と線型独立な列ベクトルの最大個数」}よりも一段と抽象性が高くなっている
-
-\br
-
-より抽象性を上げて、次の定義をする
+この定理から、線形写像に対して、像空間の次元をその階数と定める。
 
 \begin{definition}{線形写像の階数}
-  線形写像に対して、像空間の次元をその階数と定める
-
-  つまり、$f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、$f$の\keyword{階数}を
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、$f$の\keyword{階数}を
   \begin{equation*}
-    \rank(f) = \dim \Im(f)
+    \rank f = \dim \Im f
   \end{equation*}
-  と定義する
+  と定義する。
 \end{definition}
 
 \end{document}
