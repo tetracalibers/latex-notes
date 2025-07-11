@@ -20,4 +20,28 @@
   $A$を$m \times n$型行列とし、$\vb*{u}_1, \dots, \vb*{u}_d$を$A\vb*{x} = \vb*{o}$の基本解とするとき、$\{ \vb*{u}_1, \dots, \vb*{u}_d \}$は$\Ker A$の基底である。
 \end{theorem}
 
+\br
+
+つまり、基本解$\vb*{u}_1, \dots, \vb*{u}_d$を基準として固定すれば、$\Ker A$の元を1つ指定することは、パラメータの値の組
+\begin{equation*}
+  \begin{pmatrix}
+    t_1    \\
+    \vdots \\
+    t_d
+  \end{pmatrix} \in \mathbb{R}^d
+\end{equation*}
+を指定することと同じである。
+
+\subsection{解のパラメータの空間と座標部分空間}
+
+斉次形方程式$A\vb*{x} = \vb*{o}$の主変数を$x_{i_1}, \dots, x_{i_r}$、自由変数を$x_{j_1}, \dots, x_{j_d}$とすると、解のパラメータの空間は\hyperref[def:coordinate-subspace]{座標部分空間}$\mathbb{R}^{\{ j_1, \dots, j_d \}}$である。
+
+\br
+
+そして、そのパラメータ付けは、
+\begin{equation*}
+  \mathbb{R}^{\{ j_1, \dots, j_d \}} \ni \sum_{k=1}^d t_k \vb*{e}_{j_k} \longmapsto \sum_{k=1}^d t_k \vb*{u}_k \in \Ker A
+\end{equation*}
+によって与えられる。
+
 \end{document}

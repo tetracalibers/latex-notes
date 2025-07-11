@@ -29,6 +29,20 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
 
 たとえば、$\mathbb{R}^n$自身は明らかに$\mathbb{R}^n$の部分空間である。
 
+\subsection{$n-1$次平面は部分空間}
+
+たとえば$\mathbb{R}^3$において座標を$(x, y, z)$とするとき、$xy$平面は$\mathbb{R}^3$の部分空間である。
+
+\begin{definition}{座標部分空間}\label{def:coordinate-subspace}
+  $\{1, 2, \dots, n\}$の部分集合$I$に対して、$x_i \, (i \in I)$以外の座標がすべて0である部分集合は$\mathbb{R}^n$の部分集合である。
+
+  このようなものを\keyword{座標部分空間}といい、$\mathbb{R}^I$と書く。
+  \begin{equation*}
+    \mathbb{R}^I = \langle \vb*{e}_i \mid i \in I \rangle
+  \end{equation*}
+  と表すこともできる。
+\end{definition}
+
 \subsection{零ベクトルだけからなる部分集合も部分空間}
 
 零ベクトル$\vb*{o}$だけからなる部分集合$\{ \vb*{o} \}$も部分空間である。
