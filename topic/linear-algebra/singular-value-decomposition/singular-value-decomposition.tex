@@ -6,30 +6,30 @@
 \section{特異値分解}
 \marginnote{\refbookI p28〜30}
 
-$k$本の左特異ベクトルの正規直交系$\vb*{u}_1,\ldots,\vb*{u}_k$を拡張して、$\mathbb{R}^m$の正規直交基底$\vb*{u}_1,\ldots,\vb*{u}_k,\vb*{u}_{k+1},\ldots,\vb*{u}_m$が定義できる
+$k$本の左特異ベクトルの正規直交系$\vb*{u}_1,\ldots,\vb*{u}_k$を拡張して、$\mathbb{R}^m$の正規直交基底$\vb*{u}_1,\ldots,\vb*{u}_k,\vb*{u}_{k+1},\ldots,\vb*{u}_m$が定義できる。
 
-同様に、$k$本の右特異ベクトルの正規直交系$\vb*{v}_1,\ldots,\vb*{v}_k$を拡張して、$\mathbb{R}^n$の正規直交基底$\vb*{v}_1,\ldots,\vb*{v}_k,\vb*{v}_{k+1},\ldots,\vb*{v}_n$が定義できる
-
-\br
-
-$\vb*{u}_1,\ldots,\vb*{u}_n$と$\vb*{v}_1,\ldots,\vb*{v}_n$はそれぞれ$AA^\top$と$A^\top A$の固有ベクトルであり、これらに対応する共通の固有値を$\lambda_1,\ldots,\lambda_n$とおく
+同様に、$k$本の右特異ベクトルの正規直交系$\vb*{v}_1,\ldots,\vb*{v}_k$を拡張して、$\mathbb{R}^n$の正規直交基底$\vb*{v}_1,\ldots,\vb*{v}_k,\vb*{v}_{k+1},\ldots,\vb*{v}_n$が定義できる。
 
 \br
 
-$AA^\top$および$A^\top A$は半正定値行列であるので、その固有値はすべて零か正の数である
+$\vb*{u}_1,\ldots,\vb*{u}_n$と$\vb*{v}_1,\ldots,\vb*{v}_n$はそれぞれ$AA^\top$と$A^\top A$の固有ベクトルであり、これらに対応する共通の固有値を$\lambda_1,\ldots,\lambda_n$とおく。
 
-また、$AA^\top$および$A^\top A$は対称行列であり、対称行列の階数$r$は非零の固有値の個数に等しい
+\br
+
+$AA^\top$および$A^\top A$は半正定値行列であるので、その固有値はすべて零か正の数である。
+
+また、$AA^\top$および$A^\top A$は対称行列であり、対称行列の階数$r$は非零の固有値の個数に等しい。
 
 $n$個の固有値のうち、$r$個ある正の固有値は特異値の条件を満たすので、
 \begin{itemize}
   \item $\lambda_1,\ldots,\lambda_r$は特異値（正の固有値）$\sigma_1,\ldots,\sigma_r$
   \item $\lambda_{r+1},\ldots,\lambda_{n}$は零の固有値
 \end{itemize}
-とする
+とする。
 
 \br
 
-特異値が$r$個あることから、左特異ベクトルと特異値の組の個数、右特異ベクトルと特異値の組の個数は、どちらも$r$であることがいえる
+特異値が$r$個あることから、左特異ベクトルと特異値の組の個数、右特異ベクトルと特異値の組の個数は、どちらも$r$であることがいえる。
 \begin{equation*}
   k = r
 \end{equation*}
@@ -38,11 +38,11 @@ $n$個の固有値のうち、$r$個ある正の固有値は特異値の条件�
 \begin{align*}
   AA^\top \vb*{u}_i  & = \begin{cases}
                            \sigma_i \vb*{u}_i & (i = 1,\ldots,r)   \\
-                           \vb*{0}            & (i = r+1,\ldots,m)
+                           \vb*{o}            & (i = r+1,\ldots,m)
                          \end{cases} \\
   A^\top A \vb*{v}_i & = \begin{cases}
                            \sigma_i \vb*{v} & (i = 1,\ldots, r)   \\
-                           \vb*{0}          & (i = r+1,\ldots, n)
+                           \vb*{o}          & (i = r+1,\ldots, n)
                          \end{cases}
 \end{align*}
 
@@ -53,20 +53,20 @@ $n$個の固有値のうち、$r$個ある正の固有値は特異値の条件�
   A^\top \vb*{u}_i & = \sigma_i \vb*{v}_i \\
   A\vb*{v}_i       & = \sigma_i \vb*{u}_i
 \end{align*}
-という形で書ける
+という形で書ける。
 
-$i >r$の場合についても同じ形で書くために、次の定理を示す
+$i >r$の場合についても同じ形で書くために、次の定理を示す。
 
 \begin{theorem}{行列積による零化}
   \begin{enumerate}[label=\romanlabel]
-    \item $AA^\top \vb*{u} = \vb*{0} \Longrightarrow A^\top \vb*{u} = \vb*{0}$
-    \item $A^\top A \vb*{v} = \vb*{0} \Longrightarrow A\vb*{v} = \vb*{0}$
+    \item $AA^\top \vb*{u} = \vb*{o} \Longrightarrow A^\top \vb*{u} = \vb*{o}$
+    \item $A^\top A \vb*{v} = \vb*{o} \Longrightarrow A\vb*{v} = \vb*{o}$
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  \begin{subpattern}{(\romannum{i}) $AA^\top \vb*{u} = \vb*{0}$\bfseries について}
-    $AA^\top \vb*{u} = \vb*{0}$の両辺で$\vb*{u}$との内積をとって、
+  \begin{subpattern}{(\romannum{i}) $AA^\top \vb*{u} = \vb*{o}$\bfseries について}
+    $AA^\top \vb*{u} = \vb*{o}$の両辺で$\vb*{u}$との内積をとって、
     \begin{equation*}
       (\vb*{u}, AA^\top \vb*{u}) = 0
     \end{equation*}
@@ -82,7 +82,7 @@ $i >r$の場合についても同じ形で書くために、次の定理を示�
     \begin{equation*}
       \|A^\top \vb*{u}\|^2 = 0
     \end{equation*}
-    が成り立つ
+    が成り立つ。
 
     \br
 
@@ -92,13 +92,13 @@ $i >r$の場合についても同じ形で書くために、次の定理を示�
     \end{equation*}
     において、等号が成立するのは、
     \begin{equation*}
-      A^\top\vb*{u} = \vb*{0}
+      A^\top\vb*{u} = \vb*{o}
     \end{equation*}
-    の場合のみである $\qed$
+    の場合のみである。 $\qed$
   \end{subpattern}
 
-  \begin{subpattern}{(\romannum{ii}) $A^\top A \vb*{v} = \vb*{0}$\bfseries について}
-    $A^\top A \vb*{v} = \vb*{0}$の両辺で$\vb*{v}$との内積をとって、
+  \begin{subpattern}{(\romannum{ii}) $A^\top A \vb*{v} = \vb*{o}$\bfseries について}
+    $A^\top A \vb*{v} = \vb*{o}$の両辺で$\vb*{v}$との内積をとって、
     \begin{equation*}
       (\vb*{v}, A^\top A \vb*{v}) = 0
     \end{equation*}
@@ -110,7 +110,7 @@ $i >r$の場合についても同じ形で書くために、次の定理を示�
     \begin{equation*}
       \|A\vb*{v}\|^2 = 0
     \end{equation*}
-    が成り立つ
+    が成り立つ。
 
     \br
 
@@ -120,9 +120,9 @@ $i >r$の場合についても同じ形で書くために、次の定理を示�
     \end{equation*}
     において、等号が成立するのは、
     \begin{equation*}
-      A\vb*{v} = \vb*{0}
+      A\vb*{v} = \vb*{o}
     \end{equation*}
-    の場合のみである $\qed$
+    の場合のみである。 $\qed$
   \end{subpattern}
 \end{proof}
 
@@ -132,41 +132,42 @@ $i >r$の場合についても同じ形で書くために、次の定理を示�
 \begin{align*}
   A\vb*{v}_i       & = \begin{cases}
                          \sigma_i \vb*{u}_i & (i = 1,\ldots,r)   \\
-                         \vb*{0}            & (i = r+1,\ldots,m)
+                         \vb*{o}            & (i = r+1,\ldots,m)
                        \end{cases}  \\
   A^\top \vb*{u}_i & = \begin{cases}
                          \sigma_i \vb*{v}_i & (i = 1,\ldots, r)   \\
-                         \vb*{0}            & (i = r+1,\ldots, n)
+                         \vb*{o}            & (i = r+1,\ldots, n)
                        \end{cases}
 \end{align*}
-とまとめられる
+とまとめられる。
 
 \br
 
-これより、$A$は$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$をそれぞれ
+このことから、次に示すように、任意の行列は、その特異値と特異ベクトルによって表すことができる。
+これを\keyword{特異値分解}と呼ぶ。
+
+\subsection{$A$の特異値分解}\label{sec:svd-of-A}
+
+$A$は$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$をそれぞれ
 \begin{equation*}
-  \sigma_1\vb*{u}_1,\ldots,\sigma_r\vb*{u}_r,\vb*{0},\ldots,\vb*{0}
+  \sigma_1\vb*{u}_1,\ldots,\sigma_r\vb*{u}_r,\vb*{o},\ldots,\vb*{o}
 \end{equation*}
 に写像するから、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$A$は
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top \quad (\sigma_1 \geq \cdots \geq \sigma_r > 0)
 \end{equation*}
-と表すことができる
+と表すことができる。
 
-\br
+\subsection{$A^\top$の特異値分解}\label{sec:svd-of-transpose-A}
 
 同様に、$A^\top$は$\mathbb{R}^m$の正規直交基底$\{ \vb*{u}_1, \ldots, \vb*{u}_m\}$をそれぞれ
 \begin{equation*}
-  \sigma_1\vb*{v}_1, \ldots, \sigma_r\vb*{v}_r,\vb*{0},\ldots,\vb*{0}
+  \sigma_1\vb*{v}_1, \ldots, \sigma_r\vb*{v}_r,\vb*{o},\ldots,\vb*{o}
 \end{equation*}
 に写像するから、$A^\top$は
 \begin{equation*}
   A^\top = \sigma_1\vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top \quad (\sigma_1 \geq \cdots \geq \sigma_r > 0)
 \end{equation*}
-と表すことができる
-
-\br
-
-このように、任意の行列は、その特異値と特異ベクトルによって表すことができ、これを\keyword{特異値分解}と呼ぶ
+と表すことができる。
 
 \end{document}

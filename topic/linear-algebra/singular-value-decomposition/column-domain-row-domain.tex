@@ -3,19 +3,161 @@
 \begin{document}
 
 \sectionline
-\section{行空間と列空間}
+\section{列空間と行空間の正規直交基底}
 \marginnote{\refbookI p30〜31}
 
-$A$の特異値の個数は$A$の階数に等しく、特異ベクトルは\keyword{行空間}と\keyword{列空間}の正規直交基底を成すことが示される
+ここでは、$A$の特異値の個数は$A$の階数に等しく、特異ベクトルは\keyword{行空間}と\keyword{列空間}の正規直交基底を成すことを示す。
 
 \begin{definition}{列空間}
-  行列$A$の$n$本の列の張る$\mathbb{R}^m$の部分空間を$A$の\keyword{列空間}という
+  行列$A$の$n$本の列の張る$\mathbb{R}^m$の部分空間を$A$の\keyword{列空間}という。
 \end{definition}
 
 \begin{definition}{行空間}
-  行列$A$の$m$本の行の張る$\mathbb{R}^n$の部分空間を$A$の\keyword{行空間}という
+  行列$A$の$m$本の行の張る$\mathbb{R}^n$の部分空間を$A$の\keyword{行空間}という。
 \end{definition}
 
-ここでは、列空間を$\mathcal{U}$、行空間を$\mathcal{V}$と表記することにする
+列空間を$\mathcal{U}$、行空間を$\mathcal{V}$と表記することにする。
+
+\subsection{列空間の正規直交基底}
+
+$A$の列$\vb*{a}_1,\ldots,\vb*{a}_n$の任意の線形結合を考える。
+\begin{equation*}
+  c_1 \vb*{a}_1 + \cdots + c_n \vb*{a}_n = \begin{pmatrix}
+    \vb*{a}_1 & \cdots & \vb*{a}_n
+  \end{pmatrix} \begin{pmatrix}
+    c_1    \\
+    \vdots \\
+    c_n
+  \end{pmatrix} = A \vb*{c}
+\end{equation*}
+
+ここで、\hyperref[sec:svd-of-A]{$A$の特異値分解}の式
+\begin{equation*}
+  A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
+\end{equation*}
+の両辺に$\vb*{c}$を右からかけると、
+\begin{align*}
+  A \vb*{c} & = \sigma_1\vb*{u}_1\vb*{v}_1^\top \vb*{c} + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top \vb*{c} \\
+            & = \sigma_1 (\vb*{v}_1, \vb*{c}) \vb*{u}_1 + \cdots + \sigma_r (\vb*{v}_r, \vb*{c}) \vb*{u}_r
+\end{align*}
+すなわち、$A$の列の任意の線形結合$A\vb*{c}$は、互いに直交する左特異ベクトル$\vb*{u}_1,\ldots,\vb*{u}_r$の線形結合で書ける。
+
+\br
+
+よって、$\vb*{a}_1,\ldots,\vb*{a}_n$の張る列空間$\mathcal{U}$は、左特異ベクトル$\vb*{u}_1,\ldots,\vb*{u}_r$を正規直交基底とする$r$次元部分空間である。
+
+\br
+
+このことから、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $r$本の列のみが線型独立である
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということもいえる。
+
+\subsection{行空間の正規直交基底}
+
+$A$の行は$A^\top$の列であるので、同様の議論を$A^\top$に対して行う。
+
+\br
+
+\hyperref[sec:svd-of-transpose-A]{$A^\top$の特異値分解}の式
+\begin{equation*}
+  A^\top = \sigma_1\vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top
+\end{equation*}
+の両辺に$\vb*{c}$を右からかけることで、
+\begin{align*}
+  A^\top \vb*{c} & = \sigma_1\vb*{v}_1\vb*{u}_1^\top \vb*{c} + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top \vb*{c} \\
+                 & = \sigma_1 (\vb*{u}_1, \vb*{c}) \vb*{v}_1 + \cdots + \sigma_r (\vb*{u}_r, \vb*{c}) \vb*{v}_r
+\end{align*}
+となり、$A$の行の任意の線形結合$A^\top \vb*{c}$は、互いに直交する右特異ベクトル$\vb*{v}_1,\ldots,\vb*{v}_r$の線形結合で書けることがわかる。
+
+\br
+
+よって、$A$の行の張る行空間$\mathcal{V}$は、右特異ベクトル$\vb*{v}_1,\ldots,\vb*{v}_r$を正規直交基底とする$r$次元部分空間である。
+
+\br
+
+このことから、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $r$本の行のみが線型独立である
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということもいえる。
+
+\subsection{特異値の個数と特異ベクトルによる基底}
+
+以上の議論から、次のことがわかる。
+
+\begin{theorem}{特異値の個数と階数}
+  行列$A$の階数$r$は、$A$の特異値の個数に等しい。
+\end{theorem}
+
+\begin{theorem}{特異ベクトルと列空間・行空間の正規直交基底}
+  左特異ベクトル$\{\vb*{u}_i\}_{i=1}^r$と右特異ベクトル$\{\vb*{v}_i\}_{i=1}^r$は、それぞれ列空間$\mathcal{U}$と行空間$\mathcal{V}$の正規直交基底を成す。
+\end{theorem}
+
+\sectionline
+\section{列空間と行空間への射影}
+\marginnote{\refbookI p31}
+
+特異ベクトルが列空間・行空間の正規直交基底をなすことから、これらを用いて\hyperref[sec:projection-matrix-expansion]{射影行列の展開式}を考えることができる。
+
+\br
+
+$\mathbb{R}^m$の列空間$\mathcal{U}$への射影行列を$P_{\mathcal{U}}$、$\mathbb{R}^n$の行空間$\mathcal{V}$への射影行列を$P_{\mathcal{V}}$とすると、
+\begin{align*}
+  P_{\mathcal{U}} & = \sum_{i=1}^r \vb*{u}_i \vb*{u}_i^\top \\
+  P_{\mathcal{V}} & = \sum_{i=1}^r \vb*{v}_i \vb*{v}_i^\top
+\end{align*}
+
+\br
+
+ここで、$\vb*{u}_i$は列空間$\mathcal{U}$の正規直交基底であることから、$\vb*{u}_i \in \mathcal{U}$である。
+
+よって、\hyperref[sec:projection-onto-subspace]{部分空間への射影}で議論したように、$P_{\mathcal{U}}$は列空間$\mathcal{U}$の元をそのまま写すので、
+\begin{equation*}
+  P_{\mathcal{U}}\vb*{u}_i = \vb*{u}_i
+\end{equation*}
+
+このことから、\hyperref[sec:svd-of-A]{$A$の特異値分解}の式
+\begin{equation*}
+  A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
+\end{equation*}
+の両辺に左から$P_{\mathcal{U}}$をかけても変化しないことが次のように導かれる。
+\begin{align*}
+  P_{\mathcal{U}} A & = P_{\mathcal{U}} \left( \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top \right)   \\
+                    & = \sigma_1 P_{\mathcal{U}} \vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r P_{\mathcal{U}} \vb*{u}_r \vb*{v}_r^\top \\
+                    & = \sigma_1 \vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top                                 \\
+                    & = A
+\end{align*}
+
+\br
+
+行についても同様に、$P_{\mathcal{V}}\vb*{v}_i = \vb*{v}_i$であるから、\hyperref[sec:svd-of-transpose-A]{$A^\top$の特異値分解}の式
+\begin{equation*}
+  A^\top = \sigma_1\vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top
+\end{equation*}
+の両辺に右から$P_{\mathcal{V}}$をかけても変化しない。
+\begin{align*}
+  A P_{\mathcal{V}} & = \left( \sigma_1\vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top \right) P_{\mathcal{V}}    \\
+                    & = \sigma_1 \vb*{v}_1 P_{\mathcal{V}} \vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r P_{\mathcal{V}} \vb*{u}_r^\top \\
+                    & = \sigma_1 \vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top                                  \\
+                    & = A^\top
+\end{align*}
+
+\br
+
+以上をまとめると、次の式が成り立つ。
+\begin{align*}
+  P_{\mathcal{U}} A & = A      \\
+  A P_{\mathcal{V}} & = A^\top
+\end{align*}
 
 \end{document}

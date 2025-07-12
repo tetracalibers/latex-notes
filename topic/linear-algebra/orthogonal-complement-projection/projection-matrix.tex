@@ -10,66 +10,70 @@
 \begin{equation*}
   \vb*{x} = \vb*{u} + \vb*{u}^\perp
 \end{equation*}
-と一意的に分解できる（\keyword{直和分解}）
+と一意的に分解できる（\keyword{直和分解}）。
 
 \br
 
-ここで、$\vb*{x}$の$\mathcal{U}$への射影を表すのは、$\vb*{u}$である
+ここで、$\vb*{x}$の$\mathcal{U}$への射影を表すのは、$\vb*{u}$である。
 
-つまり、$\mathcal{U}$への射影とは$\vb*{x}$のうち、$\mathcal{U}$に含まれる成分$\vb*{u}$だけを取り出す操作といえる
+つまり、$\mathcal{U}$への射影とは$\vb*{x}$のうち、$\mathcal{U}$に含まれる成分$\vb*{u}$だけを取り出す操作といえる。
 
 そこで、部分空間$\mathcal{U}$へ射影する写像を$P_{\mathcal{U}}$とすると、
 \begin{equation*}
   P_{\mathcal{U}}\vb*{x} = \vb*{u}
 \end{equation*}
+という、「$\vb*{x}$に$P_{\mathcal{U}}$を作用させると$\vb*{u}$だけが残る」という形で書ける。
 
-\br
+\subsection{部分空間への射影}\label{sec:projection-onto-subspace}
 
-このとき、$\vb*{x}$がもともと$\mathcal{U}$の元である場合は、$\vb*{u}^\perp = \vb*{0}$の場合と考えて、
+このとき、$\vb*{x}$がもともと$\mathcal{U}$の元である場合は、$\vb*{u}^\perp = \vb*{o}$の場合と考えて、
 \begin{equation*}
-  \vb*{x} = \vb*{u} + \vb*{0} = \vb*{u}
+  \vb*{x} = \vb*{u} + \vb*{o} = \vb*{u}
 \end{equation*}
-つまり、射影しても変わらない
+つまり、射影しても変わらないので、
 \begin{equation*}
   P_{\mathcal{U}}\vb*{x} = \vb*{u} = \vb*{x} \quad (\vb*{x} \in \mathcal{U})
 \end{equation*}
+である。
 
 \br
 
-一方、$\vb*{x}$が$\mathcal{U}$の直交補空間$\mathcal{U}^{\perp}$の元の場合は、$\vb*{u} = \vb*{0}$の場合と考えて、
+一方、$\vb*{x}$が$\mathcal{U}$の直交補空間$\mathcal{U}^{\perp}$の元の場合は、$\vb*{u} = \vb*{o}$の場合と考えて、
 \begin{equation*}
-  P_{\mathcal{U}}\vb*{x} = \vb*{u} = \vb*{0} \quad (\vb*{x} \in \mathcal{U}^{\perp})
+  P_{\mathcal{U}}\vb*{x} = \vb*{u} = \vb*{o} \quad (\vb*{x} \in \mathcal{U}^{\perp})
 \end{equation*}
+となる。
 
 \br
 
-まとめると、
+以上をまとめると、次のように書ける。
 \begin{equation*}
   P_{\mathcal{U}}\vb*{x} = \begin{cases}
     \vb*{x} & (\vb*{x} \in \mathcal{U})         \\
-    \vb*{0} & (\vb*{x} \in \mathcal{U}^{\perp})
+    \vb*{o} & (\vb*{x} \in \mathcal{U}^{\perp})
   \end{cases}
 \end{equation*}
 
 \br
 
-同様に、直交補空間$\mathcal{U}^\perp$へ射影する写像を$P_{\mathcal{U}^\perp}$とすると、
+同様に、直交補空間$\mathcal{U}^\perp$へ射影する写像を$P_{\mathcal{U}^\perp}$とした場合、
 \begin{equation*}
   P_{\mathcal{U}^{\perp}}\vb*{x} = \begin{cases}
-    \vb*{0} & (\vb*{x} \in \mathcal{U})         \\
+    \vb*{o} & (\vb*{x} \in \mathcal{U})         \\
     \vb*{x} & (\vb*{x} \in \mathcal{U}^{\perp})
   \end{cases}
 \end{equation*}
+とまとめられる。
 
-\sectionline
+\subsection{射影行列の展開}\label{sec:projection-matrix-expansion}
 
-$\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解されることから、\hyperref[thm:direct-sum-and-basis]{$\mathbb{R}^n$の基底は$\mathcal{U}$の基底と$\mathcal{U}^\perp$の基底を合わせたもの}になる
+$\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解されることから、\hyperref[thm:direct-sum-and-basis]{$\mathbb{R}^n$の基底は$\mathcal{U}$の基底と$\mathcal{U}^\perp$の基底を合わせたもの}になる。
 
 \br
 
-そこで、部分空間$\mathcal{U}$の正規直交基底$\{\vb*{u}_1, \ldots, \vb*{u}_r\}$を選ぶと、これを$\mathbb{R}^n$の正規直交基底$\{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}$に拡張できる
+そこで、部分空間$\mathcal{U}$の正規直交基底$\{\vb*{u}_1, \ldots, \vb*{u}_r\}$を選ぶと、これを$\mathbb{R}^n$の正規直交基底$\{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}$に拡張できる。
 
-ここで、$\{ \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}$は$\mathcal{U}^\perp$の正規直交基底になる
+ここで、$\{ \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}$は$\mathcal{U}^\perp$の正規直交基底になる。
 
 \br
 
@@ -77,16 +81,16 @@ $\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解される�
 \begin{equation*}
   P_{\mathcal{U}}\vb*{x} = \begin{cases}
     \vb*{x} & (\vb*{x} \in \mathcal{U})         \\
-    \vb*{0} & (\vb*{x} \in \mathcal{U}^{\perp})
+    \vb*{o} & (\vb*{x} \in \mathcal{U}^{\perp})
   \end{cases}
 \end{equation*}
 という式は、$P_{\mathcal{U}}$が$\mathbb{R}^n$の正規直交基底
 \begin{equation*}
   \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
 \end{equation*}
-を、それぞれ次のように写像することを意味する
+を、それぞれ次のように写像することを意味する。
 \begin{equation*}
-  \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{0}, \ldots, \vb*{0} \}
+  \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{o}, \ldots, \vb*{o} \}
 \end{equation*}
 
 \br
@@ -94,7 +98,7 @@ $\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解される�
 同様に、
 \begin{equation*}
   P_{\mathcal{U}^{\perp}}\vb*{x} = \begin{cases}
-    \vb*{0} & (\vb*{x} \in \mathcal{U})         \\
+    \vb*{o} & (\vb*{x} \in \mathcal{U})         \\
     \vb*{x} & (\vb*{x} \in \mathcal{U}^{\perp})
   \end{cases}
 \end{equation*}
@@ -102,20 +106,20 @@ $\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解される�
 \begin{equation*}
   \{ \vb*{u}_1, \ldots, \vb*{u}_r, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
 \end{equation*}
-を、それぞれ次のように写像することを意味する
+を、それぞれ次のように写像することを意味する。
 \begin{equation*}
-  \{ \vb*{0}, \ldots, \vb*{0}, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
+  \{ \vb*{o}, \ldots, \vb*{o}, \vb*{u}_{r+1}, \ldots, \vb*{u}_n \}
 \end{equation*}
 
 \br
 
-ゆえに、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$は次のように表現できる
+ゆえに、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$は次のように表現できる。
 \begin{align*}
   P_{\mathcal{U}}         & = \vb*{u}_1 \vb*{u}_1^\top + \cdots + \vb*{u}_r \vb*{u}_r^\top         \\
   P_{\mathcal{U}^{\perp}} & = \vb*{u}_{r+1} \vb*{u}_{r+1}^\top + \cdots + \vb*{u}_n \vb*{u}_n^\top
 \end{align*}
 
-$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$をそれぞれ、部分空間$\mathcal{U}$、およびその直交補空間$\mathcal{U}^{\perp}$への\keyword{射影行列}と呼ぶ
+$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$をそれぞれ、部分空間$\mathcal{U}$、およびその直交補空間$\mathcal{U}^{\perp}$への\keyword{射影行列}と呼ぶ。
 
 \sectionline
 \section{単位行列の射影行列への分解}
