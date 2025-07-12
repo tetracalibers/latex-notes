@@ -1,0 +1,149 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{核空間と斉次形方程式の解空間}
+\marginnote{\refbookL p149〜150\\ \refbookF p80〜81 \\ \refbookA p94〜95}
+
+線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、
+\begin{equation*}
+  \Ker f = \{ \vb*{v} \in \mathbb{R}^n \mid A\vb*{v} = \vb*{o} \}
+\end{equation*}
+と定めると、$f(\vb*{v}) = A\vb*{v}$という関係から、$\Ker f$と$\Ker A$は同じものを指す。
+
+\br
+
+$\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしまうような、つまり$A\vb*{x}=\vb*{o}$となるような$\vb*{x}$すべての集合である。
+
+\br
+
+つまり、$\Ker A$とは、斉次形の方程式$A\vb*{x} = \vb*{o}$の\keyword{解空間}そのものである。
+
+\subsection{核空間と一般解のパラメータ表示}
+
+\hyperref[sec:reinterpretation-of-parametric-solution]{解のパラメータ表示の再解釈}で述べたように、$A\vb*{x} = \vb*{b}$の解をすべて見つけるには、
+\begin{enumerate}
+  \item 1つの解（特殊解）$\vb*{x}_0$を見つける
+  \item $A\vb*{x} = \vb*{o}$の一般解を求める
+  \item それらの和が$A\vb*{x} = \vb*{b}$の一般解となる
+\end{enumerate}
+という考え方を使うことができた。
+
+\br
+
+このことを$\Ker A$を用いて定式化できる。
+
+\begin{theorem}{特殊解と核の元による別解の構成}
+  $\vb*{x}_0$が$A\vb*{x} = \vb*{b}$の解であるとき、$\Ker A$に属する任意のベクトル$\vb*{u}$を用いて、$\vb*{x}_0 + \vb*{u}$もまた$A\vb*{x} = \vb*{b}$の解となる。
+\end{theorem}
+
+\begin{proof}
+  $\vb*{x}_0$が$A\vb*{x} = \vb*{b}$の解であることから、
+  \begin{equation*}
+    A\vb*{x}_0 = \vb*{b}
+  \end{equation*}
+
+  また、$\vb*{u} \in \Ker A$より、
+  \begin{equation*}
+    A\vb*{u} = \vb*{o}
+  \end{equation*}
+
+  よって、
+  \begin{align*}
+    A(\vb*{x}_0 + \vb*{u}) & = A\vb*{x}_0 + A\vb*{u} \\
+                           & = A\vb*{x}_0 + \vb*{o}  \\
+                           & = \vb*{b}
+  \end{align*}
+  となり、$\vb*{x}_0 + \vb*{u}$もまた$A\vb*{x} = \vb*{b}$の解であることがわかる。 $\qed$
+\end{proof}
+
+\br
+
+そして、どんな解もこの方法で作ることができる。
+
+\begin{theorem}{特殊解と核空間による一般解の構成}
+  $A\vb*{x} = \vb*{b}$を満たす1つの解$\vb*{x}_0$が見つかれば、$A\vb*{x} = \vb*{b}$の一般解は、$A\vb*{x} = \vb*{o}$の一般解$\vb*{u}$を用いて、$\vb*{x}_0 + \vb*{u}$と表される。
+\end{theorem}
+
+\begin{proof}
+  $A\vb*{x} = \vb*{b}$の1つの解を$\vb*{x}_0$、もう1つの解を$\vb*{x}_1$とおくと、
+  \begin{equation*}
+    A\vb*{x}_0 = \vb*{b}, A\vb*{x}_1 = \vb*{b}
+  \end{equation*}
+  が成り立つので、
+  \begin{gather*}
+    A\vb*{x}_1 - A\vb*{x}_0 = \vb*{b} - \vb*{b} = \vb*{o} \\
+    \therefore \quad A(\vb*{x}_1 - \vb*{x}_0) = \vb*{o}
+  \end{gather*}
+  となり、$\vb*{x}_1 - \vb*{x}_0$は$A\vb*{x} = \vb*{o}$の解である。
+
+  \br
+
+  ここで、$A\vb*{x} = \vb*{o}$の一般解$\vb*{u}$が得られているなら、$\vb*{x}_1 - \vb*{x}_0$も$\vb*{u}$で表すことができる。
+
+  \br
+
+  したがって、$\vb*{x}_0 + \vb*{u}$は$A\vb*{x} = \vb*{b}$のすべての解を網羅する。 $\qed$
+\end{proof}
+
+\br
+
+解が1つ見つかれば、その解$\vb*{x}_0$は固定して、$\Ker A$に属するベクトル$\vb*{u}$をいろいろ変えることにより、$\vb*{x}_0 + \vb*{u}$ですべての解が得られる。
+
+\subsection{核空間の基底と基本解}
+
+「$\vb*{u}$をいろいろ変えることにより」という部分をもう少し精密に述べよう。
+
+いろいろ動かしてすべての解を網羅するには、解空間$\Ker A$の基底が必要である。
+すなわち、$\vb*{u}$は$\Ker A$の基底$\vb*{u}_i$を用いた次のような形で表される。
+
+\begin{equation*}
+  \vb*{u} = c_1 \vb*{u}_1 + \cdots + c_d \vb*{u}_d
+\end{equation*}
+
+ここで、$c_1, \ldots, c_d$は任意であるので、この式は斉次形方程式$A\vb*{x} = \vb*{o}$の基本解のパラメータ表示そのものである。
+
+\begin{theorem}{斉次形方程式の基本解と核空間の基底}
+  $A$を$m \times n$型行列とし、$\vb*{u}_1, \dots, \vb*{u}_d$を$A\vb*{x} = \vb*{o}$の基本解とするとき、$\{ \vb*{u}_1, \dots, \vb*{u}_d \}$は$\Ker A$の基底である。
+\end{theorem}
+
+言い換えると、$\Ker A$の元$\vb*{u}$は、$A\vb*{x} = \vb*{o}$の基本解$\vb*{u}_1,\dots,\vb*{u}_d$を使ってパラメータ表示できる。
+
+\subsection{パラメータの空間と座標部分空間}
+
+つまり、基本解$\vb*{u}_1, \dots, \vb*{u}_d$を基準として固定すれば、$\Ker A$の元を1つ指定することは、パラメータの値の組
+\begin{equation*}
+  \begin{pmatrix}
+    t_1    \\
+    \vdots \\
+    t_d
+  \end{pmatrix} \in \mathbb{R}^d
+\end{equation*}
+を指定することと同じである。
+
+\br
+
+斉次形方程式$A\vb*{x} = \vb*{o}$の主変数を$x_{i_1}, \dots, x_{i_r}$、自由変数を$x_{j_1}, \dots, x_{j_d}$とすると、解のパラメータの空間は\hyperref[def:coordinate-subspace]{座標部分空間}$\mathbb{R}^{\{ j_1, \dots, j_d \}}$である。
+
+\br
+
+そして、そのパラメータ付けは、
+\begin{equation*}
+  \mathbb{R}^{\{ j_1, \dots, j_d \}} \ni \sum_{k=1}^d t_k \vb*{e}_{j_k} \longmapsto \sum_{k=1}^d t_k \vb*{u}_k \in \Ker A
+\end{equation*}
+によって与えられる。
+
+\subsection{核空間の次元と解の自由度}
+
+$\vb*{b} = \vb*{o}$でない一般の連立方程式$A\vb*{x} = \vb*{b}$においても、\hyperref[sec:degrees-of-freedom]{基本解の個数$d$は解の自由度}であり、$\vb*{u}_1, \ldots, \vb*{u}_d$は$\Ker A$の基底をなすため、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $\Ker A$の次元は、$A\vb*{x} = \vb*{b}$の解の自由度と一致する
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということがいえる。
+
+\end{document}
