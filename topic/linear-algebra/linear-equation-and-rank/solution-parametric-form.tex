@@ -3,7 +3,7 @@
 \begin{document}
 
 \sectionline
-\section{一般解のパラメータ表示}
+\section{一般解のパラメータ表示}\label{sec:general-solution-parametric-form}
 \marginnote{\refbookA p33〜36}
 
 解が1つに定まらない場合は、解の全体像を知ることが方程式を「解く」ことになる。
@@ -58,7 +58,7 @@
 
 それ以外の$x_2, x_5$は自由変数となる。
 
-\subsection{自由変数とパラメータ}
+\subsection{自由変数とパラメータ}\label{sec:free-vars-and-params}
 
 先ほどの方程式
 \begin{center}
@@ -196,12 +196,12 @@
 
 このような自由変数は$n-r$個あるので、$A\vb*{x} = \vb*{b}$の解は、$n-r$個のパラメータを用いて表すことができる。
 
-\subsection{基本解と特殊解}
+\subsection{基本解と特殊解}\label{sec:fundamental-and-particular-solutions}
 \marginnote{\refbookB p103}
 
 自由変数$\star$をパラメータ$t_i$とおき、各行の方程式から得られる解を縦に並べてベクトルの形にまとめると、
 \begin{equation*}
-  \vb*{x} = \vb*{b}' + \sum_{i=1}^{n-r} t_i \vb*{u}_i
+  \vb*{x} = \vb*{b}' - \sum_{i=1}^{n-r} t_i \vb*{u}_i
 \end{equation*}
 という形の一般解の表示が得られる。
 
@@ -209,6 +209,6 @@
 
 ここで、パラメータ$t_i$をかけた列ベクトル$\vb*{u}_i$を連立方程式の\keyword{基本解}という。
 
-また、パラメータをかけていない列ベクトル$\vb*{b}'$は、連立方程式の定数項$\vb*{b}$に行基本変形を施した結果として得られるベクトルであり、これを\keyword{特殊解}という。
+また、パラメータをかけていない列ベクトル$\vb*{b}'$は、変形後の拡大係数行列$(A' \mid \vb*{b}')$の定数項部分$\vb*{b}'$から得られるベクトルであり、これを\keyword{特殊解}という。
 
 \end{document}

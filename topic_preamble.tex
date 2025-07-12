@@ -297,6 +297,34 @@
   \end{quote}
 }
 
+\NewDocumentCommand{\fitLabelMath}{O{Rhodamine} O{Rhodamine!30} O{0.6} m m}{
+  \tcboxmath[
+    enhanced,
+    frame hidden,
+    colback={#2},
+    opacityback={#3},
+    title={#5},
+    coltitle={#1},
+    fonttitle=\bfseries,
+    left=1pt, right=1pt, top=1pt, bottom=1pt,
+    attach boxed title to top center={yshift=-0.5mm},
+    boxed title style={empty, top=0mm, bottom=0mm}
+  ]{#4}
+}
+
+\NewDocumentCommand{\fitRectMath}{O{Rhodamine!30} m}{
+  \tcboxmath[
+    enhanced,
+    frame hidden,
+    colback={#1},
+    fonttitle=\bfseries,
+    left=1pt, right=1pt, top=1pt, bottom=1pt,
+    attach boxed title to top center={yshift=-0.5mm},
+    boxed title style={empty, top=0mm, bottom=0mm},
+    sharp corners,
+  ]{#2}
+}
+
 % === memo ===
 
 \usepackage{zebra-goodies} % TODOなどの注釈

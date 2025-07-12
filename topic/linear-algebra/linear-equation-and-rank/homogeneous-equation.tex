@@ -1,0 +1,453 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{斉次形方程式の非自明解}
+
+$A\vb*{x} = \vb*{b}$において、$\vb*{b}=\vb*{o}$の場合、つまり、
+\begin{equation*}
+  A\vb*{x} = \vb*{o}
+\end{equation*}
+の形の線形連立方程式は\keyword{斉次形}であるという。
+
+\br
+
+斉次形の場合は$\vb*{x} = \vb*{o}$が明らかに解になっていて、これを\keyword{自明解}という。
+
+したがって、斉次形の方程式では、自明解以外に解が存在するかどうかが基本的な問題となる。
+
+\begin{theorem}{斉次形方程式の非自明解の存在条件}\label{thm:homogeneous-trivial-iff-full-col-rank}
+  斉次形の方程式$A\vb*{x} = \vb*{o}$において、
+  \begin{equation*}
+    \text{自明解しか存在しない} \Longleftrightarrow \rank(A) = n
+  \end{equation*}
+  ここで、$n$は変数の個数である。
+\end{theorem}
+
+\begin{proof}
+  斉次形の場合は自明解が常に存在するので、解の一意性$\rank(A) = n$は、それ以外の解がないということを意味している。 $\qed$
+\end{proof}
+
+\sectionline
+\section{斉次形方程式と一般解}
+\marginnote{\refbookL p149〜150\\ \refbookF p80〜81 \\ \refbookA p33〜36}
+
+\hyperref[sec:general-solution-parametric-form]{一般解のパラメータ表示}の章で具体例として挙げた連立一次方程式
+\begin{equation*}
+  (A' \mid \vb*{b}') =\begin{pNiceArray}{ccccc|c}[first-row,code-for-first-row=\color{Rhodamine},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{SkyBlue!35}{1-6}{3-6}
+    \Body
+    1 & & 3 & 4 & &                           \\
+    1 & 2 & 0 & 0 & -1 & -3 \\
+    0 & 0 & 1 & 0 & 2 & 1 \\
+    0 & 0 & 0 & 1 & 1 & 2
+    \CodeAfter
+    \tikz \draw[thick,Rhodamine] (1-1) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (2-3) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (3-4) circle (0.5em);
+  \end{pNiceArray}
+\end{equation*}
+すなわち、
+\begin{center}
+  \systeme{
+    x_1 + 2x_2 - x_5 = -3,
+    x_3 + 2x_5 = 1,
+    x_4 + x_5 = 2
+  }
+\end{center}
+の一般解は、次のようなパラメータ表示として得られた。
+\begin{equation*}
+  \vb*{x} = \fitLabelMath[Cerulean][SkyBlue!35][1.0]{\begin{pmatrix}
+      -3 \\
+      0  \\
+      1  \\
+      2  \\
+      0
+    \end{pmatrix}}{特殊解} + t_1 \fitLabelMath[Rhodamine][carnationpink!40]{\begin{pmatrix}
+      -2 \\
+      1  \\
+      0  \\
+      0  \\
+      0
+    \end{pmatrix}}{基本解} + t_2 \fitLabelMath[Rhodamine][carnationpink!40]{\begin{pmatrix}
+      1  \\
+      0  \\
+      -2 \\
+      -1 \\
+      1
+    \end{pmatrix}}{基本解}
+\end{equation*}
+
+\br
+
+この一般解を、ここでは別なアプローチで考察する。
+
+\subsection{特殊解は簡単に見つかる}
+
+自由変数$x_2,x_5$の値はなんでもよいので、これらを0とおいたもの
+\begin{center}
+  \systeme{
+    x_1 = -3,
+    x_3 = 1,
+    x_4 = 2
+  }
+\end{center}
+すなわち、
+\begin{center}
+  \systeme{
+    x_1 = -3,
+    x_2 = 0,
+    x_3 = 1,
+    x_4 = 2,
+    x_5 = 0
+  }
+\end{center}
+も方程式の解となる。
+
+\br
+
+この解は、パラメータ表示された解$\vb*{x}$の特殊解に一致しており、さらに、変形後の拡大係数行列$(A' \mid \vb*{b}')$の定数項部分$\vb*{b}'$からも直接読み取れることがわかる。
+\begin{tcolorbox}[empty, size=minimal, sidebyside]
+  \begin{equation*}
+    \vb*{x}_0 = \fitLabelMath[Cerulean][SkyBlue!35][1.0]{\begin{pmatrix}
+        -3 \\
+        0  \\
+        1  \\
+        2  \\
+        0
+      \end{pmatrix}}{特殊解}
+  \end{equation*}
+
+  \tcblower
+
+  \begin{equation*}
+    \begin{pNiceArray}{ccccc|c}[first-row,code-for-first-row=\color{Rhodamine},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+      \CodeBefore
+      \rectanglecolor{SkyBlue!35}{1-6}{3-6}
+      \Body
+      1 & & 3 & 4 & &                           \\
+      1 & 2 & 0 & 0 & -1 & -3 \\
+      0 & 0 & 1 & 0 & 2 & 1 \\
+      0 & 0 & 0 & 1 & 1 & 2
+      \CodeAfter
+      \tikz \draw[thick,Rhodamine] (1-1) circle (0.5em);
+      \tikz \draw[thick,Rhodamine] (2-3) circle (0.5em);
+      \tikz \draw[thick,Rhodamine] (3-4) circle (0.5em);
+    \end{pNiceArray}
+  \end{equation*}
+\end{tcolorbox}
+
+\subsection{解のパラメータ表示の再解釈}
+
+\hyperref[sec:fundamental-and-particular-solutions]{基本解と特殊解}の章でも述べたように、特殊解を$\vb*{x}_0$、基本解を$\vb*{u}_i$とすると、$A\vb*{x} = \vb*{b}$の一般解は次のように表せる。
+\begin{equation*}
+  \vb*{x} = \vb*{x}_0 + t_1\vb*{u}_1 + \cdots + t_{n-r}\vb*{u}_{n-r}
+\end{equation*}
+
+ここで、実は、
+\begin{equation*}
+  A\vb*{x}_0 = \vb*{b},\quad A\vb*{u}_1 = \vb*{o},\quad \dots \quad , A\vb*{u}_{n-r} = \vb*{o}
+\end{equation*}
+が成り立っている。
+
+\br
+
+このことは次のように確かめられる。
+\begin{align*}
+  A\vb*{x} & = A(\vb*{x}_0 + t_1\vb*{u}_1 + \cdots + t_{n-r}\vb*{u}_{n-r}) \\
+           & = A\vb*{x}_0 + t_1A\vb*{u}_1 + \cdots + t_{n-r}A\vb*{u}_{n-r} \\
+           & = \vb*{b} + t_1\vb*{o} + \cdots + t_{n-r}\vb*{o}              \\
+           & = \vb*{b}
+\end{align*}
+
+\br
+
+つまり、基本解$\vb*{u}_1,\dots,\vb*{u}_{n-r}$は、もとの方程式において$\vb*{b} = \vb*{o}$とした斉次形方程式$A\vb*{x} = \vb*{o}$の解である。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      1つの解$\vb*{x}_0$が見つかったら、あとは斉次形方程式$A\vb*{x} = \vb*{o}$の一般解を求めればよい
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+この方法で、$A\vb*{x} = \vb*{b}$のすべての解が見つかることになる。
+
+\subsection{斉次形方程式の特殊解は自明解}
+
+特殊解を$\vb*{x}_0$とすると、次の関係が成り立っていた。
+\begin{equation*}
+  A\vb*{x}_0 = \vb*{b}
+\end{equation*}
+
+ここで、$\vb*{b} = \vb*{o}$とした場合を考えると、
+\begin{equation*}
+  A\vb*{x}_0 = \vb*{o}
+\end{equation*}
+となるので、斉次形方程式$A\vb*{x} = \vb*{o}$の特殊解$\vb*{x}_0$は、自明解$\vb*{x} = \vb*{o}$である。
+
+\br
+
+つまり、斉次形方程式の一般解は、特殊解を除いた次のような形になる。
+\begin{equation*}
+  \vb*{x} = t_1\vb*{u}_1 + t_2\vb*{u}_2 + \cdots + t_{n-r}\vb*{u}_{n-r}
+\end{equation*}
+
+斉次形方程式の一般解を求めるということは、基本解を求めることに他ならない。
+
+\subsection{斉次形方程式の基本解も簡単に見つかる}
+
+斉次形方程式$A\vb*{x} = \vb*{o}$の基本解は、既約行階段形にした係数行列$A_\circ$の形を見てすぐに書き下せる。
+
+\br
+
+たとえば、係数行列$A$が次のように変形されたとする。
+\begin{equation*}
+  A_\circ = \begin{pNiceArray}{cccccc}[first-row,code-for-first-row=\color{Rhodamine},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    1 & & 3 & 4 & &                           \\
+    1 & 2 & 0 & 0 & 3 & -5 \\
+    0 & 0 & 1 & 0 & 7 & 6 \\
+    0 & 0 & 0 & 1 & -4 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0\\
+    \CodeAfter
+    \tikz \draw[thick,Rhodamine] (1-1) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (2-3) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (3-4) circle (0.5em);
+  \end{pNiceArray}
+\end{equation*}
+
+自由変数$x_2,x_5,x_6$をパラメータとして$t_1,t_2,t_3$とおくと、基本解$\vb*{u}_1,\vb*{u}_2,\vb*{u}_3$を用いて、一般解$\vb*{x}$は次のように表せる。
+\begin{equation*}
+  \vb*{x} = t_1 \vb*{u}_1 + t_2 \vb*{u}_2 + t_3 \vb*{u}_3
+\end{equation*}
+
+ここで、$x_2 = t_1, x_5 = t_2, x_6 = t_3$であるということは、$\vb*{u}_1,\vb*{u}_2,\vb*{u}_3$が次のような形になっているはずである。
+\begin{equation*}
+  \vb*{x} = \begin{pmatrix}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+    x_4 \\
+    x_5 \\
+    x_6
+  \end{pmatrix} = t_1 \begin{pmatrix}
+    \star \\
+    1     \\
+    \star \\
+    \star \\
+    0     \\
+    0
+  \end{pmatrix} + t_2 \begin{pmatrix}
+    \star \\
+    0     \\
+    \star \\
+    \star \\
+    1     \\
+    0
+  \end{pmatrix} + t_3 \begin{pmatrix}
+    \star \\
+    0     \\
+    \star \\
+    \star \\
+    0     \\
+    1
+  \end{pmatrix}
+\end{equation*}
+この形であれば、各行を見ると、$x_2 = t_1, x_5 = t_2, x_6 = t_3$が成り立つことがわかる。
+
+\br
+
+$\star$の部分については、変形後の係数行列から次のように読み取ればよい。
+\begin{equation*}
+  A_\circ = \begin{pNiceArray}{cccccc}[xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{SkyBlue!35}{1-2}{3-2}
+    \rectanglecolor{SkyBlue!35}{1-5}{3-5}
+    \rectanglecolor{SkyBlue!35}{1-6}{3-6}
+    \Body
+    1 & 2 & 0 & 0 & 3 & -5 \\
+    0 & 0 & 1 & 0 & 7 & 6 \\
+    0 & 0 & 0 & 1 & -4 & 0 \\
+    0 & 0 & 0 & 0 & 0 & 0\\
+    \CodeAfter
+    \tikz \draw[thick,Rhodamine] (1-1) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (2-3) circle (0.5em);
+    \tikz \draw[thick,Rhodamine] (3-4) circle (0.5em);
+  \end{pNiceArray}
+\end{equation*}
+
+\begin{equation*}
+  \vb*{x} = t_1 \begin{pmatrix}
+    \fitRectMath[SkyBlue!35]{-2} \\
+    1                            \\
+    \fitRectMath[SkyBlue!35]{0}  \\
+    \fitRectMath[SkyBlue!35]{0}  \\
+    0                            \\
+    0
+  \end{pmatrix} + t_2 \begin{pmatrix}
+    \fitRectMath[SkyBlue!35]{-3} \\
+    0                            \\
+    \fitRectMath[SkyBlue!35]{-7} \\
+    \fitRectMath[SkyBlue!35]{4}  \\
+    1                            \\
+    0
+  \end{pmatrix} + t_3 \begin{pmatrix}
+    \fitRectMath[SkyBlue!35]{5}  \\
+    0                            \\
+    \fitRectMath[SkyBlue!35]{-6} \\
+    \fitRectMath[SkyBlue!35]{0}  \\
+    0                            \\
+    1
+  \end{pmatrix}
+\end{equation*}
+
+このように係数行列から読み取った数の符号を変えたものを$\star$の位置に並べるだけで解が得られる根拠は、次のように方程式$A_\circ \vb*{x} = \vb*{o}$の形に直すとわかる。
+
+\begin{center}
+  \systeme{
+    x_1 + 2x_2 + 3x_5 - 5 = 0,
+    x_3 + 7x_5 + 6x_6 = 0,
+    x_4 - 4x_5 = 0
+  }
+\end{center}
+
+基本解$x_1,x_3,x_4$は、自由変数をパラメータに置き換えた上で移項することで求まるので、
+
+\begin{center}
+  \systeme{
+    x_1 = -2t_1 - 3t_2 + 5t_3,
+    x_3 = -7t_2 + 6t_3,
+    x_4 = 4t_2
+  }
+\end{center}
+
+この移項によって、変形後の係数行列に並んでいた数値から符号を変えたものが解として使われることになる。
+
+\subsection{斉次形方程式の一般解}
+
+先ほどの手順は、まず自由変数の位置をもとに単位ベクトルを考え、そこから主変数を構成する値を引いたものとして一般解を構成したと整理できる。
+
+\br
+
+つまり、先ほど求めた一般解のパラメータ表示を
+\begin{equation*}
+  \vb*{x} = t_1\vb*{u}_1 + t_2\vb*{u}_2 + t_3\vb*{u}_3
+\end{equation*}
+とおくと、各基本解$\vb*{u}_1,\vb*{u}_2,\vb*{u}_3$は、次のように見ることもできる。
+\begin{align*}
+  \vb*{u}_1 & = \begin{pmatrix}
+                  0 \\
+                  1 \\
+                  0 \\
+                  0 \\
+                  0 \\
+                  0
+                \end{pmatrix} - \begin{pmatrix}
+                                  \fitRectMath[SkyBlue!35]{2} \\
+                                  0                           \\
+                                  \fitRectMath[SkyBlue!35]{0} \\
+                                  \fitRectMath[SkyBlue!35]{0} \\
+                                  0                           \\
+                                  0
+                                \end{pmatrix}  \\
+  \vb*{u}_2 & = \begin{pmatrix}
+                  0 \\
+                  0 \\
+                  0 \\
+                  0 \\
+                  1 \\
+                  0
+                \end{pmatrix} - \begin{pmatrix}
+                                  \fitRectMath[SkyBlue!35]{3}  \\
+                                  0                            \\
+                                  \fitRectMath[SkyBlue!35]{7}  \\
+                                  \fitRectMath[SkyBlue!35]{-4} \\
+                                  0                            \\
+                                  0
+                                \end{pmatrix} \\
+  \vb*{u}_3 & = \begin{pmatrix}
+                  0 \\
+                  0 \\
+                  0 \\
+                  0 \\
+                  0 \\
+                  1
+                \end{pmatrix} - \begin{pmatrix}
+                                  \fitRectMath[SkyBlue!35]{-5} \\
+                                  0                            \\
+                                  \fitRectMath[SkyBlue!35]{6}  \\
+                                  \fitRectMath[SkyBlue!35]{0}  \\
+                                  0                            \\
+                                  0
+                                \end{pmatrix}
+\end{align*}
+
+ここで、たとえば$\vb*{u}_2$は、さらに次のように展開できる。
+\begin{equation*}
+  \vb*{u}_2 = \begin{pmatrix}
+    0 \\
+    0 \\
+    0 \\
+    0 \\
+    1 \\
+    0
+  \end{pmatrix} - \vb*{e}_1 \begin{pmatrix}
+    \fitRectMath[SkyBlue!35]{3} \\
+    0                           \\
+    0                           \\
+    0                           \\
+    0                           \\
+    0
+  \end{pmatrix} - \vb*{e}_3 \begin{pmatrix}
+    0                           \\
+    0                           \\
+    \fitRectMath[SkyBlue!35]{7} \\
+    0                           \\
+    0                           \\
+    0
+  \end{pmatrix} - \vb*{e}_4 \begin{pmatrix}
+    0                            \\
+    0                            \\
+    0                            \\
+    \fitRectMath[SkyBlue!35]{-4} \\
+    0                            \\
+    0
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+このことを一般化しておこう。
+
+\br
+
+主変数の番号を$i_1,\dots, i_r$、自由変数の番号を$j_1,\dots,j_{n-r}$とする。
+\begin{equation*}
+  A_\circ = \begin{pNiceArray}{cccccc}[first-row,xdots={horizontal-labels,line-style ={ <->,thick}},margin]
+    \CodeBefore
+    \rectanglecolor{SkyBlue!35}{1-2}{4-2}
+    \rectanglecolor{SkyBlue!35}{1-6}{4-6}
+    \Body
+    \textcolor{Rhodamine}{i_1}    &   \textcolor{Cerulean}{j_1}     & \textcolor{Rhodamine}{i_2}    & \cdots & \textcolor{Rhodamine}{i_r}      &      \textcolor{Cerulean}{j_{n-r}}                     \\
+    1      & b_{1,1}  & 0      & \cdots & 0         & b_{1,n-r} \\
+    0      & 0      & 1      & \cdots & 0         & b_{2, n-r} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots     & \vdots      \\
+    0      & 0      & 0      & \cdots & 1         & b_{r,n-r} \\
+    0      & 0      & 0      & \cdots & 0          & 0   \\
+    \vdots & \vdots & \vdots & \ddots & \vdots & \vdots                   \\
+    0      & 0      & 0      & \cdots & 0         & 0
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+$A_\circ$の第$j_k$列を$(b_{ik})_{i=1}^m$とするとき、基本解$\vb*{u}_k$は、
+\begin{equation*}
+  \vb*{u}_k = \vb*{e}_{j_k} - \sum_{l=1}^r b_{lk} \vb*{e}_{i_l} \quad (k=1,\dots,n-r)
+\end{equation*}
+と表すことができる。
+
+\end{document}
