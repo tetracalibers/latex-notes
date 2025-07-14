@@ -4,7 +4,7 @@
 
 \sectionline
 \section{ある変数に関する偏微分係数}
-\marginnote{\refbookB p21〜23}
+%\marginnote{\refbookB p21〜23}
 
 2変数関数$z = f(x, y)$において、$x$方向の傾きを考えてみる。
 
@@ -47,14 +47,16 @@ $h$を微小量とし、$x = a_1$から少しだけ移動した点を$x = a_1 + 
 \end{equation*}
 この式を、関数$f(x,y)$の$(a_1,a_2)$における$x$に関する\keyword{偏微分係数}という。
 
+\br
+
 偏微分の場合は、通常の微分記号$\dfrac{d}{dx}$の代わりに、$\dfrac{\partial}{\partial x}$という記号を用いる。
-\begin{equation*}
-  \dfrac{\partial f}{\partial x}(a_1,a_2) = \lim_{h \to 0} \frac{f(a_1 + h, a_2) - f(a_1, a_2)}{h}
-\end{equation*}
+\begin{multline*}
+  \dfrac{\partial f}{\partial x}(a_1,a_2) \\= \lim_{h \to 0} \frac{f(a_1 + h, a_2) - f(a_1, a_2)}{h}
+\end{multline*}
 
 \sectionline
 \section{ある変数に関する偏導関数}
-\marginnote{\refbookB p24}
+%\marginnote{\refbookB p24}
 
 偏微分係数は、$(a_1,a_2)$という値を1つ決めたときに、$\dfrac{\partial f}{\partial x}(a_1,a_2)$という値が1つ決まるという式である。
 
@@ -63,22 +65,24 @@ $h$を微小量とし、$x = a_1$から少しだけ移動した点を$x = a_1 + 
 \br
 
 そこで、入力$(a_1,a_2)$を変数$(x,y)$に置き換えて、
-\begin{equation*}
-  \dfrac{\partial f}{\partial x}(x,y) = \lim_{h \to 0} \frac{f(x + h, y) - f(x, y)}{h}
-\end{equation*}
+\begin{multline*}
+  \dfrac{\partial f}{\partial x}(x,y) \\= \lim_{h \to 0} \frac{f(x + h, y) - f(x, y)}{h}
+\end{multline*}
 という2変数関数を新たに考える。
 これを$x$に関する\keyword{偏導関数}という。
 
 \sectionline
 \section{偏微分の記号}
-\marginnote{\refbookB p24〜25}
+%\marginnote{\refbookB p24〜25}
 
 偏導関数の記号にはさまざまな表記法があるが、どれも同じものである。
 
+\br
+
 \begin{description}
-  \item [$\dfrac{\partial f(x,y)}{\partial x}$]~\\ 微小量の変化の比
-  \item [$f_x(x,y)$]~\\ 微分の省略形$f'(x)$の代わり（何に関する偏微分かを下に添えた）
-  \item [$\partial_x f(x,y)$]~\\ 偏微分するという操作を関数に施す
+  \item [$\dfrac{\partial f(x,y)}{\partial x}$]~\\ 微小量の変化の比 \br
+  \item [$f_x(x,y)$]~\\ 微分の省略形$f'(x)$の代わり（何に関する偏微分かを下に添えた）\br
+  \item [$\partial_x f(x,y)$]~\\ 偏微分するという操作を関数に施す \br
   \item [$\left(\dfrac{\partial f }{\partial x}\right)_y$]~\\ 関数の変数を省略した形（止めている他の変数を下に添えた）
 \end{description}
 
