@@ -18,7 +18,7 @@
 
 $x^n$を$n$の階乗で割った$\dfrac{x^n}{n!}$という関数を考える
 
-\vskip\baselineskip
+\br
 
 この関数を微分すると、$\dfrac{1}{n!}$は微分の外に出せる
 \begin{equation}
@@ -29,7 +29,7 @@ $x^n$を$n$の階乗で割った$\dfrac{x^n}{n!}$という関数を考える
 
 文字は左辺の$n$から右辺の$n-1$に化けるが、形は同じ
 
-\vskip\baselineskip
+\br
 
 $n$に具体的な数を入れて確かめてみる
 \begin{itemize}
@@ -44,7 +44,7 @@ $n$に具体的な数を入れて確かめてみる
 
 上のリストでは$n=5$で止めているが、たとえば$n=100$までいっても同じパターンが続く
 
-\vskip\baselineskip
+\br
 
 そこで、$\dfrac{x^n}{n!}$を$n=0$から順に全部足すことを考え、それを$f(x)$とおく
 \begin{align}
@@ -61,7 +61,7 @@ $n$に具体的な数を入れて確かめてみる
 
 つまり、\keyword{関数$f(x)$は微分したものが自分自身になっている！}
 
-\vskip\baselineskip
+\br
 
 いま無限級数として定義した関数$f(x)$を何通りかの記法で表しておく
 \begin{align}
@@ -96,7 +96,7 @@ $1$を何乗しても$1$であるから、
   f(1) = 1 + 1 + \dfrac{1}{2!} + \dfrac{1}{3!} + \cdots
 \end{equation}
 
-\vskip\baselineskip
+\br
 
 この$f(1)$の数値はどのくらいになるだろうか？
 \begin{enumerate}
@@ -109,13 +109,13 @@ $1$を何乗しても$1$であるから、
 \end{enumerate}
 ここまでの$6$項の和で$2.716\ldots$となる
 
-\vskip\baselineskip
+\br
 
 加える項は急速に$0$に近づく
 
 項が100個くらいまで進むと、次に加える$\dfrac{1}{100!}$は小数点以下に$0$が150個以上並ぶくらい小さな数になる（$10^{152}<100!<10^{164}$という不等式より）
 
-\vskip\baselineskip
+\br
 
 このように、無限級数$f(1)$は収束がとても速く、
 \begin{equation}
@@ -131,7 +131,7 @@ $1$を何乗しても$1$であるから、
   \lim_{n\to\infty}\left(1+\dfrac{1}{n}\right)^n = \sum_{k=0}^{\infty} \dfrac{1}{k!}
 \end{equation}
 
-\vskip\baselineskip
+\br
 
 \subparagraph{証明のスケッチ}
 
@@ -173,7 +173,7 @@ $n$が大きくなると$\dfrac{1}{n}$は$0$に近づくので、$1-\dfrac{1}{n}
 
 $n$を大きくすると$n!$は急速に大きくなるので、$x=1$のときには無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}=\sum_{n=0}^{\infty} \dfrac{1}{n!}$が収束することは納得できる
 
-\vskip\baselineskip
+\br
 
 では、$x>1$のときもこの無限級数は収束するといえるのだろうか？
 
@@ -182,19 +182,19 @@ $n$を大きくすると$n!$は急速に大きくなるので、$x=1$のとき�
 そもそも数列の各項が$0$に近づかないと、その数列の総和は収束しないため、まず次の問いを考える
 （以下では$x$を固定しておく）
 
-\vskip\baselineskip
+\br
 
 \paragraph{問題}
 
 $n$をどんどん大きくしたとき、$\dfrac{x^n}{n!}$は$0$に近づくか？
 
-\vskip\baselineskip
+\br
 
 この問いは、$x^n$と$n!$の大きさを比べようという問題である
 
 たとえば$n=100$とすると、実は$100!$の方が$10^{100}$よりも圧倒的に大きくなることをすでに示している
 
-\vskip\baselineskip
+\br
 
 $n=100$に限らず、「$x$を止めたとき、$x^n$と$n!$の比である$\dfrac{x^n}{n!}$は、$n$を大きくすると分母が圧倒的に大きくなり、比は$0$に近づく」ことが同様の議論で示される
 
@@ -202,27 +202,27 @@ $n=100$に限らず、「$x$を止めたとき、$x^n$と$n!$の比である$\df
 
 無限級数の各項が$0$に近づいたとしても、「塵も積もれば山となる」（足し合わせると発散する）ことも起こり得る
 
-\vskip\baselineskip
+\br
 
 では、次の問題はどうだろうか？
 
-\vskip\baselineskip
+\br
 
 \paragraph{問題}
 
 無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$は収束するか？
 
-\vskip\baselineskip
+\br
 
 実はこの無限級数は、等比級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{1}{2^n}$よりももっと速く収束する
 
-\vskip\baselineskip
+\br
 
 \subparagraph{証明のスケッチ}\quad
 
 $x$は固定して、$n$に関する和を考える
 
-\vskip\baselineskip
+\br
 
 整数$n$が十分に大きければ、
 \begin{equation}
@@ -231,7 +231,7 @@ $x$は固定して、$n$に関する和を考える
 
 これは、「無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$が等比級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{1}{2^n}$より速く収束する」という1つの表現
 
-\vskip\baselineskip
+\br
 
 正確には、$8x^2+1$より大きいすべての自然数$n$に対して、
 \begin{equation}
@@ -253,7 +253,7 @@ $x$は固定して、$n$に関する和を考える
   \left| \sum_{n=N+1}^{\infty} a_n \right| & \leq \sum_{n=N+1}^{\infty} |a_n|
 \end{align}
 
-\vskip\baselineskip
+\br
 
 そこで、無限級数$\displaystyle\sum_{n=0}^{\infty} \dfrac{x^n}{n!}$を、$n=N$までの有限和と、$n=N+1$からの無限級数に分けて考える
 \begin{equation}
@@ -261,7 +261,7 @@ $x$は固定して、$n$に関する和を考える
 \end{equation}
 このように考えると、左辺の無限級数が、右辺の有限和に収束することがわかる
 
-\vskip\baselineskip
+\br
 
 \subparagraph{不等式$\dfrac{\left|x\right|^n}{n!} < \dfrac{1}{2^n}$の証明}\quad\\
 
@@ -271,11 +271,11 @@ $x$は固定して、$n$に関する和を考える
 \end{equation}
 という不等式が成り立つことを示す
 
-\vskip\baselineskip
+\br
 
 $A=2|x|$の場合$\left( 2|x| \right)^n < n!$が、$\dfrac{\left|x\right|^n}{n!} < \dfrac{1}{2^n}$となる
 
-\vskip\baselineskip
+\br
 
 $n$が偶数（$=2m$）の場合、$n > 2A^2$の$n$を$2m$に置き換えることで、$m > A^2$となり、
 \begin{align}
@@ -285,7 +285,7 @@ $n$が偶数（$=2m$）の場合、$n > 2A^2$の$n$を$2m$に置き換えるこ�
 \end{align}
 が成り立つ
 
-\vskip\baselineskip
+\br
 
 $n$が奇数の場合、$n-1$は偶数なので、偶数の場合の結果から$(n-1)! > A^{n-1}$がいえる
 
@@ -315,7 +315,7 @@ $n$が奇数の場合、$n-1$は偶数なので、偶数の場合の結果から
 
 小計を取ってから、小計を足し合わせて総計を取るのが\keyword{2重和}
 
-\vskip\baselineskip
+\br
 
 小計として何を選ぶかには自由度がある
 
@@ -328,7 +328,7 @@ $n$が奇数の場合、$n-1$は偶数なので、偶数の場合の結果から
 
 一般の2重和の計算においても、何を小計として選んでも総和は同じになる
 
-\vskip\baselineskip
+\br
 
 多重積分における累次積分の計算法は、2重和$\sum\sum$を一般化したものになっている
 
@@ -336,7 +336,7 @@ $n$が奇数の場合、$n-1$は偶数なので、偶数の場合の結果から
 
 $f(x+y)$で現れる2重和は、そもそも全体として何を算出しようとしているのか？
 
-\vskip\baselineskip
+\br
 
 $a, b$という自然数（$0$を含む）を固定して、$x^ay^b$という項が$f(x+y)$の2重和の中にどのように出現しているのか探す
 \begin{align}
@@ -352,7 +352,7 @@ $a, b$という自然数（$0$を含む）を固定して、$x^ay^b$という項
 
 まとめると、$(a,b)=(k,n-k)$すなわち$(k, n) = (a, a+b)$という等式の下で、組$(a,b)$と組$(k,n)$が1対1に対応している
 
-\vskip\baselineskip
+\br
 
 そのため、$x^ay^b$は、$f(x+y)$の2重和の中で、
 \begin{equation}
@@ -360,7 +360,7 @@ $a, b$という自然数（$0$を含む）を固定して、$x^ay^b$という項
 \end{equation}
 という形で現れることがわかる
 
-\vskip\baselineskip
+\br
 
 また、
 \begin{itemize}
@@ -369,7 +369,7 @@ $a, b$という自然数（$0$を含む）を固定して、$x^ay^b$という項
 \end{itemize}
 という数の範囲の条件も、1対1に対応している
 
-\vskip\baselineskip
+\br
 
 このことから、$\displaystyle\sum_{n=0}^{\infty}\sum_{k=0}^{n}$を$\displaystyle\sum_{a=0}^{\infty}\sum_{b=0}^{\infty}$に書き換えることができて、
 \begin{align}
@@ -429,7 +429,7 @@ $m$を自然数とするとき、
 \end{equation}
 が成り立つ
 
-\vskip\baselineskip
+\br
 
 \subparagraph{$m=0$の場合}
 
@@ -441,7 +441,7 @@ $f(0)=1$より、$f(0x)=f(0)=1$
 
 $f(x)=f(x)^1$が成り立つ
 
-\vskip\baselineskip
+\br
 
 \subparagraph{一般の場合の証明}
 
@@ -504,11 +504,11 @@ $x$を$-x$に置き換えても、$f(x)=e^x$が成り立つことがわかる
 
 以上の議論から、$x$が有理数のとき$f(x)=e^x$となることがわかった
 
-\vskip\baselineskip
+\br
 
 $x$が有理数以外のときに、$e^x$はどうやって定義すればよいだろうか？
 
-\vskip\baselineskip
+\br
 
 \subparagraph{有理数での近似による定義}
 
@@ -516,13 +516,13 @@ $x$が有理数以外のときに、$e^x$はどうやって定義すればよい
 
 たとえば、実数$x$を小数点以下$3$桁まで表示して得られる数$y$は、$y=\dfrac{\text{整数}}{1000}$と表せるので有理数であり、しかも$x$との誤差が$10^{-3}$未満になる
 
-\vskip\baselineskip
+\br
 
 $e^x$の値が変数$x$について連続的に動くと考えると、実数$x$を有理数$\dfrac{n}{m}$で近似すれば、$e^{\frac{n}{m}}$は$e^x$を近似できるだろう
 
 そこで、近似をどんどん精密にしたときの極限として$e^x$の値を定義する
 
-\vskip\baselineskip
+\br
 
 \subparagraph{べき級数展開による定義}
 
@@ -532,13 +532,13 @@ $x$が有理数とは限らない場合に指数関数$e^x$を定義する別の
 \end{equation}
 $x$が有理数でなくても、右辺の無限級数で定義した関数を$e^x$と表記しよう、という発想
 
-\vskip\baselineskip
+\br
 
 べき乗という1つの観点にこだわっていると、$x$が複素数の場合に$e$の$x$乗が何を意味するのかは、哲学的な問題となってしまう
 
 無限級数であれば、$x$が複素数であっても意味を持つ
 
-\vskip\baselineskip
+\br
 
 $x$が複素数の場合も含めて、無限級数で指数関数$e^x$を定義しておくと、指数関数と三角関数も結びつき、さらに世界が拡がる
 

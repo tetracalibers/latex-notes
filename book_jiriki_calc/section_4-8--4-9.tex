@@ -12,7 +12,7 @@
 
 関数のグラフの各点で、その曲がり方を表す円弧の半径を求めるのには2階の微分を使う
 
-\vskip\baselineskip
+\br
 
 実用上は、1階微分と2階微分を用いると、多くの場合、局所的に十分良い近似ができるが、それでも微小な乖離は生じる
 
@@ -36,7 +36,7 @@
 \end{equation*}
 という絶対量で表された
 
-\vskip\baselineskip
+\br
 
 一方、相対的な比率として定義される、
 \begin{equation*}
@@ -44,7 +44,7 @@
 \end{equation*}
 も大事な視点である
 
-\vskip\baselineskip
+\br
 
 実用上は、分母を「測定値」に取り換えた、
 \begin{equation*}
@@ -52,7 +52,7 @@
 \end{equation*}
 で代用することもある
 
-\vskip\baselineskip
+\br
 
 $P$が小さいときは誤差率として代用できることは、次のように確認できる
 
@@ -79,7 +79,7 @@ $t=\dfrac{\text{真の値}}{\text{測定値}}$とおくと、
 \end{gather}
 と書き表せる
 
-\vskip\baselineskip
+\br
 
 $P<\dfrac{1}{101}$ならば、
 \begin{align*}
@@ -143,7 +143,7 @@ $a$を7時、$b$を12時とすると、$f(a)=22^\circ$C、$f(b)=30^\circ$Cであ
 
 7時から正午まで、一度も温度計を見ていなくても、その間の情報が皆無ではないということになる
 
-\vskip\baselineskip
+\br
 
 探し物をするときでも、「この部屋にあるかどうかすらわからない」と思って探すのと、「この部屋にあることは確実だ」と信じて探すのでは大きな差がある
 
@@ -165,13 +165,13 @@ $a$を7時、$b$を12時とすると、$f(a)=22^\circ$C、$f(b)=30^\circ$Cであ
 
 このことは、中間値の定理から説明できる
 
-\vskip\baselineskip
+\br
 
 ゴムひもを数直線上に置き、左端と右端の座標をそれぞれ$a,\,b$とする
 
 ゴムひも内のある点の座標を$x$とすると、$a\leq x\leq b$である
 
-\vskip\baselineskip
+\br
 
 両手の間隔を広げたとき、この点の行き先の座標を$g(x)$とすると、
 \begin{itemize}
@@ -186,11 +186,11 @@ $a$を7時、$b$を12時とすると、$f(a)=22^\circ$C、$f(b)=30^\circ$Cであ
 \end{align*}
 そうすると、中間値の定理より、$f(c)=0$となる$c$が$a$と$b$の間に存在する
 
-\vskip\baselineskip
+\br
 
 $f(c)=0$というのは、$g(c)=c$、つまり動かした後の座標$g(c)$と元の座標$c$が一致するということなので、$c$は動かない点である
 
-\vskip\baselineskip
+\br
 
 こうして、手を広げたとき、ゴムひもの中で必ず動かない点があることが示された
 
@@ -232,7 +232,7 @@ $f'(c)$は接線の傾きなので、平均値の定理は、線分PQと平行�
 
 この選手の10秒間の平均速度は秒速10mであり、この平均速度は線分PQの傾きに対応する
 
-\vskip\baselineskip
+\br
 
 もちろん、この選手は10秒間同じスピードで走っているわけではない
 
@@ -244,7 +244,7 @@ $f'(c)$は接線の傾きなので、平均値の定理は、線分PQと平行�
 
 $f'(x)=0$がすべての$x$で成り立てば、関数$f(x)$は定数である
 
-\vskip\baselineskip
+\br
 
 \subparagraph{証明}
 
@@ -279,13 +279,13 @@ $f'(x)=0$がすべての$x$で成り立てば、平均値の定理の左辺$f'(c
 
 ここで、
 
-\vskip\baselineskip
+\br
 
 \paragraph{定理（再掲）}
 
 $a < x < b$で定義された、微分可能な関数$f(x)$が$x=c$で最大値または最小値を取るならば、$f'(c)=0$である
 
-\vskip\baselineskip
+\br
 
 という定理を思い出すと、$a < c < b$なので$g'(c) = 0$となる
 \begin{align}
@@ -308,19 +308,19 @@ $a < x < b$で定義された、微分可能な関数$f(x)$が$x=c$で最大値�
 
 方程式でいえば1次式であり、多くの場合には、これだけで局所的には十分な情報が得られる
 
-\vskip\baselineskip
+\br
 
 しかし、もっと精密なことを知りたい場合もある
 
 こういうとき、2次式や3次式、あるいはもっと高次の多項式を用いると、近似の精度が上がることが期待できる
 
-\vskip\baselineskip
+\br
 
 しかし、それでも何らかの誤差は出てくるものである
 
 近似に使う高次の多項式を\keyword{主要項}とみなしたとき、誤差項に相当するのが\keyword{剰余項}である
 
-\vskip\baselineskip
+\br
 
 この剰余項は存在定理の形で表されるのだが、上手に用いると、「誤差は最悪でもこの程度だ」という論理に使える
 
@@ -397,15 +397,15 @@ $h(x)$は$a \leq x \leq b$で定義され、何回でも微分できる関数と
 
 繰り返して平均値の定理を使って示すことができる
 
-\vskip\baselineskip
+\br
 
 まず、$h(a)=h(b)=0$なので、$h(x)$に平均値の定理を適用すると、$h'(c_1)=0$となる$c_1 \, (a < c_1 < b)$が存在することがわかる
 
-\vskip\baselineskip
+\br
 
 次に、$h'(a)=h'(c')=0$なので、$h'(x)$に平均値の定理を用いると、$h''(c_2)=0$となる$c_2 \, (a < c_2 < c_1)$が存在することがわかる
 
-\vskip\baselineskip
+\br
 
 これを繰り返し、最後は$n$階微分$h^{(n)}(x)$に平均値の定理を用いると、$h^{(n+1)}(c)=0$となる$c_{n+1}\, (a < c_{n+1} < c_n)$が存在する
 
@@ -421,7 +421,7 @@ $A$を$x$によらない定数とし、
 \end{equation*}
 とおく
 
-\vskip\baselineskip
+\br
 
 ここで、
 \begin{multline}
@@ -432,7 +432,7 @@ $A$を$x$によらない定数とし、
   \end{cases*}
 \end{multline}
 
-\vskip\baselineskip
+\br
 
 これを用いて、
 \begin{multline}
@@ -451,7 +451,7 @@ $x=a$を代入すると、
   \end{cases*}
 \end{multline*}
 
-\vskip\baselineskip
+\br
 
 最後の項についても同様に、
 \begin{align*}
@@ -463,7 +463,7 @@ $x=a$を代入すると、
   \left(\dfrac{d}{dx}\right)^k \dfrac{A(x-a)^{n+1}}{(b-a)^{n+1}} = 0
 \end{equation*}
 
-\vskip\baselineskip
+\br
 
 よって、$A$が何であっても、
 \begin{align*}
@@ -471,7 +471,7 @@ $x=a$を代入すると、
 \end{align*}
 となり、$h^{(k)}(a)=0 \quad (0\leq k \leq n)$が成り立つ
 
-\vskip\baselineskip
+\br
 
 そこで$h(b)=0$となるように、$A$を
 \begin{equation*}
@@ -486,7 +486,7 @@ $x=a$を代入すると、
        & = 0
 \end{align*}
 
-\vskip\baselineskip
+\br
 
 ここで、先ほどの命題を適用すると、$h^{(n+1)}(c)=0$となる$c$が$a$と$b$の間に存在する
 
@@ -504,7 +504,7 @@ $A$について解くと、
   A & = \dfrac{f^{(n+1)}(c)}{(n+1)!}(b-a)^{n+1}
 \end{align*}
 
-\vskip\baselineskip
+\br
 
 これで、$A$についての2通りの表現が得られたので、
 \begin{gather}
