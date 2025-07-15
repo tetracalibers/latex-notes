@@ -3,18 +3,63 @@
 \begin{document}
 
 \sectionline
-\section{特異値分解の行列表記}
+\section{特異値分解の行列表記}\label{sec:matrix-form-svd}
 \marginnote{\refbookI p31〜32 \\ \refbookK p143〜145 \\ \refbookA p223〜228}
 
 特異値分解の式
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
 \end{equation*}
-は、行列で表すこともできる。
+は、次のように行列で表すこともできる。
+\begin{align*}
+  A & = \begin{pmatrix}
+    \sigma_1\vb*{u}_1 & \cdots & \sigma_r\vb*{u}_r
+  \end{pmatrix} \begin{pmatrix}
+    \vb*{v}_1^\top \\
+    \vdots \\
+    \vb*{v}_r^\top
+  \end{pmatrix} \\
+  & = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_r
+  \end{pmatrix} \begin{pmatrix}
+                        \sigma_1 &        &           \\
+                                  & \ddots &           \\
+                                  &        & \sigma_r
+                      \end{pmatrix} \begin{pmatrix}
+    \vb*{v}_1^\top \\
+    \vdots      \\
+    \vb*{v}_r^\top
+  \end{pmatrix}
+\end{align*}
+ここで、
+\begin{gather*}
+  U_r = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_r
+  \end{pmatrix}, \quad
+  V_r = \begin{pmatrix}
+    \vb*{v}_1 & \cdots & \vb*{v}_r
+  \end{pmatrix}, \\
+  \Sigma_r = \begin{pmatrix}
+                        \sigma_1 &        &           \\
+                                  & \ddots &           \\
+                                  &        & \sigma_r
+                      \end{pmatrix}
+\end{gather*}
+とおくと、
+\begin{equation*}
+  A = U_r \Sigma_r V_r^\top
+\end{equation*}
+という、行列$A$を3つの行列を用いて分解した式として表すことができる。
+
+この式は、$A$の\keyword{簡約された特異値分解}と呼ばれる。
+
+\subsection{特異値分解のより一般的な形}
+
+先ほどの式が「簡約された」特異値分解と呼ばれるということは、簡約する前のより一般的な形も考えられるということである。
 
 \br
 
-元々、この式は、$A$が$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$をそれぞれ
+元々、特異値分解の式は、$A$が$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$をそれぞれ
 \begin{equation*}
   \sigma_1\vb*{u}_1,\ldots,\sigma_r\vb*{u}_r,\vb*{o},\ldots,\vb*{o}
 \end{equation*}
@@ -129,26 +174,10 @@
 \begin{equation*}
   A = U \Sigma V^\top
 \end{equation*}
-という、行列$A$を3つの行列を用いて分解した式として表すことができる。
-
-この式を$A$の\keyword{特異値分解}と呼ぶ。
-
-\subsection{簡約された特異値分解}
-
-$\vb*{o}$の部分を削った形も考えることができる。
+と表せる。この式を$A$の\keyword{特異値分解}と呼ぶ。
 
 \br
 
-$U,V$のはじめの$r$列からなる行列をそれぞれ$U_r,V_r$とし、
-\begin{equation*}
-  \Sigma_r = \diag(\sigma_1, \ldots, \sigma_r)
-\end{equation*}
-とおくと、
-\begin{equation*}
-  A = U_r \Sigma_r V_r^\top
-\end{equation*}
-が成り立つ。
-
-この式は、$A$の\keyword{簡約された特異値分解}と呼ばれる。
+簡約された特異値分解は、特異値分解において$U$の余計な列と$\Sigma$の零行を省いたものだといえる。
 
 \end{document}

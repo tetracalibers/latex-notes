@@ -4,7 +4,7 @@
 
 \sectionline
 \section{ムーア・ペンローズ型一般逆行列}
-\marginnote{\refbookI p37〜}
+\marginnote{\refbookI p37}
 
 $O$でない$m \times n$型行列$A$が次のように特異値分解されているとする。
 \begin{equation*}
@@ -19,8 +19,27 @@ $\sigma_i$が逆数に、$\vb*{u}_i\vb*{v}_i^\top$が$\vb*{v}_i\vb*{u}_i^\top$�
 
 \br
 
-転置$\top$が$\vb*{v}_i$から$\vb*{u}_i$に移動したことで、行列$A^-$は$n \times m$型行列になっている。
+\hyperref[sec:matrix-form-svd]{特異値分解の行列表記}を用いると、ムーア・ペンローズ型一般逆行列は次のように書ける。
+\begin{equation*}
+  A^- = V \begin{pmatrix}
+                        \dfrac{1}{\sigma_1} &        &           \\
+                                  & \ddots &           \\
+                                  &        & \dfrac{1}{\sigma_r}
+                      \end{pmatrix} U^\top
+\end{equation*}
 
-\todo{}
+ここで、$U$と$V$は次のように定義している。
+\begin{equation*}
+  U = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_r
+  \end{pmatrix}, \quad
+  V = \begin{pmatrix}
+    \vb*{v}_1 & \cdots & \vb*{v}_r
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+\todo{$A$が正則なら逆行列と一致}
 
 \end{document}
