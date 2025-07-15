@@ -1,0 +1,75 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{座標ベクトルとノルム}
+\marginnote{\refbookA p205、p255}
+
+特異値分解はユニタリ変換であり、ユニタリ変換はベクトルのノルムを変えないことから、さまざまな有用な性質が導かれる。
+
+\begin{theorem}{ユニタリ行列による座標変換}\label{thm:unitary-coordinate-transform}
+  $\mathcal{U} = \{ \vb*{u}_i \}_{i=1}^n$を$\mathbb{C}^n$の正規直交基底とし、ユニタリ行列$U = (\vb*{u}_1, \ldots, \vb*{u}_n)$を定める。
+  このとき、$\vb*{v} \in \mathbb{C}^n$の$\mathcal{U}$に関する座標ベクトルは$U^*\vb*{v}$で与えられる。
+\end{theorem}
+
+\begin{proof}
+  次式が成り立つことから、$U$は$\mathbb{C}^n$の標準基底$\{ \vb*{e}_i \}_{i=1}^n$から$\mathcal{U}$への変換行列とみなせる。
+  \begin{equation*}
+    \begin{pmatrix}
+      \vb*{u}_1 & \cdots & \vb*{u}_n
+    \end{pmatrix} = \begin{pmatrix}
+      \vb*{e}_1 & \cdots & \vb*{e}_n
+    \end{pmatrix} U
+  \end{equation*}
+  
+  \hyperref[thm:coordinate-change-rule]{座標ベクトルの変換則}より、$\vb*{v}$の$\mathcal{U}$に関する座標ベクトルを$\vb*{c} \in \mathbb{C}^n$とすると、
+  \begin{equation*}
+    \vb*{v} = U \vb*{c}
+  \end{equation*}
+  両辺に左から$U^*$をかけると、
+  \begin{equation*}
+    U^* \vb*{v} = U^* U \vb*{c} = \vb*{c}
+  \end{equation*}
+  となり、たしかに$\vb*{c}$は$U^* \vb*{v}$で与えられることがわかる。 $\qed$
+\end{proof}
+
+\br
+
+$A$が特異値分解されていると、ベクトルのノルムの変化がわかりやすい。
+
+\begin{theorem}{特異値分解に基づくノルムの展開表示}\label{thm:norm-expansion-svd}
+  行列$A$がユニタリ行列$U,V$を用いて$A = U \Sigma V^*$と特異値分解されているとする。
+  
+  $V$に対応する$\mathbb{C}^n$の基底を$\mathcal{V}$とし、$\vb*{v} \in \mathbb{C}^n$の$\mathcal{V}$に関する座標ベクトルを$\vb*{c} = (c_i) \in \mathbb{C}^n$とすると、
+  \begin{equation*}
+    \| A \vb*{v} \|^2 = \sum_{i=1}^r \sigma_i^2 |c_i|^2
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:unitary-coordinate-transform]{ユニタリ行列による座標変換}より、座標ベクトルは$\vb*{c} = V^* \vb*{v}$で与えられる。
+  
+  よって、
+  \begin{equation*}
+    \| A \vb*{v} \|^2 = \| U \Sigma V^* \vb*{v} \|^2 = \| U \Sigma \vb*{c} \|^2
+  \end{equation*}
+  
+  ここで、\hyperref[thm:unitary-characterized-by-norm-invariance]{左からユニタリ行列$U$をかけてもノルムは変わらない}ので、
+  \begin{equation*}
+    \| A \vb*{v} \|^2 = \| \Sigma \vb*{c} \|^2
+  \end{equation*}
+  
+  $\Sigma$は対角成分に特異値$\sigma_1, \dots, \sigma_r$（$\sigma_i > 0$）を持ち、それ以外は0の$m \times n$行列であるから、
+  \begin{equation*}
+    \Sigma \vb*{c} = (\sigma_1 c_1, \dots, \sigma_r c_r, 0, \dots, 0)^T
+  \end{equation*}
+  
+  よってそのノルムの二乗は、\hyperref[def:standard-inner-product-Cn]{$\mathbb{C}^n$上の自分自身との内積}と考えて、
+  \begin{equation*}
+    \| \Sigma \vb*{c} \|^2 = \sum_{i=1}^r |\sigma_i c_i|^2 = \sum_{i=1}^r \sigma_i^2 |c_i|^2
+  \end{equation*}
+  となり、目的の式が示された。 $\qed$
+\end{proof}
+
+\end{document}
