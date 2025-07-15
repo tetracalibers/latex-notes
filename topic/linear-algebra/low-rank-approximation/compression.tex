@@ -1,0 +1,142 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ランク1行列による圧縮}
+
+1つのグレースケール画像を行列$A \in \mathbb{R}^{m \times n}$に見立てると、画像のファイルサイズは$mn$に比例する。
+単純に行列の成分を保存しようとすると、膨大な記憶容量が必要となる。
+
+\br
+
+そこで、圧縮に向けた一つの考え方として、$m \times n$型行列$A$を、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      いくつかの「縦ベクトルと横ベクトルの積」の和として近似的に表現する
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ことを考える。
+
+\subsection{ランク1行列}
+
+ここで重要なのは次の事実である。
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      「縦ベクトルと横ベクトルの積」は階数が1の行列
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+たとえば、
+\begin{equation*}
+  \vb*{u} = \begin{pmatrix}
+    1 \\
+    2 \\
+    3
+  \end{pmatrix}, \quad
+  \vb*{v}^\top = \begin{pmatrix}
+    4 & 5
+  \end{pmatrix}
+\end{equation*}
+とすると、これらの積は次のように計算される。
+\begin{equation*}
+  \vb*{u} \vb*{v}^\top = \begin{pmatrix}
+    1 \cdot 4 & 1 \cdot 5 \\
+    2 \cdot 4 & 2 \cdot 5 \\
+    3 \cdot 4 & 3 \cdot 5
+  \end{pmatrix} = \begin{pmatrix}
+    4 & 5 \\
+    8 & 10 \\
+    12 & 15
+  \end{pmatrix}
+\end{equation*}
+各行は、最初の行$(4,5)$のスカラー倍となっていることに注目しよう。
+
+つまり、独立な行は$(4,5)$だけであり、他の行はこの行の線形結合で表現できる。
+
+独立な行が1つしかないので、この行列の階数は1である。
+
+\br
+
+このことは、一般的な成分表示で考えることもできる。
+\begin{equation*}
+  \vb*{u} = \begin{pmatrix}
+    u_1 \\
+    \vdots \\
+    u_m
+  \end{pmatrix}, \quad
+  \vb*{v}^\top = \begin{pmatrix}
+    v_1 & \cdots & v_n
+  \end{pmatrix}
+\end{equation*}
+とおくと、これらの積は次のように計算される。
+\begin{equation*}
+  \vb*{u} \vb*{v}^\top = \begin{pmatrix}
+    u_1 v_1 & u_1 v_2 & \cdots & u_1 v_n \\
+    u_2 v_1 & u_2 v_2 & \cdots & u_2 v_n \\
+    \vdots  & \vdots  & \ddots & \vdots  \\
+    u_m v_1 & u_m v_2 & \cdots & u_m v_n
+  \end{pmatrix}
+\end{equation*}
+
+ここで、$i$行目を取り出すと、
+\begin{equation*}
+  u_i \cdot \begin{pmatrix}
+    v_1 & \cdots & v_n
+  \end{pmatrix} = u_i \vb*{v}^\top
+\end{equation*}
+となっているので、すべての行は$\vb*{v}^\top$のスカラー倍で表現できることがわかる。
+
+\subsection{低ランク近似による圧縮}
+
+縦ベクトルと横ベクトルの積は階数1の行列となることから、もし$k$個の和で近似するならば、近似した行列の階数は$k$以下となる。
+
+もし、$k$個の和で良い近似になっているのであれば、
+\begin{itemize}
+  \item $m$次元ベクトル（縦ベクトル）を$k$本
+  \item $n$次元ベクトル（横ベクトル）を$k$本
+\end{itemize}
+保持すればよいことになる。
+
+\br
+
+これで、$mn$個の成分を保持する必要はなくなり、$k(m+n)$個の成分を保持すれば十分となる。
+
+\br
+
+たとえば、$m=1000, n=1000$の行列を$k=50$個の和でうまく近似できるとしたら、
+\begin{equation*}
+  \frac{k(m+n)}{mn} = \frac{50(1000+1000)}{1000 \times 1000} = 0.1
+\end{equation*}
+より、ファイルサイズを$90\%$削減できることがわかる。
+
+\br
+
+このようなアイデアを、工学では\keyword{圧縮}といい、数学的には行列の\keyword{低ランク近似}という。
+
+\sectionline
+\section{特異値分解による低ランク近似}
+
+さて、$O$でない任意の行列$A$は、次のように特異値分解できた。
+\begin{equation*}
+  A = \sigma_1 \vb*{u}_1 \vb*{v}_1^\top + \cdots + \sigma_k \vb*{u}_k \vb*{v}_k^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
+\end{equation*}
+これは、「縦ベクトルと横ベクトルの積」の和の形になっている。
+
+\br
+
+さらに、特異値$\sigma_i$は大きい順に並んでいるので、ランク$k$の行列の中で、
+\begin{equation*}
+  A_k = \sigma_1 \vb*{u}_1 \vb*{v}_1^\top + \cdots + \sigma_k \vb*{u}_k \vb*{v}_k^\top
+\end{equation*}
+が$A$に最も近い近似となるのではないか？と予想できる。
+
+\br
+
+ここで、「$A$との近さ」を測るためには、行列に関する\keyword{ノルム}を考える必要がある。
+
+\end{document}
