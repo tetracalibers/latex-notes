@@ -18,6 +18,7 @@
 \definecolor{columbiablue}{rgb}{0.61, 0.87, 1.0}
 \definecolor{magnolia}{rgb}{0.97, 0.96, 1.0}
 \definecolor{coolgrey}{rgb}{0.55, 0.57, 0.67}
+\definecolor{uclablue}{rgb}{0.33, 0.41, 0.58}
 
 % === box ===
 
@@ -115,7 +116,9 @@
   patterns,
   patterns.meta,
   decorations.text,
+  decorations.pathmorphing,
   decorations.pathreplacing,
+  decorations.shapes,
   decorations.footprints,
   cd,
   petri,
@@ -294,6 +297,54 @@
   \begin{quote}
     }{
   \end{quote}
+}
+
+\newcommand{\HandoutColor}{uclablue!80}
+\DeclareTColorBox{handout}{O{補足}}{%
+  empty,
+  title={\faCookieBite #1},
+  attach boxed title to top left,
+  sharp corners,
+  boxed title style={
+      empty,
+      size=minimal,
+      toprule=2pt,
+      top=4pt,
+      left=1em,
+      right=1em,
+      top=0.25cm,
+      overlay={
+          \draw[\HandoutColor, decorate,decoration=triangles,line width=1pt] ([yshift=-1pt]frame.north west)--([yshift=-1pt]frame.north east);
+        }
+    },
+  coltitle=\HandoutColor,
+  fonttitle=\bfseries,
+  before=\par\medskip\noindent,
+  parbox=false,
+  boxsep=0pt,
+  left=1em,
+  right=1em,
+  top=0.5cm,
+  bottom=0.5cm,
+  breakable,
+  pad at break*=0mm,
+  vfill before first,
+  overlay unbroken={
+      \draw[\HandoutColor,line width=0.5pt]
+      ([yshift=-1pt]title.north east)
+      --([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)
+      --([xshift=-0.5pt]frame.south east)
+      --(frame.south west);
+    },
+  overlay first={
+      \draw[\HandoutColor,line width=1pt]([yshift=-1pt]title.north east)--([xshift=-0.5pt,yshift=-1pt]title.north-|frame.east)--([xshift=-0.5pt]frame.south east);
+    },
+  overlay middle={
+      \draw[\HandoutColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east);
+    },
+  overlay last={
+      \draw[\HandoutColor,line width=1pt] ([xshift=-0.5pt]frame.north east)--([xshift=-0.5pt]frame.south east)--(frame.south west);
+    },%
 }
 
 \NewDocumentCommand{\fitLabelMath}{O{Rhodamine} O{Rhodamine!30} O{0.6} m m}{

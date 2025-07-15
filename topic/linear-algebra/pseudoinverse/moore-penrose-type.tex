@@ -1,0 +1,26 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ムーア・ペンローズ型一般逆行列}
+\marginnote{\refbookI p37〜}
+
+$O$でない$m \times n$型行列$A$が次のように特異値分解されているとする。
+\begin{equation*}
+  A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
+\end{equation*}
+
+このとき、次の行列を$A$の\keyword{ムーア・ペンローズ型一般逆行列}と定義する。
+\begin{equation*}
+  A^- = \frac{\vb*{v}_1\vb*{u}_1^\top}{\sigma_1} + \cdots + \frac{\vb*{v}_r\vb*{u}_r^\top}{\sigma_r}
+\end{equation*}
+$\sigma_i$が逆数に、$\vb*{u}_i\vb*{v}_i^\top$が$\vb*{v}_i\vb*{u}_i^\top$に置き換わっていることに注意しよう。
+
+\br
+
+転置$\top$が$\vb*{v}_i$から$\vb*{u}_i$に移動したことで、行列$A^-$は$n \times m$型行列になっている。
+
+\todo{}
+
+\end{document}

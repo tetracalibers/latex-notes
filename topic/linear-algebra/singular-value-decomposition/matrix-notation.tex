@@ -1,0 +1,154 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{特異値分解の行列表記}
+\marginnote{\refbookI p31〜32 \\ \refbookK p143〜145 \\ \refbookA p223〜228}
+
+特異値分解の式
+\begin{equation*}
+  A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
+\end{equation*}
+は、行列で表すこともできる。
+
+\br
+
+元々、この式は、$A$が$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$をそれぞれ
+\begin{equation*}
+  \sigma_1\vb*{u}_1,\ldots,\sigma_r\vb*{u}_r,\vb*{o},\ldots,\vb*{o}
+\end{equation*}
+に写像することから導かれた。
+
+\br
+
+そこで、$r+1$番以降の項も省略せずに書くと、
+\begin{align*}
+  A &= \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top + \vb*{o}\vb*{v}_{r+1}^\top + \cdots + \vb*{o}\vb*{v}_n^\top \\
+  & = \begin{pmatrix}
+    \sigma_1\vb*{u}_1 & \cdots & \sigma_r\vb*{u}_r & \vb*{o} & \cdots & \vb*{o}
+  \end{pmatrix}
+  \begin{pmatrix}
+    \vb*{v}_1^\top \\
+    \vdots \\
+    \vb*{v}_r^\top \\
+    \vb*{v}_{r+1}^\top \\
+    \vdots \\
+    \vb*{v}_n^\top
+  \end{pmatrix} \\
+  & = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_m
+  \end{pmatrix} \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},margin,columns-width =1em]
+                                           \sigma_1 & & & \Block{3-2}<\large>{O} &  \\
+                                           & \ddots &&& \\
+                                           & & \sigma_r&& \\
+                                           \hline
+                                           \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{O} & \\
+                                           &&&&
+                                         \end{pNiceArray} \begin{pmatrix}
+    \vb*{v}_1^\top \\
+    \vdots \\
+    \vb*{v}_n^\top
+  \end{pmatrix}
+\end{align*}
+
+\begin{handout}
+  この式変形は、ブロック行列の積の計算に基づいている。
+  
+  たとえば、
+  \begin{equation*}
+    A = \begin{pmatrix}
+      A_{11} & A_{12} 
+    \end{pmatrix}, \quad
+    B = \begin{pmatrix}
+      B_{11} & B_{12} \\
+      B_{21} & B_{22}
+    \end{pmatrix}
+  \end{equation*}
+  とおけば、
+  \begin{equation*}
+    AB = \begin{pmatrix}
+      A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22}
+    \end{pmatrix}
+  \end{equation*}
+  のように計算できる。
+  
+  \br
+  
+  そこで、
+  \begin{gather*}
+    U_1 = \begin{pmatrix}
+      \vb*{u}_1 & \cdots & \vb*{u}_r
+    \end{pmatrix}, \quad
+    U_2 = \begin{pmatrix}
+      \vb*{u}_{r+1} & \cdots & \vb*{u}_m
+    \end{pmatrix}, \\
+    D = \diag(\sigma_1, \ldots, \sigma_r)
+  \end{gather*}
+  とおくと、
+  \begin{align*}
+    \begin{pmatrix}
+      U_1 & U_2
+    \end{pmatrix} \begin{pmatrix}
+      D & O \\
+      O & O
+    \end{pmatrix} & = \begin{pmatrix}
+      U_1D + U_2O & U_1O + U_2O
+    \end{pmatrix} \\
+    & = \begin{pmatrix}
+      U_1D & O
+    \end{pmatrix} \\
+    & = \begin{pmatrix}
+      \sigma_1\vb*{u}_1 & \cdots & \sigma_r\vb*{u}_r & \vb*{o} & \cdots & \vb*{o}
+    \end{pmatrix}
+  \end{align*}
+  という式変形が確かめられる。
+\end{handout}
+
+\br
+
+ここで、
+\begin{gather*}
+  U = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_m
+  \end{pmatrix}, \quad
+  V = \begin{pmatrix}
+    \vb*{v}_1 & \cdots & \vb*{v}_n
+  \end{pmatrix}, \\
+  \Sigma = \begin{pNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},first-row,last-col,margin,columns-width =1em]
+                                           \Hdotsfor{3}^{r} & \Hdotsfor{2}^{n-r} \\
+                                           \sigma_1 & & & \Block{3-2}<\large>{O} && \Vdotsfor{3}^{r}  \\
+                                           & \ddots &&& \\
+                                           & & \sigma_r&& \\
+                                           \hline
+                                           \Block{2-3}<\large>{O} && & \Block{2-2}<\large>{O} && \Vdotsfor{2}^{m-r} \\
+                                           &&&&
+                                         \end{pNiceArray}
+\end{gather*}
+とおくと、
+\begin{equation*}
+  A = U \Sigma V^\top
+\end{equation*}
+という、行列$A$を3つの行列を用いて分解した式として表すことができる。
+
+この式を$A$の\keyword{特異値分解}と呼ぶ。
+
+\subsection{簡約された特異値分解}
+
+$\vb*{o}$の部分を削った形も考えることができる。
+
+\br
+
+$U,V$のはじめの$r$列からなる行列をそれぞれ$U_r,V_r$とし、
+\begin{equation*}
+  \Sigma_r = \diag(\sigma_1, \ldots, \sigma_r)
+\end{equation*}
+とおくと、
+\begin{equation*}
+  A = U_r \Sigma_r V_r^\top
+\end{equation*}
+が成り立つ。
+
+この式は、$A$の\keyword{簡約された特異値分解}と呼ばれる。
+
+\end{document}
