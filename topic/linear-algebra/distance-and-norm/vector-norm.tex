@@ -1,0 +1,44 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ノルムと距離の関係}
+\marginnote{\refbookM p106 \\ \refbookO p24〜25}
+
+\hyperref[def:norm-axioms]{ノルム}は「長さ」を拡張した概念であり、ベクトルに対して定義された。
+
+\br
+
+今、2つのベクトル$\vb*{a},\vb*{b}$を
+\begin{equation*}
+  \vb*{a} = \begin{pmatrix} a_1 \\ a_2 \end{pmatrix}, \quad
+  \vb*{b} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}
+\end{equation*}
+とおくと、先ほど示したユークリッド距離の式
+\begin{equation*}
+  d(A,B) = \sqrt{(b_1 - a_1)^2 + (b_2 - a_2)^2}
+\end{equation*}
+は内積を経由して次のように書き換えられる。
+\begin{equation*}
+  d(A,B) = \sqrt{(\vb*{b}-\vb*{a}, \vb*{b}-\vb*{a})} = \|\vb*{b}-\vb*{a}\|
+\end{equation*}
+
+\br
+
+このように、距離からノルムを定めることができ、逆にノルムから距離を定めることもできる。
+
+\br
+
+上述の式は2次元平面上の点の間の距離を表しているが、ベクトルのノルムとしてユークリッド距離を考えれば、$n$次元空間への拡張も容易になる。
+\begin{equation*}
+  \vb*{a} = \begin{pmatrix} a_1 \\ \vdots \\ a_n \end{pmatrix}, \quad
+  \vb*{b} = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix}
+\end{equation*}
+とおいたとしても、
+\begin{equation*}
+  d(A,B) = \sqrt{\sum_{i=1}^n (b_i - a_i)^2} = \sqrt{(\vb*{b}-\vb*{a}, \vb*{b}-\vb*{a})} = \|\vb*{b}-\vb*{a}\|
+\end{equation*}
+が成り立つ。
+
+\end{document}

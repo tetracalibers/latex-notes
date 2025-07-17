@@ -1,0 +1,37 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{$L_p$ノルム}
+\marginnote{\refbookM p106〜107 \\ \refbookN p3〜4}
+
+ユークリッド距離とマンハッタン距離は、次の\keyword{$L_p$ノルム}によって一般化される。
+
+\begin{definition}{$L_p$ノルム}
+  ベクトル$\vb*{a} = (a_i)_{i=1}^n$に対し、
+  \begin{equation*}
+    \|\vb*{a}\|_p = \left( \sum_{i=1}^n |a_i|^p \right)^{\frac{1}{p}}
+  \end{equation*}
+  は\hyperref[def:norm-axioms]{ノルムの公理}を満たし、これを\keyword{$L_p$ノルム}という。
+\end{definition}
+
+$L_p$ノルムが距離として意味を持つのは、$p \geq 1$のときである。
+
+\br
+
+$p=1$の場合、
+\begin{equation*}
+  \|\vb*{a}\|_1 = \sum_{i=1}^n |a_i|
+\end{equation*}
+となり、$\vb*{a}$を$\vb*{b}-\vb*{a}$に置き換えれば、\keyword{マンハッタン距離}の式となる。
+
+\br
+
+$p=2$の場合、
+\begin{equation*}
+  \|\vb*{a}\|_2 = \left( \sum_{i=1}^n |a_i|^2 \right)^{\frac{1}{2}} = \sqrt{\sum_{i=1}^n a_i^2}
+\end{equation*}
+となり、$\vb*{a}$を$\vb*{b}-\vb*{a}$に置き換えれば、\keyword{ユークリッド距離}の式となる。
+
+\end{document}

@@ -1,0 +1,97 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{さまざまな距離}
+\marginnote{\refbookN p2〜3 \\ \refbookM p102〜105 \\ \refbookO p24〜25}
+
+データ量の削減などを目的に行列の近似を行ったり、誤差のある測定値を成分とする行列を扱う際には、行列に関しても誤差を考える必要が生じる。
+
+つまり、「もとの行列にどれくらい近いか？」などという、\keyword{距離}を考える必要がある。
+
+\br
+
+距離はいわば長さを測る物差しであり、一定の基準（公理）を満たせば、さまざまな距離を定義することができる。
+そして、使い道に応じて最適な距離を選ぶことができる。
+
+\br
+
+行列の距離を考える前に、一般的な距離について考えてみよう。
+
+\subsection{距離の公理}
+
+まず、距離を名乗るものはどれも次の性質を満たすように作る必要がある。
+
+\begin{enumerate}[label=\romanlabel]
+  \item 2点間の距離は負の数にはならない
+  \item 2点が同じ点 $\Longleftrightarrow$ 2点間の距離は$0$
+  \item 2点間の距離は行きと帰りで変わらない
+  \item 寄り道した方が必ず総距離は長い
+\end{enumerate}
+
+直観的に書いた上の4つの性質を数学的にまとめると、次のような公理になる。
+
+\begin{definition}{距離の公理}
+  集合$V$上の次の性質を満たす関数$d \colon V\times V \to \mathbb{R}$を\keyword{距離}と定める。
+  ここで、$a,b,c \in V$とする。
+  \begin{enumerate}[label=\romanlabel]
+    \item $d(a,b) \geq 0$（非負性）
+    \item $d(a,b) = 0 \Longleftrightarrow a = b$（同一性）
+    \item $d(a,b) = d(b,a)$（対称性）
+    \item $d(a,c) \leq d(a,b) + d(b,c)$（三角不等式）
+  \end{enumerate}
+\end{definition}
+
+\subsection{例：ユークリッド距離とマンハッタン距離}
+
+状況に応じて最適な距離が異なることを、簡単な例で考えてみよう。
+
+\begin{center}
+  \begin{tikzpicture}
+  \def\xmin{-2}
+  \def\xmax{4}
+  \def\ymin{-2}
+  \def\ymax{3.5}
+  \def\vx{2}
+  \def\vy{1.5}
+
+  % 0.5刻みのグリッド
+  \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=0.5] (\xmax, \ymax);
+
+  \draw[very thick, Rhodamine] (0, 0) -- (\vx, 0) node[below, midway] {$b_1 - a_1$};
+  \draw[very thick, Cerulean] (\vx,0) -- (\vx, \vy) node[right, midway] {$b_2 - a_2$};
+  \draw[very thick, BurntOrange] (0,0) -- (\vx, \vy) node[above=2pt, midway] {$c$};
+
+  % 点
+  \draw (0,0) node[circle, fill, inner sep=1.5pt] {};
+  \node at (0, 0) [below left] {$(a_1, a_2)$};
+  
+  \draw (\vx, \vy) node[circle, fill, inner sep=1.5pt] {};
+  \node at (\vx, \vy) [above right] {$(b_1,b_2)$};
+\end{tikzpicture}
+\end{center}
+
+次の2パターンの条件下において、2点$A =(a_1, a_2)$と$B =(b_1, b_2)$の距離をどう定めるべきかを考える。
+\begin{enumerate}
+  \item 斜めに移動できる
+  \item ジグザグにしか移動できない
+\end{enumerate}
+
+斜めに移動できる場合は、単純に直線距離として考えることができるので、三平方の定理を用いて、
+\begin{equation*}
+  d(A,B) = c = \sqrt{(b_1 - a_1)^2 + (b_2 - a_2)^2}
+\end{equation*}
+のように計算すればよい。
+
+このような距離は\keyword{ユークリッド距離}と呼ばれる。
+
+\br
+
+一方、ジグザグにしか移動できない場合は、実際に$A$から$B$へ移動するときの遠さを直線距離では表現できないので、次のように考えた方がよい。
+\begin{equation*}
+  d(A,B) = |b_1 - a_1| + |b_2 - a_2|
+\end{equation*}
+このような距離は\keyword{マンハッタン距離}と呼ばれる。
+
+\end{document}
