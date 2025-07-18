@@ -1,0 +1,20 @@
+% === layout ===
+
+\renewcommand{\baselinestretch}{1.25} % 行間
+
+\usepackage{leading}
+
+\setlength{\parindent}{0pt} % 段落始めでの字下げをしない
+
+\usepackage{enumitem}
+\newcommand{\romanlabel}{\textsf{\roman*.}}
+\newcommand{\romannum}[1]{\textsf{#1}}
+
+\usepackage[noparboxrestore]{marginnote}
+
+\usepackage{tocloft}
+% chapterのnumwidthを広くする
+\setlength{\cftchapnumwidth}{5em}
+
+\usepackage{titling}
+\renewcommand{\maketitlehooka}{\textsf}

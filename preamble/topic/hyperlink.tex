@@ -1,0 +1,22 @@
+% === hyperlink ===
+
+% 「%」は以降の内容を「改行コードも含めて」無視するコマンド
+\usepackage[%
+  dvipdfmx,% 欧文ではコメントアウトする
+  pdfencoding=auto, psdextra,% 数学記号を含める
+  setpagesize=false,%
+  bookmarks=true,%
+  bookmarksdepth=tocdepth,%
+  bookmarksnumbered=true,%
+  colorlinks=true,%
+  allcolors=oxfordblue,%
+  linkcolor=MidnightBlue,%
+  pdftitle={},%
+  pdfsubject={},%
+  pdfauthor={},%
+  pdfkeywords={}%
+]{hyperref}
+% PDFのしおり機能の日本語文字化けを防ぐ((u)pLaTeXのときのみかく)
+\usepackage{pxjahyper}
+% ref: https://tex.stackexchange.com/questions/251491/math-symbol-in-section-heading
+\pdfstringdefDisableCommands{\def\varepsilon{\textepsilon}}

@@ -1,0 +1,28 @@
+% === math ===
+
+\usepackage{physics}
+\usepackage{braket}
+
+\usepackage{amssymb} % use \blacksquare
+
+\usepackage{amsthm} % 定理環境とQEDコマンド
+\renewcommand{\qedsymbol}{\textcolor{coolgrey}{$\blacksquare$}}
+
+\usepackage{mathtools}
+% 別の場所で参照する数式以外は番号が付かないように
+\mathtoolsset{showonlyrefs=true}
+
+\usepackage{systeme} % 連立方程式を簡単に書く
+\usepackage{empheq}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Span}{\operatorname{span}}
+
+\newcommand{\suchthat}{\,\, s.t. \,\,}
+\newcommand{\transpose}[1]{{}^t\! #1}
