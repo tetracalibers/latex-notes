@@ -1,0 +1,133 @@
+\documentclass[../../book_bayesian-statics-the-fun-way]{subfiles}
+
+\begin{document}
+
+\chapter{ベイズ的思考と日常の推論}
+
+\section{ベイズ的推論の思考プロセス}
+
+\begin{enumerate}
+  \item データを観察する
+  \item 仮説を立てる
+  \item データに基づいて自分の考えを更新する
+\end{enumerate}
+
+\section{データを観察する}
+
+確率論では、複数の出来事（\keyword{事象}）が組み合わされる確率に注目する場合、それらの出来事をカンマで区切る
+\begin{equation*}
+  P(\text{\bfseries 光}, \text{\bfseries 空中の円盤}) = \text{\bfseries 極めて低い}
+\end{equation*}
+この数式は「光と空中の円盤が観測される確率は極めて低い」と読める
+
+\section{事前の信念と条件付き確率}
+
+\keyword{事前の信念}とは、
+\begin{emphabox}
+  生まれてからの経験（観測したデータ）によって積み上げられた様々な考えの集まり
+\end{emphabox}
+
+光が見えるのと同時に空中に円盤が見えるという出来事は、地球上では稀にしか起こらない
+\begin{multline*}
+  P(\text{\bfseries 光}, \text{\bfseries 空中の円盤} \mid \text{\bfseries 地球上での経験})\\ = \text{\bfseries 極めて低い}
+\end{multline*}
+この数式は「地球上での経験に基づくと、光と空中の円盤が同時に観測される確率は極めて低い」と読める
+
+\br
+
+このような確率を、
+\begin{emphabox}
+  ある条件のもとで、ある出来事が起こる確率
+\end{emphabox}
+という意味で、\keyword{条件付き確率}と呼ぶ
+
+\sectionline
+
+確率を$P$で表すのと同様に、出来事や条件にも短い変数名を使う
+
+データを$D$とすると、
+\begin{equation*}
+  D = \text{\bfseries 光}, \text{\bfseries 空中の円盤}
+\end{equation*}
+
+事前の信念を$X$とすると、
+\begin{equation*}
+  X = \text{\bfseries 地球上での経験}
+\end{equation*}
+
+これで先ほどの数式は、次のように書ける
+\begin{equation*}
+  P(D \mid X) = \text{\bfseries 極めて低い}
+\end{equation*}
+
+しかし実際には、事前の信念は暗黙に仮定する
+
+\section{仮説を立てる}
+
+目撃したものを説明するには、何らかの\keywordJE{仮説}{hypothesis}を立てる必要がある
+
+\br
+
+\keyword{仮説}とは、
+\begin{emphabox}
+  世界を何らかの形で理解する方法
+\end{emphabox}
+であり、その理解に基づいて世界の振る舞いに関する何らかの\keyword{予測}が導かれるもの
+
+\br
+
+たとえば、世界に関する基本的な考え方はすべて仮説である
+\begin{itemize}
+  \item 地球が自転していると考えるなら、太陽が繰り返し昇ったり沈んだりすると予測される
+\end{itemize}
+
+\sectionline
+
+先ほどの証拠（光と空中の円盤）を見て、次のような仮説を立てる
+\begin{equation*}
+  H_1 = \text{\bfseries UFOがいる}
+\end{equation*}
+
+今の状況を逆向きに考えると、「UFOがいたら、何が見えると予想されるか？」と問いかけることができる
+
+そしてその答えは、「光と空中の円盤」となる
+
+つまり、
+\begin{emphabox}
+  \begin{center}
+    仮説はデータを説明する
+  \end{center}
+\end{emphabox}
+
+\br
+
+$H_1$からはデータ$D$が予測されるため、この仮説のもとでこのデータを観察する場合、このデータが観測される確率は高くなる
+\begin{equation*}
+  P(D \mid H_1, X) > P(D \mid X)
+\end{equation*}
+この数式は「光と空中の円盤を目撃する確率は、それがUFOであるという私の考えを前提とした場合、はるかに高くなる」と読める
+
+\section{日々の発言に仮説を見出す}
+
+日常の言い回しと確率の間には関係性がある
+
+\begin{itemize}
+  \item 「驚きだ」：事前の経験に基づくと、そのデータが観測される確率は低い
+  \item 「筋が通っている」：事前の経験に基づくと、そのデータが観測される確率は高い
+\end{itemize}
+
+\section{さらなる証拠を集めて考えを更新する}
+
+もっと信頼できる結論を引き出すには、さらにデータを集める必要がある
+
+\br
+
+さらに観察を続けると、円盤がワイヤーで吊り下げられているのが見え、誰かが「カット！」と叫んだ
+
+この新たなデータにより、もう一つの仮説が立てられる
+\begin{equation*}
+  H_2 = \text{\bfseries 映画を撮影している}
+\end{equation*}
+もう一つの考えられる説明が得られたので、\keyword{対立仮説}を立てたことになる
+
+\end{document}
