@@ -1,0 +1,35 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{高次の偏微分}
+
+多変数関数を1回偏微分すると、偏導関数という多変数関数が得られる。
+
+その偏導関数をさらに偏微分して…というように、「偏導関数の偏導関数」を繰り返し考えていくことができる。
+
+\subsection{同じ変数に関して偏微分を繰り返す場合}
+
+たとえば、$x$に関する偏微分を2回、3回…と繰り返して得られる高次偏導関数は、次のように表記する。
+\begin{equation*}
+  \dfrac{\partial^2 f}{\partial x^2}, \quad
+  \dfrac{\partial^3 f}{\partial x^3}, \quad \ldots
+\end{equation*}
+
+\subsection{異なる変数に関して偏微分を繰り返す場合}
+
+$x$で偏微分してから$y$で偏微分する場合は、どのように表記すればよいだろうか？
+
+\br
+
+$x$に関する偏導関数$\dfrac{\partial f}{\partial x}$を、$y$に関して偏微分すると考えて、
+\begin{equation*}
+  \dfrac{\partial}{\partial y}\left(\dfrac{\partial f}{\partial x}\right)
+\end{equation*}
+これをひとまとめにして、次のように表記する。
+\begin{equation*}
+  \dfrac{\partial^2 f}{\partial y \partial x}
+\end{equation*}
+
+\end{document}
