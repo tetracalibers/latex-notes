@@ -1,0 +1,98 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{接線の傾きとしての導関数}
+
+傾きは位置$x$の関数$f'(x)$としたが、この関数がどのような関数なのか、結局傾きを計算する方法がわかっていない。
+
+直線の傾きは$x$と$y$の増加率の比として定義されているから、まずはそれぞれの増加率を数式で表現しよう。
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{1.5};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0) [below, scale=0.5]{$\strut x + \Delta x$};
+      \node (X1) at (\xi,0) [below, scale=0.5, baseline = (X2.base)]{$\strut x$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x + \Delta x)$};
+
+      % x軸からの補助線
+      \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+      \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+      % y軸からの補助線
+      \draw[auxline, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[auxline, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % \Delta xを表す矢印
+      \draw[<->] ($(A)-(0,0.1)$) -- ($(B)-(0,0.1)$) node [midway, below]{$\Delta x$};
+      % \Delta yを表す矢印
+      \draw[<->] ($(A)+(-0.1,0)$) -- ($(D)+(-0.1, 0)$) node [midway, left]{$\Delta y$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+この図から、$y$の増加率$\Delta y$は次のように表せることがわかる。
+
+\begin{equation}
+  \Delta y = f(x + \Delta x) - f(x)
+\end{equation}
+
+この両辺を$\Delta x$で割ると、$x$の増加率$\Delta x$と$y$の増加率$\Delta y$の比率が表せる。
+
+\begin{equation}
+  \frac{\Delta y}{\Delta x} = \frac{f(x + \Delta x) - f(x)}{\Delta x}
+\end{equation}
+
+図では$\Delta x$には幅があるが、この幅を限りなく$0$に近づけると、幅というより点になる。
+
+つまり、$\Delta x \rightarrow 0$とすれば、$\dfrac{\Delta y}{\Delta x}$は任意の点$x$での接線の傾きとなる。
+
+「任意の点$x$での傾き」も$x$の関数であり、この関数を導関数と呼ぶ。
+
+\begin{definition}{導関数}
+  関数$f(x)$の任意の点$x$における接線の傾き（増加の速さ）を表す関数を導関数といい、次のように定義する。
+  \begin{equation}
+    f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+  \end{equation}
+\end{definition}
+
+\end{document}

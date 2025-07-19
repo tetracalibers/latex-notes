@@ -1,10 +1,10 @@
-\documentclass[b5paper,12pt,twocolumn]{jsreport}
+\documentclass[b5paper,12pt,notitlepage]{jsreport}
 
-\title{多変数微積分の整理帳}
+\title{微分積分の整理帳}
 \author{tomixy}
 
 \usepackage{subfiles}
-\usepackage[dvipsnames]{xcolor}
+\usepackage[dvipsnames,table]{xcolor}
 \usepackage[top=20truemm,bottom=20truemm,left=20truemm,right=20truemm]{geometry} % 余白
 
 \input{preamble/topic/color.tex}
@@ -19,10 +19,13 @@
 \input{preamble/topic/toc.tex}
 \input{preamble/topic/hyperlink.tex}
 
-% === 参考文献 ===
-
-\newcommand{\refbookA}{\refbook{地力をつける 微分と積分}}
-\newcommand{\refbookB}{\refbook{キーポイント 多変数の微分積分}}
+% 元の関数と導関数の区別をつける
+\NewDocumentCommand{\origFn}{O{0.6} m}{
+  \fitLabelMath[cyan][cyan!30][#1]{#2}{元の関数}
+}
+\NewDocumentCommand{\derivFn}{O{0.6} m}{
+  \fitLabelMath[magenta!70][magenta!30][#1]{#2}{導関数}
+}
 
 % ---
 
@@ -31,9 +34,8 @@
 \maketitle
 \tableofcontents
 
-\subfile{topic/multivariable-calculus/multivariable-function}
-\subfile{topic/multivariable-calculus/partial-derivative}
-
-\newpage
+\subfile{topic/calculus/derivative}
+\subfile{topic/calculus/multivariable-function}
+\subfile{topic/calculus/partial-derivative}
 
 \end{document}

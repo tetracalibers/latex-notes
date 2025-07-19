@@ -1,0 +1,30 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{微分とその関係式}
+
+\begin{definition}{微分}
+  関数$f(x)$から、その導関数$f'(x)$を求める操作を微分という。
+\end{definition}
+
+関数のグラフから離れて、微分という「計算」を考えるにあたって、先ほどの導関数の定義式よりも都合の良い表現式がある。
+
+$x \to 0$とした後の$\Delta x$を$dx$と書くことにして、$\displaystyle\lim_{\Delta x \to 0}$を取り払ってしまおう。
+
+\begin{equation}
+  \begin{WithArrows}
+    f'(x) & = \dfrac{f(x + dx) - f(x)}{dx} \Arrow{両辺$\times dx$} \\
+    f'(x)dx & = f(x + dx) - f(x) \Arrow{$f(x)$を移項} \\
+    f'(x)dx + f(x) & = f(x + dx)
+  \end{WithArrows}
+\end{equation}
+
+\begin{theorem}{微分の関係式}
+  \begin{equation}
+    f(x + dx)= f(x) + f'(x)dx
+  \end{equation}
+\end{theorem}
+
+\end{document}

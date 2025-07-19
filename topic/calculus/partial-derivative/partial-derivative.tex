@@ -1,0 +1,190 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ある変数に関する偏微分係数}
+%\marginnote{\refbookB p21〜23}
+
+2変数関数$z = f(x, y)$において、$x$方向の傾きを考えてみる。
+
+このとき、$y$は定数として固定する。
+\begin{equation*}
+  y = y_0
+\end{equation*}
+
+この平面$y=y_0$は、$x$軸と$z$軸に平行な平面である。
+
+この平面で関数のグラフを切り、その切り口に現れた関数のグラフを微分することを考える。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}[bullet/.style={circle,fill,inner sep=1pt},
+ declare function={f(\x,\y)=2-0.5*pow(\x-1.25,2)-0.5*pow(\y-1,2);}]
+ 
+ \begin{axis}[
+    view={150}{45},
+    colormap/bone,
+    axis lines=middle,%
+    zmax=2.2,zmin=0,
+    xmin=-0.2,xmax=2.4,
+    ymin=-0.2,ymax=2,%
+    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+    xtick=\empty,ytick=\empty,ztick=\empty
+  ]
+
+  % 関数の曲面（平面の後ろ側）
+  \addplot3[
+    surf,shader=interp,
+    domain=0.6:2,domain y=0.5:1.2,
+    opacity=0.7
+  ] {f(x,y)};
+  
+  % 目盛りと補助線
+  \draw[dashed] (1.75,0,0) node[above left]{$x_0$} -- (1.75,1.2,0)
+  node[bullet] (b1) {}  -- (0,1.2,0) node[above right]{$y_0$}
+  (1.75,1.2,0) -- (1.75,1.2,{f(1.75,1.2)})node[bullet] {};
+  
+  % 切り口の平面
+  \draw[opacity=0.5,fill=SkyBlue] (2,1.2,0) -- (0.6,1.2,0)
+ -- (0.6,1.2,2.2) -- (2,1.2,2.2) -- cycle;
+
+ % 関数の曲面（平面の前側）
+  \addplot3[surf,shader=interp,domain=0.6:2,domain y=1.2:1.9,opacity=0.7] 
+   {f(x,y)};
+   
+  % 切り口のグラフ
+  \addplot3[thick,Rhodamine,domain=0.6:2,samples y=1]  ({x},1.2,{f(x,1.2)}); 
+ \end{axis}
+
+ % 点
+ \node[anchor=north west] at (b1) {$(x_0,y_0)$}; 
+\end{tikzpicture}
+  }
+\end{center}
+
+切り口として現れるグラフは、$y = y_0$と$z=f(x, y)$の交線で、
+\begin{equation*}
+  \begin{cases} 
+    x = x_0 \\ 
+    z = f(x_0, y_0) 
+  \end{cases}
+\end{equation*}
+という連立方程式を解いて得られる。
+
+\br
+
+この2式は、代入により次のような形にまとめられ、これが切り口を表している。
+\begin{equation*}
+  z = f(x, y_0)
+\end{equation*}
+
+切り口となる関数$z = f(x, y_0)$の$x = x_0$での接線の傾きが、求めたい$x$方向の傾きである。
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}[bullet/.style={circle,fill,inner sep=1pt},
+ declare function={f(\x,\y)=2-0.5*pow(\x-1.25,2)-0.5*pow(\y-1,2);}]
+ 
+ \begin{axis}[
+    view={150}{45},
+    colormap/bone,
+    axis lines=middle,%
+    zmax=2.2,zmin=0,
+    xmin=-0.2,xmax=2.4,
+    ymin=-0.2,ymax=2,%
+    xlabel=$x$,ylabel=$y$,zlabel=$z$,
+    xtick=\empty,ytick=\empty,ztick=\empty
+  ]
+
+  % 関数の曲面（平面の後ろ側）
+  \addplot3[
+    surf,shader=interp,
+    domain=0.6:2,domain y=0.5:1.2,
+    opacity=0.7
+  ] {f(x,y)};
+  
+  % 目盛りと補助線
+  \draw[dashed] (1.75,0,0) node[above left]{$x_0$} -- (1.75,1.2,0)
+  node[bullet] (b1) {}  -- (0,1.2,0) node[above right]{$y_0$}
+  (1.75,1.2,0) -- (1.75,1.2,{f(1.75,1.2)})node[bullet] {};
+  
+  % 切り口の平面
+  \draw[opacity=0.5,fill=SkyBlue] (2,1.2,0) -- (0.6,1.2,0)
+ -- (0.6,1.2,2.2) -- (2,1.2,2.2) -- cycle;
+
+ % 関数の曲面（平面の前側）
+  \addplot3[surf,shader=interp,domain=0.6:2,domain y=1.2:1.9,opacity=0.7] 
+   {f(x,y)};
+   
+  % 切り口のグラフ
+  \addplot3[thick,Rhodamine,domain=0.6:2,samples y=1]  ({x},1.2,{f(x,1.2)}); 
+  
+    % 接線
+  \draw[thick, orange] (2,1.2,{f(2,1.2)}) -- (0.75,1.2,{f(1.75,1.2)+0.5}) coordinate[pos=0.2] (aux1);
+ \end{axis}
+ 
+  % 偏微分のラベル
+  \draw[-Straight Barb, orange, densely dashed] (aux1) to[bend right] ++ (-1,1) node[above,align=center]{$\partial_xf(x,y)|_{x=x_0,y=y_0}$};
+ 
+ % 点
+ \node[anchor=north west] at (b1) {$(x_0,y_0)$}; 
+\end{tikzpicture}
+  }
+\end{center}
+
+切り口となる関数は$x$の1変数関数にすぎないので、$x$に関して普通に微分すればよい。
+
+\br
+
+$h$を微小量とし、$x = x_0$から少しだけ移動した点を$x = x_0 + h$とすると、次のように接線の傾きが計算できる。
+\begin{equation*}
+  \lim_{h \to 0} \frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h}
+\end{equation*}
+この式を、関数$f(x,y)$の$(x_0,y_0)$における$x$に関する\keyword{偏微分係数}という。
+
+\br
+
+偏微分の場合は、通常の微分記号$\dfrac{d}{dx}$の代わりに、$\dfrac{\partial}{\partial x}$という記号を用いる。
+\begin{equation*}
+  \dfrac{\partial f}{\partial x}(x_0,y_0) = \lim_{h \to 0} \frac{f(x_0 + h, y_0) - f(x_0, y_0)}{h}
+\end{equation*}
+
+\sectionline
+\section{ある変数に関する偏導関数}
+%\marginnote{\refbookB p24}
+
+偏微分係数は、$(x_0,y_0)$という値を1つ決めたときに、$\dfrac{\partial f}{\partial x}(x_0,y_0)$という値が1つ決まるという式である。
+
+2つの値を入力としているので、見方を変えればこれも2変数関数である。
+
+\br
+
+そこで、入力$(x_0,y_0)$を変数$(x,y)$に置き換えて、
+\begin{equation*}
+  \dfrac{\partial f}{\partial x}(x,y) = \lim_{h \to 0} \frac{f(x + h, y) - f(x, y)}{h}
+\end{equation*}
+という2変数関数を新たに考える。
+これを$x$に関する\keyword{偏導関数}という。
+
+\sectionline
+\section{偏微分の記号}
+%\marginnote{\refbookB p24〜25}
+
+偏導関数の記号にはさまざまな表記法があるが、どれも同じものである。
+
+\br
+
+\begin{table}[h]
+\renewcommand{\arraystretch}{1.5} % 行の高さを1.5倍に
+\centering
+\begin{tabular}{ll}
+$\dfrac{\partial f(x,y)}{\partial x}$ & 微小量の変化の比 \\ 
+$f_x(x,y)$ & 微分の省略形 $f'(x)$ の代わり（何に関する偏微分かを下に添えた） \\
+$\partial_x f(x,y)$ & 偏微分するという操作を関数に施す \\
+$\left(\dfrac{\partial f }{\partial x}\right)_y$ & 関数の変数を省略した形（止めている他の変数を下に添えた） \\
+\end{tabular}
+\end{table}
+
+
+\end{document}

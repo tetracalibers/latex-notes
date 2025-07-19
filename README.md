@@ -14,10 +14,10 @@ alias pdf2htmlEX='docker run -ti --rm -v "`pwd`":/pdf -w /pdf pdf2htmlex/pdf2htm
 cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
 ```
 
-#### 多変数微積分の整理帳
+#### 微分積分の整理帳
 
 ```bash
-cp ./out/topic_multivariable-calculus.pdf ./public/topic_multivariable-calculus.pdf
+cp ./out/topic_calculus.pdf ./public/topic_calculus.pdf
 ```
 
 #### 写像の整理帳

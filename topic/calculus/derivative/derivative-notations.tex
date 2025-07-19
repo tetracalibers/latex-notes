@@ -1,0 +1,56 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{導関数のさまざまな記法}
+
+微分を考えるときは、$\Delta x \to 0$としたときに$\Delta y \to 0$となる前提のもとで議論する。
+
+$\Delta x \to 0$とした結果を$dx$、$\Delta y \to 0$の結果を$dy$とすると、ある点$x$での接線の傾きは、次のようにも表現できる。
+
+\begin{equation}
+  \frac{dy}{dx} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
+\end{equation}
+
+この接線の傾きが$x$の関数であることを表現したいときは、次のように書くこともある。
+
+\begin{equation}
+  \dfrac{dy}{dx}(x)
+\end{equation}
+
+これも一つの導関数（位置に応じた接線の傾きを表す関数）の表記法である。
+
+この記法は、どの変数で微分しているかがわかりやすいという利点がある。
+
+\begin{definition}{導関数のライプニッツ記法}
+  次のような記号はいずれも、関数$y = f(x)$の導関数を表す。
+  \begin{equation}
+    \frac{dy}{dx} = \dfrac{dy}{dx}(x) = \dfrac{df}{dx} = \dfrac{d}{dx}f(x)
+  \end{equation}
+\end{definition}
+
+特に、$\dfrac{d}{dx}f(x)$という記法は、$\dfrac{d}{dx}$の部分を微分操作を表す演算子として捉えて、「関数$f(x)$に微分という操作を施した」ことを表現しているように見える。
+
+\begin{definition}{微分演算子}
+  関数を微分するという操作を表現する演算子を微分演算子という。\\
+  例えば、次のような記号で表される。
+  \begin{equation}
+    \dfrac{d}{dx}
+  \end{equation}
+\end{definition}
+
+ところで、これまで使ってきた$f'(x)$という導関数の記法にも、名前がついている。
+
+\begin{definition}{導関数のニュートン記法}
+  次の記号は、関数$y = f(x)$の導関数を表す。
+  \begin{equation}
+    f'(x)
+  \end{equation}
+\end{definition}
+
+この記法は、「$f$という関数から導出された関数が$f'$である」ことを表現している。
+
+導関数はあくまでも関数$f$から派生したものであるから、$f$という文字はそのまま、加工されたことを表すために$'$をつけたものと解釈できる。
+
+\end{document}

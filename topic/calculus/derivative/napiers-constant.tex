@@ -1,0 +1,102 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ネイピア数と指数関数の微分}
+
+指数関数を定義した際に、「どんな数も$0$乗したら$1$になる」と定義した。
+
+つまり、指数関数$y=a^x$において、$x=0$での関数の値は$1$である。
+
+ここでさらに、$x=0$でのグラフの傾きも$1$となるような$a$を探し、その値を\keyword{ネイピア数}と呼ぶことにする。
+
+\begin{definition}{ネイピア数（自然対数の底）}
+  指数関数$y=a^x$において、$x=0$での接線の傾きが$1$となるような底$a$の値をネイピア数と呼び、$e$と表す。
+\end{definition}
+
+この定義では、「$x=0$では関数の値も傾きも等しく$1$になる」という、$x=0$での振る舞いにしか言及していない。
+
+だが、実はネイピア数を底とする指数関数は、「微分しても変わらない（すべての$x$において、関数の値と傾きが一致する）」という性質を持つ。
+
+\subsection{ネイピア数を底とする指数関数の微分}
+
+指数関数$y=e^x$の微分は、導関数の定義から次のように計算できる。
+
+\begin{align}
+  \dfrac{d}{dx}e^x & = \lim_{\Delta x \to 0} \dfrac{e^{x+\Delta x} - e^x}{\Delta x}         \\
+                   & = \lim_{\Delta x \to 0} \dfrac{e^x \cdot e^{\Delta x} - e^x}{\Delta x} \\
+                   & = \lim_{\Delta x \to 0} \dfrac{e^x \cdot (e^{\Delta x} - 1)}{\Delta x} \\
+                   & = e^x \cdot \lim_{\Delta x \to 0} \dfrac{e^{\Delta x} - 1}{\Delta x}
+\end{align}
+
+ここで、$\displaystyle\lim_{\Delta x \to 0} \dfrac{e^{\Delta x} - 1}{\Delta x}$は$x$によらない定数であり、
+
+\begin{align}
+  \lim_{\Delta x \to 0} \dfrac{e^{\Delta x} - 1}{\Delta x} & = \lim_{\Delta x \to 0} \dfrac{e^{0 + \Delta x} - e^0}{\Delta x}
+\end{align}
+
+というように、これは$x=0$における傾き（導関数に$x=0$を代入したもの）を表している。
+
+そもそも、ネイピア数$e$の定義は「$x=0$での$e^x$の傾きが$1$」というものだったので、
+
+\begin{equation}
+  \lim_{\Delta x \to 0} \dfrac{e^{\Delta x} - 1}{\Delta x} = 1
+\end{equation}
+
+となり、「$e^x$は微分しても変わらない」という性質が導かれる。
+
+\begin{equation}
+  \dfrac{d}{dx}e^x = e^x
+\end{equation}
+
+\begin{theorem}{ネイピア数を底とする指数関数の微分}
+  ネイピア数を底とする指数関数は、微分しても変わらない関数である。
+  \begin{equation}
+    \dfrac{d}{dx}e^x = e^x
+  \end{equation}
+\end{theorem}
+
+\subsection{指数が定数倍されている場合}
+
+$y = e^{kx}$のように、指数が定数倍（$k$倍）されている場合は、合成関数の微分の公式を使って計算できる。
+
+$t=kx$とおくと、
+
+\begin{align}
+  \dfrac{dy}{dx} & = \dfrac{dt}{dx} \cdot \dfrac{dy}{dt}          \\
+                 & = \dfrac{d}{dx} (kx) \cdot \dfrac{d}{dt} (e^t) \\
+                 & = k\dfrac{\cancel{dx}}{\cancel{dx}} \cdot e^t  \\
+                 & = ke^{t}                                       \\
+                 & = ke^{kx}
+\end{align}
+
+となり、$e^{kx}$自体は変わらず、指数の係数$k$が$e$の肩から「降りてくる」形になる。
+
+\begin{theorem}{ネイピア数を底とする指数関数の微分（指数が定数倍されている場合）}
+  $k$を定数とし、指数が$k$倍されている場合は、微分すると全体が$k$倍される。
+  \begin{equation}
+    \dfrac{d}{dx}e^{kx} = ke^{kx}
+  \end{equation}
+\end{theorem}
+
+\subsection{指数が関数の場合}
+
+指数が関数になっている場合$y=e^{f(x)}$の微分も、合成関数の微分を使って考えればよい。
+
+$t=f(x)$とおくと、
+
+\begin{align}
+  \dfrac{dy}{dx} & = \dfrac{dy}{dt} \cdot \dfrac{dt}{dx}      \\
+                 & = \dfrac{d}{dt}e^t \cdot \dfrac{d}{dx}f(x) \\
+                 & = e^t \cdot f'(x)                          \\
+                 & = e^{f(x)} \cdot f'(x)
+\end{align}
+
+\begin{theorem}{ネイピア数を底とする指数関数の微分（指数が関数の場合）}
+  \begin{equation}
+    \dfrac{d}{dx}e^{f(x)} = f'(x)e^{f(x)}
+  \end{equation}
+\end{theorem}
+
+\end{document}

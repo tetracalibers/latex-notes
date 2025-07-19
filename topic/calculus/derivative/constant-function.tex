@@ -1,0 +1,66 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{定数関数の微分}
+
+常に一定の値$c$を返す定数関数$f(x) = c$の微分はどうなるだろうか。
+
+関数のグラフを描いて考えてみよう。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\xmin{-1};
+    \def\xmax{3};
+    \def\ymin{-1};
+    \def\ymax{3};
+    \def\c{1.2}
+
+    % よく使う点の座標
+    \coordinate (O) at (0,0);
+
+    % 座標軸
+    \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+    \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+    % 原点
+    \node at (O) [below left]{$O$};
+
+    % グラフ
+    \draw[magenta,thick] (\xmin,\c) -- (\xmax,\c) node [right]{$y = c$};
+
+    % y軸上の目盛り
+    \node at (0,{\c}) [above left]{$c$};
+  \end{tikzpicture}
+\end{center}
+
+定数関数のグラフは、$x$軸に対して平行な直線であり、この直線の傾きは見るからに$0$である。
+
+実際、導関数の定義に従って計算することで、定数関数の導関数は$0$になることを確かめられる。
+
+\begin{review}
+  導関数の定義
+  \begin{equation}
+    f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}
+  \end{equation}
+\end{review}
+
+どの点$x$においても$f(x)$が$c$を返すということは、$f(x+\Delta x)$も$c$であるため、
+
+\begin{align}
+  f'(x) & = \lim_{\Delta x \to 0} \dfrac{c - c}{\Delta x} \\
+        & = \lim_{\Delta x \to 0} \dfrac{0}{\Delta x}     \\
+        & = 0
+\end{align}
+
+となり、定数関数$f(x) = c$の微分の結果は$c$に依存せず、常に$0$になる。
+
+\begin{theorem}{定数関数の微分}
+  常に定数$c$の値をとる定数関数$f(x) = c$は、微分すると$0$になる。
+  \begin{equation}
+    \dfrac{d}{dx} c = 0
+  \end{equation}
+\end{theorem}
+
+\end{document}

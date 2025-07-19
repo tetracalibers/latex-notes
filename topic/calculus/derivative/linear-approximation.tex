@@ -1,0 +1,174 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{接線：拡大したら直線に近似できる}
+
+関数$y=f(x)$について、引数の値を$x=x_0$からわずかに増加させて、$x=x_0+\Delta x$にした場合の出力の変化を考える。
+
+\begin{center}
+  \scalebox{1.75}{
+    \begin{tikzpicture}
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{1.5};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0) [below, scale=0.5]{$\strut x_0 + \Delta x$};
+      \node (X1) at (\xi,0) [below, scale=0.5, baseline = (X2.base)]{$\strut x_0$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x_0)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x_0 + \Delta x)$};
+
+      % x軸からの補助線
+      \draw[auxline, thin, lightgray] (\xi,0) -- (A);
+      \draw[auxline, thin, lightgray] (\xj,0) -- (B);
+
+      % y軸からの補助線
+      \draw[auxline, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[auxline, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % \Delta xを表す矢印
+      \draw[<->] ($(A)-(0,0.1)$) -- ($(B)-(0,0.1)$) node [midway, below]{$\Delta x$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+このとき、増分の幅$\Delta x$を狭くしていく（$\Delta x$の値を小さくしていく）と、$x=x_0$付近において、関数$y=f(x)$のグラフは直線にほとんど重なるようになる。
+
+\begin{center}
+  \scalebox{2}{
+    \begin{tikzpicture}[spy using outlines={circle, magnification=4, size=2cm, connect spies}]
+      \def\xmin{-1};
+      \def\xmax{3};
+      \def\ymin{-1};
+      \def\ymax{3};
+      \def\fn#1{exp(0.5*#1) - 0.5};
+      \def\dfn#1{0.5*exp(0.5*#1)}; % \fnの導関数
+      \def\xi{0.75};
+      \def\xj{0.95};
+
+      % よく使う点の座標
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (\xi, {\fn{\xi}});
+      \coordinate (B) at (\xj, {\fn{\xi}});
+      \coordinate (C) at (\xj, {\fn{\xj}});
+      \coordinate (D) at (A |- C);
+
+      % 座標軸
+      \draw[axis] (\xmin,0) -- (\xmax,0) node [right]{$x$};
+      \draw[axis] (0,\ymin) -- (0,\ymax) node [above]{$y$};
+
+      % 原点
+      \node at (O) [below left]{$O$};
+
+      % x軸からの補助線
+      \draw[dotted, thin, lightgray] (\xi,0) -- (A);
+      \draw[dotted, thin, lightgray] (\xj,0) -- (B);
+      % y軸からの補助線
+      \draw[dotted, thin, lightgray] (0,{\fn{\xi}}) -- (A);
+      \draw[dotted, thin, lightgray] (0,{\fn{\xj}}) --(C);
+
+      % 傾きを表す三角形
+      \draw[fill=myPurple, myPurple!80!gray, opacity=0.5] (A) --(B) -- (C) -- cycle;
+
+      \begin{scope}
+        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+        % 接線
+        \draw[orange] plot[domain=\xmin:\xmax] (\x,{\fn{\xi} + \dfn{\xi}*(\x-\xi)});
+        % グラフ
+        \draw[magenta,thick] plot[domain=\xmin:\xmax] (\x,{\fn{\x}});
+      \end{scope}
+
+      % x軸上の目盛り
+      \node (X2) at (\xj,0) [below right, scale=0.5]{$\strut x_0 + \Delta x$};
+      \node (X1) at (\xi,0) [below, scale=0.5, baseline = (X2.base)]{$\strut x_0$};
+
+      % y軸上の目盛り
+      \node at (0,{\fn{\xi}}) [left, scale=0.5]{$f(x_0)$};
+      \node at (0,{\fn{\xj}}) [left, scale=0.5]{$f(x_0 + \Delta x)$};
+
+      \spy [Aquamarine] on ($(A)!.5!(C)$) in node [left] at (3.5,-1.25);
+    \end{tikzpicture}
+  }
+\end{center}
+
+このように、関数$f(x)$は、ある点$x_0$の付近では、
+
+\begin{equation}
+  f(x) \simeq a(x - x_0) +b
+\end{equation}
+
+という直線に近似することができる。
+
+\br
+
+ここで、$f(x_0)$の値を考えると、
+
+\begin{align}
+  f(x_0) & = a(x_0 - x_0) + b \\
+         & = a\cdot 0 + b     \\
+         & = b
+\end{align}
+
+であるから、実は$b=f(x_0)$である。
+
+\br
+
+一方、$a$はこの直線の傾きを表す。
+
+そもそも、傾きとは、$x$が増加したとき、$y$がどれだけ急に（速く）増加するかを表す量である。
+
+関数のグラフを見ると、急激に上下する箇所もあれば、なだらかに変化する箇所もある。
+
+つまり、ある点でグラフにぴったりと沿う直線（接線）を見つけたとしても、その傾きは場所によって異なる。
+
+そこで、「傾きは位置$x$の関数」とみなして、次のように表現しよう。
+
+\begin{equation}
+  a = f'(x)
+\end{equation}
+
+これで、先ほどの直線の式を完成させることができる。
+
+\begin{theorem}{関数の各点での直線による近似}
+  関数$f(x)$は、ある点$x_0$の付近では、
+  \begin{equation}
+    f(x) \simeq f(x_0) + f'(x)(x - x_0)
+  \end{equation}
+  という傾き$f'(x)$の直線に近似できる。
+\end{theorem}
+
+\end{document}

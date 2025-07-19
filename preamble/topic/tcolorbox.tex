@@ -228,3 +228,22 @@
     sharp corners,
   ]{#2}
 }
+
+\definecolor{reviewBgColor}{HTML}{F9F9F9}
+\definecolor{reviewFgColor}{HTML}{6886C5}
+\newtcolorbox{review}{
+  colback=reviewBgColor,
+  colbacktitle=reviewFgColor,
+  title=REVIEW,
+  enhanced,
+  attach boxed title to top left={yshift=-0.18cm,xshift=-0.5mm},
+  boxed title style={
+      tikz={rotate=4,transform shape},
+      frame code={
+          \draw[decorate, reviewFgColor,decoration={random steps,segment length=2mm,amplitude=0.6pt},fill=lightgray!20] (frame.south west) rectangle (frame.north east);
+        }
+    },
+  frame code={
+      \draw[decorate, reviewFgColor!50,decoration={random steps,segment length=2mm,amplitude=0.6pt}] (frame.north east) rectangle (frame.south west);
+    },
+}
