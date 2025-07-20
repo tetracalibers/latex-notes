@@ -1,0 +1,77 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{合成関数の偏微分}
+
+一変数関数の場合、合成関数の微分は\hyperref[thm:chain-rule-leibniz]{連鎖律}と呼ばれる公式で表された。
+
+\begin{review}
+  一変数関数$f(x)$において、$x$が関数$x(t)$になっている場合、$t$に関する微分は、
+  \begin{equation*}
+    \dfrac{df}{dt} = \dfrac{df}{dx} \dfrac{dx}{dt}
+  \end{equation*}
+  のように計算できる。
+\end{review}
+
+同様に、二変数関数$f(x,y)$において、$x$と$y$が関数になっている場合を考える。
+\begin{equation*}
+  f(x(t,s), y(t,s))
+\end{equation*}
+
+このような場合、同じ変数が何箇所も出てくるため、そのたびに偏微分を行えばよい。
+
+\subsection{例：$t$に関する偏微分}
+
+与えられた関数は、$t,s$の関数と考えることができる。
+\begin{equation*}
+  F(t,s) = f(x(t,s), y(t,s))
+\end{equation*}
+
+ここで、$s$を定数とみなせば、次のような関係としてまとめられる。
+\begin{itemize}
+  \item $t$が変化すると$x$は変化する
+  \item $t$が変化すると$y$は変化する
+\end{itemize}
+
+$t$が変化すると$x$と$y$の両方が変化するので、$t$を変化させたときの$f$の変化量は、\keyword{全微分}で表されることになる。
+\begin{equation*}
+  \dfrac{\partial f}{\partial t} = \text{\bfseries $x$による$f$の変化} + \text{\bfseries $y$による$f$の変化}
+\end{equation*}
+
+\br
+
+$x$による$f$の変化をみるために、$f$を$x$に関して偏微分する。
+
+このとき、$y$は定数とみなすので、$x$に関する偏微分は1変数の合成関数の微分と同様に計算できる。
+
+\begin{equation*}
+  \text{\bfseries $x$による$f$の変化} = \dfrac{\partial f}{\partial x}\dfrac{\partial x}{\partial t}
+\end{equation*}
+
+\br
+
+$y$による$f$の変化も同様に、
+\begin{equation*}
+  \text{\bfseries $y$による$f$の変化} = \dfrac{\partial f}{\partial y}\dfrac{\partial y}{\partial t}
+\end{equation*}
+
+\br
+
+よって、$t$に関する偏微分は次のように表される。
+\begin{equation*}
+  \dfrac{\partial f}{\partial t} = \dfrac{\partial f}{\partial x}\dfrac{\partial x}{\partial t} + \dfrac{\partial f}{\partial y}\dfrac{\partial y}{\partial t}
+\end{equation*}
+  
+\br
+
+まとめると、$t$に関する偏微分は、
+\begin{enumerate}
+  \item $x$の中に$t$が出てくるので、$x$に関する偏微分を行う
+  \item $y$の中に$t$が出てくるので、$y$に関する偏微分を行う
+  \item その結果を足し合わせる
+\end{enumerate}
+というように、変数$t$が出てくるたびに偏微分を行い、結果を足し合わせることで求められる。
+
+\end{document}
