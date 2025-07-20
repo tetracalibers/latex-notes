@@ -144,4 +144,56 @@ $s = 1$とおくことで、2変数関数のテイラー展開が得られる。
   f(x + \Delta x, y + \Delta y) = f(x, y) + \frac{\partial f}{\partial x}(x, y)\Delta x + \frac{\partial f}{\partial y}(x, y)\Delta y \\ + \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(x, y)(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x, y)(\Delta y)^2\right) + \cdots
 \end{multline*}
 
+\br
+
+移項して、関数値の変化量$\Delta f = f(x + \Delta x, y + \Delta y) - f(x, y)$の形でまとめておこう。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      テイラー展開から、変数を微小変化させたときの関数の変化量が導かれる
+      \begin{multline*}
+        \Delta f = \frac{\partial f}{\partial x}(x, y)\Delta x + \frac{\partial f}{\partial y}(x, y)\Delta y \\ + \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(x, y)(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x, y)(\Delta y)^2\right) + \cdots
+      \end{multline*}
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\subsection{全微分との関係}
+
+変数部分を省略して$\Delta f$を記述すると、
+\begin{equation*}
+  \Delta f = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y + \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(\Delta y)^2\right) + \cdots
+\end{equation*}
+
+ここで、$(\Delta x)^2, \Delta x \Delta y, (\Delta y)^2$などは、高次の微小量である。
+
+\br
+
+このように、2階以上の微分によって現れる項は高次の微小量を含んでいるため、1階微分で現れた項だけ残すと、
+\begin{equation*}
+  \Delta f \approx \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y
+\end{equation*}
+という近似式が得られる。そしてこの式は、まさに関数$f(x,y)$の\hyperref[sec:total-derivative]{全微分}になっている。
+
+\br
+
+つまり、\keyword{全微分}とは、高次の微小量を無視した近似である。
+
+$\Delta x, \Delta y$が小さくなればなるほど、\hyperref[sec:diff-higher-infinitesimals]{高次の微小量}はそれ以上にはるかに小さくなり、無視できるほどになる。
+
+\br
+
+また、全微分は\hyperref[thm:tangent-plane-equation]{接平面の方程式}から導かれた。
+
+$\Delta x, \Delta y$を小さくするということは、$x,y$の変化量（グラフ上の点の移動の幅）を小さくとることであり、これは、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      ある点の付近では、接平面で多変数関数のグラフ（曲面）を近似できる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ことの根拠となっている。
+
 \end{document}
