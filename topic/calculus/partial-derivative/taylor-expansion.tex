@@ -1,0 +1,147 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{多変数関数のテイラー展開}
+
+一変数関数の\hyperref[thm:taylor-expansion]{テイラー展開}は、次のようなものだった。
+
+\begin{review}
+  $f(x)$の$x = x_0$周りにおけるテイラー展開は、
+  \begin{equation*}
+  f(x) = f(x_0) + \frac{df}{dx}(x_0)(x - x_0) + \frac{1}{2!}\frac{d^2 f}{dx^2}(x_0)(x - x_0)^2 + \cdots
+\end{equation*}
+\end{review}
+
+この式は、$x=x_0$の付近では、関数$f(x)$を右辺の多項式で近似できることを表している。
+
+\br
+
+ここで、$x_0$は$x$に近い点として、$x = x_0 + \Delta x$とおくと、$x - x_0 = \Delta x$となることも用いて、
+\begin{equation*}
+  f(x_0 + \Delta x) = f(x_0) + \frac{df}{dx}(x_0)\Delta x + \frac{1}{2!}\frac{d^2 f}{dx^2}(x_0)(\Delta x)^2 + \cdots
+\end{equation*}
+
+この式は、$x_0$の関数とみなせるので、$x_0$を変数$x$として書き換えておこう。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      テイラー展開から、変数を微小変化させたときの関数の値が求まる
+      \begin{equation*}
+  f(x + \Delta x) = f(x) + \frac{df}{dx}(x)\Delta x + \frac{1}{2!}\frac{d^2 f}{dx^2}(x)(\Delta x)^2 + \cdots
+\end{equation*}
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+さらに移項により、次のように書き換えられる。
+\begin{equation*}
+  f(x + \Delta x) - f(x) = \frac{df}{dx}(x)\Delta x + \frac{1}{2!}\frac{d^2 f}{dx^2}(x)(\Delta x)^2 + \cdots
+\end{equation*}
+この式の左辺は、$x$を$\Delta x$だけ微小変化させたときの関数$f(x)$の変化量を表している。
+\begin{equation*}
+  \Delta f = f(x + \Delta x) - f(x)
+\end{equation*}
+
+つまり、テイラー展開によって、変数を微小変化させたときの関数の変化量を表すことができる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      テイラー展開から、変数を微小変化させたときの関数の変化量が導かれる
+      \begin{equation*}
+  \Delta f = \frac{df}{dx}(x)\Delta x + \frac{1}{2!}\frac{d^2 f}{dx^2}(x)(\Delta x)^2 + \cdots
+\end{equation*}
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\subsection{二変数関数への拡張}
+
+二変数関数$f(x,y)$においても同様に、$x$と$y$の値を微小変化させたときの関数の値
+\begin{equation*}
+  f(x + \Delta x, y + \Delta y)
+\end{equation*}
+を求めることを目指す。
+
+\br
+
+ここで、一変数関数の議論に帰着させるために、
+\begin{equation*}
+  F(s) = f(x + s\Delta x, y + s\Delta y)
+\end{equation*}
+という関数を考える。
+これは$s$に関する一変数関数であり、$s=1$の場合を考えれば、目的の$f(x + \Delta x, y + \Delta y)$の値が得られる。
+
+\br
+
+この一変数関数$F(s)$を$s=0$の周りでテイラー展開すると、
+\begin{equation*}
+  F(s) = F(0) + F'(0)s + \frac{1}{2!}F''(0)s^2 + \cdots
+\end{equation*}
+
+\br
+
+1階微分$F'(s)$は、$s$が出てくるたびに偏微分して、それらを足し合わせることで、
+\begin{equation*}
+  F'(s) = \frac{dF}{ds} = \frac{\partial f}{\partial x}(x + s\Delta x, y + s\Delta y)\Delta x + \frac{\partial f}{\partial y}(x + s\Delta x, y + s\Delta y)\Delta y
+\end{equation*}
+よって、$s = 0$での微分係数は、
+\begin{equation*}
+  F'(0) = \frac{\partial f}{\partial x}(x, y)\Delta x + \frac{\partial f}{\partial y}(x, y)\Delta y
+\end{equation*}
+
+\br
+
+2階微分$F''(s)$は、1階微分$F'(s)$をさらに微分したものである。
+
+1階微分$F'(s)$を次のように項に分けて考える。
+\begin{equation*}
+  F'(s) = F'_x(s) + F'_y(s)
+\end{equation*}
+
+まず、$F'(s)$のうち、
+\begin{equation*}
+  F'_x(s) \coloneqq \frac{\partial f}{\partial x}(x + s\Delta x, y + s\Delta y)\Delta x
+\end{equation*}
+の部分を2階微分すると、$s$が出てくるたびに偏微分することに注意して、
+\begin{align*}
+  F''_x(s) &= \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial x}(x + s\Delta x, y + s\Delta y)\Delta x\right) + \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}(x + s\Delta x, y + s\Delta y)\Delta x\right) \\
+  &= \frac{\partial^2 f}{\partial x^2}(x + s\Delta x, y + s\Delta y)(\Delta x)^2 + \frac{\partial^2 f}{\partial y \partial x}(x + s\Delta x, y + s\Delta y)\Delta x \Delta y
+\end{align*}
+
+次に、$F'(s)$のうち、
+\begin{equation*}
+  F'_y(s) \coloneqq \frac{\partial f}{\partial y}(x + s\Delta x, y + s\Delta y)\Delta y
+\end{equation*}
+の部分を2階微分すると、同様に、
+\begin{align*}
+  F''_y(s) &= \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}(x + s\Delta x, y + s\Delta y)\Delta y\right) + \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial y}(x + s\Delta x, y + s\Delta y)\Delta y\right) \\
+  &= \frac{\partial^2 f}{\partial x \partial y}(x + s\Delta x, y + s\Delta y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x + s\Delta x, y + s\Delta y)(\Delta y)^2
+\end{align*}
+
+よって、$s = 0$での2階微分は、
+\begin{align*}
+  F''(0) &= F''_x(0) + F''_y(0) \\
+  &= \frac{\partial^2 f}{\partial x^2}(x, y)(\Delta x)^2 + \frac{\partial^2 f}{\partial y \partial x}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial x \partial y}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x, y)(\Delta y)^2
+\end{align*}
+
+偏微分が交換できる場合（偏導関数がともに連続な場合）は、次のようにまとめられる。
+\begin{equation*}
+  F''(0) = \frac{\partial^2 f}{\partial x^2}(x, y)(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x, y)(\Delta y)^2
+\end{equation*}
+
+\br
+
+1階微分と2階微分の結果を、$F(s)$のテイラー展開の式に代入すると、
+\begin{multline*}
+  F(s) = F(0) + \left(\frac{\partial f}{\partial x}(x, y)\Delta x + \frac{\partial f}{\partial y}(x, y)\Delta y\right)s \\ + \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(x, y)(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x, y)(\Delta y)^2\right)s^2 + \cdots
+\end{multline*}
+$s = 1$とおくことで、2変数関数のテイラー展開が得られる。
+\begin{multline*}
+  f(x + \Delta x, y + \Delta y) = f(x, y) + \frac{\partial f}{\partial x}(x, y)\Delta x + \frac{\partial f}{\partial y}(x, y)\Delta y \\ + \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(x, y)(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}(x, y)\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(x, y)(\Delta y)^2\right) + \cdots
+\end{multline*}
+
+\end{document}
