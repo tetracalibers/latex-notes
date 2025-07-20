@@ -1,0 +1,153 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{接平面の方程式}
+
+偏微分では、他の変数を固定して、特定の変数に関する微分を考えた。
+
+これは、曲面$z=f(x,y)$を平面で切った断面に現れる一変数関数に対して、グラフの接線の傾きを求めることに相当する。
+
+\br
+
+結局偏微分では、一変数関数に帰着させて、一変数関数のグラフのある点での接線を考えていた。
+
+\br
+
+ここから見方を変えて、一変数関数のグラフをある点で\keyword{接線}として近似できたように、多変数関数のグラフをある点で\keyword{接平面}として近似することを考える。
+
+\subsection{平面と曲面が接する条件}
+
+3次元空間において、曲面$z=f(x,y)$と平面$g(x,y) = ax+by+d$が点$P(x_0,y_0,z_0)$で接するための条件を考える。
+
+「接する」ということは、次の2つの条件が満たされることだ。
+
+\begin{enumerate}
+  \item 点$P$を共有する
+  \item 点$P$における傾きが等しい
+\end{enumerate}
+
+接点$P$は$z=f(x,y)$のグラフ上の点なので、$z_0 = f(x_0,y_0)$が成り立つ。
+
+よって、1つ目の条件は、次のような数式で表すことができる。
+\begin{enumerate}
+  \item 点$P$を共有する：$f(x_0,y_0) = g(x_0,y_0) = z_0$
+\end{enumerate}
+
+\br
+
+2つ目の条件は、現時点では数式で表そうとすると悩ましい。
+
+なぜなら、曲面の場合、360度あらゆる方向の傾きを考えることができてしまうからだ。
+
+その中で、どの方向の傾きが等しければよいのだろうか？
+
+\subsection{2方向の勾配から任意の方向の勾配へ}
+
+例え話から直観的に考察してみよう。
+
+\br
+
+2変数関数$z=f(x,y)$のグラフは、野山の形状を表していると考えられる。
+
+たとえば、
+\begin{itemize}
+  \item 東西方向の位置を$x$
+  \item 南北方向の位置を$y$
+\end{itemize}
+とすると、$f(x,y)$はその地点での標高を表す。
+
+\br
+
+このとき、
+\begin{itemize}
+  \item $x$に関する偏微分$f_x$は、東西方向の勾配
+  \item $y$に関する偏微分$f_y$は、南北方向の勾配
+\end{itemize}
+という意味を持つ。
+
+\br
+
+実はこの2つの量$f_x, f_y$は、東西や南北の方向だけではなく、この地点における全方位、たとえば北東の方向に進むときの傾斜の情報も持っている。
+
+\br
+
+たとえば、斜面にボールを置いたときに、転がる方向は次のように推測できる。
+\begin{itemize}
+  \item 斜面が「東に行くほど高い」なら、西の方に転がるだろう
+  \item 斜面が「北に行くほど低い」なら、北の方に転がるだろう
+\end{itemize}
+両方合わせることで、だいたい北西の方向に転がるはずと推測できる。
+
+さらに、東西より南北の方が勾配がきついとすると、北西方向よりやや北寄りに転がると推測できる。
+
+\br
+
+このように、3次元曲面において、全方位に対する勾配の情報を集めなくても、たった2つの方向（たとえば東西と南北）の勾配の情報があれば、斜面の傾きが決定される。
+
+\subsection{曲面の傾きが等しい条件}
+
+以上の議論から、東西方向$x$と南北方向$y$の傾き$f_x,\,f_y$が等しければ、平面（斜面）の傾きも等しくなると考えられる。
+
+\br
+
+点$P(x_0,y_0,z_0)$において東西方向$x$の傾きが一致するという条件は、
+\begin{equation*}
+  \frac{\partial f}{\partial x}(x_0,y_0) = \frac{\partial g}{\partial x}(x_0,y_0)
+\end{equation*}
+
+同様に、南北方向$y$の傾きが一致するという条件は、
+\begin{equation*}
+  \frac{\partial f}{\partial y}(x_0,y_0) = \frac{\partial g}{\partial y}(x_0,y_0)
+\end{equation*}
+
+これで、平面$g$と曲面$f$が接するための、2つ目の条件を記述することができた。
+
+\subsection{接平面の方程式の導出}
+
+以上をまとめると、曲面$z=f(x,y)$と平面$g(x,y)$が点$P(x_0,y_0,z_0)$で接するための条件は、次のように表される。
+
+\begin{enumerate}
+  \item $f(x_0,y_0) = g(x_0,y_0) = z_0$（点$P$を共有する）
+  \item $\dfrac{\partial f}{\partial x}(x_0,y_0) = \dfrac{\partial g}{\partial x}(x_0,y_0), \quad \dfrac{\partial f}{\partial y}(x_0,y_0) = \dfrac{\partial g}{\partial y}(x_0,y_0)$（点$P$における傾きが等しい）
+\end{enumerate}
+
+$g(x,y) = ax+by+d$とし、$g$の$x,y$に関する偏微分を計算しておこう。
+
+$x$で偏微分する場合は、定数$by+d$が微分により$0$となり、$y$で偏微分する場合は、定数$ax+d$が微分により$0$となるので、
+\begin{equation*}
+  \frac{\partial g}{\partial x} = a, \quad
+  \frac{\partial g}{\partial y} = b
+\end{equation*}
+
+これらを用いると、接するための条件は、
+\begin{equation*}
+  f(x_0,y_0) = ax_0 + by_0 + d = z_0, \quad
+  \frac{\partial f}{\partial x}(x_0,y_0) = a, \quad
+  \frac{\partial f}{\partial y}(x_0,y_0) = b
+\end{equation*}
+
+$a,b,d$について解くと、
+\begin{gather*}
+  a = \frac{\partial f}{\partial x}(x_0,y_0), \quad
+  b = \frac{\partial f}{\partial y}(x_0,y_0), \\
+  d = z_0 - ax_0 - by_0 = z_0 - \frac{\partial f}{\partial x}(x_0,y_0)x_0 - \frac{\partial f}{\partial y}(x_0,y_0)y_0
+\end{gather*}
+
+よって、点$P$における接平面の方程式は、次のように計算される。
+\begin{align*}
+  z &= g(x,y) \\
+    &= ax + by + d \\
+    &= \frac{\partial f}{\partial x}(x_0,y_0)x + \frac{\partial f}{\partial y}(x_0,y_0)y + \left( z_0 - \frac{\partial f}{\partial x}(x_0,y_0)x_0 - \frac{\partial f}{\partial y}(x_0,y_0)y_0 \right) \\
+    &= \frac{\partial f}{\partial x}(x_0,y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0,y_0)(y - y_0) + z_0
+\end{align*}
+
+\begin{theorem}{接平面の方程式}
+  $z_0 = f(x_0,y_0)$とすると、グラフ$z=f(x,y)$上の点$(x_0,y_0,z_0)$における接平面の方程式は、
+  \begin{equation*}
+    z = \frac{\partial f}{\partial x}(x_0,y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0,y_0)(y - y_0) + z_0
+  \end{equation*}
+\end{theorem}
+
+\end{document}

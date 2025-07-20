@@ -1,0 +1,51 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{全微分}
+
+接平面の方程式において、$z_0$を移項すると、次のような式になる。
+\begin{equation*}
+  z - z_0 = \frac{\partial f}{\partial x}(x_0,y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0,y_0)(y - y_0)
+\end{equation*}
+
+ここで、$(x,y,z)$を$(x_0,y_0,z_0)$の周辺の点として、微小変化量を用いて次のようにおく。
+\begin{equation*}
+  x = x_0 + \Delta x, \quad
+  y = y_0 + \Delta y, \quad
+  z = z_0 + \Delta z
+\end{equation*}
+すなわち、
+\begin{equation*}
+  \Delta x = x - x_0, \quad
+  \Delta y = y - y_0, \quad
+  \Delta z = z - z_0
+\end{equation*}
+このとき、接平面の方程式は次のように書き換えられる。
+\begin{equation*}
+  \Delta z = \frac{\partial f}{\partial x}(x_0,y_0)\Delta x + \frac{\partial f}{\partial y}(x_0,y_0)\Delta y
+\end{equation*}
+
+接点となる点$(x_0,y_0,f(x_0, y_0))$が変わると接平面も変わるので、この接平面の方程式を$(x,y)$の関数とみなして、次のように書こう。
+\begin{equation*}
+  \Delta z = \frac{\partial f}{\partial x}(x,y)\Delta x + \frac{\partial f}{\partial y}(x,y)\Delta y
+\end{equation*}
+変数を省略して、
+\begin{equation*}
+  \Delta z = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y
+\end{equation*}
+
+この式は、$x$と$y$を「どちらも」変化させたときに、関数値$z=f(x,y)$がどれくらい変化するかを表している。
+
+微小変化であることを強調したい場合は、$\Delta$ではなく$d$を用いて表記する。
+すると、偏微分とは異なり、$x$と$y$両方の微小変化を反映した式になるので、この式は\keyword{全微分}と呼ばれる。
+
+\begin{definition}{全微分（2変数関数）}
+  次の式を、関数$f(x,y)$の\keyword{全微分}という。
+  \begin{equation}
+    df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy
+  \end{equation}
+\end{definition}
+
+\end{document}
