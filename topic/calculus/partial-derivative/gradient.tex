@@ -30,10 +30,14 @@ $z=f(x,y)$の全微分
   \Delta z = \begin{pmatrix} \dfrac{\partial f}{\partial x} \\ \dfrac{\partial f}{\partial y} \end{pmatrix} \cdot \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix}
 \end{equation*}
 
-ここで、\keywordJE{勾配ベクトル}{gradient}$\nabla f$を次のように定義する。
-\begin{equation*}
-  \nabla f(x,y) \coloneqq \begin{pmatrix} \dfrac{\partial f}{\partial x} \\ \dfrac{\partial f}{\partial y} \end{pmatrix}
-\end{equation*}
+ここで、偏導関数$\dfrac{\partial f}{\partial x},\dfrac{\partial f}{\partial y}$を並べたベクトルは、\keywordJE{勾配ベクトル}{gradient}と呼ばれる。
+
+\begin{definition}{勾配ベクトル}\label{def:gradient}
+  $f(x,y)$の$x,y$に関する偏導関数を並べたベクトルを、\keyword{勾配ベクトル}として次のように定義する。
+  \begin{equation}
+    \nabla f(x,y) \coloneqq \begin{pmatrix} \dfrac{\partial f}{\partial x} \\ \dfrac{\partial f}{\partial y} \end{pmatrix}
+  \end{equation}
+\end{definition}
 
 すると、全微分の式は、次のように簡潔にまとめられる。
 \begin{equation*}

@@ -1,0 +1,168 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ヘッシアンによる極値の判定}
+
+勾配ベクトルが零ベクトルになるという条件は、極値の判定条件として十分ではない。
+
+ここで、\keyword{テイラー展開}を用いることで、より詳細な情報を得ることができる。
+
+\begin{review}
+  テイラー展開から、変数を微小変化させたときの関数の変化量が導かれる。
+  \begin{equation*}
+    \Delta f = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y + \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(\Delta y)^2\right) + \cdots
+  \end{equation*}
+\end{review}
+
+$\Delta x, \Delta y$を臨界点からの微小な移動量とする。
+
+臨界点では勾配ベクトルが零ベクトルであるため、一次の項は消えてしまう。
+\begin{equation*}
+  \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y = 0
+\end{equation*}
+
+よって、関数の変化量は次のようになる。
+\begin{equation*}
+  \Delta f = \frac{1}{2!}\left(\frac{\partial^2 f}{\partial x^2}(\Delta x)^2 + 2\frac{\partial^2 f}{\partial x \partial y}\Delta x \Delta y + \frac{\partial^2 f}{\partial y^2}(\Delta y)^2\right) + \cdots
+\end{equation*}
+
+\br
+
+点$(x,y)$から微小変化させた付近を調べるので、3次以降の高次の項は省略して議論を進めよう。
+
+ここで、2次の項の各係数を次のようにおく。
+\begin{equation*}
+  a = \frac{1}{2!}\frac{\partial^2 f}{\partial x^2}, \quad
+  b = \frac{\partial^2 f}{\partial x \partial y}, \quad
+  c = \frac{1}{2!}\frac{\partial^2 f}{\partial y^2}
+\end{equation*}
+
+すると、関数の変化量$\Delta f$は、
+\begin{equation*}
+  \Delta f = a(\Delta x)^2 + b\Delta x \Delta y + c(\Delta y)^2
+\end{equation*}
+という2次式としてみることができる。
+
+\subsection{2次式の判別式による場合分け}
+
+さらに、$(\Delta y)^2$でくくって、$t = \dfrac{\Delta x}{\Delta y}$とおくと、
+\begin{align*}
+  \Delta f &= (\Delta y)^2\left(a \left(\frac{\Delta x}{\Delta y}\right)^2 + b\frac{\Delta x}{\Delta y} + c\right) \\
+  &= (\Delta y)^2(at^2 + bt + c)
+\end{align*}
+
+$(\Delta y)^2$は常に正であるので、$\Delta f$の符号は、$at^2 + bt + c$の符号によって決まる。
+
+\br
+
+ここで、次の性質を覚えておこう。
+\begin{itemize}
+  \item $a > 0$のとき、$at^2 + bt + c$は下に凸の放物線
+  \item $a < 0$のとき、$at^2 + bt + c$は上に凸の放物線
+\end{itemize}
+
+$at^2 + bt + c$全体の符号は、\keyword{平方完成}を行うことで明らかになる。
+\begin{align*}
+  at^2 + bt + c & = a \left(t^2 + \frac{b}{a}t + \frac{c}{a}\right) \\
+  &= a\left(t + \frac{b}{2a}\right)^2 - \frac{b^2 - 4ac}{4a} \\
+  &= a\left(t + \frac{b}{2a}\right)^2 + \frac{1}{4a}\left(4ac - b^2\right)
+\end{align*}
+
+\begin{handout}
+  乗法公式$(x + k) ^2 = x^2 + 2kx + k^2$を利用した次の形を、二次式の\keyword{平方完成}という。
+\begin{equation*}
+  (x + k) ^2 - k^2 = x^2 - 2kx
+\end{equation*}
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{scope}[local bounding box=leftTermA]
+      \fill[SkyBlue] (0,0) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[SkyBlue] (1,1) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[Rhodamine] (0,1) rectangle +(1,1) node[white, midway] {$x^2$};
+    \end{scope}
+
+    \begin{scope}[local bounding box=rightTermA, shift={(3.5,0)}]
+      \fill[SkyBlue] (0,0) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[SkyBlue] (1,1) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[lightslategray] (1,0) rectangle +(1,1) node[white, midway] {$k^2$};
+      \fill[Rhodamine] (0,1) rectangle +(1,1) node[white, midway] {$x^2$};
+    \end{scope}
+
+    \begin{scope}[local bounding box=rightTermB, shift={(7,0)}]
+      \draw[SkyBlue,dashed] (0,0) rectangle +(1,1) node[white, midway] {$kx$};
+      \draw[SkyBlue,dashed] (1,1) rectangle +(1,1) node[white, midway] {$kx$};
+      \fill[lightslategray] (1,0) rectangle +(1,1) node[white, midway] {$k^2$};
+      \draw[Rhodamine,dashed] (0,1) rectangle +(1,1) node[white, midway] {$x^2$};
+    \end{scope}
+
+    % leftTermA = rightTermA + rightTermB
+    \path (leftTermA.east) -- (rightTermA.west) node[midway] {$=$};
+    \path (rightTermA.east) -- (rightTermB.west) node[midway] {$-$};
+  \end{tikzpicture}
+\end{center}
+\end{handout}
+
+\br
+
+$\left(t + \dfrac{b}{2a}\right)^2$は常に正なので、結局$at^2 + bt + c$の符号は、
+\begin{equation*}
+  D = 4ac - b^2
+\end{equation*}
+の部分によって決まる。これは2次式の\keyword{判別式}の$-1$倍である。
+
+\br
+
+したがって、$\Delta f$の符号は次のように分類できる。
+\begin{itemize}
+  \item $D < 0$のとき、$at^2 + bt + c$は$t$軸と2点で交わるので、$\Delta f$は正にも負にもなる（\keyword{鞍点}）
+  \item $D > 0$のとき、$at^2 + bt + c$は$t$軸と交わらないので、$\Delta f$の正負が常に決まる
+    \begin{itemize}
+      \item $a > 0$のとき、$\Delta f > 0$なので、\keyword{極小値}をとる
+      \item $a < 0$のとき、$\Delta f < 0$なので、\keyword{極大値}をとる
+    \end{itemize}
+\end{itemize}
+
+\subsection{ヘッセ行列とヘッシアン}
+
+ここで、係数$a,b,c$は次のようにおかれていた。
+\begin{equation*}
+  a = \frac{1}{2!}\frac{\partial^2 f}{\partial x^2}, \quad
+  b = \frac{\partial^2 f}{\partial x \partial y}, \quad
+  c = \frac{1}{2!}\frac{\partial^2 f}{\partial y^2}
+\end{equation*}
+
+これらを$D = 4ac - b^2$の式に代入すると、
+\begin{align*}
+  D &= 4\left(\frac{1}{2!}\frac{\partial^2 f}{\partial x^2}\right)\left(\frac{1}{2!}\frac{\partial^2 f}{\partial y^2}\right) - \left(\frac{\partial^2 f}{\partial x \partial y}\right)^2 \\
+  & = \frac{\partial^2 f}{\partial x^2} \frac{\partial^2 f}{\partial y^2} - \left(\frac{\partial^2 f}{\partial x \partial y}\right)^2
+\end{align*}
+
+\br
+
+この$D$は、次のような行列の行列式になっている。
+\begin{equation*}
+  D = \det\begin{pmatrix}
+    \dfrac{\partial^2 f}{\partial x^2} & \dfrac{\partial^2 f}{\partial x \partial y} \\
+    \dfrac{\partial^2 f}{\partial x \partial y} & \dfrac{\partial^2 f}{\partial y^2}
+  \end{pmatrix}
+\end{equation*}
+
+ここで現れた行列は\keyword{ヘッセ行列}、その行列式は\keyword{ヘッシアン}と呼ばれる。
+
+\br
+
+先ほどの場合分けは、ヘッシアンと係数$a$の符号を用いて、次のようにまとめることができる。
+
+\begin{theorem}{ヘッシアンによる極値の判定}
+  $D$をヘッシアンとすると、関数$f(x,y)$の極大・極小は次のように判定できる。
+  \begin{itemize}
+    \item $\dfrac{\partial^2 f}{\partial x^2} > 0$かつ$D > 0$のとき、$\Delta f$は必ず正となり、点$(x,y)$において$f$は\keyword{極小値}をとる。
+    \item $\dfrac{\partial^2 f}{\partial x^2} < 0$かつ$D > 0$のとき、$\Delta f$は必ず負となり、点$(x,y)$において$f$は\keyword{極大値}をとる。
+    \item $D < 0$のとき、$\Delta f$は正にも負にもなるので、極大にも極小にもならない。
+  \end{itemize}
+\end{theorem}
+
+\end{document}
