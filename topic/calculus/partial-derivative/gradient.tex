@@ -1,0 +1,214 @@
+\documentclass[../../../topic_calculus]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{勾配ベクトル}
+
+野山に雪が積もっていてスキーをするとしよう。
+
+\begin{itemize}
+  \item 直滑降では、最大傾斜の方向（ボールが転がり出す方向）を意識する
+  \item 斜面を登るときは、高さが一定の方向にスキー板を向けて滑らないように横歩きする
+\end{itemize}
+
+高さが一定になる方向は、最大傾斜の方向（ボールが転がり出す方向）と垂直になっているはずである。
+そうでなければ、スキー板が滑って降下が始まってしまう。
+
+\br
+
+野山の形状を$f(x,y)$のグラフとたとえて、このことを数式によって説明してみよう。
+
+\subsection{内積による全微分の表現}
+
+$z=f(x,y)$の全微分
+\begin{equation*}
+  \Delta z = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y
+\end{equation*}
+は、次のようにベクトルの内積として捉えられる。
+\begin{equation*}
+  \Delta z = \begin{pmatrix} \dfrac{\partial f}{\partial x} \\ \dfrac{\partial f}{\partial y} \end{pmatrix} \cdot \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix}
+\end{equation*}
+
+ここで、\keywordJE{勾配ベクトル}{gradient}$\nabla f$を次のように定義する。
+\begin{equation*}
+  \nabla f(x,y) \coloneqq \begin{pmatrix} \dfrac{\partial f}{\partial x} \\ \dfrac{\partial f}{\partial y} \end{pmatrix}
+\end{equation*}
+
+すると、全微分の式は、次のように簡潔にまとめられる。
+\begin{equation*}
+  \Delta z = \nabla f(x,y) \cdot \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix}
+\end{equation*}
+
+\subsection{勾配ベクトルと高さが一定になる方向の直交}
+
+ここで、$x,y$が変化しても関数$f(x,y)$の値$z$が変化しないような点、すなわち$\Delta z = 0$となる点を考えよう。
+
+このとき、全微分の式は、
+\begin{equation*}
+  \nabla f \cdot \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} = 0
+\end{equation*}
+となり、これは内積が0という式、すなわち\keyword{直交}を表す。
+
+\br
+
+こうして、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      高さが一定（$\Delta z = 0$）になる方向$\begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix}$は、勾配ベクトル$\nabla f$と垂直
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+になっていることがわかった。
+
+\subsection{勾配ベクトルと最大傾斜の方向}
+
+たとえば、斜面にボールを置いたとき、ボールは最大傾斜の方向（最も下っていく方向）に転がっていくことは直観的にわかる。
+
+\br
+
+この最大傾斜の方向（ボールが転がり出す方向）が$\nabla f$になっていれば、
+\begin{equation*}
+  \nabla f \cdot \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} = 0
+\end{equation*}
+という直交を表す式が、冒頭で述べた次の直観に当てはまることになる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      高さが一定になる方向は、最大傾斜の方向と垂直
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\subsection{角度による方向微分係数}
+
+傾斜を記述するには、傾きの大きさだけでなく、どの方向に傾斜しているかという情報も必要になる。
+
+\br
+
+地点$(x,y)$から出発して、微小に$(\Delta x, \Delta y)$だけ進んだときの関数$f(x,y)$の変化を調べてみよう。
+
+\begin{center}
+  \begin{tikzpicture}
+        \def\vx{2}
+        \def\vy{1.5}
+
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (\vx, \vy);
+        \coordinate (C) at (\vx, 0);
+
+        % 角度
+        \pic [fill=Emerald!30,angle eccentricity=1.3, angle radius=2em, "$\theta$"{text=Emerald}] {angle = C--A--B};
+        
+        % x軸方向のベクトル
+        \draw[vector, very thick, Rhodamine] (C) -- (A) node[below, pos=0.4] {$\Delta x$};
+        % y軸方向のベクトル
+        \draw[vector, very thick, Cerulean] (B) -- (C) node[right, midway] {$\Delta y$};
+
+        % ベクトル
+        \draw[thick, BurntOrange] (B) -- (A) node[midway, above left] {$h$};
+      \end{tikzpicture}
+\end{center}
+
+$\Delta x, \Delta y$は、方向$\theta$と距離$h$を用いて、次のように表される。
+\begin{equation*}
+  \Delta x = h \cos \theta , \quad
+  \Delta y = h \sin \theta
+\end{equation*}
+
+このとき、関数$f(x,y)$の変化量は、$\Delta x, \Delta y$が微小であることから、
+\begin{equation*}
+  \Delta f = \frac{\partial f}{\partial x}\Delta x + \frac{\partial f}{\partial y}\Delta y
+\end{equation*}
+と見積もることができる。
+
+\br
+
+傾きは、この変化量を移動距離$h$で割って、$h \to 0$の極限をとることで求められる。
+\begin{equation*}
+  \lim_{h \to 0} \frac{\Delta f}{h}
+= \lim_{h \to 0} \left( \frac{\partial f}{\partial x}\frac{\Delta x}{h} + \frac{\partial f}{\partial y}\frac{\Delta y}{h} \right)
+= \frac{\partial f}{\partial x}\cos \theta + \frac{\partial f}{\partial y}\sin \theta
+\end{equation*}
+
+\br
+
+この式が角度$\theta$方向の傾きであり、これを\keyword{$\theta$方向微分係数}と呼ぶ。
+\begin{equation*}
+  \frac{\partial f}{\partial x}\cos \theta + \frac{\partial f}{\partial y}\sin \theta
+\end{equation*}
+
+\subsection{ベクトルによる方向微分係数}
+
+ここで、方向$\theta$を用いて、次のベクトルを考える。
+\begin{equation*}
+  \vb*{u} = \begin{pmatrix} \cos \theta \\ \sin \theta \end{pmatrix}
+\end{equation*}
+$\cos \theta^2 + \sin \theta^2 = 1$の関係から、$\vb*{u}$は長さ1のベクトルである。
+\begin{equation*}
+  \| \vb*{u} \| = \sqrt{\cos^2 \theta + \sin^2 \theta} = 1
+\end{equation*}
+
+\br
+
+このベクトル$\vb*{u}$と勾配ベクトルを用いると、$\Delta x = h \cos \theta ,\Delta y = h sin \theta$の関係をまとめて次のように書ける。
+\begin{equation*}
+  \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} = h \begin{pmatrix} \cos \theta \\ \sin \theta \end{pmatrix} = h \vb*{u}
+\end{equation*}
+
+\br
+
+また、$\theta$方向微分係数は、$\nabla f$と$\vb*{u}$の内積として書くことができる。
+\begin{equation*}
+  \frac{\partial f}{\partial x}\cos \theta + \frac{\partial f}{\partial y}\sin \theta
+= \nabla f \cdot \vb*{u}
+\end{equation*}
+
+\br
+
+このように$\vb*{u}$で書き表された傾きを、\keyword{$\vb*{u}$方向微分係数}と呼ぶ。
+\begin{equation*}
+  \nabla f \cdot \vb*{u}
+\end{equation*}
+
+\subsection{最大傾斜}
+
+方向$\vb*{u}$を変えたとき、$\vb*{u}$方向微分係数の最大値はどうなるだろうか？
+
+\br
+
+コーシー・シュワルツの不等式を用いると、
+\begin{equation*}
+  \| \nabla f \cdot \vb*{u} \| \leq \| \nabla f \| \cdot \| \vb*{u} \|
+\end{equation*}
+$\| \vb*{u} \| = 1$より、
+\begin{equation*}
+  \| \nabla f \cdot \vb*{u} \| \leq \| \nabla f \|
+\end{equation*}
+
+\br
+
+つまり、傾きの大きさの最大値は$\| \nabla f \|$である。
+
+また、等号が成立する場合を考えると、傾きが最大となる方向$\vb*{u}$は、
+\begin{equation*}
+  \vb*{u} = \frac{\nabla f}{\| \nabla f \|}
+\end{equation*}
+である。
+
+\br
+
+まとめると、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      勾配ベクトル$\nabla f$は最大傾斜の方向を向いたベクトルで、\\
+      その長さ$\| \nabla f \|$が傾きの最大値を与える
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+となり、スキーによる直観と矛盾ない性質が確認できた。
+
+\end{document}
