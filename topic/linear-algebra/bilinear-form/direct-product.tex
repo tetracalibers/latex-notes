@@ -1,0 +1,49 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{直積集合}
+\marginnote{\refbookP p171〜173 \\ \refbookQ p293}
+
+\keyword{直積集合}とは、2つの集合からそれぞれ要素を取り出してつくったペアをすべて集めた集合である。
+
+\begin{equation*}
+  \begin{NiceArray}{c|cccc}
+    & b_1 & b_2 & \cdots & b_n \\ \midrule
+    a_1 & (a_1, b_1) & (a_1, b_2) & \cdots & (a_1, b_n) \\
+    a_2 & (a_2, b_1) & (a_2, b_2) & \cdots & (a_2, b_n) \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    a_m & (a_m, b_1) & (a_m, b_2) & \cdots & (a_m, b_n) \\
+  \end{NiceArray}
+\end{equation*}
+
+\br
+
+ただし、ペアには順序があり、たとえば、$(a, b)$と$(b, a)$は異なるものとみなす。
+このような順序を考慮したペアを\keyword{順序対}という。
+
+\br
+
+\keyword{直積集合}は、順序対の集合である。
+
+\begin{definition}{直積集合}
+  2つの集合$A,B$に対して、$A$と$B$の\keyword{直積集合}は次のように定義される。
+  \begin{equation*}
+    A \times B = \{ (a, b) \mid a \in A, b \in B \}
+  \end{equation*}
+\end{definition}
+
+\subsection{直積集合の例：座標平面$\mathbb{R}^2$}
+
+たとえば、2次元平面内の各点は、2つの実数の組$(x, y)$で表すことができる。
+
+このとき、$x$座標と$y$座標はそれぞれ実数の集合$\mathbb{R}$の要素であり、平面上の点$(x, y)$を集めたものが、直積集合$\mathbb{R} \times \mathbb{R}$となる。
+
+\br
+
+この$\mathbb{R} \times \mathbb{R}$を、$\mathbb{R}^2$と表記することが多い。
+
+2次元平面を$\mathbb{R}^2$と表記していたのは、このような直積集合の考え方が背景にある。
+
+\end{document}
