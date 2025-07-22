@@ -1,0 +1,89 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{内積と双線形形式}
+\marginnote{\refbookR p184〜185 \\ \refbookA p126}
+
+$\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^n$のペアから、スカラー値$\mathbb{R}$を返す関数として捉えることができる。
+
+このように内積を写像に見立てて、この写像を$b$とおくと、
+\begin{equation*}
+  b \colon \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}
+\end{equation*}
+と表すことができる。
+
+\br
+
+さらに、$\mathbb{R}^n$上の内積は次のような\keyword{双線形性}を満たすものだった。
+
+\begin{enumerate}[label=\romanlabel]
+  \item $(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) = ( \vb*{u}_1, \vb*{v}) + ( \vb*{u}_2, \vb*{v})$
+  \item $(\vb*{u}, \vb*{v}_1 + \vb*{v}_2) = (\vb*{u}, \vb*{v}_1) + (\vb*{u}, \vb*{v}_2)$
+  \item $(c\vb*{u}, \vb*{v}) = (\vb*{u}, c\vb*{v}) = c(\vb*{u}, \vb*{v})$
+\end{enumerate}
+
+双線形性とは、2つの引数それぞれに対して線形性があるという性質である。
+
+線形性をもつ写像を線形写像として特別視したように、双線形性をもつ写像について考えてみよう。
+
+\begin{definition}{双線形形式}
+  $U,V$を線型空間とする。直積集合$U \times V$から$\mathbb{R}$への写像$b$が次の条件を満たすとき、$b$は$U \times V$上の\keywordJE{双線形形式}{bilinear form}であるという。
+  \begin{enumerate}[label=\romanlabel]
+    \item $b(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) = b(\vb*{u}_1, \vb*{v}) + b(\vb*{u}_2, \vb*{v})$
+    \item $b(\vb*{u}, \vb*{v}_1 + \vb*{v}_2) = b(\vb*{u}, \vb*{v}_1) + b(\vb*{u}, \vb*{v}_2)$
+    \item $b(c\vb*{u}, \vb*{v}) = b(\vb*{u}, c\vb*{v}) = cb(\vb*{u}, \vb*{v})$
+  \end{enumerate}
+\end{definition}
+
+\subsection{例：行列による双線形形式}
+
+\begin{theorem}{行列による双線形形式の構成}
+  $A$を$m \times n$型行列とするとき、$\vb*{u} \in \mathbb{R}^m, \vb*{v} \in \mathbb{R}^n$に対して
+  \begin{equation*}
+    b(\vb*{u}, \vb*{v}) = \vb*{u}^T A \vb*{v}
+  \end{equation*}
+  により$\mathbb{R}^m \times \mathbb{R}^n$上の双線形形式が得られる。
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{{\bfseries 和に対する双線形性} (\romannum{i})}
+    \hyperref[thm:transpose-distributes-over-sum]{行列の和に対して転置を分配できる}ことを用いて、
+    \begin{align*}
+      b(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) &= (\vb*{u}_1 + \vb*{u}_2)^T A \vb*{v} \\
+      &= \vb*{u}_1^T A \vb*{v} + \vb*{u}_2^T A \vb*{v} \\
+      &= b(\vb*{u}_1, \vb*{v}) + b(\vb*{u}_2, \vb*{v})
+    \end{align*}
+  \end{subpattern}
+  
+  \begin{subpattern}{{\bfseries 和に対する双線形性} (\romannum{ii})}
+    (\romannum{i})と同様に、
+    \begin{align*}
+      b(\vb*{u}, \vb*{v}_1 + \vb*{v}_2) &= \vb*{u}^T A (\vb*{v}_1 + \vb*{v}_2) \\
+      &= \vb*{u}^T A \vb*{v}_1 + \vb*{u}^T A \vb*{v}_2 \\
+      &= b(\vb*{u}, \vb*{v}_1) + b(\vb*{u}, \vb*{v}_2)
+    \end{align*}
+  \end{subpattern}
+  
+  \begin{subpattern}{{\bfseries スカラー倍に対する双線形性} (\romannum{iii})}
+    \hyperref[thm:transpose-of-product]{行列の積に対する転置の性質}と、スカラー（$1 \times 1$型行列）を転置しても変わらないことを用いて、
+    \begin{align*}
+      b(c\vb*{u}, \vb*{v}) &= (c\vb*{u})^T A \vb*{v} \\
+      &= c(\vb*{u}^T A \vb*{v}) \\
+      &= cb(\vb*{u}, \vb*{v})
+    \end{align*}
+  \end{subpattern}
+  
+  以上より、$b$は$\mathbb{R}^m \times \mathbb{R}^n$上の双線形形式である。 $\qed$
+\end{proof}
+
+\br
+
+特に、$m =n$で$A = E$の場合、
+\begin{equation*}
+  b(\vb*{u}, \vb*{v}) = \vb*{u}^T \vb*{v}
+\end{equation*}
+となり、$\mathbb{R}^n$上の内積と一致する。
+
+\end{document}
