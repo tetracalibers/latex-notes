@@ -3,23 +3,21 @@
 \begin{document}
 
 \sectionline
-\section{自然なペアリング}
+\section{ペアリングの記号}
 \marginnote{\refbookA p120}
 
-$\phi \in {}^t\mathbb{R}^n$と$\vb*{v} \in \mathbb{R}^n$に対して、
+$\phi \in V^*$と$\vb*{v} \in V$に対して、線形関数$\phi$に$\vb*{v}$を入力して得られる値を次のように書くことがある。
 \begin{equation*}
-  \langle \phi, \vb*{v} \rangle = \phi(\vb*{v})
+  \langle \phi, \vb*{v} \rangle \coloneq \phi(\vb*{v})
 \end{equation*}
-とおく
+この記法を\keyword{ペアリング}と呼ぶことにする。
+
+\subsection{例：行列の積を表すペアリング}
+
+$V = \mathbb{R}^n$の場合、その双対空間は$V^* = {}^t\mathbb{R}^n$である。
 
 \br
 
-これは線形関数$\phi$に$\vb*{v}$を入力して得られる値を表しているが、$\phi$を横ベクトル、$\vb*{v}$を縦ベクトルとみれば、$\langle \phi, \vb*{v} \rangle$は行列としての積$\phi \cdot \vb*{v}$と一致している
-
-\br
-
-左辺の記法$\langle \phi, \vb*{v} \rangle$を用いると、見通しの良い議論ができることがある
-
-これを\keyword{自然なペアリング}と呼ぶ
+$\phi \in {}^t\mathbb{R}^n$を横ベクトル、$\vb*{v} \in \mathbb{R}^n$を縦ベクトルとみれば、$\langle \phi, \vb*{v} \rangle$は行列としての積$\phi \cdot \vb*{v}$と一致している。
 
 \end{document}

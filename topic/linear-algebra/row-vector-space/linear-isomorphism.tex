@@ -3,18 +3,176 @@
 \begin{document}
 
 \sectionline
-\section{双対空間の双対空間}
+\section{双対空間の双対}
 \marginnote{\refbookG p59〜60 \\ \refbookR p236〜237}
 
-$V$と$V^*$の次元が等しいことから、\hyperref[thm:abstract-linear-pigeonhole]{$V$と$V^*$は線形同型}である。
+\hyperref[thm:dual-basis-dimension]{$V$と$V^*$の次元が等しい}ことから、\hyperref[thm:abstract-linear-pigeonhole]{$V$と$V^*$は線形同型}である。
 
 しかし、この同型は$V$の基底に依存している。
 
 \br
 
-線形空間$V$の双対空間$V^*$もまた線形空間になるので、さらにその双対空間$(V^*)^*$を考えることができる。
+一方、線形空間$V$の双対空間$V^*$もまた線形空間になるので、さらにその双対空間$(V^*)^*$を考えることができる。
 
 $(V^*)^*$を\keyword{第2双対空間}といい、$V^{**}$と書くことにする。
 
+\br
+
+実は$V^{**}$と$V$は線形同型であり、この同型は$V$の基底に依存しないことが示される。
+
+\subsection{$V$から$V^{**}$への写像の線形性}
+
+$\vb*{v} \in V$を与えたとき、任意の線形汎関数（$V^*$の元）に$\vb*{v}$を入力したもの$\langle -, \vb*{v} \rangle$を考えることができる。
+
+\begin{supplnote}
+  $-$はプレースホルダーであり、ここに具体的なもの（ここでは線形汎関数）を入れられることを意味する。
+\end{supplnote}
+
+ここで$\phi \in V^*$を与えれば、スカラー$\langle \phi, \vb*{v} \rangle \in \mathbb{R}$が得られる。
+\begin{equation*}
+  V^* \ni \phi \mapsto \langle \phi, \vb*{v} \rangle \in \mathbb{R}
+\end{equation*}
+この写像$\phi \mapsto \langle \phi, \vb*{v} \rangle$を$\iota(\vb*{v})$とおく。
+
+$\vb*{v}$は固定されているものとして、$\iota(\vb*{v}) \colon V^* \to \mathbb{R}$は線形汎関数$\phi$を入力するとスカラーを返す写像である。
+\begin{equation*}
+  (\iota(\vb*{v}))(\phi) = \langle \phi, \vb*{v} \rangle = \phi(\vb*{v})
+\end{equation*}
+
+このとき、$V^* = \Hom(V, \mathbb{R})$における\hyperref[def:linear-map-addition-scalar]{和とスカラー倍の定義}より、$\iota(\vb*{v})$は線形写像である。
+
+\br
+
+\begin{handout}[補足：なぜ$\iota(\vb*{v})$は線形写像といえるのか]
+  $\iota(\vb*{v})(\phi) = \phi(\vb*{v})$という関係に着目しよう。
+  
+  \br
+  
+  すると、$\phi, \psi \in V^*$に対して、
+  \begin{align*}
+    (\iota(\vb*{v}))(\phi + \psi) &= (\phi + \psi)(\vb*{v}) \\
+    &= \phi(\vb*{v}) + \psi(\vb*{v}) \\
+    &= (\iota(\vb*{v}))(\phi) + (\iota(\vb*{v}))(\psi)
+  \end{align*}
+  
+  また、$c \in \mathbb{R}$に対して、
+  \begin{align*}
+    (\iota(\vb*{v})) (c\phi) &= (c\phi)(\vb*{v}) \\
+    &= c \phi(\vb*{v}) \\
+    &= c (\iota(\vb*{v}))(\phi)
+  \end{align*}
+  
+  以上より、写像$\iota(\vb*{v})$は線形性を満たしていることがわかる。$\qed$
+\end{handout}
+
+写像$\iota(\vb*{v}) \colon V^* \to \mathbb{R}$は線形写像なので、$\iota(\vb*{v})$は$V^*$上の\hyperref[def:linear-functional]{線形汎関数}といえる。
+すなわち、$\iota(\vb*{v}) \in V^{**}$である。
+
+\br
+
+$\iota$は$\vb*{v} \in V$を入力として、$\iota(\vb*{v}) \in V^{**}$を返す写像とみることができる。
+\begin{equation*}
+  \iota \colon V \to V^{**}
+\end{equation*}
+
+また、この$\iota$は線形写像である。
+
+\br
+
+\begin{handout}[補足：なぜ$\iota$は線形写像といえるのか]
+  ここでも、$\iota(\vb*{v})(\phi) = \phi(\vb*{v})$という関係を用いる。
+  
+  \br
+  
+  $V^*$の元$\phi$は線形写像なので、
+  \begin{align*}
+    (\iota(\vb*{v}_1 + \vb*{v}_2))(\phi) &= \phi(\vb*{v}_1 + \vb*{v}_2) \\
+    &= \phi(\vb*{v}_1) + \phi(\vb*{v}_2) \\
+    &= (\iota(\vb*{v}_1))(\phi) + (\iota(\vb*{v}_2))(\phi)
+  \end{align*}
+  また、$c \in \mathbb{R}$に対して、
+  \begin{align*}
+    (\iota(c\vb*{v}))(\phi) &= \phi(c\vb*{v}) \\
+    &= c\phi(\vb*{v}) \\
+    &= c(\iota(\vb*{v}))(\phi)
+  \end{align*}
+  
+  以上より、
+  \begin{align*}
+    \iota(\vb*{v}_1 + \vb*{v}_2) &= \iota(\vb*{v}_1) + \iota(\vb*{v}_2) \\
+    \iota(c\vb*{v}) &= c\iota(\vb*{v})
+  \end{align*}
+  となり、写像$\iota$は線形性を満たしていることがわかる。$\qed$
+\end{handout}
+
+\subsection{$V$から$V^{**}$への写像の同型}
+
+$\iota \colon V \to V^{**}$は線形写像であるので、$\iota$の全単射性から\hyperref[def:linear-subspace-isomorphism]{$V$と$V^{**}$の線形同型}を考えることができる。
+
+\br
+
+特に$\iota$が単射であることを示すために、次の定理を用いる。
+
+\begin{theorem}{双対空間の分離性}\label{thm:dual-space-separation}
+  有限次元線形空間$V$において、任意の$\vb*{v} \in V$で$\vb*{v} \neq \vb*{o}$ならば、$\phi(\vb*{v}) \neq 0$となるような線形汎関数$\phi \in V^*$が存在する。
+\end{theorem}
+
+\begin{proof}
+  $\vb*{v} \neq \vb*{o}$より、\hyperref[thm:single-vec-indep-iff-nonzero]{$\vb*{v}$は線型独立}である。
+  
+  よって、\hyperref[thm:basis-extension]{基底の延長}により、$\vb*{v}$を含む$V$の基底$\{ \vb*{v}, \vb*{v}_2, \dots, \vb*{v}_n \}$を選ぶことができる。
+  
+  \br
+  
+  この基底に対応する双対基底${\phi_1, \phi_2, \dots, \phi_n} \subset V^*$を考えると、それぞれの$\phi_i$は、次の性質をもつ。
+  \begin{equation*}
+    \phi_i(\vb*{v}_j) = \delta_{ij} \quad (i,j=1,2,\dots,n)
+  \end{equation*}
+  
+  このとき$\phi_1(\vb*{v}) = 1$であるので、$\phi = \phi_1$をとれば、任意の$\vb*{v} \neq \vb*{o}$に対して$\phi(\vb*{v}) = 1$となる。 $\qed$
+\end{proof}
+
+\br
+
+\begin{theorem}{双対空間の双対と自然同型}
+  $V$が有限次元ならば、$\iota \colon V \to V^{**}$は線形同型である。
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 写像$\iota$は単射}
+    $\iota(\vb*{v}) = 0$すなわち、任意の$\phi \in V^*$に対して
+    \begin{equation*}
+      \iota(\vb*{v})(\phi) = \phi(\vb*{v}) = 0
+    \end{equation*}
+    であると仮定する。
+    
+    この仮定は、すべての線形汎関数が$\vb*{v}$を0に写すことを意味する。
+    
+    \br
+    
+    ここで、$\vb*{v} \neq \vb*{o}$とすると、\hyperref[thm:dual-space-separation]{双対空間の分離性}より、$\phi(\vb*{v}) \neq 0$となるような線形汎関数$\phi$が存在する。
+
+    これは$\iota(\vb*{v}) = 0$という仮定と矛盾するので、$\iota(\vb*{v}) = 0$のもとでは、$\vb*{v} = \vb*{o}$でなければならない。
+    
+    \br
+    
+    したがって、
+    \begin{equation*}
+      \iota(\vb*{v}) = 0 \Longrightarrow \vb*{v} = \vb*{o}
+    \end{equation*}
+    となり、これは\hyperref[thm:injective-zero-test]{線形写像$\iota$が単射}であることを示している。$\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries 写像$\iota$は全射}
+    \hyperref[thm:dual-basis-dimension]{双対空間の次元}を考えると、
+    \begin{equation*}
+      \dim V^{**} = \dim V^* = \dim V
+    \end{equation*}
+    
+    \note{次元定理と全射性との関係を加筆したら、その記載箇所へのリンクを貼る}
+    
+    $\iota$が単射であることから$\Ker(\iota) = \{ \vb*{o} \}$なので、\hyperref[thm:rank-nullity-theorem]{線形写像の次元定理}より、$\dim V^{**} = \dim V$は$\iota \colon V \to V^{**}$が全射であることを示している。$\qed$
+  \end{subpattern}
+\end{proof}
 
 \end{document}
