@@ -4,40 +4,54 @@
 
 \sectionline
 \section{双対基底}
-\marginnote{\refbookA p120〜121 \\ \refbookG p58〜59}
+\marginnote{\refbookA p120〜121 \\ \refbookG p58〜59 \\ \refbookR p234〜235}
 
-$\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、
+線形空間が有限次元の場合は、選んでおいた基底に対して、\keywordJE{双対基底}{dual basis}という双対空間の基底を考えることができる。
+
+\br
+
+$V$を$n$次元の線形空間とし、$\vb*{v}_1,\ldots,\vb*{v}_n$を$V$の1つの基底とする。
+
+このとき、$V$の任意のベクトル$\vb*{v}$は、基底の線形結合
+\begin{equation*}
+  \vb*{v} = c_1 \vb*{v}_1 + \cdots + c_n \vb*{v}_n
+\end{equation*}
+として表すことができる。
+
+各係数$c_i$は、$\vb*{v}$の基底$\vb*{v}_1,\ldots,\vb*{v}_n$に関する第$i$成分（第$i$座標）である。
+
+\br
+
+$V$の任意のベクトルを引数にとり、基底$\vb*{v}_1,\ldots,\vb*{v}_n$に関する第$i$座標$c_i$を返す関数を$\phi_i \colon V \to \mathbb{R}$とおこう。
+
+$\phi_i \in V^*$は線形なので、
+\begin{equation*}
+  \phi_i(\vb*{v}) = \phi\left(\sum_{j=1}^{n} c_j \vb*{v}_j\right) = \sum_{j=1}^{n} c_j \phi_i(\vb*{v}_j)
+\end{equation*}
+
+ここで、$\phi_i(\vb*{v})= c_i$となるためには、
 \begin{equation*}
   \phi_i(\vb*{v}_j) = \delta_{ij} \quad (i,j=1,\ldots,n)
 \end{equation*}
-を満たす線形写像$\phi_i:\mathbb{R}^n \to \mathbb{R}$を考える
+である必要がある。
 
 \br
 
-このとき、任意のベクトル $\vb*{v} \in \mathbb{R}^n$を
-\begin{equation*}
-  \vb*{v} = \sum_{j=1}^n a_j \vb*{v}_j
-\end{equation*}
-とおくと、
-\begin{equation*}
-  \phi_i(\vb*{v}) = \phi_i\left(\sum_{j=1}^{n} a_j \vb*{v}_j\right) = \sum_{j=1}^{n} a_j \phi_i(\vb*{v}_j) = \sum_{j=1}^{n} a_j \delta_{ij} = a_i
-\end{equation*}
-となるから、$\phi_i$は基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に関する第$i$座標を表す関数である
+このように定めた$\phi_i$は、$V$の双対空間$V^*$の基底となっている。
 
-\br
-
-任意の線形関数$\phi \in {}^t\mathbb{R}^n$は、座標関数の線型結合として一意的に表現できるから、次が成り立つ
-
-\begin{theorem}{${}^t\mathbb{R}^n$の双対基底の存在}\label{thm:dual-basis-existence-of-Rn}
-  $\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、$\phi_i(\vb*{v}_j) = \delta_{ij}$によって$\phi_i \in {}^t\mathbb{R}^n$を定める
-
-  このとき、任意の$\phi \in {}^t\mathbb{R}^n$を$\phi_1,\ldots,\phi_n$の線形結合
+\begin{theorem}{双対基底の構成と双対空間の次元}
+  $V$を$n$次元の線形空間とし、$\vb*{v}_1,\ldots,\vb*{v}_n$を$V$の基底とする。
+  
+  $i = 1,\dots, n$に対して、$\phi_i \in V^*$を
   \begin{equation*}
-    \phi = \sum_{i=1}^{n} \phi(\vb*{v}_i) \phi_i
+    \phi_i(\vb*{v}_j) = \delta_{ij} \quad (j=1,\ldots,n)
   \end{equation*}
-  として一意的に書くことができる
-
-  すなわち、$\{ \phi_1,\ldots,\phi_n \}$は${}^t \mathbb{R}^n$の基底である
+  により定めると、$\phi_1,\ldots,\phi_n$は$V^*$の基底をなす。
+  
+  特に、次が成り立つ。
+  \begin{equation*}
+    \dim V = \dim V^* = n
+  \end{equation*}
 \end{theorem}
 
 \begin{proof}
@@ -58,19 +72,19 @@ $\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、
     \begin{equation*}
       c_i = 0 \quad (i=1,\ldots,n)
     \end{equation*}
-    が得られる $\qed$
+    が得られる。 $\qed$
   \end{subpattern}
 
-  \begin{subpattern}{$\langle \phi_1, \ldots, \phi_n \rangle = {}^t\mathbb{R}^n$}
-    任意の$\vb*{v} \in \mathbb{R}^n$に対して、
+  \begin{subpattern}{$\langle \phi_1, \ldots, \phi_n \rangle = V^*$}
+    任意の$\vb*{v} \in V$に対して、
     \begin{equation*}
       \vb*{v} =\sum_{i=1}^{n} c_i \vb*{v}_i
     \end{equation*}
-    と書く
+    と書く。
 
     \br
 
-    $\psi \in {}^t\mathbb{R}^n$を任意にとると、$\psi$と$\phi$の線形性により、
+    $\psi \in V^*$を任意にとると、$\psi$と$\phi$の線形性により、
     \begin{align*}
       \psi(\vb*{v}) & = \psi\left(\sum_{i=1}^{n} c_i \vb*{v}_i\right)              \\
                     & = \sum_{i=1}^{n} c_i \psi(\vb*{v}_i)                         \\
@@ -84,12 +98,12 @@ $\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、
       \psi = \sum_{i=1}^{n} \psi(\vb*{v}_i) \phi_i
     \end{equation*}
 
-    上式で、任意の$\psi \in {}^t\mathbb{R}^n$を$\phi_1,\ldots,\phi_n$の線形結合で書けることが示せたので、$\langle \phi_1, \ldots, \phi_n \rangle$は${}^t\mathbb{R}^n$を張ることがわかる $\qed$
+    上式で、任意の$\psi \in V^*$を$\phi_1,\ldots,\phi_n$の線形結合で書けることが示せたので、$\langle \phi_1, \ldots, \phi_n \rangle$は$V^*$を張ることがわかる。 $\qed$
   \end{subpattern}
 \end{proof}
 
 \br
 
-$\mathbb{R}^n$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$に対して、上の定理で定まる${}^t\mathbb{R}^n$の基底$\{ \phi_1,\ldots,\phi_n \}$を\keyword{双対基底}という
+このようにして得られる$V^*$の基底$\{ \phi_1,\ldots,\phi_n \}$を、$V$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$の\keyword{双対基底}という。
 
 \end{document}
