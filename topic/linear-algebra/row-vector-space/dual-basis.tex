@@ -106,4 +106,75 @@ $\phi_i \in V^*$は線形なので、
 
 このようにして得られる$V^*$の基底$\{ \phi_1,\ldots,\phi_n \}$を、$V$の基底$\{ \vb*{v}_1,\ldots,\vb*{v}_n \}$の\keyword{双対基底}という。
 
+\subsection{例：数ベクトル空間と双対基底}
+
+$V = \mathbb{R}^n$の場合を考えてみよう。
+
+\br
+
+任意の縦ベクトルは、標準基底の線形結合として書くことができる。
+\begin{equation*}
+  \begin{pmatrix}
+    c_1 \\
+    \vdots \\
+    c_n
+  \end{pmatrix} = c_1 \vb*{e}_1 + \cdots + c_n \vb*{e}_n \in \mathbb{R}^n
+\end{equation*}
+
+また、任意の横ベクトルは、標準基底を転置したものの線形結合として書くことができる。
+\begin{equation*}
+  \begin{pmatrix}
+    c_1 & \cdots & c_n
+  \end{pmatrix} = c_1 {}^t\vb*{e}_1 + \cdots + c_n {}^t\vb*{e}_n \in {}^t\mathbb{R}^n
+\end{equation*}
+
+つまり、縦ベクトル空間の基底$\{ \vb*{e}_1, \ldots, \vb*{e}_n \}$に対して、横ベクトル空間の基底は$\{ {}^t\vb*{e}_1, \ldots, {}^t\vb*{e}_n \}$となる。
+
+\br
+
+また、${}^t\vb*{e}_i$を縦ベクトル$\vb*{v}$にかけることで、$\vb*{v}$の$i$番目の成分が得られるのだった。
+\begin{equation*}
+  {}^t\vb*{e}_i \vb*{v} = \begin{pmatrix}
+    0 & \cdots & 1 & \cdots & 0
+  \end{pmatrix} \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix} = v_i
+\end{equation*}
+
+つまり、${}^t\vb*{e}_i$は座標関数$\phi_i \colon \mathbb{R}^n \to \mathbb{R}$の表現行列になっている。
+
+$\phi_i$を表す${}^t\vb*{e}_i$が、$\mathbb{R}^n$の双対空間${}^t\mathbb{R}^n$の基底をなしていることになる。
+
+\br
+
+$\phi_i(\vb*{e}_j)$についても考えておこう。
+
+$\vb*{e}_j$は$j$番目の成分が1で他は0の縦ベクトルであり、${}^t\vb*{e}_i$は$i$番目の成分が1で他は0の横ベクトルである。
+
+\begin{equation*}
+  \phi_i(\vb*{e}_j) = {}^t\vb*{e}_i \vb*{e}_j = \begin{pmatrix}
+    0 & \cdots & 1 & \cdots & 0
+  \end{pmatrix} \begin{pmatrix}
+    0 \\
+    \vdots \\
+    1 \\
+    \vdots \\
+    0
+  \end{pmatrix}
+\end{equation*}
+
+この結果が1（$\vb*{e}_j$の$j$番目の成分）となるのは、$i=j$の場合のみである。
+
+$i$と$j$がずれていれば、$0 \cdot 0$か$1 \cdot 0$しか現れないので、それらの和は0になってしまう。
+
+\br
+
+よって、$\mathbb{R}^n$の基底$\{ \vb*{e}_1, \ldots, \vb*{e}_n \}$とその双対基底$\{ \phi_1, \ldots, \phi_n \}$は、
+\begin{equation*}
+  \phi_i(\vb*{e}_j) = \delta_{ij} \quad (i,j=1,\ldots,n)
+\end{equation*}
+という関係にあることがわかる。
+
 \end{document}

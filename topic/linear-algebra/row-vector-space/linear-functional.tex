@@ -35,7 +35,7 @@
 \end{definition}
 
 \sectionline
-\section{横ベクトル空間と座標関数}
+\section{横ベクトルの集合と座標関数}
 \marginnote{\refbookA p120}
 
 $n \times 1$型行列（$n$次の縦ベクトル）全体の集合は$\mathbb{R}^n$と表された。
@@ -48,7 +48,7 @@ ${}^t\mathbb{R}^n$の元は$1 \times n$型行列なので、$\mathbb{R}^n$から
 
 \subsection{座標関数の表現行列}
 
-基本ベクトルを転置したもの${}^t\vb*{e}_j$を列ベクトルにかけると、$j$番目の成分が得られる。
+基本ベクトルを転置したもの${}^t\vb*{e}_j$を縦ベクトルにかけると、$j$番目の成分が得られる。
 
 たとえば、$n=3,\,j=2$の場合、
 \begin{equation*}
@@ -139,7 +139,7 @@ $V$から$\mathbb{R}$への線形写像、すなわち$V$上の\keyword{線形�
 
 \hyperref[thm:hom-space]{線形写像全体の集合は線形空間}であるため、双対空間$V^*$も$\mathbb{R}$上の線形空間である。
 
-\subsection{例：座標関数と双対空間}
+\subsection{例：縦ベクトル空間の双対空間}
 
 $V = \mathbb{R}^n$のとき、ベクトルの$j$番目の成分を返す座標関数$x_j\colon \mathbb{R}^n \to \mathbb{R}$は線形汎関数であるため、$V^*$の元である。
 \begin{equation*}
@@ -151,7 +151,22 @@ $V = \mathbb{R}^n$のとき、ベクトルの$j$番目の成分を返す座標�
   \phi = a_1 x_1 + \cdots + a_n x_n \in V^*
 \end{equation*}
 
-このとき、$\{ x_1, \dots, x_n \}$は$V^*$の基底をなすので、$V^*$は$x_1, \dots, x_n$の1次式として表せる関数全体の集合である。
+このとき、$\{ x_1, \dots, x_n \}$は$V^*$の基底をなす（※後述）ので、$V^*$は$x_1, \dots, x_n$の1次式として表せる関数全体の集合である。
+
+\br
+
+また、このような$\phi$は横ベクトル$(a_1, \dots, a_n)$と同一視できるので、$\phi$全体の集合は横ベクトルの集合${}^t\mathbb{R}^n$ともいえる。
+
+すなわち、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      縦ベクトルの集合$\mathbb{R}^n$の双対空間は、\\
+      横ベクトルの集合${}^t\mathbb{R}^n$
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+である。
 
 \br
 
