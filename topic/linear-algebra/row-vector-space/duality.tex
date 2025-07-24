@@ -3,45 +3,60 @@
 \begin{document}
 
 \sectionline
-\section{縦ベクトル空間と横ベクトル空間の双対性}
-\marginnote{\refbookA p122}
+\section{双対性}
+\marginnote{\refbookR p237 \\ \refbookG p60〜61}
 
-$\{ \phi_i \}_{i=1}^n$を${}^t\mathbb{R}^n$の基底とする
+$V$と$(V^*)^*$の間には、線形同型写像$\iota \colon V \to (V^*)^*$が存在する。
+
+このことから、\hyperref[def:linear-subspace-isomorphism]{$V$と$(V^*)^*$は線形同型}であることがいえる。
 
 \br
 
-写像$\iota$を$\vb*{v}_i \mapsto \langle -, \vb*{v}_i \rangle$と定めると、
+このように、$V$が有限次元の場合は、$V$と$(V^*)^*$は自然に同一視することができるので、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      双対空間$V^*$の双対空間$(V^*)^*$は$V$自身である
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということになる。
+
+\br
+
+たとえるなら、$V$と$V^*$は表と裏のような関係になっていて、裏の裏$(V^*)^*$は表$V$である。
+このような関係を\keyword{双対}と呼ぶ。
+
+\subsection{ペアリングの記号が表す双対}
+
+$V$を$V^*$の双対と考えても、$V^*$を$V$の双対と考えてもよい。
+
+ペアリングの記号は、この平等さを表す記法ともいえる。
+
+\br
+
+$\phi \in V^*$を与えたとき、それに$V$の任意の元$\vb*{v}$を入力したもの$\langle \phi, \vb*{v} \rangle$を考えることができる。
 \begin{equation*}
-  \psi_i(\phi_j) = \langle \phi_j, \vb*{v}_i \rangle = \delta_{ij}
+  \langle \phi, \vb*{v} \rangle = \phi(\vb*{v})
 \end{equation*}
-を満たす$\psi_i \in ({}^t\mathbb{R}^n)^*$が、各$1 \leq i \leq n$に対して定まるといえる
 
-\br
-
-一方で、$\iota$が単射であることから、$\iota(\vb*{v}_i) = \psi_i$を満たす$\vb*{v}_i$が一意的に存在する
-
-単射とは、$\iota(\vb*{v}_i) = \iota(\vb*{v}_j) \Longrightarrow \vb*{v}_i = \vb*{v}_j$
-という性質であり、ある$\psi_i$に対して、$\iota(\vb*{v}_i) = \psi_i$を満たす$\vb*{v}_i$はただ一つしか存在しないことを意味する
-
-\br
-
-したがって、$\iota(\vb*{v}_i)$は、$\phi \in {}^t\mathbb{R}^n$に対して$\langle \phi, \vb*{v}_i \rangle$を返す線形関数である
+逆に$\vb*{v} \in V$を与えたとき、$\iota(\vb*{v})$に$V^*$の任意の元$\phi$を入力したもの$\langle \vb*{v}, \phi \rangle$を考えることもできる。
 \begin{equation*}
-  \iota(\vb*{v}_i) = \psi_i(\phi) = \langle \phi, \vb*{v}_i \rangle
+  \langle \vb*{v}, \phi \rangle = \iota(\vb*{v})(\phi)
 \end{equation*}
 
 \br
 
-$\{ \vb*{v}_i \}_{i=1}^n$は$\mathbb{R}^n$の基底であり、これを$\{ \phi_i \}_{i=1}^n$の\keyword{双対基底}という
+どちらから考えても、具体的な$\vb*{v}$と$\phi$を与えたときに得られるスカラーは同じである。
+\begin{equation*}
+  \langle \phi, \vb*{v} \rangle = \langle \vb*{v}, \phi \rangle = \phi(\vb*{v}) = \iota(\vb*{v})(\phi)
+\end{equation*}
 
 \br
 
-定義を考えると、$\{ \vb*{v}_i \}_{i=1}^n$の双対基底は$\{ \phi_i \}_{i=1}^n$になっていることがわかる
-
-\br
-
-このように、縦ベクトル空間と横ベクトル空間とは、表と裏のような関係になっていて、裏の裏は表である
-
-こういう状況を\keyword{双対性}と呼ぶ
+また、$V^*$の双対空間$(V^*)^*$は$V$と同一視できるのだから、$V$の基底$\{ \vb*{v}_i \}_{i=1}^n$の双対基底を$\{ \phi_i \}_{i=1}^n$とするとき、$\{ \phi_i \}_{i=1}^n$の双対基底は$\{ \vb*{v}_i \}_{i=1}^n$と同一視できる。
+\begin{equation*}
+  \langle \phi_i, \vb*{v}_j \rangle = \langle \vb*{v}_j, \phi_i \rangle = \delta_{ij}
+\end{equation*}
 
 \end{document}
