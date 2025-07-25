@@ -1,0 +1,257 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{場合の数：和の法則と積の法則}
+%\marginnote{}
+
+今のところ、$n(\Omega)$がわからない限り、確率を計算することはできない。
+
+\br
+
+しかし、複雑な例になると、起こりうる結果を数え上げるのが難しくなる。
+
+そこで登場するのが組み合わせ論（場合の数についての理論）である。
+
+\br
+
+何通りの「場合」が起こり得るかを数え上げたものを\keyword{場合の数}という。
+
+ここでは、和の法則と積の法則という最も基本的な法則について確認しておこう。
+
+\subsection{和の法則}
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    たとえば、A市からB市まで行ける路線が、
+    \begin{itemize}
+      \item 電車で4路線
+      \item バスで3路線
+    \end{itemize}
+    あるとする。
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \begin{tikzpicture}
+      \def\gap{1.5em}
+      \def\arrowlen{2}
+
+      % 4本のピンクの矢印
+      \foreach \i in {1, 2, 3, 4} {
+          \draw [->, semithick, -Straight Barb, Rhodamine] (0, -\gap*\i) -- ++(\arrowlen, 0);
+
+          % 1本目の矢印の上中央に「電車」
+          \ifnum\i=1
+            \node [above=0.25em, Rhodamine] (first) at (\arrowlen/2, -\gap*\i) {\bfseries 電車};
+          \fi
+        }
+      % 3本の青の矢印
+      \foreach \i in {5, 6, 7} {
+          \draw [->, semithick, -Straight Barb, Cerulean] (0, -\gap*\i) -- ++(\arrowlen, 0);
+
+          % 最後の矢印の上中央に「バス」
+          \ifnum\i=7
+            \node [below=0.25em, Cerulean] (last) at (\arrowlen/2, -\gap*\i) {\bfseries バス};
+          \fi
+        }
+
+      % 7本の矢印を囲む箱を、矢印の左にずらして描く
+      \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=-6em] (cityA) {A\bfseries 市};
+      \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=6em] (cityB) {B\bfseries 市};
+    \end{tikzpicture}
+  \end{minipage}
+\end{figure}
+
+このとき、電車かバスの「どちらか」でA市からB市まで行くときには、$4 + 3 = 7$パターンの路線から選ぶことになる。
+
+\begin{theorem}{和の法則}
+  AとBは同時に起こらないとする。
+  Aの起こり方が$m$通り、Bの起こり方が$n$通りあるとき、
+  \begin{center}
+    AとBのどちらかが起こる場合は$m + n$通り
+  \end{center}
+\end{theorem}
+
+\begin{center}
+  \scalebox{1.2}{
+    \begin{tikzpicture}
+      \def\gap{1.5em}
+
+      % 1, 2, ..., m を縦に並べる
+      \node (a1) at (0, 0) {$1$};
+      \node (a2) at ($(0, -\gap)+(a1)$) {$2$};
+      \node (a3) at ($(0, -\gap)+(a2)$) {$\vdots$};
+      \node (a4) at ($(0, -\gap)+(a3)$) {$m$};
+
+      % a1からa4を包む箱
+      \node [draw, rounded corners, Rhodamine, fill=carnationpink, fill opacity=0.4, fit={(a1) (a4)}, minimum width=2em, inner sep=0.2em] (boxA) {};
+      % 箱の左に「A」
+      \node [left=0.5em of boxA] {A};
+      % 箱の右にブレースを描いて「m通り」
+      \draw [decorate, decoration={brace, amplitude=5pt}] ($(boxA.north east)+(0.5em, 0)$) -- ($(boxA.south east)+(0.5em, 0)$) node [midway, right=0.7em] {$m$通り};
+
+      % 1, 2, ..., n を縦に並べる
+      \node (b1) at ($(0, -\gap*2)+(boxA.south)$) {$1$};
+      \node (b2) at ($(0, -\gap)+(b1)$) {$2$};
+      \node (b3) at ($(0, -\gap)+(b2)$) {$\vdots$};
+      \node (b4) at ($(0, -\gap)+(b3)$) {$n$};
+
+      % b1からb4を包む箱
+      \node [draw, rounded corners, Cerulean, fill=SkyBlue, fill opacity=0.4, fit={(b1) (b4)}, minimum width=2em, inner sep=0.2em] (boxB) {};
+      % 箱の左に「B」
+      \node [left=0.5em of boxB] {B};
+      % 箱の右にブレースを描いて「n通り」
+      \draw [decorate, decoration={brace, amplitude=5pt}] ($(boxB.north east)+(0.5em, 0)$) -- ($(boxB.south east)+(0.5em, 0)$) node [midway, right=0.7em] {$n$通り};
+
+      % 「m通り」と「n通り」の右にブレースを描いて「m+n通り」
+      \draw [decorate, decoration={brace, amplitude=5pt}] ($(boxA.north east)+(5em, 0)$) -- ($(boxB.south east)+(5em, 0)$) node [midway, right=1em] {$m+n$通り};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\subsection{積の法則}
+
+今度は、A市からB市へ、駅を経由して行く場合を考えてみる。
+
+\br
+
+A市から駅までは電車で、駅からB市まではバスで行くとする。
+
+つまり、電車とバスを「両方使って」移動することになる。
+
+\begin{itemize}
+  \item A市から駅までの電車は4路線
+  \item 駅からB市までのバスは3路線
+\end{itemize}
+
+どの路線の電車で行くかを決めたら、今度はどの路線のバスに乗るかを選ぶことになる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\gap{1.5em}
+    \def\arrowlen{2}
+
+    % 4本のピンクの矢印
+    \foreach \i in {1, 2, 3, 4} {
+        \draw [->, semithick, -Straight Barb, Rhodamine] (0, -\gap*\i) -- ++(\arrowlen, 0);
+
+        % 1本目の矢印の上中央に「電車」
+        \ifnum\i=1
+          \node [above=0.25em, Rhodamine] (first) at (\arrowlen/2, -\gap*\i) {\bfseries 電車};
+        \fi
+
+        % 最後の矢印をlastで参照できるように
+        \ifnum\i=4
+          \node [below=0.25em, Rhodamine] (last) at (\arrowlen/2, -\gap*\i) {};
+        \fi
+      }
+
+    % 4本の矢印を囲む箱を、矢印の左にずらして描く
+    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=-6em] (cityA) {A\bfseries 市};
+    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=6em] (station) {\bfseries 駅};
+
+    % 駅の右側に3本の矢印を追加（中央揃え、上で計算した間隔を空ける）
+    \foreach \i in {-1,0,1} {
+        % 最初の矢印の上中央に「バス」
+        \ifnum\i=-1
+          \draw [->, semithick, -Straight Barb, Cerulean] ([xshift=(3em-\arrowlen)/2]station.east) ++(0, -\gap*\i) -- ++(\arrowlen, 0)
+          node [above=0.25em, Cerulean, midway] {\bfseries バス};
+        \else
+          \draw [->, semithick, -Straight Barb, Cerulean] ([xshift=(3em-\arrowlen)/2]station.east) ++(0, -\gap*\i) -- ++(\arrowlen, 0);
+        \fi
+      }
+
+    % 駅の右側に3本の矢印を囲む箱を、矢印の右にずらして描く
+    \node [draw, lightslategray, rounded corners, fit={(first) (last)}, minimum width=2em, inner sep=0.2em, xshift=18em] (cityB) {B\bfseries 市};
+  \end{tikzpicture}
+\end{center}
+
+4通りの中からどの路線の電車を選んでも、次に乗るバスは3通りの中から選ぶ必要があるので、電車の路線1つにつき、次に乗るバスの路線は3パターン考えられる。
+
+\br
+
+「電車1路線につきバス3路線」というパターンの数は、かけ算で表すことができそうだ。
+
+電車とバスを乗り継ぐ場合の路線の選び方は、$3 \times 4 = 12$通りになる。
+
+\begin{theorem}{積の法則}
+  Aの起こり方が$m$通りあり、その各々についてBの起こり方が$n$通り考えられるとき、
+  \begin{center}
+    AとBがともに起こる場合は$mn$通り
+  \end{center}
+\end{theorem}
+
+AとBが「ともに起こる」とは、Aが起こった後にBが起こる場合を指す。
+
+\br
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\gapA{3em}
+    \def\gapB{1.5em}
+
+    % 「1, 2, ..., n を縦に並べる」を4回繰り返す
+    \foreach \i in {1, 2, 3, 4} {
+        \ifnum\i=1
+          \node (b_first) at (10em, -\gapB*5*\i) {};
+        \fi
+
+        \ifnum\i=3
+          \node (b1{\i}) at (10em, -\gapB*5*\i) {};
+          \node (b2{\i}) at ($(0, -\gapB)+(b1{\i})$) {};
+          \node (b3{\i}) at ($(0, -\gapB)+(b2{\i})$) {};
+          \node (b4{\i}) at ($(0, -\gapB)+(b3{\i})$) {};
+
+          % b1からb4を包む箱
+          \node [fit={(b1{\i}) (b4{\i})}, minimum width=2em, inner sep=0.2em] (boxB{\i}) {$\vdots$};
+        \else
+
+          \node (b1{\i}) at (10em, -\gapB*5*\i) {$1$};
+          \node (b2{\i}) at ($(0, -\gapB)+(b1{\i})$) {$2$};
+          \node (b3{\i}) at ($(0, -\gapB)+(b2{\i})$) {$\vdots$};
+          \node (b4{\i}) at ($(0, -\gapB)+(b3{\i})$) {$n$};
+
+          % b1からb4を包む箱
+          \node [draw, rounded corners, Cerulean, fill=SkyBlue, fill opacity=0.4, fit={(b1{\i}) (b4{\i})}, minimum width=2em, inner sep=0.2em] (boxB{\i}) {};
+          % ブレースを描いて「n通り」
+          \draw [decorate, decoration={brace, amplitude=5pt}] ($(boxB{\i}.north east)+(1em, 0)$) -- ($(boxB{\i}.south east)+(1em, 0)$) node [midway, right=0.7em] {$n$通り};
+
+        \fi
+      }
+
+    % 1, 2, ..., m を縦に並べる（boxB\iの左にそれぞれ並ぶように）
+    \node[xshift=-10em] (a1) at (boxB{1}.base) {$1$};
+    \node[xshift=-10em] (a2) at (boxB{2}.base) {$2$};
+    \node[xshift=-10em] (a3) at (boxB{3}.base) {$\vdots$};
+    \node[xshift=-10em] (a4) at (boxB{4}.base) {$m$};
+
+    % a1からa4を包む箱
+    \node [draw, rounded corners, Rhodamine, fill=carnationpink, fill opacity=0.4, fit={(a1) (a4)}, minimum width=2em, inner sep=0.2em] (boxA) {};
+    % ブレースを描いて「m通り」
+    \draw [decorate, decoration={brace, amplitude=5pt}] ($(boxA.south west)-(1em, 0)$) -- ($(boxA.north west)-(1em, 0)$) node [midway, left=0.7em] {$m$通り};
+
+    % ブレースを描いて「mn通り」
+    \draw [decorate, decoration={brace, amplitude=5pt}] ($(boxB{1}.north east)+(6em, 0)$) -- ($(boxB{4}.south east)+(6em, 0)$) node [midway, right=1em] {$m\times n$通り};
+
+    % 箱の上に「A」「B」
+    \node [above=0.5em of boxB{1}, xshift=-10em] {A};
+    \node [above=0.5em of boxB{1}] {B};
+
+    % a1からb1{1},b2{1},b3{1},b4{1}への矢印
+    \foreach \i in {1, 2, 3, 4} {
+        \draw [->, semithick, -Straight Barb, lightgray, shorten >=1em] (a1.east) -- (b\i{1}.west);
+      }
+    % a2からb1{2},b2{2},b3{2},b4{2}への矢印
+    \foreach \i in {1, 2, 3, 4} {
+        \draw [->, semithick, -Straight Barb, lightgray, shorten >=1em] (a2.east) -- (b\i{2}.west);
+      }
+    % a4からb1{4},b2{4},b3{4},b4{4}への矢印
+    \foreach \i in {1, 2, 3, 4} {
+        \draw [->, semithick, -Straight Barb, lightgray, shorten >=1em] (a4.east) -- (b\i{4}.west);
+      }
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
