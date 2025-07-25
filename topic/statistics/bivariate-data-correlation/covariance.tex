@@ -1,0 +1,160 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{相関の数値化：共分散}
+%\marginnote{}
+
+グラフを描いて視覚的に相関を確認することはできるが、客観的に表現するために、数値で判断できるようにしたい。
+
+\br
+
+そのために、$x,y$の平均$(\overline{x}, \overline{y})$を原点とする新たな座標軸を考える。
+
+\br
+
+% ref: https://tex.stackexchange.com/questions/408793/replicating-a-simple-scatterplot-graphs-given-in-the-mwe
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \draw[axis] (-1.7,0)--(1.7,0) node[right]{$\overline{x}$};
+        \draw[axis] (0,-1.7)--(0,1.7) node[above]{$\overline{y}$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{\x+rand/2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Rhodamine,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 正の相関}
+    \end{minipage}\hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \draw[axis] (-1.7,0)--(1.7,0) node[right]{$\overline{x}$};
+        \draw[axis] (0,-1.7)--(0,1.7) node[above]{$\overline{y}$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{rand*2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Orchid,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 無相関}
+    \end{minipage}\hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \draw[axis] (-1.7,0)--(1.7,0) node[right]{$\overline{x}$};
+        \draw[axis] (0,-1.7)--(0,1.7) node[above]{$\overline{y}$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{-\x+rand/2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Cerulean,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 負の相関}
+    \end{minipage}\hfill
+\end{figure} 
+
+\br
+
+すると、正の相関か負の相関かに応じて、データが多く分布する象限（座標軸で切り分けた領域）が異なることがわかる。
+
+\br
+
+% ref: https://tex.stackexchange.com/questions/408793/replicating-a-simple-scatterplot-graphs-given-in-the-mwe
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        % 第一象限を塗りつぶす
+        \fill[carnationpink!40] (0,0) rectangle (1.7,1.7);
+        % 第三象限を塗りつぶす
+        \fill[carnationpink!40] (-1.7,-1.7) rectangle (0,0);
+        \draw[axis] (-1.7,0)--(1.7,0) node[right]{$\overline{x}$};
+        \draw[axis] (0,-1.7)--(0,1.7) node[above]{$\overline{y}$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{\x+rand/2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Rhodamine,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 正の相関}
+    \end{minipage}
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        % 第二象限を塗りつぶす
+        \fill[SkyBlue!35] (-1.7,0) rectangle (0,1.7);
+        % 第四象限を塗りつぶす
+        \fill[SkyBlue!35] (0,-1.7) rectangle (1.7,0);
+        \draw[axis] (-1.7,0)--(1.7,0) node[right]{$\overline{x}$};
+        \draw[axis] (0,-1.7)--(0,1.7) node[above]{$\overline{y}$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{-\x+rand/2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Cerulean,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 負の相関}
+    \end{minipage}
+\end{figure} 
+
+\keyword[Rhodamine]{正の相関}の場合は、第一象限と第三象限にデータが多く分布することがわかる。
+\begin{itemize}
+  \item 第一象限：$x > \overline{x}$かつ$y > \overline{y}$である範囲
+  \item 第三象限：$x < \overline{x}$かつ$y < \overline{y}$である範囲
+\end{itemize}
+
+\keyword[Cerulean]{負の相関}の場合は、第二象限と第四象限にデータが多く分布することがわかる。
+\begin{itemize}
+  \item 第二象限：$x < \overline{x}$かつ$y > \overline{y}$である範囲
+  \item 第四象限：$x > \overline{x}$かつ$y < \overline{y}$である範囲
+\end{itemize}
+
+この場合分けは、次のようにまとめることができる。
+\begin{itemize}
+  \item \keyword[Rhodamine]{正の相関}の場合、$x - \overline{x}$と$y - \overline{y}$の符号が同じになる点が多い
+  \item \keyword[Cerulean]{負の相関}の場合、$x - \overline{x}$と$y - \overline{y}$の符号が反対になる点が多い
+\end{itemize}
+
+さらに、符号が同じものの積は正、符号が反対のものの積は負になることから、
+\begin{itemize}
+  \item \keyword[Rhodamine]{正の相関}の場合、$(x - \overline{x})(y - \overline{y}) > 0$となる点が多い
+  \item \keyword[Cerulean]{負の相関}の場合、$(x - \overline{x})(y - \overline{y}) < 0$となる点が多い
+\end{itemize}
+
+各データについて$(x_i - \overline{x})(y_i - \overline{y})$を求め、全データの平均をとることで、相関を判定できそうである。
+このような考え方で相関を数値化したものを\keywordJE{共分散}{covariance}という。
+
+\begin{definition}{共分散}
+  $N$個の観測値$(x_1, y_1), \ldots, (x_N, y_N)$の平均をそれぞれ$\overline{x}, \overline{y}$とするとき、\keyword{共分散}を次のように定義する。
+  \begin{equation*}
+    \sigma_{xy} \coloneq \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})(y_i - \overline{y})
+  \end{equation*}
+\end{definition}
+
+\end{document}

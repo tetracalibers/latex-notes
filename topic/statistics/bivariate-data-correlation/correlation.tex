@@ -1,0 +1,73 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{変量の相互関係：相関}
+%\marginnote{}
+
+2次元データ$(x,y)$において、2つの変量$x$と$y$の間に相互関係がみられるとき、$x$と$y$の間には\keywordJE{相関}{correlation}関係があるという。
+
+\begin{itemize}
+  \item \keyword[Rhodamine]{正の相関}：$x$が大きいほど、$y$も大きくなる傾向がある
+  \item \keyword[Cerulean]{負の相関}：$x$が大きいほど、$y$は小さくなる傾向がある
+  \item \keyword[Orchid]{無相関}：どちらにも当てはまらない（直線的な関係がない）
+\end{itemize}
+
+% ref: https://tex.stackexchange.com/questions/408793/replicating-a-simple-scatterplot-graphs-given-in-the-mwe
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \draw[axis] (-1.7,-1.2)--(1.7,-1.2) node[right]{$x$};
+        \draw[axis] (-1.2,-1.7)--(-1.2,1.7) node[above]{$y$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{\x+rand/2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Rhodamine,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 正の相関}
+    \end{minipage}\hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \draw[axis] (-1.7,-1.2)--(1.7,-1.2) node[right]{$x$};
+        \draw[axis] (-1.2,-1.7)--(-1.2,1.7) node[above]{$y$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{rand*2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Orchid,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 無相関}
+    \end{minipage}\hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \draw[axis] (-1.7,-1.2)--(1.7,-1.2) node[right]{$x$};
+        \draw[axis] (-1.2,-1.7)--(-1.2,1.7) node[above]{$y$};
+        \foreach \x in {-1.7,-1.5,...,1.7}{
+                \pgfmathsetmacro\xcoord{\x+rand/10}
+                \pgfmathsetmacro\ycoord{-\x+rand/2}
+                \pgfmathsetmacro\xcoord{\xcoord < -1.7 ? -1.7 : \xcoord}
+                \pgfmathsetmacro\xcoord{\xcoord > 1.7 ? 1.7 : \xcoord}
+                \pgfmathsetmacro\ycoord{\ycoord < -1.7 ? -1.7 : \ycoord}
+                \pgfmathsetmacro\ycoord{\ycoord > 1.7 ? 1.7 : \ycoord}
+                \node[Cerulean,circle,fill,scale=0.3] at (\xcoord,\ycoord) {};
+            }
+        \end{tikzpicture}
+        \caption*{\bfseries 負の相関}
+    \end{minipage}\hfill
+\end{figure} 
+
+\end{document}
