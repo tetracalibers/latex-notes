@@ -1,0 +1,26 @@
+\documentclass[../../../topic_probability-statistics]{subfiles}
+
+\begin{document}
+
+%\sectionline
+\section{中央値}
+%\marginnote{}
+
+データを大きさの順に並べたときにちょうど中央に位置する値を\keywordJE{中央値}{median}という。
+
+\begin{definition}{中央値}
+  $N$個の観測値$x_1, \ldots, x_N$を大きさの順に並べ替えたものを
+  \begin{equation*}
+    x_{(1)} \leq \cdots \leq x_{(N)}
+  \end{equation*}
+  とするとき、\keyword{中央値}は次のように定義される。
+  \begin{equation*}
+    \tilde{x} \coloneq
+    \begin{cases}
+      x_{(k+1)} & (N = 2k + 1) \\
+      \dfrac{x_{(k)} + x_{(k+1)}}{2} & (N = 2k)
+    \end{cases}
+  \end{equation*}
+\end{definition}
+
+\end{document}
