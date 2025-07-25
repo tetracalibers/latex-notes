@@ -1,0 +1,68 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{データの変換による平均と分散の変化}
+%\marginnote{}
+
+データの変換（スケーリングやシフト）を行うと、平均や分散はどのように変化するのだろうか。
+
+\subsection{データのスケーリング}
+
+まず、データを定数$a$倍する変換を考える。
+
+すなわち、各データ$x_i$を$y_i = ax_i$に変換すると、平均と分散は次のように変化する。
+\begin{align*}
+  \overline{y} &= a \overline{x} \\
+  \sigma_y^2 &= a^2 \sigma_x^2
+\end{align*}
+
+\begin{theorem}{データのスケーリングによる平均と分散の変化}
+  観測値が$a$倍されると、平均は$a$倍、分散は$a^2$倍される。
+\end{theorem}
+
+\begin{proof}
+  各データ$x_i$を$y_i = ax_i$に変換すると、平均は次のように変化する。
+  \begin{align*}
+    \overline{y} &= \frac{1}{N} \sum_{i=1}^{N} ay_i = a \cdot \frac{1}{N} \sum_{i=1}^{N} y_i = a \overline{y}
+  \end{align*}
+
+  また、分散は次のように変化する。
+  \begin{align*}
+    \sigma_y^2 &= \frac{1}{N} \sum_{i=1}^{N} (ax_i - a\overline{x})^2 = \frac{1}{N} \sum_{i=1}^N (a(x_i - \overline{x}))^2 \\
+    &= a^2 \cdot \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})^2 = a^2 \sigma_x^2
+  \end{align*}
+\end{proof}
+
+\subsection{データのシフト}
+
+次に、データを定数$b$だけシフトする変換を考える。
+
+すなわち、各データ$x_i$を$y_i = x_i + b$に変換すると、平均と分散は次のように変化する。
+\begin{align*}
+  \overline{y} &= \overline{x} + b \\
+  \sigma_y^2 &= \sigma_x^2
+\end{align*}
+
+\begin{theorem}{データのシフトによる平均と分散の変化}
+  観測値に$b$を加えると、平均は$b$だけ増えるが、分散は変化しない。
+\end{theorem}
+
+\begin{proof}
+  各データ$x_i$を$y_i = x_i + b$に変換すると、平均は次のように変化する。
+  \begin{align*}
+    \overline{y} &= \frac{1}{N} \sum_{i=1}^{N} (x_i + b) = \frac{1}{N} \sum_{i=1}^{N} x_i + b = \overline{x} + b
+  \end{align*}
+
+  また、分散は次のように変化しない。
+  \begin{align*}
+    \sigma_y^2 &= \frac{1}{N} \sum_{i=1}^{N} (x_i + b - (\overline{x} + b))^2 = \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})^2 = \sigma_x^2
+  \end{align*}
+\end{proof}
+
+\br
+
+このように、データの変換によって平均と分散は異なる影響を受けることがわかる。
+
+\end{document}

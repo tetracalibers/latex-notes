@@ -20,16 +20,22 @@ cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
 cp ./out/topic_calculus.pdf ./public/topic_calculus.pdf
 ```
 
-#### 写像の整理帳
+#### 統計学の整理帳
 
 ```bash
-cp ./out/topic_mapping.pdf ./public/topic_mapping.pdf
+cp ./out/topic_statistics.pdf ./public/topic_statistics.pdf
 ```
 
 #### 確率統計の整理帳
 
 ```bash
 cp ./out/topic_probability-statistics.pdf ./public/topic_probability-statistics.pdf
+```
+
+#### 写像の整理帳
+
+```bash
+cp ./out/topic_mapping.pdf ./public/topic_mapping.pdf
 ```
 
 #### 機械学習の整理帳

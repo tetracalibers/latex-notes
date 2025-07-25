@@ -1,0 +1,60 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{データの標準化}
+%\marginnote{}
+
+たとえば、平均点が30点のテストでとった60点と、平均点が80点のテストでとった60点とでは、相対的な出来が異なる。
+このように、点数というデータはそのテストの平均や分散によって評価が変わってしまう。
+
+そのため、平均や分散に依存せずにデータの相対的な位置関係がわかるようにできたら便利である。
+
+\br
+
+特に、平均が0、標準偏差が1になるようにデータを変換することを\keywordJE{標準化}{standardization}という。
+
+\br
+
+$y_i = ax_i + b$というデータの変換を考えよう。
+
+これは、データを$a$倍して$b$だけシフトする変換である。
+
+\br
+
+このとき、平均と標準偏差は次のように変化する。
+\begin{itemize}
+  \item 平均は$a$倍され、$b$だけ増える
+  \item 標準偏差は$a$倍される（分散が$a^2$倍される）
+\end{itemize}
+
+数式で表すと、
+\begin{align*}
+  \overline{y} &= a \overline{x} + b \\
+  \sigma_y &= a \sigma_x
+\end{align*}
+
+そこで、平均$\overline{y}$が0、標準偏差$\sigma_y$が1になるように、$a$と$b$を次のように設定する。
+\begin{equation*}
+  a = \frac{1}{\sigma_x}, \quad b = -\frac{\overline{x}}{\sigma_x}
+\end{equation*}
+このようにすると、たしかに$\overline{y} = 0$、$\sigma_y = 1$となる。
+
+\br
+
+このとき、変換後のデータ$y_i$は次のように表される。
+\begin{equation*}
+  y_i = ax_i + b = \frac{x_i - \overline{x}}{\sigma_x}
+\end{equation*}
+
+\begin{definition}{標準化}
+  各データから平均を引き、標準偏差で割ることで、平均が0、標準偏差が1になるように変換することを\keyword{標準化}という。
+  
+  各データ$x_i$を標準化したデータを$y_i$とすると、次の関係が成り立つ。
+  \begin{equation*}
+    y_i = \frac{x_i - \overline{x}}{\sigma_x}
+  \end{equation*}
+\end{definition}
+
+\end{document}

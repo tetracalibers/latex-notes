@@ -1,0 +1,122 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{データのばらつきの指標：偏差}
+%\marginnote{}
+
+代表値はデータを1つの値で要約する指標であり、データのばらつきや偏りは表現しきれない。
+
+そこで、新たにデータのばらつきを表す指標を考える。
+
+\br
+
+各データが、平均からどれくらい離れているかを表す指標を\keywordJE{偏差}{deviation}という。
+
+\begin{definition}{偏差}
+  $N$個の観測値$x_1, \ldots, x_N$の平均値を$\overline{x}$とするとき、各観測値$x_i$の\keyword{偏差}は次のように定義される。
+  \begin{equation*}
+    d_i \coloneq x_i - \overline{x}
+  \end{equation*}
+  ここで、$d_i$は$i$番目のデータの偏差を表す。
+\end{definition}
+
+\subsection{偏差の平均値で全体をみる}
+
+全データの偏差$d_1, \ldots, d_N$の平均値を求めることで、データ全体が平均からどれくらい離れて分布しているか（どれくらいばらついているか）を表すことができそうである。
+
+\br
+
+しかし、偏差の平均値は、次のように常に0になってしまう。
+\begin{align*}
+  \frac{1}{N} \sum_{i=1}^{N} d_i
+  &= \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x}) \\
+  &= \frac{1}{N} \left( \sum_{i=1}^N x_i - \sum_{i=1}^{N} \overline{x} \right)
+  = \frac{1}{N} \left( \sum_{i=1}^{N} x_i - N \overline{x} \right) \\
+  &= \sum_{i=1}^{N} \frac{1}{N}x_i - \overline{x}
+  = \overline{x} - \overline{x}
+  = 0
+\end{align*}
+
+\br
+
+そこで、単なる平均との差ではなく、平均との距離を考えることにする。
+
+偏差に絶対値をつけたものの平均を\keyword{平均偏差}という。
+
+\begin{definition}{平均偏差}
+  $N$個の観測値$x_1,\dots,x_N$の平均値を$\overline{x}$とするとき、\keyword{平均偏差}を次のように定義する。
+  \begin{equation*}
+    d \coloneq \frac{1}{N} \sum_{i=1}^{N} |x_i - \overline{x}|
+  \end{equation*}
+  
+\end{definition}
+
+\sectionline
+\section{データのばらつきの指標：分散と標準偏差}
+%\marginnote{}
+
+平均偏差では、データと平均値の距離として絶対値を用いたが、絶対値は次のような理由で計算が面倒である。
+\begin{itemize}
+  \item 絶対値は微分できない点がある
+  \item 正負を判定する条件分岐処理が入り、コンピュータでの計算速度が落ちる
+\end{itemize}
+
+そこで、絶対値の代わりに二乗を用いた、\keywordJE{分散}{variance}という指標を定義する。
+
+\begin{definition}{分散}
+  $N$個の観測値$x_1, \ldots, x_N$の平均値を$\overline{x}$とするとき、\keyword{分散}を次のように定義する。
+  \begin{equation*}
+    \sigma^2 \coloneq \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})^2
+  \end{equation*}
+\end{definition}
+
+\subsection{もとのデータと同じ単位を持ったばらつきの指標}
+
+分散では二乗を用いるため、単位に注意が必要である。
+
+もとのデータの単位が$[x]$であれば、分散の単位は$[x]^2$となる。
+
+たとえば、点数を表すデータを扱っているとすると、その分散の単位は「点$^2$」となり、直観的に理解しづらい。
+
+\br
+
+そこで、単位をもとのデータと揃えるために、分散の平方根をとった形がよく用いられる。
+
+分散の平方根を\keywordJE{標準偏差}{standard deviation}という。
+
+\begin{definition}{標準偏差}
+  分散$\sigma^2$の平方根をとったものを\keyword{標準偏差}として定義する。
+  \begin{equation*}
+    \sigma \coloneq \sqrt{\sigma^2}
+  \end{equation*}
+\end{definition}
+
+\sectionline
+\section{分散公式}
+
+分散は、次のように計算することもできる。
+\begin{equation*}
+  \text{\bfseries 分散} = \text{\bfseries データの二乗平均} - \text{\bfseries 平均の二乗}
+\end{equation*}
+
+\begin{theorem}{分散公式}
+  $N$個の観測値$x_1, \ldots, x_N$の平均を$\overline{x}$、分散を$\sigma^2$とすると、次の関係が成り立つ。
+  \begin{equation*}
+    \sigma^2 = \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \overline{x}^2
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  分散の定義に基づいて、次のように計算する。
+  \begin{align*}
+    \sigma^2 &= \frac{1}{N} \sum_{i=1}^{N} (x_i - \overline{x})^2 \\
+    &= \frac{1}{N} \sum_{i=1}^{N} (x_i^2 - 2x_i\overline{x} + \overline{x}^2) \\
+    &= \frac{1}{N} \sum_{i=1}^{N} x_i^2 - 2\overline{x}\frac{1}{N} \sum_{i=1}^{N} x_i + \overline{x}^2 \\
+    &= \frac{1}{N} \sum_{i=1}^{N} x_i^2 - 2\overline{x}^2 + \overline{x}^2 \\
+    &= \frac{1}{N} \sum_{i=1}^{N} x_i^2 - \overline{x}^2
+  \end{align*}
+\end{proof}
+
+\end{document}
