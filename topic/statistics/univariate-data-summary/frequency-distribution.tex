@@ -1,0 +1,64 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{度数分布}
+%\marginnote{}
+
+より細かくデータがどのように分布しているかを知りたいときは、次のような手順でデータを整理する。
+\begin{enumerate}
+  \item データがとる値をいくつかの区間に分ける
+  \item 各区間にいくつのデータが入っているかを数える
+\end{enumerate}
+
+このとき、区間を\keywordJE{階級}{class}といい、各階級に属しているデータの数を\keywordJE{度数}{frequency}という。
+
+\br
+
+各階級ごとに、度数などの値を表にまとめたものを\keyword{度数分布表}という。
+
+\begin{table}[htbp]
+  \centering
+  \caption*{\bfseries 度数分布表}
+  \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    階級 & 階級値 & 度数 & 累積度数 & 相対度数 & 累積相対度数 \\
+    \hline
+    $a_0 \sim a_1$ & $x_1$ & $f_1$ & $F_1$ & $\frac{f_1}{N}$ & $\frac{F_1}{N}$ \\
+    $a_1 \sim a_2$ & $x_2$ & $f_2$ & $F_2$ & $\frac{f_2}{N}$ & $\frac{F_2}{N}$ \\
+    \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+    $a_{n-1} \sim a_n$ & $x_n$ & $f_n$ & $F_n$ & $\frac{f_n}{N}$ & $\frac{F_n}{N}$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{階級値}
+
+各階級を代表する値を\keyword{階級値}といい、通常は各階級の中央の値を階級値として用いる。
+\begin{equation*}
+  x_i = \frac{a_{i-1} + a_i}{2}
+\end{equation*}
+
+\subsection{累積度数}
+
+その階級までに属するデータの個数を\keyword{累積度数}という。
+\begin{equation*}
+  F_i = \sum_{j=1}^{i} f_j
+\end{equation*}
+
+\subsection{相対度数}
+
+全データ数に対して、その階級に属するデータ数がどのくらいの割合を占めているのかを\keyword{相対度数}という。
+\begin{equation*}
+  \frac{f_i}{N}
+\end{equation*}
+
+\subsection{累積相対度数}
+
+全データ数に対して、その階級までに属するデータ数がどのくらいの割合を占めているのかを\keyword{累積相対度数}という。
+\begin{equation*}
+  \frac{F_i}{N}
+\end{equation*}
+
+\end{document}
