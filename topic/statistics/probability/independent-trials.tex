@@ -1,0 +1,38 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{独立な事象と積事象の確率}
+
+2つの事象（出来事）が\keyword{互いに独立}であるとは、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      一方の出来事の結果が、もう一方の出来事の結果に影響を与えない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということである。
+
+\br
+
+このとき、$A$が起きたかどうかが$B$の起きやすさに影響しないので、
+\begin{equation*}
+  P(B|A) = P(B)
+\end{equation*}
+が成り立つ。
+
+よって、確率の乗法定理を次のように書き換えられる。
+\begin{equation*}
+  P(A \cap B) = P(A) \cdot P(B)
+\end{equation*}
+
+\begin{theorem}{独立な事象の確率}
+  互いに独立な事象$A,B$の積事象$A \cap B$の確率は、
+  \begin{equation*}
+    P(A \cap B) = P(A) \cdot P(B)
+  \end{equation*}
+\end{theorem}
+
+\end{document}

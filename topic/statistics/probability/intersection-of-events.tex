@@ -1,0 +1,50 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{積事象の確率}
+
+ここで取り上げるのは、AND「かつ」で組み合わされた事象の確率である。
+
+AかつBが起こる事象は、$A \cap B$と表すことができる。
+このような事象を\keyword{積事象}という。
+
+\br
+
+$A$かつ$B$が起こる場合が$n(A \cap B)$通りあるとすると、その確率は、次のような割合で表される。
+\begin{equation*}
+  P(A \cap B) = \frac{n(A \cap B)}{n(U)}
+\end{equation*}
+
+\br
+
+一方、積事象の確率は、次のように分けて考えることもできる。
+
+\begin{enumerate}
+  \item 全体のうち$A$が起こる（この確率は$P(A)$）
+  \item $A$が起こったとき、$B$が起こる（この確率は$P(B|A)$）
+\end{enumerate}
+
+全体のうち$A$が起こる場合の数を$n(A)$、$A$が起こった場合のうち$B$が起こる場合の数を$n(B|A)$とすると、\hyperref[thm:rule-of-product]{場合の数の積の法則}より、
+\begin{equation*}
+  n(A \cap B) = n(A) \cdot n(B|A)
+\end{equation*}
+
+よって、積事象$A \cap B$の確率は、
+\begin{align*}
+  P(A \cap B) & = \frac{n(A \cap B)}{n(U)}                    \\
+              & = \frac{n(A) \cdot n(B|A)}{n(U)}              \\
+              & = \frac{n(A)}{n(U)} \cdot \frac{n(B|A)}{n(U)} \\
+              & = P(A) \cdot P(B|A)
+\end{align*}
+という形で表すことができる。これを\keyword{確率の乗法定理}という。
+
+\begin{theorem}{確率の乗法定理}
+  積事象$A \cap B$の確率は、
+  \begin{equation*}
+    P(A \cap B) = P(A) \cdot P(B|A)
+  \end{equation*}
+\end{theorem}
+
+\end{document}

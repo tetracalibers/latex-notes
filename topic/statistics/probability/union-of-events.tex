@@ -1,0 +1,121 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{和事象の確率}
+
+確率は論理の拡張であると捉えると、ANDやORといった論理演算を確率に当てはめて考えることができる。
+ここからは、複数の出来事（事象）が組み合わされた場合の確率について考えていこう。
+
+\br
+
+まずはOR「または」で組み合わされた事象の確率を考えてみる。
+
+$A$または$B$が起こる事象は、$A \cup B$と表すことができる。
+このような事象を\keyword{和事象}という。
+
+\br
+
+$A$または$B$が起こる場合が$n(A \cup B)$通りあるとすると、その確率は、次の割合で表される。
+\begin{equation*}
+  P(A \cup B) = \frac{n(A \cup B)}{n(U)}
+\end{equation*}
+
+\br
+
+\begin{center}
+  % ref: https://doratex.hatenablog.jp/entry/20191211/1576017170
+  \begin{tikzpicture}[set label/.style={fill=white,circle,inner sep=2}]
+    \def\radius{2}
+    \def\ratio{0.6}
+    \def\centerA{180:\ratio*\radius}
+    \def\centerB{0:\ratio*\radius}
+    \def\circleA{(\centerA) circle [radius=\radius]}
+    \def\circleB{(\centerB) circle [radius=\radius]}
+    % 座標設定
+    \coordinate (O) at (0,0);
+    \coordinate (NE) at (4,3);
+    \coordinate (SW) at ($(O)!-1!(NE)$);
+    % 円の描画
+    \filldraw[carnationpink, fill opacity=0.5, line width=1pt] \circleA;
+    \filldraw[SkyBlue, fill opacity=0.5, line width=1pt] \circleB;
+    % ラベルの描画
+    \node[set label,text=Rhodamine] at ($(\centerA) + (90:\radius)$) {$A$};
+    \node[set label,text=Cerulean] at ($(\centerB) + (90:\radius)$) {$B$};
+    \node[color=white] at (O) {$A\cap B$};
+  \end{tikzpicture}
+\end{center}
+
+\br
+
+ここで、$n(A \cup B)$は、\hyperref[thm:rule-of-sum]{場合の数の和の法則}より、$n(A)$と$n(B)$の和で求まると考えられる。
+
+しかし、$A$と$B$の重なっている部分は二重に数えてしまうので、$n(A \cap B)$を引く必要がある。
+\begin{equation*}
+  n(A \cup B) = n(A) + n(B) - n(A \cap B)
+\end{equation*}
+
+よって、和事象$A \cup B$の確率は、
+\begin{align*}
+  P(A \cup B) & = \frac{n(A \cup B)}{n(U)}                                         \\
+              & = \frac{n(A) + n(B) - n(A \cap B)}{n(U)}                           \\
+              & = \frac{n(A)}{n(U)} + \frac{n(B)}{n(U)} - \frac{n(A \cap B)}{n(U)} \\
+              & = P(A) + P(B) - P(A \cap B)
+\end{align*}
+として求められる。
+
+\begin{theorem}{和事象の確率}
+  和事象$A \cup B$の確率は、
+  \begin{equation*}
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+  \end{equation*}
+\end{theorem}
+
+\sectionline
+\section{排反な事象と和事象の確率}
+
+2つの事象（出来事）が\keyword{互いに排反}であるとは、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      一方の出来事が起こると、もう一方の出来事は起こりえない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という状況を指す。
+
+\br
+
+\begin{center}
+  \begin{tikzpicture}[set label/.style={fill=white,circle,inner sep=2}]
+    \def\radius{2}
+    \def\gap{2.5} % 円の中心の間隔を大きくして重ならないように
+    % 円の中心座標（左と右に大きく離す）
+    \coordinate (centerA) at (-\gap, 0);
+    \coordinate (centerB) at (\gap, 0);
+    % 円の描画
+    \filldraw[carnationpink, fill opacity=0.5, line width=1pt] (centerA) circle[radius=\radius];
+    \filldraw[SkyBlue, fill opacity=0.5, line width=1pt] (centerB) circle[radius=\radius];
+    % ラベルの描画
+    \node[set label,text=Rhodamine] at ($(centerA) + (90:\radius)$) {$A$};
+    \node[set label,text=Cerulean] at ($(centerB) + (90:\radius)$) {$B$};
+\end{tikzpicture}
+\end{center}
+
+\br
+
+和事象の確率において、事象$A$と$B$が互いに排反であるなら、$n(A \cap B) = 0$となるので、
+\begin{equation*}
+  P(A \cup B) = P(A) + P(B)
+\end{equation*}
+が成り立つ。これを\keyword{確率の加法定理}という。
+
+\begin{theorem}{確率の加法定理}
+  互いに排反な事象$A,B$の和事象$A \cup B$の確率は、
+  \begin{equation*}
+    P(A \cup B) = P(A) + P(B)
+  \end{equation*}
+\end{theorem}
+
+\end{document}
