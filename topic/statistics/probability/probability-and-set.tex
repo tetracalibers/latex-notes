@@ -1,0 +1,77 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{出来事の結果と確率の計算}
+%\marginnote{}
+
+確率を計算するための最も一般的な方法は、「出来事の結果」を数え上げるというものである。
+
+\br
+
+ここで、いくつかの用語を定義しておこう。
+
+\begin{itemize}
+  \item \keyword{標本空間}：ある出来事に対して起こりうるすべての結果の集まり
+  \item \keyword{事象}：関心のある結果の集まり（標本空間の部分集合）
+\end{itemize}
+
+起こりうるすべての結果のうち、関心のある結果（今確率を求めたい対象）だけを取り出したものが事象なので、事象は標本空間の部分集合といえる。
+
+\subsection{例：コインを1回投げたら表が出る確率}
+
+コインを1回投げたとき、起こりうる結果は「表が出る」「裏が出る」の2通りである。
+
+この2つの結果をまとめたものが標本空間であり、$\Omega$と表すことが多い。
+\begin{equation*}
+  \Omega = \{ \text{表}, \text{裏} \}
+\end{equation*}
+
+知りたいのは表が出る確率なので、事象を$A$とすると、
+\begin{equation*}
+  A = \{ \text{表} \}
+\end{equation*}
+事象$A$はたしかに標本空間$\Omega$の部分集合になっている。
+
+\br
+
+確率を最も馴染みのある考え方でとらえると、\keyword{確率}とはある事象が起こる可能性であり、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      起こりうるすべての場合のうち、ある事象が起こる場合の\keyword{割合}
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+として計算できる。
+
+\br
+
+$X$が何通りあるかを$n(X)$と表すことにすると、表が出る確率は次のように計算できる。
+\begin{equation*}
+  P(\text{表}) = \frac{n(\{ \text{表} \})}{n(\{ \text{表}, \text{裏} \})} = \frac{1}{2}
+\end{equation*}
+
+\begin{definition}{確率（頻度論的立場）}
+  標本空間を$\Omega$、事象を$A$とすると、事象$A$が起こる確率は次のように計算できる。
+  \begin{equation*}
+    P(A) = \frac{n(A)}{n(\Omega)}
+  \end{equation*}
+\end{definition}
+
+\br
+
+ここで注意が必要なのは、割り算は全体を「均等に」分けることを前提とした演算であることだ。
+
+標本空間に含まれるすべての場合の数で割ったものを確率とみなすには、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      どの事象も同程度に起こりうる（\keyword{同様に確からしい}）
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という仮定が必要になる。
+
+\end{document}
