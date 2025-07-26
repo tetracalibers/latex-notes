@@ -4,11 +4,85 @@
 
 \sectionline
 \section{双対写像の表現行列}
-\marginnote{\refbookR p238〜239}
+\marginnote{\refbookR p238〜239 \\ \refbookA p122〜123}
 
-\todo{}
+線形写像の双対写像の表現行列は、元の線形写像の表現行列の転置になる。
+
+このことから、双対写像は\keyword{転置写像}とも呼ばれる。
+
+\begin{theorem}{双対写像の行列表現}
+  $V,W$を有限次元の線形空間とし、$f\colon V \to W$を線型写像とする。また、$\dim V = n, \dim W = m$とする。
+  
+  $V$の基底$\vb*{v}_1,\ldots,\vb*{v}_n$、$W$の基底$\vb*{w}_1, \ldots, \vb*{w}_m$を選び、これらの双対基底をそれぞれ$\phi_1, \ldots, \phi_n$、$\psi_1, \ldots, \psi_m$とする。
+
+  このとき、$\{\vb*{v}_i \}$、$\{ \vb*{w}_j\}$に関する$f$の表現行列を$A$とすると、$\{ \psi_j \}, \{ \phi_i \}$に関する$f^*$の表現行列は$A^\top$によって与えられる。
+\end{theorem}
+
+\begin{proof}
+  $f\colon V \to W$に対して、その双対写像$f^* \colon W^* \to V^*$は次で定義される。
+    \begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \arrow[r,"f"]\arrow[rd, "\psi \circ f"'] & W \arrow[d,"\psi"]\\
+    & \mathbb{R}
+  \end{tikzcd}
+\end{equation*}
+  
+  \begin{equation*}
+    f^*(\psi) = \psi \circ f \quad (\psi \in W^*)
+  \end{equation*}
+  
+  $f^*(\psi)$は$V$上の線形汎関数なので、任意の$\vb*{v} \in V$を入力するとスカラーを返す。
+  合成写像の記法より、$(\psi \circ f)(\vb*{v})$は、$\psi(f(\vb*{v}))$とも書けるので、
+  \begin{equation*}
+    f^*(\psi)(\vb*{v}) = \psi(f(\vb*{v}))
+  \end{equation*}
+  が成り立つ。
+  
+  \br
+
+  一方、\hyperref[sec:construction-of-matrix-rep]{$f$の表現行列$A$は次のように構成される}。
+  \begin{equation*}
+    f(\vb*{v}_i) = \sum_{j=1}^m a_{ji} \vb*{w}_j \quad (1 \leq i \leq n)
+  \end{equation*}
+  したがって、任意の$i$に対し、
+  \begin{equation*}
+    \psi_k(f(\vb*{v}_i)) = \psi_k\left(\sum_{j=1}^m a_{ji} \vb*{w}_j\right) = \sum_{j=1}^m a_{ji} \psi_k(\vb*{w}_j)
+  \end{equation*}
+  ここで、$\{ \psi_k \}$は$\{ \vb*{w}_j \}$の双対基底なので、$\psi_k(\vb*{w}_j) = \delta_{kj}$より、
+  \begin{equation*}
+    \psi_k(f(\vb*{v}_i)) = a_{ki}
+  \end{equation*}
+  
+  \br
+
+  また、$f^*(\psi_k) \in V^*$は$V$上の線形汎関数なので、$V$の双対基底$\{ \phi_i \}$の線形結合として表せる。
+  \begin{equation*}
+    f^*(\psi_k) = \sum_{i=1}^n b_{ik} \phi_i
+  \end{equation*}
+  この係数$b_{ik}$を並べた行列を$B$とすると、$B$は$f^*$の表現行列である。
+  
+  \br
+  
+  このとき、
+  \begin{equation*}
+    f^*(\psi_k)(\vb*{v}_i) = \psi_k(f(\vb*{v}_i)) = a_{ki}
+  \end{equation*}
+  であり、一方、
+  \begin{equation*}
+    f^*(\psi_k)(\vb*{v}_i) = \sum_{j=1}^n b_{ji} \phi_j(\vb*{v}_i) = \sum_{j=1}^n b_{ji} \delta_{ij} = b_{ki}
+  \end{equation*}
+  でもあるから、$b_{ki} = a_{ki}$が成り立つ。すなわち、
+  \begin{equation*}
+    B = A^\top
+  \end{equation*}
+  である。 $\qed$
+\end{proof}
 
 \subsection{例：縦ベクトルと横ベクトルによる線形写像}
+
+\todo{まとめ直す}
+
+\br
 
 $A$を$m \times n$型行列とする
 
