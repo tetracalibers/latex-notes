@@ -1,0 +1,83 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{逆変換としての擬似逆行列}
+\marginnote{\refbookI p38〜39}
+
+ムーア・ペンローズの擬似逆行列は、線形変換の逆変換という視点でも、逆行列の一般化となっている。
+
+\subsection{逆変換と恒等変換}
+
+逆行列$A^{-1}$は、線形変換$A$の\keyword{逆変換}を表すものだった。
+
+逆変換は「元に戻す」操作である。
+
+\br
+
+変換$A$と逆変換$A^{-1}$を合成すると、「なにもしない」という変換（\keyword{恒等変換}）が得られる。
+
+$A$してからそれを$A^{-1}$で打ち消すのだから、結局なにもしなかったことになるのである。
+
+\br
+
+このことを数式で表したものが、逆行列$A^{-1}$の定義式である。
+\begin{equation*}
+  A^{-1} A = A A^{-1} = E
+\end{equation*}
+単位行列$E$は、恒等変換を表す行列である。
+
+\subsection{列空間上の逆変換}
+
+$\vb*{x}$が列空間$\mathcal{U}$の元である場合は、\hyperref[sec:projection-onto-subspace]{列空間へ射影しても変わらない}ので、
+\begin{equation*}
+  P_{\mathcal{U}} \vb*{x} = \vb*{x}
+\end{equation*}
+が成り立つ。
+
+つまり、列空間$\mathcal{U}$においては、$P_{\mathcal{U}}$は「なにもしない」恒等変換を表す。
+
+\br
+
+このことから、
+\begin{equation*}
+  AA^+ = P_{\mathcal{U}}
+\end{equation*}
+という式は、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      列空間$\mathcal{U}$において、$A^+$は$A$の\keyword{逆変換}を表す
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+と解釈できる。
+
+\subsection{行空間上の逆変換}
+
+同様に、$\vb*{x}$が行空間$\mathcal{V}$の元である場合は、\hyperref[sec:projection-onto-subspace]{行空間へ射影しても変わらない}ので、
+\begin{equation*}
+  P_{\mathcal{V}} \vb*{x} = \vb*{x}
+\end{equation*}
+が成り立つ。
+
+つまり、行空間$\mathcal{V}$においては、$P_{\mathcal{V}}$は「なにもしない」恒等変換を表す。
+
+\br
+
+このことから、
+\begin{equation*}
+  A^+ A = P_{\mathcal{V}}
+\end{equation*}
+という式は、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      行空間$\mathcal{V}$において、$A^+$は$A$の\keyword{逆変換}を表す
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+と解釈できる。
+
+\end{document}

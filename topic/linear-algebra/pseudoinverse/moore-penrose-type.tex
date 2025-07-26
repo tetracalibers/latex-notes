@@ -3,113 +3,192 @@
 \begin{document}
 
 \sectionline
-\section{ムーア・ペンローズの一般逆行列}
-\marginnote{\refbookI p37}
+\section{ムーア・ペンローズの擬似逆行列}
+\marginnote{\refbookI p36〜37}
+
+正方行列は、それが正則であれば逆行列を持つ。
+
+これを$O$でない任意の長方行列に拡張するのが\keyword{一般逆行列}（\keyword{擬似逆行列}）である。
+
+\begin{theorem}{擬似逆行列の存在と一意性}
+  $O$でない任意の$m \times n$型行列$A$に対して、以下の4つの条件を満たす$n \times m$型行列$A^+$がただ一つ存在する。
+  \begin{enumerate}[label=\romanlabel]
+    \item $AA^+A = A$
+    \item $A^+AA^+ = A^+$
+    \item $(AA^+)^\top = AA^+$
+    \item $(A^+A)^\top = A^+A$
+  \end{enumerate}
+  この$A^+$を\keyword{ムーア・ペンローズの擬似逆行列}という。
+\end{theorem}
+
+\begin{proof}[\bfseries 存在性の証明]
+    $A$の特異値分解を考える。
+    \begin{gather*}
+      \Sigma_r = \begin{pmatrix}
+        \sigma_1 &        &           \\
+                  & \ddots &           \\
+                  &        & \sigma_r
+      \end{pmatrix}, \quad
+      \Sigma^{-1}_r = \begin{pmatrix}
+        \dfrac{1}{\sigma_1} &        &           \\
+                            & \ddots &           \\
+                            &        & \dfrac{1}{\sigma_r}
+      \end{pmatrix} \\
+      \Sigma = \begin{pmatrix}
+        \Sigma_r & O \\
+        O & O
+      \end{pmatrix}, \quad
+      \Sigma^{-1} = \begin{pmatrix}
+        \Sigma^{-1}_r & O \\
+        O & O
+      \end{pmatrix}
+    \end{gather*}
+    とおくと、$A$は次のように特異値分解できる。
+    \begin{equation*}
+      A = U \Sigma V^\top
+    \end{equation*}
+        
+    ここで、
+    \begin{equation*}
+      B = V \Sigma^{-1} U^\top
+    \end{equation*}
+    とおくと、$B$は次のように4つの条件を満たす。
+  
+    \begin{subpattern}{(\romannum{i}) $AA^+A = A$}
+      $U,V$はユニタリ行列であるから、$V^\top V = E$および$U^\top U = E$が成り立つ。
+      \begin{align*}
+        ABA &= (U \Sigma V^\top)(V \Sigma^{-1} U^\top)(U \Sigma V^\top) \\
+             &= U \Sigma (V^\top V) \Sigma^{-1} (U^\top U) \Sigma V^\top \\
+             &= U(\Sigma \Sigma^{-1}) \Sigma V^\top
+      \end{align*}
+      
+      \br
+      
+      ここで、
+      \begin{equation*}
+        \Sigma \Sigma^{-1} = \begin{pmatrix}
+          E_r & O \\
+          O & O
+        \end{pmatrix}
+      \end{equation*}
+      であり、これに$\Sigma$をかけると、単位行列$E_r$の部分が$\Sigma_r$に置き換わるだけとなるので、
+      \begin{equation*}
+        (\Sigma \Sigma^{-1}) \Sigma = \Sigma
+      \end{equation*}
+      が成り立つ。
+      
+      \br
+      
+      この関係を用いると、
+      \begin{align*}
+        ABA &= U(\Sigma \Sigma^{-1}) \Sigma V^\top \\
+              &= U \Sigma V^\top \\
+              &= A
+      \end{align*}
+      となり、条件(\romannum{i})が成り立つ。$\qed$
+    \end{subpattern}
+    
+    \begin{subpattern}{(\romannum{ii}) $A^+AA^+ = A^+$}
+      同様に、
+      \begin{align*}
+        B A B &= (V \Sigma^{-1} U^\top)(U \Sigma V^\top)(V \Sigma^{-1} U^\top) \\
+              &= V \Sigma^{-1} (U^\top U) \Sigma (V^\top V) \Sigma^{-1} U^\top \\
+              &= V(\Sigma^{-1} \Sigma) \Sigma^{-1} U^\top \\
+              &= V \Sigma^{-1} U^\top \\
+              &= B
+      \end{align*}
+      となり、条件(\romannum{ii})が成り立つ。$\qed$
+    \end{subpattern}
+    
+    \begin{subpattern}{(\romannum{iii}) $(AA^+)^\top = AA^+$}
+      まず$AB$を計算すると、
+      \begin{align*}
+        AB & = (U \Sigma V^\top)(V \Sigma^{-1} U^\top) \\
+           & = U \Sigma (V^\top V) \Sigma^{-1} U^\top \\
+           & = U(\Sigma \Sigma^{-1}) U^\top 
+      \end{align*}
+      よって、$(AB)^\top$は、
+      \begin{align*}
+        (AB)^\top & = (U(\Sigma \Sigma^{-1}) U^\top)^\top \\
+                  & = U (\Sigma \Sigma^{-1}) U^\top \\
+                  & = AB
+      \end{align*}
+      となり、条件(\romannum{iii})が成り立つ。$\qed$
+    \end{subpattern}
+    
+    \begin{subpattern}{(\romannum{iv}) $(A^+A)^\top = A^+A$}
+      まず$BA$を計算すると、
+      \begin{align*}
+        BA & = (V \Sigma^{-1} U^\top)(U \Sigma V^\top) \\
+           & = V \Sigma^{-1} (U^\top U) \Sigma (V^\top V) \\
+           & = V(\Sigma^{-1} \Sigma) V^\top
+      \end{align*}
+      よって、$(BA)^\top$は、
+      \begin{align*}
+        (BA)^\top & = (V(\Sigma^{-1} \Sigma) V^\top)^\top \\
+                  & = V (\Sigma^{-1} \Sigma) V^\top \\
+                  & = BA
+      \end{align*}
+      となり、条件(\romannum{iv})が成り立つ。$\qed$
+    \end{subpattern}
+\end{proof}
+
+\subsection{ムーア・ペンローズの擬似逆行列の構成}
+
+存在性の証明過程から、ムーア・ペンローズの擬似逆行列は次のように構成すればよいことがわかる。
+
+\begin{definition}{ムーア・ペンローズの擬似逆行列}
+  行列$A$のムーア・ペンローズの擬似逆行列$A^+$は、次のように定義される。
+  \begin{equation*}
+    A^+ = V \Sigma^{-1} U^\top = V \begin{pmatrix}
+                        \dfrac{1}{\sigma_1} &        &           \\
+                                  & \ddots &           \\
+                                  &        & \dfrac{1}{\sigma_r}
+                      \end{pmatrix} U^\top
+  \end{equation*}
+\end{definition}
+
+\subsection{ムーア・ペンローズの擬似逆行列の一意性}
+
+行列$A$に対して$A^+$が一意的に定まることは、次のように示される。
+
+\br
+
+\begin{proof}[一意性の証明]
+  $B_1, B_2$がいずれもムーア・ペンローズの擬似逆行列の4つの条件
+  \begin{enumerate}[label=\romanlabel]
+    \item $ABA = A$
+    \item $BAB = B$
+    \item $(AB)^\top = AB$
+    \item $(BA)^\top = BA$
+  \end{enumerate}
+  を満たすとすると、
+  \begin{equation*}
+    \begin{WithArrows}
+      B_1 &\overset{\romannum{ii}}{=} B_1 A B_1 \Arrow{$B_1 A = B_1$} \\
+        &\overset{\romannum{iv}}{=} (B_1 A)^\top B_1 \Arrow{$AB_2A = A$} \\
+        &\overset{\romannum{ii}}{=} (B_1 A B_2 A)^\top B_1 \Arrow{積の転置の性質} \\
+        &\overset{\romannum{iii}}{=} (B_2 A)^\top (B_1 A)^\top B_1 \\
+        &\overset{\romannum{iv}}{=} (B_2 A)(B_1 A) B_1 \Arrow{$AB_1A = A$} \\
+        &\overset{\romannum{i}}{=} B_2 A B_1
+    \end{WithArrows}
+  \end{equation*}
+  同様の計算により、$B_2 = B_2 A B_1$も得られる。
+  
+  よって、$B_1 = B_2$である。$\qed$
+\end{proof}
+
+\subsection{特異値分解の展開式による表記}
 
 $O$でない$m \times n$型行列$A$が次のように特異値分解されているとする。
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
 \end{equation*}
 
-このとき、次の行列を$A$の\keyword{ムーア・ペンローズの一般逆行列}と定義する。
+このとき、ムーア・ペンローズの擬似逆行列$A^+$は次のように表される。
 \begin{equation*}
   A^+ = \frac{\vb*{v}_1\vb*{u}_1^\top}{\sigma_1} + \cdots + \frac{\vb*{v}_r\vb*{u}_r^\top}{\sigma_r}
 \end{equation*}
 $\sigma_i$が逆数に、$\vb*{u}_i\vb*{v}_i^\top$が$\vb*{v}_i\vb*{u}_i^\top$に置き換わっていることに注意しよう。
-
-\br
-
-\hyperref[sec:matrix-form-svd]{特異値分解の行列表記}を用いると、ムーア・ペンローズの一般逆行列は次のように書ける。
-\begin{equation*}
-  A^+ = V \begin{pmatrix}
-                        \dfrac{1}{\sigma_1} &        &           \\
-                                  & \ddots &           \\
-                                  &        & \dfrac{1}{\sigma_r}
-                      \end{pmatrix} U^\top
-\end{equation*}
-
-ここで、$U$と$V$は次のように定義している。
-\begin{equation*}
-  U = \begin{pmatrix}
-    \vb*{u}_1 & \cdots & \vb*{u}_r
-  \end{pmatrix}, \quad
-  V = \begin{pmatrix}
-    \vb*{v}_1 & \cdots & \vb*{v}_r
-  \end{pmatrix}
-\end{equation*}
-
-\subsection{$A$が正則行列の場合}
-
-$A$が正則行列の場合、$A$のムーア・ペンローズの一般逆行列は、$A$の逆行列に一致する。
-
-すなわち、$A$が正則の場合は、次が成り立つ。
-\begin{equation*}
-  A^+ A = A A^+ = E
-\end{equation*}
-
-この意味で、ムーア・ペンローズの一般逆行列は逆行列の一般化とみなせる。
-
-\begin{theorem}{正則行列に対するムーア・ペンローズ逆行列}
-  $A$が正則行列であれば、ムーア・ペンローズの一般逆行列$A^+$は逆行列$A^{-1}$に一致する。
-\end{theorem}
-
-\begin{proof}
-  $A$が正則行列であることから、$m = n$であり、\hyperref[thm:invertible-iff-full-rank]{$\rank A = n$}である。
-  
-  \hyperref[thm:rank-and-singular-values]{行列の階数は特異値の個数に等しい}ので、$A$は$n$個の特異値を用いて次のように特異値分解できる。
-  \begin{equation*}
-    A = \sum_{i=1}^{n} \sigma_i \vb*{u}_i \vb*{v}_i^\top
-  \end{equation*}
-  このとき、$A$のムーア・ペンローズの一般逆行列は次のように定義される。
-  \begin{equation*}
-    A^+ = \sum_{i=1}^{n} \frac{1}{\sigma_i} \vb*{v}_i \vb*{u}_i^\top
-  \end{equation*}
-  
-  これらの積を計算すると、
-  \begin{align*}
-    A^+ A & = \left( \sum_{i=1}^{n} \frac{\vb*{v}_i \vb*{u}_i^\top}{\sigma_i} \right) \left( \sum_{j=1}^{n} \sigma_j \vb*{u}_j \vb*{v}_j^\top \right) \\
-           & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \vb*{v}_i \vb*{u}_i^\top \vb*{u}_j \vb*{v}_j^\top \\
-           & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \vb*{v}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{v}_j^\top
-  \end{align*}
-  ここで、特異ベクトル$\vb*{u}_i, \vb*{v}_i$はそれぞれ$\mathbb{R}^n$の正規直交基底を成すので、
-  \begin{equation*}
-    \vb*{u}_i^\top \vb*{u}_j = \delta_{ij}, \quad
-    \vb*{v}_i^\top \vb*{v}_j = \delta_{ij}
-  \end{equation*}
-  よって、$A^+A$の式は次のように簡約される。
-  \begin{align*}
-    A^+ A & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \vb*{v}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{v}_j^\top \\
-          & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \delta_{ij} \vb*{v}_i \vb*{v}_j^\top \\
-          & = \sum_{i=1}^{n} \frac{\sigma_i}{\sigma_i} \vb*{v}_i \vb*{v}_i^\top \\
-          & = \sum_{i=1}^{n} \vb*{v}_i \vb*{v}_i^\top \\
-          & = E
-  \end{align*}
-  $A A^+$も同様に計算することができるため、$A^+$は$A$の逆行列$A^{-1}$に一致する。 $\qed$
-\end{proof}
-
-\subsection{$A$が正則でない場合}
-
-$A$が正則でない場合は、$A^+A$や$AA^+$を計算しても単位行列にはならない。
-一般に、次の式が成り立つことが知られている。
-\begin{equation*}
-  A^+ A = P_{\mathcal{V}}, \quad A A^+ = P_{\mathcal{U}}
-\end{equation*}
-
-\begin{theorem}{todo}
-  $A^+$をムーア・ペンローズの一般逆行列とするとき、$A^+ A$は行空間$\mathcal{V}$への射影行列、$AA^+$は列空間$\mathcal{U}$への射影行列となる。
-\end{theorem}
-
-\begin{proof}
-  \todo{}
-  
-  $A$を$m \times n$型行列とする。
-  
-  \begin{subpattern}{$A^+ A = P_{\mathcal{V}}$}
-    \begin{align*}
-      A^+ A & = \left( \sum_{i=1}^{r} \frac{\vb*{v}_i \vb*{u}_i^\top}{\sigma_i} \right) \left( \sum_{j=1}^{r} \sigma_j \vb*{u}_j \vb*{v}_j^\top \right) \\
-            & = \sum_{i=1}^{r} \sum_{j=1}^{r} \frac{\sigma_i}{\sigma_j} \vb*{v}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{v}_j^\top \\
-    \end{align*}
-  \end{subpattern}
-\end{proof}
 
 \end{document}
