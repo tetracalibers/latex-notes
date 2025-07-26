@@ -3,7 +3,7 @@
 \begin{document}
 
 \sectionline
-\section{ムーア・ペンローズ型一般逆行列}
+\section{ムーア・ペンローズの一般逆行列}
 \marginnote{\refbookI p37}
 
 $O$でない$m \times n$型行列$A$が次のように特異値分解されているとする。
@@ -11,17 +11,17 @@ $O$でない$m \times n$型行列$A$が次のように特異値分解されて�
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
 \end{equation*}
 
-このとき、次の行列を$A$の\keyword{ムーア・ペンローズ型一般逆行列}と定義する。
+このとき、次の行列を$A$の\keyword{ムーア・ペンローズの一般逆行列}と定義する。
 \begin{equation*}
-  A^- = \frac{\vb*{v}_1\vb*{u}_1^\top}{\sigma_1} + \cdots + \frac{\vb*{v}_r\vb*{u}_r^\top}{\sigma_r}
+  A^+ = \frac{\vb*{v}_1\vb*{u}_1^\top}{\sigma_1} + \cdots + \frac{\vb*{v}_r\vb*{u}_r^\top}{\sigma_r}
 \end{equation*}
 $\sigma_i$が逆数に、$\vb*{u}_i\vb*{v}_i^\top$が$\vb*{v}_i\vb*{u}_i^\top$に置き換わっていることに注意しよう。
 
 \br
 
-\hyperref[sec:matrix-form-svd]{特異値分解の行列表記}を用いると、ムーア・ペンローズ型一般逆行列は次のように書ける。
+\hyperref[sec:matrix-form-svd]{特異値分解の行列表記}を用いると、ムーア・ペンローズの一般逆行列は次のように書ける。
 \begin{equation*}
-  A^- = V \begin{pmatrix}
+  A^+ = V \begin{pmatrix}
                         \dfrac{1}{\sigma_1} &        &           \\
                                   & \ddots &           \\
                                   &        & \dfrac{1}{\sigma_r}
@@ -38,8 +38,78 @@ $\sigma_i$が逆数に、$\vb*{u}_i\vb*{v}_i^\top$が$\vb*{v}_i\vb*{u}_i^\top$�
   \end{pmatrix}
 \end{equation*}
 
-\br
+\subsection{$A$が正則行列の場合}
 
-\todo{$A$が正則なら逆行列と一致}
+$A$が正則行列の場合、$A$のムーア・ペンローズの一般逆行列は、$A$の逆行列に一致する。
+
+すなわち、$A$が正則の場合は、次が成り立つ。
+\begin{equation*}
+  A^+ A = A A^+ = E
+\end{equation*}
+
+この意味で、ムーア・ペンローズの一般逆行列は逆行列の一般化とみなせる。
+
+\begin{theorem}{正則行列に対するムーア・ペンローズ逆行列}
+  $A$が正則行列であれば、ムーア・ペンローズの一般逆行列$A^+$は逆行列$A^{-1}$に一致する。
+\end{theorem}
+
+\begin{proof}
+  $A$が正則行列であることから、$m = n$であり、\hyperref[thm:invertible-iff-full-rank]{$\rank A = n$}である。
+  
+  \hyperref[thm:rank-and-singular-values]{行列の階数は特異値の個数に等しい}ので、$A$は$n$個の特異値を用いて次のように特異値分解できる。
+  \begin{equation*}
+    A = \sum_{i=1}^{n} \sigma_i \vb*{u}_i \vb*{v}_i^\top
+  \end{equation*}
+  このとき、$A$のムーア・ペンローズの一般逆行列は次のように定義される。
+  \begin{equation*}
+    A^+ = \sum_{i=1}^{n} \frac{1}{\sigma_i} \vb*{v}_i \vb*{u}_i^\top
+  \end{equation*}
+  
+  これらの積を計算すると、
+  \begin{align*}
+    A^+ A & = \left( \sum_{i=1}^{n} \frac{\vb*{v}_i \vb*{u}_i^\top}{\sigma_i} \right) \left( \sum_{j=1}^{n} \sigma_j \vb*{u}_j \vb*{v}_j^\top \right) \\
+           & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \vb*{v}_i \vb*{u}_i^\top \vb*{u}_j \vb*{v}_j^\top \\
+           & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \vb*{v}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{v}_j^\top
+  \end{align*}
+  ここで、特異ベクトル$\vb*{u}_i, \vb*{v}_i$はそれぞれ$\mathbb{R}^n$の正規直交基底を成すので、
+  \begin{equation*}
+    \vb*{u}_i^\top \vb*{u}_j = \delta_{ij}, \quad
+    \vb*{v}_i^\top \vb*{v}_j = \delta_{ij}
+  \end{equation*}
+  よって、$A^+A$の式は次のように簡約される。
+  \begin{align*}
+    A^+ A & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \vb*{v}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{v}_j^\top \\
+          & = \sum_{i=1}^{n} \sum_{j=1}^{n} \frac{\sigma_i}{\sigma_j} \delta_{ij} \vb*{v}_i \vb*{v}_j^\top \\
+          & = \sum_{i=1}^{n} \frac{\sigma_i}{\sigma_i} \vb*{v}_i \vb*{v}_i^\top \\
+          & = \sum_{i=1}^{n} \vb*{v}_i \vb*{v}_i^\top \\
+          & = E
+  \end{align*}
+  $A A^+$も同様に計算することができるため、$A^+$は$A$の逆行列$A^{-1}$に一致する。 $\qed$
+\end{proof}
+
+\subsection{$A$が正則でない場合}
+
+$A$が正則でない場合は、$A^+A$や$AA^+$を計算しても単位行列にはならない。
+一般に、次の式が成り立つことが知られている。
+\begin{equation*}
+  A^+ A = P_{\mathcal{V}}, \quad A A^+ = P_{\mathcal{U}}
+\end{equation*}
+
+\begin{theorem}{todo}
+  $A^+$をムーア・ペンローズの一般逆行列とするとき、$A^+ A$は行空間$\mathcal{V}$への射影行列、$AA^+$は列空間$\mathcal{U}$への射影行列となる。
+\end{theorem}
+
+\begin{proof}
+  \todo{}
+  
+  $A$を$m \times n$型行列とする。
+  
+  \begin{subpattern}{$A^+ A = P_{\mathcal{V}}$}
+    \begin{align*}
+      A^+ A & = \left( \sum_{i=1}^{r} \frac{\vb*{v}_i \vb*{u}_i^\top}{\sigma_i} \right) \left( \sum_{j=1}^{r} \sigma_j \vb*{u}_j \vb*{v}_j^\top \right) \\
+            & = \sum_{i=1}^{r} \sum_{j=1}^{r} \frac{\sigma_i}{\sigma_j} \vb*{v}_i (\vb*{u}_i^\top \vb*{u}_j) \vb*{v}_j^\top \\
+    \end{align*}
+  \end{subpattern}
+\end{proof}
 
 \end{document}
