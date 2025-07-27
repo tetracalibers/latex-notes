@@ -4,7 +4,12 @@
 
 \sectionline
 \section{最小二乗解}
-\marginnote{\refbookL p161}
+\marginnote{
+  \refbookL p161 \\
+  \refbookI p50 \\
+  \refweb{線形最小二乗解の射影による理解}{https://qiita.com/takseki/items/8114eb537a7fe78ca8f8} \\
+  \refweb{射影行列のイメージと楽しい公式}{https://manabitimes.jp/math/2486}
+}
 
 $A\vb*{x} = \vb*{b}$の解がないなら、「せめて$A\vb*{x}$が$\vb*{b}$にできるだけ近くなるような$\vb*{x}$を求めよう」というのが\keyword{最小二乗解}のアプローチである。
 
@@ -86,11 +91,124 @@ $\Im A$は$A$の\keyword{列空間}（$A$の列ベクトルが張る空間）で
   A\vb*{x} = P_{\mathcal{U}}\vb*{b}
 \end{equation*}
 
-問題は、$P_{\mathcal{U}}$をどう求めるかである。
+\begin{theorem}{最小二乗解と列空間への射影の関係}\label{thm:least-squares-projection}
+  $A$の列空間を$\mathcal{U}$とし、$\mathcal{U}$への直交射影行列を$P_{\mathcal{U}}$とすると、
+  線形方程式$A\vb*{x} = \vb*{b}$の最小二乗解は次の関係を満たす。
+  \begin{equation*}
+    A\vb*{x} = P_{\mathcal{U}}\vb*{b}
+  \end{equation*}
+\end{theorem}
 
-\subsection{列空間への射影行列}
+\subsection{フルランクの場合の最小二乗解}
 
-$P_{\mathcal{U}}$を求めるためにあたって、まずは次の補題を示す。
+$n = \rank A$だと仮定する。
+\hyperref[thm:rank-equals-max-indep-cols]{階数は線型独立な列の最大個数}なので、$A$の$n$個の列ベクトルは線型独立である。
+
+\br
+
+$A$の列ベクトルを$\vb*{a}_1, \ldots, \vb*{a}_n$とすると、これらは$\mathcal{U}$を張るベクトルであり、かつ線型独立であるので、$\mathcal{U}$の基底を成す。
+
+よって、$\mathcal{U}$上の任意のベクトルは、これらの線型結合で表される。
+
+\br
+
+直交射影の定義より、$A\vb*{x} - \vb*{b}$は$\mathcal{U}$上のすべてのベクトルに直交する。
+
+\br
+
+\begin{center}
+  \tdplotsetmaincoords{70}{80} % 視点の角度設定
+  \begin{tikzpicture}[tdplot_main_coords, scale=3]
+    % 平面サイズと傾きの設定
+    \def\planesize{1.1}
+    \tdplotsetrotatedcoords{-20}{30}{0} % (theta, phi, psi)：傾きの設定
+
+    % 原点と点の定義
+    \coordinate (O) at (0, 0, 0);
+    \coordinate (P) at (0.75, 0.75, 1.75); % 空間上の点 P
+    \coordinate (Q) at (0.75, 0.75, 0.75); % 任意の平面上の点（Pの直交射影として仮置き）
+
+    % 座標軸
+    %\draw[axis] (O) -- (2.6, 0, 0) node[anchor=north east]{$x$};
+    %\draw[axis] (O) -- (0, 1.4, 0) node[anchor=north west]{$y$};
+    %\draw[axis] (O) -- (0, 0, 1.8) node[anchor=south]{$z$};
+
+    % 直角
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = P--Q--O};
+
+    % 傾いた平面の描画（tdplot_rotated_coords環境内）
+    \begin{scope}[tdplot_rotated_coords]
+      \filldraw[SkyBlue!40, draw=none, opacity=0.6,postaction={pattern=crosshatch dots}, pattern color=SkyBlue!60]
+      (-\planesize,-\planesize,0) --
+      ( \planesize,-\planesize,0) --
+      ( \planesize, \planesize,0) --
+      (-\planesize, \planesize,0) -- cycle;
+      \node[SkyBlue] at (\planesize*0.85,-\planesize*0.75,0) {$\mathcal{U}$};
+    \end{scope}
+
+    \draw[vector, Rhodamine] (O) -- (P) node[midway, left=1pt]{$\vb*{b}$};
+    \draw[vector, Cerulean] (O) -- (Q) node[pos=0.35, right=3pt]{$A\vb*{x}$};
+    \draw[vector, Orchid] (P) -- (Q) node[pos=0.4, right=1pt]{$A\vb*{x} - \vb*{b}$};
+    
+    % 点
+    \filldraw[Rhodamine] (P) circle (0.5pt) node[anchor=south]{$P$};
+    \filldraw[Cerulean] (Q) circle (0.5pt) node[anchor=west]{$Q$};
+    \filldraw[gray] (O) circle (0.5pt) node[anchor=north east]{$O$};
+  \end{tikzpicture}
+\end{center}
+
+\br
+
+$A\vb*{x} - \vb*{b}$が$\mathcal{U}$上の任意のベクトルに直交するには、
+\begin{equation*}
+  \vb*{a}_i^\top (A\vb*{x} - \vb*{b}) = 0 \quad (i = 1, \ldots, n)
+\end{equation*}
+が成り立てばよい（$\mathcal{U}$上の任意のベクトルは$\vb*{a}_1, \ldots, \vb*{a}_n$の線型結合で表されるのだから）。
+
+この条件を行列の形に書き直すと、
+\begin{equation*}
+  A^\top (A\vb*{x} - \vb*{b}) = \vb*{o}
+\end{equation*}
+となる。
+
+\br
+
+\begin{handout}
+  $A^\top (A\vb*{x} - \vb*{b}) = \vb*{o}$は、$\vb*{a}_1, \ldots, \vb*{a}_n$すべてとの内積を並べた形である。
+\begin{equation*}
+  \begin{pmatrix}
+    \vb*{a}_1^\top \\
+    \vdots \\
+    \vb*{a}_n^\top
+  \end{pmatrix} (A\vb*{x} - \vb*{b})
+  = \begin{pmatrix}
+    \vb*{a}_1^\top (A\vb*{x} - \vb*{b}) \\
+    \vdots \\
+    \vb*{a}_n^\top (A\vb*{x} - \vb*{b})
+  \end{pmatrix}
+  = \begin{pmatrix}
+    0 \\
+    \vdots \\
+    0
+  \end{pmatrix}
+\end{equation*}
+\end{handout}
+
+これを展開すると、
+\begin{gather*}
+  A^\top A \vb*{x} - A^\top \vb*{b} = \vb*{o} \\
+  A^\top A \vb*{x} = A^\top \vb*{b}
+\end{gather*}
+となるので、$A^\top A$が正則であれば、$\vb*{x} = \cdots$の形に整理できる。
+
+\br
+
+$n = \rank A$という仮定のもとでは、次の定理が成り立つ。
 
 \begin{theorem}{線型独立な列ベクトルと自己共役積の正則性}
   $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A^\top A$は正則である。
@@ -109,7 +227,7 @@ $P_{\mathcal{U}}$を求めるためにあたって、まずは次の補題を示
     (A \vb*{x})^\top (A \vb*{x}) = 0 \\
     \| A \vb*{x} \|^2 = 0
   \end{align*}
-  長さが0であるベクトルは零ベクトルのみであるから、
+  ノルムが0であるベクトルは零ベクトルのみであるから、
   \begin{equation*}
     A \vb*{x} = \vb*{o}
   \end{equation*}
@@ -127,60 +245,37 @@ $P_{\mathcal{U}}$を求めるためにあたって、まずは次の補題を示
 
 \br
 
-この補題をふまえて、$P_{\mathcal{U}}$は次のような式で表すことができる。
+$A^\top A$が正則であることがわかったので、$\vb*{x}$は次のように求められる。
+\begin{equation*}
+  \vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}
+\end{equation*}
 
-\begin{theorem}{列空間への直交射影行列の公式}
-  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A$の列ベクトルが張る空間$\mathcal{U}$への直交射影行列$P_{\mathcal{U}}$は、次のように表せる。
+これが、$m \geq n = \rank A$という条件のもとでの\keyword{最小二乗解}である。
+
+\begin{theorem}{線型独立な列ベクトルに対する最小二乗解}
+  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、線形方程式$A\vb*{x} = \vb*{b}$の最小二乗解$\vb*{x}$は次のように表される。
+  \begin{equation*}
+    \vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}
+  \end{equation*}
+\end{theorem}
+
+\subsection{列空間への射影行列}
+
+$\vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}$の両辺に左から$A$をかけると、
+\begin{equation*}
+  A\vb*{x} = A(A^\top A)^{-1}A^\top \vb*{b}
+\end{equation*}
+この式を、\hyperref[thm:least-squares-projection]{最小二乗解と射影行列の関係}$A\vb*{x} = P_{\mathcal{U}}\vb*{b}$と見比べると、
+\begin{equation*}
+  P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
+\end{equation*}
+であることがわかる。
+
+\begin{theorem}{列空間への直交射影の行列表現}
+  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A$の列空間への直交射影行列は次のように表される。
   \begin{equation*}
     P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
   \end{equation*}
 \end{theorem}
-
-\begin{proof}
-  $\vb*{b}$を$\mathcal{U}$に直交射影したベクトルを$\vb*{x}$とする。
-  \begin{equation*}
-    \vb*{x} = P_{\mathcal{U}}\vb*{b}
-  \end{equation*}
-  
-  $A$の列ベクトルを$\vb*{a}_1, \ldots, \vb*{a}_n$とすると、これらは$\mathcal{U}$を張るベクトルであり、かつ線型独立であるから、$\vb*{x}$はこれらの線型結合で表せる。
-  \begin{equation*}
-    \vb*{x} = \sum_{i=1}^n \vb*{a}_i y_i = A\vb*{y}
-  \end{equation*}
-  
-  射影前のベクトルが$\vb*{b}$、射影後のベクトルが$\vb*{x}$であるから、直交射影の定義より、$\vb*{x} - \vb*{b}$は$\mathcal{U}$上のすべてのベクトルに直交する。
-  
-  $\mathcal{U}$上の任意のベクトルは$\vb*{a}_1, \ldots, \vb*{a}_n$の線型結合で表されるので、
-  \begin{equation*}
-    \vb*{a}_i^\top (\vb*{x} - \vb*{b}) = 0 \quad (i = 1, \ldots, n)
-  \end{equation*}
-  が成り立てばよい。
-  
-  これを行列の形に書き直すと、
-  \begin{equation*}
-    A^\top (\vb*{x} - \vb*{b}) = \vb*{o}
-  \end{equation*}
-  となる。$A^\top (\vb*{x} - \vb*{b})$は、各$\vb*{a}_i$との内積がすべて並んだベクトルである。
-  
-  これを展開すると、
-  \begin{gather*}
-    A^\top A \vb*{y} - A^\top \vb*{b} = \vb*{o} \\
-    A^\top A \vb*{y} = A^\top \vb*{b}
-  \end{gather*}
-  よって、$A^\top A$が正則であれば、次のように$\vb*{y}$が求められる。
-  \begin{equation*}
-    \vb*{y} = (A^\top A)^{-1}A^\top \vb*{b}
-  \end{equation*}
-  ここで、$\vb*{x} = A\vb*{y}$であるから、
-  \begin{equation*}
-    \vb*{x} = A(A^\top A)^{-1}A^\top \vb*{b}
-  \end{equation*}
-  $\vb*{b}$は$A(A^\top A)^{-1}A^\top$による変換を受けて$\vb*{x}$に射影される。
-  
-  $\vb*{b}$は任意のベクトルであるので、この変換は、
-  \begin{equation*}
-    P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
-  \end{equation*}
-  という射影行列そのものである。$\qed$
-\end{proof}
 
 \end{document}
