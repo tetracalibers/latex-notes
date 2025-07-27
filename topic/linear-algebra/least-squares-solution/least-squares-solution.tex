@@ -1,0 +1,186 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{最小二乗解}
+\marginnote{\refbookL p161}
+
+$A\vb*{x} = \vb*{b}$の解がないなら、「せめて$A\vb*{x}$が$\vb*{b}$にできるだけ近くなるような$\vb*{x}$を求めよう」というのが\keyword{最小二乗解}のアプローチである。
+
+\br
+
+最小二乗解とは、次のような\keyword{残差}$J$を最小化するような$\vb*{x}$のことである。
+\begin{equation*}
+  J = \| A\vb*{x} - \vb*{b} \|^2
+\end{equation*}
+
+\subsection{残差の最小化と直交射影}
+
+$\vb*{x}$を動かすと、$A\vb*{x}$は$\Im A$上のさまざまなベクトルをとる。
+
+$m > n$の場合、$\vb*{b}$は$\vb*{x}$よりも高次元のベクトルなので、$\Im A$からはみ出してしまう。
+
+\begin{center}
+  \tdplotsetmaincoords{70}{80} % 視点の角度設定
+  \begin{tikzpicture}[tdplot_main_coords, scale=3]
+    % 平面サイズと傾きの設定
+    \def\planesize{1.1}
+    \tdplotsetrotatedcoords{-20}{30}{0} % (theta, phi, psi)：傾きの設定
+
+    % 原点と点の定義
+    \coordinate (O) at (0, 0, 0);
+    \coordinate (P) at (0.75, 0.75, 1.75); % 空間上の点 P
+    \coordinate (Q) at (0.75, 0.75, 0.75); % 任意の平面上の点（Pの直交射影として仮置き）
+
+    % 座標軸
+    %\draw[axis] (O) -- (2.6, 0, 0) node[anchor=north east]{$x$};
+    %\draw[axis] (O) -- (0, 1.4, 0) node[anchor=north west]{$y$};
+    %\draw[axis] (O) -- (0, 0, 1.8) node[anchor=south]{$z$};
+
+    % 直角
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = P--Q--O};
+
+    % 傾いた平面の描画（tdplot_rotated_coords環境内）
+    \begin{scope}[tdplot_rotated_coords]
+      \filldraw[SkyBlue!40, draw=none, opacity=0.6,postaction={pattern=crosshatch dots}, pattern color=SkyBlue!60]
+      (-\planesize,-\planesize,0) --
+      ( \planesize,-\planesize,0) --
+      ( \planesize, \planesize,0) --
+      (-\planesize, \planesize,0) -- cycle;
+      \node[SkyBlue] at (\planesize*0.85,-\planesize*0.75,0) {$\Im A$};
+    \end{scope}
+
+    \draw[vector, Rhodamine] (O) -- (P) node[midway, left=1pt]{$\vb*{b}$};
+    \draw[vector, Cerulean] (O) -- (Q) node[pos=0.35, right=3pt]{$A\vb*{x}$};
+    \draw[vector, Orchid] (P) -- (Q) node[pos=0.4, right=1pt]{$A\vb*{x} - \vb*{b}$};
+    
+    % 点
+    \filldraw[Rhodamine] (P) circle (0.5pt) node[anchor=south]{$P$};
+    \filldraw[Cerulean] (Q) circle (0.5pt) node[anchor=west]{$Q$};
+    \filldraw[gray] (O) circle (0.5pt) node[anchor=north east]{$O$};
+  \end{tikzpicture}
+\end{center}
+
+ここで、\hyperref[sec:shortest-distance-projection]{点$P$から最短となる$\Im A$上の点は、$P$を$\Im A$へ直交射影した点$Q$}である。
+
+このことから、$\| A\vb*{x} - \vb*{b} \|$が最小となるのは、
+  \begin{spacebox}
+    \begin{center}
+      $\vb*{b}$を$\Im A$へ直交射影したベクトルが$A\vb*{x}$
+    \end{center}
+  \end{spacebox}
+になっているときだとわかる。
+
+\br
+
+$\Im A$は$A$の\keyword{列空間}（$A$の列ベクトルが張る空間）であるから、これまで通り$\mathcal{U}$と表すことにしよう。
+
+すると、最小二乗解$\vb*{x}$が満たすべき条件は、次のように書ける。
+\begin{equation*}
+  A\vb*{x} = P_{\mathcal{U}}\vb*{b}
+\end{equation*}
+
+問題は、$P_{\mathcal{U}}$をどう求めるかである。
+
+\subsection{列空間への射影行列}
+
+$P_{\mathcal{U}}$を求めるためにあたって、まずは次の補題を示す。
+
+\begin{theorem}{線型独立な列ベクトルと自己共役積の正則性}
+  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A^\top A$は正則である。
+\end{theorem}
+
+\begin{proof}
+  $A^\top A$が正則であることと同値な条件として、\hyperref[thm:invertibility-by-kernel]{$A^\top A$の核空間の次元が0}であることを示す。
+  すなわち、次を示せばよい。
+  \begin{equation*}
+    A^\top A \vb*{x} = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
+  \end{equation*}
+  
+  $A^\top A \vb*{x} = \vb*{o}$の両辺に$\vb*{x}^\top$をかけると、
+  \begin{align*}
+    \vb*{x}^\top A^\top A \vb*{x} = \vb*{o} \\
+    (A \vb*{x})^\top (A \vb*{x}) = 0 \\
+    \| A \vb*{x} \|^2 = 0
+  \end{align*}
+  長さが0であるベクトルは零ベクトルのみであるから、
+  \begin{equation*}
+    A \vb*{x} = \vb*{o}
+  \end{equation*}
+  
+  ここで、$A \vb*{x} = \vb*{o}$ということは、$A$の列ベクトルの線形結合として$\vb*{o}$になる$\vb*{x}$が存在することを意味する。
+  
+  しかし、仮定より$A$の列ベクトルは線型独立なので、$\vb*{x} = \vb*{o}$しか解がない。
+  
+  \br
+  
+  よって、$A^\top A \vb*{x} = \vb*{o}$の解空間である核空間$\Ker(A^\top A)$は、零ベクトルしか含まない。
+
+  すなわち、$\dim \Ker(A^\top A) = 0$であり、$A^\top A$は正則である。$\qed$
+\end{proof}
+
+\br
+
+この補題をふまえて、$P_{\mathcal{U}}$は次のような式で表すことができる。
+
+\begin{theorem}{列空間への直交射影行列の公式}
+  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A$の列ベクトルが張る空間$\mathcal{U}$への直交射影行列$P_{\mathcal{U}}$は、次のように表せる。
+  \begin{equation*}
+    P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{b}$を$\mathcal{U}$に直交射影したベクトルを$\vb*{x}$とする。
+  \begin{equation*}
+    \vb*{x} = P_{\mathcal{U}}\vb*{b}
+  \end{equation*}
+  
+  $A$の列ベクトルを$\vb*{a}_1, \ldots, \vb*{a}_n$とすると、これらは$\mathcal{U}$を張るベクトルであり、かつ線型独立であるから、$\vb*{x}$はこれらの線型結合で表せる。
+  \begin{equation*}
+    \vb*{x} = \sum_{i=1}^n \vb*{a}_i y_i = A\vb*{y}
+  \end{equation*}
+  
+  射影前のベクトルが$\vb*{b}$、射影後のベクトルが$\vb*{x}$であるから、直交射影の定義より、$\vb*{x} - \vb*{b}$は$\mathcal{U}$上のすべてのベクトルに直交する。
+  
+  $\mathcal{U}$上の任意のベクトルは$\vb*{a}_1, \ldots, \vb*{a}_n$の線型結合で表されるので、
+  \begin{equation*}
+    \vb*{a}_i^\top (\vb*{x} - \vb*{b}) = 0 \quad (i = 1, \ldots, n)
+  \end{equation*}
+  が成り立てばよい。
+  
+  これを行列の形に書き直すと、
+  \begin{equation*}
+    A^\top (\vb*{x} - \vb*{b}) = \vb*{o}
+  \end{equation*}
+  となる。$A^\top (\vb*{x} - \vb*{b})$は、各$\vb*{a}_i$との内積がすべて並んだベクトルである。
+  
+  これを展開すると、
+  \begin{gather*}
+    A^\top A \vb*{y} - A^\top \vb*{b} = \vb*{o} \\
+    A^\top A \vb*{y} = A^\top \vb*{b}
+  \end{gather*}
+  よって、$A^\top A$が正則であれば、次のように$\vb*{y}$が求められる。
+  \begin{equation*}
+    \vb*{y} = (A^\top A)^{-1}A^\top \vb*{b}
+  \end{equation*}
+  ここで、$\vb*{x} = A\vb*{y}$であるから、
+  \begin{equation*}
+    \vb*{x} = A(A^\top A)^{-1}A^\top \vb*{b}
+  \end{equation*}
+  $\vb*{b}$は$A(A^\top A)^{-1}A^\top$による変換を受けて$\vb*{x}$に射影される。
+  
+  $\vb*{b}$は任意のベクトルであるので、この変換は、
+  \begin{equation*}
+    P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
+  \end{equation*}
+  という射影行列そのものである。$\qed$
+\end{proof}
+
+\end{document}

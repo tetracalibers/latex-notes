@@ -1,0 +1,36 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{核空間の次元による正則の判定}
+
+次元定理から、次のような正則判定法が得られる。
+
+\begin{theorem}{核空間の次元による正則判定}\label{thm:invertibility-by-kernel}
+  $n$次正方行列$A$に対して、
+  \begin{align*}
+    A \text{が正則行列} &\Longleftrightarrow \Ker A = \{ \vb*{o} \} \\
+    &\Longleftrightarrow \dim \Ker A = 0
+  \end{align*}
+\end{theorem}
+
+\begin{proof}
+  \hyperref[thm:invertible-iff-full-rank]{階数による正則判定}より、$A$が正則であることは、
+  \begin{equation*}
+    \rank A = n
+  \end{equation*}
+  であることと同値である。
+  
+  ここで、次元定理より、
+  \begin{equation*}
+    \rank A + \dim \Ker A = n
+  \end{equation*}
+  $\rank A =n$を代入し、整理すると、
+  \begin{equation*}
+    \dim \Ker A = 0
+  \end{equation*}
+  が得られる。 $\qed$
+\end{proof}
+
+\end{document}

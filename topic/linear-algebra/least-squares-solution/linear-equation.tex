@@ -1,0 +1,39 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{解けない線形方程式}
+\marginnote{\refbookL p161}
+
+$\vb*{x}$についての線形方程式を考える。
+\begin{equation*}
+  A\vb*{x} = \vb*{b}
+\end{equation*}
+
+ここで、$A$は$m \times n$型行列、$\vb*{x}$は$n$次元ベクトル、$\vb*{b}$は$m$次元ベクトルである。
+
+\br
+
+$m =n$で、$A$が正則であれば、その逆行列を用いて、一意な解を求めることができる。
+\begin{equation*}
+  \vb*{x} = A^{-1}\vb*{b}
+\end{equation*}
+
+\br
+
+しかし、この線型方程式が解けない場合を扱うこともある。
+\begin{enumerate}[label=\romanlabel]
+  \item $m > n$（$A$が縦長）の場合、条件式の数が未知数の数より多く、方程式は不能（解なし）
+  \item $m < n$（$A$が横長）の場合、条件式の数が未知数の数より少なく、方程式は不定（解が無数にある）
+\end{enumerate}
+
+このような場合には、次のようなアプローチが考えられる。
+\begin{enumerate}[label=\romanlabel]
+  \item 解が存在しないなら、なるべく近い解を探す
+  \item 解が無数にあるなら、その中から適した解を探す
+\end{enumerate}
+
+なにをもって「近い」「適した」とすべきかは状況によって異なるが、近い解は\keyword{最小二乗解}、適した解は\keyword{最小ノルム解}とすることが多い。
+
+\end{document}
