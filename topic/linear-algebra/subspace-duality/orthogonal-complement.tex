@@ -6,27 +6,27 @@
 \section{直交補空間}
 \marginnote{\refbookC p136〜137}
 
-内積を導入すると、ベクトルの長さや直交性が利用できるようになる
+内積を導入したことで、ベクトルの長さや直交性が利用できるようになった。
 
-直交性は、ベクトルだけでなく、部分空間に対しても拡張できる
+直交性は、ベクトルだけでなく、部分空間に対しても拡張できる。
 
 \br
 
-計量空間の部分空間に直交するベクトルの集合を、\keyword{直交補空間}と呼ぶ
+計量空間の部分空間に直交するベクトルの集合を、\keyword{直交補空間}という。
 
 \begin{definition}{直交補空間}
-  計量空間$V$の部分空間$W$に対し、$W$の\keyword{直交補空間}$W^\perp$を次のように定義する
+  計量空間$V$の部分空間$W$に対し、$W$の\keyword{直交補空間}$W^\perp$を次のように定義する。
   \begin{equation*}
     W^\perp \coloneq \{ \vb*{v} \in V \mid \forall \vb*{w} \in W, (\vb*{v}, \vb*{w}) = 0 \}
   \end{equation*}
 \end{definition}
 
-\br
+\subsection{直交補空間は$V$の部分空間}
 
-直交補空間もまた、計量空間の部分空間になっている
+直交補空間もまた、計量空間の部分空間になっている。
 
 \begin{theorem}{直交補空間の部分空間性}
-  計量空間$V$の部分空間$W$の直交補空間$W^\perp$は、計量空間$V$の部分空間である
+  計量空間$V$の部分空間$W$の直交補空間$W^\perp$は、計量空間$V$の部分空間である。
 \end{theorem}
 
 \begin{proof}
@@ -35,7 +35,7 @@
     \begin{equation*}
       (\vb*{a}_1 + \vb*{a}_2, \vb*{b}) = (\vb*{a}_1, \vb*{b}) + (\vb*{a}_2, \vb*{b}) = 0 + 0 = 0
     \end{equation*}
-    となるので、$\vb*{a}_1 + \vb*{a}_2 \in W^\perp$である $\qed$
+    となるので、$\vb*{a}_1 + \vb*{a}_2 \in W^\perp$である。 $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries スカラー倍について}
@@ -43,7 +43,7 @@
     \begin{equation*}
       (c\vb*{a}, \vb*{b}) = c(\vb*{a}, \vb*{b}) = c \cdot 0 = 0
     \end{equation*}
-    となるので、$c\vb*{a} \in W^\perp$である $\qed$
+    となるので、$c\vb*{a} \in W^\perp$である。 $\qed$
   \end{subpattern}
 \end{proof}
 
@@ -51,9 +51,9 @@
 \section{直交補空間による直和分解}
 \marginnote{\refbookC p137〜139}
 
-「直交補空間」という名前は、「補集合」と同様に、何らかの集合を補う集合であることを想起させる
+「直交補空間」という名前は、「補集合」と同様に、何らかの集合を補う集合であることを想起させる。
 
-実際、直交補空間$W^\perp$は、もとの集合$W$を補い、$V$全体を構成するような性質を持つ
+実際、直交補空間$W^\perp$は、もとの集合$W$を補い、$V$全体を構成するような性質を持つ。
 
 \br
 
@@ -65,25 +65,25 @@
 \end{theorem}
 
 \begin{proof}
-  $W = \{ \vb*{0} \}$の場合は、任意の$\vb*{v} \in V$に対して$\vb*{0}$との内積は0になることから、$W^\perp$は$V$全体となる
+  $W = \{ \vb*{o} \}$の場合は、任意の$\vb*{v} \in V$に対して$\vb*{o}$との内積は0になることから、$W^\perp$は$V$全体となる。
   \begin{equation*}
-    W^\perp = \{ \vb*{v} \in V \mid  (\vb*{v}, \vb*{0}) = 0 \} = V
+    W^\perp = \{ \vb*{v} \in V \mid  (\vb*{v}, \vb*{o}) = 0 \} = V
   \end{equation*}
   よって、
   \begin{equation*}
-    V = W + W^\perp = \{ \vb*{0} \} + V = V
+    V = W + W^\perp = \{ \vb*{o} \} + V = V
   \end{equation*}
-  が成り立つ
+  が成り立つ。
 
   \br
 
-  以降、$W \neq \{ \vb*{0} \}$とする
+  以降、$W \neq \{ \vb*{o} \}$とする。
 
-  $W$の基底$\{ \vb*{w}'_1, \ldots, \vb*{w}'_k \}$を1つとり、これに対してグラム・シュミットの直交化法を適用して、正規直交基底$\{ \vb*{w}_1, \ldots, \vb*{w}_k \}$を得る
+  $W$の基底$\{ \vb*{w}'_1, \ldots, \vb*{w}'_k \}$を1つとり、これに対してグラム・シュミットの直交化法を適用して、正規直交基底$\{ \vb*{w}_1, \ldots, \vb*{w}_k \}$を得る。
 
   \br
 
-  任意の$\vb*{v} \in V$をとり、次のようにおく
+  任意の$\vb*{v} \in V$をとり、次のようにおく。
   \begin{equation*}
     \vb*{u} = \vb*{v} - \sum_{i=1}^k (\vb*{v}, \vb*{w}_i) \vb*{w}_i
   \end{equation*}
@@ -95,7 +95,7 @@
                          & = (\vb*{v}, \vb*{w}_i) - (\vb*{v}, \vb*{w}_i)                                     \\
                          & = 0
   \end{align*}
-  このように、任意の$i = 1, \ldots, k$に対して、$\vb*{u}$と$\vb*{w}_i$の内積が0になることから、$\vb*{u} \in W^\perp$である
+  このように、任意の$i = 1, \ldots, k$に対して、$\vb*{u}$と$\vb*{w}_i$の内積が0になることから、$\vb*{u} \in W^\perp$である。
 
   \br
 
@@ -107,7 +107,7 @@
   \begin{equation*}
     \sum_{i=1}^k (\vb*{v}, \vb*{w}_i) \vb*{w}_i
   \end{equation*}
-  の部分は、$W$の任意の元を表す
+  の部分は、$W$の任意の元を表す。
 
   \br
 
@@ -115,22 +115,22 @@
   \begin{equation*}
     V = W + W^\perp
   \end{equation*}
-  が成り立つ $\qed$
+  が成り立つ。 $\qed$
 \end{proof}
 
 \br
 
-さらに、次の定理が成り立つことで、単なる空間の和ではなく、\hyperref[def:direct-sum]{直和}として分解できることがわかる
+さらに、次の定理が成り立つことで、単なる空間の和ではなく、\hyperref[def:direct-sum]{直和}として分解できることがわかる。
 
 \begin{theorem}{直交補空間との交わり}
   計量空間$V$の部分空間$W$に対して、
   \begin{equation*}
-    W \cap W^\perp = \{ \vb*{0} \}
+    W \cap W^\perp = \{ \vb*{o} \}
   \end{equation*}
 \end{theorem}
 
 \begin{proof}
-  $\vb*{a} \in W \cap W^\perp$とすると、$\vb*{a} \in W$かつ$\vb*{a} \in W^\perp$である
+  $\vb*{a} \in W \cap W^\perp$とすると、$\vb*{a} \in W$かつ$\vb*{a} \in W^\perp$である。
 
   $\vb*{a} \in W^\perp$より、$\vb*{a} \in W$に対しても内積が0になるので、
   \begin{equation*}
@@ -141,35 +141,35 @@
   \begin{equation*}
     (\vb*{a}, \vb*{a}) = \| \vb*{a} \|^2 \geq 0
   \end{equation*}
-  であり、等号が成立するのは、$\vb*{a} = \vb*{0}$のときのみである
+  であり、等号が成立するのは、$\vb*{a} = \vb*{o}$のときのみである。
 
-  よって、$\vb*{a} = \vb*{0}$である
-
-  \br
-
-  零ベクトルは任意のベクトルと直交し（内積が0になり）、また任意の部分空間に属するので、明らかに$\vb*{0} \in W \cap W^\perp$である
+  よって、$\vb*{a} = \vb*{o}$である。
 
   \br
 
-  $\vb*{a}$は$W \cap W^\perp$の任意の元であり、$\vb*{a} = \vb*{0} \in W \cap W^\perp$であることがわかったので、
+  零ベクトルは任意のベクトルと直交し（内積が0になり）、また任意の部分空間に属するので、明らかに$\vb*{o} \in W \cap W^\perp$である。
+
+  \br
+
+  $\vb*{a}$は$W \cap W^\perp$の任意の元であり、$\vb*{a} = \vb*{o} \in W \cap W^\perp$であることがわかったので、
   \begin{equation*}
-    W \cap W^\perp = \{ \vb*{0} \}
+    W \cap W^\perp = \{ \vb*{o} \}
   \end{equation*}
-  がいえる $\qed$
+  がいえる。 $\qed$
 \end{proof}
 
 \br
 
-こうして、次の\hyperref[thm:direct-sum-equiv]{両方が成り立つことから}、
+こうして、次の両方が成り立つことから、
 \begin{enumerate}[label=\romanlabel]
   \item $V = W + W^\perp$
-  \item $W \cap W^\perp = \{ \vb*{0} \}$
+  \item $W \cap W^\perp = \{ \vb*{o} \}$
 \end{enumerate}
-計量空間$V$は部分空間$W$とその直交補空間$W^\perp$の直和として分解できる
+計量空間$V$は部分空間$W$とその直交補空間$W^\perp$の\hyperref[thm:direct-sum-equiv]{直和として分解}できる。
 
 \br
 
-\hyperref[thm:dim-direct-sum]{直和の次元公式}より、次の定理が従う
+よって、\hyperref[thm:dim-direct-sum]{直和の次元公式}より、次の定理が従う。
 
 \begin{theorem}{直交補空間と次元}
   計量空間$V$の部分空間$W$に対して、
