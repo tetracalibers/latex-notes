@@ -1,0 +1,104 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行空間と核空間の直交}
+\marginnote{\refbookC p137 \\ \refbookA p123}
+
+$A = (a_{ij})$を$m \times n$行列とする。
+
+このとき、$A$の第$i$行ベクトル$\begin{pmatrix} a_{i1} & \cdots & a_{in} \end{pmatrix} \in {}^t\mathbb{R}^n$は、次の\hyperref[sec:row-vector-functional]{線形汎関数$\phi_i$と同一視}できる。
+\begin{equation*}
+  \phi_i = a_{i1} x_1 + \cdots + a_{in} x_n
+\end{equation*}
+この行ベクトル$\phi_i \in {}^t\mathbb{R}^n$が張る空間$\langle \phi_1, \ldots, \phi_n \rangle \subset {}^t\mathbb{R}^n$を、$A$の\keyword{行空間}と呼び、$\Row A$と書く。
+
+\br
+
+ここで、$x_j$はベクトル$\vb*{v} \in \mathbb{R}^n$に対して、$j$番目の成分を返す\keyword{座標関数}である。
+そこで、
+\begin{align*}
+  \phi_i(\vb*{v}) &= a_{i1} x_1(\vb*{v}) + \cdots + a_{in} x_n(\vb*{v}) \\
+  &= a_{i1} v_1 + \cdots + a_{in} v_n
+\end{align*}
+とみると、$\phi_i$は$\vb*{v}$に作用して、$A$の第$i$行ベクトルと$\vb*{v}$の内積を返すことがわかる。
+
+\br
+
+すると、$\phi_i(\vb*{v})$を縦に並べたものは、$A\vb*{v}$に一致する。
+\begin{equation*}
+  A\vb*{v} = \begin{pmatrix}
+    a_{11} v_1 + \cdots + a_{1n} v_n \\
+    \vdots \\
+    a_{m1} v_1 + \cdots + a_{mn} v_n
+  \end{pmatrix} = \begin{pmatrix}
+    \phi_1(\vb*{v}) \\
+    \vdots \\
+    \phi_m(\vb*{v})
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+このとき、$A\vb*{v} = \vb*{o}$となる場合は、
+\begin{equation*}
+  \phi_i(\vb*{v}) = 0 \quad (i = 1, \ldots, m)
+\end{equation*}
+が成り立つことになる。
+
+すなわち、$A$のすべての行ベクトルに対して、$\vb*{v}$との内積が0になる。
+
+\br
+
+このことから、$A$の行空間に属するベクトルと、$A\vb*{v} = \vb*{o}$の解空間$\Ker A$に属するベクトル$\vb*{v}$は、互いに直交することがわかる。
+
+よって、次の関係が成り立つ。
+\begin{equation*}
+  \Ker A = (\Row A)^\perp
+\end{equation*}
+
+\begin{theorem}{核空間と行空間の直交関係}
+  $A$の核空間は、$A$の行空間（行ベクトルが張る空間）の直交補空間である。
+  \begin{equation*}
+    \Ker A = (\Row A)^\perp
+  \end{equation*}
+\end{theorem}
+
+この定理は、核空間と像空間との関係として言い換えることもできる。
+
+\br
+
+$A$の像空間$\Im A$は、\hyperref[sec:image-and-column-space]{$A$の列ベクトルが張る空間}（列空間）であった。
+
+$A$を転置すると行と列が入れ替わるので、$A^\top$の行空間は$A$の列空間に対応する。
+
+\br
+
+よって、定理を次のように書き換えることができる。
+
+\begin{theorem}{核空間と転置行列の像空間の直交関係}
+  $A$の核空間は、$A^\top$の像空間の直交補空間である。
+  \begin{equation*}
+    \Ker A = (\Im A^\top)^\perp
+  \end{equation*}
+\end{theorem}
+
+\todo{$W^{\perp\perp} = W$という関係を示し、$\Im A^\top = (\Ker A)^\perp$も成り立つことを追記する}
+
+\subsection{直交補空間から零化空間へ}
+
+さて、$\Ker A = (\Row A)^\perp$という\keyword{直交補空間}の関係を導くにあたって、ここでは次のような議論を行った。
+\begin{enumerate}
+  \item 横ベクトルと同一視できる線形汎関数を考える
+  \item 線形汎関数に縦ベクトルを作用させたものを内積とみなす
+  \item 内積が0になることから直交補空間の関係を導く
+\end{enumerate}
+
+つまり、ここでは内積が定められている空間（計量空間）で議論を行ったわけだが、内積を考えずに、線形汎関数の集合（双対空間）だけで議論を行うこともできる。
+
+\br
+
+直交補空間の概念を内積を使わずに拡張し、一般の線形空間上で定義したものが、次に述べる\keyword{零化空間}である。
+
+\end{document}
