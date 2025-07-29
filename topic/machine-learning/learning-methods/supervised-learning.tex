@@ -1,0 +1,59 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{教師あり学習}
+
+\keywordJE{教師あり学習}{supervised learning}では、入力$x$と推定したい出力$y$からなるペア$(x,y)$を訓練データとして利用し、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      入力$x$から望ましい出力$y$を予測できるような\\
+      モデル$y = f(x; \theta)$を学習すること
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+を目標とする。
+
+\br
+
+訓練データは、\keyword{教師ありデータ}や\keyword{学習データ}と呼ばれることもある。
+\begin{equation*}
+  D = \{ (x_1, y_1), \ldots, (x_n, y_n) \}
+\end{equation*}
+
+\subsection{学習と推論}
+
+教師あり学習は、\keywordJE{学習}{training}と\keywordJE{推論}{inference}という2つのフェーズに分けられる。
+
+学習フェーズでは、訓練データをうまく推定できるように、すなわち
+\begin{equation*}
+  y_i = f(x_i; \theta)
+\end{equation*}
+となるように、モデルのパラメータを調整していく。
+
+\br
+
+推論フェーズでは、学習によって得られたパラメータ$\hat{\theta}$を使ったモデル$f(x;\hat{\theta})$を使い、新しいテストデータ$\tilde{x}$の出力を
+\begin{equation*}
+  \tilde{y} = f(\tilde{x}; \hat{\theta})
+\end{equation*}
+として求める。
+
+\subsection{学習の実現}
+
+教師あり学習では、\keyword{訓練データ}、\keyword{モデル}、\keyword{損失関数}、\keyword{目的関数}、\keyword{最適化}をそれぞれ設計して組み合わせることで、学習を実現する。
+
+\begin{enumerate}
+  \item \keyword{訓練データ}を用意する：$(x_i, y_i)_{i=1}^n$
+  \item 学習対象の\keyword{モデル}を用意する：$y = f(x;\theta)$
+  \item \keyword{損失関数}を設計する：$l(y,y')$
+  \item \keyword{目的関数}を導出する：$L(\theta) = \sum_i l(y_i, f(x_i;\theta)) + R(\theta)$
+  \item \keyword{最適化}問題を解く（\keyword{学習}）：$\theta^* = \underset{\theta}{\argmin} L(\theta)$
+  \item 学習して得られたモデルを\keyword{評価}する
+\end{enumerate}
+
+\note{それぞれの章へのリンクを貼る}
+
+\end{document}
