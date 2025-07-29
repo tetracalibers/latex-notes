@@ -61,4 +61,37 @@
   \frac{F_i}{N}
 \end{equation*}
 
+\sectionline
+\section{標本平均}
+
+度数分布から求めた平均値を\keyword{標本平均}という。
+
+\begin{table}[htbp]
+  \centering
+  \caption*{\bfseries 度数分布表}
+  \begin{tabular}{ccccc}
+    \hline
+    階級値 & $x_1$ & $x_2$ & \ldots & $x_n$ \\
+    \hline
+    度数 & $f_1$ & $f_2$ & \ldots & $f_n$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+上のような度数分布表が与えられたとき、1つの階級に属するデータ数は$f_i$個であり、これらがすべて同じ値$x_i$をとると考えて平均を求める。
+
+全データ数を$N$とすると、
+\begin{equation*}
+  \overline{x} = \frac{1}{N} \sum_{i=1}^{n} f_i x_i
+\end{equation*}
+
+これは通常の平均とは異なり、すべてのデータを使っているわけではないことを強調するため、\keyword{標本平均}と呼ばれる。
+
+\begin{definition}{標本平均}
+  $i$番目の階級の階級値を$x_i$、度数を$f_i$とし、全データ数を$N$とするとき、\keyword{標本平均}を次のように定める。
+  \begin{equation*}
+    \overline{x} = \frac{1}{N} \sum_{i=1}^{n} f_i x_i
+  \end{equation*}
+\end{definition}
+
 \end{document}
