@@ -8,12 +8,21 @@
 野山に雪が積もっていてスキーをするとしよう。
 
 \begin{itemize}
-  \item 直滑降では、最大傾斜の方向（ボールが転がり出す方向）を意識する
+  \item 直滑降では、最大傾斜の方向（最も下っていく方向）を意識する
   \item 斜面を登るときは、高さが一定の方向にスキー板を向けて滑らないように横歩きする
 \end{itemize}
 
-高さが一定になる方向は、最大傾斜の方向（ボールが転がり出す方向）と垂直になっているはずである。
-そうでなければ、スキー板が滑って降下が始まってしまう。
+斜面を登るときに横歩きするのは、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      高さが一定になる方向は、最大傾斜の方向と垂直になっているはず
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということを直観的に理解しているからである。
+
+実際、少しでも上向きや下向きにスキー板を傾けてしまうと、スキー板が滑って降下が始まってしまうだろう。
 
 \br
 
@@ -68,23 +77,15 @@ $z=f(x,y)$の全微分
 
 \subsection{勾配ベクトルと最大傾斜の方向}
 
-たとえば、斜面にボールを置いたとき、ボールは最大傾斜の方向（最も下っていく方向）に転がっていくことは直観的にわかる。
+たとえば、斜面にボールを置いたとき、ボールは最大傾斜の方向に転がっていくことは直観的にわかる。
+
+また、高さが一定になる方向は、最大傾斜の方向と垂直であることも直観的に理解している。
 
 \br
 
-この最大傾斜の方向（ボールが転がり出す方向）が$\nabla f$になっていれば、
-\begin{equation*}
-  \nabla f \cdot \begin{pmatrix} \Delta x \\ \Delta y \end{pmatrix} = 0
-\end{equation*}
-という直交を表す式が、冒頭で述べた次の直観に当てはまることになる。
+高さが一定（$\Delta z = 0$）になる方向は、勾配ベクトル$\nabla f$と垂直であったから、この勾配ベクトル$\nabla f$が最大傾斜の方向を表しているのでは？と予想できる。
 
-\begin{emphabox}
-  \begin{spacebox}
-    \begin{center}
-      高さが一定になる方向は、最大傾斜の方向と垂直
-    \end{center}
-  \end{spacebox}
-\end{emphabox}
+このことを、数式で確認してみよう。
 
 \subsection{角度による方向微分係数}
 
@@ -102,17 +103,24 @@ $z=f(x,y)$の全微分
         \coordinate (A) at (0,0);
         \coordinate (B) at (\vx, \vy);
         \coordinate (C) at (\vx, 0);
+        
+        % 座標軸
+        \draw[axis] (-1.5, -1) -- (3, -1) node[right] {$x$};
+        \draw[axis] (-1.5, -1) -- (-1.5, 2.5) node[above] {$y$};
 
         % 角度
         \pic [fill=Emerald!30,angle eccentricity=1.3, angle radius=2em, "$\theta$"{text=Emerald}] {angle = C--A--B};
         
         % x軸方向のベクトル
-        \draw[vector, very thick, Rhodamine] (C) -- (A) node[below, pos=0.4] {$\Delta x$};
+        \draw[vector, very thick, Rhodamine] (A) -- (C) node[below, pos=0.4] {$\Delta x$};
         % y軸方向のベクトル
-        \draw[vector, very thick, Cerulean] (B) -- (C) node[right, midway] {$\Delta y$};
+        \draw[vector, very thick, Cerulean] (C) -- (B) node[right, midway] {$\Delta y$};
 
         % ベクトル
         \draw[thick, BurntOrange] (B) -- (A) node[midway, above left] {$h$};
+        
+        % (x,y)
+        \filldraw[lightslategray] (A) node[below left] {$(x,y)$};
       \end{tikzpicture}
 \end{center}
 
@@ -198,21 +206,23 @@ $\| \vb*{u} \| = 1$より、
 
 また、等号が成立する場合を考えると、傾きが最大となる方向$\vb*{u}$は、
 \begin{equation*}
-  \vb*{u} = \frac{\nabla f}{\| \nabla f \|}
+  \vb*{u} = \frac{1}{\| \nabla f \|} \nabla f
 \end{equation*}
-である。
+である。つまり、$\nabla f$は傾きが最大となる方向を向いている。
 
-\br
+\begin{theorem}{勾配ベクトルと最大傾斜の関係}
+  勾配ベクトル$\nabla f$は最大傾斜の方向を向いたベクトルであり、その長さ$\| \nabla f \|$が傾きの最大値を与える。
+\end{theorem}
 
-まとめると、
+最大傾斜の方向といっても、その符号によって上るのか下るのかが異なることに注意しよう。
+
 \begin{emphabox}
   \begin{spacebox}
     \begin{center}
-      勾配ベクトル$\nabla f$は最大傾斜の方向を向いたベクトルで、\\
-      その長さ$\| \nabla f \|$が傾きの最大値を与える
+      最も上っていく方向は$\nabla f$であり、
+      最も下っていく方向は$-\nabla f$である
     \end{center}
   \end{spacebox}
 \end{emphabox}
-となり、スキーによる直観と矛盾ない性質が確認できた。
 
 \end{document}
