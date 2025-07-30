@@ -41,14 +41,15 @@
 \end{equation*}
 として求める。
 
-\subsection{学習の実現}
+\sectionline
+\section{教師あり学習の流れ}
 
 教師あり学習では、\keyword{訓練データ}、\keyword{モデル}、\keyword{損失関数}、\keyword{目的関数}、\keyword{最適化}をそれぞれ設計して組み合わせることで、学習を実現する。
 
 \begin{enumerate}
   \item \keyword{訓練データ}を用意する：$(x_i, y_i)_{i=1}^n$
   \item 学習対象の\keyword{モデル}を用意する：$y = f(x;\theta)$
-  \item \keyword{損失関数}を設計する：$l(y,y')$
+  \item \hyperref[chap:loss-function]{損失関数}を設計する：$l(y,y')$
   \item \keyword{目的関数}を導出する：$L(\theta) = \sum_i l(y_i, f(x_i;\theta)) + R(\theta)$
   \item \keyword{最適化}問題を解く（\keyword{学習}）：$\theta^* = \underset{\theta}{\argmin} L(\theta)$
   \item 学習して得られたモデルを\keyword{評価}する

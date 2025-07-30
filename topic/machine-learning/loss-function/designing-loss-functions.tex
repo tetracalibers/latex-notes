@@ -1,0 +1,53 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{損失関数の設計}
+
+\keywordJE{損失関数}{loss function}は、訓練データで与えられる正解に対し、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      予測がどれだけ間違っているのか
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+を表す関数である。
+
+\keywordJE{コスト関数}{cost function}や\keywordJE{誤差関数}{error function}と呼ばれることもある。
+
+\br
+
+損失関数は、入力$\vb*{x}$、正解の出力$y$、モデルパラメータ$\theta$を引数としてとり、0以上の値を返す。
+\begin{equation*}
+  l(\vb*{x}, y; \theta) \geq 0
+\end{equation*}
+予測が正しければ0を返し、予測が間違っていれば正の値を返すようにする。
+
+\br
+
+\keyword{学習}は、損失関数によって表される「現在の予測の間違っている度合い」を最小化するようなパラメータを求める\keyword{最適化}問題を解くことによって実現される。
+
+\subsection{損失関数の設計の重要性}
+
+損失関数は、学習の目的に応じて自由に設定することができる。
+
+\br
+
+どのような損失関数を使うかによって、学習結果のモデルがどのような性質を持つかが決まる。
+
+\begin{itemize}
+  \item 汎化性能
+  \item ノイズに強いか弱いか
+  \item 平均的な性能が優れているか、最悪の場合の性能が優れているか
+\end{itemize}
+
+たとえば、損失関数が大きく間違っているサンプルを重視するなら、大きな間違いはしないようになる。
+その反面、訓練データのノイズ（間違ったラベルがある場合など）に弱くなる。
+
+\subsection{損失関数の微分の形の重要性}
+
+損失関数の微分の性質によって、どのような解に収束するかが変わる。
+
+\end{document}

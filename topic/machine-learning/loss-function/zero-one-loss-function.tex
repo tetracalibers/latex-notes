@@ -1,0 +1,18 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{分類で使う損失関数：0/1損失関数}
+
+\keyword{0/1損失関数}は、モデルによる分類が間違っていたら1、正しければ0を返す関数である。
+\begin{equation*}
+  l_{0/1}(\vb*{x}, y; \theta) = \begin{cases}
+    0 & \text{if } f(\vb*{x}; \theta) = y \\
+    1 & \text{if } f(\vb*{x}; \theta) \neq y
+  \end{cases}
+\end{equation*}
+
+この損失関数を使えば分類精度を評価できるが、微分がほとんどの位置で0になるため、\keyword{勾配法}を用いた学習では利用できない。
+
+\end{document}
