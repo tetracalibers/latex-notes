@@ -1,0 +1,60 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{訓練誤差と目的関数}
+
+訓練事例に対する損失関数を定義したら、訓練データ全体にわたって、損失関数の値の平均を計算する。
+
+これを\keywordJE{訓練誤差}{training error}と呼ぶ。
+\begin{equation*}
+  \frac{1}{N} \sum_{i=1}^{N} l(\vb*{x}_i, y_i; \theta)
+\end{equation*}
+
+パラメータ$\theta$を入力とし、訓練誤差を返す関数を、最適化問題の\keywordJE{目的関数}{objective function}とする。
+\begin{equation*}
+  L(\theta) = \frac{1}{N} \sum_{i=1}^{N} l(\vb*{x}_i, y_i; \theta)
+\end{equation*}
+
+この目的関数の値を最小化するパラメータ$\theta$を求めることで、多くの訓練データの損失関数の値を小さくできるようなパラメータが求まる。
+
+つまり、最適なパラメータを求める手順は、次のようになる。
+\begin{enumerate}
+  \item 損失関数を定義する
+  \item その損失関数によって目的関数を定義する
+  \item 目的関数のパラメータ$\theta$に関する最小化問題を解く
+\end{enumerate}
+
+\sectionline
+\section{二乗損失・絶対損失による目的関数}
+
+回帰問題の場合は、\keyword{二乗損失}や\keyword{絶対損失}を損失関数として使うことが一般的である。
+
+\subsection{平均二乗誤差と最小二乗法}
+
+二乗損失を損失関数として用いた場合、目的関数は次のようになる。
+\begin{equation*}
+  L_{SE}(\theta) = \frac{1}{N} \sum_{i=1}^{N} \|f(\vb*{x}_i; \theta) - y_i\|^2
+\end{equation*}
+
+これは「二乗の平均」を表す式になっているため、\keywordJE{平均二乗誤差}{MSE: mean square error}と呼ばれることがある。
+
+平均二乗誤差を最小化する手法は、\keyword{最小二乗法}と呼ばれる。
+
+\subsection{平均二乗平方根誤差}
+
+また、二乗すると単位も二乗されてしまうため、もとのデータと単位を揃えるため、平方根をとることもある。
+
+平均二乗誤差の平方根をとったものは、\keywordJE{平均二乗平方根誤差}{RMSE: root mean square error}と呼ばれる。
+
+\subsection{平均絶対誤差}
+
+絶対損失を損失関数として用いた場合、目的関数は次のようになる。
+\begin{equation*}
+  L_{AE}(\theta) = \frac{1}{N} \sum_{i=1}^{N} \|f(\vb*{x}_i; \theta) - y_i\|
+\end{equation*}
+
+これは「絶対値の平均」を表す式になっているため、\keywordJE{平均絶対誤差}{MAE: mean absolute error}と呼ばれることがある。
+
+\end{document}

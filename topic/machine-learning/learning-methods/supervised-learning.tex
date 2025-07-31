@@ -50,7 +50,7 @@
   \item \keyword{訓練データ}を用意する：$(x_i, y_i)_{i=1}^n$
   \item 学習対象の\keyword{モデル}を用意する：$y = f(x;\theta)$
   \item \hyperref[chap:loss-function]{損失関数}を設計する：$l(y,y')$
-  \item \keyword{目的関数}を導出する：$L(\theta) = \sum_i l(y_i, f(x_i;\theta)) + R(\theta)$
+  \item \hyperref[chap:objective-function]{目的関数}を導出する：$L(\theta) = \sum_i l(y_i, f(x_i;\theta)) + R(\theta)$
   \item \keyword{最適化}問題を解く（\keyword{学習}）：$\theta^* = \underset{\theta}{\argmin} L(\theta)$
   \item 学習して得られたモデルを\keyword{評価}する
 \end{enumerate}
