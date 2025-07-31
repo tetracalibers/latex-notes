@@ -1,0 +1,63 @@
+\documentclass[../../../topic_machine-learning]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{回帰問題と二乗損失・絶対損失}
+
+回帰問題の場合は、\keyword{二乗損失}や\keyword{絶対損失}を損失関数として使うことが一般的である。
+
+\br
+
+\keyword{二乗損失}は、正解データと予測値の差の二乗をとった値である。
+
+\begin{definition}{二乗損失}
+  \begin{equation*}
+    l_{SE}(\vb*{x}, y; \theta) = \frac{1}{2}\|f(\vb*{x}; \theta) - y\|^2
+  \end{equation*}
+\end{definition}
+
+\keyword{絶対損失}は、差の絶対値をとった値である。
+
+\begin{definition}{絶対損失}
+  \begin{equation*}
+    l_{AE}(\vb*{x}, y; \theta) = \|f(\vb*{x}; \theta) - y\|
+  \end{equation*}
+\end{definition}
+
+二乗や絶対値をとることで、差が負になっても損失として正にできる。
+
+\subsection{最小値からのズレを許しやすいか}
+
+原点付近の様子を見ると、二次関数は最小値からずれても関数の値が急激には増加しない。
+
+絶対値関数の方が、少しでもズレが生じると、関数の値が急に増える。
+
+\br
+
+つまり、二乗損失より絶対損失の方が、最小値からのズレを許しづらくなる。
+
+\subsection{誤差の大きさを重視するか}
+
+二乗損失と絶対損失では、間違えた場合に重視する部分が異なる。
+
+\br
+
+2次関数は、入力が大きくなるにつれ、結果が急激に大きくなる関数である。
+
+そのため、二乗損失は、大きく間違っている場合の誤差が大きくなる。
+
+\br
+
+これに対し、絶対値関数は原点以外は直線（比例）であり、入力が大きくなっても結果は一定の割合で大きくなる関数である。
+
+\br
+
+これらの性質から、
+\begin{itemize}
+  \item 二乗損失は、誤差が大きい場合を重視して学習する
+  \item 絶対損失は、相対的に誤差が小さい場合を重視して学習する
+\end{itemize}
+ということがいえる。
+
+\end{document}
