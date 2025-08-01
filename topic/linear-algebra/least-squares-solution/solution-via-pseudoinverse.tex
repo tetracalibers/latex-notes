@@ -1,0 +1,79 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{擬似逆行列による解}
+
+\hyperref[sec:pseudoinverse-projection]{ムーア・ペンローズの擬似逆行列と直交射影行列}は、次のような関係で結ばれていた。
+\begin{equation*}
+  A^+ A = P_{\mathcal{V}}, \quad A A^+ = P_{\mathcal{U}}
+\end{equation*}
+
+これらの関係を用いると、最小二乗解や最小ノルム解などのすべての場合を包括した解の表現が得られる。
+
+\subsection{最小二乗解}
+
+\hyperref[thm:least-squares-projection]{最小二乗解と列空間への直交射影の関係}より、最小二乗解は次の条件を満たすものだった。
+\begin{equation*}
+  A \vb*{x} = P_{\mathcal{U}} \vb*{b}
+\end{equation*}
+擬似逆行列と直交射影行列の関係$AA^+ = P_{\mathcal{U}}$を用いると、
+\begin{equation*}
+  A \vb*{x} = A A^+ \vb*{b}
+\end{equation*}
+
+この式から、$\vb*{x}=A^+ \vb*{b}$が、$A\vb*{x}$を$\vb*{b}$に最も近づける近似解であることがわかる。
+
+\begin{supplnote}
+  $A$が正則でない場合を考えているので、両辺に$A^{-1}$をかけて$\vb*{x}$を得るという同値変形は成り立たない。
+  それゆえ、$\vb*{x} = A^+ \vb*{b}$は「近似解」でしかない。
+\end{supplnote}
+
+よって、最小二乗解は、次のように表すことができる。
+\begin{equation*}
+  \vb*{x} = A^+ \vb*{b}
+\end{equation*}
+
+\subsection{最小ノルム解}
+
+\hyperref[thm:min-norm-solution-projection]{最小ノルム解と行空間への直交射影の関係}より、最小ノルム解は次の条件を満たすものだった。
+\begin{equation*}
+  \vb*{x} = P_{\mathcal{V}} \vb*{x}_0
+\end{equation*}
+擬似逆行列と直交射影行列の関係$A^+ A = P_{\mathcal{V}}$を用いると、
+\begin{equation*}
+  \vb*{x} = A^+ A \vb*{x}_0 = A^+ \vb*{b}
+\end{equation*}
+
+よって、最小ノルム解は、次のように表すことができる。
+\begin{equation*}
+  \vb*{x} = A^+ \vb*{b}
+\end{equation*}
+
+\subsection{擬似逆行列はあらゆる場合の解を表せる}
+
+このように、最小二乗解も最小ノルム解も、ムーア・ペンローズの擬似逆行列を用いると同じ式で表現できる。
+
+そして、ここでの議論は、射影による条件のみを前提としており、$A$の行や列の線型独立性（フルランクかどうか）に依存していない。
+
+\br
+
+つまり、フルランクでない場合も、擬似逆行列$A^+$が求められれば、
+\begin{equation*}
+  \vb*{x} = A^+ \vb*{b}
+\end{equation*}
+という形で、最小二乗解や最小ノルム解を求めることができる。
+
+\br
+
+また、\hyperref[thm:pseudoinverse-of-invertible]{$A$が正則な場合は$A^+ = A^{-1}$}となるので、$\vb*{x} = A^{-1} \vb*{b}$という逆行列を用いた解の表現も包括していることがわかる。
+
+\begin{theorem}{擬似逆行列による線形方程式の解}
+  $A$のムーア・ペンローズ擬似逆行列$A^+$を用いると、線形方程式$A\vb*{x} = \vb*{b}$の解は次のように表される。
+  \begin{equation*}
+    \vb*{x} = A^+ \vb*{b}
+  \end{equation*}
+\end{theorem}
+
+\end{document}

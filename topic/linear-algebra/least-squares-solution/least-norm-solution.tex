@@ -6,7 +6,8 @@
 \section{最小ノルム解}
 \marginnote{
   \refweb{ノルム最小解の射影による導出}{https://qiita.com/takseki/items/a34c4cb98040a0b7d38c} \\
-  \refweb{射影行列}{https://qiita.com/takseki/items/e0de89ab82d4d287a0d7}
+  \refweb{射影行列}{https://qiita.com/takseki/items/e0de89ab82d4d287a0d7} \\
+  \refweb{最小ノルム解の導出と図による理解}{https://manabitimes.jp/math/2747}
 }
 
 $A\vb*{x} = \vb*{b}$の解が無数にある場合は、「その中で有用な解を選ぼう」というアプローチをとる。
@@ -151,6 +152,14 @@ $\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼�
 \begin{equation*}
   \vb*{x} = P_{\mathcal{V}} \vb*{x}_0 \quad (A\vb*{x}_0 = \vb*{b})
 \end{equation*}
+
+\begin{theorem}{最小ノルム解と行空間への直交射影の関係}\label{thm:min-norm-solution-projection}
+  $A$の行空間を$\mathcal{V}$とし、$\mathcal{V}$への直交射影行列を$P_{\mathcal{V}}$とすると、
+  線形方程式$A\vb*{x} = \vb*{b}$の最小ノルム解は次の関係を満たす。
+  \begin{equation*}
+    \vb*{x} = P_{\mathcal{V}} \vb*{x}_0 \quad (A\vb*{x}_0 = \vb*{b})
+  \end{equation*}
+\end{theorem}
 
 \subsection{行空間への直交射影行列}
 
