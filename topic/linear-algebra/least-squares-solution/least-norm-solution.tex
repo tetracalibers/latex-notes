@@ -1,0 +1,137 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{最小ノルム解}
+\marginnote{
+  \refweb{ノルム最小解の射影による導出}{https://qiita.com/takseki/items/a34c4cb98040a0b7d38c}
+}
+
+$A\vb*{x} = \vb*{b}$の解が無数にある場合は、「その中で有用な解を選ぼう」というアプローチをとる。
+
+このような場合、$\| \vb*{x} \|$が最小となる解を選ぶことが多い。
+
+\br
+
+$\| \vb*{x} \|$が最小となる解を選ぶメリットはさまざまある。
+\begin{itemize}
+  \item 解空間の中で「原点に最も近い」解
+  \item 「変位が最小」など、物理学でも頻出する条件を満たす解
+\end{itemize}
+
+しかし、$\| \vb*{x} \|$は平方根を含むため、計算が複雑になりがちである。
+
+\br
+
+そのため、2乗して平方根を外したもの、すなわち$\| \vb*{x} \|^2$が最小となる解を考えることが多い。
+
+$\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼ばれる。
+
+\subsection{核空間と直交する空間への射影}
+
+\hyperref[sec:reinterpretation-of-parametric-solution]{解のパラメータ表示の再解釈}でも考察したように、$A\vb*{x} = \vb*{b}$の解は次のようにして構成することができる。
+
+\begin{enumerate}
+  \item 1つの解$\vb*{x}_0$を見つける
+  \item $\Ker A$の任意のベクトル$\vb*{u}$を持ってくれば、$\vb*{x}_0 + \vb*{u}$も解である
+\end{enumerate}
+
+\br
+
+\begin{handout}[補足：なんで$\vb*{x}_0 + \vb*{u}$も解だといえるのか？]
+  $A$によって$\vb*{o}$に写ってしまうような、つまり$A\vb*{u}=\vb*{o}$となるような$\vb*{u}$すべての集合が$\Ker A$である。
+  
+  \br
+  
+  $A\vb*{x}_0 = \vb*{b}$が成り立つことと合わせると、
+  \begin{equation*}
+    A(\vb*{x}_0 + \vb*{u}) = A\vb*{x}_0 + A\vb*{u} = A\vb*{x}_0 + \vb*{o} = A\vb*{x}_0 = \vb*{b}
+  \end{equation*}
+  となり、たしかに$\vb*{x} = \vb*{x}_0 + \vb*{u}$も$A\vb*{x} = \vb*{b}$を満たすことがわかる。
+\end{handout}
+
+\br
+
+そのため、$\Ker A$を$\vb*{x}_0$だけ平行移動したものが、$A\vb*{x} = \vb*{b}$の解空間となる。
+\begin{equation*}
+  \text{\bfseries 解空間} = \{ \vb*{x}_0 + \vb*{u} \mid \vb*{u} \in \Ker A \}
+\end{equation*}
+
+\br
+
+\begin{center}
+  \tdplotsetmaincoords{70}{80}
+\begin{tikzpicture}[tdplot_main_coords, scale=3]
+
+  \tdplotsetrotatedcoords{30}{-10}{20}
+  \def\planesize{1.1}
+
+  % 点の定義
+  \coordinate (O) at (0, -0.25, 0);
+  \coordinate (P) at (0.75, 0.5, 1.25);
+  \coordinate (Q) at (P |- O);
+  \coordinate (R) at (O |- P);
+
+  % 直角
+    \draw pic[
+        fill=gray!60,
+        draw=gray,
+        angle radius=3mm,
+        angle eccentricity=1.2,
+      ] {right angle = P--Q--O};
+
+  % PとQを通る直線
+  \draw[thick, BurntOrange, densely dashed] ($(P)!1.75!(Q)$) -- ($(Q)!1.5!(P)$) node[above] {\bfseries $A\vb*{x} = \vb*{b}$の解空間};
+  % OとRを通る直線
+  \draw[thick, Orchid, densely dashed] ($(R)!1.75!(O)$) -- ($ (O)!1.5!(R) $) node[above] {$\Ker A$};
+  
+  % 平面 Im A
+  \begin{scope}[tdplot_rotated_coords]
+    \filldraw[SkyBlue!40, draw=none, opacity=0.6, postaction={pattern=crosshatch dots}, pattern color=SkyBlue!60]
+      (-\planesize,-\planesize,0) --
+      ( \planesize,-\planesize,0) --
+      ( \planesize, \planesize,0) --
+      (-\planesize, \planesize,0) -- cycle;
+    \node[ProcessBlue] at (-\planesize*0.8,-\planesize*0.7,0) {$(\Ker A)^\perp$};
+  \end{scope}
+
+  % ベクトル
+  \draw[vector, Rhodamine] (O) -- (P) node[midway, left]{$\vb*{x}$};
+  \draw[vector, Cerulean] (O) -- (Q) node[below, midway]{$\vb*{x}_0$};
+  \draw[vector, Orchid] (Q) -- (P) node[midway, right=1pt]{$\vb*{u} \in \Ker A$};
+  \draw[vector, Orchid] (O) -- (R) node[midway, left]{$\vb*{u}$};
+  
+  % 点描画
+  \filldraw[Rhodamine] (P) circle (0.5pt) node[anchor=west]{$P$};
+  \filldraw[Cerulean] (Q) circle (0.5pt) node[anchor=west]{$Q$};
+  \filldraw[gray] (O) circle (0.5pt) node[anchor=north east]{$O$};
+\end{tikzpicture}
+\end{center}
+
+さて、$A\vb*{x} = \vb*{b}$の解
+\begin{equation*}
+  \vb*{x} = \vb*{x}_0 + \vb*{u} \quad (\vb*{u} \in \Ker A)
+\end{equation*}
+において、$\vb*{x}$のノルム（長さ）が最小となるのは、明らかに$\vb*{u} = \vb*{o}$のときである。
+
+つまり、$\vb*{x} = \vb*{x}_0$が\keyword{最小ノルム解}となるが、$\vb*{x}_0$を使わずに最小ノルム解を表現したい。
+
+\br
+
+図を見ると、$\vb*{x}_0$は、$\vb*{x}$を平面$(\Ker A)^\perp$へ\keyword{直交射影}したものであることがわかるので、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      解$\vb*{x}$のノルムを最小化するには、\\
+      $\vb*{x}$を$\Ker A$と直交する空間に直交射影すればよい
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということがいえる。
+
+\br
+
+\todo{}
+
+\end{document}
