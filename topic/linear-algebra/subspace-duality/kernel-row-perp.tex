@@ -58,11 +58,17 @@ $A = (a_{ij})$を$m \times n$行列とする。
   \Ker A = (\Row A)^\perp
 \end{equation*}
 
+また、\hyperref[thm:double-orthogonal-complement]{$(\Row A)^\perp$の直交補空間は$\Row A$に一致する}ことから、両辺の直交補空間をとると、次も成り立つ。
+\begin{equation*}
+  (\Ker A)^\perp = \Row A
+\end{equation*}
+
 \begin{theorem}{核空間と行空間の直交関係}
-  $A$の核空間は、$A$の行空間（行ベクトルが張る空間）の直交補空間である。
-  \begin{equation*}
-    \Ker A = (\Row A)^\perp
-  \end{equation*}
+  $A$の核空間と、$A$の行空間（行ベクトルが張る空間）は、直交補空間の関係にある。
+  \begin{align*}
+    \Ker A &= (\Row A)^\perp \\
+    (\Ker A)^\perp &= \Row A
+  \end{align*}
 \end{theorem}
 
 この定理は、核空間と像空間との関係として言い換えることもできる。
@@ -78,13 +84,12 @@ $A$を転置すると行と列が入れ替わるので、$A^\top$の行空間は
 よって、定理を次のように書き換えることができる。
 
 \begin{theorem}{核空間と転置行列の像空間の直交関係}
-  $A$の核空間は、$A^\top$の像空間の直交補空間である。
-  \begin{equation*}
-    \Ker A = (\Im A^\top)^\perp
-  \end{equation*}
+  $A$の核空間と、$A^\top$の像空間は、直交補空間の関係にある。
+  \begin{align*}
+    \Ker A &= (\Im A^\top)^\perp \\
+    (\Ker A)^\perp &= \Im A^\top
+  \end{align*}
 \end{theorem}
-
-\todo{$W^{\perp\perp} = W$という関係を示し、$\Im A^\top = (\Ker A)^\perp$も成り立つことを追記する}
 
 \subsection{直交補空間から零化空間へ}
 
