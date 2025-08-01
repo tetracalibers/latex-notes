@@ -5,7 +5,8 @@
 \sectionline
 \section{最小ノルム解}
 \marginnote{
-  \refweb{ノルム最小解の射影による導出}{https://qiita.com/takseki/items/a34c4cb98040a0b7d38c}
+  \refweb{ノルム最小解の射影による導出}{https://qiita.com/takseki/items/a34c4cb98040a0b7d38c} \\
+  \refweb{射影行列}{https://qiita.com/takseki/items/e0de89ab82d4d287a0d7}
 }
 
 $A\vb*{x} = \vb*{b}$の解が無数にある場合は、「その中で有用な解を選ぼう」というアプローチをとる。
@@ -132,6 +133,67 @@ $\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼�
 
 \br
 
-\todo{}
+ここで、\hyperref[thm:kernel-row-orthogonality]{核空間と行空間の直交関係}より、「$\Ker A$と直交する空間」は、$A$の行空間$\Im A^\top$である。
+
+\br
+
+まとめると、$\| \vb*{x} \|$が最小となるのは、
+\begin{spacebox}
+  \begin{center}
+    $\vb*{x}_0$を\keyword{行空間}$\Im A^\top$へ直交射影したベクトルが$\vb*{x}$
+  \end{center}
+\end{spacebox}
+となっているときだとわかる。
+
+\br
+
+行空間$\Im A^\top$をこれまで通り$\mathcal{V}$と表すことにすると、最小ノルム解は次のように表現できる。
+\begin{equation*}
+  \vb*{x} = P_{\mathcal{V}} \vb*{x}_0 \quad (A\vb*{x}_0 = \vb*{b})
+\end{equation*}
+
+\subsection{行空間への直交射影行列}
+
+転置すると行と列が入れ替わるため、$A$の行空間は、$A^\top$の列空間と言い換えられる。
+
+\br
+
+そのため、$A$の\hyperref[thm:projection-matrix-colspace]{列空間への直交射影行列}の式
+\begin{equation*}
+  P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
+\end{equation*}
+において、$A$を$A^\top$に置き換えたものが、$A$の行空間への直交射影行列となる。
+\begin{equation*}
+  P_{\mathcal{V}} = A^\top (AA^\top)^{-1} A
+\end{equation*}
+
+\begin{theorem}{行空間への直交射影の行列表現}
+  $m \times n$型行列$A$において、$n \geq m = \rank A$（行ベクトルが線型独立）のとき、$A$の行空間への直交射影行列は次のように表される。
+  \begin{equation*}
+    P_{\mathcal{V}} = A^\top (AA^\top)^{-1} A
+  \end{equation*}
+\end{theorem}
+
+\subsection{行フルランクの場合の最小ノルム解}
+
+$\rank A = m$という条件のもとでは、$P_{\mathcal{V}}$を
+\begin{equation*}
+  P_{\mathcal{V}} = A^\top (AA^\top)^{-1} A
+\end{equation*}
+という式で表現できるので、これを$\vb*{x} = P_{\mathcal{V}} \vb*{x}_0$という関係に代入すると、
+\begin{equation*}
+  \begin{WithArrows}
+    \vb*{x} &= A^\top (AA^\top)^{-1} A \vb*{x}_0 \Arrow{$A\vb*{x}_0 = \vb*{b}$} \\
+    &= A^\top (AA^\top)^{-1} \vb*{b}
+  \end{WithArrows}
+\end{equation*}
+という形で、最小ノルム解が求まる。
+
+\begin{theorem}{線型独立な行ベクトルに対する最小ノルム解}
+  $m \times n$型行列$A$において、$n \geq m = \rank A$（行ベクトルが線型独立である）とき、線形方程式$A\vb*{x} = \vb*{b}$の最小ノルム解$\vb*{x}$は次のように表される。
+  \begin{equation*}
+    \vb*{x} = A^\top (AA^\top)^{-1} \vb*{b}
+  \end{equation*}
+\end{theorem}
 
 \end{document}

@@ -77,21 +77,21 @@ $m > n$の場合、$\vb*{b}$は$\vb*{x}$よりも高次元のベクトルなの�
 このことから、$\| A\vb*{x} - \vb*{b} \|$が最小となるのは、
   \begin{spacebox}
     \begin{center}
-      $\vb*{b}$を$\Im A$へ直交射影したベクトルが$A\vb*{x}$
+      $\vb*{b}$を\keyword{列空間}$\Im A$へ直交射影したベクトルが$A\vb*{x}$
     \end{center}
   \end{spacebox}
 になっているときだとわかる。
 
 \br
 
-$\Im A$は$A$の\keyword{列空間}（$A$の列ベクトルが張る空間）であるから、これまで通り$\mathcal{U}$と表すことにしよう。
+$\Im A$は$A$の列空間（$A$の列ベクトルが張る空間）であるから、これまで通り$\mathcal{U}$と表すことにしよう。
 
 すると、最小二乗解$\vb*{x}$が満たすべき条件は、次のように書ける。
 \begin{equation*}
   A\vb*{x} = P_{\mathcal{U}}\vb*{b}
 \end{equation*}
 
-\begin{theorem}{最小二乗解と列空間への射影の関係}\label{thm:least-squares-projection}
+\begin{theorem}{最小二乗解と列空間への直交射影の関係}\label{thm:least-squares-projection}
   $A$の列空間を$\mathcal{U}$とし、$\mathcal{U}$への直交射影行列を$P_{\mathcal{U}}$とすると、
   線形方程式$A\vb*{x} = \vb*{b}$の最小二乗解は次の関係を満たす。
   \begin{equation*}
@@ -99,7 +99,7 @@ $\Im A$は$A$の\keyword{列空間}（$A$の列ベクトルが張る空間）で
   \end{equation*}
 \end{theorem}
 
-\subsection{フルランクの場合の最小二乗解}
+\subsection{列フルランクの場合の最小二乗解}
 
 $n = \rank A$だと仮定する。
 \hyperref[thm:rank-equals-max-indep-cols]{階数は線型独立な列の最大個数}なので、$A$の$n$個の列ベクトルは線型独立である。
@@ -259,7 +259,7 @@ $A^\top A$が正則であることがわかったので、$\vb*{x}$は次のよ�
   \end{equation*}
 \end{theorem}
 
-\subsection{列空間への射影行列}
+\subsection{列空間への直交射影行列}
 
 $\vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}$の両辺に左から$A$をかけると、
 \begin{equation*}
@@ -271,8 +271,8 @@ $\vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}$の両辺に左から$A$をかけると
 \end{equation*}
 であることがわかる。
 
-\begin{theorem}{列空間への直交射影の行列表現}
-  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A$の列空間への直交射影行列は次のように表される。
+\begin{theorem}{列空間への直交射影の行列表現}\label{thm:projection-matrix-colspace}
+  $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立）のとき、$A$の列空間への直交射影行列は次のように表される。
   \begin{equation*}
     P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
   \end{equation*}
