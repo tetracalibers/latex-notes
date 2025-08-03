@@ -1,0 +1,31 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{双線形写像}
+\marginnote{\refbookR p254〜255}
+
+\hyperref[def:bilinear-form]{双線形形式}の一般化として、\keywordJE{双線形写像}{bilinear map}を考える。
+
+\br
+
+双線形写像とは、2つの線形空間の直積から線形空間への写像で、各成分に対して線形となるもののことである。
+
+\begin{definition}{双線形写像}\label{def:bilinear-map}
+  $V,W,U$を線型空間とする。写像$\Phi \colon V \times W \to U$が次の条件を満たすとき、$\Phi$を\keyword{双線形写像}という。
+  \begin{enumerate}[label=\romanlabel]
+    \item $\Phi(\vb*{v}_1 + \vb*{v}_2, \vb*{w}) = \Phi(\vb*{v}_1, \vb*{w}) + \Phi(\vb*{v}_2, \vb*{w})$
+    \item $\Phi(\vb*{v}, \vb*{w}_1 + \vb*{w}_2) = \Phi(\vb*{v}, \vb*{w}_1) + \Phi(\vb*{v}, \vb*{w}_2)$
+    \item $\Phi(c\vb*{v}, \vb*{w}) = \Phi(\vb*{v}, c\vb*{w}) = c\Phi(\vb*{v}, \vb*{w})$
+  \end{enumerate}
+  ここで、$\vb*{v}, \vb*{v}_1, \vb*{v}_2 \in V$, $\vb*{w}, \vb*{w}_1, \vb*{w}_2 \in W$, $c \in \mathbb{R}$である。
+\end{definition}
+
+\subsection{双線形写像は双線形形式の一般化}
+
+$U = \mathbb{R}$とすると、$\Phi$は\hyperref[def:bilinear-form]{双線形形式}となる。
+
+すなわち、双線形写像は双線形形式の一般化である。
+
+\end{document}

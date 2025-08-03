@@ -1,0 +1,257 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{双線形写像の線形化}
+\marginnote{\refbookR p256〜}
+
+$V, W, U$を$\mathbb{R}$上の線形空間とし、直積$V \times W$上の双線形写像$\Phi\colon V \times W \to U$の集合を$\mathcal{L}(V, W; U)$とおく。
+
+\br
+
+ここで、像の空間$U$をいろいろ変えてみると、次の条件を満たす$U$によらない線形空間$U_0$と双線形写像$\iota\colon V \times W \to U_0$が存在することが知られている。
+
+\begin{spacebox}
+  \begin{center}
+    $U$と$\Phi$をどのようにとったとしても、\\
+    $\iota$によって$\Phi$は\keyword{線形化}される
+  \end{center}
+\end{spacebox}
+
+つまり、$V \times W$を$U_0$に送ることによって、双線形性を線形性に変換できるということである。
+
+「双線形である」という面倒な条件を、「線形である」という単純な条件に置き換えられることには大きな意味がある。
+
+\br
+
+双線形写像を線形写像に変換するための最小の空間$U_0$を\keywordJE{テンソル積}{tensor product}といい、線形化を行う写像$\iota$はテンソル積の\keyword{標準写像}と呼ばれる。
+
+\subsection{双対空間による標準写像の構成}
+
+線形空間の双対空間を用いることで、$U_0$と$\iota$を構成することができる。
+
+\br
+
+$V,W$の双対空間を$V^*, W^*$とし、$U_0$を次のようにおく。
+\begin{equation*}
+  U_0 = \mathcal{L}(V^*, W^*; \mathbb{R})
+\end{equation*}
+これは、$V^* \times W^*$から$\mathbb{R}$への双線形写像、すなわち$V^* \times W^*$上の\keyword{双線形形式}の集合である。
+
+\br
+
+このとき、$(\vb*{v}, \vb*{w}) \in V \times W$に対して、
+\begin{equation*}
+  V^* \times W^* \ni (\phi, \psi) \mapsto \phi(\vb*{v}) \psi(\vb*{w}) \in \mathbb{R}
+\end{equation*}
+は、$V^* \times W^*$から$\mathbb{R}$への双線形写像をなす。
+
+\br
+
+\begin{handout}[補足:なぜ双線形写像だといえる？]
+  写像$(\phi, \psi) \mapsto \phi(\vb*{v}) \psi(\vb*{w})$を次のようにおく。
+  \begin{equation*}
+    B_{\vb*{v}, \vb*{w}}(\phi, \psi) = \phi(\vb*{v}) \psi(\vb*{w})
+  \end{equation*}
+  
+  このとき、$B$が双線形性をもつ、すなわち$\phi$と$\psi$それぞれについて線形性をもつことは、次のように確かめられる。
+  
+  \br
+  
+  まず$\psi$を固定すると、$V^* = \Hom(V, \mathbb{R})$における\hyperref[def:linear-map-addition-scalar]{和とスカラー倍の定義}より、
+  \begin{align*}
+    B_{\vb*{v}, \vb*{w}}(\phi_1 + \phi_2, \psi) &= (\phi_1 + \phi_2)(\vb*{v}) \psi(\vb*{w}) \\
+    &= \phi_1(\vb*{v}) \psi(\vb*{w}) + \phi_2(\vb*{v}) \psi(\vb*{w}) \\
+    &= B_{\vb*{v}, \vb*{w}}(\phi_1, \psi) + B_{\vb*{v}, \vb*{w}}(\phi_2, \psi) \\
+    B_{\vb*{v}, \vb*{w}}(c\phi, \psi) &= (c\phi)(\vb*{v}) \psi(\vb*{w}) \\
+    &= c\phi(\vb*{v}) \psi(\vb*{w}) \\
+    &= cB_{\vb*{v}, \vb*{w}}(\phi, \psi)
+  \end{align*}
+  となるので、$B$は$\phi$に関して線形である。
+  
+  \br
+  
+  同様に$\phi$を固定すると、$W^* = \Hom(W, \mathbb{R})$における和とスカラー倍の定義より、
+  \begin{align*}
+    B_{\vb*{v}, \vb*{w}}(\phi, \psi_1 + \psi_2) &= \phi(\vb*{v}) (\psi_1 + \psi_2)(\vb*{w}) \\
+    &= \phi(\vb*{v}) \psi_1(\vb*{w}) + \phi(\vb*{v}) \psi_2(\vb*{w}) \\
+    &= B_{\vb*{v}, \vb*{w}}(\phi, \psi_1) + B_{\vb*{v}, \vb*{w}}(\phi, \psi_2) \\
+    B_{\vb*{v}, \vb*{w}}(\phi, c\psi) &= \phi(\vb*{v}) (c\psi)(\vb*{w}) \\
+    &= c\phi(\vb*{v}) \psi(\vb*{w}) \\
+    &= cB_{\vb*{v}, \vb*{w}}(\phi, \psi)
+  \end{align*}
+  となるので、$B$は$\psi$に関しても線形である。
+\end{handout}
+
+そこで、$(\vb*{v}, \vb*{w}) \in V \times W$を与えたら双線形写像$(\phi, \psi) \mapsto \phi(\vb*{v}) \psi(\vb*{w})$を返す写像を、$\iota(\vb*{v}, \vb*{w})$とする。
+\begin{equation*}
+  \iota \colon V \times W \to U_0, \quad \iota(\vb*{v}, \vb*{w})(\phi, \psi) = \phi(\vb*{v}) \psi(\vb*{w})
+\end{equation*}
+
+\subsection{テンソル積の普遍性}
+
+このとき、$(U_0, \iota)$に関して次が成り立つ。
+
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \times W \arrow[r,"\iota"]\arrow[rd, "\Phi"'] & U_0 \arrow[d,"F"]\\
+    & U
+  \end{tikzcd}
+\end{equation*}
+
+\begin{theorem}{テンソル積の普遍性}
+  線形空間と双線形写像の組$(U_0, \iota)$に対して、次が成り立つ。
+  \begin{enumerate}[label=\romanlabel]
+    \item 任意の$\Phi \in \mathcal{L}(V, W; U)$に対して、$\Phi = F \circ \iota$となる線形写像$F\colon U_0 \to U$が一意的に存在する。
+    \item $(U_0, \iota), (U_0', \iota')$がともに(\romannum{i})の性質を満たすなら、ある線形同型写像$F_0 \colon U_0 \to U_0'$が存在し、$F_0 \circ \iota = \iota'$が成り立つ。
+  \end{enumerate}
+\end{theorem}
+
+(\romannum{i})の条件は、次のような意味を持つ。
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      任意の双線形写像$V \times W \to U$は、写像$\iota$を通すことによって線形写像$U_0 \to U$へと線形化できる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+そして、このような性質をもつ$(U_0, \iota)$が一意的であることを述べたのが(\romannum{ii})の条件である。
+
+\begin{proof}
+  \begin{subpattern}{(\romannum{i})}
+    $m = \dim V, n = \dim W$とし、$V, W$の基底をそれぞれ$\{\vb*{a}_1, \ldots, \vb*{a}_m\}$, $\{\vb*{b}_1, \ldots, \vb*{b}_n\}$とする。
+    
+    さらに、${\vb*{a}_1, \ldots, \vb*{a}_m}$の双対基底を$\{\phi_1, \ldots, \phi_m\}$、${\vb*{b}_1, \ldots, \vb*{b}_n}$の双対基底を$\{\psi_1, \ldots, \psi_n\}$とする。
+    
+    \br
+    
+    ここで、$i = 1, \ldots, m$と$j = 1, \ldots, n$に対して、$\Phi_{ij} \in \mathcal{L}(V^*, W^*; \mathbb{R})$を次のように定める。
+    \begin{gather*}
+      \Phi_{ij}(\phi_k, \psi_l) = \delta_{ik} \delta_{jl} \\(k = 1, \ldots, m,\, l = 1, \ldots, n)
+    \end{gather*}
+    
+    すると、
+    \begin{equation*}
+      \iota(\phi_k, \psi_l)(\vb*{a}_i, \vb*{b}_j) = \phi_k(\vb*{a}_i) \psi_l(\vb*{b}_j) = \delta_{ik} \delta_{jl}
+    \end{equation*}
+    より、
+    \begin{equation*}
+      \iota(\phi_k, \psi_l) = \Phi_{ij}
+    \end{equation*}
+    となる。
+    
+    \br
+    
+    一方、任意の$\vb*{v} = \sum_{i=1}^m v_i \vb*{a}_i \in V$と$\vb*{w} = \sum_{j=1}^n w_j \vb*{b}_j \in W$に対して、$\tau$を次のように定める。
+    \begin{equation*}
+      \tau(\vb*{v}, \vb*{w}) = \sum_{i=1}^m \sum_{j=1}^n v_i w_j \Phi_{ij}(\phi, \psi)
+    \end{equation*}
+    これは成分について線形であることから明らかに双線形写像である。
+    
+    \br
+
+    また、$U_0 = \mathcal{L}(V^*, W^*; \mathbb{R})$とし、任意の双線形写像$b \in \mathcal{L}(V, W; U)$に対して、$F \colon U_0 \to U$を次のように定める。
+    \begin{equation*}
+      F(\Phi_{ij}) = b(\vb*{a}_i, \vb*{b}_j)
+    \end{equation*}
+    すると、任意の$\phi \in V^*, \psi \in W^*$に対して、
+    \begin{align*}
+      F(\tau(\phi, \psi)) &= F\left(\sum_{i=1}^m \sum_{j=1}^n v_i w_j \Phi_{ij}\right) \\
+      &= \sum_{i=1}^m \sum_{j=1}^n v_i w_j F(\Phi_{ij}) \\
+      &= \sum_{i=1}^m \sum_{j=1}^n v_i w_j b(\vb*{a}_i, \vb*{b}_j) \\
+      &= b\left(\sum_{i=1}^m v_i \vb*{a}_i, \sum_{j=1}^n w_j \vb*{b}_j\right) \\
+      &= b(\phi, \psi)
+    \end{align*}
+    となるので、$F \circ \iota = b$が成り立つ。
+    
+    \br
+    
+    よって、$i, j$について和をとると、
+    \begin{align*}
+      F\left(\sum_{i=1}^m \sum_{j=1}^n x_i y_j \Phi_{ij}\right) &= \sum_{i=1}^m \sum_{j=1}^n x_i y_j F(\Phi_{ij}) \\
+      &= \sum_{i=1}^m \sum_{j=1}^n x_i y_j \Phi(\vb*{a}_i, \vb*{b}_j) \\
+      &= \Phi\left(\sum_{i=1}^m x_i \vb*{a}_i, \sum_{j=1}^n y_j \vb*{b}_j\right) \\
+      &= \Phi(\vb*{x}, \vb*{y})
+    \end{align*}
+    % \br
+    
+    % 一方、$\Phi \in \mathcal{L}(V, W; U)$を与えると、基底$\{\vb*{a}_1, \ldots, \vb*{a}_m\}$と$\{\vb*{b}_1, \ldots, \vb*{b}_n\}$に関して、$\Phi$は次のように表される。
+    % \begin{align*}
+    %   \Phi(\vb*{x}, \vb*{y}) &= \sum_{i=1}^m \sum_{j=1}^n x_i y_j \Phi(\vb*{a}_i, \vb*{b}_j) \\
+    %   &= \sum_{i=1}^m \sum_{j=1}^n x_i y_j F(\Phi_{ij})
+    % \end{align*}
+    % ここで、$\vb*{x} = \sum_{i=1}^m x_i \vb*{a}_i \in V,\, \vb*{y} = \sum_{j=1}^n y_j \vb*{b}_j \in W$とする。
+    
+    \br
+    
+    このとき、任意の$(\phi, \psi) \in V^* \times W^*$に対して、
+    \begin{align*}
+      F(\iota(\phi, \psi)) &= F\left(\sum_{i=1}^m \sum_{j=1}^n \phi(\vb*{a}_i) \psi(\vb*{b}_j) \Phi_{ij}\right) \\
+      &= \sum_{i=1}^m \sum_{j=1}^n \phi(\vb*{a}_i) \psi(\vb*{b}_j) F(\Phi_{ij}) \\
+      &= \sum_{i=1}^m \sum_{j=1}^n \phi(\vb*{a}_i) \psi(\vb*{b}_j) \Phi(\vb*{a}_i, \vb*{b}_j) \\
+      &= \Phi\left(\sum_{i=1}^m \phi(\vb*{a}_i) \vb*{a}_i, \sum_{j=1}^n \psi(\vb*{b}_j) \vb*{b}_j\right) \\
+      &= \Phi(\phi, \psi)
+    \end{align*}
+  \end{subpattern}
+\end{proof}
+
+\begin{proof}
+  \begin{subpattern}{(\romannum{i})}
+    $U_0 = \mathcal{L}(V^*, W^*; \mathbb{R})$とし、$\iota$を
+    \begin{equation*}
+      \iota(\vb*{v}, \vb*{w}) \colon (\phi, \psi) \mapsto \phi(\vb*{v}) \psi(\vb*{w})
+    \end{equation*}
+    で定める。$\iota$が双線形写像であることはすでに確認した。
+    
+    \br
+    
+    任意の双線形写像$\Phi\colon V \times W \to U$に対して、$F$を構成することが目標である。
+    
+    \br
+    
+    $V$の基底を$\{\vb*{a}_1, \ldots, \vb*{a}_m\}$、$W$の基底を$\{\vb*{b}_1, \ldots, \vb*{b}_n\}$とする。
+    
+    また、基底$\{\vb*{a}_1, \ldots, \vb*{a}_m\}$に関する$\vb*{x} \in V$の成分を$x_1, \ldots, x_m$、基底$\{\vb*{b}_1, \ldots, \vb*{b}_n\}$に関する$\vb*{y} \in W$の成分を$y_1, \ldots, y_n$とする。
+    
+    このとき、$\vb*{x} \in V, \vb*{y} \in W$は、基底を用いて次のように表される。
+    \begin{equation*}
+      \vb*{x} = \sum_{i=1}^m x_i \vb*{a}_i, \quad \vb*{y} = \sum_{j=1}^n y_j \vb*{b}_j
+    \end{equation*}
+    
+    \br
+    
+    ここで、双線形写像$\Phi(\vb*{x}, \vb*{y})$を考える。
+    
+    まず、第一引数に対する線形性を用いると、
+    \begin{equation*}
+      \Phi(\vb*{x}, \vb*{y}) = \Phi\left(\sum_{i=1}^m x_i \vb*{a}_i, \vb*{y}\right) = \sum_{i=1}^m x_i \Phi(\vb*{a}_i, \vb*{y})
+    \end{equation*}
+    現れたそれぞれの項$\Phi(\vb*{a}_i, \vb*{y})$について第二引数に関する線形性を用いると、
+    \begin{equation*}
+      \Phi(\vb*{a}_i, \vb*{y}) = \Phi\left(\vb*{a}_i, \sum_{j=1}^n y_j \vb*{b}_j\right) = \sum_{j=1}^n y_j \Phi(\vb*{a}_i, \vb*{b}_j)
+    \end{equation*}
+    よって、$\Phi(\vb*{x}, \vb*{y})$は次のように表すことができる。
+    \begin{equation*}
+      \Phi(\vb*{x}, \vb*{y}) = \sum_{i=1}^m \sum_{j=1}^n x_i y_j \Phi(\vb*{a}_i, \vb*{b}_j)
+    \end{equation*}
+    
+    \br
+    
+    つまり、$i = 1, \ldots, m$と$j = 1, \ldots, n$に対して、$\Phi(\vb*{a}_i, \vb*{b}_j) \in U$が与えられていれば、双線形写像$\Phi\colon V \times W \to U$を定めることができる。
+
+    \br
+  
+    $U_0$の元を入力とし、$\Phi(\vb*{a}_i, \vb*{b}_j) \in U$を返す線形写像$F$を、次のようにとればよい。
+    \begin{equation*}
+      F\left(\sum_{i=1}^m \sum_{j=1}^n x_i y_j \iota(\vb*{a}_i, \vb*{b}_j)\right) = \sum_{i=1}^m \sum_{j=1}^n x_i y_j \Phi(\vb*{a}_i, \vb*{b}_j)
+    \end{equation*}
+    ここで、$\iota(\vb*{a}_i, \vb*{b}_j)$は、次のような意味を持つ
+    \begin{equation*}
+      \iota(\vb*{a}_i, \vb*{b}_j) \colon (\phi, \psi) \mapsto \phi(\vb*{a}_i) \psi(\vb*{b}_j)
+    \end{equation*}
+  \end{subpattern}
+\end{proof}
+
+\end{document}
