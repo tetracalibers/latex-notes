@@ -1,0 +1,181 @@
+\documentclass[../../../topic_statistics]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{相対度数と確率}
+
+ここで、\keyword{相対度数}は、全体において各階級の値が現れる割合を表していた。
+
+この割合は、無作為抽出のもとでは「全体の中である階級値のデータが現れる\keyword{確率}」と捉えることができる。
+
+\br
+
+たとえば、$173$cm台という階級の相対度数が$0.25$だったとする。
+
+このとき、抽出に偏りがないことから、$173$cm台という値が母集団全体の$25\%$を占めているといえるので、母集団全体から標本を取り出したときに$173$cm台という値が得られる確率も$25\%$となる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      無作為抽出では、相対度数は確率を表す
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+実際、相対度数$\dfrac{f_i}{N}$の合計は$1$となるので、確率の定義も満たしている。
+\begin{equation*}
+  \sum_{i=1}^N \frac{f_i}{N} = \frac{1}{N} \sum_{i=1}^N f_i = \frac{1}{N}\cdot N = 1
+\end{equation*}
+
+\sectionline
+\section{標本と確率変数}
+
+ここで、$X$という値が得られる確率を関数に見立てて、次のように表そう。
+\begin{equation*}
+  P(X)
+\end{equation*}
+
+$173$cm台という値が得られる確率は、次のように書ける。
+\begin{equation*}
+  P(X = 173\text{cm台}) = 0.25
+\end{equation*}
+
+この関数の引数となる変数$X$を、\keyword{確率変数}という。
+
+\br
+
+確率変数は、「結果を言い当てることはできないが、とりうる値とその値が出る確率が決まっている」ものをいう。
+
+\begin{definition}{確率変数}
+  取りうる値すべてに対して確率を考えることができるような変数
+\end{definition}
+
+ここで、「$173$cm台という値が得られた」ということは、「取り出した標本が$173$cm台だった」ということなので、$X$は\keyword{標本}である。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      無作為抽出では、標本は確率変数とみなせる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\sectionline
+\section{母集団の度数分布と確率分布}
+
+この$P(X)$は、各値$X$がどれくらいの確率で出るかを表す関数といえる。
+
+\br
+
+$X$の取りうる値それぞれに対して確率を割り振り、すべての確率を合計すると$1$となる。
+
+$P(X)$は、この確率の割り振り方、すなわち全確率$1$が確率変数$X$の取りうる値にどのように分布しているかを表しているため、$X$の\keyword{確率分布}と呼ばれる。
+
+\br
+
+また、母集団のある階級の相対度数は、その母集団から無作為抽出された標本$X$がその階級に属する確率$P(X)$を表していた。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      無作為抽出では、母集団の度数分布は標本の確率分布となる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\sectionline
+\section{離散型確率分布}
+
+階級幅を横幅、相対度数を高さとする棒グラフ（ヒストグラム）を作成すると、これはそのまま標本$X$の確率分布$P(X)$を表すグラフとなる。
+
+\br
+
+\includegraphics[width=0.95\linewidth]{./python/sampling-height_discrete.png}
+
+\br
+
+しかし、たとえば$173$cm台を表す棒だけでは、$173.1$cmの人が何人いて、$173.5$cmの人が何人いたのかなど、その間の分布はわからない。
+
+この意味で、この棒グラフは、$\ldots,173, 174, 175,\ldots$という、$1$cmごとの飛び飛びの値（離散値）に対する確率の情報しか持っていないことになる。
+
+\br
+
+離散的な値$X$に対する確率分布を\keyword{離散型確率分布}といい、これを表す関数$P(X)$は\keywordJE{確率質量関数}{PMF: probability mass function}と呼ばれる。
+
+\br
+
+確率質量関数$f(x)$に対して、確率変数$X$が値$x_i$をとる確率は、次のように表される。
+\begin{equation*}
+  P(X = x_i) = f(x_i)
+\end{equation*}
+
+\sectionline
+\section{連続型確率分布}
+
+ここで、棒グラフの幅（階級幅）をどんどん細かくしていくことで、$173.8\dots$cmといった実際の身長に近い値（実数値）をとる確率の分布を考えることができる。
+
+\br
+
+このとき、棒グラフのそれぞれの棒の高さを結んだグラフは、次のようになる。
+
+\br
+
+\includegraphics[width=0.95\linewidth]{./python/sampling-height_continuous.png}
+
+\br
+
+実数値をとる確率分布を\keyword{連続型確率分布}といい、それを表す関数を\keywordJE{確率密度関数}{PDF: probability density function}と呼ぶ。
+
+\br
+
+しかし、階級幅を小さくしていくと、各階級に含まれるデータの数はどんどん少なくなっていく。
+
+最終的に階級幅が$0$に近づけば、$1$点に一致するデータしかカウントされなくなる。
+
+\br
+
+これは、相対度数（確率）の式$\dfrac{f_i}{N}$でいえば、$f_i$がどんどん小さくなっていくことに相当する。
+\begin{equation*}
+  \lim_{f_i \to 0} \frac{f_i}{N} = 0
+\end{equation*}
+
+連続的なデータ（実数値をとるデータ）では、完全に一致する値（特定の1点）が出る確率は$0$となってしまう。
+
+\br
+
+そこで、連続型確率分布では、「ある区間に入る確率」を考えるしかない。
+たとえば、「身長が173cm以上174cm未満となる確率」のように、区間に対して確率を定義する。
+
+\br
+
+確率密度関数$f(x)$に対して、確率変数$X$が区間$[a, b]$に入る確率は、次のように定積分で表される。
+\begin{equation*}
+  P(a \leq X \leq b) = \int_a^b f(x) dx
+\end{equation*}
+
+\br
+
+\includegraphics[width=0.95\linewidth]{./python/sampling-height_probability.png}
+
+\br
+
+このように、連続型確率分布では、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      確率は体積
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+として表される。
+
+\br
+
+ここで、確率の総和は$1$であるから、全区間に対する確率密度関数の定積分（全面積）は$1$となる必要がある。
+確率密度変数は、次の性質を満たすものとして定義される。
+\begin{equation*}
+  \int_{-\infty}^{\infty} f(x) dx = 1, \quad f(x) \geq 0
+\end{equation*}
+
+\end{document}
