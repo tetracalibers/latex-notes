@@ -40,6 +40,28 @@
 \newcommand{\refbookQ}{\refbook{数学の公式・定理・決まりごとがまとめてわかる事典}}
 \newcommand{\refbookR}{\refbook{手を動かしてまなぶ 続・線形代数}}
 
+% === 調整 ===
+
+\marginnoteoff
+\geometry{top=20truemm,bottom=20truemm,left=25truemm,right=25truemm,headsep=5truemm}
+
+\usepackage{fancyhdr} % ヘッダー・フッターの設定
+\pagestyle{fancy}
+\fancyhf{} % ヘッダー・フッターを空にする
+\fancyhead[R]{\textcolor{lightslategray!60}{\textsf{tomixy (@tetracalibers)}}}
+%\fancyhead[L]{\textcolor{lightslategray}{\thepage}}
+\renewcommand{\headrulewidth}{0pt}
+
+% ref: https://kumaroot.readthedocs.io/ja/latest/latex/latex-titlesec.html
+\usepackage{titlesec}
+\titleformat{\chapter}% command
+    [display]% shape
+    {\normalfont\huge\bfseries}% format
+    {第{\texttt\thechapter}章}% label
+    {20pt}% sep
+    {\Huge}% before-code
+    [\thispagestyle{empty}]% after-code
+
 % ---
 
 \begin{document}

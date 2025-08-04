@@ -11,6 +11,7 @@
 \newcommand{\romannum}[1]{\textsf{#1}}
 
 \usepackage[noparboxrestore]{marginnote}
+\gdef\marginnoteoff{\gdef\marginnote##1{}} % marginnoteを無効化するコマンド
 
 \usepackage{tocloft}
 % chapterのnumwidthを広くする
