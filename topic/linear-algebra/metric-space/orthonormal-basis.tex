@@ -55,47 +55,6 @@
   よって、$c_j = 0$でなければならず、これは$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$が線型独立であることを意味する $\qed$
 \end{proof}
 
-\subsection{直交基底の線型結合の係数}
-
-直交基底を用いると、基底の線形結合が内積によって簡単に計算できる
-
-\begin{theorem}{直交基底を用いたベクトルの表現}\label{thm:vector-expansion-by-orthogonal-basis}
-  計量空間$V$の直交基底$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$に対して、任意のベクトル$\vb*{v} \in V$は
-  \begin{equation*}
-    \vb*{v} = \sum_{i=1}^n \frac{(\vb*{v}, \vb*{a}_i)}{(\vb*{a}_i, \vb*{a}_i)} \vb*{a}_i
-  \end{equation*}
-  と表すことができる
-\end{theorem}
-
-\begin{proof}
-  ベクトル$\vb*{v}$が次のような線形結合
-  \begin{equation*}
-    \vb*{v} = c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_n \vb*{a}_n
-  \end{equation*}
-  で表されるとし、係数を求めることを目指す
-
-  このとき、$\vb*{a}_j\, (j=1,2,\ldots,n)$との内積をとると、
-  \begin{align*}
-    (\vb*{v}, \vb*{a}_j) & = (c_1 \vb*{a}_1 + c_2 \vb*{a}_2 + \cdots + c_n \vb*{a}_n, \vb*{a}_j)                           \\
-                         & = c_1 (\vb*{a}_1, \vb*{a}_j) + c_2 (\vb*{a}_2, \vb*{a}_j) + \cdots + c_n (\vb*{a}_n, \vb*{a}_j) \\
-                         & = \sum_{i=1}^n c_i (\vb*{a}_i, \vb*{a}_j)
-  \end{align*}
-  となるが、$\vb*{a}_i$は直交系であるため、$i \neq j$のとき$(\vb*{a}_i, \vb*{a}_j) = 0$である
-
-  よって、上の式において残るのは、$i=j$の項だけとなり、
-  \begin{equation*}
-    (\vb*{v}, \vb*{a}_j) = c_j (\vb*{a}_j, \vb*{a}_j)
-  \end{equation*}
-
-  ここで、直交系の定義より$\vb*{a}_j \neq \vb*{0}$なので、$(\vb*{a}_j, \vb*{a}_j) \neq 0$である
-
-  そこで、両辺を$(\vb*{a}_j, \vb*{a}_j)$で割ることができ、
-  \begin{equation*}
-    c_j = \frac{(\vb*{v}, \vb*{a}_j)}{(\vb*{a}_j, \vb*{a}_j)}
-  \end{equation*}
-  が得られる $\qed$
-\end{proof}
-
 \sectionline
 \section{正規直交系と正規直交基底}
 \marginnote{\refbookC p117〜119 \\ \refbookF p181〜182}
@@ -105,26 +64,6 @@
 
   正規直交系が$V$の基底であるとき、\keyword{正規直交基底}と呼ばれる
 \end{definition}
-
-\subsection{正規直交基底の線型結合の係数}
-
-\hyperref[thm:vector-expansion-by-orthogonal-basis]{直交基底を用いたベクトルの表現}は、正規直交基底の場合、さらに簡単な形になる
-
-\begin{theorem}{正規直交基底を用いたベクトルの表現}\label{thm:expansion-in-orthonormal-basis}
-  計量空間$V$の正規直交基底$\vb*{a}_1, \vb*{a}_2, \ldots, \vb*{a}_n$に対して、任意のベクトル$\vb*{v} \in V$は
-  \begin{equation*}
-    \vb*{v} = \sum_{i=1}^n (\vb*{v}, \vb*{a}_i) \vb*{a}_i
-  \end{equation*}
-  と表すことができる
-\end{theorem}
-
-\begin{proof}
-  正規直交基底の場合、
-  \begin{equation*}
-    (\vb*{a}_i,\vb*{a}_i) = \|\vb*{a}_i\|^2 = 1
-  \end{equation*}
-  であることを用いると、\hyperref[thm:vector-expansion-by-orthogonal-basis]{直交基底を用いたベクトルの表現}において分母が1となり、この形が得られる $\qed$
-\end{proof}
 
 \subsection{正規直交基底と内積}
 
