@@ -1,0 +1,65 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{ベクトルの正射影}
+\marginnote{\refbookF p184〜185}
+
+このように、直交基底や正規直交基底を用いることで計算が簡単になる場面が多くある。
+
+実は、任意の基底を直交基底や正規直交基底に作り変えることもできる。
+
+\br
+
+直交基底をつくるにあたって重要となる、\keyword{正射影}という概念を導入しよう。
+
+\begin{definition}{正射影}
+  $\vb*{0}$でないベクトル$\vb*{a}$が与えられているとき、ベクトル$\vb*{x}$に対し、
+  \begin{enumerate}[label=\romanlabel]
+    \item $\vb*{p}$が$\vb*{a}$と平行
+    \item $\vb*{x - p}$が$\vb*{a}$と直交
+  \end{enumerate}
+  という条件を満たすベクトル$\vb*{p}$を、$\vb*{x}$の$\vb*{a}$への\keyword{正射影}という
+\end{definition}
+
+\begin{theorem}{正射影の公式}
+  ベクトル$\vb*{x}$のベクトル$\vb*{a}$への正射影$\vb*{p}$は、次のように表される
+  \begin{equation*}
+    \vb*{p} = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})} \vb*{a} = \frac{(\vb*{x}, \vb*{a})}{\|\vb*{a}\|^2} \vb*{a}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{p}$が$\vb*{a}$と平行であることから、
+  \begin{equation*}
+    \vb*{p} = k \vb*{a} \quad (k \in K)
+  \end{equation*}
+  また、$\vb*{x - p}$が$\vb*{a}$と直交することから、
+  \begin{equation*}
+    (\vb*{x-p},\vb*{a}) = 0
+  \end{equation*}
+  よって、
+  \begin{equation*}
+    (\vb*{x} - k \vb*{a}, \vb*{a}) = 0
+  \end{equation*}
+  内積の双線形性より、
+  \begin{equation*}
+    (\vb*{x}, \vb*{a}) - k (\vb*{a}, \vb*{a}) = 0
+  \end{equation*}
+  ここで、正射影の定義より$\vb*{a} \neq \vb*{0}$なので、$(\vb*{a}, \vb*{a}) \neq 0$である
+
+  よって、$(\vb*{a}, \vb*{a})$で割ることができ、
+  \begin{equation*}
+    k = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})}
+  \end{equation*}
+  と$k$が定まる
+
+  最初の式に代入すると、
+  \begin{equation*}
+    \vb*{p} = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})} \vb*{a}
+  \end{equation*}
+  が得られる $\qed$
+\end{proof}
+
+\end{document}
