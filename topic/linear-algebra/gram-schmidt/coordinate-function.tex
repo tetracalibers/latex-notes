@@ -1,0 +1,176 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{基底方向への正射影と座標}
+\marginnote{\refbookO p53〜54}
+
+正規直交基底の場合、「基底方向への正射影の長さ」を測ることは、その方向の「成分（座標）」を得ることに相当する。
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+
+      % 基底ベクトル
+      \def\ax{1}
+      \def\ay{1}
+      \def\acolor{LimeGreen}
+      % 係数
+      \def\n{2.5}
+      \def\m{2}
+
+      \def\ox{0}
+      \def\oy{0}
+
+      \coordinate (O) at (\ox,\oy);
+      \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+      % グリッド
+      \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=1] (\xmax, \ymax);
+
+      \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+      \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (O) [below left] {$O$};
+      
+      % 点Xからx軸へ
+      \draw[dashed] (X) -- ++(0,-\m*\ay) node[below] {$x$};
+      % 点Xからy軸へ
+      \draw[dashed] (X) -- ++(-\n*\ax,0) node[left] {$y$};
+
+      % ベクトル
+      \draw[vector, very thick, BurntOrange] (O) -- ++(\n*\ax,\m*\ay) node[midway,sloped, above] {$x\vb*{u_1}+y\vb*{u_2}$};
+
+      % 点
+      \draw (X) node[circle, fill, inner sep=1.5pt] {};
+      \node at (X) [above right] {$(x, y)$};
+
+      % 基底ベクトル
+      \draw[vector, very thick, \acolor] (O) -- ++(\ax, 0) node[below, midway] {$\vb*{u}_1$};
+      \draw[vector, very thick, \acolor] (O) -- ++(0, \ay) node[left, midway] {$\vb*{u}_2$};
+    \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+    \begin{tikzpicture}
+      \def\xmin{-1}
+      \def\xmax{4}
+      \def\ymin{-1}
+      \def\ymax{4}
+
+      % 基底ベクトル
+      \def\ax{1}
+      \def\ay{1}
+      \def\acolor{LimeGreen}
+      % 係数
+      \def\n{2.5}
+      \def\m{2}
+
+      \def\ox{0}
+      \def\oy{0}
+
+      \coordinate (O) at (\ox,\oy);
+      \coordinate (X) at ($(O)+(\n*\ax,\m*\ay)$);
+
+      % グリッド
+      \draw[dotted, lightslategray] (\xmin, \ymin) grid[step=1] (\xmax, \ymax);
+
+      \draw[axis] (\xmin, \oy) -- (\xmax, \oy) node[right] {$x$};
+      \draw[axis] (\ox, \ymin) -- (\ox, \ymax) node[above] {$y$};
+
+      % 原点
+      \node at (O) [below left] {$O$};
+    
+      % ベクトル
+      \draw[vector, <-, Rhodamine] (X) -- ++(-\n*\ax,0) node[above, midway] {$x\vb*{u}_1$};
+      \draw[vector, <-, Cerulean] (X) -- ++(0,-\m*\ay) node[right, midway] {$y\vb*{u}_2$};
+
+      % 点
+      \draw (X) node[circle, fill, inner sep=1.5pt] {};
+      \node at (X) [above right] {$(x, y)$};
+
+      % 基底ベクトル
+      \draw[vector, very thick, \acolor] (O) -- ++(\ax, 0) node[above, near end] {$\vb*{u}_1$};
+      \draw[vector, very thick, \acolor] (O) -- ++(0, \ay) node[right, near end] {$\vb*{u}_2$};
+
+      \draw[thick, Straight Barb-Straight Barb, Rhodamine] ([yshift=-1ex]O) -- ([yshift=-1ex]\n*\ax, 0) node[below, midway] {\bfseries 長さ$x$};
+      \draw[thick, Straight Barb-Straight Barb, Cerulean] ([xshift=-1ex]O) -- ([xshift=-1ex]0, \m*\ay) node[left, midway] {\bfseries 長さ$y$};
+    \end{tikzpicture}
+  \end{minipage}
+\end{figure}
+
+たとえば、ベクトル$\vb*{v}$が正規直交基底$\vb*{u}_1, \vb*{u}_2$に関して次のように表されるとする。
+\begin{equation*}
+  \vb*{v} = \begin{pmatrix}
+    x \\
+    y
+  \end{pmatrix} = x\vb*{u}_1 + y\vb*{u}_2
+\end{equation*}
+
+このとき、各係数$x,y$は、次のような正射影の長さとして得られる。
+\begin{itemize}
+  \item $x\vb*{u}_1$を$\vb*{u}_1$方向へ正射影したものの長さが$x$
+  \item $y\vb*{u}_2$を$\vb*{u}_2$方向へ正射影したものの長さが$y$
+\end{itemize}
+
+ここで、\hyperref[sec:orthogonal-projection-measurement]{「正射影を測る観測装置」}で述べた、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      単位ベクトルとの内積は、その方向に正射影したときの長さを与える
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という解釈と合わせると、次のように各座標（成分）を得ることができる。
+\begin{equation*}
+  x = \braket{\vb*{u}_1|\vb*{v}}, \quad y = \braket{\vb*{u}_2|\vb*{v}}
+\end{equation*}
+
+\subsection{直交化と正規化}
+
+ベクトル$\vb*{a}$が、互いに直交するベクトル$\vb*{u}_1, \vb*{u}_2, \widehat{\vb*{u}}_3$を用いて、次のように書けるとする。
+\begin{equation*}
+  \vb*{a} = x_1\vb*{u}_1 + x_2\vb*{u}_2 + \widehat{\vb*{u}}_3
+\end{equation*}
+
+ここで、$\vb*{u}_1$と$\vb*{u}_2$のノルムは1だが、$\widehat{\vb*{u}}_3$はそうではない。
+
+$\widehat{\vb*{u}}_3$は、ノルムが1のベクトル$\vb*{u}_3$を用いると、$\widehat{\vb*{u}}_3 = x_3 \vb*{u}_3$となるようなベクトルであるとする。
+
+\br
+
+このとき、$\vb*{u}_1, \vb*{u}_2$は単位ベクトルであるから、$\vb*{a}$との内積でそれぞれの係数を得ることができる。
+\begin{equation*}
+  \vb*{a} = \braket{\vb*{u}_1|\vb*{a}} \vb*{u}_1 + \braket{\vb*{u}_2|\vb*{a}} \vb*{u}_2 + \widehat{\vb*{u}}_3
+\end{equation*}
+
+この式を変形すると、$\widehat{\vb*{u}}_3$は次のように表せる。
+\begin{equation*}
+  \widehat{\vb*{u}}_3 = \vb*{a} - \braket{\vb*{u}_1|\vb*{a}} \vb*{u}_1 - \braket{\vb*{u}_2|\vb*{a}} \vb*{u}_2
+\end{equation*}
+
+ベクトル$\vb*{a}$を構成するときに、$\vb*{u}_1,\vb*{u}_2$に直交するような成分が$\widehat{\vb*{u}}_3$である。
+
+これを求めるためには、$\vb*{a}$から$\widehat{\vb*{u}}_3$以外の方向$\vb*{u}_1,\vb*{u}_2$への正射影を引けばよい。
+
+\br
+
+互いに直交するベクトルは、正射影を利用することで連鎖的に得ることができる。
+
+実際、$\vb*{u}_1$と$\vb*{u}_2$を\keyword{直交化}しておけば、これらへの正射影を引くという形で、さらにこれらに直交するベクトル$\widehat{\vb*{u}}_3$をつくることができる。
+
+\br
+
+なお、ベクトルのノルムを1にすることを\keyword{正規化}という。
+
+$\vb*{u}_1$と$\vb*{u}_2$が\keyword{正規化}されていれば、これらへの正射影は内積だけで簡単に求まる。
+
+\end{document}

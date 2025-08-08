@@ -12,7 +12,7 @@
 
 \br
 
-正規直交基底をつくるにあたって重要となる、\keyword{正射影}という概念を導入しよう。
+正規直交系をつくるにあたって重要となる、\keyword{正射影}という概念を導入しよう。
 
 \subsection{ベクトルの「影」}
 
@@ -182,7 +182,7 @@ $\vb*{p}$は$\vb*{u}$と平行であることから、スカラー$k$を用い�
   \end{equation*}
 \end{theorem}
 
-\subsection{正射影を測る観測装置}
+\subsection{正射影を測る観測装置}\label{sec:orthogonal-projection-measurement}
 
 $\vb*{v}$の$\vb*{u}$への正射影の（符号付き）長さは、係数$k$の部分で表される。
 \begin{equation*}
@@ -194,9 +194,18 @@ $\vb*{v}$の$\vb*{u}$への正射影の（符号付き）長さは、係数$k$�
 
 ここで、$\vb*{u}$のノルムが1であれば、$k$は内積$\braket{\vb*{u}|\vb*{v}}$そのものになる。
 \begin{equation*}
-  \braket{\vb*{u}|\vb*{v}} = k
+  \braket{\vb*{u}|\vb*{v}} = \vb*{u}^\top \vb*{v} = k
 \end{equation*}
 
-つまり、ノルムが1の横ベクトル$\bra{\vb*{u}}$は、$\vb*{v}$の$\vb*{u}$への正射影の（符号つき）長さを測る観測装置として機能する。
+つまり、ノルムが1の横ベクトル$\bra{\vb*{u}} = \vb*{u}^\top$は、$\vb*{v}$の$\vb*{u}$への正射影の（符号つき）長さを測る観測装置として機能する。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      単位ベクトル$\vb*{u}$との内積は、\\
+      「$\vb*{u}$方向に正射影し、その長さを返す」操作になる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
 
 \end{document}
