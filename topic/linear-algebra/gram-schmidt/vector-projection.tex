@@ -4,7 +4,7 @@
 
 \sectionline
 \section{ベクトルの正射影}
-\marginnote{\refbookF p184〜185}
+\marginnote{\refbookF p184〜185 \\ \refbookO p52〜53}
 
 このように、直交基底や正規直交基底を用いることで計算が簡単になる場面が多くある。
 
@@ -12,54 +12,191 @@
 
 \br
 
-直交基底をつくるにあたって重要となる、\keyword{正射影}という概念を導入しよう。
+正規直交基底をつくるにあたって重要となる、\keyword{正射影}という概念を導入しよう。
+
+\subsection{ベクトルの「影」}
+
+\hyperref[sec:inner-product-similarity]{内積の幾何学的解釈}は、次のような図で内積の意味を捉えようとするものだった。
+
+\begin{center}
+  \begin{tikzpicture}[scale=2.5]
+    % Coordinates
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (1.7,0);          % Vector v
+    \coordinate (U) at (1.2,0.7);        % Vector u
+
+    % Projection of u onto v
+    \coordinate (P) at ($(O)!(U)!(V)$);          % foot of perpendicular
+
+    % Right angle mark
+    \draw pic[draw=lightslategray, angle radius=1ex]
+      {right angle=U--P--O};
+
+    % Draw angle between u and v
+    \draw pic[
+        draw=black,
+        ->,
+        angle radius=7.5mm,
+        angle eccentricity=1.5,
+        "$\theta$"
+      ] {angle=V--O--U};
+
+    % Dashed line for projection
+    \draw[densely dashed, thick, lightslategray] (U) -- (P);
+
+    % Draw vectors
+    \draw[vector, Periwinkle!75] (O) -- (U) node[above] {$\vb*{v}$};
+    \draw[vector, Periwinkle!75] (O) -- (V) node[right] {$\vb*{u}$};
+
+    \draw[<->, thick, Straight Barb-Straight Barb, Rhodamine] ([yshift=-0.5ex]O) -- ([yshift=-0.5ex]V) node[below, pos=0.85] {$\|\vb*{u}\|$};
+    \draw[<->, thick, Straight Barb-Straight Barb, Cerulean] ([yshift=-1ex]O) -- ([yshift=-1ex]P) node[below, midway] {$\|\vb*{v}\|\cos\theta$};
+  \end{tikzpicture}
+\end{center}
+
+\hyperref[def:angle-between-vectors]{ベクトル$\vb*{u}, \vb*{v}$のなす角$\theta$}を用いると、$\vb*{v}$の$\vb*{u}$との内積は次のように表すことができる。
+\begin{equation*}
+  \braket{\vb*{u}|\vb*{v}} = \|\vb*{u}\| \|\vb*{v}\| \cos \theta
+\end{equation*}
+
+つまり、$\vb*{u}$と$\vb*{v}$の内積とは、$\vb*{u}$の長さ$\|\vb*{u}\|$と、$\vb*{v}$の$\vb*{u}$方向の長さ$\|\vb*{v}\|\cos\theta$の積であるとも捉えられる。
+
+\begin{supplnote}
+  厳密には、$\theta$の値によっては$\cos \theta$は負の数になり得るので、$\|\vb*{v}\| \cos \theta$をそのまま正射影の「長さ」と呼ぶのは適切ではないのだが…
+\end{supplnote}
+
+\br
+
+ここで、$\vb*{v}$の$\vb*{u}$方向の長さは、上から光を当てたときに$\vb*{u}$に投影される、「$\vb*{v}$の影」の長さのように見える。
+
+そこで、$\vb*{u}$方向の直線上に落とした$\vb*{v}$の影となるベクトルを、$\vb*{v}$の$\vb*{u}$への\keyword{正射影}と呼ぶ。
+
+\begin{center}
+  \begin{tikzpicture}[scale=2.5]
+    % Coordinates
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (1.7,0);          % Vector v
+    \coordinate (U) at (1.2,0.7);        % Vector u
+
+    % Projection of u onto v
+    \coordinate (P) at ($(O)!(U)!(V)$);          % foot of perpendicular
+
+    % Right angle mark
+    \draw pic[draw=lightslategray, angle radius=1ex]
+      {right angle=U--P--O};
+
+    % Dashed line for projection
+    \draw[densely dashed, thick, lightslategray] (U) -- (P);
+
+    \draw[vector, Periwinkle!75] (O) -- (U) node[above=0.5ex, midway] {$\vb*{v}$};
+    \draw[semithick, Rhodamine] ($(O)!1.5!(V)$) -- ($(V)!1.5!(O)$) node[at start, below] {\bfseries $\vb*{u}$方向の直線};
+    
+    \draw[vector, very thick, Cerulean] (O) -- (P) node[below, midway] {\bfseries $\vb*{v}$の正射影};
+  \end{tikzpicture}
+\end{center}
+
+\subsection{正射影の公式}
+
+なす角$\theta$を使わずに、$\vb*{v}$の$\vb*{u}$への正射影を表すことを考えてみよう。
+
+\br
+
+$\vb*{v}$の$\vb*{u}$への正射影を$\vb*{p}$とおくと、次の関係が成り立っている。
+
+\begin{itemize}
+  \item $\vb*{p}$は$\vb*{u}$と平行である
+  \item $\vb*{v} - \vb*{p}$は$\vb*{u}$と直交する
+\end{itemize}
+
+\br
+
+\begin{center}
+  \begin{tikzpicture}[scale=2.5]
+    % Coordinates
+    \coordinate (O) at (0,0);
+    \coordinate (V) at (1.7,0);          % Vector v
+    \coordinate (U) at (1.2,0.7);        % Vector u
+
+    % Projection of u onto v
+    \coordinate (P) at ($(O)!(U)!(V)$);          % foot of perpendicular
+
+    % Right angle mark
+    \draw pic[draw=lightslategray, angle radius=1ex]
+      {right angle=U--P--O};
+    
+    % Dashed line for projection
+    \draw[densely dashed, thick, lightslategray] (U) -- (P);
+
+    \draw[semithick, Rhodamine] ($(O)!1.5!(V)$) -- ($(V)!1.5!(O)$) node[at start, above] {\bfseries $\vb*{u}$方向の直線};
+    
+    % Draw vectors
+    \draw[vector, Periwinkle!75] (O) -- (U) node[above=0.5ex, midway] {$\vb*{v}$};
+    \draw[vector, Periwinkle!75] ([yshift=-0.5ex]O) -- ([yshift=-0.5ex]V) node[right] {$\vb*{u}$};
+    \draw[vector, Cerulean] (O) -- (P) node[above, midway] {$\vb*{p}$};
+    \draw[vector, BurntOrange] (P) -- (U) node[right, midway] {$\vb*{v} - \vb*{p}$};
+  \end{tikzpicture}
+\end{center}
+
+$\vb*{p}$は$\vb*{u}$と平行であることから、スカラー$k$を用いて次のように表せる。
+\begin{equation*}
+  \vb*{p} = k \vb*{u}
+\end{equation*}
+
+また、$\vb*{v} - \vb*{p}$が$\vb*{u}$と直交することから、これらの内積は0になる。
+\begin{equation*}
+  (\vb*{v} - k \vb*{u}, \vb*{u}) = 0
+\end{equation*}
+
+\hyperref[def:inner-product-axioms]{内積の双線形性}を用いて展開すると、
+\begin{gather*}
+  (\vb*{v}, \vb*{u}) - k (\vb*{u}, \vb*{u}) = 0 \\
+  \therefore \quad k \| \vb*{u} \|^2 = (\vb*{v}, \vb*{u})
+\end{gather*}
+
+ここで、$\vb*{u} \neq \vb*{o}$であれば、そのノルム$\|\vb*{u}\|$は0にはなり得ないので、$\| \vb*{u} \|^2$で両辺を割ることができる。
+\begin{equation*}
+  k = \frac{(\vb*{v}, \vb*{u})}{\|\vb*{u}\|^2}
+\end{equation*}
+
+よって、正射影ベクトル$\vb*{p} = k \vb*{u}$は、次のように表すことができる。
+\begin{equation*}
+  \text{\bfseries 正射影ベクトル} = \frac{(\vb*{v}, \vb*{u})}{\|\vb*{u}\|^2} \vb*{u}
+\end{equation*}
+
+\br
+
+ここまでの話をまとめておこう。
 
 \begin{definition}{正射影}
-  $\vb*{0}$でないベクトル$\vb*{a}$が与えられているとき、ベクトル$\vb*{x}$に対し、
+  $\vb*{o}$でないベクトル$\vb*{u}$が与えられているとき、ベクトル$\vb*{v}$に対し、
   \begin{enumerate}[label=\romanlabel]
-    \item $\vb*{p}$が$\vb*{a}$と平行
-    \item $\vb*{x - p}$が$\vb*{a}$と直交
+    \item $\vb*{p}$が$\vb*{u}$と平行
+    \item $\vb*{v - p}$が$\vb*{u}$と直交
   \end{enumerate}
-  という条件を満たすベクトル$\vb*{p}$を、$\vb*{x}$の$\vb*{a}$への\keyword{正射影}という
+  という条件を満たすベクトル$\vb*{p}$を、$\vb*{v}$の$\vb*{u}$への\keyword{正射影}という。
 \end{definition}
 
 \begin{theorem}{正射影の公式}
-  ベクトル$\vb*{x}$のベクトル$\vb*{a}$への正射影$\vb*{p}$は、次のように表される
+  ベクトル$\vb*{v}$の$\vb*{u}$への正射影$\vb*{p}$は、次のように表される。
   \begin{equation*}
-    \vb*{p} = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})} \vb*{a} = \frac{(\vb*{x}, \vb*{a})}{\|\vb*{a}\|^2} \vb*{a}
+    \vb*{p} = \frac{(\vb*{v}, \vb*{u})}{\|\vb*{u}\|^2} \vb*{u}
   \end{equation*}
 \end{theorem}
 
-\begin{proof}
-  $\vb*{p}$が$\vb*{a}$と平行であることから、
-  \begin{equation*}
-    \vb*{p} = k \vb*{a} \quad (k \in K)
-  \end{equation*}
-  また、$\vb*{x - p}$が$\vb*{a}$と直交することから、
-  \begin{equation*}
-    (\vb*{x-p},\vb*{a}) = 0
-  \end{equation*}
-  よって、
-  \begin{equation*}
-    (\vb*{x} - k \vb*{a}, \vb*{a}) = 0
-  \end{equation*}
-  内積の双線形性より、
-  \begin{equation*}
-    (\vb*{x}, \vb*{a}) - k (\vb*{a}, \vb*{a}) = 0
-  \end{equation*}
-  ここで、正射影の定義より$\vb*{a} \neq \vb*{0}$なので、$(\vb*{a}, \vb*{a}) \neq 0$である
+\subsection{正射影を測る観測装置}
 
-  よって、$(\vb*{a}, \vb*{a})$で割ることができ、
-  \begin{equation*}
-    k = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})}
-  \end{equation*}
-  と$k$が定まる
+$\vb*{v}$の$\vb*{u}$への正射影の（符号付き）長さは、係数$k$の部分で表される。
+\begin{equation*}
+  k = \frac{\braket{\vb*{u}|\vb*{v}}}{\|\vb*{u}\|^2}
+\end{equation*}
+この長さの分だけ$\vb*{u}$をスケーリングしたものが、$\vb*{v}$の$\vb*{u}$への正射影$\vb*{p} = k \vb*{u}$となる。
 
-  最初の式に代入すると、
-  \begin{equation*}
-    \vb*{p} = \frac{(\vb*{x}, \vb*{a})}{(\vb*{a}, \vb*{a})} \vb*{a}
-  \end{equation*}
-  が得られる $\qed$
-\end{proof}
+\br
+
+ここで、$\vb*{u}$のノルムが1であれば、$k$は内積$\braket{\vb*{u}|\vb*{v}}$そのものになる。
+\begin{equation*}
+  \braket{\vb*{u}|\vb*{v}} = k
+\end{equation*}
+
+つまり、ノルムが1の横ベクトル$\bra{\vb*{u}}$は、$\vb*{v}$の$\vb*{u}$への正射影の（符号つき）長さを測る観測装置として機能する。
 
 \end{document}
