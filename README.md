@@ -116,6 +116,12 @@ cp ./topic/linear-algebra/out/diagonalization.pdf ./public/linear-algebra/diagon
 cp ./topic/linear-algebra/out/metric-space.pdf ./public/linear-algebra/metric-space.pdf
 ```
 
+### 正射影と直交化
+
+```bash
+cp ./topic/linear-algebra/out/gram-schmidt.pdf ./public/linear-algebra/gram-schmidt.pdf
+```
+
 ### 複素行列と対角化
 
 ```bash
@@ -134,6 +140,12 @@ cp ./topic/linear-algebra/out/mapping-on-metric-space.pdf ./public/linear-algebr
 cp ./topic/linear-algebra/out/triangularization.pdf ./public/linear-algebra/triangularization.pdf
 ```
 
+### 直交補空間と射影行列
+
+```bash
+cp ./topic/linear-algebra/out/projection-matrix.pdf ./public/linear-algebra/projection-matrix.pdf
+```
+
 ### 抽象線形空間
 
 ```bash
@@ -150,7 +162,7 @@ TODO
 cp ./topic/linear-algebra/out/row-vector-space.pdf ./public/linear-algebra/row-vector-space.pdf
 ```
 
-### 直交補空間と部分空間の双対性
+### 部分空間の双対性
 
 ```bash
 cp ./topic/linear-algebra/out/subspace-duality.pdf ./public/linear-algebra/subspace-duality.pdf
@@ -172,12 +184,6 @@ cp ./topic/linear-algebra/out/quadratic-form.pdf ./public/linear-algebra/quadrat
 
 ```bash
 cp ./topic/linear-algebra/out/tensor-product.pdf ./public/linear-algebra/tensor-product.pdf
-```
-
-### 射影行列
-
-```bash
-cp ./topic/linear-algebra/out/projection-matrix.pdf ./public/linear-algebra/projection-matrix.pdf
 ```
 
 ### 固有値とスペクトル分解

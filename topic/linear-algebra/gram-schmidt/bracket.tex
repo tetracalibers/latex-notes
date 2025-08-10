@@ -1,0 +1,59 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{観測装置としての内積}
+\marginnote{
+  \refbookO p26〜27 \\
+  \refweb{線形代数の基礎のキソ}{https://www1.econ.hit-u.ac.jp/kawahira/courses/kiso.html}
+}
+
+ここでは、内積$(\vb*{a}_1, \vb*{a}_2)$において、$\vb*{a}_1$と$\vb*{a}_2$の機能を分離して、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      内積$(\vb*{a}_1, \vb*{a}_2)$とは、$\vb*{a}_1$で$\vb*{a}_2$を測って得られる値
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という再解釈を行う。
+
+\subsection{縦ベクトルが基本}
+
+内積$(\vb*{a}_1, \vb*{a}_2)$は、次のように表すこともできた。
+\begin{equation*}
+  \vb*{a}_1^\top \vb*{a}_2
+\end{equation*}
+つまり、縦ベクトル$\vb*{a}_2$に、横ベクトル$\vb*{a}_1^\top$を作用させることで、内積が得られると読むことができる。
+
+\br
+
+このように、$\vb*{a}_2$が測りたい対象で、$\vb*{a}_1$がその測定器であるという視点を持つことができる。
+
+\subsection{ブラとケット}
+
+この視点を表す上で有用なのが、\keyword{ブラケット記法}である。
+
+\begin{itemize}
+  \item 横ベクトルに対応する記号として$\bra{\vb*{a}_1}$を定義し、これを\keyword{ブラ}ベクトルと呼ぶ
+  \item 縦ベクトルに対応する記号として$\ket{\vb*{a}_2}$を定義し、これを\keyword{ケット}ベクトルと呼ぶ
+\end{itemize}
+
+これらの記号を用いると、内積は次のように表せる。
+\begin{equation*}
+  \braket{\vb*{a}_1|\vb*{a}_2}
+\end{equation*}
+このように、ブラとケットが組み合わされると、スカラー値$\braket{\vb*{a}_1|\vb*{a}_2}$が得られる。
+
+\br
+
+ケットという「観測対象」に対して、結果としてスカラー値を返すような関数（内積）を考えたとき、そのための「観測装置」となるのがブラである。
+
+\br
+
+観測装置であるブラ（横ベクトル）は、縦ベクトルからスカラー値を得るための写像$\mathbb{R}^n \to \mathbb{R}$とみることもできる。
+
+この捉え方を一般化すると、\keyword{線形汎関数}という概念に結びつく。
+
+\end{document}
