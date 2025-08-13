@@ -1,0 +1,228 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{横ベクトルと座標関数}
+\marginnote{\refbookA p120}
+
+$n \times 1$型行列（$n$次の縦ベクトル）全体の集合は$\mathbb{R}^n$と表された。
+
+$1 \times n$型行列（$n$次の横ベクトル）全体の集合を${}^t\mathbb{R}^n$と表すことにする。
+
+\br
+
+${}^t\mathbb{R}^n$の元は$1 \times n$型行列なので、$\mathbb{R}^n$から$\mathbb{R}$への線形写像（すなわち$\mathbb{R}^n$上の\keyword{線形汎関数}）を表現している行列だと考えることができる。
+
+\subsection{座標関数の表現行列}
+
+基本ベクトルを転置したもの${}^t\vb*{e}_j \in {}^t\mathbb{R}^n$を縦ベクトル$\vb*{v} \in \mathbb{R}^n$にかけると、$\vb*{v}$の$j$番目の成分が得られる。
+
+たとえば、$n=3,\,j=2$の場合、
+\begin{equation*}
+  {}^t\vb*{e}_2\begin{pmatrix}
+    v_1 \\
+    v_2 \\
+    v_3
+  \end{pmatrix} = \begin{pmatrix}
+    0 & 1 & 0
+  \end{pmatrix}
+  \begin{pmatrix}
+    v_1 \\
+    v_2 \\
+    v_3
+  \end{pmatrix}
+  = v_2
+\end{equation*}
+といった具合に、$2$番目の成分$v_2$が得られる。
+
+\br
+
+このように、ベクトル$\vb*{v} \in \mathbb{R}^n$に対して、その$j$番目の成分を返す\keyword{座標関数}を$x_j$と表記することにしよう。
+\begin{equation*}
+  \begin{array}{llll}
+    x_j\colon & \mathbb{R}^n         & \longrightarrow & \mathbb{R}          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & \vb*{v}               & \longmapsto     & v_j = {}^t\vb*{e}_j \vb*{v}
+  \end{array}
+\end{equation*}
+
+このとき、$x_j\colon \mathbb{R}^n \to \mathbb{R}$は$\mathbb{R}^n$上の\keyword{線形汎関数}である。
+
+${}^t\vb*{e}_j \vb*{v}$を行列の積として見ると、横基本ベクトル${}^t\vb*{e}_j \in {}^t\mathbb{R}^n$は線形汎関数$x_j$の表現行列だと捉えることができる。
+
+\begin{mindflow}
+  \todo{「基底方向への正射影」という観点についても述べる？}
+\end{mindflow}
+
+\subsection{横ベクトルと線形汎関数の同一視}\label{sec:row-vector-functional}
+
+任意の縦ベクトルは、基本ベクトル（標準基底）の線形結合として一意的に表現できる。
+\begin{equation*}
+  \ket{\vb*{v}} = \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix} = v_1 \vb*{e}_1 + \cdots + v_n \vb*{e}_n
+\end{equation*}
+
+同様に、任意の横ベクトルは、横基本ベクトルの線形結合として一意的に表現できる。
+\begin{equation*}
+  \bra{\vb*{a}} = \begin{pmatrix}
+    a_1 & \cdots & a_n
+  \end{pmatrix}
+  = a_1 {}^t\vb*{e}_1 + \cdots + a_n {}^t\vb*{e}_n
+\end{equation*}
+
+\br
+
+ここで、\hyperref[sec:inner-product-to-functional]{横ベクトル$\bra{\vb*{a}}$は観測装置}という視点に戻って、縦ベクトルを入力したら$\vb*{a}$との内積を返す線形汎関数を$\phi$とおくと、
+\begin{align*}
+  \phi(\vb*{v}) &= \vb*{a}^\top \vb*{v} = \begin{pmatrix}
+    a_1 & \cdots & a_n
+  \end{pmatrix}
+  \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix} \\
+  &= a_1 v_1 + \cdots + a_n v_n \\
+  & = a_1 {}^t\vb*{e}_1 \begin{pmatrix}
+                               v_1    \\
+                               \vdots \\
+                               v_n
+                             \end{pmatrix} + \cdots + a_n {}^t\vb*{e}_n \begin{pmatrix}
+                                                                          v_1    \\
+                                                                          \vdots \\
+                                                                          v_n
+                                                                        \end{pmatrix} \\
+       & = a_1 x_1(\vb*{v}) + \cdots + a_n x_n(\vb*{v})
+\end{align*}
+
+よって、任意の線形汎関数$\phi \in (\mathbb{R}^n)^*$は、座標関数$x_1,\dots,x_n$の線型結合として表すことができる。
+\begin{equation*}
+  \phi = a_1 x_1 + \cdots + a_n x_n
+\end{equation*}
+
+また、$x_i$の表現行列が${}^t \vb*{e}_i$であることを思い出すと、
+\begin{equation*}
+  \phi = a_1 {}^t\vb*{e}_1 + \cdots + a_n {}^t\vb*{e}_n = \bra{\vb*{a}}
+\end{equation*}
+というように、線形汎関数$\phi$は横ベクトル$\bra{\vb*{a}}$と同一視することができる。
+
+\br
+
+$\{ {}^t\vb*{e}_1, \ldots, {}^t\vb*{e}_n \}$を基底としてどんな横ベクトルも表現できることは、$\{ x_1, \ldots, x_n \}$を基底としてどんな線形汎関数も表現できることに対応する。
+
+これより、横ベクトルの空間${}^t \mathbb{R}^n$と、線形汎関数の空間$(\mathbb{R}^n)^*$は、同じ空間とみなすことができる。
+
+\sectionline
+\section{縦ベクトルと横ベクトルの双対性}
+\marginnote{\refbookA p121〜122}
+
+$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$を$\mathbb{R}^n$の基底とするとき、任意の縦ベクトル$\vb*{v} \in \mathbb{R}^n$は、
+\begin{equation*}
+  \vb*{v} = v_1 \vb*{u}_1 + \cdots + v_n \vb*{u}_n
+\end{equation*}
+という線形結合で表すことができる。
+
+\br
+
+ここで、$v_1, \ldots, v_n$は基底$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$に関する$\vb*{v}$の座標である。
+
+このうち、$j$番目の座標$v_j$を取得する関数を$\phi_j\colon\mathbb{R}^n \to \mathbb{R}$と定めると、$\phi_j$は、
+\begin{equation*}
+  \phi_j(\vb*{u}_i) = \delta_{ij}
+\end{equation*}
+を満たし、$\{ \phi_1, \ldots, \phi_n \}$が$(\mathbb{R}^n)^*$の基底となる。
+
+\br
+
+このとき、$(\mathbb{R}^n)^*$の元（線形汎関数）を横ベクトルと同一視すると、任意の横ベクトル$\phi \in {}^t\mathbb{R}^n$は、
+\begin{equation*}
+  \phi = c_1 \phi_1 + \cdots + c_n \phi_n
+\end{equation*}
+という線形結合で表すことができる。
+
+\br
+
+ここで、$c_1, \ldots, c_n$は基底$\{ \phi_1, \ldots, \phi_n \}$に関する$\phi$の座標である。
+
+このうち、$j$番目の座標$c_j$を取得する関数を$\psi_j\colon {}^t\mathbb{R}^n \to \mathbb{R}$と定めると、$\psi_j$は、
+\begin{equation*}
+  \psi_j(\phi_i) = \delta_{ij}
+\end{equation*}
+を満たし、$\{ \psi_1, \ldots, \psi_n \}$が$({}^t\mathbb{R}^n)^*$の基底となる。
+
+\br
+
+さて、基底を変えれば座標も変わってしまうので、$\psi_j$はあくまでも基底が$\{ \phi_1, \ldots, \phi_n \}$のときの横ベクトルの座標を返す関数である。
+
+さらに、$\phi_j$は$\mathbb{R}^n$の基底が$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$のときの縦ベクトルの座標を返す関数である。
+
+\br
+
+つまり、$\psi_j$は$\mathbb{R}^n$の基底$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$に依存しているので、$\vb*{u}_j \in \mathbb{R}^n$を入力として$\psi_j$を定める関数$\iota$を考えてみる。
+\begin{equation*}
+  \begin{array}{lllc}
+    \iota\colon & \mathbb{R}^n         & \longrightarrow & ({}^t\mathbb{R}^n)^*          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & \vb*{u}_j               & \longmapsto     & \psi_j
+  \end{array}
+\end{equation*}
+
+$\iota$を用いると、次のように書ける。
+\begin{equation*}
+  \iota(\vb*{u}_j) = \psi_j
+\end{equation*}
+
+このとき、基底に対して座標は一意的であり、基底が変わると座標が変わることから、
+\begin{enumerate}[label=\romanlabel]
+  \item 基底$\{ \vb*{u}_j \}_{j=1}^n$を固定すれば、$\iota(\vb*{u}_j) = \psi_j$を満たす座標$\{ \psi_j \}_{j=1}^n$は一意に定まる
+  \item 座標$\{ \psi_j \}_{j=1}^n$を固定すれば、$\iota(\vb*{u}_j) = \psi_j$を満たす基底$\{ \vb*{u}_j \}_{j=1}^n$は一意に定まる
+\end{enumerate}
+という2通りの見方ができる。
+
+\br
+
+このように、$\vb*{u}_j \in \mathbb{R}^n$と$\psi_j \in ({}^t\mathbb{R}^n)^*$には、「互いに測り、測られる」という対称性がある。
+このような対称性を\keyword{双対性}という。
+
+\br
+
+この性質を意識し、${}^t\mathbb{R}^n$を$\mathbb{R}^n$の\keyword{双対空間}という。
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[r,leftrightarrow,"\textbf{同一視}"] \arrow[rd, "\textbf{裏返し}"'] & ({}^t\mathbb{R}^n)^* \\
+    & {}^t\mathbb{R}^n \arrow[u,"\textbf{裏返し}"']
+  \end{tikzcd}
+\end{equation*}
+
+\keyword{双対}とは、「裏返しにした関係」と解釈できる。
+
+\br
+
+${}^t\mathbb{R}^n$が$\mathbb{R}^n$の双対空間であるとは、「横ベクトルの空間${}^t\mathbb{R}^n$を裏返しにしたもの$({}^t\mathbb{R}^n)^*$は、縦ベクトルの空間$\mathbb{R}^n$と同一視できる」ということである。
+
+\br
+
+逆に、$\mathbb{R}^n$は${}^t\mathbb{R}^n$の双対空間である。
+「縦ベクトルの空間$\mathbb{R}^n$を裏返しにしたもの$(\mathbb{R}^n)^*$は、横ベクトルの空間${}^t\mathbb{R}^n$と同一視できる」ということでもある。
+
+すなわち、線形汎関数の空間$(\mathbb{R}^n)^*$を横ベクトルの空間${}^t\mathbb{R}^n$と同一視できる。
+
+\br
+
+そこで、${}^t\mathbb{R}^n$を$(\mathbb{R}^n)^*$に書き換えると、
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[r,leftrightarrow,"\textbf{同一視}"] \arrow[rd, "\textbf{裏返し}"'] & ((\mathbb{R}^n)^*)^* \\
+    & (\mathbb{R}^n)^* \arrow[u,"\textbf{裏返し}"']
+  \end{tikzcd}
+\end{equation*}
+という関係が見えてくる。
+$(\mathbb{R}^n)^*$を$\mathbb{R}^n$の\keyword{双対空間}という。
+
+表$\mathbb{R}^n$の裏は$(\mathbb{R}^n)^*$であり、裏の裏$((\mathbb{R}^n)^*)^*$は表$\mathbb{R}^n$になる。
+
+\end{document}

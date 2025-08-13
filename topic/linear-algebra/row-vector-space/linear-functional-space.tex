@@ -1,0 +1,225 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{線形汎関数の空間}
+
+内積の双線形性は、任意のベクトル$\vb*{v}$に対して、
+\begin{equation*}
+  (c_1 \vb*{a}_1 + c_2 \vb*{a}_2, \vb*{v}) = c_1 (\vb*{a}_1, \vb*{v}) + c_2 (\vb*{a}_2, \vb*{v})
+\end{equation*}
+が成り立つというものだった。
+
+\br
+
+これは、$\mathbb{R}^n$上の線形汎関数が満たす関係式と読み替えることができる。
+\begin{equation*}
+  \phi_{c_1 \vb*{a}_1 + c_2 \vb*{a}_2}(\vb*{v}) = c_1 \phi_{\vb*{a}_1}(\vb*{v}) + c_2 \phi_{\vb*{a}_2}(\vb*{v})
+\end{equation*}
+
+この関係式は、$\mathbb{R}^n$上の線形汎関数の集合に、\keyword{線形空間}としての構造をもたらす。
+
+\br
+
+$\mathbb{R}^n$上の線形汎関数の集合を$(\mathbb{R}^n)^*$と書くことにしよう。
+
+この集合$(\mathbb{R}^n)^*$に和とスカラー倍の演算を導入することで、$(\mathbb{R}^n)^*$を線形空間とみなすことができる。
+
+\sectionline
+\section{線形汎関数の空間の基底}
+\marginnote{
+  \refweb{1次形式と双対空間}{https://www.cck.dendai.ac.jp/math/support/latb.html}
+}
+
+$\mathbb{R}^n$の基底を$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$とするとき、任意のベクトル$\vb*{v} \in \mathbb{R}^n$は、
+\begin{equation*}
+  \vb*{v} = v_1 \vb*{u}_1 + \cdots + v_n \vb*{u}_n = \begin{pmatrix}
+    \vb*{u}_1 & \cdots & \vb*{u}_n
+  \end{pmatrix} \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix}
+\end{equation*}
+という線形結合で表すことができる。
+
+ここで、$v_1, \ldots, v_n$は、基底$\{\vb*{u}_1, \ldots, \vb*{u}_n\}$に関する$\vb*{v}$の\keyword{成分}あるいは\keyword{座標}と呼ばれる。
+
+\br
+
+このうち第$j$座標$v_j$を取得する関数を$\phi_j$と定めよう。
+\begin{equation*}
+  \phi_j(\vb*{v}) = v_j
+\end{equation*}
+このような関数を\keyword{座標関数}と呼ぶことにする。
+
+\br
+
+また、$\phi_j$は線形であるため、$\mathbb{R}^n$上の線形汎関数である。
+
+\br
+
+\begin{handout}[補足：$\phi_j$の線形性]
+  任意の$\vb*{v},\vb*{w}\in\mathbb{R}^n$が基底$\{\vb*{u}_1, \ldots, \vb*{u}_n\}$に関して次のように表せるとする。
+  \begin{equation*}
+    \vb*{v} = \sum_{i=1}^n v_i \vb*{u}_i, \quad \vb*{w} = \sum_{j=1}^n w_j \vb*{u}_j
+  \end{equation*}
+  このとき、$\phi_j$は次のように定義される。
+  \begin{equation*}
+    \phi_j(\vb*{v}) = v_j, \quad \phi_j(\vb*{w}) = w_j
+  \end{equation*}
+  
+  \br
+  
+  ベクトルの和を考えると、
+  \begin{equation*}
+    \vb*{v} + \vb*{w} = \sum_{i=1}^n (v_i + w_i) \vb*{u}_i
+  \end{equation*}
+  より、第$j$座標は$v_j+w_j$となるので、
+  \begin{equation*}
+    \phi_j(\vb*{v} + \vb*{w}) = v_j + w_j = \phi_j(\vb*{v}) + \phi_j(\vb*{w})
+  \end{equation*}
+  
+  \br
+  
+  ベクトルのスカラー倍を考えると、
+  \begin{equation*}
+    \alpha \vb*{v} = \sum_{i=1}^n (\alpha v_i) \vb*{u}_i
+  \end{equation*}
+  より、第$j$座標は$\alpha v_j$となるので、
+  \begin{equation*}
+    \phi_j(\alpha \vb*{v}) = \alpha v_j = \alpha \phi_j(\vb*{v})
+  \end{equation*}
+  
+  \br
+  
+  以上より、$\phi_j\colon\mathbb{R}^n\to\mathbb{R}$は線形写像であることが示された。
+\end{handout}
+
+\br
+
+$\phi_j$を用いると、$\vb*{v}$を表す線形結合は次のように書ける。
+\begin{equation*}
+  \vb*{v} = \phi_1(\vb*{v}) \vb*{u}_1 + \cdots + \phi_n(\vb*{v}) \vb*{u}_n
+\end{equation*}
+
+\br
+
+ここで、たとえば$\vb*{v}$を$\vb*{u}_1$に置き換えた式を考える。
+\begin{equation*}
+  \vb*{u}_1 = \phi_1(\vb*{u}_1) \vb*{u}_1 + \cdots + \phi_n(\vb*{u}_1) \vb*{u}_n
+\end{equation*}
+この等式が成り立つには、
+\begin{itemize}
+  \item $\phi_1(\vb*{u}_1) = 1$
+  \item $\phi_2(\vb*{u}_1) = 0, \ldots, \phi_n(\vb*{u}_1) = 0$
+\end{itemize}
+でなければならない。
+
+右辺の$\vb*{u}_1$だけが残り、他の項が消えることで、$\vb*{u}_1 = \vb*{u}_1$という等式が成り立つ。
+
+\br
+
+同様に考えると、$\vb*{v}$を$\vb*{u}_i$に置き換えた式
+\begin{equation*}
+  \vb*{u}_i = \phi_1(\vb*{u}_i) \vb*{u}_1 + \cdots + \phi_n(\vb*{u}_i) \vb*{u}_n
+\end{equation*}
+が成り立つには、$\vb*{u}_i$だけが残り、他の項が消えなければならないので、
+\begin{equation*}
+  \phi_j (\vb*{u}_i) = \delta_{ij} = \begin{cases}
+    1 & (i = j) \\
+    0 & (i \neq j)
+  \end{cases}
+\end{equation*}
+と定める必要がある。
+
+\br
+
+この式により、$\mathbb{R}^n$の基底$\vb*{u}_1, \ldots, \vb*{u}_n$を選べば、それらに対応する線形汎関数$\phi_1, \ldots, \phi_n$が定まることがわかる。
+
+そしてこのとき、$\phi_1, \ldots, \phi_n$は$(\mathbb{R}^n)^*$の基底となっている。
+
+\begin{theorem}{$\mathbb{R}^n$における基底に対応する線形汎関数の構成}\label{thm:dual-basis-construction-Rn}
+  $\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$を$\mathbb{R}^n$の基底とするとき、$\phi_j \in (\mathbb{R}^n)^*$を次のように定める。
+  \begin{equation*}
+    \phi_j (\vb*{u}_i) = \delta_{ij}
+  \end{equation*}
+  このような$\phi_1, \ldots, \phi_n$は$(\mathbb{R}^n)^*$の基底をなす。
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $\phi_1, \ldots, \phi_n$が線型独立であること}
+    次のような$\phi_1, \ldots, \phi_n$の線形関係式を考える。
+    \begin{equation*}
+      c_1 \phi_1 + \cdots + c_n \phi_n = 0
+    \end{equation*}
+    
+    このとき、任意の$j$に対して、
+    \begin{align*}
+      (c_1 \phi_1 + \cdots + c_n \phi_n)(\vb*{u}_j) &= c_1 \phi_1(\vb*{u}_j) + \cdots + c_n \phi_n(\vb*{u}_j) \\
+      &= \sum_{i=1}^n c_i \phi_i(\vb*{u}_j) = \sum_{i=1}^n c_i \delta_{ij} \\
+      &= c_j = 0
+    \end{align*}
+    が成り立たなければならない。
+    
+    これは$\phi_1, \ldots, \phi_n$が線型独立であることを示している。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries $\phi_1, \ldots, \phi_n$が$(\mathbb{R}^n)^*$を張ること}
+    $\psi \in (\mathbb{R}^n)^*$を任意にとると、$\vb*{u}_j$に対する値$\alpha_j = \psi(\vb*{u}_j)$が定まる。
+    
+    \br
+    
+    このとき、$\alpha_j$を係数とする$\phi_1, \ldots, \phi_n$の線形結合を作ると、
+    \begin{align*}
+      (\alpha_1 \phi_1 + \cdots + \alpha_n \phi_n)(\vb*{u}_j) &= \alpha_1 \phi_1(\vb*{u}_j) + \cdots + \alpha_n \phi_n(\vb*{u}_j) \\
+      &= \sum_{i=1}^n \alpha_i \phi_i(\vb*{u}_j) = \sum_{i=1}^n \alpha_i \delta_{ij} = \alpha_j \\
+      &= \psi(\vb*{u}_j)
+    \end{align*}
+    
+    $\phi_j,\psi$はともに$\mathbb{R}^n$から$\mathbb{R}$への線形写像であり、$\phi_j$の線形結合もまた$(\mathbb{R}^n)^*$の元なので$\mathbb{R}^n$から$\mathbb{R}$への線形写像である。
+    
+    よって、\hyperref[thm:linear-map-equality-on-basis]{$\mathbb{R}^n$の基底$\{\vb*{u}_1, \ldots, \vb*{u}_n\}$に対して同じ値をとる}ことから、
+    \begin{equation*}
+      \psi = \alpha_1 \phi_1 + \cdots + \alpha_n \phi_n
+    \end{equation*}
+    がいえる。
+    
+    \br
+    
+    したがって、任意の$\psi \in (\mathbb{R}^n)^*$は$\phi_1, \ldots, \phi_n$の線形結合として表すことができるため、
+    \begin{equation*}
+      (\mathbb{R}^n)^* = \langle \phi_1, \ldots, \phi_n \rangle
+    \end{equation*}
+    が示された。$\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{線形汎関数の空間の次元}
+
+$\mathbb{R}^n$の基底$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$と、それに対応する$(\mathbb{R}^n)^*$の基底$\{ \phi_1, \ldots, \phi_n \}$は、どちらも$n$個のベクトルの組になっている。
+
+\begin{supplnote}
+  ここでいう「ベクトル」とは、「線形空間の元」という意味である。
+  $(\mathbb{R}^n)^*$も線形空間であるので、その元である線形汎関数も「ベクトル」と呼んでいる。
+\end{supplnote}
+
+基底をなすベクトルの個数は、その空間の\keyword{次元}として定義されるので、次のことがいえる。
+
+\begin{theorem}{$\mathbb{R}^n$とその線形汎関数の空間の次元の一致}
+  $\mathbb{R}^n$上の線形汎関数の空間$(\mathbb{R}^n)^*$の次元は、$\mathbb{R}^n$の次元と等しい。
+  \begin{equation*}
+    \dim \mathbb{R}^n = \dim (\mathbb{R}^n)^* = n
+  \end{equation*}
+\end{theorem}
+
+また、\hyperref[thm:abstract-linear-pigeonhole]{次元が等しいことから、$\mathbb{R}^n$と$(\mathbb{R}^n)^*$は線形同型}である。
+
+すなわち、$\mathbb{R}^n$の元（縦ベクトル）と$(\mathbb{R}^n)^*$の元（$\mathbb{R}^n$上の線形汎関数）の間には、\keyword{全単射}が存在する。
+
+\br
+
+基底を決めれば、縦ベクトルと線形汎関数を同一視する（同じものの「異なる表現」と捉える）ことができる。
+
+\end{document}

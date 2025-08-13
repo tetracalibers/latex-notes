@@ -1,0 +1,208 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{内積から線形汎関数へ}\label{sec:inner-product-to-functional}
+\marginnote{
+  \refbookA p120 \\ \refbookR p232〜233 \\
+  \refweb{線形代数の基礎のキソ}{https://www1.econ.hit-u.ac.jp/kawahira/courses/kiso/01-senkei.pdf}
+}
+
+横ベクトル（$1 \times n$型行列）を縦ベクトル（$n \times 1$型行列）にかけると、$1 \times 1$のスカラー値が得られる。
+\begin{equation*}
+  \begin{pmatrix}
+    a_1 & \cdots & a_n
+  \end{pmatrix} \begin{pmatrix}
+    v_1    \\
+    \vdots \\
+    v_n
+  \end{pmatrix}
+  = a_1 v_1 + \cdots + a_n v_n
+\end{equation*}
+
+上の式は、数ベクトル空間の内積そのものである。
+\begin{equation*}
+  \braket{\vb*{a}|\vb*{v}} = \vb*{a}^\top\vb*{v} = a_1 v_1 + \cdots + a_n v_n
+\end{equation*}
+
+\br
+
+さて、\hyperref[sec:inner-product-as-observer]{「観測装置としての内積」}の章で述べたように、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      内積$\braket{\vb*{a}|\vb*{v}}$は、観測装置$\bra{\vb*{a}}$によるベクトル$\ket{\vb*{v}}$の測定結果
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+という捉え方もできる。
+
+\br
+
+ここで、観測装置である横ベクトル$\bra{\vb*{a}}$を、縦ベクトル$\ket{\vb*{v}}$から内積を返す関数$\phi_{\vb*{a}}$とみることにしよう。
+\begin{equation*}
+  \phi_{\vb*{a}}(\vb*{v}) = \braket{\vb*{a}|\vb*{v}} = a_1 v_1 + \cdots + a_n v_n
+\end{equation*}
+
+$\phi_{\vb*{a}}$は、縦ベクトル$\vb*{v}$を入力とし、スカラー値$\braket{\vb*{a}|\vb*{v}}$を返す、$\mathbb{R}^n$から$\mathbb{R}$への写像である。
+
+\br
+
+さらに、内積の双線形性から、$\phi_{\vb*{a}}$は線形写像であることがわかる。
+\begin{align*}
+  \phi_{\vb*{a}}(c_1 \vb*{v}_1 + c_2 \vb*{v}_2) &= (\vb*{a}, c_1 \vb*{v}_1 + c_2 \vb*{v}_2) \\
+  &= c_1 (\vb*{a}, \vb*{v}_1) + c_2 (\vb*{a}, \vb*{v}_2) \\
+  &= c_1 \phi_{\vb*{a}}(\vb*{v}_1) + c_2 \phi_{\vb*{a}}(\vb*{v}_2)
+\end{align*}
+
+この関数$\phi_{\vb*{a}}$は、\keyword{線形汎関数}と呼ばれる写像の一例である。
+
+\begin{definition}{$\mathbb{R}^n$上の線形汎関数}
+  $\mathbb{R}^n$上の関数$\phi \colon \mathbb{R}^n \to \mathbb{R}$が線形写像であるとき、$\phi$を$\mathbb{R}^n$上の\keyword{線形汎関数}あるいは\keyword{線形形式}という。
+\end{definition}
+
+\sectionline
+\section{線形汎関数のベクトル表示}
+
+$\mathbb{R}^n$上の線形汎関数は、すべて内積から定めることができる。
+
+\begin{theorem}{$\mathbb{R}^n$上の線形汎関数の内積による表現}
+  $\mathbb{R}^n$上の任意の線形汎関数$\psi\colon \mathbb{R}^n \to \mathbb{R}$に対し、ある$\vb*{a} \in \mathbb{R}^n$がただ一つ存在して、次を満たす。
+  \begin{equation*}
+    \psi = \phi_{\vb*{a}} = \braket{\vb*{a}|\cdot}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\mathbb{R}^n$の標準基底を$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$とする。
+  
+  このとき、任意のベクトル$\vb*{v} \in \mathbb{R}^n$は、次のように表される。
+  \begin{equation*}
+    \vb*{v} = v_1 \vb*{e}_1 + \cdots + v_n \vb*{e}_n
+  \end{equation*}
+  
+  これに$\psi$を作用させると、線形汎関数$\psi$は線形性をもつので、
+  \begin{align*}
+    \psi(\vb*{v}) &= \psi(v_1 \vb*{e}_1 + \cdots + v_n \vb*{e}_n) \\
+    &= v_1 \psi(\vb*{e}_1) + \cdots + v_n \psi(\vb*{e}_n) \\
+    &= \begin{pmatrix}
+      \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+    \end{pmatrix} \begin{pmatrix}
+      v_1 \\
+      \vdots \\
+      v_n
+    \end{pmatrix}
+  \end{align*}
+  
+  ここで、
+  \begin{equation*}
+    \vb*{a} = \begin{pmatrix}
+      \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+    \end{pmatrix}
+  \end{equation*}
+  とおけば、次が成り立つ。
+  \begin{equation*}
+    \psi(\vb*{v}) = \braket{\vb*{a}|\vb*{v}} = \phi_{\vb*{a}}(\vb*{v})
+  \end{equation*}
+  
+  $\vb*{v}$は任意のベクトルなので、
+  \begin{equation*}
+    \psi = \phi_{\vb*{a}} = \braket{\vb*{a}|\cdot}
+  \end{equation*}
+  となるような$\vb*{a} \in \mathbb{R}^n$の存在が示された。
+  
+  \br
+  
+  さらに、次式を振り返ると、$\psi$が決まれば$\vb*{a}$が一意に定まることがわかる。
+  \begin{equation*}
+    \vb*{a} = \begin{pmatrix}
+      \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+    \end{pmatrix}
+  \end{equation*}
+  よって、$\psi$に対して$\vb*{a}$はただ一つ存在する。 $\qed$
+\end{proof}
+
+上の定理の証明で現れた次の式は、2通りの読み方ができる。
+\begin{equation*}
+  \vb*{a} = \begin{pmatrix}
+    \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+  \end{pmatrix}
+\end{equation*}
+
+$\psi$が決まれば、$\psi(\vb*{e}_1), \ldots, \psi(\vb*{e}_n)$の値が決まるので、$\vb*{a}$がただ一つ定まる。
+
+逆に、\hyperref[thm:linear-map-equality-on-basis]{基底$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$に対する$\psi$の値が決まれば$\psi$の形が決まる}ので、上の式のように$\vb*{a}$を定めれば、$\vb*{a}$に対応して$\psi$の形がただ一つに定まることになる。
+
+\br
+
+まとめると、
+\begin{itemize}
+  \item すべてのベクトル$\vb*{a}$は線形汎関数$\psi$をひとつ定める
+  \item すべての線形汎関数$\psi$はベクトル$\vb*{a}$をひとつ定める
+\end{itemize}
+
+$\vb*{a}$から$\psi$への対応は一対一であり、$\psi$から$\vb*{a}$への対応も一対一である。
+
+すなわち、$\mathbb{R}^n$のベクトルと$\mathbb{R}^n$上の線形汎関数の間には、\keyword{全単射}が存在する。
+
+\br
+
+全単射な対応は、本来同じものに「異なる表現を与えている」と捉えることができる。
+
+\subsection{縦ベクトルと横ベクトルによる線形汎関数の表現}\label{sec:column-row-functional}
+
+次の式も、先ほどの定理の証明で現れたものである。
+\begin{equation*}
+  \psi(\vb*{v}) = \begin{pmatrix}
+    \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+  \end{pmatrix} \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix}
+\end{equation*}
+
+この式もまた、2通りの読み方ができる。
+
+\br
+
+$\vb*{a}$を横ベクトルとみるなら、
+\begin{equation*}
+  \psi(\vb*{v}) = \wavelabelmath[Rhodamine]{\begin{pmatrix}
+    \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+  \end{pmatrix}}{$\vb*{a}$} \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix} = \vb*{a} \vb*{v}
+\end{equation*}
+
+この見方では、線形汎関数は横ベクトル$\vb*{a}$との「行列としての積」である。
+
+線形汎関数を行列の積として定義すれば、「横」ベクトル$\vb*{a}$が線形汎関数の表現行列に相当すると捉えられる。
+
+\br
+
+一方、$\vb*{a}$を縦ベクトルとみるなら、
+\begin{equation*}
+  \psi(\vb*{v}) = \wavelabelmath[Cerulean]{\begin{pmatrix}
+    \psi(\vb*{e}_1) & \cdots & \psi(\vb*{e}_n)
+  \end{pmatrix}}{$\vb*{a}^\top$} \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix} = \vb*{a}^\top \vb*{v} = (\vb*{a}, \vb*{v})
+\end{equation*}
+
+この見方では、線形汎関数は縦ベクトル$\vb*{a}$との「内積」である。
+
+線形汎関数を内積として定義すれば、「縦」ベクトル$\vb*{a}$が線形汎関数の表現行列に相当すると捉えられる。
+
+\br
+
+このように、線形汎関数という同じものに対して、横ベクトルと縦ベクトルは「異なる表現を与えている」とも解釈できる。
+
+横ベクトルと縦ベクトルが\keyword{転置}という関係で結ばれていることで、この2通りの見方が可能になる。
+
+\end{document}

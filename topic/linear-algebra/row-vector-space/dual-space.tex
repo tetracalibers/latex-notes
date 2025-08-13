@@ -1,0 +1,61 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{双対空間と双対基底}
+
+ここまでの話を、一般の線形空間$V$に拡張しよう。
+
+\br
+
+まず、$V$上の線形汎関数を次のように定義する。
+
+\begin{definition}{線形汎関数}\label{def:linear-functional}
+  $V$を$\mathbb{R}$上の線形空間とする。$V$から$\mathbb{R}$への線形写像$\phi\colon V \to \mathbb{R}^n$を$V$上の\keyword{線形汎関数}あるいは\keyword{線形形式}という。
+\end{definition}
+
+$V$から$\mathbb{R}$への線形写像、すなわち$V$上の線形汎関数全体の集合を考える。
+
+\begin{definition}{双対空間}
+  $V$上の線形汎関数全体の集合を$V$の\keyword{双対空間}といい、$V^*$と表す。
+  \begin{equation*}
+    V^* \coloneq \Hom(V, \mathbb{R}) = \{ \phi \colon V \to \mathbb{R} \mid \phi \text{は線形写像} \}
+  \end{equation*}
+\end{definition}
+
+線形空間$V$が有限次元の場合は、選んでおいた$V$の基底に対して、\keywordJE{双対基底}{dual basis}という双対空間$V^*$の基底を考えることができる。
+
+\begin{theorem}{双対基底の構成}\label{thm:dual-basis-construction}
+  $V$を$n$次元の線形空間とし、$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$を$V$の基底とする。
+  このとき、$\phi_j \in V^*$を次のように定める。
+  \begin{equation*}
+    \phi_j (\vb*{v}_i) = \delta_{ij}
+  \end{equation*}
+  このような$\phi_1, \ldots, \phi_n$は$V^*$の基底をなす。
+\end{theorem}
+
+この定理は\hyperref[thm:dual-basis-construction-Rn]{$V=\mathbb{R}^n$の場合}と同様に示すことができる。
+
+また、この定理から次が成り立つ。
+
+\begin{theorem}{双対空間の次元}\label{thm:dual-basis-dimension}
+  $n$次元線形空間$V$の双対空間$V^*$の次元は、$V$の次元と等しい。
+  \begin{equation*}
+    \dim V = \dim V^* = n
+  \end{equation*}
+\end{theorem}
+
+これより、$V$と$V^*$は線形同型であることがいえるが、この同型は基底に依存していることに注意しよう。
+
+\br
+
+一旦ここまでの話をまとめると、次のような関係が成り立っている。
+\begin{equation*}
+  \begin{tikzcd}
+    V \arrow[r,leftrightarrow,"\textbf{？}"] \arrow[rd, "\textbf{基底による同型}"'] & (V^*)^* \\
+    & V^* \arrow[u,"\textbf{基底による同型}"']
+  \end{tikzcd}
+\end{equation*}
+
+\end{document}
