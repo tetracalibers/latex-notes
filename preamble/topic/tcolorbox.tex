@@ -292,3 +292,23 @@
       }
   ]{#2}
 }
+
+% 下に二重線 + ラベル
+\NewDocumentCommand{\dlinelabelmath}{O{Rhodamine} m m}{
+  \tcboxmath[
+    enhanced,
+    frame hidden,
+    interior hidden,
+    size=minimal,
+    bottom=1.4em,
+    overlay={
+        \draw[
+          #1,
+          thick,
+          double,
+          double distance=0.5pt
+        ] ([yshift=1.1em]frame.south west) -- ([yshift=1.1em]frame.south east)
+        node[midway,below] {\bfseries #3};
+      }
+  ]{#2}
+}
