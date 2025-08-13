@@ -1,0 +1,59 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{基底による線形写像の比較}
+\marginnote{
+  \refweb{一般の線形空間（増補版）}{https://www.cck.dendai.ac.jp/math/support/latb.html}
+}
+
+一般に、$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$を$V$の基底とするとき、線形写像$f$に対して$f(\vb*{u}_1), \ldots, f(\vb*{u}_n)$の値が測定できれば、$f$の形を特定できる。
+\begin{align*}
+  f(\vb*{v}) &= f(v_1 \vb*{u}_1 + \cdots + v_n \vb*{u}_n) \\
+  &= \dlinelabelmath[Cerulean]{v_1}{変数} \fitLabelMath[Rhodamine][carnationpink]{f(\vb*{u}_1)}{定数} + \cdots + \dlinelabelmath[Cerulean]{v_n}{変数} \fitLabelMath[Rhodamine][carnationpink]{f(\vb*{u}_n)}{定数}
+\end{align*}
+
+上の式において、$v_1, \ldots, v_n$は$\vb*{v}$によって決まる変数である。
+
+$f(\vb*{u}_1), \ldots, f(\vb*{u}_n)$の値さえ決まれば、どんな$\vb*{v}$を入れても$f$の値が定まる。
+これが「$f$の形が決まる」ということである。
+
+\br
+
+このことを利用すると、基底に関する線形写像の値を比較することで、複数の線形写像を区別することができる。
+
+\begin{theorem}{基底上の値による線型写像の同一性判定}\label{thm:linear-map-equality-on-basis}
+  $f, g$をともに$V$から$W$への線型写像とする。
+  $f$と$g$が等しいとは、$V$のある基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$に対して、次が成り立つことと同値である。
+  \begin{equation*}
+    f(\vb*{v}_i) = g(\vb*{v}_i) \quad (i = 1, \ldots, n)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{$f = g \Longrightarrow f(\vb*{v}_i) = g(\vb*{v}_i)$}
+    $f = g$ならば、任意の$\vb*{v} \in V$に対して$f(\vb*{v}) = g(\vb*{v})$が成り立つ。
+    
+    よって、基底ベクトル$\vb*{v}_i$に対しても$f(\vb*{v}_i) = g(\vb*{v}_i)$が成り立つ。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{$f(\vb*{v}_i) = g(\vb*{v}_i) \Longrightarrow f = g$}
+    $V$の任意のベクトル$\vb*{v}$は、基底ベクトルの線形結合として表される。
+    \begin{equation*}
+      \vb*{v} = c_1 \vb*{v}_1 + \cdots + c_n \vb*{v}_n
+    \end{equation*}
+    
+    このとき、線型写像の線形性から、
+    \begin{align*}
+      f(\vb*{v}) &= f(c_1 \vb*{v}_1 + \cdots + c_n \vb*{v}_n) \\
+      &= c_1 f(\vb*{v}_1) + \cdots + c_n f(\vb*{v}_n) \\
+      &= c_1 g(\vb*{v}_1) + \cdots + c_n g(\vb*{v}_n) \\
+      &= g(c_1 \vb*{v}_1 + \cdots + c_n \vb*{v}_n) = g(\vb*{v})
+    \end{align*}
+    
+    よって、任意の$\vb*{v} \in V$に対して$f(\vb*{v}) = g(\vb*{v})$が成り立つので、$f = g$である。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\end{document}
