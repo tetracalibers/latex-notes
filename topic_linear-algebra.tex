@@ -62,6 +62,9 @@
     {\Huge}% before-code
     [\thispagestyle{empty}]% after-code
 
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
+
 % ---
 
 \begin{document}
