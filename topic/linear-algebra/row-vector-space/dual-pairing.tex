@@ -1,0 +1,52 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{双対ペアリング}
+\marginnote{
+  \refbookA p120 \\
+  \refweb{1次形式と双対空間}{https://www.cck.dendai.ac.jp/math/support/latb.html}
+}
+
+$V$と$(V^*)^*$の間には、線形同型写像$\iota \colon V \to (V^*)^*$が存在する。
+
+このことから、\hyperref[def:linear-subspace-isomorphism]{$V$と$(V^*)^*$は線形同型}であることがいえる。
+
+\br
+
+このように、$V$が有限次元の場合は、$V$と$(V^*)^*$を自然に（基底によらずに）同一視することができる。
+
+\br
+
+ここで、\hyperref[sec:map-to-bidual]{再双対空間への写像}を考える際に登場した次の式を再解釈してみよう。
+\begin{equation*}
+  \Phi_{\vb*{v}}(\phi) = \phi(\vb*{v})
+\end{equation*}
+
+$V$と$(V^*)^*$の同型により、$\vb*{v} \in V$と$\Phi_{\vb*{v}} \in (V^*)^*$も同一視することができる。
+
+そこで、$\Phi_{\vb*{v}}$を単に$\vb*{v}$と書くことにすると、次の関係が得られる。
+\begin{equation*}
+  \vb*{v}(\phi) = \phi(\vb*{v})
+\end{equation*}
+
+これは、$\vb*{v} \in V$と$\phi \in V^*$に対し、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      値$\phi(\vb*{v})$をとることは、$\vb*{v}$から見ても$\phi$から見ても対等
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+であることを表している。
+
+\br
+
+この平等さを表すために、次のような記法を使うこともある。
+\begin{equation*}
+  \langle \phi, \vb*{v} \rangle = \langle \vb*{v}, \phi \rangle = \phi(\vb*{v})
+\end{equation*}
+この記号$\langle \cdot, \cdot \rangle$を、双対を表す\keyword{ペアリング}と呼ぶ。
+
+\end{document}
