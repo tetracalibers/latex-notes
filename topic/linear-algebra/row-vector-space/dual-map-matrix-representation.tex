@@ -6,11 +6,7 @@
 \section{双対写像の表現行列}
 \marginnote{\refbookR p238〜239 \\ \refbookA p122〜123}
 
-\begin{mindflow}
-  \placeholder{改編予定}
-\end{mindflow}
-
-線形写像の双対写像の表現行列は、元の線形写像の表現行列の転置になる。
+双対写像の表現行列は、元の線形写像の表現行列の転置になる。
 
 このことから、双対写像は\keyword{転置写像}とも呼ばれる。
 
@@ -19,32 +15,18 @@
   
   $V$の基底$\vb*{v}_1,\ldots,\vb*{v}_n$、$W$の基底$\vb*{w}_1, \ldots, \vb*{w}_m$を選び、これらの双対基底をそれぞれ$\phi_1, \ldots, \phi_n$、$\psi_1, \ldots, \psi_m$とする。
 
-  このとき、$\{\vb*{v}_i \}$、$\{ \vb*{w}_j\}$に関する$f$の表現行列を$A$とすると、$\{ \psi_j \}, \{ \phi_i \}$に関する$f^*$の表現行列は$A^\top$によって与えられる。
+  このとき、$\{\vb*{v}_i \}$、$\{ \vb*{w}_j\}$に関する$f$の表現行列を$A$とすると、$\{ \psi_j \}, \{ \phi_i \}$に関する$f^*$の表現行列は${}^tA$によって与えられる。
 \end{theorem}
 
 \begin{proof}
-  $f\colon V \to W$に対して、その双対写像$f^* \colon W^* \to V^*$は次で定義される。
-    \begin{equation*}
-  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
-    V \arrow[r,"f"]\arrow[rd, "\psi \circ f"'] & W \arrow[d,"\psi"]\\
-    & \mathbb{R}
-  \end{tikzcd}
-\end{equation*}
-  
+  $f$の双対写像$f^*$は次のように定義される。
   \begin{equation*}
-    f^*(\psi) = \psi \circ f \quad (\psi \in W^*)
+    f^*(\varphi)(\vb*{v}) = \varphi(f(\vb*{v}))
   \end{equation*}
-  
-  $f^*(\psi)$は$V$上の線形汎関数なので、任意の$\vb*{v} \in V$を入力するとスカラーを返す。
-  合成写像の記法より、$(\psi \circ f)(\vb*{v})$は、$\psi(f(\vb*{v}))$とも書けるので、
-  \begin{equation*}
-    f^*(\psi)(\vb*{v}) = \psi(f(\vb*{v}))
-  \end{equation*}
-  が成り立つ。
   
   \br
-
-  一方、\hyperref[sec:construction-of-matrix-rep]{$f$の表現行列$A$は次のように構成される}。
+  
+  \hyperref[sec:construction-of-matrix-rep]{表現行列の構成}より、$f \colon V \to W$の表現行列$A$は次のように表される。
   \begin{equation*}
     f(\vb*{v}_i) = \sum_{j=1}^m a_{ji} \vb*{w}_j \quad (1 \leq i \leq n)
   \end{equation*}
@@ -61,7 +43,7 @@
 
   また、$f^*(\psi_k) \in V^*$は$V$上の線形汎関数なので、$V$の双対基底$\{ \phi_i \}$の線形結合として表せる。
   \begin{equation*}
-    f^*(\psi_k) = \sum_{i=1}^n b_{ik} \phi_i
+    f^*(\psi_k) = \sum_{i=1}^n b_{ik} \phi_i \quad (1 \leq k \leq m)
   \end{equation*}
   この係数$b_{ik}$を並べた行列を$B$とすると、$B$は$f^*$の表現行列である。
   
@@ -77,129 +59,9 @@
   \end{equation*}
   でもあるから、$b_{ki} = a_{ki}$が成り立つ。すなわち、
   \begin{equation*}
-    B = A^\top
+    B = {}^tA
   \end{equation*}
   である。 $\qed$
-\end{proof}
-
-\subsection{例：縦ベクトルと横ベクトルによる線形写像}
-
-\todo{まとめ直す}
-
-\br
-
-$A$を$m \times n$型行列とする
-
-\br
-
-縦ベクトルに$A$を左からかけることによって定まる線形写像を次のように表す
-\begin{equation*}
-  f_A \colon \mathbb{R}^n \to \mathbb{R}^m \, (\vb*{v} \mapsto A \vb*{v})
-\end{equation*}
-
-\br
-
-これと対照的に、横ベクトルに右から$A$をかけることによって定まる次の線形写像を\keyword{転置写像}と呼ぶ
-\begin{equation*}
-  f_A^* \colon {}^t\mathbb{R}^m \to {}^t\mathbb{R}^n \, (\phi \mapsto \phi A)
-\end{equation*}
-
-\br
-
-横ベクトル$\phi A \in {}^t\mathbb{R}^n$は、次の合成写像の表現行列である
-\begin{equation*}
-  \mathbb{R}^n \xrightarrow{f_A} \mathbb{R}^m \xrightarrow{\phi} \mathbb{R}
-\end{equation*}
-
-\br
-
-\begin{theorem}{転置写像と自然なペアリング}
-  $A$を$m \times n$型行列とし、$\phi \in {}^t\mathbb{R}^m,\,\vb*{v} \in \mathbb{R}^n$に対して、
-  \begin{equation*}
-    \langle f_A^*(\phi), \vb*{v} \rangle = \langle \phi, f_A(\vb*{v}) \rangle
-  \end{equation*}
-\end{theorem}
-
-\begin{proof}
-  \begin{align*}
-    \langle f_A^*(\phi), \vb*{v} \rangle & = (\phi A)(\vb*{v})                  \\
-                                         & = \phi(A \vb*{v})                    \\
-                                         & = \phi(f_A \vb({v}))                 \\
-                                         & = \langle \phi, f_A(\vb*{v}) \rangle
-  \end{align*}
-  より、目的の等式が得られる $\qed$
-\end{proof}
-
-\br
-
-\begin{theorem}{転置写像と座標関数}
-  $A$を$m \times n$型行列とし、$y_1, \ldots, y_m \in {}^t\mathbb{R}^m$を${}^t\mathbb{R}^m$上の座標関数とするとき、
-  \begin{equation*}
-    f_A^*(y_i) = \sum_{j=1}^n a_{ij} x_j \quad (1 \leq i \leq m)
-  \end{equation*}
-\end{theorem}
-
-\begin{proof}
-  行ベクトルとしての観点から見ると、$y_i = {}^t\vb*{e}_i$として、
-  \begin{equation*}
-    f_A^*(y_i) = f_A^*({}^t\vb*{e}_i) = {}^t\vb*{e}_i A = \begin{pmatrix}
-      a_{i1} & \cdots & a_{in}
-    \end{pmatrix}
-  \end{equation*}
-
-  これは双対基底$x_j = {}^t\vb*{e}_j$を用いて、
-  \begin{align*}
-    f_A^*(y_i) & = \begin{pmatrix}
-                     a_{i1} & \cdots & a_{in}
-                   \end{pmatrix}          \\
-               & = \sum_{j=1}^n a_{ij} {}^t\vb*{e}_j \\
-               & = \sum_{j=1}^n a_{ij} x_j
-  \end{align*}
-  とも書ける $\qed$
-\end{proof}
-
-\br
-
-\begin{theorem}{転置写像の表現行列}
-  $A$を$m \times n$型行列とするとき、基底$\{y_1,\ldots y_m\},\,\{x_1,\ldots,x_n\}$に関する$f_A^*$の表現行列は${}^tA$である
-\end{theorem}
-
-\begin{proof}
-  \todo{よくわからない}
-
-  \br
-
-  表現行列は、基底$\{y_i\}$の各元が、写像を通してどのような線形結合で$\{x_j\}$に写されるかを記述したものである
-
-  \br
-
-  すなわち、写像$f_A^*$の表現行列を求めることは、
-  \begin{equation*}
-    f_A^*(y_i) = \sum_{j=1}^n a_{ij} x_j \quad (1 \leq i \leq m)
-  \end{equation*}
-  において、係数$a_{ij}$を行列に並べることである
-
-  \br
-
-  ここで、$f_A^* \colon {}^t\mathbb{R}^m \to {}^t\mathbb{R}^n$において、
-  \begin{itemize}
-    \item 定義域の基底は$\{ y_1, \ldots, y_m \} \subset {}^t\mathbb{R}^m$
-    \item 値域の基底は$\{ x_1, \ldots, x_n \} \subset {}^t\mathbb{R}^n$
-  \end{itemize}
-
-  \br
-
-  先ほど示した等式
-  \begin{equation*}
-    f_A^*(y_i) = \sum_{j=1}^n a_{ij} x_j \quad (1 \leq i \leq m)
-  \end{equation*}
-  より、表現行列の第$i$列が、$f_A^*(y_i)$の係数ベクトル
-  \begin{equation*}
-    \begin{pmatrix}
-      a_{i1} & \cdots & a_{in}
-    \end{pmatrix}
-  \end{equation*}
-  を転置して縦ベクトルにしたものになる
 \end{proof}
 
 \end{document}
