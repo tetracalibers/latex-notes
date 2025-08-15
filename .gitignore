@@ -2,4 +2,4 @@
 .DS_Store
 **/.tex_intermediates
 *.log
-_*.*
+_*
