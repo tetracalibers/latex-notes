@@ -6,11 +6,126 @@
 \section{双対写像}
 \marginnote{\refbookR p237〜238 \\ \refbookG p61〜62 \\ \refbookA p122〜123}
 
-\begin{mindflow}
-  \placeholder{改編予定}
-\end{mindflow}
-
 線形空間の間の線形写像が与えられると、双対空間の間の線形写像を定めることができる。
+
+\subsection{数ベクトル空間の場合}
+
+$A$を$m \times n$型行列とする。
+
+$A$を左からかけることによって定義される線形写像を$f_A$とする。
+\begin{equation*}
+  \begin{array}{lclc}
+    f_A \colon & \mathbb{R}^n         & \longrightarrow & \mathbb{R}^m          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & \vb*{v}               & \longmapsto     & A \vb*{v}
+  \end{array}
+\end{equation*}
+
+一方、横ベクトルに$A$を右からかけることによって定義される線形写像を$f_A^*$とする。
+\begin{equation*}
+  \begin{array}{lclc}
+    f_A^* \colon & {}^t\mathbb{R}^m & \longrightarrow & {}^t\mathbb{R}^n \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & \phi               & \longmapsto     & \phi A
+  \end{array}
+\end{equation*}
+
+ここで、横ベクトルの空間を線形汎関数の空間と同一視して、次のように書こう。
+\begin{equation*}
+  \begin{array}{lclc}
+    f_A^* \colon & (\mathbb{R}^m)^* & \longrightarrow & (\mathbb{R}^n)^* \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & \phi               & \longmapsto     & \phi A
+  \end{array}
+\end{equation*}
+
+\begin{handout}[補足：ベクトルと行列の積の次元]
+  $n$次元縦ベクトル$\vb*{v} \in \mathbb{R}^n$に対して$A$を左からかけたものは、$m$次元縦ベクトルとなる。
+  \begin{equation*}
+    \underset{\eqnmarkbox[cyan]{_dim_m}{m} \times \eqnmarkbox[magenta]{dim_n1}{n}}{A} \cdot \underset{\eqnmarkbox[magenta]{dim_n2}{n} \times \eqnmarkbox[cyan]{_dim_1}{1}}{\vb*{v}} = \underset{\eqnmarkbox[cyan]{_dim_m}{m} \times \eqnmarkbox[cyan]{_dim_1}{1}}{A \vb*{v}}
+  \end{equation*}
+  \annotatetwo{below}{dim_n1}{dim_n2}{\bfseries\scriptsize 同じ}
+
+  $m$次元横ベクトル$\phi \in {}^t\mathbb{R}^m$に対して$A$を右からかけたものは、$n$次元横ベクトルとなる。
+  \begin{equation*}
+    \underset{\eqnmarkbox[cyan]{_dim_1}{1} \times \eqnmarkbox[magenta]{dim_m1}{m}}{\phi} \cdot \underset{\eqnmarkbox[magenta]{dim_m2}{m} \times \eqnmarkbox[cyan]{_dim_n}{n}}{A} = \underset{\eqnmarkbox[cyan]{_dim_1}{1} \times \eqnmarkbox[cyan]{_dim_n}{n}}{\phi A}
+  \end{equation*}
+  \annotatetwo{below}{dim_m1}{dim_m2}{\bfseries\scriptsize 同じ}
+\end{handout}
+
+\br
+
+$\phi \in (\mathbb{R}^m)^*$は$\mathbb{R}^m$上の線形汎関数であるから、次のような関係になる。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    \mathbb{R}^n \arrow[r,"f_A"] & \mathbb{R}^m \arrow[d,"\phi"]\\
+    & \mathbb{R}
+  \end{tikzcd}
+\end{equation*}
+
+このとき、合成写像$\phi \circ f_A$を考えることができ、その表現行列は$\phi A \in (\mathbb{R}^n)^*$となる。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    \mathbb{R}^n \arrow[r,"f_A"]\arrow[rd, "\phi \circ f_A"'] & \mathbb{R}^m \arrow[d,"\phi"]\\
+    & \mathbb{R}
+  \end{tikzcd}
+\end{equation*}
+
+$f_{A}^*$の定義より、$\phi A$は$f_A^*(\phi)$と書くことができるから、
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    \mathbb{R}^n \arrow[r,"f_A"]\arrow[rd, "f_A^*(\phi)"'] & \mathbb{R}^m \arrow[d,"\phi"]\\
+    & \mathbb{R}
+  \end{tikzcd}
+\end{equation*}
+
+ここで、$f_{A}^*$は、$\mathbb{R}^m$上の線形汎関数$\phi$を入力として、$\mathbb{R}^n$上の線形汎関数$f_A^*(\phi)$を返す線形写像である。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    \mathbb{R}^n \arrow[r,"f_A"]\arrow[rd, "f_A^*(\phi)"'{name=v}] & \mathbb{R}^m \arrow[d,"\phi"{name=w}] \arrow[from=w,to=v,out=-60, in=-70,looseness=2,"f_A^*"]\\
+    & \mathbb{R}
+  \end{tikzcd}
+\end{equation*}
+
+\begin{handout}[補足：$f_A^*$の線形性]
+  $\phi_1, \phi_2 \in (\mathbb{R}^m)^*$と$c_1, c_2 \in \mathbb{R}$に対して、
+  \begin{align*}
+    f_A^*(c_1 \phi_1 + c_2 \phi_2) &= (c_1 \phi_1 + c_2 \phi_2) A \\
+    &= c_1 (\phi_1 A) + c_2 (\phi_2 A) \\
+    &= c_1 f_A^*(\phi_1) + c_2 f_A^*(\phi_2)
+  \end{align*}
+  となるので、$f_A^*$は線形写像である。
+\end{handout}
+
+このように、$(\mathbb{R}^m)^*$から$(\mathbb{R}^n)^*$への線形写像$f_A^*$を、
+\begin{equation*}
+  f_A^*(\phi) = \phi \circ f_A
+\end{equation*}
+として定めることができる。
+$f_A^*$を$f_A$の\keyword{双対写像}という。
+
+\br
+
+$f_A^*(\phi)\colon \mathbb{R}^n \to \mathbb{R}$に$\vb*{v} \in \mathbb{R}^n$を入力すると、次の関係が導かれる。
+\begin{equation*}
+  f_A^*(\phi)(\vb*{v}) = (\phi \circ f_A)(\vb*{v}) = \phi(f_A(\vb*{v}))
+\end{equation*}
+つまり、$\vb*{v}$に$f_A^*(\phi)$を作用させることと、$\phi$に$f_A(\vb*{v})$を作用させることは同じである。
+
+\br
+
+この関係は、ペアリングの記号を用いて書くと対称性がわかりやすい。
+
+\begin{theorem}{数ベクトル空間における双対写像とペアリング}
+  $\phi \in (\mathbb{R}^m)^*, \vb*{v} \in \mathbb{R}^n$に対して、次の関係が成り立つ。
+  \begin{equation*}
+    \langle f_A^*(\phi), \vb*{v} \rangle = \langle \phi, f_A(\vb*{v}) \rangle
+  \end{equation*}
+\end{theorem}
+
+\subsection{一般の線形空間の場合}
+
+一般の線型空間$V, W$に対しても、同様に双対写像を定義することができる。
 
 \br
 
@@ -24,7 +139,7 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
   \end{tikzcd}
 \end{equation*}
 
-このとき、合成写像$\varphi \circ f \colon V \to \mathbb{R}$を考えることができる。
+このとき、合成写像$\varphi \circ f$を考えることができる。
 \begin{equation*}
   \begin{tikzcd}[every label/.append style = {font = \normalsize}]
     V \arrow[r,"f"]\arrow[rd, "\varphi \circ f"'] & W \arrow[d,"\varphi"]\\
@@ -33,6 +148,7 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
 \end{equation*}
 
 \hyperref[thm:linear-map-composition]{線形写像の合成もまた線形写像になる}ので、$\varphi \circ f$は$V$上の線形汎関数である。
+
 これを$f^*(\varphi) \in V^*$と書くことにする。
 \begin{equation*}
   \begin{tikzcd}[every label/.append style = {font = \normalsize}]
@@ -41,17 +157,7 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
   \end{tikzcd}
 \end{equation*}
 
-$f^*(\varphi)$は$V$上の線形汎関数なので、$\vb*{v} \in V$を入力するとスカラーを返す。
-
-合成写像の記法より、$(\varphi \circ f)(\vb*{v})$は、$\varphi(f(\vb*{v}))$とも書けるので、
-\begin{equation*}
-  f^*(\varphi)(\vb*{v}) = \varphi(f(\vb*{v})) = \langle \varphi, f(\vb*{v}) \rangle
-\end{equation*}
-と整理できる。
-
-\br
-
-また、$f^*$は$W^*$上の線形汎関数$\varphi$を入力として、$V^*$上の線形汎関数$f^*(\varphi)$を返す線形写像である。
+ここで、$f^*$は、$W^*$上の線形汎関数$\varphi$を入力として、$V^*$上の線形汎関数$f^*(\varphi)$を返す線形写像である。
 \begin{equation*}
   \begin{tikzcd}[every label/.append style = {font = \normalsize}]
     V \arrow[r,"f"]\arrow[rd, "f^*(\varphi)"'{name=v}] & W \arrow[d,"\varphi"{name=w}] \arrow[from=w,to=v,out=-60, in=-70,looseness=2,"f^*"]\\
@@ -59,44 +165,32 @@ $f^*(\varphi)$は$V$上の線形汎関数なので、$\vb*{v} \in V$を入力す
   \end{tikzcd}
 \end{equation*}
 
-\br
-
-\begin{handout}[補足：なぜ$f^*$は線形写像といえるのか]
-  $W^* = \Hom(W, \mathbb{R})$における\hyperref[def:linear-map-addition-scalar]{和とスカラー倍の定義}から示すことができる。
+\begin{handout}[補足：$f^*$の線形性]
+  $\varphi_1, \varphi_2 \in W^*$と$c_1, c_2 \in \mathbb{R}$とする。
+  
+  $\varphi_1, \varphi_2$は線形写像であるので、\hyperref[def:linear-map-addition-scalar]{線形写像の和とスカラー倍の定義}より、
+  \begin{align*}
+    f^*(c_1 \varphi_1 + c_2 \varphi_2)(\vb*{v}) &= (c_1 \varphi_1 + c_2 \varphi_2)f(\vb*{v}) \\
+    &= c_1 \varphi_1(f(\vb*{v})) + c_2 \varphi_2(f(\vb*{v})) \\
+    &= c_1 f^*(\varphi_1)(\vb*{v}) + c_2 f^*(\varphi_2)(\vb*{v})
+  \end{align*}
+  となるので、$f^*$は線形写像である。
   
   \br
   
-  $\varphi_1, \varphi_2 \in W^*$に対して、
-  \begin{align*}
-    f^*(\varphi_1 + \varphi_2)(\vb*{v}) & = (\varphi_1 + \varphi_2)(f(\vb*{v})) \\
-                                & = \varphi_1(f(\vb*{v})) + \varphi_2(f(\vb*{v})) \\
-                                & = f^*(\varphi_1)(\vb*{v}) + f^*(\varphi_2)(\vb*{v}) \\
-                                & = (f^*(\varphi_1) + f^*(\varphi_2))(\vb*{v})
-  \end{align*}
-  また、$c \in \mathbb{R}$に対して、
-  \begin{align*}
-    f^*(c\varphi)(\vb*{v}) & = (c\varphi)(f(\vb*{v})) \\
-                            & = c\cdot\varphi(f(\vb*{v})) \\
-                            & = c\cdot f^*(\varphi)(\vb*{v}) \\
-                            & = (c f^*(\varphi))(\vb*{v})
-  \end{align*}
-  
-  以上より、
-  \begin{align*}
-    f^*(\varphi_1 + \varphi_2) & = f^*(\varphi_1) + f^*(\varphi_2) \\
-    c f^*(\varphi)             & = f^*(c\varphi)
-  \end{align*}
-  となり、写像$f^*$は線形性を満たすことがわかる。$\qed$
+  ここで、$f^*(\varphi) = \varphi \circ f$と定義したことから、
+  \begin{equation*}
+    f^*(\varphi)(\vb*{v}) = (\varphi \circ f)(\vb*{v}) = \varphi(f(\vb*{v}))
+  \end{equation*}
+  と書けることを用いている。
 \end{handout}
 
-このように定まる線形写像$f^* \colon W^* \to V^*$を、$f$の\keyword{双対写像}という。
+このように、$W^*$から$V^*$への線形写像$f^*$を、
 \begin{equation*}
-  \begin{array}{cccc}
-    f^*\colon & W^*         & \longrightarrow & V^*          \\
-            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
-            & \varphi               & \longmapsto     & f^*(\varphi)
-  \end{array}
+  f^*(\varphi) = \varphi \circ f
 \end{equation*}
+として定めることができる。
+$f^*$を$f$の\keyword{双対写像}という。
 
 \begin{definition}{双対写像}
   $V,W$を線形空間とし、$f \colon V \to W$を線形写像とするとき、$f$の\keyword{双対写像}$f^* \colon W^* \to V^*$を次のように定義する。
@@ -105,9 +199,17 @@ $f^*(\varphi)$は$V$上の線形汎関数なので、$\vb*{v} \in V$を入力す
   \end{equation*}
 \end{definition}
 
-双対を表すペアリングの記法を用いると、次のように整理できる。
+$f^*(\varphi)\colon V \to \mathbb{R}$に$\vb*{v} \in V$を入力すると、次の関係が導かれる。
 \begin{equation*}
-  f^*(\varphi)(\vb*{v}) = \langle f^*(\varphi), \vb*{v} \rangle = \langle \varphi, f(\vb*{v}) \rangle = \varphi(f(\vb*{v})) \quad (\vb*{v} \in V)
+  f^*(\varphi)(\vb*{v}) = (\varphi \circ f)(\vb*{v}) = \varphi(f(\vb*{v}))
 \end{equation*}
+つまり、$\vb*{v}$に$f^*(\varphi)$を作用させることと、$\varphi$に$f(\vb*{v})$を作用させることは同じである。
+
+\begin{theorem}{双対写像とペアリング}
+  $\varphi \in W^*, \vb*{v} \in V$に対して、次の関係が成り立つ。
+  \begin{equation*}
+    \langle f^*(\varphi), \vb*{v} \rangle = \langle \varphi, f(\vb*{v}) \rangle
+  \end{equation*}
+\end{theorem}
 
 \end{document}
