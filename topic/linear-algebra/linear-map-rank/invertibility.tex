@@ -3,7 +3,41 @@
 \begin{document}
 
 \sectionline
-\section{核空間の次元による正則の判定}
+\section{正則の判定}
+
+ここまでの議論により、さまざまな正則判定法が得られる。
+
+\subsection{階数による正則判定}
+\marginnote{\refbookA p71}
+
+\hyperref[thm:linear-pigeonhole]{線形代数における鳩の巣原理}から、次のことがいえる。
+
+\begin{theorem}{階数による正則の判定}\label{thm:invertible-iff-full-rank}
+  $n$次正方行列$A$に対して、
+  \begin{equation*}
+    A \text{が正則行列} \Longleftrightarrow \rank A = n
+  \end{equation*}
+\end{theorem}
+
+この定理は、線形変換$f$（もしくは正方行列$A$）が\keyword{正則}かどうかについて、\keyword{階数}という1つの数値で判定できることを示している。
+
+\subsection{列ベクトルの線型独立性による正則の判定}
+\marginnote{\refbookA p71}
+
+\begin{theorem}{列ベクトルの線型独立性による正則の判定}\label{thm:invertible-iff-col-indep}
+  $\vb*{a}_1, \dots, \vb*{a}_n$を列ベクトルとする$n$次正方行列$A$に対して、次が成り立つ。
+  \begin{equation*}
+    A \text{が正則行列} \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n \text{が線型独立}
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^n$が線型独立であることは、\hyperref[thm:lin-indep-iff-rank-n]{$\rank A = n$と同値}である。
+  
+  \hyperref[thm:invertible-iff-full-rank]{階数による正則判定}より、$\rank A =n$は$A$が正則行列であることと同値である $\qed$
+\end{proof}
+
+\subsection{核空間の次元による正則の判定}
 
 次元定理から、次のような正則判定法が得られる。
 
