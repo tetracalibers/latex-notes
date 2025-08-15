@@ -3,21 +3,28 @@
 \begin{document}
 
 \sectionline
-\section{線形写像の表現行列と連立方程式}
+\section{階数と単射性・全射性}
 \marginnote{\refbookA p67〜68}
 
-線型写像の単射性・全射性は、その表現行列の階数によって連立一次方程式の解の性質と結びつく。
+線型写像の単射性・全射性は、その表現行列の階数によって判定することもできる。
+
+また、その判定条件は、連立一次方程式の解の性質とも結びつく。
 
 \subsection{単射な線形写像と階数}
 
-線形写像$f$が単射であることを、表現行列$A$の性質として述べると、次のような言い換えができる。
+$A$の階数が元の空間（定義域）の次元と同じ場合、$A$が表す線形写像は\keyword{単射}となる。
+\begin{equation*}
+  \rank A = n
+\end{equation*}
+
+元の$n$次元空間が写した先でも$n$次元の広がりを保っているのなら、潰れていないはずだからである。
 
 \begin{theorem}{線形写像の単射性と表現行列}
   線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値である。
   \begin{enumerate}[label=\romanlabel]
     \item $f$は単射
     \item $A\vb*{x} = \vb*{o}$は自明な解しか持たない
-    \item $\rank(A) = n$
+    \item $\rank A = n$
   \end{enumerate}
 \end{theorem}
 
@@ -44,7 +51,7 @@
   \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
     \hyperref[thm:homogeneous-trivial-iff-full-col-rank]{斉次形の非自明解の存在条件}より、斉次形の方程式$A\vb*{x} = \vb*{o}$に自明解しか存在しないことと
     \begin{equation*}
-      \rank(A) = n
+      \rank A = n
     \end{equation*}
     と同値である。 $\qed$
   \end{subpattern}
@@ -52,14 +59,19 @@
 
 \subsection{全射な線形写像と階数}
 
-単射性と対比して、全射性についても表現行列の言葉で整理する。
+$A$の階数が行き先の空間（値域）の次元と同じ場合、$A$が表す線形写像は\keyword{全射}となる。
+\begin{equation*}
+  \rank A = m
+\end{equation*}
+
+写した先でその空間全体と同じ$m$次元の広がりを持っているのなら、空間全体をカバーしているはずだからである。
 
 \begin{theorem}{線形写像の全射性と表現行列}
   線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値である。
   \begin{enumerate}[label=\romanlabel]
     \item $f$は全射
     \item 任意の$\vb*{b} \in \mathbb{R}^m$に対して、$A\vb*{x} = \vb*{b}$には解が存在する
-    \item $\rank(A) = m$
+    \item $\rank A = m$
   \end{enumerate}
 \end{theorem}
 
@@ -85,7 +97,7 @@
   \end{subpattern}
 
   \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
-    \hyperref[thm:full-row-rank-solvable]{連立方程式の解の存在条件}より、$\rank(A) = m$は、次の条件
+    \hyperref[thm:full-row-rank-solvable]{連立方程式の解の存在条件}より、$\rank A = m$は、次の条件
     \begin{equation*}
       ^{\forall}\vb*{b} \in \mathbb{R}^m, A\vb*{x} = \vb*{b} \text{の解が存在する}
     \end{equation*}
@@ -106,15 +118,15 @@
     \item $f$は単射
     \item $f$は全射
     \item $f$は全単射
-    \item $\rank(A) = n$
+    \item $\rank A = n$
   \end{enumerate}
 \end{theorem}
 
 \begin{proof}
   線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$において、表現行列を$A$とすると、
   \begin{align*}
-    f\text{が単射} & \Longleftrightarrow \rank(A) = n \\
-    f\text{が全射} & \Longleftrightarrow \rank(A) = m
+    f\text{が単射} & \Longleftrightarrow \rank A = n \\
+    f\text{が全射} & \Longleftrightarrow \rank A = m
   \end{align*}
   である。
 
@@ -122,7 +134,7 @@
 
   線形変換は、線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の$m=n$の場合であるので、$f$が単射であることも、全射であることも、
   \begin{equation*}
-    \rank(A) = n
+    \rank A = n
   \end{equation*}
   という条件と同値になる。
 
@@ -145,7 +157,8 @@
 \begin{emphabox}
   \begin{spacebox}
     \begin{center}
-      $n$個のものを$m$個の箱に入れるとき、$n > m$であれば、少なくとも1個の箱には1個より多いものが中にある
+      $n$個のものを$m$個の箱に入れるとき、$n > m$であれば、\\
+      少なくとも1個の箱には1個より多いものが中にある
     \end{center}
   \end{spacebox}
 \end{emphabox}
@@ -154,22 +167,5 @@
 \br
 
 ここで鳩の巣原理と呼んだのはこの命題そのものではないが、その変種と考えてよい。
-
-\sectionline
-\section{階数による正則判定}
-\marginnote{\refbookA p71}
-
-\hyperref[thm:linear-pigeonhole]{線形代数における鳩の巣原理}から、次のことがいえる。
-
-\begin{theorem}{正則の判定と階数}\label{thm:invertible-iff-full-rank}
-  $n$次正方行列$A$に対して、
-  \begin{equation*}
-    A \text{が正則行列} \Longleftrightarrow \rank(A) = n
-  \end{equation*}
-\end{theorem}
-
-\br
-
-この定理は、線形変換$f$（もしくは正方行列$A$）が\keyword{正則}かどうかについて、\keyword{階数}という1つの数値で判定できることを示している。
 
 \end{document}
