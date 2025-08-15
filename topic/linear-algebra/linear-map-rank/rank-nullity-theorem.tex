@@ -8,26 +8,16 @@
 
 連立方程式$A\vb*{x}=\vb*{b}$の\hyperref[sec:degrees-of-freedom]{解の自由度}は、
 \begin{equation*}
-  \text{解の自由度} = (\text{変数の個数}) - \rank(A)
+  \text{\bfseries 解の自由度} = (\text{\bfseries 変数の個数}) - \rank A
 \end{equation*}
-で表された
+で表された。
 
-この関係は、$\vb*{b} =\vb*{0}$、すなわち斉次形の場合にも成り立つ
-
-\br
-
-そこで、変数の個数を$n$とおくと、次のようにも書き換えられる
+そして、この\hyperref[sec:nullity-solution-degrees]{解の自由度は$\Ker A$の次元と一致}する。
 \begin{equation*}
-  \rank(A) = n - (A\vb*{x} =\vb*{0}\text{の解の自由度})
+  \dim \Ker A = (\text{\bfseries 変数の個数}) - \rank A
 \end{equation*}
 
-\br
-
-線型方程式と階数に関するこの関係を、線形写像と次元の言葉で言い換えたい
-
-\br
-
-次のような線形写像
+ここで、次のような線形写像
 \begin{equation*}
   \begin{array}{llll}
     f\colon & \mathbb{R}^n          & \longrightarrow & \mathbb{R}^m          \\
@@ -35,40 +25,123 @@
             & \vb*{x}               & \longmapsto     & A\vb*{x}
   \end{array}
 \end{equation*}
-を考えると、
+を考えると、次のように対応づけられる。
 \begin{itemize}
-  \item 写像$f$は、行列$A$に対応する
+  \item 行列$A$は、線形写像$f$を表す
   \item 変数の個数は、$\vb*{x}$の動く空間$\mathbb{R}^n$の次元$n$に対応する
-  \item $A\vb*{x} = \vb*{0}$の解の自由度は、写像$f$で$\vb*{0}$になってしまうものの次元に対応する
 \end{itemize}
-という関係が読み取れる
 
-\br
-
-ここで、写像$f$で$\vb*{0}$になってしまう\keyword{縮退}するものは、写像$f$の\keyword{核}$\Ker(f)$である
-
-このことを用いて関係式を表現し直すと、次のようになる
+このように行列$A$を線形写像$f$に対応させると、
 \begin{equation*}
-  \rank(f) = n - \dim \Ker(f)
+  \dim \Ker f = n - \rank f
 \end{equation*}
 
+さらに、\hyperref[def:rank-of-linear-map]{線形写像の階数の定義}から、
+\begin{equation*}
+  \dim \Ker f = n - \dim \Im f
+\end{equation*}
+という、次元に関する関係式が得られる。これを\keyword{次元定理}という。
+
 \begin{theorem}{線形写像の次元定理}\label{thm:rank-nullity-theorem}
-  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とすると、次が成り立つ
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とすると、次が成り立つ。
   \begin{equation*}
-    \rank(f) = n - \dim \Ker(f)
+    \rank(f) = \dim \Im f = n - \dim \Ker(f)
   \end{equation*}
 \end{theorem}
 
-\begin{proof}
-  $A$を$f$の表現行列とし、$\rank(f) = r$とする
+\subsection{写像の視点}
 
-  このとき、$\Ker(f)$の次元は$A\vb*{x} = \vb*{0}$の解空間の自由度$n - r$と一致するため、
-  \begin{align*}
-    \dim \Ker(f)              & = n - r            \\
-                              & = n - \rank(f)     \\
-    \therefore \quad \rank(f) & = n - \dim \Ker(f)
-  \end{align*}
-  となり、定理が成り立つ $\qed$
-\end{proof}
+$f$を$n$次元線型空間から$m$次元線型空間への線形写像とすると、
+\begin{equation*}
+  n - \dim \Ker f = \dim \Im f
+\end{equation*}
+という次元定理の式は、次のように読める。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      元の$n$次元空間から、$\Ker f$の次元分が潰れて、\\
+      残ったのが$\Im f$の次元分
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\begin{center}
+  \begin{tikzpicture}[scale=1.4]
+    \coordinate (Vtop) at (0,4);
+    \coordinate (Vbottom) at (0,0);
+    \coordinate (Wtop) at (3,4);
+    \coordinate (Wbottom) at (3,0);
+    \coordinate (Ker-top) at (0,1.5);
+    \coordinate (Im-top) at (3,2.5);
+
+    % Nodes
+    \node[above] at (Vtop) {\large $K^n$};
+    \node[above] at (Wtop) {\large $K^m$};
+
+    % Dotted arrows
+    \draw[densely dashed, Rhodamine] (Vtop) -- (Im-top);
+    \draw[densely dashed, Rhodamine] (Ker-top) -- (Wbottom);
+    \draw[densely dashed, Cerulean] (Vbottom) -- (Wbottom);
+
+    \draw[line width=2pt, SkyBlue] (Ker-top) -- (Vbottom);
+    \draw[line width=2pt, lightslategray] (Wtop) -- (Im-top);
+
+    \draw[line width=4pt, line cap=round, carnationpink] (Vtop) -- (Ker-top);
+    \draw[line width=4pt, line cap=round, carnationpink] (Im-top) -- (Wbottom);
+
+    % points
+    \fill[SkyBlue] (Wbottom) circle (2pt);
+
+    \draw[Cerulean, <->, Straight Barb-Straight Barb, very thick] ([xshift=-1.5ex]Ker-top) -- ([xshift=-1.5ex]Vbottom) node[midway,left, align=center] {$\dim\Ker f$};
+    \draw[Rhodamine, <->, Straight Barb-Straight Barb, very thick] ([xshift=-1.5ex]Vtop) -- ([xshift=-1.5ex]Ker-top) node[midway,left, align=center] {$n - \dim\Ker f$};
+    \draw[Rhodamine, <->, Straight Barb-Straight Barb, very thick, shorten <= 0.25ex] ([xshift=1.5ex]Im-top) -- ([xshift=1.5ex]Wbottom) node[midway,right=0.5ex, align=center] {$\dim\Im f$};
+  \end{tikzpicture}
+\end{center}
+
+\sectionline
+\section{次元定理と単射性・全射性}
+
+$m \times n$型行列$A$によって表現される線形写像$f$が単射・全射かどうかは、$m$と$n$の大小によって決まる。
+
+\subsection{$A$が横長（$m < n$）の場合}
+
+このとき、$A$が表現する線形写像$f$は単射ではない。
+
+\begin{enumerate}
+  \item $\Im A$は行き先の$m$次元空間の一部なので、$\dim \Im A \leq m$
+  \item $m < n$より、$\dim \Im A < n$
+  \item 次元定理より、$\dim \Ker A > 0$
+\end{enumerate}
+
+\hyperref[sec:injectivity-condition-kernel]{潰れる部分$\Ker A$が$\{ \vb*{o} \}$でない}ことは、単射ではないことを意味する。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      表現行列$A$が横長（$m < n$）だと単射にはなれない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\subsection{$A$が縦長（$m > n$）の場合}
+
+このとき、$A$が表現する線形写像$f$は全射ではない。
+
+\begin{enumerate}
+  \item 次元は$0$以上なので、$\dim \Ker A \geq 0$
+  \item 次元定理より、$\dim \Im A \leq n$
+  \item $m > n$より、$\dim \Im A < m$
+\end{enumerate}
+
+\hyperref[sec:image-and-surjectivity]{$\Im A$が写り先の空間全体をカバーしていない}ことは、全射ではないことを意味する。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      表現行列$A$が縦長（$m > n$）だと全射にはなれない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
 
 \end{document}
