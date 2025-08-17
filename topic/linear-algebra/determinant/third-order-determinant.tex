@@ -227,4 +227,163 @@ $a_2 \neq 0$ならば、両辺を$a_2$で割ることができる。
 
 この式$\Delta_3$が、3次の\keyword{行列式}として定義される。
 
+\sectionline
+\section{係数行列と三次行列式}
+
+$\Delta_3$もまた、連立方程式の係数行列だけで決まる量である。
+\begin{equation*}
+  \dlinelabelmath[BurntOrange]{\begin{pmatrix}
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+  \end{pmatrix}}{係数行列$A$}
+  \begin{pmatrix}
+    x \\
+    y \\
+    z
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    p_1 \\
+    p_2 \\
+    p_3
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+そこで、二次の場合と同様に、次のように表記することにしよう。
+\begin{equation*}
+  \det(A) = \begin{vmatrix}
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+  \end{vmatrix} = \Delta_3
+\end{equation*}
+
+\subsection{三次行列式の覚え方}
+
+3次正方行列の行列式は、プラスの項とマイナスの項が入り混じっていて、一見複雑な形をしている。
+\begin{equation*}
+  \Delta_3 = a_1b_2c_3 + a_2b_3c_1 + a_3b_1c_2 - a_3b_2c_1 - a_1b_3c_2 - a_2b_1c_3
+\end{equation*}
+
+この式に現れる項と符号は、次のように覚えるとよい。
+
+\begin{tcbraster}[raster columns=3, raster equal height]
+  \begin{tcolorbox}[empty, raster multicolumn=3, fontupper=\bfseries, valign upper=bottom]
+    添字が若い順に矢印を引いて、
+    \begin{itemize}
+      \item 矢印が右下へ向かうなら正
+      \item 矢印が左下へ向かうなら負
+    \end{itemize}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{carnationpink!20}{1-1}
+          \cellcolor{carnationpink!20}{2-2}
+          \cellcolor{carnationpink!20}{3-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3 \\
+        \CodeAfter
+          \tikz \draw[line width=2pt, opacity=0.8, Rhodamine, -Straight Barb] (1-1.north west) -- (3-3.south east);
+      \end{vNiceMatrix} \\
+      \textcolor{Rhodamine}{+a_1b_2c_3}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{carnationpink!20}{3-2}
+          \cellcolor{carnationpink!20}{2-1}
+          \cellcolor{carnationpink!20}{1-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3 \\
+        \CodeAfter
+          \tikz \draw[line width=2pt, opacity=0.8, Rhodamine, -Straight Barb] (2-1.north west) -- (3-2.south east);
+          \tikz \draw[line width=2pt, opacity=0.8, Rhodamine, -Straight Barb] (1-3.north west) -- (1-3.south east);
+      \end{vNiceMatrix} \\
+      \textcolor{Rhodamine}{+a_2b_3c_1}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{carnationpink!20}{3-1}
+          \cellcolor{carnationpink!20}{1-2}
+          \cellcolor{carnationpink!20}{2-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3 \\
+        \CodeAfter
+          \tikz \draw[line width=2pt, opacity=0.8, Rhodamine, -Straight Barb] (3-1.north west) -- (3-1.south east);
+          \tikz \draw[line width=2pt, opacity=0.8, Rhodamine, -Straight Barb] (1-2.north west) -- (2-3.south east);
+      \end{vNiceMatrix} \\
+      \textcolor{Rhodamine}{+a_3b_1c_2}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{SkyBlue!20}{1-3}
+          \cellcolor{SkyBlue!20}{2-2}
+          \cellcolor{SkyBlue!20}{3-1}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3 \\
+        \CodeAfter
+          \tikz \draw[line width=2pt, opacity=0.8, Cerulean, -Straight Barb] (1-3.north east) -- (3-1.south west);
+      \end{vNiceMatrix} \\
+      \textcolor{Cerulean}{-a_3b_2c_1}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{SkyBlue!20}{1-1}
+          \cellcolor{SkyBlue!20}{2-3}
+          \cellcolor{SkyBlue!20}{3-2}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3 \\
+        \CodeAfter
+          \tikz \draw[line width=2pt, opacity=0.8, Cerulean, -Straight Barb] (1-1.north east) -- (1-1.south west);
+          \tikz \draw[line width=2pt, opacity=0.8, Cerulean, -Straight Barb] (2-3.north east) -- (3-2.south west);
+      \end{vNiceMatrix} \\
+      \textcolor{Cerulean}{-a_1b_3c_2}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{SkyBlue!20}{1-2}
+          \cellcolor{SkyBlue!20}{2-1}
+          \cellcolor{SkyBlue!20}{3-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3 \\
+        \CodeAfter
+          \tikz \draw[line width=2pt, opacity=0.8, Cerulean, -Straight Barb] (1-2.north east) -- (2-1.south west);
+          \tikz \draw[line width=2pt, opacity=0.8, Cerulean, -Straight Barb] (3-3.north east) -- (3-3.south west);
+      \end{vNiceMatrix} \\
+      \textcolor{Cerulean}{-a_2b_1c_3}
+    \end{gather*}
+  \end{tcolorbox}
+\end{tcbraster}
+
 \end{document}
