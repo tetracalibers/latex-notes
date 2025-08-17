@@ -86,6 +86,12 @@ cp ./topic/linear-algebra/out/linear-map-rank.pdf ./public/linear-algebra/linear
 cp ./topic/linear-algebra/out/determinant.pdf ./public/linear-algebra/determinant.pdf
 ```
 
+### 三次元ベクトルの外積
+
+```bash
+cp ./topic/linear-algebra/out/cross-product.pdf ./public/linear-algebra/cross-product.pdf
+```
+
 ### 線形同型
 
 ```bash
