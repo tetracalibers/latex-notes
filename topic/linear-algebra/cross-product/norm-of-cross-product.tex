@@ -1,0 +1,106 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{外積のノルム}
+
+外積はベクトルであるから、そのノルムを定めることができる。
+
+\br
+
+そこで重要となるのが、次の定理である。
+
+\begin{theorem}{ラグランジュの恒等式}
+  任意の2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^3$に対して、次が成り立つ。
+  \begin{equation*}
+    \| \vb*{a} \times \vb*{b} \|^2 = \| \vb*{a} \|^2 \| \vb*{b} \|^2 - ( \vb*{a} ,\vb*{b} )^2
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\| \vb*{a} \times \vb*{b} \|^2$を成分表示により計算すると、
+  \begin{align*}
+    \lVert \vb*{a}\times \vb*{b}\rVert^2
+    &=(a_2b_3-a_3b_2)^2+(a_3b_1-a_1b_3)^2+(a_1b_2-a_2b_1)^2\\
+    &=\bigl(a_2^2b_3^2+a_3^2b_2^2-2a_2a_3b_2b_3\bigr)
+     +\bigl(a_3^2b_1^2+a_1^2b_3^2-2a_3a_1b_3b_1\bigr)\\
+    &\quad
+     +\bigl(a_1^2b_2^2+a_2^2b_1^2-2a_1a_2b_1b_2\bigr)\\
+    &=\underbrace{\bigl(
+    a_1^2b_2^2+a_1^2b_3^2+a_2^2b_1^2+a_2^2b_3^2+a_3^2b_1^2+a_3^2b_2^2
+    \bigr)}_{(\ast)}\\
+    &\quad-2\underbrace{\bigl(
+    a_1a_2b_1b_2+a_2a_3b_2b_3+a_3a_1b_3b_1
+    \bigr)}_{(\ast\ast)}
+  \end{align*}
+
+  また、ノルムの定義を用いて$\| \vb*{a}\|^2\| \vb*{b}\|^2$を計算すると、
+  \begin{align*}
+    \lVert \vb*{a}\rVert^2\lVert \vb*{b}\rVert^2
+    &=(a_1^2+a_2^2+a_3^2)(b_1^2+b_2^2+b_3^2)\\
+    &=a_1^2b_1^2+a_2^2b_2^2+a_3^2b_3^2 \\
+    &\quad+\bigl(
+    a_1^2b_2^2+a_1^2b_3^2+a_2^2b_1^2+a_2^2b_3^2+a_3^2b_1^2+a_3^2b_2^2
+    \bigr)\\
+    &=\underbrace{(a_1^2b_1^2+a_2^2b_2^2+a_3^2b_3^2)}_{(\dagger)}+(\ast)
+  \end{align*}
+  
+  内積の定義を用いて$(\vb*{a}, \vb*{b})^2$を計算すると、
+  \begin{align*}
+    (\vb*{a},  \vb*{b})^2
+    &=(a_1b_1+a_2b_2+a_3b_3)^2\\
+    &=a_1^2b_1^2+a_2^2b_2^2+a_3^2b_3^2
+    +2\bigl(a_1a_2b_1b_2+a_2a_3b_2b_3+a_3a_1b_3b_1\bigr)\\
+    &=(\dagger)+2(\ast\ast)
+  \end{align*}
+  
+  以上より、
+  \begin{align*}
+    \| \vb*{a} \|^2 \| \vb*{b} \|^2 - ( \vb*{a} ,\vb*{b} )^2
+    &= (\dagger) + (\ast) - (\dagger)+2(\ast\ast) \\
+    &= (\ast) - 2(\ast\ast) \\
+    &= \| \vb*{a} \times \vb*{b} \|^2
+  \end{align*}
+  となり、目的の等式が得られた。 $\qed$
+\end{proof}
+
+\br
+
+ここで、ベクトルのなす角の定義より、内積が
+\begin{equation*}
+  (\vb*{a}, \vb*{b}) = \|\vb*{a}\| \|\vb*{b}\| \cos \theta
+\end{equation*}
+と表せることを用いると、外積のノルムは次のように表現できる。
+
+\begin{theorem}{$\mathbb{R}^3$における外積のノルム}
+  任意の2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^3$に対して、次が成り立つ。
+  \begin{equation*}
+    \| \vb*{a} \times \vb*{b} \| = \| \vb*{a} \| \| \vb*{b} \| \sin \theta
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  ラグランジュの恒等式より、
+  \begin{align*}
+    \| \vb*{a} \times \vb*{b} \|^2
+    &= \| \vb*{a} \|^2 \| \vb*{b} \|^2 - ( \vb*{a}, \vb*{b} )^2 \\
+    &= \| \vb*{a} \|^2 \| \vb*{b} \|^2 - (\| \vb*{a} \| \| \vb*{b} \| \cos \theta)^2 \\
+    &= \| \vb*{a} \|^2 \| \vb*{b} \|^2 - \| \vb*{a} \|^2 \| \vb*{b} \|^2 \cos^2 \theta \\
+    &= \| \vb*{a} \|^2 \| \vb*{b} \|^2 (1 - \cos^2 \theta) \\
+    &= \| \vb*{a} \|^2 \| \vb*{b} \|^2 \sin^2 \theta \\
+    &= (\| \vb*{a} \| \| \vb*{b} \| \sin \theta)^2
+  \end{align*}
+  
+  両辺の平方根をとることで、
+  \begin{equation*}
+    \| \vb*{a} \times \vb*{b} \| = \| \vb*{a} \| \| \vb*{b} \| \sin \theta
+  \end{equation*}
+  が得られる。 $\qed$
+\end{proof}
+
+\begin{mindflow}
+  \todo{図形的意味}
+\end{mindflow}
+
+\end{document}
