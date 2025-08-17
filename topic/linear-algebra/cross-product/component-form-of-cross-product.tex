@@ -1,0 +1,138 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{二つのベクトルに垂直なベクトル}
+\marginnote{
+  \refweb{ベクトルの外積（クロス積）}{https://wiis.info/math/linear-algebra/vector/cross-product/}
+}
+
+3次元空間における2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^3$に対して、どちらとも垂直になるベクトル$\vb*{v}$を求める問題を考える。
+
+\br
+
+もし$\vb*{a}, \vb*{b}$がどちらも零ベクトルであるなら、零ベクトルは任意のベクトルと垂直であるため、任意のベクトル$\vb*{v}$が$\vb*{a}, \vb*{b}$の双方と垂直になる。
+
+\br
+
+そこで、$\vb*{a}, \vb*{b}$の少なくとも一方が零ベクトルでない場合を考えることにする。
+
+\br
+
+どちらも$\vb*{v}$と直交するという条件は、内積を用いて次のように書ける。
+\begin{align*}
+  \vb*{a} \cdot \vb*{v} &= \vb*{o} \\
+  \vb*{b} \cdot \vb*{v} &= \vb*{o}
+\end{align*}
+
+成分を用いて書くと、
+\begin{align*}
+  a_1 v_1 + a_2 v_2 + a_3 v_3 &= 0 \\
+  b_1 v_1 + b_2 v_2 + b_3 v_3 &= 0
+\end{align*}
+
+ここで、$\vb*{a} \cdot \vb*{v} = \vb*{o}$の両辺に$b_1$を、$\vb*{b} \cdot \vb*{v} = \vb*{o}$の両辺に$a_1$をかける。
+\begin{align*}
+  b_1 (a_1 v_1 + a_2 v_2 + a_3 v_3) &= 0 \\
+  a_1 (b_1 v_1 + b_2 v_2 + b_3 v_3) &= 0
+\end{align*}
+それぞれ展開して、
+\begin{align*}
+  a_1 b_1 v_1 + a_2 b_1 v_2 + a_3 b_1 v_3 &= 0 \\
+  a_1 b_1 v_1 + a_1 b_2 v_2 + a_1 b_3 v_3 &= 0
+\end{align*}
+辺々を引いた上で整理すると、
+\begin{equation*}
+  (a_2 b_1 - a_1 b_2) v_2 + (a_3 b_1 - a_1 b_3) v_3 = 0
+\end{equation*}
+
+この式は、次のような内積が0となる式として解釈することができる。
+\begin{equation*}
+  \begin{pmatrix}
+    a_2 b_1 - a_1 b_2 \\
+    a_3 b_1 - a_1 b_3
+  \end{pmatrix} \cdot \begin{pmatrix}
+    v_2 \\
+    v_3
+  \end{pmatrix} = 0
+\end{equation*}
+
+ここで、2次元ベクトルについて、次が成り立つことを利用する。
+\begin{equation*}
+  \begin{pmatrix}
+    x \\
+    y
+  \end{pmatrix} \cdot \begin{pmatrix}
+    y \\
+    -x
+  \end{pmatrix} = xy - xy = 0
+\end{equation*}
+これより、
+\begin{equation*}
+  \begin{pmatrix}
+    a_2 b_1 - a_1 b_2 \\
+    a_3 b_1 - a_1 b_3
+  \end{pmatrix} \cdot \begin{pmatrix}
+    a_3 b_1 - a_1 b_3 \\
+    -(a_2 b_1 - a_1 b_2)
+  \end{pmatrix} = 0
+\end{equation*}
+となるので、
+\begin{equation*}
+  \begin{pmatrix}
+    v_2 \\
+    v_3
+  \end{pmatrix} = \begin{pmatrix}
+    a_3 b_1 - a_1 b_3 \\
+    -(a_2 b_1 - a_1 b_2)
+  \end{pmatrix} = \begin{pmatrix}
+    a_3 b_1 - a_1 b_3 \\
+    a_1 b_2 - a_2 b_1
+  \end{pmatrix}
+\end{equation*}
+とおけばよい。
+
+\br
+
+これで$v_2, v_3$が求まったので、あとは$v_1$を求めればよい。
+
+$\vb*{a} \cdot \vb*{v} = \vb*{o}$という式
+\begin{equation*}
+  a_1 v_1 + a_2 v_2 + a_3 v_3 = 0
+\end{equation*}
+において、$a_1 \neq 0$と仮定すると、
+\begin{align*}
+  v_1 &= -\frac{a_2 v_2 + a_3 v_3}{a_1} \\
+  &= - \frac{a_2v_2}{a_1} - \frac{a_3v_3}{a_1} \\
+  &= - \frac{a_2(a_3b_1 - a_1b_3)}{a_1} - \frac{a_3(a_1b_2 - a_2b_1)}{a_1} \\
+  &= - \frac{a_2a_3b_1}{a_1} + \frac{a_2a_1b_3}{a_1} - \frac{a_3a_1b_2}{a_1} + \frac{a_3a_2b_1}{a_1} \\
+  &= - \frac{a_2a_3b_1}{a_1} + a_2b_3 - a_3b_2 + \frac{a_2a_3b_1}{a_1} \\
+  &= a_2b_3 - a_3b_2
+\end{align*}
+
+以上より、
+\begin{equation*}
+  \begin{pmatrix}
+    v_1 \\
+    v_2 \\
+    v_3
+  \end{pmatrix} = \begin{pmatrix}
+    a_2b_3 - a_3b_2 \\
+    a_3b_1 - a_1b_3 \\
+    a_1b_2 - a_2b_1
+  \end{pmatrix}
+\end{equation*}
+
+\begin{definition}{$\mathbb{R}^3$における二つのベクトルの外積}
+  3次元空間における2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^3$に対して、次のように定義されるベクトルを、$\vb*{a}$と$\vb*{b}$の\keyword{外積}あるいは\keyword{クロス積}という。
+  \begin{equation*}
+    \vb*{a} \times \vb*{b} = \begin{pmatrix}
+      a_2b_3 - a_3b_2 \\
+      a_3b_1 - a_1b_3 \\
+      a_1b_2 - a_2b_1
+    \end{pmatrix}
+  \end{equation*}
+\end{definition}
+
+\end{document}

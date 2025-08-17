@@ -1,0 +1,353 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列式の項の規則性}
+
+さて、この調子で高次の行列式へと発展させていきたいが、4次の行列式はどのような式になるだろうか？と問われたときに、今までのように4元連立方程式を加減法で解いて…という手順を踏むのは現実的ではない。
+
+そろそろ、行列式の項の現れ方と符号の規則性を定式化する必要がある。
+
+\subsection{項の現れ方}
+
+三次行列式は6つの項からなるが、この項の数はどのように決まるのだろうか。
+
+\begin{tcbraster}[raster columns=3]
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{carnationpink!40}{1-1}
+          \cellcolor{carnationpink!40}{2-2}
+          \cellcolor{carnationpink!40}{3-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix} \\
+      \textcolor{Rhodamine}{+a_1b_2c_3}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{carnationpink!40}{3-2}
+          \cellcolor{carnationpink!40}{2-1}
+          \cellcolor{carnationpink!40}{1-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix} \\
+      \textcolor{Rhodamine}{+a_2b_3c_1}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{carnationpink!40}{3-1}
+          \cellcolor{carnationpink!40}{1-2}
+          \cellcolor{carnationpink!40}{2-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix} \\
+      \textcolor{Rhodamine}{+a_3b_1c_2}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{SkyBlue!40}{1-3}
+          \cellcolor{SkyBlue!40}{2-2}
+          \cellcolor{SkyBlue!40}{3-1}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix} \\
+      \textcolor{Cerulean}{-a_3b_2c_1}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{SkyBlue!40}{1-1}
+          \cellcolor{SkyBlue!40}{2-3}
+          \cellcolor{SkyBlue!40}{3-2}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix} \\
+      \textcolor{Cerulean}{-a_1b_3c_2}
+    \end{gather*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{gather*}
+      \begin{vNiceMatrix}[margin]
+        \CodeBefore
+          \cellcolor{SkyBlue!40}{1-2}
+          \cellcolor{SkyBlue!40}{2-1}
+          \cellcolor{SkyBlue!40}{3-3}
+        \Body
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix} \\
+      \textcolor{Cerulean}{-a_2b_1c_3}
+    \end{gather*}
+  \end{tcolorbox}
+\end{tcbraster}
+
+このように三次行列式の各項を眺めると、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      行列式の項は、各行各列から成分を1つずつ選ぶすべての組み合わせ
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+からなることがわかる。
+
+同じ行から複数の成分を選んではいけないし、同じ列から複数の成分を選んでもいけない。
+
+\subsection{項の符号の規則性}
+
+\hyperref[sec:det2x2-add-subtract]{二次行列式の覚え方}で述べたように、行列式の負の項は、加減法における「係数を交差させるようにかけて"引く"」という操作から生まれるものである。
+
+\br
+
+しかし3変数以上になると、このような符号のつき方を純粋に加減法の過程から理解することは難しい。
+ここでも、加減法の結果として得られた三次行列式の形から、符号の規則性を見出すことを目指そう。
+
+\br
+
+「係数を交差させるようにかける」という操作によって、係数の\keyword{添字}を入れ替えたものどうしの積が現れることになる。
+
+そこで、添字の入れ替わりという視点から、三次行列式の各項を整理してみると、ある規則性が見えてくる。
+
+\begin{tcbraster}[raster columns=3]
+  \tikzcdset{
+    arrow style=tikz,
+    arrows = {end anchor=north},
+    diagrams={>=Straight Barb},
+    cells={
+      shape=rectangle,
+      inner xsep=0.5ex,
+      inner ysep=0.75ex
+    }
+  }
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Rhodamine}{+a_1b_2c_3} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          a\arrow[d] & b\arrow[d] & c\arrow[d] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Rhodamine}{+a_2b_3c_1} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          a\arrow[rd] & b\arrow[rd] & c\arrow[lld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Rhodamine}{+a_3b_1c_2} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          a\arrow[rrd] & b\arrow[ld] & c\arrow[ld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Cerulean}{-a_3b_2c_1} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          a\arrow[rrd] & b\arrow[d] & c\arrow[lld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Cerulean}{-a_1b_3c_2} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          a\arrow[d] & b\arrow[rd] & c\arrow[ld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Cerulean}{-a_2b_1c_3} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          a\arrow[rd] & b\arrow[ld] & c\arrow[d] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+\end{tcbraster}
+
+\begin{emphabox}
+  \begin{spacebox}
+    $a$からその添字、$b$からその添字、$c$からその添字、と結んだときに、
+    \begin{itemize}
+      \item 偶数回交差するなら正
+      \item 奇数回交差するなら負
+    \end{itemize}
+  \end{spacebox}
+\end{emphabox}
+
+\br
+
+ここで、$a$は第1列、$b$は第2列、$c$は第3列に対応しており、$a, b, c$の添字は、各列から「選んだ行番号」を表している。
+
+\br
+
+\begin{figure}[h]
+  \begin{minipage}{0.33\linewidth}
+    \begin{equation*}
+      \begin{vNiceMatrix}[margin]
+        a_1 & b_1 & c_1 \\
+        a_2 & b_2 & c_2 \\
+        a_3 & b_3 & c_3
+      \end{vNiceMatrix}
+    \end{equation*}
+  \end{minipage}
+  \begin{minipage}{0.66\linewidth}
+    \begin{itemize}
+      \item $a$の添字は、第1列から何行目の成分を選んだか
+      \item $b$の添字は、第2列から何行目の成分を選んだか
+      \item $c$の添字は、第3列から何行目の成分を選んだか
+    \end{itemize}
+  \end{minipage}
+\end{figure}
+
+\br
+
+そこで、$a,b,c$をその対応する列番号$1, 2, 3$にそれぞれ置き換えると、各項の行番号と列番号の関係がわかりやすくなる。
+
+\begin{tcbraster}[raster columns=3]
+  \tikzcdset{
+    arrow style=tikz,
+    arrows = {end anchor=north},
+    diagrams={>=Straight Barb},
+    cells={
+      shape=rectangle,
+      inner xsep=0.5ex,
+      inner ysep=0.75ex
+    }
+  }
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Rhodamine}{+a_1b_2c_3} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          1\arrow[d] & 2\arrow[d] & 3\arrow[d] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Rhodamine}{+a_2b_3c_1} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          1\arrow[rd] & 2\arrow[rd] & 3\arrow[lld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Rhodamine}{+a_3b_1c_2} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          1\arrow[rrd] & 2\arrow[ld] & 3\arrow[ld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Cerulean}{-a_3b_2c_1} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          1\arrow[rrd] & 2\arrow[d] & 3\arrow[lld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Cerulean}{-a_1b_3c_2} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          1\arrow[d] & 2\arrow[rd] & 3\arrow[ld] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+  \begin{tcolorbox}[empty]
+    \begin{equation*}
+      \begin{gathered}
+        \textcolor{Cerulean}{-a_2b_1c_3} \\
+        \begin{tikzcd}[column sep=3ex, row sep=large]
+          1\arrow[rd] & 2\arrow[ld] & 3\arrow[d] \\
+          1 & 2 & 3
+        \end{tikzcd}
+      \end{gathered}
+    \end{equation*}
+  \end{tcolorbox}
+\end{tcbraster}
+
+\begin{emphabox}
+  \begin{spacebox}
+    行列式の各項の行番号と列番号は、並び替えた関係にある
+    \begin{itemize}
+      \item 偶数回の入れ替えで行番号と列番号が同じ並びになるなら正
+      \item 奇数回の入れ替えで行番号と列番号が同じ並びになるなら負
+    \end{itemize}
+  \end{spacebox}
+\end{emphabox}
+
+\br
+
+このような、添字の並び替えの回数によって符号が定まる規則を定式化することで、4次以上の場合にも通用する行列式の定義を与えることができる。
+
+\br
+
+そのためには、まず「並び替え」というものを数学的に表現しなければならない。
+
+そこで登場するのが、\keyword{置換}という概念である。
+
+\end{document}

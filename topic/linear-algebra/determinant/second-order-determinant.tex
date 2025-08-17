@@ -1,0 +1,195 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{二元連立一次方程式の解の判別式}
+
+連立方程式を解く方法の一つとして、方程式の両辺を足したり引いたりして、文字を消去することで解を求める\keyword{加減法}という手法がある。
+
+\br
+
+次の$x, y$に関する連立一次方程式を、加減法で解く過程を追いかけてみよう。
+\begin{equation*}
+  \begin{cases}
+    a_1 x + b_1 y = p_1 \\
+    a_2 x + b_2 y = p_2
+  \end{cases}
+\end{equation*}
+
+\subsection{$y$を消去して$x$を求める}
+
+$y$を消去するには、次のようにすればよい。
+\begin{equation*}
+  \text{1つ目の式} \times b_2 - \text{2つ目の式} \times b_1
+\end{equation*}
+
+こうすることで、$x$のみに関する方程式が得られる。
+\begin{equation*}
+  (a_1 b_2 - a_2 b_1) x = p_1 b_2 - p_2 b_1
+\end{equation*}
+
+ここで、$x$の係数$a_1 b_2 - a_2 b_1 \neq 0$であれば、
+\begin{equation*}
+  x = \frac{p_1 b_2 - p_2 b_1}{a_1 b_2 - a_2 b_1}
+\end{equation*}
+として、解を求められる。
+
+\br
+
+逆に、$a_1 b_2 - a_2 b_1 = 0$であれば、解を一意に求めることはできない。
+
+\br
+
+この意味で、$a_1 b_2 - a_2 b_1$はこの連立方程式の解の\keyword{判別式}のような役割を持っているといえる。
+この重要な量を一旦$\Delta_2$とおくことにしよう。
+\begin{equation*}
+  \Delta_2 = a_1 b_2 - a_2 b_1
+\end{equation*}
+
+\subsection{$x$を消去して$y$を求める}
+
+$x$を消去するには、次のようにすればよい。
+\begin{equation*}
+  \text{1つ目の式} \times a_2 - \text{2つ目の式} \times a_1
+\end{equation*}
+
+こうすることで、$y$のみに関する方程式が得られる。
+\begin{equation*}
+  (a_2 b_1 - a_1 b_2) y = p_2 a_1 - p_1 a_2
+\end{equation*}
+
+ここでも、$y$の係数$a_2 b_1 - a_1 b_2$の値によって、解を求められるかどうかが変わってくる。
+
+この$y$の係数は、先ほど導入した$\Delta_2$を用いると、次のように表せる。
+\begin{equation*}
+  a_2 b_1 - a_1 b_2 = - (a_1 b_2 - a_2 b_1) = - \Delta_2
+\end{equation*}
+
+\subsection{$x$を消去して$y$を求める（式を入れ替えた場合）}
+
+$x$を消去する前に、あえて式の順番を入れ替えた場合を考えてみよう。
+\begin{equation*}
+  \begin{cases}
+    a_2 x + b_2 y = p_2 \\
+    a_1 x + b_1 y = p_1
+  \end{cases}
+\end{equation*}
+
+すると、$x$を消去するには、
+\begin{equation*}
+  \text{1つ目の式} \times a_1 - \text{2つ目の式} \times a_2
+\end{equation*}
+とすればよいことになる。
+
+\br
+
+これより得られる$y$についての方程式は、次のようになる。
+\begin{equation*}
+  (a_1 b_2 - a_2 b_1) y = p_1 a_2 - p_2 a_1
+\end{equation*}
+
+この場合、$y$の係数は、
+\begin{equation*}
+  a_1 b_2 - a_2 b_1 = \Delta_2
+\end{equation*}
+となり、今度はマイナスの符号がつかない$\Delta_2$そのものになっている。
+
+\br
+
+どうやら、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      式の順番を入れ替えたら、判別式$\Delta_2$の符号が反転する
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ようだ。（このことは後の議論への伏線として、頭の片隅に置いておこう。）
+
+\sectionline
+\section{係数行列と二次行列式}
+
+先ほどの連立一次方程式を、行列を使って表すと次のようになる。
+\begin{equation*}
+  \dlinelabelmath[BurntOrange]{\begin{pmatrix}
+    a_1 & b_1 \\
+    a_2 & b_2
+  \end{pmatrix}}{係数行列$A$}
+  \begin{pmatrix}
+    x \\
+    y
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    p_1 \\
+    p_2
+  \end{pmatrix}
+\end{equation*}
+
+\br
+
+すると、この連立一次方程式の解の判別式として導入した、
+\begin{equation*}
+  \Delta_2 = a_1 b_2 - a_2 b_1
+\end{equation*}
+という量は、\keyword[BurntOrange]{係数行列$A$}の成分だけで決まるものだとわかる。
+
+\br
+
+そこで、この$\Delta_2$を2次正方行列$A$の\keyword{行列式}と呼ぶことにし、次のように表す。
+\begin{equation*}
+  \det(A) = \begin{vmatrix}
+    a_1 & b_1 \\
+    a_2 & b_2
+  \end{vmatrix} = a_1 b_2 - a_2 b_1
+\end{equation*}
+
+\br
+
+\begin{definition}{二次正方行列の行列式}
+  2次正方行列$A = (a_{ij})$に対して、$A$の\keyword{行列式}$\det(A)$を次のように定義する。
+  \begin{equation*}
+    \det(A) = \begin{vmatrix}
+      a_{11} & a_{12} \\
+      a_{21} & a_{22}
+    \end{vmatrix} = a_{11} a_{22} - a_{21} a_{12}
+  \end{equation*}
+\end{definition}
+
+\subsection{加減法の操作と二次行列式の覚え方}\label{sec:det2x2-add-subtract}
+
+そもそも$\Delta_2$は、次の連立一次方程式
+\begin{equation*}
+  \begin{cases}
+    a_1 x + b_1 y = p_1 \\
+    a_2 x + b_2 y = p_2
+  \end{cases}
+\end{equation*}
+において、
+\begin{equation*}
+  \text{1つ目の式} \times b_2 - \text{2つ目の式} \times b_1
+\end{equation*}
+という操作を行うことで現れたものだった。
+
+\br
+
+この加減法の操作をイメージして、2次正方行列の行列式は「係数を交差させるようにかけて引く」と覚えるとよい。
+\begin{gather*}
+  \begin{vNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!20}{1-1}
+      \cellcolor{carnationpink!20}{2-2}
+      \cellcolor{SkyBlue!20}{1-2}
+      \cellcolor{SkyBlue!20}{2-1}
+    \Body
+    a_1 & b_1 \\
+    a_2 & b_2 \\
+    \CodeAfter
+      \tikz \draw[line width=2pt, opacity=0.8, Rhodamine, -Straight Barb] (1-1.north west) -- (2-2.south east);
+      \tikz \draw[line width=2pt, opacity=0.8, Cerulean, -Straight Barb] (1-2.north east) -- (2-1.south west);
+  \end{vNiceMatrix} = \textcolor{Rhodamine}{a_1b_2} - \textcolor{Cerulean}{a_2b_1} \\[1ex]
+  \text{\bfseries 係数を交差させるようにかけて引く}
+\end{gather*}
+
+\end{document}
