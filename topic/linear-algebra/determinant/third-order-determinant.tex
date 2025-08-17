@@ -1,0 +1,230 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{三元連立一次方程式の解の判別式}
+
+今度は、3つの変数$x, y, z$に関する連立一次方程式を加減法で解くことで、2変数の場合と同様に解の判別式と呼べるものを求めてみよう。
+\begin{equation*}
+  \begin{cases}
+    a_1 x + b_1 y + c_1 z = p_1 \\
+    a_2 x + b_2 y + c_2 z = p_2 \\
+    a_3 x + b_3 y + c_3 z = p_3
+  \end{cases}
+\end{equation*}
+
+なお、その過程ではおびただしい式展開が登場するが、途中式を完璧に追う必要はない。
+
+重要なのは、何をしようとしてどんな結果が現れるかということである。
+
+\subsection{$x \to y$の順に消去して$z$を求める}
+
+まず、1つ目の式と2つ目の式を用いて、$x$を消去する。
+\begin{equation*}
+  \text{2つ目の式} \times a_1 - \text{1つ目の式} \times a_2
+\end{equation*}
+とすることで、$y, z$に関する方程式が1本得られる。
+\begin{equation*}
+  (a_1 b_2 - a_2 b_1) y + (a_1 c_2 - a_2 c_1) z = a_1 p_2 - a_2 p_1
+\end{equation*}
+
+\begin{equation*}
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{1-1}
+      \cellcolor{carnationpink!30}{2-2}
+      \cellcolor{SkyBlue!30}{1-2}
+      \cellcolor{SkyBlue!30}{2-1}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+  \end{pNiceMatrix} \quad
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{1-1}
+      \cellcolor{SkyBlue!30}{2-1}
+      \cellcolor{SkyBlue!30}{1-3}
+      \cellcolor{carnationpink!30}{2-3}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+  \end{pNiceMatrix}
+\end{equation*}
+
+\br
+
+2変数$y, z$に関する方程式が1本だけでは解を求めることはできないので、$y, z$に関する方程式をもう1本作りたい。
+
+\br
+
+そこで、今度は2つ目の式と3つ目の式を用いて、$x$を消去する。
+\begin{equation*}
+  \text{3つ目の式} \times a_2 - \text{2つ目の式} \times a_3
+\end{equation*}
+とすることで、$y, z$に関する別な方程式が得られる。
+\begin{equation*}
+  (a_2 b_3 - a_3 b_2) y + (a_2 c_3 - a_3 c_2) z = a_3 p_2 - a_2 p_3
+\end{equation*}
+
+\begin{equation*}
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{2-1}
+      \cellcolor{carnationpink!30}{3-2}
+      \cellcolor{SkyBlue!30}{2-2}
+      \cellcolor{SkyBlue!30}{3-1}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+  \end{pNiceMatrix} \quad
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{2-1}
+      \cellcolor{SkyBlue!30}{3-1}
+      \cellcolor{SkyBlue!30}{2-3}
+      \cellcolor{carnationpink!30}{3-3}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+  \end{pNiceMatrix}
+\end{equation*}
+
+\br
+
+式が長くなってしまうので、ここで、
+\begin{gather*}
+  A_1 = a_1 b_2 - a_2 b_1, \quad B_1 = a_1 c_2 - a_2 c_1, \quad P_1 = a_1 p_2 - a_2 p_1 \\
+  A_2 = a_2 b_3 - a_3 b_2, \quad B_2 = a_2 c_3 - a_3 c_2, \quad P_2 = a_3 p_2 - a_2 p_3
+\end{gather*}
+とおいて、ここまでで得られた$y, z$に関する2本の方程式を次のように整理しよう。
+\begin{equation*}
+  \begin{cases}
+    A_1 y + B_1 z = P_1 \\
+    A_2 y + B_2 z = P_2
+  \end{cases}
+\end{equation*}
+
+\br
+
+ここからさらに$y$を消去するには、次のようにすればよい。
+\begin{equation*}
+  \text{2つ目の式} \times A_1 - \text{1つ目の式} \times A_2
+\end{equation*}
+こうして、$z$に関する方程式が得られる。
+\begin{equation*}
+  (A_1 B_2 - A_2 B_1) z = A_1 P_2 - A_2 P_1
+\end{equation*}
+
+これを$z$について解けば、$z$を求めることができる。
+
+\br
+
+左辺の$z$の係数を展開すると、
+\begin{align*}
+  & A_1 B_2 - A_2 B_1 \\
+  & = (a_1 b_2 - a_2 b_1)(a_2 c_3 - a_3 c_2) - (a_2 b_3 - a_3 b_2)(a_1 c_2 - a_2 c_1) \\
+  & = a_1b_2a_2c_3 - \cancel{a_1b_2a_3c_2} - a_2b_1a_2c_3 + a_2b_1a_3c_2 \\
+  & \quad - a_2b_3a_1c_2 + a_2b_3a_2c_1 + \cancel{a_3b_2a_1c_2} - a_3b_2a_2c_1 \\
+  &= a_1 a_2 (b_2 c_3 - b_3 c_2)
+     + a_2 a_2 (b_1 c_3 - b_3 c_1)
+     + a_2 a_3 (b_1 c_2 - b_2 c_1) \\
+  &= a_2 \left\{ a_1 (b_2 c_3 - b_3 c_2) + a_2 (b_1 c_3 - b_3 c_1) + a_3 (b_1 c_2 - b_2 c_1) \right\}
+\end{align*}
+
+また、右辺を展開すると、
+\begin{align*}
+  & A_1 P_2 - A_2 P_1 \\
+  &= (a_1 b_2 - a_2 b_1)(a_3 p_2 - a_2 p_3) - (a_2 b_3 - a_3 b_2)(a_1 p_2 - a_2 p_1) \\
+  &= a_1 b_2 a_3 p_2 - a_1 b_2 a_2 p_3 - a_2 b_1 a_3 p_2 + a_2 b_1 a_2 p_3 \\
+  & \quad - a_2 b_3 a_1 p_2 + a_2 b_3 a_2 p_1 + \cancel{a_3 b_2 a_1 p_2} - \cancel{a_3 b_2 a_2 p_1} \\
+  &= a_2 \left\{ a_1 b_2 p_2 - a_1 b_2 p_3 + b_1 a_3 p_2 - b_1 a_2 p_3 + b_3 a_1 p_2 - a_2 b_3 p_1 \right\}
+\end{align*}
+
+$a_2 \neq 0$ならば、両辺を$a_2$で割ることができる。
+
+\br
+
+すると、$z = \cdots$の形にしたときの分母には次の式が現れる。
+
+この式が$0$でなければ、$z$を一意に求めることができるので、これを\keyword{判別式}$\Delta_3$としよう。
+\begin{equation*}
+  \Delta_3 = a_1 (b_2 c_3 - b_3 c_2) + a_2 (b_1 c_3 - b_3 c_1) + a_3 (b_1 c_2 - b_2 c_1)
+\end{equation*}
+
+\subsection{二次行列式に帰着させた見方}
+
+この式は、次のように2次行列式を用いて表記できる。
+\begin{equation*}
+  \Delta_3 = a_1 \begin{vmatrix}
+    b_2 & c_2 \\
+    b_3 & c_3
+  \end{vmatrix} + a_2 \begin{vmatrix}
+    b_1 & c_1 \\
+    b_3 & c_3
+  \end{vmatrix} + a_3 \begin{vmatrix}
+    b_1 & c_1 \\
+    b_2 & c_2
+  \end{vmatrix}
+\end{equation*}
+
+\begin{equation*}
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{2-2}
+      \cellcolor{carnationpink!30}{3-3}
+      \cellcolor{SkyBlue!30}{2-3}
+      \cellcolor{SkyBlue!30}{3-2}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+    \CodeAfter
+      \tikz \draw[thick,BurntOrange] (1-1) circle (0.7em);
+  \end{pNiceMatrix} \quad
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{1-2}
+      \cellcolor{SkyBlue!30}{1-3}
+      \cellcolor{SkyBlue!30}{3-2}
+      \cellcolor{carnationpink!30}{3-3}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+    \CodeAfter
+      \tikz \draw[thick,BurntOrange] (2-1) circle (0.7em);
+  \end{pNiceMatrix} \quad
+  \begin{pNiceMatrix}[margin]
+    \CodeBefore
+      \cellcolor{carnationpink!30}{1-2}
+      \cellcolor{carnationpink!30}{2-3}
+      \cellcolor{SkyBlue!30}{1-3}
+      \cellcolor{SkyBlue!30}{2-2}
+    \Body
+    a_1 & b_1 & c_1 \\
+    a_2 & b_2 & c_2 \\
+    a_3 & b_3 & c_3
+    \CodeAfter
+      \tikz \draw[thick,BurntOrange] (3-1) circle (0.7em);
+  \end{pNiceMatrix}
+\end{equation*}
+
+\br
+
+このように2次の行列式に帰着させた見方は、\keyword{余因子展開}として後に学ぶ。
+
+\subsection{三次行列式としての見方}
+
+また、次のように括弧を展開することもできる。
+\begin{equation*}
+  \Delta_3 = a_1b_2c_3 - a_1b_3c_2 + a_2b_1c_3 - a_2b_3c_1 + a_3b_1c_2 - a_3b_2c_1
+\end{equation*}
+
+この式$\Delta_3$が、3次の\keyword{行列式}として定義される。
+
+\end{document}
