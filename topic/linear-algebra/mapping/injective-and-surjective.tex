@@ -1,0 +1,290 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{単射と全射}
+\marginnote{
+  \refbookS p10 \\
+  \refweb{全射・単射・全単射の定義をわかりやすく～具体例を添えて～}{https://mathlandscape.com/bijection/}
+}
+
+写像の性質として、次の2点が重要になる。
+\begin{enumerate}[label=\romanlabel]
+  \item 異なる2元を写して同じ元になるか？
+  \item 終域のどんな元も、定義域の元になるか？（$y$に写るような$x$があるか？）
+\end{enumerate}
+
+これら2つの視点から、\keyword{単射}と\keyword{全射}が定義される。
+\begin{enumerate}[label=\romanlabel]
+  \item 「異なる元は異なる元に写る」という性質を満たすとき、写像は\keyword{単射}であるという。
+  \item 「どんな$y$も$X$の元の像となる」という性質を満たすとき、写像は\keyword{全射}であるという。
+\end{enumerate}
+
+\subsection{単射の定義とイメージ}
+
+\begin{definition}{単射}
+  写像$f\colon X \to Y$が\keyword{単射}であるとは、$X$の任意の要素$x_1, x_2$に対して、次が成り立つことをいう。
+  \begin{equation*}
+    f(x_1) = f(x_2) \implies x_1 = x_2
+  \end{equation*}
+\end{definition}
+
+この条件の対偶をとると、
+\begin{equation*}
+  x_1 \ne x_2 \implies f(x_1) \ne f(x_2)
+\end{equation*}
+となる。つまり、\keyword{単射}であるということは、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      異なる元が$f$によって同じ元に対応することはない
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということにほかならない。
+
+\br
+
+これは、元々の集合の元が、$f$で写しても他の元と重なってしまうようなことはない、ということを意味する。
+情報が失われることなく、すべての元がそのまま写るので、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      \keyword{単射}な写像は、定義域を終域の中にそっくり「コピーする」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+と考えることができる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\rCopy{1cm}      % 右の円の中の小円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \begin{scope}[local bounding box=circleX]
+      \draw[lightslategray,thick,fill=SkyBlue!40] (\leftX,0) circle (\rA);
+    \end{scope}
+    \draw[lightslategray,thick] (\rightX,0) circle (\rB);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{単射}};
+
+    % 右の円の中にさらに小さな円を配置
+    \begin{scope}[local bounding box=circleXcopy]
+      \draw[fill=SkyBlue!40, draw=lightslategray] (\rightX,0) circle (\rCopy);
+    \end{scope}
+
+    % 左の円の中に3つの点を不規則に配置
+    \fill (\leftX+0.25,0.5) circle (\dotSize);
+    \fill (\leftX,-0.5) circle (\dotSize);
+    \fill (\leftX+0.75,-0.2) circle (\dotSize);
+
+    % 右の円の中の小さな円の中に3つの点を不規則に配置
+    \fill (\rightX+0.2,0.25) circle (\dotSize);
+    \fill (\rightX,-0.5) circle (\dotSize);
+    \fill (\rightX-0.5,-0.2) circle (\dotSize);
+    
+    % 小さな円からはみ出している点
+    %\fill (\rightX+1.2,-0.9) circle (\dotSize);
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=45,in=135] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-45,in=-135] (\rightX,-0.5);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.75,-0.2) to[out=-35,in=-145] (\rightX-0.5,-0.2);
+
+    % ラベル
+    \node[yshift=2ex] at (\leftX,\rA) {\large $X$};
+    \node[yshift=2ex] at (\rightX,\rB) {\large $Y$};
+    \node[Cerulean] at (\rightX,1.25) {\small\bfseries $X$のコピー};
+    
+    \draw[lightslategray] (circleX.north) -- (circleXcopy.north);
+    \draw[lightslategray] (circleX.south) -- (circleXcopy.south);
+  \end{tikzpicture}
+\end{center}
+
+また、単射は\hyperref[def:preimage-of-element]{終域の元の逆像}を用いて定義することもできる。
+
+\begin{definition}{単射（逆像による定義）}
+  写像$f\colon X \to Y$が\keyword{単射}であるとは、任意の$y \in Y$に対し、逆像$f^{-1}(y)$の元の個数が$1$以下であることをいう。
+\end{definition}
+
+$y$の逆像は、$f$によって$y$に写るような$x \in X$の集合である。
+
+この定義でも、同じ$y$に写るような$x$がただ一つしかない（もしくは存在しない）ことが\keyword{単射}だと述べている。
+
+\subsection{全射の定義とイメージ}
+
+\begin{definition}{全射}
+  写像$f\colon X \to Y$が\keyword{全射}であるとは、$f$の像$f(X)$が$Y$に一致することをいう。
+  \begin{equation*}
+    f(X) = Y
+  \end{equation*}
+\end{definition}
+
+$X$から$Y$への写像$f$が\keyword{全射}であるとは、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $Y$のすべての元が、$X$のある元の像となる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということを意味する。
+
+\br
+
+つまり、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      \keyword{全射}な写像は、定義域の元の像で終域を「埋め尽くす」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+と考えることができる。
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \begin{scope}[local bounding box=circleX]
+      \draw[lightslategray,thick] (\leftX,0) circle (\rA);
+    \end{scope}
+    \begin{scope}[local bounding box=circleY]
+      \draw[lightslategray,thick,fill=Rhodamine!40] (\rightX,0) circle (\rB);
+    \end{scope}
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{全射}};
+
+    % 左の円の中に3つの点を不規則に配置
+    \fill (\leftX+0.25,0.5) circle (\dotSize);
+    \fill (\leftX,-0.5) circle (\dotSize);
+    \fill (\leftX+0.75,-0.2) circle (\dotSize);
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (\rightX+0.2,0.25) circle (\dotSize);
+    \fill (\rightX,-0.5) circle (\dotSize);
+    
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=35,in=145] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-35,in=-145] (\rightX,-0.5);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.75,-0.2) to[out=-35,in=-145] (\rightX,-0.5);
+    
+    % ラベル
+    \node[yshift=2ex] at (\leftX,\rA) {\large $X$};
+    \node[yshift=2ex] at (\rightX,\rB) {\large $Y = f(X)$};
+    
+    \draw[lightslategray] (circleX.north) -- (circleY.north);
+    \draw[lightslategray] (circleX.south) -- (circleY.south);
+  \end{tikzpicture}
+\end{center}
+
+\subsection{全単射と一対一対応}
+
+\begin{definition}{全単射}
+  写像$f$が\keyword{全単射}であるとは、$f$が単射かつ全射であることをいう。
+\end{definition}
+
+単射と全射は、それぞれ次の条件を満たす性質だった。
+\begin{itemize}
+  \item \keyword{単射}：$y$に写るような$x$はただ一つしかない（異なる元は異なる元に写る）
+  \item \keyword{全射}：どんな$y$も$X$の元の像$x$になる（すべての元に漏れなく写る）
+\end{itemize}
+
+これらの両方を満たす性質である\keyword{全単射}は、次のような性質だといえる。
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      どんな$y$も、$x$に対するただ一つの像となる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+単射は「$X$のコピーを$Y$の中に作る」ことだった。
+
+さらに全射でもあれば、「$X$のコピーは$Y$に一致する」ことになる。
+
+\br
+
+そのため、$X$と$Y$の間の写像$f$が\keyword{全単射}であれば、$X$と$Y$を\keyword{同一視}する（同じ集合とみなす）という考え方も成り立つ。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      \keyword{全単射}な写像$f$により、$X$の元と$Y$の元は\keyword{一対一に対応}する
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\rCopy{1cm}      % 右の円の中の小円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \begin{scope}[local bounding box=circleX]
+      \draw[lightslategray,thick,fill=SkyBlue!40] (\leftX,0) circle (\rA);
+    \end{scope}
+    \begin{scope}[local bounding box=circleY]
+      \draw[lightslategray,thick, fill=Rhodamine!40] (\rightX,0) circle (\rB);
+    \end{scope}
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {\textbf{全単射}};
+    
+    % 左の円の中に3つの点を不規則に配置
+    \fill (\leftX+0.25,0.5) circle (\dotSize);
+    \fill (\leftX,-0.5) circle (\dotSize);
+    \fill (\leftX+0.75,-0.2) circle (\dotSize);
+
+    % 右の円の中の小さな円の中に3つの点を不規則に配置
+    \fill (\rightX+0.2,0.25) circle (\dotSize);
+    \fill (\rightX,-0.5) circle (\dotSize);
+    \fill (\rightX-0.5,-0.2) circle (\dotSize);
+    
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=35,in=145] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-35,in=-145] (\rightX,-0.5);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.75,-0.2) to[out=-35,in=-145] (\rightX-0.5,-0.2);
+
+    % ラベル
+    \node[yshift=2ex] at (\leftX,\rA) {\large $X$};
+    \node[yshift=2ex] at (\rightX,\rB) {\large $Y = f(X)$};
+    
+    \draw[lightslategray] (circleX.north) -- (circleY.north);
+    \draw[lightslategray] (circleX.south) -- (circleY.south);
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
