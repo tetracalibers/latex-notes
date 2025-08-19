@@ -1,0 +1,148 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{関数から写像へ}
+%\marginnote{}
+
+\keyword{関数}は、数を入力すると数が出力される装置であり、入力した数に「対応」する数を決める規則である。
+
+このような「対応」という考え方の対象を「数」に限定せず、「集合の要素（元）」に一般化したものを\keyword{写像}という。
+
+\begin{definition}{写像}
+  集合$X, Y$があったとき、$X$のすべての要素$x$に対して、$Y$のある要素$y$をただ一つ対応させる規則$f$が与えられたとする。
+  
+  このとき、$f$を$X$から$Y$への\keyword{写像}といい、次のように表す。
+  \begin{equation*}
+    f\colon X \to Y
+  \end{equation*}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \draw[lightslategray,thick] (\leftX,0) circle (\rA);
+    \draw[lightslategray,thick] (\rightX,0) circle (\rB);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {$f$};
+    
+    % 左の円の中に2つの点を不規則に配置
+    \fill (\leftX+0.25,0.5) circle (\dotSize) node[left, font=\small] {$x_1$};
+    \fill (\leftX,-0.5) circle (\dotSize) node[left, font=\small] {$x_2$};
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (\rightX+0.2,0.25) circle (\dotSize) node[below right, font=\small] {$y_1$};
+    \fill (\rightX,-0.5) circle (\dotSize) node[below right, font=\small] {$y_2$};
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=45,in=135] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-45,in=-135] (\rightX,-0.5);
+
+    % ラベル
+    \node[yshift=2ex] at (\leftX,\rA) {$X$};
+    \node[yshift=2ex] at (\rightX,\rB) {$Y$};
+  \end{tikzpicture}
+\end{center}
+
+\subsection{写像による像}
+
+写像$f$により、$X$の要素$x$が$Y$の要素$y$に対応しているとき、
+\begin{itemize}
+  \item $y$は$x$の$f$による\keyword{像}である
+  \item $f$により$x$は$y$に\keyword{写る}
+\end{itemize}
+というような言い回しが使われる。
+
+\br
+
+このとき、関数と同じように、次のように書くことがある。
+\begin{equation*}
+  f(x) = y
+\end{equation*}
+
+\subsection{集合の対応と集合の元の対応}
+
+集合の対応を表すには$\to$を使い、集合の元の対応を表すには$\mapsto$を使う。
+
+\br
+
+$x \in X$が$y \in Y$に対応するとき、次のように書くことがある。
+\begin{equation*}
+  \begin{array}{lclc}
+    f \colon & X         & \longrightarrow & Y          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & x              & \longmapsto     & y
+  \end{array}
+\end{equation*}
+
+\subsection{定義域と終域}
+
+写像では、「どの集合からどの集合への対応であるか」を明示しておかなければならない。
+
+\begin{definition}{写像の定義域と終域}
+  写像$f\colon X \to Y$において、集合$X$を$f$の\keyword{定義域}という。
+  また、$x \in X$に対応する$y \in Y$の集合は、$Y$の部分集合であり、これを$f$の\keyword{終域}という。
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\rCopy{1cm}      % 右の円の中の小円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \begin{scope}[local bounding box=circleDomain]
+      \draw[lightslategray,thick, fill=SkyBlue!40] (\leftX,0) circle (\rA);
+    \end{scope}
+    \draw[lightslategray,thick] (\rightX,0) circle (\rB);
+
+    % 2つの円の間に矢印
+    \draw[->, thick] (-1,0) -- (0.5,0) node[midway, above] {$f$};
+
+    % 右の円の中にさらに小さな円を配置
+    \begin{scope}[local bounding box=circleCodomain]
+      \draw[fill=Rhodamine!40, draw=lightslategray] (\rightX,-0.25) circle (\rCopy);
+    \end{scope}
+
+    % 左の円の中に2つの点を不規則に配置
+    \fill (\leftX+0.25,0.5) circle (\dotSize) node[left, font=\small] {$x_1$};
+    \fill (\leftX,-0.5) circle (\dotSize) node[left, font=\small] {$x_2$};
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (\rightX+0.2,0.25) circle (\dotSize) node[below right, font=\small] {$y_1$};
+    \fill (\rightX,-0.5) circle (\dotSize) node[below right, font=\small] {$y_2$};
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=45,in=135] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-45,in=-135] (\rightX,-0.5);
+
+    % ラベル
+    \node[yshift=2ex, Cerulean] at (\leftX,\rA) {\bfseries 定義域};
+    \node[yshift=2ex] at (\rightX,\rB) {$Y$};
+    \node[yshift=-2ex, Rhodamine] at (\rightX,1.5) {\bfseries 終域};
+
+    \draw[lightslategray] (circleDomain.north) -- (circleCodomain.north);
+    \draw[lightslategray] (circleDomain.south) -- (circleCodomain.south);
+  \end{tikzpicture}
+\end{center}
+
+\end{document}

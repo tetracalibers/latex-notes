@@ -1,0 +1,86 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{合成写像}
+
+対応づける操作を続けて行うことは、写像の\keyword{合成}として定義される。
+
+\begin{center}
+  \scalebox{0.8}{
+    \begin{tikzpicture}
+      \def\rA{1.5cm}
+      \def\rB{1.5cm}
+      \def\rC{1.5cm}
+      \def\dotSize{2pt}
+      \def\spaceX{5}
+
+      % 各円の中心X座標
+      \def\xA{0}
+      \def\xB{\spaceX}
+      \def\xC{\spaceX*2}
+
+      % 円A, B, C
+      \begin{scope}[local bounding box=circleA]
+        \draw[lightslategray, thick] (\xA,0) circle (\rA);
+      \end{scope}
+      \begin{scope}[local bounding box=circleB]
+        \draw[draw=lightslategray, thick] (\xB,0) circle (\rB);
+      \end{scope}
+      \begin{scope}[local bounding box=circleC]
+        \draw[draw=lightslategray, thick] (\xC,0) circle (\rC);
+      \end{scope}
+
+      % ラベル
+      \node[yshift=\rA] at (\xA,0.5) {\large $X$};
+      \node[yshift=\rB] at (\xB,0.5) {\large $Y$};
+      \node[yshift=\rC] at (\xC,0.5) {\large $Z$}; % y位置も少し上へ
+
+      % 点（A内）
+      \fill (\xA+0.25,0.5) circle (\dotSize) node[below] {$x$};
+      % 点（B内）
+      \fill (\xB+0.2,0.25) circle (\dotSize) node[below] {$y$};
+      % 点（C内の小円）
+      \fill (\xC+0.2,0.25) circle (\dotSize) node[below] {$z$};
+
+      % A → B の写像矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xA+0.25,0.5) to[out=45,in=135] (\xB+0.2,0.25);
+      % B → C の対応矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xB+0.2,0.25) to[out=45,in=135] (\xC+0.2,0.25);
+
+      % A → B を結ぶ矢印
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleA.east) -- (circleB.west) node[midway, above] {$f$};
+      % B → C を結ぶ矢印
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleB.east) -- (circleC.west) node[midway, above] {$g$};
+      
+      % A → C の合成矢印
+      \draw[->, thick, shorten >= 1em, shorten <= 1em]
+      (circleA.south) to[out=-35,in=-145] (circleC.south);
+      \node[yshift=-3em] at (circleB.south) {$g \circ f$};
+    \end{tikzpicture}
+  }
+\end{center}
+
+\begin{definition}{合成写像}
+  2つの写像$f\colon X \to Y, g\colon Y \to Z$が与えられたとき、$X$の元に対して$Z$の元を対応させる$X$から$Z$への写像を$f$と$g$の\keyword{合成写像}といい、$g \circ f$と表す。
+  \begin{equation*}
+    (g \circ f)(x) = g(f(x))
+  \end{equation*}
+\end{definition}
+
+\subsection{単射な写像の合成}
+
+\begin{mindflow}
+  \todo{単射な写像の合成は単射である}
+\end{mindflow}
+
+\subsection{全射な写像の合成}
+
+\begin{mindflow}
+  \todo{全射な写像の合成は全射である}
+\end{mindflow}
+
+\end{document}

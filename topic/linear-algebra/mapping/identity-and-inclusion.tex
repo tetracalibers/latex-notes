@@ -1,0 +1,102 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{恒等写像と包含写像}
+\marginnote{
+  \refbookS p9 \\
+  \refweb{恒等写像(id),包含写像とは何か}{https://mathlandscape.com/identity-map/}
+}
+
+自分自身に対応させる写像は、次のように書ける。
+\begin{equation*}
+  f(x) = x
+\end{equation*}
+この場合、$f$によって$x$が$y$に変わるようなことはなく、$f$は$x$をそのまま写す（何も変えない）。
+
+\br
+
+任意の$x \in X$に対して、$f(x) = x$が成り立ち、かつ$f(x) \in Y$を満たすような状況は、次の2通りが考えられる。
+\begin{itemize}
+  \item $X = Y$の場合（左図）を\keywordJE{恒等写像}{identity map}という。
+  \item $X \subset Y$の場合（右図）を\keywordJE{包含写像}{inclusion map}という。
+\end{itemize}
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を配置
+    \draw[lightslategray,thick, fill=SkyBlue!40] (\leftX,0) circle (\rA);
+
+    % 左の円の中に点を不規則に配置
+    \fill (\leftX+0.25,0.25) circle (\dotSize) node[above, font=\small] {$x$};
+
+    % 自分自身に戻ってくる矢印
+    \draw [RoyalBlue, |->, very thick] (\leftX+0.25,0) arc(-160:160:1);
+
+    % ラベル
+    \node[yshift=2ex] at (\leftX,\rA) {\bfseries $X = Y$};
+  \end{tikzpicture}
+  \end{minipage}
+  \begin{minipage}{0.49\columnwidth}
+    \centering
+  \begin{tikzpicture}
+    \def\rB{2.25cm}         % 円の半径
+    \def\rCopy{1cm}      % 円の中の小円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を配置
+    \draw[lightslategray,thick] (\rightX,0) circle (\rB);
+
+    % 円の中にさらに小さな円を配置
+    \draw[fill=SkyBlue!40, draw=lightslategray] (\rightX,-0.25) circle (\rCopy);
+    
+    % 円の中の小さな円の中に点を不規則に配置
+    \fill (\rightX,-0.5) circle (\dotSize) node[above, font=\small] {$x$};
+    
+    % 自分自身に戻ってくる矢印
+    \draw [RoyalBlue, |->, very thick] (\rightX,-0.75) arc(-160:160:1);
+
+    % ラベル
+    \node[yshift=2ex] at (\rightX,\rB) {$Y$};
+    \node[yshift=-2ex] at (\rightX,1.5) {$X$};
+  \end{tikzpicture}
+  \end{minipage}
+\end{figure}
+
+\begin{definition}{恒等写像}
+  集合$X$に対して、$X$の任意の元$x$を$x \in X$に対応させる$X$から$X$への写像を$X$上の\keyword{恒等写像}といい、$\id_X$あるいは単に$\id$と表す。
+  \begin{equation*}
+  \begin{array}{lclc}
+    \id_X \colon & X         & \longrightarrow & X          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & x              & \longmapsto     & x
+  \end{array}
+\end{equation*}
+\end{definition}
+
+\begin{definition}{包含写像}
+  定義域$X$が終域$Y$の部分集合のとき、$X$の任意の元$x$を$x \in Y$に対応させる写像を\keyword{包含写像}といい、$\iota$と表す。
+  \begin{equation*}
+  \begin{array}{lclc}
+    \iota \colon & X         & \longrightarrow & Y          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & x              & \longmapsto     & x
+  \end{array}
+\end{equation*}
+\end{definition}
+
+\end{document}

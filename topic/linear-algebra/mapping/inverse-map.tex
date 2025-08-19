@@ -1,0 +1,176 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{逆写像と可逆な写像}
+\marginnote{\refbookC p61〜62 \\ \refbookS p10}
+
+\keyword{全単射}な写像では、終域のどんな元も、定義域のただ1つの元の像となっている。
+
+そのため、終域の元からその像になるような定義域の元をただ1つ決めることができる。
+
+\br
+
+この対応は、元々の写像の終域から定義域への写像となり、\keyword{逆写像}と呼ばれる。
+
+\begin{definition}{逆写像}
+  写像$f\colon X \to Y$が全単射であるとき、任意の$y \in Y$に対して、$f(x) = y$となる$x \in X$がただ一つ存在する。
+  
+  このとき、$Y$の元$y$に対して、$f(x) = y$となる$x$を対応させる写像を$f$の\keywordJE{逆写像}{inverse mapping}といい、次のように表す。
+  \begin{equation*}
+    f^{-1}\colon Y \to X
+  \end{equation*}
+\end{definition}
+
+\begin{center}
+  \begin{tikzpicture}
+    \def\rA{1.5cm}       % 左の円の半径
+    \def\rB{2cm}         % 右の円の半径
+    \def\dotSize{2pt}    % 点のサイズ
+    \def\spaceX{3}       % 中心座標のX距離
+
+    \def\leftX{-\spaceX}
+    \def\rightX{\spaceX}
+
+    % 半径2cmの円を2つ横並びに配置
+    \draw[lightslategray,thick] (\leftX,0) circle (\rA);
+    \draw[lightslategray,thick] (\rightX,0) circle (\rB);
+
+    % 2つの円の間に矢印
+    \draw[<-, thick] (-1,0) -- (0.5,0) node[midway, above] {$f^{-1}$};
+    
+    % 左の円の中に2つの点を不規則に配置
+    \fill (\leftX+0.25,0.5) circle (\dotSize) node[left, font=\small] {$x_1$};
+    \fill (\leftX,-0.5) circle (\dotSize) node[left, font=\small] {$x_2$};
+
+    % 右の円の中の小さな円の中に2つの点を不規則に配置
+    \fill (\rightX+0.2,0.25) circle (\dotSize) node[below right, font=\small] {$y_1$};
+    \fill (\rightX,-0.5) circle (\dotSize) node[below right, font=\small] {$y_2$};
+
+    % 曲がった矢印を2つの点に向けて引く
+    \draw[RoyalBlue, <-|, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX+0.25,0.5) to[out=45,in=135] (\rightX+0.2,0.25);
+    \draw[RoyalBlue, <-|, very thick, shorten >= 4pt, shorten <= 4pt]
+    (\leftX,-0.5) to[out=-45,in=-135] (\rightX,-0.5);
+
+    % ラベル
+    \node[yshift=2ex] at (\leftX,\rA) {$X$};
+    \node[yshift=2ex] at (\rightX,\rB) {$Y$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{definition}{可逆}
+  写像$f \colon X \to Y$の逆写像が存在するとき、$f$は\keywordJE{可逆}{invertible}であるという。
+\end{definition}
+
+逆写像を定義する上での前提は、写像が全単射であることだったため、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      \keyword{可逆}な写像とは、\keyword{全単射}な写像
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+のことをいう。
+
+\br
+
+また、逆写像は\keyword{恒等写像}によって定義することもできる。
+
+そのための議論を次に行う。
+
+\subsection{左逆写像と右逆写像}
+
+$f$で写した後に$g$を適用すると元に戻るとき、$g$は$f$の\keyword{左逆写像}と呼ばれる。
+
+\begin{definition}{左逆写像}
+  写像$f\colon X \to Y$に対して、写像$g\colon Y \to X$が存在して、
+  \begin{equation*}
+    g \circ f = \id_X
+  \end{equation*}
+  を満たすとき、$g$は$f$の\keyword{左逆写像}であるという。
+\end{definition}
+
+\begin{figure}[h]
+  \centering
+  % --- 左逆写像：g ∘ f = id_X（集合レベル） ---
+  \begin{minipage}[t]{0.45\textwidth}
+    \caption*{\bfseries 集合レベルでの左逆写像}
+    \begin{equation*}
+      \begin{tikzcd}[every label/.append style = {font = \small}]
+        X \arrow[r, "f"] \arrow[dr, swap, "\id_X"] & Y \arrow[d, "g"] \\
+        & X
+      \end{tikzcd}
+    \end{equation*}
+  \end{minipage}
+  % --- 左逆写像：要素レベル（x \in X に対して g(f(x)) = x） ---
+  \begin{minipage}[t]{0.45\textwidth}
+    \caption*{\bfseries 要素レベルでの左逆写像}
+    \begin{equation*}
+      \begin{tikzcd}[every label/.append style = {font = \small}]
+        x \arrow[r,mapsto, "f"] & f(x) \arrow[r,mapsto, "g"] & x
+      \end{tikzcd}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
+
+\br
+
+$g$で戻した後に$f$を適用すると元に戻るとき、$g$は$f$の\keyword{右逆写像}と呼ばれる。
+
+\begin{definition}{右逆写像}
+  写像$f\colon X \to Y$に対して、写像$g\colon Y \to X$が存在して、
+  \begin{equation*}
+    f \circ g = \id_Y
+  \end{equation*}
+  を満たすとき、$g$は$f$の\keyword{右逆写像}であるという。
+\end{definition}
+
+\begin{figure}[h]
+  \centering
+  % --- 右逆写像：f ∘ g = id_Y（集合レベル） ---
+  \begin{minipage}[t]{0.45\textwidth}
+    \caption*{\bfseries 集合レベルでの右逆写像}
+    \begin{equation*}
+\begin{tikzcd}[every label/.append style = {font = \small}]
+Y \arrow[r, "g"] \arrow[dr, swap, "\id_Y"] & X \arrow[d, "f"] \\
+& Y
+\end{tikzcd}
+\end{equation*}
+  \end{minipage}
+  % --- 右逆写像：要素レベル（y \in Y に対して f(g(y)) = y） ---
+  \begin{minipage}[t]{0.45\textwidth}
+    \caption*{\bfseries 要素レベルでの右逆写像}
+    \begin{equation*}
+\begin{tikzcd}[every label/.append style = {font = \small}]
+y \arrow[r,mapsto, "g"] & g(y) \arrow[r,mapsto, "f"] & y
+\end{tikzcd}
+\end{equation*}
+  \end{minipage}
+\end{figure}
+
+\subsection{全単射の特徴づけ}
+
+\begin{theorem}{全単射と逆写像の存在}
+  写像$f\colon X \to Y$に対して、次の2つは同値である。
+  \begin{enumerate}[label=\romanlabel]
+    \item $f$は全単射である
+    \item $f$の左逆写像であり、右逆写像でもある写像$g\colon Y \to X$が存在する
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookC p62}
+\end{proof}
+
+逆写像は、次のように定義することもできる。
+
+\begin{definition}{逆写像（恒等写像による定義）}
+  写像$g \colon Y \to X$が写像$f \colon X \to Y$の\keyword{逆写像}であるとは、次が成り立つことをいう。
+  \begin{equation*}
+    g \circ f = \id_X \quad \text{かつ} \quad f \circ g = \id_Y
+  \end{equation*}
+\end{definition}
+
+\end{document}
