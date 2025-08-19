@@ -236,6 +236,12 @@ TODO
 
 TODO
 
+#### 写像と集合
+
+```bash
+cp ./topic/linear-algebra/out/mapping.pdf ./public/linear-algebra/mapping.pdf
+```
+
 ## for Topic Note
 
 ### 微分積分の整理帳
