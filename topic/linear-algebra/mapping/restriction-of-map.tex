@@ -4,8 +4,142 @@
 
 \sectionline
 \section{写像の制限}
-%\marginnote{}
+\marginnote{\refbookS p10 \\ \refbookC p57 \\ \refbookP p198}
 
-\todo{}
+定義域を一部分に限定する、すなわち写像の定義域をその部分集合に取り替えることを、写像の\keywordJE{制限}{restriction}という。
+
+\begin{definition}{写像の制限}
+  写像$f\colon X \to Y$に対して、部分集合$U \subset X$と$V \subset Y$が$f(U) \subset V$を満たすとき、$x \in U$に対して$f(x) \in V$を対応させる写像$U \to V$を写像$f$の$U$への\keyword{制限}といい、$f|_U$と表す。
+  \begin{equation*}
+  \begin{array}{lclc}
+    f|_U \colon & U         & \longrightarrow & V          \\
+            & \rotatebox{90}{$\in$} &                 & \rotatebox{90}{$\in$} \\
+            & x              & \longmapsto     & f(x)
+  \end{array}
+\end{equation*}
+\end{definition}
+
+\begin{figure}[h]
+\centering
+\caption*{\bfseries $f\colon X \to Y$（定義域が$X$）}
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \def\rB{2cm}
+      \def\rC{2.5cm}       % 円Cの半径（Bより大きい）
+      \def\rCopyA{1cm}
+      \def\rCopyCopyA{1.4cm} % C内の小円の半径（Aのコピー）
+      \def\rSubA{0.9cm}
+      \def\dotSize{2pt}
+      \def\spaceX{6}
+
+      % 各円の中心X座標
+      \def\xB{0}
+      \def\xC{\spaceX+1.5*0.5}
+
+      % 円A, B
+      \begin{scope}[local bounding box=circleB]
+        \draw[fill=SkyBlue!40, draw=lightslategray, thick] (\xB,0) circle (\rB);
+      \end{scope}
+      \begin{scope}[local bounding box=circleC]
+        \draw[lightslategray, thick] (\xC,0) circle (\rC);
+      \end{scope}
+
+      % ラベル
+      \node[yshift=\rB] at (\xB,0.5) {\large $X$};
+      \node[yshift=\rC] at (\xC,0.5) {\large $Y$}; % y位置も少し上へ
+
+      % C内の小円
+      \begin{scope}[local bounding box=circleSubC]
+        \draw[draw=lightslategray, fill=Rhodamine!40] (\xC,0) circle (\rCopyCopyA);
+      \end{scope}
+
+      % 点（B内）
+      \fill (\xB+0.2,0.25) circle (\dotSize);
+      % 点（C内）
+      \fill (\xC+0.2,0.25) circle (\dotSize);
+
+      % B → C を結ぶ矢印
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleB.east) -- (circleC.west) node[midway, above] {$f$};
+
+      % B → C の対応矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xB+0.2,0.25) to[out=35,in=145] (\xC+0.2,0.25);
+
+      % ラベル（コピー情報）
+      \node[yshift=2ex] at (\xC,\rCopyCopyA) {$f(X)$};
+
+      \draw[lightslategray] (circleB.north) -- (circleSubC.north);
+      \draw[lightslategray] (circleB.south) -- (circleSubC.south);
+    \end{tikzpicture}
+  }
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\caption*{\bfseries $f|_U\colon U \to V$（定義域を$U$に制限）}
+  \scalebox{0.75}{
+    \begin{tikzpicture}
+      \def\rB{2cm}
+      \def\rC{2.5cm}       % 円Cの半径（Bより大きい）
+      \def\rCopyA{1cm}
+      \def\rCopyCopyA{1.6cm} % C内の小円の半径（Aのコピー）
+      \def\rCopyCopyCopyA{0.9cm}
+      \def\rSubA{0.9cm}
+      \def\dotSize{2pt}
+      \def\spaceX{6}
+
+      % 各円の中心X座標
+      \def\xB{0}
+      \def\xC{\spaceX+1.5*0.5}
+
+      % 円A, B
+      \begin{scope}[local bounding box=circleB]
+        \draw[lightslategray, thick] (\xB,0) circle (\rB);
+      \end{scope}
+      \begin{scope}[local bounding box=circleC]
+        \draw[lightslategray, thick] (\xC,0) circle (\rC);
+      \end{scope}
+
+      % ラベル
+      \node[yshift=\rB] at (\xB,0.5) {\large $X$};
+      \node[yshift=\rC] at (\xC,0.5) {\large $Y$}; % y位置も少し上へ
+
+      % B内の小円
+      \begin{scope}[local bounding box=circleSubB]
+        \draw[fill=SkyBlue!40, draw=lightslategray] (\xB,0) circle (\rCopyA);
+      \end{scope}
+
+      % C内の小円
+      \begin{scope}[local bounding box=circleSubC]
+        \draw[draw=lightslategray] (\xC,0) circle (\rCopyCopyA);
+      \end{scope}
+      
+      % 小円の中の小円
+      \begin{scope}[local bounding box=circleSubSubC]
+        \draw[fill=Rhodamine!40, draw=lightslategray] (\xC,0) circle (\rCopyCopyCopyA);
+      \end{scope}
+
+      % 点（B内）
+      \fill (\xB+0.2,0.25) circle (\dotSize);
+      % 点（C内）
+      \fill (\xC+0.2,0.25) circle (\dotSize);
+
+      % B → C を結ぶ矢印
+      \draw[->, thick, shorten >= 1em, shorten <= 1em] (circleB.east) -- (circleC.west) node[midway, above] {$f|_U$};
+
+      % B → C の対応矢印
+      \draw[RoyalBlue, |->, very thick, shorten >= 4pt, shorten <= 4pt]
+      (\xB+0.2,0.25) to[out=35,in=145] (\xC+0.2,0.25);
+
+      % ラベル（コピー情報）
+      \node[yshift=2ex] at (\xB,\rCopyA) {$U$};
+      \node[yshift=2ex] at (\xC,\rCopyCopyA) {$V$};
+      \node[yshift=1.5ex] at (\xC,\rCopyCopyCopyA) {$f(U)$};
+
+      \draw[lightslategray] (circleSubB.north) -- (circleSubSubC.north);
+      \draw[lightslategray] (circleSubB.south) -- (circleSubSubC.south);
+    \end{tikzpicture}
+  }
+\end{figure}
 
 \end{document}
