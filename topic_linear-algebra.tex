@@ -63,6 +63,16 @@
     {\Huge}% before-code
     [\thispagestyle{empty}]% after-code
 
+\usepackage{etoolbox}
+% \appendix が呼ばれたら、付録用の章タイトルに切り替える
+\preto\appendix{%
+  \titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries}
+    {\appendixname {\texttt\thechapter}} % 例: 「付録 A」
+    {20pt}{\Huge}
+    [\thispagestyle{empty}]%
+}
+
 % ---
 
 \begin{document}
