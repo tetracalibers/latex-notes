@@ -10,9 +10,9 @@
 
 この考えをさらに進めるため、基本行列の性質を述べる
 
-\begin{theorem}{基本行列の正則性}
+\begin{theorem*}{基本行列の正則性}
   基本行列は正則である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   基本行列の表す変形を考えれば、
@@ -42,7 +42,7 @@
 
 このことから、行についての連続する複数の基本変形の繰り返しも可逆であることがいえる
 
-\begin{theorem}{基本行列の積による行変形の構成}\label{thm:row-operation-by-elementary-matrices}
+\begin{theorem}{基本行列の積による行変形の構成}{row-operation-by-elementary-matrices}
   行列の行変形$A \to B$に対し、$B=PA$を満たす正則行列$P$が存在する
 
   このとき、$P$はいくつかの基本行列の積である
@@ -72,9 +72,9 @@
 
 ここで、$B = E$の場合を考えると、$P^{-1}E = A$となるので、次のことがいえる
 
-\begin{theorem}{単位行列への行変形による逆行列の構成}
+\begin{theorem*}{単位行列への行変形による逆行列の構成}
   正方行列$A$の単位行列への行変形$A \to E$に対応する基本変形の積は、$A$の逆行列を与える
-\end{theorem}
+\end{theorem*}
 
 つまり、任意の正方行列は行基本変形だけで単位行列に変形でき、その基本行列の積から逆行列を求めることができる
 
@@ -82,7 +82,7 @@
 
 この章で得られた定理を組み合わせると、次の定理が得られる
 
-\begin{theorem}{基本行列の積による正則行列の表現}\label{thm:invertible-as-product-of-elementary}
+\begin{theorem}{基本行列の積による正則行列の表現}{invertible-as-product-of-elementary}
   任意の正則行列はいくつかの基本行列の積である
 \end{theorem}
 

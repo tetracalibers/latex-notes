@@ -8,13 +8,13 @@
 
 斉次形方程式$A\vb*{x} = \vb*{o}$の非自明解の存在に対して、次の解釈もできる。
 
-\begin{theorem}{斉次形方程式の非自明解の存在と線形従属}
+\begin{theorem*}{斉次形方程式の非自明解の存在と線形従属}
   $m \times n$型行列$A$の列ベクトルを$\vb*{a}_1, \dots, \vb*{a}_n$とするとき、
   \begin{equation*}
     A\vb*{x} = \vb*{o}\text{に自明でない解がある}
     \Longleftrightarrow \vb*{a}_1, \dots, \vb*{a}_n\text{が線形従属}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $A\vb*{x} = \vb*{o}$は、ベクトルの等式
@@ -59,7 +59,7 @@
 
 つまり、次が成り立つことがわかる。
 
-\begin{theorem}{列ベクトルの線型独立性と階数}\label{thm:lin-indep-iff-rank-n}
+\begin{theorem}{列ベクトルの線型独立性と階数}{lin-indep-iff-rank-n}
   $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$に対して、$A=(\vb*{a}_1, \dots, \vb*{a}_n)$とおくと、
   \begin{equation*}
     \vb*{a}_1, \dots, \vb*{a}_n\text{が線型独立} \Longleftrightarrow \rank(A) = n
@@ -92,15 +92,15 @@ $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$に対して、$A=(\vb*{a}_1, \dot
 
 ここで$n$は変数の個数、$m$は方程式の個数であるので、$n > m$という状況を次のようにまとめることができる。
 
-\begin{theorem}{斉次形方程式における有限従属性}
+\begin{theorem*}{斉次形方程式における有限従属性}
   斉次線型方程式$A\vb*{x} = \vb*{o}$において、変数の個数が方程式の個数よりも多いときには、非自明な解が存在する。
-\end{theorem}
+\end{theorem*}
 
 \subsection{有限従属性（ベクトルの集合における視点）}
 
 連立方程式の文脈に限定せず、より抽象的に言い換えたものが次の定理である。
 
-\begin{theorem}{有限従属性定理}\label{thm:finite-dependency}
+\begin{theorem}{有限従属性定理}{finite-dependency}
   $\mathbb{R}^m$内の$m$個よりも多いベクトルからなる集合は線形従属である。
 \end{theorem}
 

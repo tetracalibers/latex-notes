@@ -6,7 +6,7 @@
 \section{線形代数における鳩の巣原理}
 \marginnote{\refbookA p102〜103}
 
-\begin{theorem}{線形代数における鳩の巣原理の抽象版}\label{thm:abstract-linear-pigeonhole}
+\begin{theorem}{線形代数における鳩の巣原理の抽象版}{abstract-linear-pigeonhole}
   $V,\,W$を同じ次元の線形空間とするとき、線形写像$f\colon V \to W$に関して、次はすべて同値である
   \begin{enumerate}[label=\romanlabel]
     \item $f$は単射
@@ -76,7 +76,7 @@
 
 次の事実は、数の一致で空間の一致が結論できる有用な結果である
 
-\begin{theorem}{次元の一致による部分空間の一致判定}\label{thm:equal-dim-implies-equal-subspace}
+\begin{theorem}{次元の一致による部分空間の一致判定}{equal-dim-implies-equal-subspace}
   2つの線型空間について、$V \subset W$ならば、
   \begin{equation*}
     \dim V = \dim W \Longrightarrow V = W
@@ -111,7 +111,7 @@
 
 \sectionline
 
-\begin{theorem}{次元による部分空間の比較}
+\begin{theorem*}{次元による部分空間の比較}
   $K^n$の部分空間$V,\,W$について、$V \subseteq W$ならば、
   \begin{equation*}
     \dim V \leq \dim W
@@ -119,7 +119,7 @@
   が成り立つ
 
   等号が成立するのは、$V = W$のときに限る
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $V \subseteq W$であることから、\hyperref[thm:basis-extension]{基底の延長}により、$V$の基底を延長して$W$の基底にできるので、
@@ -137,12 +137,12 @@
 \section{核空間・像空間の次元}
 \marginnote{\refbookC p83〜84}
 
-\begin{theorem}{線形写像の単射性と核の次元}
+\begin{theorem*}{線形写像の単射性と核の次元}
   線形写像$f\colon V \to W$について、
   \begin{equation*}
     f\text{が単射} \Longleftrightarrow \dim \Ker(f) = 0
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \hyperref[thm:injective-iff-trivial-kernel]{線形写像の単射性と核の関係}より、$f$が単射であることは次と同値である
@@ -158,12 +158,12 @@
 
 \sectionline
 
-\begin{theorem}{線形写像の全射性と像の次元}
+\begin{theorem*}{線形写像の全射性と像の次元}
   線形写像$f\colon V \to W$について、
   \begin{equation*}
     f\text{が全射} \Longleftrightarrow \dim \Im(f) = \dim W
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}の主張そのものである $\qed$

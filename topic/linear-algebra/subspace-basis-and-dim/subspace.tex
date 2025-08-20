@@ -47,7 +47,7 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
 
 零ベクトル$\vb*{o}$だけからなる部分集合$\{ \vb*{o} \}$も部分空間である。
 
-\begin{theorem}{部分空間における零ベクトルの包含}\label{thm:subspace-contains-zero}
+\begin{theorem}{部分空間における零ベクトルの包含}{subspace-contains-zero}
   部分空間は必ず零ベクトル$\vb*{o}$を含む。
 \end{theorem}
 
@@ -62,9 +62,9 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
 \subsection{線形写像の像は部分空間}
 \marginnote{\refbookC p82}
 
-\begin{theorem}{線形写像の像は部分空間}
+\begin{theorem*}{線形写像の像は部分空間}
   線形写像$f\colon V \to W$の像$\Im(f)$は$W$の部分空間である。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 和について}
@@ -93,7 +93,7 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
 \subsection{線形写像の核は部分空間}
 \marginnote{\refbookC p71〜72}
 
-\begin{theorem}{部分空間の零ベクトルと線形写像}\label{thm:linear-map-zero-preserving}
+\begin{theorem}{部分空間の零ベクトルと線形写像}{linear-map-zero-preserving}
   部分空間$V,\,W$の間の線形写像$f\colon V \to W$に対して、$V$の零ベクトルを$\vb*{o}_V$、$W$の零ベクトルを$\vb*{o}_W$とすると、
   \begin{equation*}
     f(\vb*{o}_V) = \vb*{o}_W
@@ -128,9 +128,9 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
 
 \marginnote{\refbookC p82}
 
-\begin{theorem}{線形写像の核は部分空間}
+\begin{theorem*}{線形写像の核は部分空間}
   線形写像$f\colon V \to W$の核$\Ker(f)$は$V$の部分空間である。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \hyperref[thm:linear-map-zero-preserving]{前述の定理}の主張$f(\vb*{o}_V) = \vb*{o}_W$より、零ベクトルは核空間に属する。

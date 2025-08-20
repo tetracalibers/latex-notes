@@ -23,9 +23,9 @@
   が成り立つとき、$A$は\keyword{正定値行列}であるという
 \end{definition}
 
-\begin{theorem}{正定値性と固有値の正実性}
+\begin{theorem*}{正定値性と固有値の正実性}
   エルミート行列$A$が正定値行列であることと、$A$のすべての固有値が正の実数であることは同値である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 正定値行列 $\Longrightarrow$ 固有値が正}
@@ -113,9 +113,9 @@
   が成り立つとき、$A$は\keyword{半正定値行列}であるという
 \end{definition}
 
-\begin{theorem}{半正定値性と固有値の非負実性}
+\begin{theorem*}{半正定値性と固有値の非負実性}
   エルミート行列$A$が半正定値行列であることと、$A$のすべての固有値が非負の実数であることは同値である
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{対称行列を構成する行列積}
@@ -127,9 +127,9 @@
 
 対称行列から任意の行列へ議論を拡張するにあたって、次の定理が重要となる
 
-\begin{theorem}{自身の随伴行列との積で構成されるエルミート行列}
+\begin{theorem*}{自身の随伴行列との積で構成されるエルミート行列}
   $A$を任意の複素行列（長方行列）とするとき、$A^* A$および$AA^*$はエルミート行列である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \hyperref[thm:adjoint-of-product]{積をエルミート行列にすると順序が入れ替わる}ことに注意して、
@@ -151,7 +151,7 @@
 
 $A$を実行列とすれば、次が成り立つ
 
-\begin{theorem}{自身の転置行列との積で構成される対称行列}\label{thm:symmetric-products-of-any-matrix}
+\begin{theorem}{自身の転置行列との積で構成される対称行列}{symmetric-products-of-any-matrix}
   $A$を任意の実行列（長方行列）とするとき、$A^\top A$および$AA^\top$は対称行列である
 \end{theorem}
 
@@ -159,9 +159,9 @@ $A$を実行列とすれば、次が成り立つ
 
 $A^* A$および$AA^*$という形の行列には、さらに固有値に関する重要な性質がある
 
-\begin{theorem}{自身の随伴行列との積で構成される半正値行列}
+\begin{theorem*}{自身の随伴行列との積で構成される半正値行列}
   任意の行列$A$に対して、$AA^*$および$A^*A$はともに半正値行列である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   エルミート行列$AA^*$の固有ベクトルを$\vb*{u}$とし、その固有値を$\lambda \in \mathbb{C}$とすると、
@@ -203,7 +203,7 @@ $A^* A$および$AA^*$という形の行列には、さらに固有値に関す�
 
 \br
 
-\begin{theorem}{特異値と左右特異ベクトルの対応関係}\label{thm:svd-singular-value-vector-correspondence}
+\begin{theorem}{特異値と左右特異ベクトルの対応関係}{svd-singular-value-vector-correspondence}
   $A$を$O$でない任意の行列とするとき、$A^\top A$と$AA^\top$は共通の正の固有値$\sigma^2$を持ち、それぞれの固有ベクトル$\vb*{u},\vb*{v}$は次の関係を満たす
   \begin{equation*}
     A \vb*{v} = \sigma \vb*{u}, \quad A^\top \vb*{u} = \sigma \vb*{v}

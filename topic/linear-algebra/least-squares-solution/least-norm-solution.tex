@@ -153,7 +153,7 @@ $\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼�
   \vb*{x} = P_{\mathcal{V}} \vb*{x}_0 \quad (A\vb*{x}_0 = \vb*{b})
 \end{equation*}
 
-\begin{theorem}{最小ノルム解と行空間への直交射影の関係}\label{thm:min-norm-solution-projection}
+\begin{theorem}{最小ノルム解と行空間への直交射影の関係}{min-norm-solution-projection}
   $A$の行空間を$\mathcal{V}$とし、$\mathcal{V}$への直交射影行列を$P_{\mathcal{V}}$とすると、
   線形方程式$A\vb*{x} = \vb*{b}$の最小ノルム解は次の関係を満たす。
   \begin{equation*}
@@ -176,12 +176,12 @@ $\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼�
   P_{\mathcal{V}} = A^\top (AA^\top)^{-1} A
 \end{equation*}
 
-\begin{theorem}{行空間への直交射影の行列表現}
+\begin{theorem*}{行空間への直交射影の行列表現}
   $m \times n$型行列$A$において、$n \geq m = \rank A$（行ベクトルが線型独立）のとき、$A$の行空間への直交射影行列は次のように表される。
   \begin{equation*}
     P_{\mathcal{V}} = A^\top (AA^\top)^{-1} A
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{行フルランクの場合の最小ノルム解}
 
@@ -198,11 +198,11 @@ $\rank A = m$という条件のもとでは、$P_{\mathcal{V}}$を
 \end{equation*}
 という形で、最小ノルム解が求まる。
 
-\begin{theorem}{線型独立な行ベクトルに対する最小ノルム解}
+\begin{theorem*}{線型独立な行ベクトルに対する最小ノルム解}
   $m \times n$型行列$A$において、$n \geq m = \rank A$（行ベクトルが線型独立である）とき、線形方程式$A\vb*{x} = \vb*{b}$の最小ノルム解$\vb*{x}$は次のように表される。
   \begin{equation*}
     \vb*{x} = A^\top (AA^\top)^{-1} \vb*{b}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \end{document}

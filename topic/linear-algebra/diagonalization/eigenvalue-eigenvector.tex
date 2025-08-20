@@ -44,9 +44,9 @@
 \section{異なる固有値に属する固有ベクトル}
 \marginnote{\refbookA p186〜187 \\ \refbookF p265〜266}
 
-\begin{theorem}{異なる固有値に属する固有ベクトルの非一致性}
+\begin{theorem*}{異なる固有値に属する固有ベクトルの非一致性}
   異なる固有値$\alpha_i,\, \alpha_j \, (\alpha_i \neq \alpha_j)$に属する固有ベクトル$\vb*{p}_i, \vb*{p}_j$は異なるベクトルである
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   固有値と固有ベクトルの定義より、
@@ -78,7 +78,7 @@
 
 この定理を発展させて、次のことがいえる
 
-\begin{theorem}{異なる固有値に属する固有ベクトルの線型独立性}\label{thm:eigenvectors-of-distinct-eigenvalues-are-independent}
+\begin{theorem}{異なる固有値に属する固有ベクトルの線型独立性}{eigenvectors-of-distinct-eigenvalues-are-independent}
   $\alpha_1, \alpha_2, \ldots, \alpha_k$が行列$A$の相異なる固有値であるとすると、それぞれに属する固有ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_k$は線型独立である
 \end{theorem}
 
@@ -180,7 +180,7 @@
 
 行列$A$の固有ベクトルからなる基底が存在すれば、$A$は\keyword{対角化可能}である、ということを定式化しよう
 
-\begin{theorem}{対角化可能性と固有ベクトルの線型独立性}\label{thm:diagonalizable-iff-n-indep-eigenvectors}
+\begin{theorem}{対角化可能性と固有ベクトルの線型独立性}{diagonalizable-iff-n-indep-eigenvectors}
   $n$次元正方行列$A$が対角化可能であるための必要十分条件は、線型独立な$n$個の$A$の固有ベクトルが存在することである
 \end{theorem}
 
@@ -241,7 +241,7 @@
 
 この定理と、\hyperref[thm:eigenvectors-of-distinct-eigenvalues-are-independent]{異なる固有値に属する固有ベクトルの線型独立性}から、次の定理が得られる
 
-\begin{theorem}{固有値の相異性と対角化可能性}\label{thm:distinct-eigenvalues-imply-diagonalizable}
+\begin{theorem}{固有値の相異性と対角化可能性}{distinct-eigenvalues-imply-diagonalizable}
   $n$次正方行列$A$が異なる$n$個の固有値$\alpha_1, \ldots, \alpha_n$をもつならば、$A$は対角化可能である
 
   すなわち、ある$n$次正則行列$P$によって、

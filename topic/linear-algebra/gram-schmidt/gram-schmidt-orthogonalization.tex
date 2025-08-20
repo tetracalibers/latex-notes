@@ -83,21 +83,21 @@ $\vb*{u}_2$は$\vb*{e}_1$と直交するベクトルであるので、$\vb*{e}_2
 
 このような方法を\keyword{グラム・シュミットの直交化法}という。
 
-\begin{theorem}{グラム・シュミットの直交化法}
+\begin{theorem*}{グラム・シュミットの直交化法}
   計量空間$V$の線型独立なベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$から、正規直交系$\vb*{e}_1, \ldots, \vb*{e}_n$を次のように構成できる。
   \begin{gather*}
     \vb*{u}_k = \vb*{a}_k - \sum_{j=1}^{k-1} (\vb*{a}_k, \vb*{e}_j) \vb*{e}_j \\
     \vb*{e}_k = \frac{\vb*{u}_k}{\|\vb*{u}_k\|}
   \end{gather*}
   ここで、$k = 1, 2, \ldots, n$である。
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{正規直交基底の構成}
 
 次の定理により、\keyword{グラム・シュミットの直交化法}は、線型独立なベクトルから正規直交系を得るだけでなく、任意の基底から正規直交基底を得る手法としても利用できる。
 
-\begin{theorem}{グラム・シュミットの直交化と生成空間の不変性}\label{thm:gram-schmidt-span-invariance}
+\begin{theorem}{グラム・シュミットの直交化と生成空間の不変性}{gram-schmidt-span-invariance}
   計量空間$V$の線型独立なベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$から、グラム・シュミットの直交化法を用いて得られた正規直交系を$\vb*{e}_1, \ldots, \vb*{e}_n$とする。
   
   このとき、$\vb*{a}_1,\ldots,\vb*{a}_n$が張る空間と$\vb*{e}_1,\ldots,\vb*{e}_n$が張る空間は一致する。
@@ -146,9 +146,9 @@ $\vb*{u}_2$は$\vb*{e}_1$と直交するベクトルであるので、$\vb*{e}_2
 
 つまり、グラム・シュミットの直交化法は、内積が定められている空間（計量空間）には正規直交基底が必ず存在することを示している。
 
-\begin{theorem}{正規直交基底の存在}
+\begin{theorem*}{正規直交基底の存在}
   $\{\vb*{o}\}$でない任意の計量空間は正規直交基底を持つ。
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{線形従属なベクトルの正規直交化}\label{sec:gram-schmidt-with-dependent-vectors}

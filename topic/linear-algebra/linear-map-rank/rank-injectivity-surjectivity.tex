@@ -19,14 +19,14 @@ $A$の階数が元の空間（定義域）の次元と同じ場合、$A$が表�
 
 元の$n$次元空間が写した先でも$n$次元の広がりを保っているのなら、潰れていないはずだからである。
 
-\begin{theorem}{線形写像の単射性と表現行列}
+\begin{theorem*}{線形写像の単射性と表現行列}
   線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値である。
   \begin{enumerate}[label=\romanlabel]
     \item $f$は単射
     \item $A\vb*{x} = \vb*{o}$は自明な解しか持たない
     \item $\rank A = n$
   \end{enumerate}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{(\romannum{i}) $\Longleftrightarrow$ (\romannum{ii})}
@@ -66,14 +66,14 @@ $A$の階数が行き先の空間（値域）の次元と同じ場合、$A$が�
 
 写した先でその空間全体と同じ$m$次元の広がりを持っているのなら、空間全体をカバーしているはずだからである。
 
-\begin{theorem}{線形写像の全射性と表現行列}
+\begin{theorem*}{線形写像の全射性と表現行列}
   線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$の表現行列を$A$とするとき、次はすべて同値である。
   \begin{enumerate}[label=\romanlabel]
     \item $f$は全射
     \item 任意の$\vb*{b} \in \mathbb{R}^m$に対して、$A\vb*{x} = \vb*{b}$には解が存在する
     \item $\rank A = m$
   \end{enumerate}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{(\romannum{i}) $\Longleftrightarrow$ (\romannum{ii})}
@@ -112,7 +112,7 @@ $A$の階数が行き先の空間（値域）の次元と同じ場合、$A$が�
 
 単射と全射は、一般には一方から他方が導かれるわけではない2つの性質だが、$\mathbb{R}^n$からそれ自身への線形写像（線形変換）の場合は同値になる。
 
-\begin{theorem}{線形代数における鳩の巣原理}\label{thm:linear-pigeonhole}
+\begin{theorem}{線形代数における鳩の巣原理}{linear-pigeonhole}
   $f$を$\mathbb{R}^n$の線形変換とし、$A$を$f$の表現行列とするとき、次はすべて同値である。
   \begin{enumerate}[label=\romanlabel]
     \item $f$は単射
@@ -147,9 +147,9 @@ $A$の階数が行き先の空間（値域）の次元と同じ場合、$A$が�
 
 この定理は、いわば線形代数版「鳩の巣原理」である。
 
-\begin{theorem}{鳩の巣原理}
+\begin{theorem*}{鳩の巣原理}
   有限集合$X = \{ 1, 2, \dots, n \}$からそれ自身への写像$f$に対して、単射と全射は同値である
-\end{theorem}
+\end{theorem*}
 
 \br
 

@@ -24,9 +24,9 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 \end{align*}
 となり、正規行列の定義を満たす
 
-\begin{theorem}{エルミート行列の正規行列性}
+\begin{theorem*}{エルミート行列の正規行列性}
   エルミート行列は正規行列である
-\end{theorem}
+\end{theorem*}
 
 \br
 
@@ -37,19 +37,19 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 \end{align*}
 となり、こちらも正規行列の定義を満たす
 
-\begin{theorem}{ユニタリ行列の正規行列性}
+\begin{theorem*}{ユニタリ行列の正規行列性}
   ユニタリ行列は正規行列である
-\end{theorem}
+\end{theorem*}
 
 \subsection{正規行列の性質}
 
-\begin{theorem}{正規行列と随伴によるノルム保存性}
+\begin{theorem*}{正規行列と随伴によるノルム保存性}
   複素正方行列$A$が正規行列であることは、任意の$\vb*{v} \in \mathbb{C}^n$に対し、
   \begin{equation*}
     \|A\vb*{v}\| = \|A^*\vb*{v}\|
   \end{equation*}
   が成り立つことと同値である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p262 問6.9 (1)}
@@ -57,14 +57,14 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 
 \br
 
-\begin{theorem}{正規行列における固有ベクトルの随伴対応}
+\begin{theorem*}{正規行列における固有ベクトルの随伴対応}
   $A$を正規行列とするとき、$\vb*{v}$が$A$の固有値$\alpha$の固有ベクトルならば、$\vb*{v}$は$A^*$の固有値$\overline{\alpha}$の固有ベクトルである
 
   すなわち、
   \begin{equation*}
     A\vb*{v} = \alpha \vb*{v} \Longrightarrow A^*\vb*{v} = \overline{\alpha} \vb*{v}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p262 問6.9 (2)}
@@ -93,7 +93,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
 正規行列について、一般に次が成り立つ
 
-\begin{theorem}{正規行列における固有空間の次元と固有値の重複度の一致}\label{thm:normal-matrix-eigenvalue-multiplicity}
+\begin{theorem}{正規行列における固有空間の次元と固有値の重複度の一致}{normal-matrix-eigenvalue-multiplicity}
   $n$次複素正方行列$A$が正規行列であるとき、$\Phi_A(x)$における固有値$\alpha$の重複度$k$について、次の等式が成り立つ
   \begin{equation*}
     k = n - \rank(A - \alpha E)
@@ -311,7 +311,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
 さらに、上の定理の証明過程から、正規行列は\keyword{ユニタリ行列}によって対角化できることもわかる
 
-\begin{theorem}{正規行列のユニタリ対角化}\label{thm:unitary-diagonalization-of-normal}
+\begin{theorem}{正規行列のユニタリ対角化}{unitary-diagonalization-of-normal}
   複素正方行列$A$について、$A$が正規行列であることと、$A$がユニタリ行列を用いて対角化できることは同値である
 \end{theorem}
 

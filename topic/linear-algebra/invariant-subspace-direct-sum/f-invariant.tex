@@ -30,7 +30,7 @@ $V$上の線形変換$f$について、「変換$f$で写しても変わらな�
 \section{写像の制限と不変部分空間}
 \marginnote{\refbookA p114 \\ \refbookF p240〜242、p363〜364}
 
-\begin{theorem}{不変部分空間による線形変換のブロック型行列表現}\label{thm:block-matrix-by-invariant-subspace}
+\begin{theorem}{不変部分空間による線形変換のブロック型行列表現}{block-matrix-by-invariant-subspace}
   $V$を$n$次元線形空間とし、線形変換$f\colon V \to V$を考える
 
   このとき、$V$のある部分空間$W$が$f$不変ならば、$V$の適当な基底について、$f$は
@@ -214,7 +214,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 \end{equation*}
 という\keyword{ブロック対角型}になる
 
-\begin{theorem}{不変部分空間への直和分解}
+\begin{theorem*}{不変部分空間への直和分解}
   線形空間$V$と、$V$上の線形変換$f$に対し、$V$が$f$不変な部分空間$W_1$と$W_2$の直和に分解することができれば、すなわち、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2$
@@ -243,7 +243,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
       &&&&
     \end{pNiceArray}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $W_1$の基底、$W_2$の基底をこの順に並べるか、その反対の順に並べて、$V$の基底を構成することで、\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明と同様に示される $\qed$
@@ -253,7 +253,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 
 さらに、$V$をより細かい部分空間の直和に分解できる場合には、次のようになる
 
-\begin{theorem}{複数の不変部分空間への直和分解}
+\begin{theorem*}{複数の不変部分空間への直和分解}
   線形空間$V$と、$V$上の線形変換$f$について、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_k$
@@ -268,7 +268,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
       O & & & \Block[borders={bottom,top,right,left,tikz=dashed}]{1-1}<\large>{*} \\
     \end{pNiceArray}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 対角線上の各正方形の大きさは、各部分空間$W_i$の次元に対応する
 
@@ -276,7 +276,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 
 そこで、以上の議論を究極にまで押し進めると、次の定理になる
 
-\begin{theorem}{一次元部分空間への直和分解}\label{thm:diagonalizable-by-1d-invariant-sum}
+\begin{theorem}{一次元部分空間への直和分解}{diagonalizable-by-1d-invariant-sum}
   $n$次元部分空間$V$が、$n$個の$f$不変の1次元部分空間の直和に分解できるとき、すなわち、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_n$

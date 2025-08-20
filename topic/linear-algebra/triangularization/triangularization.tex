@@ -8,7 +8,7 @@
 
 対角化の次善の策として、\keyword{三角化}という方法がある
 
-\begin{theorem}{三角化定理}\label{thm:triangularization-theorem}
+\begin{theorem}{三角化定理}{triangularization-theorem}
   $A$を$n$次複素正方行列とするとき、ある正則行列$P$が存在して、$P^{-1}AP$が上三角行列になる
 
   その対角成分は重複度を含めて$A$の固有値と一致する
@@ -121,9 +121,9 @@
 
 この分解は\keyword{QR分解}と呼ばれ、行列の数値計算等で利用されている
 
-\begin{theorem}{正則行列に対するQR分解の存在}
+\begin{theorem*}{正則行列に対するQR分解の存在}
   任意の$n$次複素\keyword{正則}行列$A$に対して、$A=QR$となるユニタリ行列$Q$と上三角行列$R$が存在する
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $A$は\hyperref[thm:invertible-iff-col-indep]{正則行列であるので、その列ベクトルは線型独立}である
@@ -169,9 +169,9 @@
 
 この定理の証明において、$\vb*{a}_1,\ldots,\vb*{a}_n$から正規直交基底を構成するところを工夫すると、正則行列だけでなく、任意の複素正方行列もユニタリ行列と上三角行列の積で表せることがわかる
 
-\begin{theorem}{QR分解の存在}
+\begin{theorem*}{QR分解の存在}
   任意の$n$次複素正方行列$A$に対して、$A=QR$となるユニタリ行列$Q$と上三角行列$R$が存在する
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $A$の列ベクトルは線型独立であるとは限らないが、グラム・シュミットの直交化法は線形従属なベクトルに対しても適用できる
@@ -208,9 +208,9 @@
 
 したがって、正規行列以外の行列は、ユニタリ行列によって対角化することはできないが、ユニタリ行列によって三角化することはできる
 
-\begin{theorem}{シューア分解の存在}
+\begin{theorem*}{シューア分解の存在}
   $n$次複素正方行列$A$に対して、適当なユニタリ行列$U$により、$U^{-1}AU$を上三角行列（$A$の\keyword{シューア形}）にすることができる
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   任意の正則行列$P$はQR分解でき、ユニタリ行列$U$と上三角行列$T$を用いて、$P = UT$と表せる
