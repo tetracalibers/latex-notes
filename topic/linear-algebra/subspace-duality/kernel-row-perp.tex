@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../projection-matrix/.tex_intermediates/orthogonal-complement}
+
 \begin{document}
 
 \sectionline
@@ -58,12 +61,12 @@ $A = (a_{ij})$を$m \times n$行列とする。
   \Ker A = (\Row A)^\perp
 \end{equation*}
 
-また、\hyperref[thm:double-orthogonal-complement]{$(\Row A)^\perp$の直交補空間は$\Row A$に一致する}ことから、両辺の直交補空間をとると、次も成り立つ。
+また、\thmref{thm:double-orthogonal-complement}より、$(\Row A)^\perp$の直交補空間は$\Row A$に一致することから、両辺の直交補空間をとると、次も成り立つ。
 \begin{equation*}
   (\Ker A)^\perp = \Row A
 \end{equation*}
 
-\begin{theorem}{核空間と行空間の直交関係}\label{thm:kernel-row-orthogonality}
+\begin{theorem}{核空間と行空間の直交関係}{kernel-row-orthogonality}
   $A$の核空間と、$A$の行空間（行ベクトルが張る空間）は、直交補空間の関係にある。
   \begin{align*}
     \Ker A &= (\Row A)^\perp \\
@@ -83,13 +86,13 @@ $A$を転置すると行と列が入れ替わるので、$A^\top$の行空間は
 
 よって、定理を次のように書き換えることができる。
 
-\begin{theorem}{核空間と転置行列の像空間の直交関係}
+\begin{theorem*}{核空間と転置行列の像空間の直交関係}
   $A$の核空間と、$A^\top$の像空間は、直交補空間の関係にある。
   \begin{align*}
     \Ker A &= (\Im A^\top)^\perp \\
     (\Ker A)^\perp &= \Im A^\top
   \end{align*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{直交補空間から零化空間へ}
 
