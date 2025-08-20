@@ -24,24 +24,25 @@
   #2
 }
 
-\DeclareTColorBox{theorem}{m O{} }%
+\newtcbtheorem[number within=chapter]{theorem}{Theorem}%
 {
   enhanced,
   colframe=magnolia,
   colback=magnolia!20!white,
   coltitle=black,
-  fonttitle=\bfseries,
+  fonttitle=\ttfamily\bfseries,
   breakable,
   sharp corners,
-  title={\textcolor{magenta!70!black}{\faAnchor}\hspace{0.1em} #1},
+  separator sign dash,
+  coltitle=magenta!70!black,
+  before title={\textcolor{magenta!70!black}{\faAnchor}\hspace{1ex}},
   detach title,
-  before upper={\tcbtitle\quad},
+  before upper={\tcbtitle\par},
   bottom=0.5cm,
   top=0.5cm,
   right=0.5cm,
   left=0.5cm,
-  #2
-}
+}{thm}
 
 % 背景がグレー
 \DeclareTColorBox{shaded}{O{} }%
