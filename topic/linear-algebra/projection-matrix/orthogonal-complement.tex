@@ -1,6 +1,15 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr}
+\usepackage{refcount} % 親のラベルを読む
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 \begin{document}
+
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:triangularization}% 直前章
+  \stepcounter{chapter}% その次の章に進める
+}{}
 
 \sectionline
 \section{直交補空間}
