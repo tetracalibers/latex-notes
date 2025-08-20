@@ -4,7 +4,7 @@
 
 \sectionline
 \section{ベクトルが張る空間}\label{sec:span-of-vectors}
-\marginnote{\refbookA p6〜8、\refbookL p135}
+\marginnote{\refbookA p6〜8 \\ \refbookL p135 \\ \refbookS p21}
 
 $m \times n$型行列$A$で写れる範囲を$\Im A$として定義した。
 
@@ -44,13 +44,15 @@ $\vb*{x}$を$n$次元ベクトルとすると、$\Im A$は次のようなもの�
 \begin{definition}{ベクトルが張る空間}\label{def:span-of-vectors}
   $k$個のベクトル$\vb*{a}_1, \dots, \vb*{a}_k \in \mathbb{R}^n$を与えたとき、$\vb*{a}_1, \dots, \vb*{a}_k$の線形結合全体の集合を
   \begin{equation*}
-    \langle \vb*{a}_1, \dots, \vb*{a}_k \rangle
-  \end{equation*}
-  あるいは
-  \begin{equation*}
-    \Span\{\vb*{a}_1, \dots, \vb*{a}_k\}
+    \langle \vb*{a}_1, \dots, \vb*{a}_k \rangle \quad \text{あるいは} \quad \Span\{\vb*{a}_1, \dots, \vb*{a}_k\}
   \end{equation*}
   によって表し、これを$\vb*{a}_1, \dots, \vb*{a}_k$が\keyword{張る空間}という。
+\end{definition}
+
+\begin{definition}{生成系}
+  $V = \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であるとき、$\vb*{v}_1, \dots, \vb*{v}_k$を$V$の\keywordJE{生成系}{system of generators}という。
+  
+  このとき、$V$は$\vb*{v}_1, \dots, \vb*{v}_k$によって\keywordJE{生成される}{generated}ともいう。
 \end{definition}
 
 \subsection{ベクトルが張る空間は部分空間}

@@ -41,6 +41,27 @@
 \newcommand{\refbookR}{\refbook{手を動かしてまなぶ 続・線形代数}}
 \newcommand{\refbookS}{\refbook{線形代数の世界}}
 
+% === TikZテンプレート ===
+
+% ref: https://tex.stackexchange.com/questions/88258/tikz-rectangle-split-parts-with-fixed-height
+\tikzset{
+    subspace/.style={
+        draw,
+        rectangle split,
+        rectangle split parts=2,
+        text centered,
+        minimum width=8ex,
+        inner ysep=1.5ex
+    },
+    subspace+/.style={
+        subspace,
+        rectangle split every empty part={},% resets empty-part macro (explanation below)
+        rectangle split empty part width={\pgfkeysvalueof{/pgf/outer xsep} + \pgfkeysvalueof{/pgf/inner xsep}},
+        rectangle split empty part height={\pgfkeysvalueof{/pgf/outer ysep} + \pgfkeysvalueof{/pgf/inner ysep}},
+        rectangle split empty part depth={\pgfkeysvalueof{/pgf/outer ysep} + \pgfkeysvalueof{/pgf/inner ysep}},
+    },
+}
+
 % === 調整 ===
 
 \marginnoteoff
@@ -62,6 +83,16 @@
     {20pt}% sep
     {\Huge}% before-code
     [\thispagestyle{empty}]% after-code
+\titleformat{\section}
+    {\normalfont\Large\bfseries}
+    {\texttt\thesection}
+    {1em}
+    {}
+\titleformat{\subsection}
+    {\normalfont\large\bfseries}
+    {\texttt\thesubsection}
+    {1em}
+    {}
 
 \usepackage{etoolbox}
 % \appendix が呼ばれたら、付録用の章タイトルに切り替える

@@ -1,0 +1,75 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{積集合としての直和}
+\marginnote{\refbookS p12〜13}
+
+$V, W$が線型空間のとき、集合としての\hyperref[def:cartesian-product]{直積}
+\begin{equation*}
+  V \times W = \{ (x, y) \mid x \in V, y \in W \}
+\end{equation*}
+は、成分ごとの加法とスカラー倍
+\begin{align*}
+  (x_1, y_1) + (x_2, y_2) &= (x_1 + x_2, y_1 + y_2) \\
+  c (x, y) &= (c x, c y)
+\end{align*}
+により、線型空間となる。
+
+これを$V$と$W$の\keyword{（抽象的な）直和}といい、$V \oplus W$と表す。
+
+\br
+
+より一般に、$V_1, \ldots, V_n$が線型空間のとき、
+\begin{equation*}
+  V_1 \times \cdots \times V_n = \{ x_1 \in V_1, \ldots, x_n \in V_n \}
+\end{equation*}
+は、成分ごとの加法とスカラー倍により、線型空間となる。
+
+これを$V_1, \ldots, V_n$の\keyword{（抽象的な）直和}といい、$V_1 \oplus \cdots \oplus V_n$と表す。
+
+\br
+
+特に、$V_1 = \cdots = V_n = V$のとき、$V_1 \oplus \cdots \oplus V_n$を$V^{\oplus n}$あるいは$V^n$と表す。
+
+\sectionline
+\section{部分空間の和としての直和}
+\marginnote{\refbookS p21〜22}
+
+\begin{theorem}{todo}
+  $W_1, W_2$を$V$の部分空間とするとき、次の条件は同値である。
+  \begin{enumerate}[label=\romanlabel]
+    \item $W_1 \cap W_2 = \{ \vb*{o} \}$
+    \item $(x_1, x_2) \in W_1 \oplus W_2$を$x_1 + x_2 \in W_1 + W_2$に写す写像$W_1 \oplus W_2 \to W_1 + W_2$は同型である
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  \todo{\refbookS p21〜22、p30}
+\end{proof}
+
+この定理より、$W_1 \cap W_2 = \{ \vb*{o} \}$のとき、
+\begin{itemize}
+  \item 積集合としての直和$W_1 \oplus W_2$（抽象的な直和）
+  \item 部分集合の和空間$W_1 + W_2$（部分空間としての直和）
+\end{itemize}
+を同一視することができる。
+
+\br
+
+そこで、$W_1 \cap W_2 = \{ \vb*{o} \}$のとき、和空間$W_1 + W_2$を\keyword{（部分空間としての）直和}といい、$W_1 \oplus W_2$と表す。
+
+\br
+
+特に、$V = W_1 \oplus W_2$のとき、$V$は$W_1$と$W_2$の\keyword{直和に分解する}という。
+
+このとき、$W_1$は$V$の\keywordJE{直和因子}{direct summand}であるという。
+
+また、$W_2$を$W_1$の\keywordJE{補空間}{complementary subspace}という。
+
+\begin{mindflow}
+  \todo{一般の場合の定義（\refbookS p23）}
+\end{mindflow}
+
+\end{document}

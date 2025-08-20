@@ -1,0 +1,87 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{外積}
+
+3次元直交座標空間において、
+\begin{itemize}
+  \item $x$軸と$y$軸の両方に垂直なのは$z$軸
+  \item $y$軸と$z$軸の両方に垂直なのは$x$軸
+  \item $z$軸と$x$軸の両方に垂直なのは$y$軸
+\end{itemize}
+という関係がある。
+
+\br
+
+そこで、$x$軸方向の単位ベクトルを$\vb*{e}_x$, $y$軸方向の単位ベクトルを$\vb*{e}_y$, $z$軸方向の単位ベクトルを$\vb*{e}_z$とすると、
+\begin{align*}
+  \vb*{e}_x \times \vb*{e}_y &= \vb*{e}_z \\
+  \vb*{e}_y \times \vb*{e}_z &= \vb*{e}_x \\
+  \vb*{e}_z \times \vb*{e}_x &= \vb*{e}_y
+\end{align*}
+これが正規直交ベクトル同士の外積である。
+
+\begin{equation*}
+  \vb*{e}_x = \begin{pmatrix}
+    1 \\
+    0 \\
+    0
+  \end{pmatrix} , \quad
+  \vb*{e}_y = \begin{pmatrix}
+    0 \\
+    1 \\
+    0
+  \end{pmatrix} , \quad
+  \vb*{e}_z = \begin{pmatrix}
+    0 \\
+    0 \\
+    1
+  \end{pmatrix}
+\end{equation*}
+
+ここで、たとえば、
+\begin{equation*}
+  \vb*{e}_y \times \vb*{e}_x = \begin{pmatrix}
+    0 \cdot 0 - 1 \cdot 0 \\
+    1 \cdot 0 - 0 \cdot 0 \\
+    0 \cdot 0 - 0 \cdot 1
+  \end{pmatrix} = \begin{pmatrix}
+    0 \\
+    0 \\
+    -1
+  \end{pmatrix} = -\vb*{e}_z = - (\vb*{e}_x \times \vb*{e}_y)
+\end{equation*}
+
+\br
+
+また、$x$軸と$x$軸の両方に垂直なベクトルは、零ベクトルしかない。
+\begin{equation*}
+  \vb*{e}_x \times \vb*{e}_x = \begin{pmatrix}
+    0 \cdot 0 - 0 \cdot 0 \\
+    0 \cdot 0 - 0 \cdot 0 \\
+    0 \cdot 0 - 0 \cdot 0
+  \end{pmatrix} = \vb*{o}
+\end{equation*}
+このように、平行なベクトル同士の外積は零ベクトルになる。
+
+\br
+
+正規直交ベクトルどうしの内積は、次のように表された。
+\begin{equation*}
+  \vb*{e}_i \cdot \vb*{e}_j = \delta_{ij} = \begin{cases}
+    1 & (i = j) \\
+    0 & (i \neq j)
+  \end{cases}
+\end{equation*}
+
+一方、正規直交ベクトルに対する外積は、次の性質を持つ。
+\begin{equation*}
+  \vb*{e}_i \times \vb*{e}_j = \begin{cases}
+    0 & (i = j) \\
+    - \vb*{e}_j \times \vb*{e}_i & (i \neq j)
+  \end{cases}
+\end{equation*}
+
+\end{document}

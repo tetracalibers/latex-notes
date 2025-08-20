@@ -1,0 +1,173 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{同型と同一視}
+\marginnote{\refbookS p42〜43}
+
+$V$と$W$が同型なら、$V$と$W$は線型空間としては本質的に同じものと考えることができる。
+
+$W$が未知の線型空間でも、既知の線型空間$V$と同型なら、$W$のことも$V$と同じようによくわかることになる。
+
+\br
+
+既知の線型空間として、数ベクトル空間$K^n$を考えることが多い。
+
+\sectionline
+\section{基底を写す線形写像}
+\marginnote{\refbookS p40〜41 \\ \refbookA p103}
+
+% \refbookA 命題3.2.13、\refbookS 命題2.1.3
+\begin{theorem}{基底を写す線形写像の存在}
+  $V$を線型空間とし、$\vb*{v}_1, \ldots, \vb*{v}_n$を$V$の基底とする。
+  $W$を線型空間とし、$\vb*{w}_1, \ldots, \vb*{w}_n \in W$を任意に与えるとき、次を満たす線形写像$f\colon V \to W$が一意的に存在する。
+  \begin{equation*}
+    f(\vb*{v}_i) = \vb*{w}_i \quad (i = 1, \ldots, n)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $f$の存在}
+    任意の$\vb*{v}\in V$は、基底$\{\vb*{v}_i\}_{i=1}^n$により一意的に
+    \begin{equation*}
+      \vb*{v} = \sum_{i=1}^n a_i \vb*{v}_i \quad (a_i \in K)
+    \end{equation*}
+    と表すことができる。
+    
+    そこで、$f$を次のように定める。
+    \begin{equation*}
+      f(\vb*{v}) = \sum_{i=1}^n a_i\vb*{w}_i
+    \end{equation*}
+    
+    このとき、もし$\vb*{v}=\displaystyle\sum_{i=1}^n b_i\vb*{v}_i$とも表せるなら、基底による表示の一意性から$a_i=b_i$（$i=1,\dots,n$）である。
+    
+    よって、$\displaystyle\sum_{i=1}^n a_i\vb*{w}_i=\sum_{i=1}^n b_i\vb*{w}_i$となり、$f$の定義は一意に定まる。$\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries $f$の線形性}
+    $\displaystyle\vb*{a}=\sum_{i=1}^n a_i\vb*{v}_i,\ \vb*{b}=\sum_{i=1}^n b_i\vb*{v}_i$とし、$c_1,c_2$をスカラーとする。
+
+    このとき、$\displaystyle c_1\vb*{a}+c_2\vb*{b}=\sum_{i=1}^n(c_1 a_i+c_2 b_i)\vb*{v}_i$であるから、$f$の定義より、
+    \begin{align*}
+      f(c_1\vb*{a}+c_2\vb*{b})
+        &= \sum_{i=1}^n(c_1 a_i+c_2 b_i)\vb*{w}_i \\
+        &= c_1\sum_{i=1}^n a_i\vb*{w}_i + c_2\sum_{i=1}^n b_i\vb*{w}_i \\
+        &= c_1 f(\vb*{a})+c_2 f(\vb*{b})
+    \end{align*}
+    よって$f$は線形である。$\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries $f$の一意性}
+    $f(\vb*{v}_i)=\vb*{w}_i$を満たす線形写像$g\colon V\to W$を任意にとる。
+    
+    任意の$\displaystyle\vb*{v}=\sum_{i=1}^n a_i\vb*{v}_i$に対し、$f$の線形性より、
+    \begin{equation*}
+      g(\vb*{v}) = g\left(\sum_{i=1}^n a_i\vb*{v}_i\right)
+      = \sum_{i=1}^n a_i g(\vb*{v}_i)
+      = \sum_{i=1}^n a_i\vb*{w}_i
+      = f(\vb*{v})
+    \end{equation*}
+    したがって、$g=f$である。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+この定理の条件を満たすものとして、証明では線形写像$f$を次のように構成した。
+\begin{equation*}
+  f(\vb*{v}) = \sum_{i=1}^{n} a_i \vb*{w}_i
+\end{equation*}
+この$f$を、$V$の\keyword{基底}$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$を$\vb*{w}_1, \ldots, \vb*{w}_n \in W$に\keyword{写す}線形写像とよぶ。
+
+\br
+
+特に、$V = K^n$で、$V$の基底として\keyword{標準基底}$\{ \vb*{e}_1, \ldots, \vb*{e}_n \}$を選んだときは、この$f$を$\vb*{w}_1, \ldots, \vb*{w}_n \in W$が\keyword{定める}線形写像ともよぶ。
+
+\sectionline
+\section{基底が定める同型}
+\marginnote{\refbookS p42}
+
+\begin{mindflow}
+  座標写像と絡めて考えれば理解できそう
+\end{mindflow}
+
+$V$を線型空間とするとき、$\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとは、$\vb*{v}_1, \ldots, \vb*{v}_n$が定める線形写像$f\colon K^n \to V$が\keyword{同型}であるということである。
+
+\br
+
+$\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldots, \vb*{v}_n$が定める線形写像$f\colon K^n \to V$を、基底$\vb*{v}_1, \ldots, \vb*{v}_n$が定める同型という。
+
+\br
+
+どんな線型空間$V$でも、$V$の基底があれば、数ベクトル空間から$V$への同型が定まるため、$V$の元を数ベクトルを使って表すことができる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $V$の基底を\keywordJE{とる}{take}ことで、\\
+      $V$の元を数ベクトルを使って表すことができる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\sectionline
+\section{todo}
+\marginnote{\refbookS p44}
+
+\begin{mindflow}
+  「線形同型写像による基底の保存」の逆も成り立つことを示すのがこの定理
+\end{mindflow}
+
+% \refbookS 命題2.1.7
+\begin{theorem}{todo}
+  $V$を線形空間とし、$\vb*{v}_1, \ldots, \vb*{v}_n$を$V$の基底とする。
+  線形写像$f \colon V \to W$に対し、次の条件は同値である。
+  \begin{enumerate}[label=\romanlabel]
+    \item $f\colon V \to W$は同型である
+    \item $f(\vb*{v}_1), \ldots, f(\vb*{v}_n)$は$W$の基底をなす
+  \end{enumerate}
+\end{theorem}
+
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \small}]
+    K_n \arrow[r,"g"]\arrow[rd, "f \circ g"'] & V \arrow[d,"f"]\\
+    & W
+  \end{tikzcd}
+\end{equation*}
+
+\sectionline
+\section{todo}
+\marginnote{\refbookS p43}
+
+% \refbookS 例2.1.6.1
+\begin{theorem}{todo}
+  $m \leq n$を自然数とし、$K^n$の部分空間$W$を次のように定める。
+  \begin{equation*}
+    W = \left\{ \begin{pmatrix}
+      \vb*{x}_1 \\ \vdots \\ \vb*{x}_n
+    \end{pmatrix} \in K^n \,\middle|\,
+    \begin{gathered} 
+      \vb*{x}_{m+1} = \cdots = \vb*{x}_n = 0
+    \end{gathered}
+    \right\}
+  \end{equation*}
+  このとき、次の写像は同型である。
+  \begin{equation*}
+    K^m \to W \colon \begin{pmatrix}
+      \vb*{x}_1 \\ \vdots \\ \vb*{x}_m
+    \end{pmatrix} \mapsto \begin{pmatrix}
+      \vb*{x}_1 \\ \vdots \\ \vb*{x}_m \\ 0 \\ \vdots \\ 0
+    \end{pmatrix}
+  \end{equation*}
+\end{theorem}
+
+この同型$K^m \to W$により、部分空間$W \subset K^n$を$K^m$と同一視できる。
+
+\begin{mindflow}
+  部分空間の定義時に、「入れものの空間のことはあまり意識せずに…」と書いたが、その根拠となるのがこの同型？
+  
+  以下も参照：
+  
+  \url{https://chatgpt.com/c/68a54b60-b3f8-8333-a900-aea35036832a}
+\end{mindflow}
+
+\end{document}

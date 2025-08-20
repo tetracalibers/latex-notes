@@ -10,7 +10,7 @@
 
 \NewDocumentCommand{\keyword}{O{RubineRed} m}{\textcolor{#1}{\textbf{#2}}}
 \newcommand{\en}[1]{\texttt{\small #1}}
-\newcommand{\keywordJE}[2]{\keyword{#1}（\textcolor{RubineRed}{\texttt{\small #2}}）}
+\newcommand{\keywordJE}[2]{\keyword{#1}{\small （}\textcolor{hotpink}{\texttt{\footnotesize #2}}{\small ）}}
 
 \newcommand{\br}{\vskip0.5\baselineskip}
 
@@ -31,5 +31,5 @@
 
 \renewcommand{\labelitemii}{$\circ$}
 
-\newcommand{\refbook}[1]{\small book: #1}
-\newcommand{\refweb}[2]{\small web: \href{#2}{#1}}
+\newcommand{\refbook}[1]{\small book:#1}
+\newcommand{\refweb}[2]{\small web:\href{#2}{#1}}
