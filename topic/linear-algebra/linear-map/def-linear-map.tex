@@ -4,30 +4,30 @@
 
 \sectionline
 \section{線形写像の定義}
-\marginnote{\refbookA 2}
+\marginnote{\refbookA p2 \\ \refbookS p38〜39}
 
 \begin{definition}{線形写像と線形性}
-  写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$が\keyword{線形写像}であるとは、次の2つの条件が成立することである
+  写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$が\keywordJE{線形写像}{linear mapping}であるとは、次の条件を満たすことをいう。
   \begin{enumerate}[label=\romanlabel]
-    \item $f(c\vb*{v}) = cf(\vb*{v})$がすべての$c \in \mathbb{R} , \, \vb*{v} \in \mathbb{R}^n$に対して成り立つ
-    \item $f(\vb*{u} + \vb*{v}) = f(\vb*{u}) + f(\vb*{v})$がすべての$\vb*{u}, \vb*{v} \in \mathbb{R}^n$に対して成り立つ
+    \item 任意の$c \in \mathbb{R} , \, \vb*{v} \in \mathbb{R}^n$に対して、$f(c\vb*{v}) = cf(\vb*{v})$
+    \item 任意の$\vb*{u}, \vb*{v} \in \mathbb{R}^n$に対して、$f(\vb*{u} + \vb*{v}) = f(\vb*{u}) + f(\vb*{v})$
   \end{enumerate}
-  これらの性質を写像$f$の\keyword{線形性}という
+  これらの性質を写像$f$の\keyword{線形性}という。
 
-  また、$m=n$のとき、線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^n$を$\mathbb{R}^n$の\keyword{線形変換}と呼ぶ
+  また、$m=n$のとき、線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^n$を$\mathbb{R}^n$の\keywordJE{線形変換}{linear transformation}という。
 \end{definition}
 
 \keyword{線形変換}は空間$\mathbb{R}^n$からそれ自身への写像なので、$\mathbb{R}^n$内において「ベクトルが変化している」（あるいは$f$が空間$\mathbb{R}^n$に\keyword{作用}している）ニュアンスとみることができる
 
 \sectionline
 
-$f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、\romannum{i}より、
+$f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、(\romannum{i})より、
 \begin{equation*}
   f(0 \cdot \vb*{v}) = 0 \cdot f(\vb*{v})
 \end{equation*}
 なので、
 \begin{equation*}
-  f(\vb*{0}) = \vb*{0}
+  f(\vb*{o}) = \vb*{o}
 \end{equation*}
 が成り立つ
 
@@ -119,7 +119,7 @@ $\mathbb{R}^n$の一般のベクトル$\vb*{v}$を、基本ベクトルの線型
 \sectionline
 
 \begin{definition}{零写像と零行列}
-  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を、すべての$\vb*{v} \in \mathbb{R}^n$に対して$f(\vb*{v}) = \vb*{0}$と定めたものは明らかに線形写像であり、これを\keyword{零写像}と呼ぶ
+  $f\colon \mathbb{R}^n \to \mathbb{R}^m$を、すべての$\vb*{v} \in \mathbb{R}^n$に対して$f(\vb*{v}) = \vb*{o}$と定めたものは明らかに線形写像であり、これを\keyword{零写像}と呼ぶ
 
   その表現行列はすべての成分が0である行列である
 
