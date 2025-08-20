@@ -1,0 +1,55 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{部分空間}
+\marginnote{\refbookS p17〜18}
+
+\begin{mindflow}
+  ここでは、線形空間をすでに定義されているものとする
+  
+  現状、本編は線型空間の定義より先に$\mathbb{R}^n$の部分空間を導入しているので、章構成の調整が必要？
+\end{mindflow}
+
+\begin{definition}{部分空間}
+  $V$を線形空間とする。
+  $W$が$V$の\keywordJE{部分空間}{subspace}であるとは、$W$が$V$の部分集合であり、次の条件を満たすことをいう。
+  \begin{enumerate}[label=\romanlabel]
+    \item 任意の$\vb*{u}, \vb*{v} \in W$に対して、$\vb*{u} + \vb*{v} \in W$
+    \item 任意の$\vb*{u} \in W$、任意のスカラー$c$に対して、$c \vb*{u} \in W$
+    \item $V$の零元$\vb*{o}$は$W$の元
+  \end{enumerate}
+\end{definition}
+
+条件(\romannum{i})を満たすことを、$W$は加法で\keywordJE{閉じている}{closed}という。
+
+条件(\romannum{ii})を満たすことを、$W$はスカラー倍で\keyword{閉じている}という。
+
+\br
+
+また、空集合は条件(\romannum{i})、(\romannum{ii})は満たすが、条件(\romannum{iii})を満たさない。
+
+空集合は線型空間ではないため、空集合を排除するために、条件(\romannum{iii})が必須となる。
+
+\begin{mindflow}
+  空集合は線型空間ではないのは、線型空間の公理に零元の存在が含まれているから
+\end{mindflow}
+
+\subsection{部分空間の視覚的表現}
+
+部分空間を視覚的に表すには、箱を使うと便利である。
+
+\begin{itemize}
+  \item 左図：$V$の部分空間が$W$である
+  \item 右図：$x, y \in V$が、$x \in W$であり$y \notin W$である
+\end{itemize}
+
+\begin{center}
+  \begin{tikzpicture}[node distance=3cm]
+    \node [subspace, rectangle split draw splits=false, label=above:{$V$}, draw=carnationpink, thick, rectangle split part fill={carnationpink!50, SkyBlue!50}]        (A)    {\phantom{$y$} \nodepart{second} $W$};
+    \node [subspace, rectangle split draw splits=false, right of=A, label=above:{$V$}, draw=carnationpink, thick, rectangle split part fill={carnationpink!50, SkyBlue!50}]    (B)    {$y$ \nodepart{second} $x$};
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
