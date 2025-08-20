@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -52,7 +55,7 @@ $B$を定める原理は、\hyperref[sec:construction-of-matrix-rep]{表現行�
 \begin{proof}
   $P$の列ベクトルは基底であるため、線形独立である
 
-  \hyperref[thm:invertible-iff-col-indep]{列ベクトルの線型独立性による正則の判定}で示したように、正則行列であることは、列ベクトルが線形独立であることと同値である $\qed$
+  \thmref{thm:invertible-iff-col-indep}で示したように、正則行列であることは、列ベクトルが線形独立であることと同値である $\qed$
 \end{proof}
 
 また、$B$を決める式
@@ -214,7 +217,7 @@ $V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{
 
   どちらも$(\vb*{v}_1, \ldots, \vb*{v}_n)$との積の形、すなわち$\vb*{v}_1, \ldots, \vb*{v}_n$の線形結合として表されている
 
-  ここで、基底$\vb*{v}_1, \ldots, \vb*{v}_n$の線型独立性から、その\hyperref[thm:lin-indep-iff-unique-lincomb]{線形結合は一意的である}ので、係数比較ができて、
+  ここで、\thmref{thm:lin-indep-iff-unique-lincomb}より、基底$\vb*{v}_1, \ldots, \vb*{v}_n$の線型独立性から、その線形結合は一意的であるので、係数比較ができて、
   \begin{equation*}
     \begin{pmatrix}
       x_1    \\

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -45,7 +48,7 @@
 
   \br
 
-  線形変換$g$に対して、\hyperref[thm:linear-pigeonhole]{線形代数における鳩の巣原理}より、
+  線形変換$g$に対して、\thmref{thm:linear-pigeonhole}より、
   \begin{equation*}
     g\text{が単射} \Longleftrightarrow g\text{が全射} \Longleftrightarrow g\text{が全単射}
   \end{equation*}
@@ -96,11 +99,11 @@
   \begin{equation*}
     \iota(\vb*{v}) = \vb*{0} \Longleftrightarrow \vb*{v} = \vb*{0}
   \end{equation*}
-  したがって、\hyperref[thm:injective-zero-test]{零ベクトルへの写像による単射性の判定}より、$\iota$は単射である
+  したがって、\thmref{thm:injective-zero-test}より、$\iota$は単射である
 
   \br
 
-  また、$\iota$が単射であることと、仮定$\dim V = \dim W$を合わせると、\hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}より、$\iota$は全射であることがわかる
+  また、$\iota$が単射であることと、仮定$\dim V = \dim W$を合わせると、\thmref{thm:abstract-linear-pigeonhole}より、$\iota$は全射であることがわかる
 
   \br
 
@@ -122,7 +125,7 @@
 \end{theorem*}
 
 \begin{proof}
-  $V \subseteq W$であることから、\hyperref[thm:basis-extension]{基底の延長}により、$V$の基底を延長して$W$の基底にできるので、
+  $V \subseteq W$であることから、\thmref{thm:basis-extension}により、$V$の基底を延長して$W$の基底にできるので、
   \begin{equation*}
     \dim V \leq \dim W
   \end{equation*}
@@ -130,7 +133,7 @@
 
   \br
 
-  等号が成立する場合については、前述の\hyperref[thm:equal-dim-implies-equal-subspace]{次元の一致による部分空間の一致判定}を参照 $\qed$
+  等号が成立する場合については、前述の\thmref{thm:equal-dim-implies-equal-subspace}を参照 $\qed$
 \end{proof}
 
 \sectionline
@@ -145,7 +148,7 @@
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:injective-iff-trivial-kernel]{線形写像の単射性と核の関係}より、$f$が単射であることは次と同値である
+  \thmref{thm:injective-iff-trivial-kernel}より、$f$が単射であることは次と同値である
   \begin{equation*}
     \Ker(f) = \{ \vb*{0} \}
   \end{equation*}
@@ -166,7 +169,7 @@
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}の主張そのものである $\qed$
+  \thmref{thm:abstract-linear-pigeonhole}の主張そのものである $\qed$
 \end{proof}
 
 \end{document}

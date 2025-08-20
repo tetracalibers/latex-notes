@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -216,7 +219,7 @@ $A$を$n$個の列ベクトルを横一列に並べたものとみなし、
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:adjoint-involution]{随伴行列を二回とると元に戻る}ので、
+  \thmref{thm:adjoint-involution}より、随伴行列を二回とると元に戻るので、
   \begin{equation*}
     (U^*)^* = U
   \end{equation*}

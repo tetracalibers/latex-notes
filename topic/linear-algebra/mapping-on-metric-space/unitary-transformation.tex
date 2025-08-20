@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -20,11 +23,11 @@
 
 \subsection{ユニタリ変換の表現行列}
 
-ユニタリ行列の性質である\hyperref[thm:unitary-characterized-by-inner-product-invariance]{内積不変性}
+ユニタリ行列の性質である\thmref{thm:unitary-characterized-by-inner-product-invariance}より、
 \begin{equation*}
   (A\vb*{u}, A\vb*{v}) = (\vb*{u}, \vb*{v})
 \end{equation*}
-から、ユニタリ変換の表現行列は\keyword{ユニタリ行列}であることがわかる
+が成り立つため、ユニタリ変換の表現行列は\keyword{ユニタリ行列}であることがわかる
 
 \begin{theorem*}{ユニタリ変換とユニタリ行列表現}
   計量空間上の線形変換$f$がユニタリ変換であることと、$f$の表現行列$A$がユニタリ行列であることは同値である
@@ -34,7 +37,7 @@
 
 \subsection{ユニタリ変換とノルム}
 
-ユニタリ行列の\hyperref[thm:unitary-characterized-by-norm-invariance]{ノルム不変性}から、
+\thmref{thm:unitary-characterized-by-norm-invariance}から、
 \begin{shaded}
   ユニタリ変換はベクトルの長さを変えない変換
 \end{shaded}

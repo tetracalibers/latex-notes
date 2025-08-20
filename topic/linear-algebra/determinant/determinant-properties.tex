@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -34,7 +37,7 @@
 
   \br
 
-  ここで、$\rho = \sigma^{-1}$とおくと、$\sigma = \rho^{-1}$であり、\hyperref[thm:sign-of-inverse-permutation]{逆置換の符号}から$\sgn(\sigma) = \sgn(\rho^{-1}) = \sgn(\rho)$であるから、
+  ここで、$\rho = \sigma^{-1}$とおくと、$\sigma = \rho^{-1}$であり、\thmref{thm:sign-of-inverse-permutation}から$\sgn(\sigma) = \sgn(\rho^{-1}) = \sgn(\rho)$であるから、
   \begin{equation*}
     \det({}^t A) = \sum_{\rho \in S_n} \sgn(\rho) \prod_{j=1}^n a_{j,\rho(j)}  = \det(A)
   \end{equation*}
@@ -67,7 +70,7 @@
     f(\tau) = \sgn(\tau) a_{\tau(1),1} \cdots a_{\tau(i),i} \cdots a_{\tau(j),j} \cdots a_{\tau(n),n}
   \end{equation*}
 
-  このとき、\hyperref[thm:sum-invariance-under-permutation-action]{置換群の左右作用に対する和の不変性}より、
+  このとき、\thmref{thm:sum-invariance-under-permutation-action}より、
   \begin{equation*}
     \sum_{\sigma \in S_n} f(\sigma) = \sum_{\sigma \in S_n} f(\sigma\sigma_0) = \sum_{\tau \in S_n} f(\tau)
   \end{equation*}
@@ -75,7 +78,7 @@
 
   \br
 
-  さらに、\hyperref[thm:sign-multiplicativity]{置換の符号の乗法性}より、
+  さらに、\thmref{thm:sign-multiplicativity}より、
   \begin{equation*}
     \sgn(\tau) = \sgn(\sigma) \sgn(\sigma_0) = -\sgn(\sigma)
   \end{equation*}
@@ -120,7 +123,7 @@
 
 \sectionline
 
-\hyperref[thm:determinant-transpose-invariance]{行列式の対称性}より、次の定理も得られる
+\thmref{thm:determinant-transpose-invariance}より、次の定理も得られる
 
 \begin{theorem*}{行列式の行についての多重線形性と交代性}
   行列式は行に関しても多重線形性と交代性をもつ

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -53,7 +56,7 @@
 
 \br
 
-ここで、\hyperref[thm:homogeneous-trivial-iff-full-col-rank]{斉次形方程式の非自明解の存在条件}より、斉次形方程式$A\vb*{x} = \vb*{o}$において自明解しか存在しないことは、$\rank(A) = n$、すなわち\hyperref[sec:degrees-of-freedom]{解の自由度}が0であることと同値であった。
+ここで、\thmref{thm:homogeneous-trivial-iff-full-col-rank}より、斉次形方程式$A\vb*{x} = \vb*{o}$において自明解しか存在しないことは、$\rank(A) = n$、すなわち\hyperref[sec:degrees-of-freedom]{解の自由度}が0であることと同値であった。
 
 \br
 
@@ -76,7 +79,7 @@ $\vb*{a}_1, \dots, \vb*{a}_n \in \mathbb{R}^m$に対して、$A=(\vb*{a}_1, \dot
 
 \br
 
-\hyperref[thm:rank-bounds]{階数のとりうる値の範囲}より、
+\thmref{thm:rank-bounds}より、
 \begin{equation*}
   \rank A \leq \min(m,n)
 \end{equation*}

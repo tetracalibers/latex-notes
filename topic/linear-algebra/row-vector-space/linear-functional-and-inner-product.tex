@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -132,7 +135,7 @@ $\mathbb{R}^n$上の線形汎関数は、すべて内積から定めることが
 
 $\psi$が決まれば、$\psi(\vb*{e}_1), \ldots, \psi(\vb*{e}_n)$の値が決まるので、$\vb*{a}$がただ一つ定まる。
 
-逆に、\hyperref[thm:linear-map-equality-on-basis]{基底$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$に対する$\psi$の値が決まれば$\psi$の形が決まる}ので、上の式のように$\vb*{a}$を定めれば、$\vb*{a}$に対応して$\psi$の形がただ一つに定まることになる。
+逆に、\thmref{thm:linear-map-equality-on-basis}より、基底$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$に対する$\psi$の値が決まれば$\psi$の形が決まるので、上の式のように$\vb*{a}$を定めれば、$\vb*{a}$に対応して$\psi$の形がただ一つに定まることになる。
 
 \br
 

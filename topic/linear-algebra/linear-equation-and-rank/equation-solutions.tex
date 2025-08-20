@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -88,7 +91,7 @@ $\vb*{x}$は未知数$x_1, x_2, \dots, x_n$を成分とするベクトルであ�
 \begin{equation*}
   A\vb*{x} = \vb*{b} \Longrightarrow PA\vb*{x} = P\vb*{b}
 \end{equation*}
-であり、\hyperref[thm:row-operation-by-elementary-matrices]{基本行列の積$P$は正則}であるから、両辺に左から$P^{-1}$をかけることで$A\vb*{x} = \vb*{b}$に戻せるので、
+であり、\thmref{thm:row-operation-by-elementary-matrices}より、基本行列の積$P$は正則であるから、両辺に左から$P^{-1}$をかけることで$A\vb*{x} = \vb*{b}$に戻せるので、
 \begin{equation*}
   A\vb*{x} = \vb*{b} \Longleftrightarrow PA\vb*{x} = P\vb*{b}
 \end{equation*}

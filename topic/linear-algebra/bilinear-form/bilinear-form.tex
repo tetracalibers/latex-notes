@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -49,7 +52,7 @@ $\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb
 
 \begin{proof}
   \begin{subpattern}{{\bfseries 和に対する双線形性} (\romannum{i})}
-    \hyperref[thm:transpose-distributes-over-sum]{行列の和に対して転置を分配できる}ことを用いて、
+    \thmref{thm:transpose-distributes-over-sum}より、
     \begin{align*}
       b(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) &= (\vb*{u}_1 + \vb*{u}_2)^T A \vb*{v} \\
       &= \vb*{u}_1^T A \vb*{v} + \vb*{u}_2^T A \vb*{v} \\
@@ -67,7 +70,7 @@ $\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb
   \end{subpattern}
   
   \begin{subpattern}{{\bfseries スカラー倍に対する双線形性} (\romannum{iii})}
-    \hyperref[thm:transpose-of-product]{行列の積に対する転置の性質}と、スカラー（$1 \times 1$型行列）を転置しても変わらないことを用いて、
+    \thmref{thm:transpose-of-product}と、スカラー（$1 \times 1$型行列）を転置しても変わらないことを用いて、
     \begin{align*}
       b(c\vb*{u}, \vb*{v}) &= (c\vb*{u})^T A \vb*{v} \\
       &= c(\vb*{u}^T A \vb*{v}) \\

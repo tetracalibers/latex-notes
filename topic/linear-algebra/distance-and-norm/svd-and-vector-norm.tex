@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -22,8 +25,8 @@
       \vb*{e}_1 & \cdots & \vb*{e}_n
     \end{pmatrix} U
   \end{equation*}
-  
-  \hyperref[thm:coordinate-change-rule]{座標ベクトルの変換則}より、$\vb*{v}$の$\mathcal{U}$に関する座標ベクトルを$\vb*{c} \in \mathbb{C}^n$とすると、
+
+  \thmref{thm:coordinate-change-rule}より、$\vb*{v}$の$\mathcal{U}$に関する座標ベクトルを$\vb*{c} \in \mathbb{C}^n$とすると、
   \begin{equation*}
     \vb*{v} = U \vb*{c}
   \end{equation*}
@@ -48,14 +51,14 @@ $A$が特異値分解されていると、ベクトルのノルムの変化が�
 \end{theorem}
 
 \begin{proof}
-  \hyperref[thm:unitary-coordinate-transform]{ユニタリ行列による座標変換}より、座標ベクトルは$\vb*{c} = V^* \vb*{v}$で与えられる。
-  
+  \thmref{thm:unitary-coordinate-transform}より、座標ベクトルは$\vb*{c} = V^* \vb*{v}$で与えられる。
+
   よって、
   \begin{equation*}
     \| A \vb*{v} \|^2 = \| U \Sigma V^* \vb*{v} \|^2 = \| U \Sigma \vb*{c} \|^2
   \end{equation*}
-  
-  ここで、\hyperref[thm:unitary-characterized-by-norm-invariance]{左からユニタリ行列$U$をかけてもノルムは変わらない}ので、
+
+  ここで、\thmref{thm:unitary-characterized-by-norm-invariance}より、左からユニタリ行列$U$をかけてもノルムは変わらないので、
   \begin{equation*}
     \| A \vb*{v} \|^2 = \| \Sigma \vb*{c} \|^2
   \end{equation*}

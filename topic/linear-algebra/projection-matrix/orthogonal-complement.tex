@@ -1,6 +1,6 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
-\usepackage{xr}
+\usepackage{xr-hyper}
 \usepackage{refcount} % 親のラベルを読む
 \externaldocument{../../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
 
@@ -174,11 +174,11 @@
   \item $V = W + W^\perp$
   \item $W \cap W^\perp = \{ \vb*{o} \}$
 \end{enumerate}
-計量空間$V$は部分空間$W$とその直交補空間$W^\perp$の\hyperref[thm:direct-sum-equiv]{直和として分解}できる。
+\thmref{thm:direct-sum-equiv}より、計量空間$V$は部分空間$W$とその直交補空間$W^\perp$の直和として分解できる。
 
 \br
 
-よって、\hyperref[thm:dim-direct-sum]{直和の次元公式}より、次の定理が従う。
+よって、\thmref{thm:dim-direct-sum}より、次の定理が従う。
 
 \begin{theorem*}{直交補空間と次元}
   計量空間$V$の部分空間$W$に対して、

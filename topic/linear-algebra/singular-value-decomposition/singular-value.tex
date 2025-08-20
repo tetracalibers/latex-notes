@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -47,7 +50,7 @@
 \begin{equation*}
   A A^\top \vb*{u} = \sigma^2 \vb*{u} , \quad A^\top A \vb*{v} = \sigma^2 \vb*{v}
 \end{equation*}
-ここで、$A$は任意の長方行列だが、\hyperref[thm:symmetric-products-of-any-matrix]{$A A^\top$と$A^\top A$は対称行列}となる
+ここで、$A$は任意の長方行列だが、\thmref{thm:symmetric-products-of-any-matrix}より、$A A^\top$と$A^\top A$は対称行列となる
 
 \br
 
@@ -56,7 +59,7 @@
   \item 左特異ベクトル$\vb*{u}$は$m$次対称行列$A A^\top$の固有ベクトル
   \item 右特異ベクトル$\vb*{v}$は$n$次対称行列$A^\top A$の固有ベクトル
 \end{itemize}
-であり、特異値の2乗$\sigma^2$は\hyperref[thm:svd-singular-value-vector-correspondence]{$A A^\top, A^\top A$共通の固有値}である
+であり、\thmref{thm:svd-singular-value-vector-correspondence}より、特異値の2乗$\sigma^2$は$A A^\top, A^\top A$共通の固有値である
 
 \subsection{特異ベクトルの正規直交化}
 

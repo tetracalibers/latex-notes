@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -133,7 +136,7 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:linear-map-zero-preserving]{前述の定理}の主張$f(\vb*{o}_V) = \vb*{o}_W$より、零ベクトルは核空間に属する。
+  \thmref{thm:linear-map-zero-preserving}の主張$f(\vb*{o}_V) = \vb*{o}_W$より、零ベクトルは核空間に属する。
   \begin{equation*}
     \vb*{o} \in \Ker(f)
   \end{equation*}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -48,7 +51,7 @@ $V,\,W$をそれぞれ次元が$n,\,m$の線形空間とし、$f$を$V$から$W$
 
 \br
 
-座標写像が線形同型写像であることは、\hyperref[thm:subspace-isomorphic-to-Kn]{任意の部分空間が数ベクトル空間と同型である}ことを意味していた
+\thmref{thm:subspace-isomorphic-to-Kn}より、座標写像が線形同型写像であることは、任意の部分空間が数ベクトル空間と同型であることを意味していた
 
 よって、$V$から$W$への線形写像$f$は、数ベクトル空間との線形同型写像（座標写像）$\Phi_\mathcal{V}, \, \Phi_\mathcal{W}$を合成すれば、
 \begin{equation*}

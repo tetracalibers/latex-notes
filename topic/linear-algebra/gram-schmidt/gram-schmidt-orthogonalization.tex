@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -135,9 +138,9 @@ $\vb*{u}_2$は$\vb*{e}_1$と直交するベクトルであるので、$\vb*{e}_2
 
   両辺の部分空間の次元を考えると、$\vb*{a}_1, \ldots, \vb*{a}_n$が線型独立であるため、$\langle \vb*{a}_1, \ldots, \vb*{a}_n \rangle$の次元は$n$である。
 
-  一方、$\vb*{e}_1, \ldots, \vb*{e}_n$も\hyperref[thm:orthogonal-set-is-independent]{直交系であることから線型独立}であるため、$\langle \vb*{e}_1, \ldots, \vb*{e}_n \rangle$の次元も$n$である。
+  一方、\thmref{thm:orthogonal-set-is-independent}より、$\vb*{e}_1, \ldots, \vb*{e}_n$も直交系であることから線型独立であるため、$\langle \vb*{e}_1, \ldots, \vb*{e}_n \rangle$の次元も$n$である。
 
-  よって、\hyperref[thm:equal-dim-implies-equal-subspace]{部分空間の次元が等しいことから、両者は一致}する。 $\qed$
+  よって、\thmref{thm:equal-dim-implies-equal-subspace}より、部分空間の次元が等しいことから、両者は一致する。 $\qed$
 \end{proof}
 
 \subsection{正規直交基底の存在}
@@ -159,7 +162,7 @@ $\vb*{u}_2$は$\vb*{e}_1$と直交するベクトルであるので、$\vb*{e}_2
 
 ある$\vb*{a}_k$が、前のベクトルたち$\vb*{a}_1,\ldots,\vb*{a}_{k-1}$の線形結合として表される、すなわち線形従属であるとする。
 
-ここで、$\vb*{a}_1, \ldots, \vb*{a}_{k-1}$から得られた正規直交系を$\vb*{e}_1, \ldots, \vb*{e}_{k-1}$とすると、\hyperref[thm:gram-schmidt-span-invariance]{これらの張る空間は一致}する。
+ここで、$\vb*{a}_1, \ldots, \vb*{a}_{k-1}$から得られた正規直交系を$\vb*{e}_1, \ldots, \vb*{e}_{k-1}$とすると、\thmref{thm:gram-schmidt-span-invariance}より、これらの張る空間は一致する。
 \begin{equation*}
   \langle \vb*{a}_1, \ldots, \vb*{a}_{k-1} \rangle = \langle \vb*{e}_1, \ldots, \vb*{e}_{k-1} \rangle
 \end{equation*}

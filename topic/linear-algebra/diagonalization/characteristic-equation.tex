@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -44,7 +47,7 @@ $\vb*{x} \neq \vb*{0}$という条件により、$(A - \lambda E)\vb*{x} = \vb*{
 \begin{proof}
   $\lambda$が$A$の固有値であることは、斉次形方程式$(A - \lambda E)\vb*{x} = \vb*{0}$が非自明解を持つことと言い換えられる
 
-  そして、\hyperref[thm:homogeneous-solution-iff-det-zero]{斉次形方程式が非自明解を持つことは、行列式が0になることと同値}である
+  そして、\thmref{thm:homogeneous-solution-iff-det-zero}より、斉次形方程式が非自明解を持つことは、行列式が0になることと同値である
 
   すなわち、
   \begin{equation*}
@@ -257,7 +260,7 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 \section{相似な行列の特性多項式}
 \marginnote{\refbookF p269〜271 \\ \refbookA p190〜191}
 
-\hyperref[thm:determinant-multiplicativity]{行列式の乗法性}により、正方行列$A,\,B$が、ある正則行列$P$に対して
+\thmref{thm:determinant-multiplicativity}より、正方行列$A,\,B$が、ある正則行列$P$に対して
 \begin{equation*}
   B = P^{-1}AP
 \end{equation*}
@@ -326,7 +329,7 @@ $n$次元正方行列$A = (a_{ij})$の特性多項式が、
 
 \sectionline
 
-さて、$A$と$B$が\hyperref[def:similar-matrices]{相似}であるとき、$A$と$B$は\hyperref[thm:similarity-under-basis-change]{1つの線形変換$f$を異なる基底によって表現}して得られた行列であるという関係にある
+さて、$A$と$B$が\hyperref[def:similar-matrices]{相似}であるとき、\thmref{thm:similarity-under-basis-change}より、$A$と$B$は1つの線形変換$f$を異なる基底によって表現して得られた行列であるという関係にある
 
 \br
 
@@ -372,7 +375,7 @@ $A$が$P$によって対角化されたとして、
   対角化可能な行列$A$を対角化して得られる対角行列の対角成分たちは、重複度を含めて特性多項式の根と一致する
 \end{theorem*}
 
-また、\hyperref[thm:diagonalizable-iff-n-indep-eigenvectors]{対角化可能性と固有ベクトルの線型独立性}の証明過程を振り返ると、次のようにまとめられる
+また、\thmref{thm:diagonalizable-iff-n-indep-eigenvectors}の証明過程を振り返ると、次のようにまとめられる
 
 \begin{theorem}{対角化行列の列ベクトルと固有ベクトルの対応}{diagonalization-columns-are-eigenvectors}
   対角化可能な行列$A$を対角化する正則行列$P$の列ベクトルはすべて$A$の固有ベクトルであり、固有値$\alpha_i$のものが$k_i$個ある

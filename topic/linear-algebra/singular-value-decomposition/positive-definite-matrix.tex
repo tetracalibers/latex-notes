@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -65,7 +68,7 @@
       \end{pmatrix} U^*
     \end{equation*}
 
-    \hyperref[thm:inner-product-adjoint-form]{随伴による内積の表現}より、
+    \thmref{thm:inner-product-adjoint-form}より、
     \begin{equation*}
       (A\vb*{x}, \vb*{x}) = \vb*{x}^* A \vb*{x} = \vb*{x}^* U D U^* \vb*{x}
     \end{equation*}
@@ -121,7 +124,7 @@
 \section{対称行列を構成する行列積}
 \marginnote{\refbookI p29}
 
-\hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解}は対称行列に対するものだったが、これを任意の長方行列に拡張したものが\keyword{特異値分解}である
+\thmref{thm:spectral-decomposition-symmetric}を任意の長方行列に拡張したものが\keyword{特異値分解}である
 
 \br
 
@@ -132,7 +135,7 @@
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:adjoint-of-product]{積をエルミート行列にすると順序が入れ替わる}ことに注意して、
+  \thmref{thm:adjoint-of-product}より、積をエルミート行列にすると順序が入れ替わることに注意して、
   \begin{equation*}
     (A^* A)^* = A^* (A^*)^* = A^* A
   \end{equation*}
@@ -172,7 +175,7 @@ $A^* A$および$AA^*$という形の行列には、さらに固有値に関す�
   \begin{equation*}
     (\vb*{u}, AA^* \vb*{u}) = \lambda (\vb*{u}, \vb*{u}) = \lambda \|\vb*{u}\|^2
   \end{equation*}
-  この左辺は、\hyperref[thm:adjoint-identity]{随伴公式}を用いて、
+  この左辺は、\thmref{thm:adjoint-identity}を用いて、
   \begin{equation*}
     \begin{WithArrows}
       (\vb*{u}, AA^* \vb*{u}) & = (\vb*{u}, A(A^*\vb*{u})) \Arrow{外側の$A$に\\ 随伴公式を適用}  \\

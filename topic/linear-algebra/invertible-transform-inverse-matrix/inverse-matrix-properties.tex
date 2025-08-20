@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -68,7 +71,7 @@
   \begin{equation*}
     A^{-1}A = E
   \end{equation*}
-  両辺の転置をとると、右辺の単位行列は転置しても単位行列であり、左辺には\hyperref[thm:inverse-of-product]{正則行列の積に対する逆行列の公式}を用いて、
+  両辺の転置をとると、右辺の単位行列は転置しても単位行列であり、左辺には\thmref{thm:inverse-of-product}を用いて、
   \begin{equation*}
     {}^t(A^{-1}A) = {}^t A {}^t (A^{-1}) = E
   \end{equation*}

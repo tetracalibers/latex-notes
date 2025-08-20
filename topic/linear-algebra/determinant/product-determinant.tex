@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -28,7 +31,7 @@
 
   \br
 
-  よって、\hyperref[thm:determinant-characterization-by-properties]{多重線形性と交代性による行列式の特徴づけ}より、
+  よって、\thmref{thm:determinant-characterization-by-properties}より、
   \begin{equation*}
     F(\vb*{b}_1, \ldots, \vb*{b}_n) = F(\vb*{e}_1, \ldots, \vb*{e}_n) \det(B)
   \end{equation*}

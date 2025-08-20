@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -147,7 +150,7 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
   \end{tikzcd}
 \end{equation*}
 
-\hyperref[thm:linear-map-composition]{線形写像の合成もまた線形写像になる}ので、$\varphi \circ f$は$V$上の線形汎関数である。
+\thmref{thm:linear-map-composition}より、線形写像の合成もまた線形写像になるので、$\varphi \circ f$は$V$上の線形汎関数である。
 
 これを$f^*(\varphi) \in V^*$と書くことにする。
 \begin{equation*}

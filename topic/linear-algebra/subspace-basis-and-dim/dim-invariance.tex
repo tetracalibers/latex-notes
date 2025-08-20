@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -13,7 +16,7 @@
 \end{theorem*}
 
 \begin{proof}
-  $\vb*{u}_1, \dots, \vb*{u}_l \in \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であり、$\vb*{u}_1, \dots, \vb*{u}_l$は線型独立であるから、\hyperref[thm:abstract-finite-dependency]{有限従属性定理の抽象版}より、$l \leq k$である。
+  $\vb*{u}_1, \dots, \vb*{u}_l \in \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であり、$\vb*{u}_1, \dots, \vb*{u}_l$は線型独立であるから、\thmref{thm:abstract-finite-dependency}より、$l \leq k$である。
 
   同様にして$k \leq l$も成り立つので、$k = l$である。 $\qed$
 \end{proof}
@@ -29,7 +32,7 @@
 \begin{proof}
   $V$の基底を$\{ \vb*{v}_1,\dots, \vb*{v}_k \}$とすると、$V$には$k$個の線型独立なベクトルが存在する。
 
-  また、$V = \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であるため、\hyperref[thm:abstract-finite-dependency]{有限従属性定理の抽象版}より、$V$中の線型独立なベクトルの個数は$k$を超えることはない。
+  また、$V = \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$であるため、\thmref{thm:abstract-finite-dependency}より、$V$中の線型独立なベクトルの個数は$k$を超えることはない。
 
   つまり、$k$は$V$に含まれる線型独立なベクトルの最大個数である。 $\qed$
 \end{proof}

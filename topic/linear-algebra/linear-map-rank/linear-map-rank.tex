@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -18,7 +21,7 @@
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:pivot-cols-form-basis]{主列ベクトルによる像空間の基底の構成}で示したように、$A$の主列ベクトル$\vb*{a}_{i_1}, \vb*{a}_{i_2}, \dots, \vb*{a}_{i_r}$は$\Im A$の基底を成す。
+  \thmref{thm:pivot-cols-form-basis}で示したように、$A$の主列ベクトル$\vb*{a}_{i_1}, \vb*{a}_{i_2}, \dots, \vb*{a}_{i_r}$は$\Im A$の基底を成す。
 
   よってその個数$r = \rank A$は$\Im A$の次元である。 $\qed$
 \end{proof}

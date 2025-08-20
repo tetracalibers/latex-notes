@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -48,7 +51,7 @@ $V$上の線形変換$f$について、「変換$f$で写しても変わらな�
 \end{theorem}
 
 \begin{proof}
-  $\dim(W) = r$とし、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を\hyperref[thm:basis-extension]{延長}して$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$をとる
+  $\dim(W) = r$とし、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を延長して$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$をとる
 
   このとき、\hyperref[sec:construction-of-matrix-rep]{表現行列の構成法}より、
   \begin{equation*}
@@ -187,13 +190,13 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 \section{不変部分空間への直和分解}
 \marginnote{\refbookA p114 \\ \refbookF p242〜245}
 
-\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明では、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を\hyperref[thm:basis-extension]{延長}したものを$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$とした
+\thmref{thm:block-matrix-by-invariant-subspace}の証明では、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を延長したものを$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$とした
 
 このとき、
 \begin{equation*}
   W' = \langle \vb*{v}_{r+1}, \ldots, \vb*{v}_n \rangle
 \end{equation*}
-とおくと、$V$の基底が$W, \, W'$の基底を合わせたものになっているため、\hyperref[thm:direct-sum-and-basis]{直和の基底に関する定理}より、
+とおくと、$V$の基底が$W, \, W'$の基底を合わせたものになっているため、\thmref{thm:direct-sum-and-basis}より、
 \begin{equation*}
   V = W \oplus W'
 \end{equation*}
@@ -246,7 +249,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 \end{theorem*}
 
 \begin{proof}
-  $W_1$の基底、$W_2$の基底をこの順に並べるか、その反対の順に並べて、$V$の基底を構成することで、\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明と同様に示される $\qed$
+  $W_1$の基底、$W_2$の基底をこの順に並べるか、その反対の順に並べて、$V$の基底を構成することで、\thmref{thm:block-matrix-by-invariant-subspace}の証明と同様に示される $\qed$
 \end{proof}
 
 \sectionline
@@ -314,7 +317,7 @@ $W$を一次元部分空間とすると、これは基底$\vb*{w} \neq \vb*{0}$�
 
 \br
 
-以上をふまえて、\hyperref[thm:diagonalizable-by-1d-invariant-sum]{一次元部分空間への直和分解}という定理をより具体的に整理してみる
+以上をふまえて、\thmref{thm:diagonalizable-by-1d-invariant-sum}という定理をより具体的に整理してみる
 
 \br
 

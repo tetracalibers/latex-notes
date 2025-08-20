@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -49,7 +52,7 @@ $A$の階数が元の空間（定義域）の次元と同じ場合、$A$が表�
   \end{subpattern}
 
   \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
-    \hyperref[thm:homogeneous-trivial-iff-full-col-rank]{斉次形の非自明解の存在条件}より、斉次形の方程式$A\vb*{x} = \vb*{o}$に自明解しか存在しないことと
+    \thmref{thm:homogeneous-trivial-iff-full-col-rank}より、斉次形の方程式$A\vb*{x} = \vb*{o}$に自明解しか存在しないことと
     \begin{equation*}
       \rank A = n
     \end{equation*}
@@ -97,7 +100,7 @@ $A$の階数が行き先の空間（値域）の次元と同じ場合、$A$が�
   \end{subpattern}
 
   \begin{subpattern}{(\romannum{ii}) $\Longleftrightarrow$ (\romannum{iii})}
-    \hyperref[thm:full-row-rank-solvable]{連立方程式の解の存在条件}より、$\rank A = m$は、次の条件
+    \thmref{thm:full-row-rank-solvable}より、$\rank A = m$は、次の条件
     \begin{equation*}
       ^{\forall}\vb*{b} \in \mathbb{R}^m, A\vb*{x} = \vb*{b} \text{の解が存在する}
     \end{equation*}

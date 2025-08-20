@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -16,7 +19,7 @@ $A$の最大特異値$\sigma_1$は、次の解釈をもつ。
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:norm-expansion-svd]{特異値分解に基づくノルムの展開表示}と、$\sigma_i \leq \sigma_1$を用いて、
+  \thmref{thm:norm-expansion-svd}と、$\sigma_i \leq \sigma_1$を用いて、
   \begin{equation*}
     \| A \vb*{v} \|^2 = \sum_{i=1}^r \sigma_i^2 |c_i|^2 \leq \sum_{i=1}^r \sigma_1^2 |c_i|^2 = \sigma_1^2 \sum_{i=1}^r |c_i|^2
   \end{equation*}

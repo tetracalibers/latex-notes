@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -21,7 +24,7 @@
 
 \br
 
-\hyperref[thm:row-operation-preserves-dependence]{行基本変形を行っても列ベクトルの線型独立性は変わらない}ことを根拠に、次の議論ができる。
+\thmref{thm:row-operation-preserves-dependence}で示した、行基本変形を行っても列ベクトルの線型独立性は変わらないことを根拠に、次の議論ができる。
 
 \begin{theorem*}{主列ベクトルと線型独立性}
   行列の主列ベクトルの集合は線型独立である。

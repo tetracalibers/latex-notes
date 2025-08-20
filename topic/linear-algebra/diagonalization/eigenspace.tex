@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -40,7 +43,7 @@ $\alpha$が$A$の固有値ならば、方程式
 \begin{proof}
   $W(\alpha_i)$の基底$\vb*{v}_1,\ldots,\vb*{v}_m$をとる
 
-  $\vb*{v}_1,\ldots,\vb*{v}_m,\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$が$K^n$の基底となるように、$n-m$個のベクトル$\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$を追加して\hyperref[thm:basis-extension]{基底を延長}する
+  \thmref{thm:basis-extension}より、$\vb*{v}_1,\ldots,\vb*{v}_m,\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$が$K^n$の基底となるように、$n-m$個のベクトル$\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$を追加して基底を延長できる
 
   \br
 
@@ -66,7 +69,7 @@ $\alpha$が$A$の固有値ならば、方程式
             \end{pmatrix}
   \end{align*}
 
-  基底の線型独立性より、\hyperref[thm:invertible-iff-col-indep]{線型独立な列ベクトルを並べた行列$P$は正則}であるので、
+  基底の線型独立性と\thmref{thm:invertible-iff-col-indep}より、$P$は正則であるので、
   \begin{equation*}
     P^{-1}AP = \begin{pmatrix}
       \alpha_iE_m & B \\

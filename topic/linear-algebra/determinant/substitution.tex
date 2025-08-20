@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -424,11 +427,11 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
   \begin{equation*}
     \sigma \Delta_n = (\tau_1 \cdots \tau_s) \Delta_n
   \end{equation*}
-  \hyperref[thm:permutation-action-associativity]{置換作用の結合法則}を用いて、
+  \thmref{thm:permutation-action-associativity}を用いて、
   \begin{equation*}
     \sigma \Delta_n = (\tau_1 \cdots \tau_{s-1}) (\tau_s \Delta_n)
   \end{equation*}
-  \hyperref[thm:transposition-negates-delta]{互換による差積の符号変化}を繰り返し用いると、
+  \thmref{thm:transposition-negates-delta}を繰り返し用いると、
   \begin{align*}
     \sigma \Delta_n & = (\tau_1 \cdots \tau_{s-1}) (-\Delta_n)  \\
                     & = (-1)(\tau_1 \cdots \tau_{s-1}) \Delta_n \\

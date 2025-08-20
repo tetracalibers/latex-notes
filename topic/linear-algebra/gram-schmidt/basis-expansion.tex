@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -116,7 +119,7 @@
   \begin{equation*}
     (\vb*{u}_i,\vb*{u}_i) = \|\vb*{u}_i\|^2 = 1
   \end{equation*}
-  であることを用いると、\hyperref[thm:vector-expansion-by-orthogonal-basis]{直交基底によるベクトルの展開式}において分母が1となり、この形が得られる。 $\qed$
+  であることを用いると、\thmref{thm:vector-expansion-by-orthogonal-basis}において分母が1となり、この形が得られる。 $\qed$
 \end{proof}
 
 \end{document}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -102,7 +105,7 @@ $\Im A$は$A$の列空間（$A$の列ベクトルが張る空間）であるか�
 \subsection{列フルランクの場合の最小二乗解}
 
 $n = \rank A$だと仮定する。
-\hyperref[thm:rank-equals-max-indep-cols]{階数は線型独立な列の最大個数}なので、$A$の$n$個の列ベクトルは線型独立である。
+\thmref{thm:rank-equals-max-indep-cols}より、階数は線型独立な列の最大個数なので、$A$の$n$個の列ベクトルは線型独立である。
 
 \br
 
@@ -215,7 +218,8 @@ $n = \rank A$という仮定のもとでは、次の定理が成り立つ。
 \end{theorem*}
 
 \begin{proof}
-  $A^\top A$が正則であることと同値な条件として、\hyperref[thm:invertibility-by-kernel]{$A^\top A$の核空間の次元が0}であることを示す。
+  \thmref{thm:invertibility-by-kernel}より、$A^\top A$が正則であることと同値な条件として、$A^\top A$の核空間の次元が0であることを示す。
+  
   すなわち、次を示せばよい。
   \begin{equation*}
     A^\top A \vb*{x} = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
@@ -265,7 +269,7 @@ $\vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}$の両辺に左から$A$をかけると
 \begin{equation*}
   A\vb*{x} = A(A^\top A)^{-1}A^\top \vb*{b}
 \end{equation*}
-この式を、\hyperref[thm:least-squares-projection]{最小二乗解と射影行列の関係}$A\vb*{x} = P_{\mathcal{U}}\vb*{b}$と見比べると、
+この式を、\thmref{thm:least-squares-projection}と見比べると、
 \begin{equation*}
   P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
 \end{equation*}

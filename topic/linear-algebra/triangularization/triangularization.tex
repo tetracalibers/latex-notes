@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -50,7 +53,7 @@
         \vb*{0} & P_2
       \end{pmatrix}
     \end{equation*}
-    とおくと、\hyperref[thm:block-diagonal-invertibility]{$P_2$が正則であることから、$P$は正則}である
+    とおくと、\thmref{thm:block-diagonal-invertibility}より、$P_2$が正則であることから、$P$は正則である
 
     $P$の逆行列は、
     \begin{equation*}
@@ -87,7 +90,7 @@
   \end{subpattern}
 
   \begin{subpattern}{\bfseries 対角成分が固有値と一致すること}
-    一般に、\hyperref[thm:det-of-triangular-matrix]{三角行列の行列式は対角成分の積}になる
+    \thmref{thm:det-of-triangular-matrix}より、三角行列の行列式は対角成分の積になる
 
     このことから、$n$次上三角行列$B = (b_{ij})$に対して、
     \begin{equation*}
@@ -101,7 +104,7 @@
 
     \br
 
-    さて、$P^{-1}AP$と$A$は\hyperref[thm:char-poly-of-similar-matrices]{相似な行列であるので、その特性多項式は一致}する
+    さて、$P^{-1}AP$と$A$は相似な行列であるので、\thmref{thm:char-poly-of-similar-matrices}より、その特性多項式は一致する
     \begin{equation*}
       \Phi_A(x) = \Phi_{P^{-1}AP}(x) = \det(xE - P^{-1}AP)
     \end{equation*}
@@ -126,13 +129,13 @@
 \end{theorem*}
 
 \begin{proof}
-  $A$は\hyperref[thm:invertible-iff-col-indep]{正則行列であるので、その列ベクトルは線型独立}である
+  $A$は正則行列であるので、\thmref{thm:invertible-iff-col-indep}より、その列ベクトルは線型独立である
 
   そこで、$A = (\vb*{a}_1,\ldots,\vb*{a}_n)$とおくと、$\vb*{a}_1,\ldots,\vb*{a}_n$からグラム・シュミットの直交化法を用いて、正規直交基底$\vb*{u}_1,\ldots,\vb*{u}_n$を作ることができる
 
   \br
 
-  このとき、次のように\hyperref[thm:expansion-in-orthonormal-basis]{正規直交基底を用いた線形結合で$\vb*{a}_j$を表す}ことができる
+  このとき、\thmref{thm:expansion-in-orthonormal-basis}より、次のように正規直交基底を用いた線形結合で$\vb*{a}_j$を表すことができる
   \begin{equation*}
     \vb*{a}_j = \sum_{i=1}^j (\vb*{a}_j, \vb*{u}_i) \vb*{u}_i \quad (j = 1,\ldots,n)
   \end{equation*}
@@ -158,7 +161,7 @@
 
   \br
 
-  また、$\vb*{u}_1,\ldots,\vb*{u}_n$は\hyperref[thm:unitary-iff-columns-orthonormal]{正規直交系であるので、これらを列ベクトルとした行列$Q = (\vb*{u}_1,\ldots,\vb*{u}_n)$はユニタリ行列}である
+  また、$\vb*{u}_1,\ldots,\vb*{u}_n$は正規直交系であるので、\thmref{thm:unitary-iff-columns-orthonormal}より、これらを列ベクトルとした行列$Q = (\vb*{u}_1,\ldots,\vb*{u}_n)$はユニタリ行列である
 
   \br
 
@@ -204,7 +207,7 @@
 \section{ユニタリ行列による三角化}
 \marginnote{\refbookF p295 \\ \refbookC p196}
 
-\hyperref[thm:unitary-diagonalization-of-normal]{ユニタリ行列によって対角化できる行列は正規行列}であった
+\thmref{thm:unitary-diagonalization-of-normal}より、ユニタリ行列によって対角化できる行列は正規行列であった
 
 したがって、正規行列以外の行列は、ユニタリ行列によって対角化することはできないが、ユニタリ行列によって三角化することはできる
 
@@ -231,7 +234,7 @@
 
   また、$U$はユニタリ行列であるので、その定義から正則である
 
-  $U$の逆行列は、\hyperref[thm:inverse-of-product]{正則行列の積に対する逆行列の公式}と、\hyperref[thm:inverse-of-inverse]{逆行列の逆行列をとると元に戻る}ことを用いて、
+  $U$の逆行列は、\thmref{thm:inverse-of-product}と、\thmref{thm:inverse-of-inverse}より、逆行列の逆行列をとると元に戻ることを用いて、
   \begin{equation*}
     U^{-1} =(P T^{-1})^{-1} = (T^{-1})^{-1} P^{-1} = T P^{-1}
   \end{equation*}
@@ -247,10 +250,10 @@
   となり、ここで、
   \begin{itemize}
     \item $T$は上三角行列
-    \item $P^{-1}AP$は\hyperref[thm:triangularization-theorem]{三角化定理}より、上三角行列
-    \item $T^{-1}$は\hyperref[thm:inverse-of-upper-triangular]{上三角行列の逆行列}より、上三角行列
+    \item $P^{-1}AP$は\thmref{thm:triangularization-theorem}より、上三角行列
+    \item $T^{-1}$は\thmref{thm:inverse-of-upper-triangular}より、上三角行列
   \end{itemize}
-  であることと、\hyperref[thm:product-of-upper-triangular]{上三角行列の積は上三角行列}になることから、$U^{-1}AU$も上三角行列になる $\qed$
+  であることと、\thmref{thm:product-of-upper-triangular}より、上三角行列の積は上三角行列になることから、$U^{-1}AU$も上三角行列になる $\qed$
 \end{proof}
 
 \end{document}

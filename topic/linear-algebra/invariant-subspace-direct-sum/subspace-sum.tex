@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -154,7 +157,7 @@
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:subspace-contains-zero]{部分空間はいずれも零ベクトルを含む}ので、
+  \thmref{thm:subspace-contains-zero}より、部分空間はいずれも零ベクトルを含むので、
   たとえば、$U = \{ \vb*{0} \}$の場合、
   \begin{equation*}
     U + W \supset W

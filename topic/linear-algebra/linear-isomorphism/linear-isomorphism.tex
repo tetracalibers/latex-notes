@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -122,7 +125,7 @@
 \end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:injective-preserves-independence]{単射な線型写像は線型独立性を保つ}ことから、$f$の単射性により、基底の線型独立性が保たれる
+  \thmref{thm:injective-preserves-independence}ことから、$f$の単射性により、基底の線型独立性が保たれる
 
   また、$f$の全射性により、基底の生成性も保たれる
 
@@ -175,7 +178,7 @@
     \end{equation*}
     と書ける
 
-    よって、\hyperref[thm:injective-iff-trivial-kernel]{線形写像の単射性と核の関係}より、$\Phi_{\mathcal{V}}$は単射である $\qed$
+    よって、\thmref{thm:injective-iff-trivial-kernel}より、$\Phi_{\mathcal{V}}$は単射である $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries 全射であること}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -41,7 +44,7 @@
   \begin{equation*}
     B = {}^t({}^t(E_\alpha)A') = {}^t(A'){}^t({}^t(E_\alpha))  = AE_{\alpha}
   \end{equation*}
-  というように、\hyperref[thm:transpose-of-product]{積の転置を取ると積の順序が入れ替わる}ことから、行基本変形の場合とは積の順序が逆転することがいえる $\qed$
+  というように、\thmref{thm:transpose-of-product}より、積の転置を取ると積の順序が入れ替わることから、行基本変形の場合とは積の順序が逆転することがいえる $\qed$
 \end{proof}
 
 \end{document}

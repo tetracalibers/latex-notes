@@ -1,12 +1,15 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
 \section{列ベクトルの線型独立性と行基本変形}
 \marginnote{\refbookA p42〜44}
 
-\hyperref[thm:lin-indep-iff-rank-n]{列ベクトルの線型独立性と階数}では、列ベクトルの線型独立性を行列の階数で言い換えられることを示した。
+\thmref{thm:lin-indep-iff-rank-n}では、列ベクトルの線型独立性を行列の階数で言い換えられることを示した。
 
 \br
 
@@ -33,7 +36,7 @@
 \end{theorem}
 
 \begin{proof}
-  \hyperref[thm:row-operation-by-elementary-matrices]{基本行列の積による行変形の構成}より、$P$を基本行列の積（正則行列）とすると、$B = PA$が成り立つ。
+  \thmref{thm:row-operation-by-elementary-matrices}より、$P$を基本行列の積（正則行列）とすると、$B = PA$が成り立つ。
 
   \br
 

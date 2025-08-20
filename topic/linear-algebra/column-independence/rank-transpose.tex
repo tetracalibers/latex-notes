@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -10,7 +13,7 @@
 
 \br
 
-\hyperref[thm:rank-normal-form-by-regular-matrices]{正則行列による階数標準形の構成}を用いて、次の重要な事実を証明することができる。
+\thmref{thm:rank-normal-form-by-regular-matrices}を用いて、次の重要な事実を証明することができる。
 
 \begin{theorem*}{転置に関する階数の不変性}
   任意の行列$A$に対して、
@@ -26,7 +29,7 @@
   \begin{equation*}
     {}^t B = {}^t (PAQ) = {}^t Q {}^t A {}^t P
   \end{equation*}
-  となり、ここで、\hyperref[thm:transpose-of-invertible]{正則行列は転置をとっても正則}なので、${}^t P,\,{}^t Q$も正則行列である。
+  となり、ここで、\thmref{thm:transpose-of-invertible}より、${}^t P,\,{}^t Q$も正則行列である。
 
   よって、${}^tA$の階数標準形は${}^t B$である。
 
@@ -45,7 +48,7 @@
 
 \br
 
-\hyperref[thm:rank-equals-max-indep-cols]{行列$A$の階数は$A$の線型独立な列ベクトルの最大個数}であったが、この定理から次のこともいえるようになった。
+\thmref{thm:rank-equals-max-indep-cols}より、行列$A$の階数は$A$の線型独立な列ベクトルの最大個数であったが、この定理から次のこともいえるようになった。
 
 \begin{theorem*}{階数と線型独立な行ベクトルの最大個数}
   行列$A$の階数$\rank A$は、$A$の行ベクトルに含まれる線型独立なベクトルの最大個数と一致する。

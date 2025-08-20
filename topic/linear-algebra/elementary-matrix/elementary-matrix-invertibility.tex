@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -89,7 +92,7 @@
 \begin{proof}
   $A$を正則行列とすると、$A$の逆行列$A^{-1}$は行変形$A \to E$に対応する基本変形の積によって与えられる
 
-  さらに、\hyperref[thm:row-operation-by-elementary-matrices]{基本行列の積による行変形の構成}より、行変形$A \to E$に対し、
+  さらに、\thmref{thm:row-operation-by-elementary-matrices}より、行変形$A \to E$に対し、
   \begin{equation*}
     E = PA
   \end{equation*}

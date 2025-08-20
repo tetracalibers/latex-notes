@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -25,7 +28,7 @@
   \begin{subpattern}{\bfseries 対角化可能 $\Longrightarrow$ 固有空間の次元と重複度が一致}
     $A$が対角化可能であるので、正則行列$P$により$P^{-1}AP$が対角行列になる
 
-    このとき、\hyperref[thm:diagonalization-columns-are-eigenvectors]{$P$の列ベクトルからなる$A$の固有ベクトルの集合}には、固有値$\alpha_i$を持つものが$k_i$個含まれる
+    このとき、\thmref{thm:diagonalization-columns-are-eigenvectors}より、$P$の列ベクトルからなる$A$の固有ベクトルの集合には、固有値$\alpha_i$を持つものが$k_i$個含まれる
 
     \br
 
@@ -37,7 +40,7 @@
 
     \br
 
-    一方、\hyperref[thm:geom-mult-leq-alg-mult]{固有空間の次元と固有値の重複度の不等式}より、
+    一方、\thmref{thm:geom-mult-leq-alg-mult}より、
     \begin{equation*}
       \dim W(\alpha_i) \leq k_i
     \end{equation*}
@@ -56,7 +59,7 @@
 
     \br
 
-    さらに、\hyperref[thm:eigenvectors-of-distinct-eigenvalues-are-independent]{異なる固有値に対応する固有ベクトルは線形独立}であるから、$i\neq j$とし$\mathcal{V}_i$と$\mathcal{V}_j$のベクトルは互いに線形独立である
+    さらに、\thmref{thm:eigenvectors-of-distinct-eigenvalues-are-independent}より、$i\neq j$とし$\mathcal{V}_i$と$\mathcal{V}_j$のベクトルは互いに線形独立である
 
     そこで、すべての$\mathcal{V}_i$を併せた集合
     \begin{equation*}
@@ -74,7 +77,7 @@
 
     \br
 
-    したがって、\hyperref[thm:diagonalizable-iff-n-indep-eigenvectors]{線型独立な$n$個の固有ベクトルが存在するため、$A$は対角化可能}である $\qed$
+    したがって、線型独立な$n$個の固有ベクトルが存在するため、\thmref{thm:diagonalizable-iff-n-indep-eigenvectors}より、$A$は対角化可能である $\qed$
   \end{subpattern}
 \end{proof}
 
@@ -96,7 +99,7 @@
   \begin{equation*}
     \dim W(\alpha_i) \geq 1
   \end{equation*}
-  ということだが、\hyperref[thm:geom-mult-leq-alg-mult]{固有空間の次元と固有値の重複度に関する不等式}より、
+  ということだが、\thmref{thm:geom-mult-leq-alg-mult}より、
   \begin{equation*}
     \dim W(\alpha_i) \leq k_i = 1
   \end{equation*}

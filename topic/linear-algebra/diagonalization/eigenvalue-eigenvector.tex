@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -161,7 +164,7 @@
 
 \br
 
-たとえば基底を$A$の固有ベクトルに変換した際に、この\hyperref[thm:similarity-under-basis-change]{線形変換$f$の表現行列が$P^{-1}AP$に変化する}として、この行列$P^{-1}AP$が対角行列となる場合が、$A$が\keyword{対角化}できるということである
+たとえば基底を$A$の固有ベクトルに変換した際に、\thmref{thm:similarity-under-basis-change}より、この線形変換$f$の表現行列が$P^{-1}AP$に変化するとして、この行列$P^{-1}AP$が対角行列となる場合が、$A$が\keyword{対角化}できるということである
 
 \begin{definition}{対角化可能}\label{def:diagonalizable}
   与えられた正方行列$A$が適当な正則行列$P$により
@@ -235,11 +238,11 @@
 
     これはすなわち、$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$がそれぞれの固有値$\alpha_1, \alpha_2, \ldots, \alpha_n$に属する$A$の固有ベクトルであることを意味する
 
-    さらに、\hyperref[thm:invertible-iff-col-indep]{$P$は正則であるため、その列ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$は線型独立}である $\qed$
+    さらに、\thmref{thm:invertible-iff-col-indep}より、$P$は正則であるため、その列ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$は線型独立である $\qed$
   \end{subpattern}
 \end{proof}
 
-この定理と、\hyperref[thm:eigenvectors-of-distinct-eigenvalues-are-independent]{異なる固有値に属する固有ベクトルの線型独立性}から、次の定理が得られる
+この定理と、\thmref{thm:eigenvectors-of-distinct-eigenvalues-are-independent}から、次の定理が得られる
 
 \begin{theorem}{固有値の相異性と対角化可能性}{distinct-eigenvalues-imply-diagonalizable}
   $n$次正方行列$A$が異なる$n$個の固有値$\alpha_1, \ldots, \alpha_n$をもつならば、$A$は対角化可能である

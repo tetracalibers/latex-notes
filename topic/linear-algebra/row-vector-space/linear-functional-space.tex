@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -179,8 +182,8 @@ $\phi_j$を用いると、$\vb*{v}$を表す線形結合は次のように書け
     \end{align*}
     
     $\phi_j,\psi$はともに$\mathbb{R}^n$から$\mathbb{R}$への線形写像であり、$\phi_j$の線形結合もまた$(\mathbb{R}^n)^*$の元なので$\mathbb{R}^n$から$\mathbb{R}$への線形写像である。
-    
-    よって、\hyperref[thm:linear-map-equality-on-basis]{$\mathbb{R}^n$の基底$\{\vb*{u}_1, \ldots, \vb*{u}_n\}$に対して同じ値をとる}ことから、
+
+    よって、$\mathbb{R}^n$の基底$\{\vb*{u}_1, \ldots, \vb*{u}_n\}$に対して同じ値をとることから、\thmref{thm:linear-map-equality-on-basis}より、
     \begin{equation*}
       \psi = \alpha_1 \phi_1 + \cdots + \alpha_n \phi_n
     \end{equation*}
@@ -214,7 +217,7 @@ $\mathbb{R}^n$の基底$\{ \vb*{u}_1, \ldots, \vb*{u}_n \}$と、それに対応
   \end{equation*}
 \end{theorem*}
 
-また、\hyperref[thm:abstract-linear-pigeonhole]{次元が等しいことから、$\mathbb{R}^n$と$(\mathbb{R}^n)^*$は線形同型}である。
+また、\thmref{thm:abstract-linear-pigeonhole}より、次元が等しいことから、$\mathbb{R}^n$と$(\mathbb{R}^n)^*$は線形同型である。
 
 すなわち、$\mathbb{R}^n$の元（縦ベクトル）と$(\mathbb{R}^n)^*$の元（$\mathbb{R}^n$上の線形汎関数）の間には、\keyword{全単射}が存在する。
 

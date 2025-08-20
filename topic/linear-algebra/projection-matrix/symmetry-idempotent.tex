@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -49,17 +52,17 @@
     P_{\mathcal{U}}^\top = \left( \sum_{i=1}^{r} \vb*{u}_i\vb*{u}_i^\top \right)^\top
   \end{equation*}
 
-  \hyperref[thm:transpose-distributes-over-sum]{和の転置は転置の和}であることを用いて、
+  \thmref{thm:transpose-distributes-over-sum}より、和の転置は転置の和であることを用いて、
   \begin{equation*}
     P_{\mathcal{U}}^\top = \sum_{i=1}^{r} (\vb*{u}_i\vb*{u}_i^\top)^\top
   \end{equation*}
 
-  また、\hyperref[thm:transpose-of-product]{積の転置は転置の積だが、積の順序が入れ替わる}ことに注意して、
+  また、\thmref{thm:transpose-of-product}より、積の転置は転置の積だが、積の順序が入れ替わることに注意して、
   \begin{equation*}
     P_{\mathcal{U}}^\top = \sum_{i=1}^{r} (\vb*{u}_i^\top)^\top \vb*{u}_i^\top
   \end{equation*}
 
-  \hyperref[thm:transpose-involution]{転置の転置をとると元に戻る}ので、
+  \thmref{thm:transpose-involution}より、転置の転置をとると元に戻るので、
   \begin{equation*}
     P_{\mathcal{U}}^\top = \sum_{i=1}^{r} \vb*{u}_i \vb*{u}_i^\top = P_{\mathcal{U}}
   \end{equation*}
@@ -75,9 +78,9 @@
 \end{theorem*}
 
 \begin{proof}
-  $n$次対称行列$P$は、$n$個の\hyperref[thm:eigenvalues-of-hermitian-are-real]{実数の固有値}$\lambda_1,\ldots,\lambda_n$を持つ
+  \thmref{thm:eigenvalues-of-hermitian-are-real}より、$n$次対称行列$P$は、$n$個の実数の固有値$\lambda_1,\ldots,\lambda_n$を持つ
 
-  これらに属する固有ベクトルを$\vb*{u}_1, \ldots, \vb*{u}_n$とすると、$\vb*{u}_i$は\hyperref[thm:hermitian-eigenvectors-orthogonality]{互いに直交}する
+  これらに属する固有ベクトルを$\vb*{u}_1, \ldots, \vb*{u}_n$とすると、\thmref{thm:hermitian-eigenvectors-orthogonality}より、$\vb*{u}_i$は互いに直交する
 
   \br
 

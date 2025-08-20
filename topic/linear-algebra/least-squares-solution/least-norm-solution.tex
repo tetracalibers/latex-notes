@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -134,7 +137,7 @@ $\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼�
 
 \br
 
-ここで、\hyperref[thm:kernel-row-orthogonality]{核空間と行空間の直交関係}より、「$\Ker A$と直交する空間」は、$A$の行空間$\Im A^\top$である。
+ここで、\thmref{thm:kernel-row-orthogonality}より、「$\Ker A$と直交する空間」は、$A$の行空間$\Im A^\top$である。
 
 \br
 
@@ -167,7 +170,7 @@ $\| \vb*{x} \|^2$が最小となる解は、\keyword{最小ノルム解}と呼�
 
 \br
 
-そのため、$A$の\hyperref[thm:projection-matrix-colspace]{列空間への直交射影行列}の式
+そのため、$A$の\thmref{thm:projection-matrix-colspace}の式
 \begin{equation*}
   P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
 \end{equation*}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -152,7 +155,7 @@ $A$は$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$を
 \begin{equation*}
   \sigma_1\vb*{u}_1,\ldots,\sigma_r\vb*{u}_r,\vb*{o},\ldots,\vb*{o}
 \end{equation*}
-に写像するから、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$A$は
+に写像するから、\thmref{thm:orthobasis-formula-for-rep-matrix}より、$A$は
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top \quad (\sigma_1 \geq \cdots \geq \sigma_r > 0)
 \end{equation*}

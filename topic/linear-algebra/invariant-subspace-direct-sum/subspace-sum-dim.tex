@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -21,7 +24,7 @@
 
   $V \cap W$の基底$\mathcal{V} = \{ \vb*{u}_1,\dots, \vb*{u}_d \}$をとる
 
-  これを\hyperref[thm:basis-extension]{基底の延長の定理}に基づいて、$V$の基底
+  これを\thmref{thm:basis-extension}に基づいて、$V$の基底
   \begin{equation*}
     \mathcal{V} \cup \{ \vb*{v}_1, \dots, \vb*{v}_{n-d} \}
   \end{equation*}

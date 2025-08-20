@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -71,7 +74,7 @@
 
 \subsection{射影行列の展開}\label{sec:projection-matrix-expansion}
 
-$\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解されることから、\hyperref[thm:direct-sum-and-basis]{$\mathbb{R}^n$の基底は$\mathcal{U}$の基底と$\mathcal{U}^\perp$の基底を合わせたもの}になる。
+$\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解されることから、\thmref{thm:direct-sum-and-basis}より、$\mathbb{R}^n$の基底は$\mathcal{U}$の基底と$\mathcal{U}^\perp$の基底を合わせたものになる。
 
 \br
 
@@ -117,7 +120,7 @@ $\mathbb{R}^n$が$\mathcal{U}$と$\mathcal{U}^\perp$の直和に分解される�
 
 \br
 
-ゆえに、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$は次のように表現できる。
+ゆえに、\thmref{thm:orthobasis-formula-for-rep-matrix}より、$P_{\mathcal{U}}$と$P_{\mathcal{U}^{\perp}}$は次のように表現できる。
 \begin{align*}
   P_{\mathcal{U}}         & = \vb*{u}_1 \vb*{u}_1^\top + \cdots + \vb*{u}_r \vb*{u}_r^\top         \\
   P_{\mathcal{U}^{\perp}} & = \vb*{u}_{r+1} \vb*{u}_{r+1}^\top + \cdots + \vb*{u}_n \vb*{u}_n^\top
