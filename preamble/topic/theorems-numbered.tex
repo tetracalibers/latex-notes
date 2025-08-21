@@ -1,0 +1,39 @@
+% !!! 必ず preamble/topic/tcolorbox.tex の後に読み込む !!!
+
+\newtcbtheorem[number within=chapter]{definition}{def}%
+{
+  enhanced,
+  colframe=magnolia,
+  colback=magnolia!20!white,
+  separator sign dash,
+  coltitle=CadetBlue!80!black,
+  fonttitle=\ttfamily\bfseries,
+  breakable,
+  sharp corners,
+  before title={\textcolor{CadetBlue!80!black}{\faGraduationCap}\hspace{1ex}},
+  detach title,
+  before upper={\tcbtitle\par},
+  bottom=0.5cm,
+  top=0.5cm,
+  right=0.5cm,
+  left=0.5cm,
+}{def}
+
+\newtcbtheorem[number within=chapter]{theorem}{theorem}%
+{
+  enhanced,
+  colframe=magnolia,
+  colback=magnolia!20!white,
+  fonttitle=\ttfamily\bfseries,
+  breakable,
+  sharp corners,
+  separator sign dash,
+  coltitle=deepcerise!80!black,
+  before title={\textcolor{deepcerise!80!black}{\faAnchor}\hspace{1ex}},
+  detach title,
+  before upper={\tcbtitle\par},
+  bottom=0.5cm,
+  top=0.5cm,
+  right=0.5cm,
+  left=0.5cm,
+}{thm}
