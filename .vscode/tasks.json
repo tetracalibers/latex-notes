@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "targets",
+      "type": "promptString",
+      "description": "targets (e.g. 2,4-6 or names)"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "linalg: build chapter (targets prompt)",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "zx",
+        "./scripts/build-linalg.mjs",
+        "--targets",
+        "${input:targets}",
+        "--base",
+        "topic/linear-algebra",
+        "--outdir",
+        "out"
+      ]
+    },
+    {
+      "label": "linalg: copy chapter (targets prompt)",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "zx",
+        "./scripts/copy-linalg.mjs",
+        "--targets",
+        "${input:targets}"
+      ]
+    },
+    {
+      "label": "linalg: copy master",
+      "type": "shell",
+      "command": "cp",
+      "args": [
+        "./out/topic_linear-algebra.pdf",
+        "./public/topic_linear-algebra.pdf"
+      ]
+    }
+  ]
+}

@@ -2,14 +2,10 @@
 
 ### 何かしらの変更を加えたとき（共通）
 
-どのような変更を加えた場合も、**まずはマスターファイルをコンパイル**・更新する必要があります。
+どのような変更を加えた場合も、マスターファイルをコンパイルして、`public`にコピーする必要があります。
 
 1. `topic_linear-algebra.tex`をコンパイルする
-2. 次のコマンドで`public`にコピーする
-
-```bash
-cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
-```
+2. VS Codeの`linalg: copy master`タスクを実行する（`public`にコピー）
 
 > [!IMPORTANT]
 > 各章ファイルの更新は、必ずマスターファイルをコンパイルしてから行ってください。
@@ -18,13 +14,15 @@ cp ./out/topic_linear-algebra.pdf ./public/topic_linear-algebra.pdf
 
 ### 章の内容を変更したとき
 
-1. 変更した章のファイル（`\chapter`を含むファイル）をコンパイルする
-2. `zx copy-linalg.mjs`コマンドで`public`にコピーする
+次の手順で、各章ファイルのコンパイルと`public`へのコピーを行ってください。
 
-例）2章と4〜6章をコピーしたい場合：
-```bash
-zx copy-linalg.mjs 2,4-6
-```
+1. VS Codeの`linalg: build chapter`タスクを実行（変更した章を指定する）
+2. VS Codeの`linalg: copy chapter`タスクを実行（変更した章を指定する）
+
+これらのタスクを実行するときは、途中で現れるUIに対象とする章番号を入力する必要があります。
+
+> [!TIP]
+> 例）2章と4〜6章を対象としたい場合：`2,4-6`と入力する
 
 ### 章を追加 or 並び替えしたとき
 
@@ -32,13 +30,14 @@ zx copy-linalg.mjs 2,4-6
 
 - `topic_linear-algebra.tex`の`\subfile`リスト
 - `public/index.html`の「PDF（各章）」リスト
-- `copy-linalg.mjs`の`CHAPTERS`配列
+- `scripts/linalg.json`の配列
 - 章マスターファイルの`\setcounterref{chapter}{前の章のラベル}`
 
 章の追加や並び替えにより、自動でカウントされる定理番号やその参照が変わります。
 
-- 影響がある章ファイルをすべてコンパイルし、`zx copy-linalg.mjs`コマンドでコピーしてください。
-- 影響がある章ファイルの`\setcounterref{chapter}{前の章のラベル}`を変更してください。
+1. 影響がある章ファイルの`\setcounterref{chapter}{前の章のラベル}`を変更してください。
+2. VS Codeの`linalg: build chapter`タスクで、影響がある章ファイルをすべてコンパイルしてください。
+3. VS Codeの`linalg: copy chapter`タスクで、影響がある章ファイルをすべてコピーしてください。
 
 > [!TIP]
 > 基本的には、変更対象となる最初の章以降、すべての章の公開用ファイルを更新することを推奨します。
