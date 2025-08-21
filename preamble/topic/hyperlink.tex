@@ -28,5 +28,8 @@
 \newcommand{\defref}[1]{%
   \hyperref[#1]{\texttt{def \autoref*{#1}「\nameref*{#1}」}}%
 }
+\newcommand{\secref}[1]{%
+  \hyperref[#1]{\texttt{\nameref*{#1}{\small[第\ref*{#1}章]}}}%
+}
 
 \usepackage{xr-hyper}
