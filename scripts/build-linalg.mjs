@@ -18,7 +18,6 @@ const FAILFAST = argv.failfast !== 'false' // 既定: 失敗したら中断。�
 // 例）2,4-6 => targets = [CHAPTERS[1], CHAPTERS[3], CHAPTERS[4], CHAPTERS[5]]
 const parseArgs = (args, chapters) => {
   const targets = new Set()
-  console.log(String(args).split(','))
   for (const arg of String(args).split(',')) {
     if (arg.includes('-')) {
       const [start, end] = arg.split('-').map(Number)
