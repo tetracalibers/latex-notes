@@ -1,47 +1,7 @@
 #!/usr/bin/env zx
 
-const CHAPTERS = [
-  'vector',
-  'linear-map',
-  'diagonal-matrix',
-  'linear-equation',
-  'kernel-and-image',
-  'invertible-transform-inverse-matrix',
-  'elementary-matrix',
-  'linear-equation-and-rank',
-  'column-independence',
-  'subspace-basis-and-dim',
-  'linear-map-rank',
-  'linear-isomorphism',
-  'rep-matrix-basis-change',
-  'metric-space',
-  'gram-schmidt',
-  'determinant',
-  'cross-product',
-  'invariant-subspace-direct-sum',
-  'diagonalization',
-  'diagonalization-over-complex',
-  'mapping-on-metric-space',
-  'triangularization',
-  'projection-matrix',
-  'affine-space',
-  'abstract-linear-space',
-  'generalized-eigenspace',
-  'row-vector-space',
-  'subspace-duality',
-  'bilinear-form',
-  'quadratic-form',
-  'spectral-decomposition',
-  'singular-value-decomposition',
-  'distance-and-norm',
-  'low-rank-approximation',
-  'pseudoinverse',
-  'least-squares-solution',
-  'fitting-space',
-  'factorization',
-  'tensor-product',
-  'mapping',
-]
+const jsonRaw = await fs.readFile('scripts/linalg.json', 'utf8')
+const CHAPTERS = JSON.parse(jsonRaw)
 
 const SRC_DIR = 'topic/linear-algebra/out'
 const DST_DIR = 'public/linear-algebra'
