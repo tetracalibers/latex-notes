@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -76,7 +79,7 @@ ${}^t\vb*{e}_j \vb*{v}$を行列の積として見ると、横基本ベクトル
 
 \br
 
-ここで、\hyperref[sec:inner-product-to-functional]{横ベクトル$\bra{\vb*{a}}$は観測装置}という視点に戻って、縦ベクトルを入力したら$\vb*{a}$との内積を返す線形汎関数を$\phi$とおくと、
+ここで、\secref{sec:inner-product-to-functional}で述べた、{横ベクトル$\bra{\vb*{a}}$は観測装置}という視点に戻って、縦ベクトルを入力したら$\vb*{a}$との内積を返す線形汎関数を$\phi$とおくと、
 \begin{align*}
   \phi(\vb*{v}) &= \vb*{a}^\top \vb*{v} = \begin{pmatrix}
     a_1 & \cdots & a_n

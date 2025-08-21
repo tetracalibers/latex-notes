@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -57,7 +60,7 @@ $A$が正則行列の場合、$A$のムーア・ペンローズの擬似逆行�
 
 \br
 
-また、\hyperref[sec:identity-to-projections]{単位行列は全空間への射影行列}であるので、ムーア・ペンローズの擬似逆行列ともとの行列との積が射影行列になることの特別な場合といえる。
+また、\secref{sec:identity-to-projections}より、{単位行列は全空間への射影行列}であるので、ムーア・ペンローズの擬似逆行列ともとの行列との積が射影行列になることの特別な場合といえる。
 
 \begin{theorem}{正則行列に対するムーア・ペンローズ逆}{pseudoinverse-of-invertible}
   $A$が正則行列であれば、ムーア・ペンローズの擬似逆行列$A^+$は逆行列$A^{-1}$に一致する。

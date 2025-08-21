@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -31,7 +34,7 @@ $A$の列$\vb*{a}_1,\ldots,\vb*{a}_n$の任意の線形結合を考える。
   \end{pmatrix} = A \vb*{c}
 \end{equation*}
 
-ここで、\hyperref[sec:svd-of-A]{$A$の特異値分解}の式
+ここで、\secref{sec:svd-of-A}の式
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
 \end{equation*}
@@ -64,7 +67,7 @@ $A$の行は$A^\top$の列であるので、同様の議論を$A^\top$に対し�
 
 \br
 
-\hyperref[sec:svd-of-transpose-A]{$A^\top$の特異値分解}の式
+\secref{sec:svd-of-transpose-A}の式
 \begin{equation*}
   A^\top = \sigma_1\vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top
 \end{equation*}
@@ -107,7 +110,7 @@ $A$の行は$A^\top$の列であるので、同様の議論を$A^\top$に対し�
 \section{列空間と行空間への射影}
 \marginnote{\refbookI p31}
 
-特異ベクトルが列空間・行空間の正規直交基底をなすことから、これらを用いて\hyperref[sec:projection-matrix-expansion]{射影行列の展開式}を考えることができる。
+特異ベクトルが列空間・行空間の正規直交基底をなすことから、これらを用いて\secref{sec:projection-matrix-expansion}を考えることができる。
 
 \br
 
@@ -121,12 +124,12 @@ $\mathbb{R}^m$の列空間$\mathcal{U}$への射影行列を$P_{\mathcal{U}}$、
 
 ここで、$\vb*{u}_i$は列空間$\mathcal{U}$の正規直交基底であることから、$\vb*{u}_i \in \mathcal{U}$である。
 
-よって、\hyperref[sec:projection-onto-subspace]{部分空間への射影}で議論したように、$P_{\mathcal{U}}$は列空間$\mathcal{U}$の元をそのまま写すので、
+よって、\secref{sec:projection-onto-subspace}で議論したように、$P_{\mathcal{U}}$は列空間$\mathcal{U}$の元をそのまま写すので、
 \begin{equation*}
   P_{\mathcal{U}}\vb*{u}_i = \vb*{u}_i
 \end{equation*}
 
-このことから、\hyperref[sec:svd-of-A]{$A$の特異値分解}の式
+このことから、\secref{sec:svd-of-A}の式
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top
 \end{equation*}
@@ -140,7 +143,7 @@ $\mathbb{R}^m$の列空間$\mathcal{U}$への射影行列を$P_{\mathcal{U}}$、
 
 \br
 
-行についても同様に、$P_{\mathcal{V}}\vb*{v}_i = \vb*{v}_i$であるから、\hyperref[sec:svd-of-transpose-A]{$A^\top$の特異値分解}の式
+行についても同様に、$P_{\mathcal{V}}\vb*{v}_i = \vb*{v}_i$であるから、\secref{sec:svd-of-transpose-A}の式
 \begin{equation*}
   A^\top = \sigma_1\vb*{v}_1\vb*{u}_1^\top + \cdots + \sigma_r \vb*{v}_r \vb*{u}_r^\top
 \end{equation*}

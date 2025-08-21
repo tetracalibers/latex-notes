@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -26,7 +29,7 @@
   
   \br
   
-  \hyperref[sec:construction-of-matrix-rep]{表現行列の構成}より、$f \colon V \to W$の表現行列$A$は次のように表される。
+  \secref{sec:construction-of-matrix-rep}より、$f \colon V \to W$の表現行列$A$は次のように表される。
   \begin{equation*}
     f(\vb*{v}_i) = \sum_{j=1}^m a_{ji} \vb*{w}_j \quad (1 \leq i \leq n)
   \end{equation*}

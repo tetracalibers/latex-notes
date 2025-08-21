@@ -1,7 +1,7 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
 \usepackage{xr-hyper}
-\externaldocument{../projection-matrix/.tex_intermediates/orthogonal-complement}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
 
 \begin{document}
 
@@ -11,7 +11,7 @@
 
 $A = (a_{ij})$を$m \times n$行列とする。
 
-このとき、$A$の第$i$行ベクトル$\begin{pmatrix} a_{i1} & \cdots & a_{in} \end{pmatrix} \in {}^t\mathbb{R}^n$は、次の\hyperref[sec:row-vector-functional]{線形汎関数$\phi_i$と同一視}できる。
+このとき、$A$の第$i$行ベクトル$\begin{pmatrix} a_{i1} & \cdots & a_{in} \end{pmatrix} \in {}^t\mathbb{R}^n$は、\secref{sec:row-vector-functional}より、次の線形汎関数$\phi_i$と同一視できる。
 \begin{equation*}
   \phi_i = a_{i1} x_1 + \cdots + a_{in} x_n
 \end{equation*}
@@ -78,7 +78,7 @@ $A = (a_{ij})$を$m \times n$行列とする。
 
 \br
 
-$A$の像空間$\Im A$は、\hyperref[sec:image-and-column-space]{$A$の列ベクトルが張る空間}（列空間）であった。
+\secref{sec:image-and-column-space}より、$A$の像空間$\Im A$は、$A$の列ベクトルが張る空間（列空間）であった。
 
 $A$を転置すると行と列が入れ替わるので、$A^\top$の行空間は$A$の列空間に対応する。
 

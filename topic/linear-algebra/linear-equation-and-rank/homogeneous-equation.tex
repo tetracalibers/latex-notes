@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -33,7 +36,7 @@ $A\vb*{x} = \vb*{b}$において、$\vb*{b}=\vb*{o}$の場合、つまり、
 \section{斉次形方程式と一般解}
 \marginnote{\refbookL p149〜150\\ \refbookF p80〜81 \\ \refbookA p33〜36}
 
-\hyperref[sec:general-solution-parametric-form]{一般解のパラメータ表示}の章で具体例として挙げた連立一次方程式
+\secref{sec:general-solution-parametric-form}で具体例として挙げた連立一次方程式
 \begin{equation*}
   (A' \mid \vb*{b}') =\begin{pNiceArray}{ccccc|c}[first-row,code-for-first-row=\color{Rhodamine},xdots={horizontal-labels,line-style ={ <->,thick}},margin]
     \CodeBefore
@@ -141,7 +144,7 @@ $A\vb*{x} = \vb*{b}$において、$\vb*{b}=\vb*{o}$の場合、つまり、
 
 \subsection{解のパラメータ表示の再解釈}\label{sec:reinterpretation-of-parametric-solution}
 
-\hyperref[sec:fundamental-and-particular-solutions]{基本解と特殊解}の章でも述べたように、特殊解を$\vb*{x}_0$、基本解を$\vb*{u}_i$とすると、$A\vb*{x} = \vb*{b}$の一般解は次のように表せる。
+\secref{sec:fundamental-and-particular-solutions}でも述べたように、特殊解を$\vb*{x}_0$、基本解を$\vb*{u}_i$とすると、$A\vb*{x} = \vb*{b}$の一般解は次のように表せる。
 \begin{equation*}
   \vb*{x} = \vb*{x}_0 + t_1\vb*{u}_1 + \cdots + t_{n-r}\vb*{u}_{n-r}
 \end{equation*}
