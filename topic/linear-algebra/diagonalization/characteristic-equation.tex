@@ -145,7 +145,7 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 
 \sectionline
 
-\begin{definition}{特性多項式}
+\begin{definition*}{特性多項式}
   $A$を正方行列、$x$を変数として、
   \begin{equation*}
     \Phi_A(x) = \det(xE - A)
@@ -153,7 +153,7 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
   とおく
 
   これを\keyword{特性多項式}あるいは\keyword{固有多項式}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \begin{theorem*}{特性多項式の構造}
   $A$を$n$次正方行列とすると、特性多項式は、次のような$n$次多項式である
@@ -162,13 +162,13 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
   \end{equation*}
 \end{theorem*}
 
-\begin{definition}{特性方程式}
+\begin{definition*}{特性方程式}
   特性多項式$\Phi_A(x)$の根を求める方程式
   \begin{equation*}
     \Phi_A(x) = 0
   \end{equation*}
   を、\keyword{特性方程式}あるいは\keyword{固有方程式}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{固有値の重複度}
@@ -195,9 +195,9 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 
 このように、「何回同じ解が現れるか？」を数えたものを\keyword{重複度}という
 
-\begin{definition}{方程式の解の重複度}
+\begin{definition*}{方程式の解の重複度}
   多項式$f(x)$で表される方程式$f(x) = 0$において、$f(x)$が$(x-\alpha)^m$で割り切れるが、$(x-\alpha)^{m+1}$では割り切れないような定数$\alpha$と自然数$m$が存在するとき、$\alpha$はこの方程式の\keyword{$m$重解}あるいは\keyword{$m$重根}であるといい、$m$を$\alpha$の\keyword{重複度}と呼ぶ
-\end{definition}
+\end{definition*}
 
 上の定義は難しく聞こえるが、「ちょうど$m$回だけ$(x-\alpha)$がかかっている」ということの言い換えにすぎない
 
@@ -238,7 +238,7 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 
 そこで、固有値の\keyword{重複度}を次のように定義する
 
-\begin{definition}{固有値の重複度}\label{def:algebraic-multiplicity}
+\begin{definition}{固有値の重複度}{algebraic-multiplicity}
   特性多項式を因数分解して、
   \begin{equation*}
     \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}

@@ -18,9 +18,9 @@
 \end{align*}
 というように、番号を並び替える操作そのものを写像とみなし、\keyword{置換}と呼ぶ
 
-\begin{definition}{置換}
+\begin{definition*}{置換}
   集合$\{ 1,2,\ldots,n \}$からそれ自身への写像$\sigma$が全単射であるとき、$\sigma$は$n$次の\keyword{置換}であるという
-\end{definition}
+\end{definition*}
 
 たとえば、
 \begin{equation*}
@@ -146,13 +146,13 @@
 
 置換の中で最も基本的なのは、2文字だけを交換する置換である
 
-\begin{definition}{互換}
+\begin{definition*}{互換}
   $1 \leq i \neq j \leq n$のとき、$\sigma(i) = j,\, \sigma(j) = i$であって、$k$が$i,\,j$以外のとき$\sigma(k)=k$とすることで得られる置換を
   \begin{equation*}
     \sigma = (ij)
   \end{equation*}
   と書き、このような置換を\keyword{互換}という
-\end{definition}
+\end{definition*}
 
 たとえば、
 \begin{equation*}
@@ -337,12 +337,12 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
   \end{NiceArray}
 \end{equation*}
 
-\begin{definition}{差積}
+\begin{definition*}{差積}
   次のような$n$変数の多項式を\keyword{差積}と呼ぶ
   \begin{equation*}
     \Delta_n = \prod_{1 \leq i < j \leq n} (x_i - x_j)
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 置換の符号を理解するために、差積を使うことができる
 
@@ -456,19 +456,19 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 そこで、置換の符号を次のように定義する
 
-\begin{definition}{置換の符号}
+\begin{definition*}{置換の符号}
   置換$\sigma \in S_n$を互換の積$\sigma = \tau_1 \cdots \tau_i$として書いたとき、$\sigma$の\keyword{符号}を
   \begin{equation*}
     \sgn(\sigma) = (-1)^i
   \end{equation*}
   と定義する
-\end{definition}
+\end{definition*}
 
 そして、互換の個数の偶奇をそのまま、置換の偶奇として定める
 
-\begin{definition}{偶置換と奇置換}
+\begin{definition*}{偶置換と奇置換}
   置換$\sigma \in S_n$の符号$\sgn(\sigma)$が$+1$であれば$\sigma$を\keyword{偶置換}と呼び、$-1$であれば\keyword{奇置換}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{置換の性質}

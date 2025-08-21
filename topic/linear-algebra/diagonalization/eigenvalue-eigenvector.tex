@@ -19,7 +19,7 @@
 \end{shaded}
 となるような$\vb*{0}$以外のベクトルだった
 
-\begin{definition}{固有値と固有ベクトル}
+\begin{definition*}{固有値と固有ベクトル}
   体$K$上の線形空間$V$上の線形変換$f\colon V \to V$に対して、
   \begin{equation*}
     f(\vb*{a}) = \lambda \vb*{a} \quad (\vb*{a} \neq \vb*{0})
@@ -27,13 +27,13 @@
   となるベクトル$\vb*{a} \in V$が存在するとき、このようなスカラー$\lambda \in K$を、線形変換$f$の\keyword{固有値}という
 
   また、このようなベクトル$\vb*{a}$を、$f$の固有値$\lambda$に属する\keyword{固有ベクトル}という
-\end{definition}
+\end{definition*}
 
 線形変換$f$の表現行列を$A$とすると、これは正方行列であり、$f(\vb*{a}) = A\vb*{a}$と表せる
 
 よって、固有値と固有ベクトルの定義は、次のようにも書ける
 
-\begin{definition}{行列の固有値と固有ベクトル}
+\begin{definition*}{行列の固有値と固有ベクトル}
   正方行列$A$に対して、
   \begin{equation*}
     A\vb*{a} = \lambda \vb*{a} \quad (\vb*{a} \neq \vb*{0})
@@ -41,7 +41,7 @@
   となるベクトル$\vb*{a}$とスカラー$\lambda$が存在するとき、このようなスカラー$\lambda$を行列$A$の\keyword{固有値}という
 
   また、このようなベクトル$\vb*{a}$を、行列$A$の固有値$\lambda$に属する\keyword{固有ベクトル}という
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{異なる固有値に属する固有ベクトル}
@@ -166,7 +166,7 @@
 
 たとえば基底を$A$の固有ベクトルに変換した際に、\thmref{thm:similarity-under-basis-change}より、この線形変換$f$の表現行列が$P^{-1}AP$に変化するとして、この行列$P^{-1}AP$が対角行列となる場合が、$A$が\keyword{対角化}できるということである
 
-\begin{definition}{対角化可能}\label{def:diagonalizable}
+\begin{definition}{対角化可能}{diagonalizable}
   与えられた正方行列$A$が適当な正則行列$P$により
   \begin{equation*}
     P^{-1}AP = \begin{pNiceArray}{cccc}[margin]

@@ -14,14 +14,14 @@
 
 この対応は、元々の写像の終域から定義域への写像となり、\keyword{逆写像}と呼ばれる。
 
-\begin{definition}{逆写像}
+\begin{definition*}{逆写像}
   写像$f\colon X \to Y$が全単射であるとき、任意の$y \in Y$に対して、$f(x) = y$となる$x \in X$がただ一つ存在する。
   
   このとき、$Y$の元$y$に対して、$f(x) = y$となる$x$を対応させる写像を$f$の\keywordJE{逆写像}{inverse mapping}といい、次のように表す。
   \begin{equation*}
     f^{-1}\colon Y \to X
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 \begin{center}
   \begin{tikzpicture}
@@ -60,9 +60,9 @@
   \end{tikzpicture}
 \end{center}
 
-\begin{definition}{可逆}
+\begin{definition*}{可逆}
   写像$f \colon X \to Y$の逆写像が存在するとき、$f$は\keywordJE{可逆}{invertible}であるという。
-\end{definition}
+\end{definition*}
 
 逆写像を定義する上での前提は、写像が全単射であることだったため、
 \begin{emphabox}
@@ -84,13 +84,13 @@
 
 $f$で写した後に$g$を適用すると元に戻るとき、$g$は$f$の\keyword{左逆写像}と呼ばれる。
 
-\begin{definition}{左逆写像}
+\begin{definition*}{左逆写像}
   写像$f\colon X \to Y$に対して、写像$g\colon Y \to X$が存在して、
   \begin{equation*}
     g \circ f = \id_X
   \end{equation*}
   を満たすとき、$g$は$f$の\keyword{左逆写像}であるという。
-\end{definition}
+\end{definition*}
 
 \begin{figure}[h]
   \centering
@@ -119,13 +119,13 @@ $f$で写した後に$g$を適用すると元に戻るとき、$g$は$f$の\keyw
 
 $g$で戻した後に$f$を適用すると元に戻るとき、$g$は$f$の\keyword{右逆写像}と呼ばれる。
 
-\begin{definition}{右逆写像}
+\begin{definition*}{右逆写像}
   写像$f\colon X \to Y$に対して、写像$g\colon Y \to X$が存在して、
   \begin{equation*}
     f \circ g = \id_Y
   \end{equation*}
   を満たすとき、$g$は$f$の\keyword{右逆写像}であるという。
-\end{definition}
+\end{definition*}
 
 \begin{figure}[h]
   \centering
@@ -166,11 +166,11 @@ y \arrow[r,mapsto, "g"] & g(y) \arrow[r,mapsto, "f"] & y
 
 逆写像は、次のように定義することもできる。
 
-\begin{definition}{逆写像（恒等写像による定義）}
+\begin{definition*}{逆写像（恒等写像による定義）}
   写像$g \colon Y \to X$が写像$f \colon X \to Y$の\keyword{逆写像}であるとは、次が成り立つことをいう。
   \begin{equation*}
     g \circ f = \id_X \quad \text{かつ} \quad f \circ g = \id_Y
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 \end{document}
