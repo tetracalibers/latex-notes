@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "targets",
+      "type": "promptString",
+      "description": "targets (e.g. 2,4-6 or names)"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "latexmk: linalg chapter (targets prompt)",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "zx",
+        "./scripts/build-linalg.mjs",
+        "--targets",
+        "${input:targets}",
+        "--base",
+        "topic/linear-algebra",
+        "--outdir",
+        "out"
+      ]
+    }
+  ]
+}
