@@ -9,7 +9,7 @@
   ],
   "tasks": [
     {
-      "label": "latexmk: linalg chapter (targets prompt)",
+      "label": "linalg: latexmk chapter (targets prompt)",
       "type": "shell",
       "command": "npx",
       "args": [
@@ -21,6 +21,17 @@
         "topic/linear-algebra",
         "--outdir",
         "out"
+      ]
+    },
+    {
+      "label": "linalg: copy chapter (targets prompt)",
+      "type": "shell",
+      "command": "npx",
+      "args": [
+        "zx",
+        "./scripts/copy-linalg.mjs",
+        "--targets",
+        "${input:targets}"
       ]
     }
   ]

@@ -43,6 +43,9 @@ const CHAPTERS = [
   'mapping',
 ]
 
+const SRC_DIR = 'topic/linear-algebra/out'
+const DST_DIR = 'public/linear-algebra'
+
 // コマンドライン引数の解析
 // 例）3 => targets = [CHAPTERS[2]]
 // 例）3,7 => targets = [CHAPTERS[2], CHAPTERS[6]]
@@ -50,7 +53,7 @@ const CHAPTERS = [
 // 例）2,4-6 => targets = [CHAPTERS[1], CHAPTERS[3], CHAPTERS[4], CHAPTERS[5]]
 const parseArgs = (args, chapters) => {
   const targets = new Set()
-  for (const arg of args.split(',')) {
+  for (const arg of String(args).split(',')) {
     if (arg.includes('-')) {
       const [start, end] = arg.split('-').map(Number)
       for (let i = start; i <= end; i++) {
@@ -63,7 +66,7 @@ const parseArgs = (args, chapters) => {
   return Array.from(targets)
 }
 
-const [args] = process.argv.slice(3)
+const args = argv.targets
 if (!args) {
   console.error('Usage: copy-linalg.mjs <chapter-indexes>')
   console.error('Example: copy-linalg.mjs 1,3-5')
@@ -76,8 +79,8 @@ if (!args) {
 
 const targets = parseArgs(args, CHAPTERS)
 
-const sources = targets.map((name) => `./topic/linear-algebra/out/${name}.pdf`)
-const dists = targets.map((name) => `./public/linear-algebra/${name}.pdf`)
+const sources = targets.map((name) => path.join(SRC_DIR, `${name}.pdf`))
+const dists = targets.map((name) => path.join(DST_DIR, `${name}.pdf`))
 
 const zip = (a, b) => a.map((k, i) => [k, b[i]])
 
