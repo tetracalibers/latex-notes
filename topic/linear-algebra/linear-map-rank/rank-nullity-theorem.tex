@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -36,7 +39,7 @@
   \dim \Ker f = n - \rank f
 \end{equation*}
 
-さらに、\hyperref[def:rank-of-linear-map]{線形写像の階数の定義}から、
+さらに、\defref{def:rank-of-linear-map}から、
 \begin{equation*}
   \dim \Ker f = n - \dim \Im f
 \end{equation*}

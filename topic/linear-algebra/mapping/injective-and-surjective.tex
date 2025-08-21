@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -113,7 +116,7 @@
   \end{tikzpicture}
 \end{center}
 
-また、単射は\hyperref[def:preimage-of-element]{終域の元の逆像}を用いて定義することもできる。
+また、単射は\defref{def:preimage-of-element}を用いて定義することもできる。
 
 \begin{definition*}{単射（逆像による定義）}
   写像$f\colon X \to Y$が\keyword{単射}であるとは、任意の$y \in Y$に対し、逆像$f^{-1}(y)$の元の個数が$1$以下であることをいう。

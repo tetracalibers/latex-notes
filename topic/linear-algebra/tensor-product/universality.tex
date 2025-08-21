@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -58,8 +61,8 @@ $V,W$の双対空間を$V^*, W^*$とし、$U_0$を次のようにおく。
   このとき、$B$が双線形性をもつ、すなわち$\phi$と$\psi$それぞれについて線形性をもつことは、次のように確かめられる。
   
   \br
-  
-  まず$\psi$を固定すると、$V^* = \Hom(V, \mathbb{R})$における\hyperref[def:linear-map-addition-scalar]{和とスカラー倍の定義}より、
+
+  まず$\psi$を固定すると、$V^* = \Hom(V, \mathbb{R})$における\defref{def:linear-map-addition-scalar}より、
   \begin{align*}
     B_{\vb*{v}, \vb*{w}}(\phi_1 + \phi_2, \psi) &= (\phi_1 + \phi_2)(\vb*{v}) \psi(\vb*{w}) \\
     &= \phi_1(\vb*{v}) \psi(\vb*{w}) + \phi_2(\vb*{v}) \psi(\vb*{w}) \\

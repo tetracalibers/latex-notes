@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -53,7 +56,7 @@
   \end{tikzpicture}
 \end{center}
 
-\hyperref[def:angle-between-vectors]{ベクトル$\vb*{u}, \vb*{v}$のなす角$\theta$}を用いると、$\vb*{v}$の$\vb*{u}$との内積は次のように表すことができる。
+\defref{def:angle-between-vectors}より、$\vb*{u}, \vb*{v}$のなす角$\theta$を用いると、$\vb*{v}$の$\vb*{u}$との内積は次のように表すことができる。
 \begin{equation*}
   \braket{\vb*{u}|\vb*{v}} = \|\vb*{u}\| \|\vb*{v}\| \cos \theta
 \end{equation*}
@@ -146,7 +149,7 @@ $\vb*{p}$は$\vb*{u}$と平行であることから、スカラー$k$を用い�
   (\vb*{v} - k \vb*{u}, \vb*{u}) = 0
 \end{equation*}
 
-\hyperref[def:inner-product-axioms]{内積の双線形性}を用いて展開すると、
+\defref{def:inner-product-axioms}のうち、内積の双線形性を用いて展開すると、
 \begin{gather*}
   (\vb*{v}, \vb*{u}) - k (\vb*{u}, \vb*{u}) = 0 \\
   \therefore \quad k \| \vb*{u} \|^2 = (\vb*{v}, \vb*{u})
