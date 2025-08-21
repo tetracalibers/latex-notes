@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -10,7 +13,7 @@
 
 列ベクトルの線型独立性と階数の関係をさらに考察するために、「主成分のある列ベクトル」について考えてみよう。
 
-\begin{definition}{主列ベクトル}\label{def:pivot-columns}
+\begin{definition}{主列ベクトル}{pivot-columns}
   行列$A = (\vb*{a}_1, \dots, \vb*{a}_n)$を行階段形にしたときに、主成分のある列番号を$i_1,\dots, i_r$とする。
   ここで、$r$は$A$の階数である。
 
@@ -21,13 +24,13 @@
 
 \br
 
-\hyperref[thm:row-operation-preserves-dependence]{行基本変形を行っても列ベクトルの線型独立性は変わらない}ことを根拠に、次の議論ができる。
+\thmref{thm:row-operation-preserves-dependence}で示した、行基本変形を行っても列ベクトルの線型独立性は変わらないことを根拠に、次の議論ができる。
 
-\begin{theorem}{主列ベクトルと線型独立性}
+\begin{theorem*}{主列ベクトルと線型独立性}
   行列の主列ベクトルの集合は線型独立である。
 
   また、主列ベクトル以外の列ベクトルは、主列ベクトルの線形結合である。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p43 （命題 1.6.11）}
@@ -41,9 +44,9 @@
 
 では、$\rank A$個よりも多くの列ベクトルを選ぶとどうなるのだろうか？
 
-\begin{theorem}{列ベクトルの線形従属性と階数}
+\begin{theorem*}{列ベクトルの線形従属性と階数}
   行列$A$の列ベクトルから$\rank A$個よりも多いベクトルを選ぶと、線形従属になる。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p43 （命題 1.6.12）}
@@ -53,7 +56,7 @@
 
 以上によって、行列の階数に関する次の理解が得られる。
 
-\begin{theorem}{階数と線型独立な列ベクトルの最大個数}\label{thm:rank-equals-max-indep-cols}
+\begin{theorem}{階数と線型独立な列ベクトルの最大個数}{rank-equals-max-indep-cols}
   行列$A$の階数$\rank A$は、$A$の列ベクトルに含まれる線型独立なベクトルの最大個数と一致する。
 \end{theorem}
 

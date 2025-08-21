@@ -1,12 +1,15 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
 \section{内積と双線形形式}
 \marginnote{\refbookR p184〜185 \\ \refbookA p126}
 
-$\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^n$のペア（\hyperref[def:cartesian-product]{直積}）から、スカラー値$\mathbb{R}$を返す関数として捉えることができる。
+$\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb{R}^n$のペア（\defref{def:cartesian-product}）から、スカラー値$\mathbb{R}$を返す関数として捉えることができる。
 
 このように内積を写像に見立てて、この写像を$b$とおくと、
 \begin{equation*}
@@ -28,7 +31,7 @@ $\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb
 
 線形性をもつ写像を線形写像として特別視したように、双線形性をもつ写像について考えてみよう。
 
-\begin{definition}{双線形形式}\label{def:bilinear-form}
+\begin{definition}{双線形形式}{bilinear-form}
   $U,V$を線型空間とする。直積集合$U \times V$から$\mathbb{R}$への写像$b$が次の条件を満たすとき、$b$は$U \times V$上の\keywordJE{双線形形式}{bilinear form}であるという。
   \begin{enumerate}[label=\romanlabel]
     \item $b(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) = b(\vb*{u}_1, \vb*{v}) + b(\vb*{u}_2, \vb*{v})$
@@ -39,17 +42,17 @@ $\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb
 
 \subsection{例：行列による双線形形式}
 
-\begin{theorem}{行列による双線形形式の構成}
+\begin{theorem*}{行列による双線形形式の構成}
   $A$を$m \times n$型行列とするとき、$\vb*{u} \in \mathbb{R}^m, \vb*{v} \in \mathbb{R}^n$に対して
   \begin{equation*}
     b(\vb*{u}, \vb*{v}) = \vb*{u}^T A \vb*{v}
   \end{equation*}
   により$\mathbb{R}^m \times \mathbb{R}^n$上の双線形形式が得られる。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{{\bfseries 和に対する双線形性} (\romannum{i})}
-    \hyperref[thm:transpose-distributes-over-sum]{行列の和に対して転置を分配できる}ことを用いて、
+    \thmref{thm:transpose-distributes-over-sum}より、
     \begin{align*}
       b(\vb*{u}_1 + \vb*{u}_2, \vb*{v}) &= (\vb*{u}_1 + \vb*{u}_2)^T A \vb*{v} \\
       &= \vb*{u}_1^T A \vb*{v} + \vb*{u}_2^T A \vb*{v} \\
@@ -67,7 +70,7 @@ $\mathbb{R}^n$上の内積は、2つのベクトル$\vb*{a}, \vb*{b} \in \mathbb
   \end{subpattern}
   
   \begin{subpattern}{{\bfseries スカラー倍に対する双線形性} (\romannum{iii})}
-    \hyperref[thm:transpose-of-product]{行列の積に対する転置の性質}と、スカラー（$1 \times 1$型行列）を転置しても変わらないことを用いて、
+    \thmref{thm:transpose-of-product}と、スカラー（$1 \times 1$型行列）を転置しても変わらないことを用いて、
     \begin{align*}
       b(c\vb*{u}, \vb*{v}) &= (c\vb*{u})^T A \vb*{v} \\
       &= c(\vb*{u}^T A \vb*{v}) \\

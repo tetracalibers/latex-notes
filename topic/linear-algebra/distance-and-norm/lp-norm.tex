@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,13 +11,13 @@
 
 ユークリッド距離とマンハッタン距離は、次の\keyword{$L_p$ノルム}によって一般化される。
 
-\begin{definition}{$L_p$ノルム}
+\begin{definition*}{$L_p$ノルム}
   ベクトル$\vb*{a} = (a_i)_{i=1}^n$に対し、
   \begin{equation*}
     \|\vb*{a}\|_p = \left( \sum_{i=1}^n |a_i|^p \right)^{\frac{1}{p}}
   \end{equation*}
-  は\hyperref[def:norm-axioms]{ノルムの公理}を満たし、これを\keyword{$L_p$ノルム}という。
-\end{definition}
+  は\defref{def:norm-axioms}を満たし、これを\keyword{$L_p$ノルム}という。
+\end{definition*}
 
 $L_p$ノルムが距離として意味を持つのは、$p \geq 1$のときである。
 

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -10,13 +13,13 @@
   \placeholder{再編予定（\refbookS p20〜21）}
 \end{mindflow}
 
-\begin{theorem}{線形部分空間の和は部分空間}
+\begin{theorem*}{線形部分空間の和は部分空間}
   $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{和空間}
   \begin{equation*}
     U + W \coloneq \{ \vb*{u} + \vb*{w} \mid \vb*{u} \in U, \vb*{w} \in W \}
   \end{equation*}
   は$V$の部分空間である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 和について}
@@ -61,7 +64,7 @@
 
 3つ以上の部分空間の和も同様に考えて、一般に\keyword{和空間}は次のように定義される
 
-\begin{definition}{和空間}
+\begin{definition*}{和空間}
   線形空間$V$と、その部分空間$V_1,\ldots,V_k$が与えられたときに、
   \begin{equation*}
     \vb*{v} = \vb*{v}_1 + \cdots + \vb*{v}_k \quad (\vb*{v}_i \in V_i, i = 1, \ldots, k)
@@ -71,13 +74,13 @@
     \sum_{i=1}^k V_i
   \end{equation*}
   と書く
-\end{definition}
+\end{definition*}
 
 \subsection{和空間を張るベクトル}
 
 部分空間を生成するベクトルを用いて、部分空間の和を表せる
 
-\begin{theorem}{部分空間の和と生成ベクトル}\label{thm:sum-of-subspaces-span}
+\begin{theorem}{部分空間の和と生成ベクトル}{sum-of-subspaces-span}
   $K^n$の2つの部分空間$U = \langle \vb*{u}_1, \dots, \vb*{u}_m \rangle$と
   $W = \langle \vb*{w}_1, \dots, \vb*{w}_k \rangle$に対して、和空間$U + W$は
   \begin{equation*}
@@ -143,7 +146,7 @@
 \section{和空間の包含関係}
 \marginnote{\refbookF p233}
 
-\begin{theorem}{和空間における部分空間の和集合の包含}
+\begin{theorem*}{和空間における部分空間の和集合の包含}
   和空間は、和集合を部分集合として包含する
 
   すなわち、$U,\,W$を$V$の部分空間とするとき、
@@ -151,10 +154,10 @@
     U + W \supset U \cup W
   \end{equation*}
   が成り立つ
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:subspace-contains-zero]{部分空間はいずれも零ベクトルを含む}ので、
+  \thmref{thm:subspace-contains-zero}より、部分空間はいずれも零ベクトルを含むので、
   たとえば、$U = \{ \vb*{0} \}$の場合、
   \begin{equation*}
     U + W \supset W
@@ -175,11 +178,11 @@
 
 \sectionline
 
-\begin{theorem}{和空間の最小包含性}
+\begin{theorem*}{和空間の最小包含性}
   $U,\,W$を$V$の部分空間とする
 
   和空間$U+W$は、$U$と$W$を含む部分空間のうち、最小のものである
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $V$の任意の部分空間のうち、$U$と$W$の両方を包含するもの$V'$を考える

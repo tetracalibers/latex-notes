@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -11,7 +14,7 @@
 
 $V$と$(V^*)^*$の間には、線形同型写像$\iota \colon V \to (V^*)^*$が存在する。
 
-このことから、\hyperref[def:linear-subspace-isomorphism]{$V$と$(V^*)^*$は線形同型}であることがいえる。
+このことから、\defref{def:linear-subspace-isomorphism}より、$V$と$(V^*)^*$は線形同型であることがいえる。
 
 \br
 
@@ -19,7 +22,7 @@ $V$と$(V^*)^*$の間には、線形同型写像$\iota \colon V \to (V^*)^*$が�
 
 \br
 
-ここで、\hyperref[sec:map-to-bidual]{再双対空間への写像}を考える際に登場した次の式を再解釈してみよう。
+ここで、\secref{sec:map-to-bidual}を考える際に登場した次の式を再解釈してみよう。
 \begin{equation*}
   \Phi_{\vb*{v}}(\phi) = \phi(\vb*{v})
 \end{equation*}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -57,12 +60,12 @@ $n$個の固有値のうち、$r$個ある正の固有値は特異値の条件�
 
 $i >r$の場合についても同じ形で書くために、次の定理を示す。
 
-\begin{theorem}{行列積による零化}
+\begin{theorem*}{行列積による零化}
   \begin{enumerate}[label=\romanlabel]
     \item $AA^\top \vb*{u} = \vb*{o} \Longrightarrow A^\top \vb*{u} = \vb*{o}$
     \item $A^\top A \vb*{v} = \vb*{o} \Longrightarrow A\vb*{v} = \vb*{o}$
   \end{enumerate}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{(\romannum{i}) $AA^\top \vb*{u} = \vb*{o}$\bfseries について}
@@ -152,7 +155,7 @@ $A$は$\mathbb{R}^n$の正規直交基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$を
 \begin{equation*}
   \sigma_1\vb*{u}_1,\ldots,\sigma_r\vb*{u}_r,\vb*{o},\ldots,\vb*{o}
 \end{equation*}
-に写像するから、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$A$は
+に写像するから、\thmref{thm:orthobasis-formula-for-rep-matrix}より、$A$は
 \begin{equation*}
   A = \sigma_1\vb*{u}_1\vb*{v}_1^\top + \cdots + \sigma_r \vb*{u}_r \vb*{v}_r^\top \quad (\sigma_1 \geq \cdots \geq \sigma_r > 0)
 \end{equation*}

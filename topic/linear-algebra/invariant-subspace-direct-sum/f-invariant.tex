@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,7 +11,7 @@
 
 $V$上の線形変換$f$について、「変換$f$で写しても変わらない」という性質を考える
 
-\begin{definition}{$f$不変}
+\begin{definition*}{$f$不変}
   $f$を線形空間$V$の線形変換とする
 
   $V$の部分空間$W$に対して、
@@ -24,13 +27,13 @@ $V$上の線形変換$f$について、「変換$f$で写しても変わらな�
   \br
 
   また、$V=\mathbb{R}^n$で、$f$が正方行列$A$によって定まっているときは、$f$不変な部分空間$W$を\keyword{$A$不変}な部分空間ともいう
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{写像の制限と不変部分空間}
 \marginnote{\refbookA p114 \\ \refbookF p240〜242、p363〜364}
 
-\begin{theorem}{不変部分空間による線形変換のブロック型行列表現}\label{thm:block-matrix-by-invariant-subspace}
+\begin{theorem}{不変部分空間による線形変換のブロック型行列表現}{block-matrix-by-invariant-subspace}
   $V$を$n$次元線形空間とし、線形変換$f\colon V \to V$を考える
 
   このとき、$V$のある部分空間$W$が$f$不変ならば、$V$の適当な基底について、$f$は
@@ -48,9 +51,9 @@ $V$上の線形変換$f$について、「変換$f$で写しても変わらな�
 \end{theorem}
 
 \begin{proof}
-  $\dim(W) = r$とし、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を\hyperref[thm:basis-extension]{延長}して$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$をとる
+  $\dim(W) = r$とし、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を延長して$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$をとる
 
-  このとき、\hyperref[sec:construction-of-matrix-rep]{表現行列の構成法}より、
+  このとき、\secref{sec:construction-of-matrix-rep}より、
   \begin{equation*}
     f(\vb*{v}_j) = \sum_{i=1}^r a_{ij} \vb*{v}_i + \sum_{i=r+1}^n a_{ij} \vb*{v}_i \quad (1 \leq j \leq n)
   \end{equation*}
@@ -154,13 +157,13 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 
 この意味で、写像$f'$を、写像$f$の$W$への\keyword{制限}と呼び、$f|_W$と表記する
 
-\begin{definition}{写像の制限}
+\begin{definition*}{写像の制限}
   写像$f\colon X \to Y$において、$X$のある部分集合$S$が与えられたとき、定義域を$S$に限定したものを$f$の$S$に対する\keyword{制限}といい、
   \begin{equation*}
     f|_S\colon S \to Y
   \end{equation*}
   と表す
-\end{definition}
+\end{definition*}
 
 同様に、$V$の基底を$\vb*{v}_{r+1}, \ldots, \vb*{v}_n, \vb*{v}_1, \ldots, \vb*{v}_r$ととった場合、$f(\vb*{v}_j) \in W$は
 \begin{equation*}
@@ -187,13 +190,13 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 \section{不変部分空間への直和分解}
 \marginnote{\refbookA p114 \\ \refbookF p242〜245}
 
-\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明では、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を\hyperref[thm:basis-extension]{延長}したものを$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$とした
+\thmref{thm:block-matrix-by-invariant-subspace}の証明では、$W$の基底$\vb*{v}_1, \ldots, \vb*{v}_r$を延長したものを$V$の基底$\vb*{v}_1, \ldots, \vb*{v}_r, \vb*{v}_{r+1}, \ldots, \vb*{v}_n$とした
 
 このとき、
 \begin{equation*}
   W' = \langle \vb*{v}_{r+1}, \ldots, \vb*{v}_n \rangle
 \end{equation*}
-とおくと、$V$の基底が$W, \, W'$の基底を合わせたものになっているため、\hyperref[thm:direct-sum-and-basis]{直和の基底に関する定理}より、
+とおくと、$V$の基底が$W, \, W'$の基底を合わせたものになっているため、\thmref{thm:direct-sum-and-basis}より、
 \begin{equation*}
   V = W \oplus W'
 \end{equation*}
@@ -214,7 +217,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 \end{equation*}
 という\keyword{ブロック対角型}になる
 
-\begin{theorem}{不変部分空間への直和分解}
+\begin{theorem*}{不変部分空間への直和分解}
   線形空間$V$と、$V$上の線形変換$f$に対し、$V$が$f$不変な部分空間$W_1$と$W_2$の直和に分解することができれば、すなわち、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2$
@@ -243,17 +246,17 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
       &&&&
     \end{pNiceArray}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  $W_1$の基底、$W_2$の基底をこの順に並べるか、その反対の順に並べて、$V$の基底を構成することで、\hyperref[thm:block-matrix-by-invariant-subspace]{不変部分空間による線形変換のブロック型行列表現}の証明と同様に示される $\qed$
+  $W_1$の基底、$W_2$の基底をこの順に並べるか、その反対の順に並べて、$V$の基底を構成することで、\thmref{thm:block-matrix-by-invariant-subspace}の証明と同様に示される $\qed$
 \end{proof}
 
 \sectionline
 
 さらに、$V$をより細かい部分空間の直和に分解できる場合には、次のようになる
 
-\begin{theorem}{複数の不変部分空間への直和分解}
+\begin{theorem*}{複数の不変部分空間への直和分解}
   線形空間$V$と、$V$上の線形変換$f$について、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_k$
@@ -268,7 +271,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
       O & & & \Block[borders={bottom,top,right,left,tikz=dashed}]{1-1}<\large>{*} \\
     \end{pNiceArray}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 対角線上の各正方形の大きさは、各部分空間$W_i$の次元に対応する
 
@@ -276,7 +279,7 @@ $f'$は、$f$の定義域を$W$に制限したものになっているが、$W$�
 
 そこで、以上の議論を究極にまで押し進めると、次の定理になる
 
-\begin{theorem}{一次元部分空間への直和分解}\label{thm:diagonalizable-by-1d-invariant-sum}
+\begin{theorem}{一次元部分空間への直和分解}{diagonalizable-by-1d-invariant-sum}
   $n$次元部分空間$V$が、$n$個の$f$不変の1次元部分空間の直和に分解できるとき、すなわち、
   \begin{enumerate}[label=\romanlabel]
     \item $V = W_1 \oplus W_2 \oplus \cdots \oplus W_n$
@@ -314,11 +317,11 @@ $W$を一次元部分空間とすると、これは基底$\vb*{w} \neq \vb*{0}$�
 
 \br
 
-以上をふまえて、\hyperref[thm:diagonalizable-by-1d-invariant-sum]{一次元部分空間への直和分解}という定理をより具体的に整理してみる
+以上をふまえて、\thmref{thm:diagonalizable-by-1d-invariant-sum}という定理をより具体的に整理してみる
 
 \br
 
-$\dim(V) = n$とすると、$V$上の線形変換$f$の表現行列$A$を\hyperref[sec:construction-of-matrix-rep]{構成}する式は、
+$\dim(V) = n$とすると、\secref{sec:construction-of-matrix-rep}より、$V$上の線形変換$f$の表現行列$A$を構成する式は、
 \begin{equation*}
   (f(\vb*{w}_1), \ldots, f(\vb*{w}_n)) = (\vb*{w}_1, \ldots, \vb*{w}_n) A
 \end{equation*}

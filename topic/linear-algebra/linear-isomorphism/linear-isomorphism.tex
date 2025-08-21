@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,7 +11,7 @@
 
 \keyword{線形同型}は、部分空間が「同じ」であることを述べた概念である
 
-\begin{definition}{線形同型写像}\label{def:linear-isomorphism}
+\begin{definition}{線形同型写像}{linear-isomorphism}
   $V,\,W$を線形空間とし、線形写像$f\colon V \to W$が全単射であるとき、$f$は\keyword{線形同型写像}あるいは単に\keyword{線形同型}であるという
 
   このとき、同型を表す記号$\cong$を用いて、
@@ -18,7 +21,7 @@
   と書くこともある
 \end{definition}
 
-\begin{definition}{部分空間の線形同型}\label{def:linear-subspace-isomorphism}
+\begin{definition}{部分空間の線形同型}{linear-subspace-isomorphism}
   $V$と$W$の間に線形同型写像が存在するとき、$V$と$W$は\keyword{線形同型}であるとい、
   \begin{equation*}
     V \cong W
@@ -34,9 +37,9 @@
 
 \subsection{線形同型と恒等写像}
 
-\begin{theorem}{恒等写像の線形同型性}
+\begin{theorem*}{恒等写像の線形同型性}
   恒等写像は線形同型写像である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   恒等写像は明らかに全単射であり、線形写像でもあるため、線形同型写像である $\qed$
@@ -44,20 +47,20 @@
 
 この事実は、部分空間の線形同型に関して次のように言い換えられる
 
-\begin{theorem}{部分空間の自己同型性}
+\begin{theorem*}{部分空間の自己同型性}
   部分空間$V$は$V$自身と線形同型である
 
   すなわち、
   \begin{equation*}
     V \cong V
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{線形同型と逆写像}
 
-\begin{theorem}{線形同型写像の逆写像}
+\begin{theorem*}{線形同型写像の逆写像}
   線形同型写像の逆写像は線形同型写像である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookC p93〜94}
@@ -65,20 +68,20 @@
 
 この事実は、部分空間の線形同型に関して次のように言い換えられる
 
-\begin{theorem}{線形同型性の対称性}
+\begin{theorem*}{線形同型性の対称性}
   部分空間$V$が部分空間$W$と線形同型なら、$W$は$V$と線形同型である
 
   すなわち、
   \begin{equation*}
     V \cong W \Longrightarrow W \cong V
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{線形同型と合成写像}
 
-\begin{theorem}{線形同型写像の合成}
+\begin{theorem*}{線形同型写像の合成}
   線形同型写像の合成は線形同型写像である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookC p94}
@@ -86,26 +89,26 @@
 
 この事実は、部分空間の線形同型に関して次のように言い換えられる
 
-\begin{theorem}{線形同型性の推移性}
+\begin{theorem*}{線形同型性の推移性}
   部分空間$V$が部分空間$W$と線形同型で、$W$が部分空間$U$と線形同型ならば、$V$は$U$と線形同型である
 
   すなわち、
   \begin{equation*}
     V \cong W \land W \cong U \Longrightarrow V \cong U
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 
 ここまでで登場した、部分空間の線形同型に関する性質をまとめると、
 
-\begin{theorem}{線形同型の同値関係としての性質}
+\begin{theorem*}{線形同型の同値関係としての性質}
   \begin{enumerate}[label=\romanlabel]
     \item $V \cong V$
     \item $V \cong W \Longrightarrow W \cong V$
     \item $V \cong W \land W \cong U \Longrightarrow V \cong U$
   \end{enumerate}
-\end{theorem}
+\end{theorem*}
 
 となり、これらは、
 \begin{shaded}
@@ -117,12 +120,12 @@
 \section{線形同型写像と基底}
 \marginnote{\refbookC p94}
 
-\begin{theorem}{線形同型写像による基底の保存}
+\begin{theorem*}{線形同型写像による基底の保存}
   線形同型写像$f$によって、部分空間の基底は基底に写る
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:injective-preserves-independence]{単射な線型写像は線型独立性を保つ}ことから、$f$の単射性により、基底の線型独立性が保たれる
+  \thmref{thm:injective-preserves-independence}ことから、$f$の単射性により、基底の線型独立性が保たれる
 
   また、$f$の全射性により、基底の生成性も保たれる
 
@@ -137,7 +140,7 @@
   \placeholder{再編予定（\refbookS p42〜43）}
 \end{mindflow}
 
-\begin{definition}{座標写像}\label{def:coordinate-mapping}
+\begin{definition}{座標写像}{coordinate-mapping}
   $V$を線形空間とし、$\mathcal{V} = \{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$を$V$の基底とする
 
   このとき、$K^n$から$V$への線形写像$\Phi_{\mathcal{V}}\colon K^n \to V$を
@@ -149,7 +152,7 @@
 
 このように定めた線形写像が\keyword{座標写像}と呼ばれる背景は、この座標写像が線形同型であることを示し、それがどんな意味を持つのかを考えることでわかる
 
-\begin{theorem}{線形空間の基底によって定まる線形同型写像}
+\begin{theorem*}{線形空間の基底によって定まる線形同型写像}
   $V$を線形空間とし、$\mathcal{V} = \{ \vb*{v}_1, \vb*{v}_2, \dots, \vb*{v}_n \}$を$V$の基底とする
 
   このとき、$K^n$から$V$への線形写像$\Phi_{\mathcal{V}}\colon K^n \to V$を
@@ -157,7 +160,7 @@
     \Phi_{\mathcal{V}}(\vb*{x}) = \sum_{i=1}^n x_i \vb*{v}_i \quad (\vb*{x} \in (x_i)_{i=1}^n \in K^n)
   \end{equation*}
   と定めると、これは線形同型写像である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   線形写像$\Phi_{\mathcal{V}}$が全単射であることを示す
@@ -175,7 +178,7 @@
     \end{equation*}
     と書ける
 
-    よって、\hyperref[thm:injective-iff-trivial-kernel]{線形写像の単射性と核の関係}より、$\Phi_{\mathcal{V}}$は単射である $\qed$
+    よって、\thmref{thm:injective-iff-trivial-kernel}より、$\Phi_{\mathcal{V}}$は単射である $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries 全射であること}
@@ -192,13 +195,13 @@
     \end{equation*}
     を意味する
 
-    よって、\hyperref[sec:image-and-surjectivity]{像空間と全射性の関係}により、$\Phi_{\mathcal{V}}$は全射である $\qed$
+    よって、\secref{sec:image-and-surjectivity}により、$\Phi_{\mathcal{V}}$は全射である $\qed$
   \end{subpattern}
 \end{proof}
 
 この定理を部分空間の線形同型に関して言い換えると、次のような主張になる
 
-\begin{theorem}{有限次元部分空間と数ベクトル空間の線形同型性}\label{thm:subspace-isomorphic-to-Kn}
+\begin{theorem}{有限次元部分空間と数ベクトル空間の線形同型性}{subspace-isomorphic-to-Kn}
   任意の部分空間は次元の等しい数ベクトル空間と線形同型である
 \end{theorem}
 

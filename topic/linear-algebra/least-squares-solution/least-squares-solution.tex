@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -72,7 +75,7 @@ $m > n$の場合、$\vb*{b}$は$\vb*{x}$よりも高次元のベクトルなの�
   \end{tikzpicture}
 \end{center}
 
-ここで、\hyperref[sec:shortest-distance-projection]{点$P$から最短となる$\Im A$上の点は、$P$を$\Im A$へ直交射影した点$Q$}である。
+ここで、\secref{sec:shortest-distance-projection}より、点$P$から最短となる$\Im A$上の点は、$P$を$\Im A$へ直交射影した点$Q$である。
 
 このことから、$\| A\vb*{x} - \vb*{b} \|$が最小となるのは、
   \begin{spacebox}
@@ -91,7 +94,7 @@ $\Im A$は$A$の列空間（$A$の列ベクトルが張る空間）であるか�
   A\vb*{x} = P_{\mathcal{U}}\vb*{b}
 \end{equation*}
 
-\begin{theorem}{最小二乗解と列空間への直交射影の関係}\label{thm:least-squares-projection}
+\begin{theorem}{最小二乗解と列空間への直交射影の関係}{least-squares-projection}
   $A$の列空間を$\mathcal{U}$とし、$\mathcal{U}$への直交射影行列を$P_{\mathcal{U}}$とすると、
   線形方程式$A\vb*{x} = \vb*{b}$の最小二乗解は次の関係を満たす。
   \begin{equation*}
@@ -102,7 +105,7 @@ $\Im A$は$A$の列空間（$A$の列ベクトルが張る空間）であるか�
 \subsection{列フルランクの場合の最小二乗解}
 
 $n = \rank A$だと仮定する。
-\hyperref[thm:rank-equals-max-indep-cols]{階数は線型独立な列の最大個数}なので、$A$の$n$個の列ベクトルは線型独立である。
+\thmref{thm:rank-equals-max-indep-cols}より、階数は線型独立な列の最大個数なので、$A$の$n$個の列ベクトルは線型独立である。
 
 \br
 
@@ -210,12 +213,13 @@ $A\vb*{x} - \vb*{b}$が$\mathcal{U}$上の任意のベクトルに直交する�
 
 $n = \rank A$という仮定のもとでは、次の定理が成り立つ。
 
-\begin{theorem}{線型独立な列ベクトルと自己共役積の正則性}
+\begin{theorem*}{線型独立な列ベクトルと自己共役積の正則性}
   $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、$A^\top A$は正則である。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  $A^\top A$が正則であることと同値な条件として、\hyperref[thm:invertibility-by-kernel]{$A^\top A$の核空間の次元が0}であることを示す。
+  \thmref{thm:invertibility-by-kernel}より、$A^\top A$が正則であることと同値な条件として、$A^\top A$の核空間の次元が0であることを示す。
+  
   すなわち、次を示せばよい。
   \begin{equation*}
     A^\top A \vb*{x} = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
@@ -252,12 +256,12 @@ $A^\top A$が正則であることがわかったので、$\vb*{x}$は次のよ�
 
 これが、$m \geq n = \rank A$という条件のもとでの\keyword{最小二乗解}である。
 
-\begin{theorem}{線型独立な列ベクトルに対する最小二乗解}
+\begin{theorem*}{線型独立な列ベクトルに対する最小二乗解}
   $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立である）とき、線形方程式$A\vb*{x} = \vb*{b}$の最小二乗解$\vb*{x}$は次のように表される。
   \begin{equation*}
     \vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{列空間への直交射影行列}
 
@@ -265,13 +269,13 @@ $\vb*{x} = (A^\top A)^{-1}A^\top \vb*{b}$の両辺に左から$A$をかけると
 \begin{equation*}
   A\vb*{x} = A(A^\top A)^{-1}A^\top \vb*{b}
 \end{equation*}
-この式を、\hyperref[thm:least-squares-projection]{最小二乗解と射影行列の関係}$A\vb*{x} = P_{\mathcal{U}}\vb*{b}$と見比べると、
+この式を、\thmref{thm:least-squares-projection}と見比べると、
 \begin{equation*}
   P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top
 \end{equation*}
 であることがわかる。
 
-\begin{theorem}{列空間への直交射影の行列表現}\label{thm:projection-matrix-colspace}
+\begin{theorem}{列空間への直交射影の行列表現}{projection-matrix-colspace}
   $m \times n$型行列$A$において、$m \geq n = \rank A$（列ベクトルが線型独立）のとき、$A$の列空間への直交射影行列は次のように表される。
   \begin{equation*}
     P_{\mathcal{U}} = A(A^\top A)^{-1}A^\top

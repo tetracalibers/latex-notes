@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -10,7 +13,7 @@
 
 基底の構成と存在を示すために、次の補題を用いる。
 
-\begin{theorem}{線型独立なベクトルの延長}\label{thm:extend-indep-outside-subspace}
+\begin{theorem}{線型独立なベクトルの延長}{extend-indep-outside-subspace}
   $V$を$K^n$の$\{\vb*{o} \}$でない部分空間とする。
 
   このとき、$V$の線型独立なベクトル$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$と、$V$に入らないベクトル$\vb*{a}$は線型独立である。
@@ -19,31 +22,31 @@
 \begin{proof}
   $\vb*{a}, \vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$が線型従属であるとする
 
-  すると、\hyperref[thm:dep-vec-is-lincomb]{定理「線形結合によるベクトルの表現」}より、$\vb*{a}$は$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$の線形結合で表され、$V$に入り、矛盾する
+  すると、\thmref{thm:dep-vec-is-lincomb}より、$\vb*{a}$は$\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$の線形結合で表され、$V$に入り、矛盾する
 
   よって、$\vb*{a}, \vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_m$は線型独立である $\qed$
 \end{proof}
 
 \br
 
-この定理は、\hyperref[def:span-of-vectors]{ベクトルの集合が張る空間}の記号を用いると、次のように簡潔にまとめられる。
+この定理は、\defref{def:span-of-vectors}の記号を用いると、次のように簡潔にまとめられる。
 
-\begin{theorem}{線型独立なベクトルの延長}
+\begin{theorem*}{線型独立なベクトルの延長}
   $\{ \vb*{v}_1, \dots, \vb*{v}_k \}$が線型独立であって、$\vb*{v}_{k+1} \notin \langle \vb*{v}_1, \dots, \vb*{v}_k \rangle$ならば、$\{ \vb*{v}_1, \dots, \vb*{v}_k, \vb*{v}_{k+1} \}$は線型独立である
-\end{theorem}
+\end{theorem*}
 
 \subsection{線型独立なベクトルの基底への拡張}
 
 $K^n$の$\{\vb*{o} \}$でない部分空間$V$の線型独立なベクトルは、$V$の基底に拡張できる。
 
-\begin{theorem}{基底の存在}\label{thm:existence-of-basis}
+\begin{theorem}{基底の存在}{existence-of-basis}
   $K^n$の$\{\vb*{o} \}$でない部分空間$V$には基底が存在する。
 \end{theorem}
 
 \begin{proof}
   $V \neq  \{\vb*{o} \}$なので、$V$には少なくとも1つのベクトル$\vb*{v}_1 \neq \vb*{o}$が存在する。
 
-  \hyperref[thm:single-vec-indep-iff-nonzero]{定理「単一ベクトルの線型独立性と零ベクトル」}より、$\{\vb*{v}_1 \}$は線型独立である
+  \thmref{thm:single-vec-indep-iff-nonzero}より、$\{\vb*{v}_1 \}$は線型独立である
 
   \br
 
@@ -53,7 +56,7 @@ $K^n$の$\{\vb*{o} \}$でない部分空間$V$の線型独立なベクトルは�
 
   $\langle \vb*{v}_1 \rangle \subsetneq V$ならば、$\vb*{v}_2 \subsetneq \langle \vb*{v}_1 \rangle$であるベクトルを$V$から選ぶことができる。
 
-  \hyperref[thm:extend-indep-outside-subspace]{補題「線型独立なベクトルの延長」}より、$\{\vb*{v}_1, \vb*{v}_2 \}$は線型独立である。
+  \thmref{thm:extend-indep-outside-subspace}より、$\{\vb*{v}_1, \vb*{v}_2 \}$は線型独立である。
 
   \br
 
@@ -63,7 +66,7 @@ $K^n$の$\{\vb*{o} \}$でない部分空間$V$の線型独立なベクトルは�
 
   $\langle \vb*{v}_1, \vb*{v}_2 \rangle \subsetneq V$ならば、$\vb*{v}_3 \subsetneq \langle \vb*{v}_1, \vb*{v}_2 \rangle$であるベクトルを$V$から選ぶことができる。
 
-  \hyperref[thm:extend-indep-outside-subspace]{補題「線型独立なベクトルの延長」}より、$\{\vb*{v}_1, \vb*{v}_2, \vb*{v}_3 \}$は線型独立である。
+  \thmref{thm:extend-indep-outside-subspace}より、$\{\vb*{v}_1, \vb*{v}_2, \vb*{v}_3 \}$は線型独立である。
 
   \br
 
@@ -71,7 +74,7 @@ $K^n$の$\{\vb*{o} \}$でない部分空間$V$の線型独立なベクトルは�
 
   \br
 
-  ここで線型独立なベクトルを繰り返し選ぶ操作が無限に続かないこと（有限値$k$が存在すること）は、\hyperref[thm:finite-dependency]{有限従属性定理}により、$K^n$の中には$n$個を超える線型独立なベクトルの集合は存在しないことから保証される。 $\qed$
+  ここで線型独立なベクトルを繰り返し選ぶ操作が無限に続かないこと（有限値$k$が存在すること）は、\thmref{thm:finite-dependency}により、$K^n$の中には$n$個を超える線型独立なベクトルの集合は存在しないことから保証される。 $\qed$
 \end{proof}
 
 \subsection{基底の延長}
@@ -79,14 +82,14 @@ $K^n$の$\{\vb*{o} \}$でない部分空間$V$の線型独立なベクトルは�
 
 基底の存在証明で行った基底の構成をさらに続けることで、次の定理が得られる。
 
-\begin{theorem}{基底の延長}\label{thm:basis-extension}
+\begin{theorem}{基底の延長}{basis-extension}
   $V$を$n$次元の線形空間とし、線型独立なベクトル$\vb*{v}_1, \dots, \vb*{v}_m \in V$が与えられたとする。
 
   このとき、$(n-m)$個のベクトル$\vb*{v}_{m+1}, \dots, \vb*{v}_n \in V$を追加して、$\{ \vb*{v}_1, \dots, \vb*{v}_m, \vb*{v}_{m+1}, \dots, \vb*{v}_n \}$が$V$の基底になるようにできる。
 \end{theorem}
 
 \begin{proof}
-  \hyperref[thm:existence-of-basis]{基底の存在}の証明において、線型独立なベクトル$\vb*{v}_1, \dots, \vb*{v}_m \in V$が得られたところからスタートし、同様の手続きを繰り返せばよい。 $\qed$
+  \thmref{thm:existence-of-basis}の証明において、線型独立なベクトル$\vb*{v}_1, \dots, \vb*{v}_m \in V$が得られたところからスタートし、同様の手続きを繰り返せばよい。 $\qed$
 \end{proof}
 
 \end{document}

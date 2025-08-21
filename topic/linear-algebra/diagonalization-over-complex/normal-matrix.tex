@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,12 +11,12 @@
 
 エルミート行列の対角化について議論するために、エルミート行列・ユニタリ行列を含むより包括的な概念として\keyword{正規行列}を導入する
 
-\begin{definition}{正規行列}
+\begin{definition*}{正規行列}
   複素正方行列$A$が次を満たすとき、$A$を\keyword{正規行列}という
   \begin{equation*}
     A A^* = A^* A
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 \subsection{正規行列の例}
 
@@ -24,9 +27,9 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 \end{align*}
 となり、正規行列の定義を満たす
 
-\begin{theorem}{エルミート行列の正規行列性}
+\begin{theorem*}{エルミート行列の正規行列性}
   エルミート行列は正規行列である
-\end{theorem}
+\end{theorem*}
 
 \br
 
@@ -37,19 +40,19 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 \end{align*}
 となり、こちらも正規行列の定義を満たす
 
-\begin{theorem}{ユニタリ行列の正規行列性}
+\begin{theorem*}{ユニタリ行列の正規行列性}
   ユニタリ行列は正規行列である
-\end{theorem}
+\end{theorem*}
 
 \subsection{正規行列の性質}
 
-\begin{theorem}{正規行列と随伴によるノルム保存性}
+\begin{theorem*}{正規行列と随伴によるノルム保存性}
   複素正方行列$A$が正規行列であることは、任意の$\vb*{v} \in \mathbb{C}^n$に対し、
   \begin{equation*}
     \|A\vb*{v}\| = \|A^*\vb*{v}\|
   \end{equation*}
   が成り立つことと同値である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p262 問6.9 (1)}
@@ -57,14 +60,14 @@ $A$をエルミート行列とすると、$A^* = A$なので、
 
 \br
 
-\begin{theorem}{正規行列における固有ベクトルの随伴対応}
+\begin{theorem*}{正規行列における固有ベクトルの随伴対応}
   $A$を正規行列とするとき、$\vb*{v}$が$A$の固有値$\alpha$の固有ベクトルならば、$\vb*{v}$は$A^*$の固有値$\overline{\alpha}$の固有ベクトルである
 
   すなわち、
   \begin{equation*}
     A\vb*{v} = \alpha \vb*{v} \Longrightarrow A^*\vb*{v} = \overline{\alpha} \vb*{v}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p262 問6.9 (2)}
@@ -93,13 +96,13 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
 正規行列について、一般に次が成り立つ
 
-\begin{theorem}{正規行列における固有空間の次元と固有値の重複度の一致}\label{thm:normal-matrix-eigenvalue-multiplicity}
+\begin{theorem}{正規行列における固有空間の次元と固有値の重複度の一致}{normal-matrix-eigenvalue-multiplicity}
   $n$次複素正方行列$A$が正規行列であるとき、$\Phi_A(x)$における固有値$\alpha$の重複度$k$について、次の等式が成り立つ
   \begin{equation*}
     k = n - \rank(A - \alpha E)
   \end{equation*}
 
-  \hyperref[thm:rank-nullity-theorem]{次元定理}を用いて言い換えると、$\alpha$の固有空間$W(\alpha)$について、
+  \thmref{thm:rank-nullity-theorem}を用いて言い換えると、$\alpha$の固有空間$W(\alpha)$について、
   \begin{equation*}
     \dim W(\alpha) = k
   \end{equation*}
@@ -180,7 +183,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
   ここで、両辺の随伴行列をつくることを考える
 
-  左辺は、\hyperref[thm:adjoint-of-product]{積の随伴行列をつくると積の順序が入れ替わる}ことに注意して、
+  左辺は、\thmref{thm:adjoint-of-product}より、積の随伴行列をつくると積の順序が入れ替わることに注意して、
   \begin{equation*}
     (U^*AU)^* = U^* A^* (U^*)^* = U^* A^* U
   \end{equation*}
@@ -245,7 +248,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
   \br
 
-  ここで、\hyperref[thm:char-poly-of-similar-matrices]{$A$と$U^*AU$の特性多項式は一致する}ので、実際に計算すると、
+  ここで、\thmref{thm:char-poly-of-similar-matrices}より、$A$と$U^*AU$の特性多項式は一致するので、実際に計算すると、
   \begin{align*}
     \det(xE - A) & =\det(xE - U^*AU)                                                                       \\
                  & = \begin{vNiceArray}{ccc|cc}[xdots={horizontal-labels,line-style = <->},margin,columns-width =1.5em]
@@ -282,7 +285,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
   \begin{equation*}
     \rank(\alpha E - U^*AU) = \rank(\alpha E_{n-l} - C)
   \end{equation*}
-  ここで、$A$と$U^*AU$は相似な行列であり、\hyperref[thm:eigenvalues-of-similar-matrices]{相似な行列の固有値（特性方程式の根）は重複度も含めて一致する}ので、
+  ここで、$A$と$U^*AU$は相似な行列であり、\thmref{thm:eigenvalues-of-similar-matrices}より、相似な行列の固有値（特性方程式の根）は重複度も含めて一致するので、
   \begin{equation*}
     \rank(\alpha E - U^*AU)  = \rank(\alpha E - A) = n -l
   \end{equation*}
@@ -290,7 +293,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
   \begin{equation*}
     \rank(\alpha E_{n-l} - C) = n - l
   \end{equation*}
-  つまり、$\alpha E_{n-l} - C$は\hyperref[thm:invertible-iff-full-rank]{行列の階数が次数$n-l$に等しいので、正則行列}である
+  $\alpha E_{n-l} - C$は行列の階数が次数$n-l$に等しいので、\thmref{thm:invertible-iff-full-rank}より、正則行列である
 
   ゆえにその行列式は、
   \begin{equation*}
@@ -307,17 +310,17 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
 \br
 
-\hyperref[thm:diagonalizable-iff-eigenspace-dim-equals-multiplicity]{固有空間の次元と重複度が一致すれば対角化可能}であることから、正規行列は対角化可能である
+\thmref{thm:diagonalizable-iff-eigenspace-dim-equals-multiplicity}より、正規行列は対角化可能である
 
 さらに、上の定理の証明過程から、正規行列は\keyword{ユニタリ行列}によって対角化できることもわかる
 
-\begin{theorem}{正規行列のユニタリ対角化}\label{thm:unitary-diagonalization-of-normal}
+\begin{theorem}{正規行列のユニタリ対角化}{unitary-diagonalization-of-normal}
   複素正方行列$A$について、$A$が正規行列であることと、$A$がユニタリ行列を用いて対角化できることは同値である
 \end{theorem}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 正規行列 $\Longrightarrow$ ユニタリ行列を用いて対角化可能}
-    \hyperref[thm:normal-matrix-eigenvalue-multiplicity]{正規行列における固有空間の次元と固有値の重複度の一致}の定理の証明過程より明らか $\qed$
+    \thmref{thm:normal-matrix-eigenvalue-multiplicity}の定理の証明過程より明らか $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries ユニタリ行列を用いて対角化可能 $\Longrightarrow$ 正規行列}
@@ -342,7 +345,7 @@ $A$の固有値$\alpha$に属する線型独立な固有ベクトルがちょう
 
     \br
 
-    よって、$A^*$は、\hyperref[thm:adjoint-of-product]{積の随伴行列をつくると積の順序が入れ替わる}ことに注意して、
+    よって、$A^*$は、\thmref{thm:adjoint-of-product}より、積の随伴行列をつくると積の順序が入れ替わることに注意して、
     \begin{align*}
       A^* & = (U^*)^* \begin{pNiceArray}{ccc}
                         \overline{\alpha_1} & & O \\

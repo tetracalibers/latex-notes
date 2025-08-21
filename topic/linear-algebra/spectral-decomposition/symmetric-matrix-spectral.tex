@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -32,14 +35,14 @@ $n$個の固有値に重複するものがあると、重複する固有値に�
 
 \br
 
-よって、\hyperref[thm:orthobasis-formula-for-rep-matrix]{正規直交基底による表現行列の展開}より、$A$は次のように表される
+よって、\thmref{thm:orthobasis-formula-for-rep-matrix}より、$A$は次のように表される
 \begin{equation*}
   A = \lambda_1 \vb*{u}_1 \vb*{u}_1^\top + \cdots + \lambda_n \vb*{u}_n \vb*{u}_n^\top
 \end{equation*}
 
 このように、対称行列は、その固有値と固有ベクトルによって表すことができ、この式を\keyword{スペクトル分解}あるいは\keyword{固有値分解}と呼ぶ
 
-\begin{theorem}{対称行列のスペクトル分解}\label{thm:spectral-decomposition-symmetric}
+\begin{theorem}{対称行列のスペクトル分解}{spectral-decomposition-symmetric}
   $n$次対称行列$A$は、その固有値と固有ベクトルによって表すことができる
   \begin{equation*}
     A = \sum_{i=1}^n \lambda_i \vb*{u}_i \vb*{u}_i^\top

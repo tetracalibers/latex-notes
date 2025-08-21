@@ -12,12 +12,12 @@
 
 互いに互いを表現できるような無駄なベクトルが含まれておらず、各々が独立している（無関係である）ベクトルの組は\keyword{線形独立}であるという。
 
-\begin{definition}{線形独立}
+\begin{definition*}{線形独立}
   $k$個のベクトル$\{ \vb*{a}_1, \ldots, \vb*{a}_k \}$が\keyword{線形独立}であるとは、$k$個の係数$\{c_1, \ldots, c_k\}$がすべて$0$であるときしか、それらを使った線形結合を零ベクトル$\vb*{o}$にできないことをいう。
   \begin{gather*}
     c_1 \vb*{a}_1 + \cdots + c_k\vb*{a}_{k} = \vb*{o} \Longrightarrow c_1 = \cdots = c_k = 0
   \end{gather*}
-\end{definition}
+\end{definition*}
 
 たとえば、係数$c_1$が$0$でないとすると、
 \begin{equation*}
@@ -105,7 +105,7 @@
 \end{equation*}
 となり、これは線型独立の定義式そのものである。
 
-\begin{theorem}{線型独立性における線形結合の一意性}\label{thm:lin-indep-iff-unique-lincomb}
+\begin{theorem}{線型独立性における線形結合の一意性}{lin-indep-iff-unique-lincomb}
   線型独立性は、線形結合の一意性
   \begin{gather*}
     c_1 \vb*{a}_1 + \cdots + c_k \vb*{a}_k = c'_1 \vb*{a}_1 + \cdots + c'_k \vb*{a}_k \\ \Longrightarrow c_1 = c'_1, \dots, c_k = c'_k

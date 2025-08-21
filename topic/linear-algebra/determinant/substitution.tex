@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -15,9 +18,9 @@
 \end{align*}
 というように、番号を並び替える操作そのものを写像とみなし、\keyword{置換}と呼ぶ
 
-\begin{definition}{置換}
+\begin{definition*}{置換}
   集合$\{ 1,2,\ldots,n \}$からそれ自身への写像$\sigma$が全単射であるとき、$\sigma$は$n$次の\keyword{置換}であるという
-\end{definition}
+\end{definition*}
 
 たとえば、
 \begin{equation*}
@@ -72,11 +75,11 @@
 
 写像の合成の結合法則から、置換の積でも結合法則が成り立つ
 
-\begin{theorem}{置換の積の結合法則}
+\begin{theorem*}{置換の積の結合法則}
   \begin{equation*}
     (\sigma \tau) \rho = \sigma (\tau \rho)
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{恒等置換}
 
@@ -103,7 +106,7 @@
 
 また、次の性質はのちに行列式の性質を議論する際に重要になる
 
-\begin{theorem}{恒等置換の単調性による特徴づけ}\label{thm:identity-permutation-characterized-by-monotonicity}
+\begin{theorem}{恒等置換の単調性による特徴づけ}{identity-permutation-characterized-by-monotonicity}
   $i \leq \sigma(i)$（あるいは$i \geq \sigma(i)$）を満たす置換$\sigma$は恒等置換しか存在しない
 \end{theorem}
 
@@ -143,13 +146,13 @@
 
 置換の中で最も基本的なのは、2文字だけを交換する置換である
 
-\begin{definition}{互換}
+\begin{definition*}{互換}
   $1 \leq i \neq j \leq n$のとき、$\sigma(i) = j,\, \sigma(j) = i$であって、$k$が$i,\,j$以外のとき$\sigma(k)=k$とすることで得られる置換を
   \begin{equation*}
     \sigma = (ij)
   \end{equation*}
   と書き、このような置換を\keyword{互換}という
-\end{definition}
+\end{definition*}
 
 たとえば、
 \begin{equation*}
@@ -203,11 +206,11 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 この例の結果を一般的に述べると、次のようになる
 
-\begin{theorem}{互換と置換の積}
+\begin{theorem*}{互換と置換の積}
   $\sigma \in S_n$に対して、$\tau = (ij)$を左からかけた$\tau\sigma$の一行表示は、$\sigma$の数字$i$と$j$を交換したものである
 
   また、$\tau$を右からかけた$\sigma\tau$の一行表示は、$\sigma$の$i$番目の数字と$j$番目の数字を交換したものである
-\end{theorem}
+\end{theorem*}
 
 \subsection{互換の積への分解}
 
@@ -224,9 +227,9 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
   \sigma = (34)(12)(23)
 \end{equation*}
 
-\begin{theorem}{互換の積への置換の分解}
+\begin{theorem*}{互換の積への置換の分解}
   任意の置換$\sigma$は、いくつかの互換の積として書ける
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $n$に対する帰納法を用いる
@@ -299,7 +302,7 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 \end{equation*}
 と定める
 
-\begin{theorem}{置換作用の結合法則}\label{thm:permutation-action-associativity}
+\begin{theorem}{置換作用の結合法則}{permutation-action-associativity}
   $f = f(x_1,\ldots,x_n)$を$n$変数の多項式とし、$\sigma, \tau \in S_n$とするとき、
   \begin{equation*}
     (\sigma \tau) f = \sigma (\tau f)
@@ -334,18 +337,18 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
   \end{NiceArray}
 \end{equation*}
 
-\begin{definition}{差積}
+\begin{definition*}{差積}
   次のような$n$変数の多項式を\keyword{差積}と呼ぶ
   \begin{equation*}
     \Delta_n = \prod_{1 \leq i < j \leq n} (x_i - x_j)
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 置換の符号を理解するために、差積を使うことができる
 
 その第一歩となるのが、次の定理である
 
-\begin{theorem}{互換による差積の符号変化}\label{thm:transposition-negates-delta}
+\begin{theorem}{互換による差積の符号変化}{transposition-negates-delta}
   $\tau$を互換とするとき、
   \begin{equation*}
     \tau \Delta_n = - \Delta_n
@@ -411,24 +414,24 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 \subsection{置換の符号}
 
-\begin{theorem}{置換による差積の符号変化}
+\begin{theorem*}{置換による差積の符号変化}
   置換$\sigma \in S_n$が$s$個の互換の積として書けるならば、
   \begin{equation*}
     \sigma \Delta_n = (-1)^s \Delta_n
   \end{equation*}
   が成り立つ
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   置換$\sigma$を$s$個の互換の積$\sigma = \tau_1 \cdots \tau_s$と書いたとき、
   \begin{equation*}
     \sigma \Delta_n = (\tau_1 \cdots \tau_s) \Delta_n
   \end{equation*}
-  \hyperref[thm:permutation-action-associativity]{置換作用の結合法則}を用いて、
+  \thmref{thm:permutation-action-associativity}を用いて、
   \begin{equation*}
     \sigma \Delta_n = (\tau_1 \cdots \tau_{s-1}) (\tau_s \Delta_n)
   \end{equation*}
-  \hyperref[thm:transposition-negates-delta]{互換による差積の符号変化}を繰り返し用いると、
+  \thmref{thm:transposition-negates-delta}を繰り返し用いると、
   \begin{align*}
     \sigma \Delta_n & = (\tau_1 \cdots \tau_{s-1}) (-\Delta_n)  \\
                     & = (-1)(\tau_1 \cdots \tau_{s-1}) \Delta_n \\
@@ -447,31 +450,31 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 このようにして、次の定理が示されたことになる
 
-\begin{theorem}{置換の符号の存在}
+\begin{theorem*}{置換の符号の存在}
   置換$\sigma$を互換の積として書くとき、用いられる互換の個数の偶奇は$\sigma$のみによって決まる
-\end{theorem}
+\end{theorem*}
 
 そこで、置換の符号を次のように定義する
 
-\begin{definition}{置換の符号}
+\begin{definition*}{置換の符号}
   置換$\sigma \in S_n$を互換の積$\sigma = \tau_1 \cdots \tau_i$として書いたとき、$\sigma$の\keyword{符号}を
   \begin{equation*}
     \sgn(\sigma) = (-1)^i
   \end{equation*}
   と定義する
-\end{definition}
+\end{definition*}
 
 そして、互換の個数の偶奇をそのまま、置換の偶奇として定める
 
-\begin{definition}{偶置換と奇置換}
+\begin{definition*}{偶置換と奇置換}
   置換$\sigma \in S_n$の符号$\sgn(\sigma)$が$+1$であれば$\sigma$を\keyword{偶置換}と呼び、$-1$であれば\keyword{奇置換}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{置換の性質}
 \marginnote{\refbookA p157、159}
 
-\begin{theorem}{逆置換の符号}\label{thm:sign-of-inverse-permutation}
+\begin{theorem}{逆置換の符号}{sign-of-inverse-permutation}
   \begin{equation*}
     \sgn(\sigma^{-1}) = \sgn(\sigma)
   \end{equation*}
@@ -493,7 +496,7 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 \sectionline
 
-\begin{theorem}{置換の符号の乗法性}\label{thm:sign-multiplicativity}
+\begin{theorem}{置換の符号の乗法性}{sign-multiplicativity}
   \begin{equation*}
     \sgn(\sigma \tau) = \sgn(\sigma) \sgn(\tau)
   \end{equation*}
@@ -515,7 +518,7 @@ $\sigma(12)$は、$12345$に互換$(12)$を作用させて$21345$とし、さら
 
 \sectionline
 
-\begin{theorem}{置換群の左右作用に対する和の不変性}\label{thm:sum-invariance-under-permutation-action}
+\begin{theorem}{置換群の左右作用に対する和の不変性}{sum-invariance-under-permutation-action}
   $f$を$S_n$上の関数とするとき、任意の$\tau \in S_n$に対して、次が成り立つ
   \begin{equation*}
     \sum_{\sigma \in S_n} f(\tau\sigma) = \sum_{\sigma \in S_n} f(\sigma) = \sum_{\sigma \in S_n} f(\sigma\tau)

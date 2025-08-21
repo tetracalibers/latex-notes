@@ -54,19 +54,19 @@
 
 数を並べるとき、縦と横の2通りがある。それぞれ\keyword{列ベクトル}、\keyword{行ベクトル}として定義する。
 
-\begin{definition}{列ベクトル}
+\begin{definition*}{列ベクトル}
   数を縦に並べたものを\keyword{列ベクトル}という。
   \begin{equation*}
     \vb*{a} = (a_i) = \begin{pmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{pmatrix}
   \end{equation*}
-\end{definition}
+\end{definition*}
 
-\begin{definition}{行ベクトル}
+\begin{definition*}{行ベクトル}
   数を横に並べたものを\keyword{行ベクトル}という。
   \begin{equation*}
     \vb*{a} = (a_i) = \begin{pmatrix} a_1 & a_2 & \cdots & a_n \end{pmatrix}
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 単に「ベクトル」と言った場合は、列ベクトルを指すことが多い。
 
@@ -74,12 +74,12 @@
 
 行ベクトルは、列ベクトルを横倒しにしたもの（列ベクトルの\keyword{転置}）と捉えることもできる。
 
-\begin{theorem}{転置による行ベクトルの表現}
+\begin{theorem*}{転置による行ベクトルの表現}
   行ベクトルは、列ベクトル$\vb*{a}$を\keyword{転置}したものとして表現できる。
   \begin{equation*}
     \vb*{a}^\top = \begin{pmatrix} a_1 & a_2 & \cdots & a_n \end{pmatrix}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{ベクトルの和}
@@ -90,12 +90,12 @@
 
 ベクトルどうしの足し算は、同じ位置にある数どうしの足し算として定義する。
 
-\begin{definition}{ベクトルの和}
+\begin{definition*}{ベクトルの和}
   2つの$n$次元ベクトル$\vb*{a}$と$\vb*{b}$の和を次のように定義する。
   \begin{equation*}
     \vb*{a} + \vb*{b} = (a_i) + (b_i) = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \\ \vdots \\ a_n + b_n \end{pmatrix}
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ、その位置の数どうしの足し算を考えることはできない。
 
@@ -303,11 +303,11 @@ $i$番目の数が$\vb*{a}$と$\vb*{b}$の両方に存在していなければ�
 
 そこで、ベクトルの定数倍（スカラー倍）を次のように定義する。
 
-\begin{definition}{ベクトルのスカラー倍}
+\begin{definition*}{ベクトルのスカラー倍}
   $n$次元ベクトル$\vb*{a}$の$k$倍を次のように定義する。
   \begin{equation*}
     k\vb*{a} = k(a_i) = \begin{pmatrix} ka_1 \\ ka_2 \\ \vdots \\ ka_n \end{pmatrix}
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 \end{document}

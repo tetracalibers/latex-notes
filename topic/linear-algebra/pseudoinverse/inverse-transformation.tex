@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -30,7 +33,7 @@ $A$してからそれを$A^{-1}$で打ち消すのだから、結局なにもし
 
 \subsection{列空間上の逆変換}
 
-$\vb*{x}$が列空間$\mathcal{U}$の元である場合は、\hyperref[sec:projection-onto-subspace]{列空間へ射影しても変わらない}ので、
+$\vb*{x}$が列空間$\mathcal{U}$の元である場合は、\secref{sec:projection-onto-subspace}で述べたように、列空間へ射影しても変わらないので、
 \begin{equation*}
   P_{\mathcal{U}} \vb*{x} = \vb*{x}
 \end{equation*}
@@ -56,7 +59,7 @@ $\vb*{x}$が列空間$\mathcal{U}$の元である場合は、\hyperref[sec:proje
 
 \subsection{行空間上の逆変換}
 
-同様に、$\vb*{x}$が行空間$\mathcal{V}$の元である場合は、\hyperref[sec:projection-onto-subspace]{行空間へ射影しても変わらない}ので、
+同様に、$\vb*{x}$が行空間$\mathcal{V}$の元である場合は、\secref{sec:projection-onto-subspace}で述べたように、行空間へ射影しても変わらないので、
 \begin{equation*}
   P_{\mathcal{V}} \vb*{x} = \vb*{x}
 \end{equation*}

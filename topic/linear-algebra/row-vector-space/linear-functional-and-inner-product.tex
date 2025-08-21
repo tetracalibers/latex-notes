@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -28,7 +31,7 @@
 
 \br
 
-さて、\hyperref[sec:inner-product-as-observer]{「観測装置としての内積」}の章で述べたように、
+さて、\secref{sec:inner-product-as-observer}で述べたように、
 \begin{emphabox}
   \begin{spacebox}
     \begin{center}
@@ -58,21 +61,21 @@ $\phi_{\vb*{a}}$は、縦ベクトル$\vb*{v}$を入力とし、スカラー値$
 
 この関数$\phi_{\vb*{a}}$は、\keyword{線形汎関数}と呼ばれる写像の一例である。
 
-\begin{definition}{$\mathbb{R}^n$上の線形汎関数}
+\begin{definition*}{$\mathbb{R}^n$上の線形汎関数}
   $\mathbb{R}^n$上の関数$\phi \colon \mathbb{R}^n \to \mathbb{R}$が線形写像であるとき、$\phi$を$\mathbb{R}^n$上の\keyword{線形汎関数}あるいは\keyword{線形形式}という。
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{線形汎関数のベクトル表示}
 
 $\mathbb{R}^n$上の線形汎関数は、すべて内積から定めることができる。
 
-\begin{theorem}{$\mathbb{R}^n$上の線形汎関数の内積による表現}
+\begin{theorem*}{$\mathbb{R}^n$上の線形汎関数の内積による表現}
   $\mathbb{R}^n$上の任意の線形汎関数$\psi\colon \mathbb{R}^n \to \mathbb{R}$に対し、ある$\vb*{a} \in \mathbb{R}^n$がただ一つ存在して、次を満たす。
   \begin{equation*}
     \psi = \phi_{\vb*{a}} = \braket{\vb*{a}|\cdot}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $\mathbb{R}^n$の標準基底を$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$とする。
@@ -132,7 +135,7 @@ $\mathbb{R}^n$上の線形汎関数は、すべて内積から定めることが
 
 $\psi$が決まれば、$\psi(\vb*{e}_1), \ldots, \psi(\vb*{e}_n)$の値が決まるので、$\vb*{a}$がただ一つ定まる。
 
-逆に、\hyperref[thm:linear-map-equality-on-basis]{基底$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$に対する$\psi$の値が決まれば$\psi$の形が決まる}ので、上の式のように$\vb*{a}$を定めれば、$\vb*{a}$に対応して$\psi$の形がただ一つに定まることになる。
+逆に、\thmref{thm:linear-map-equality-on-basis}より、基底$\{\vb*{e}_1, \ldots, \vb*{e}_n\}$に対する$\psi$の値が決まれば$\psi$の形が決まるので、上の式のように$\vb*{a}$を定めれば、$\vb*{a}$に対応して$\psi$の形がただ一つに定まることになる。
 
 \br
 

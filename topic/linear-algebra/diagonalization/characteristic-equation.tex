@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -23,28 +26,28 @@ $\lambda$が$n$次正方行列$A$の固有値であることは、
 
 $\vb*{x} \neq \vb*{0}$という条件により、$(A - \lambda E)\vb*{x} = \vb*{0}$は非自明な解を持つ必要がある
 
-\begin{theorem}{固有ベクトルの斉次形方程式による定義}
+\begin{theorem*}{固有ベクトルの斉次形方程式による定義}
   固有値$\lambda$の固有ベクトルとは、斉次形方程式
   \begin{equation*}
     (A - \lambda E)\vb*{x} = \vb*{0}
   \end{equation*}
   の非自明な解のことである
-\end{theorem}
+\end{theorem*}
 
 固有値を求める上で重要となるこの定理は、行列式を使って言い換えることができる
 
-\begin{theorem}{固有値の方程式による定義}
+\begin{theorem*}{固有値の方程式による定義}
   行列$A$の固有値$\lambda$は、$x$についての$n$次方程式
   \begin{equation*}
     \det(A - x E) = 0
   \end{equation*}
   の$K$に含まれる解である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $\lambda$が$A$の固有値であることは、斉次形方程式$(A - \lambda E)\vb*{x} = \vb*{0}$が非自明解を持つことと言い換えられる
 
-  そして、\hyperref[thm:homogeneous-solution-iff-det-zero]{斉次形方程式が非自明解を持つことは、行列式が0になることと同値}である
+  そして、\thmref{thm:homogeneous-solution-iff-det-zero}より、斉次形方程式が非自明解を持つことは、行列式が0になることと同値である
 
   すなわち、
   \begin{equation*}
@@ -88,7 +91,7 @@ $(a_{11} - x)(a_{22} - x) \cdots (a_{nn} - x)$のうち、1つだけ$a_{ii}$を�
 \end{equation*}
 である
 
-これは、\hyperref[def:trace]{トレースの定義}より、
+これは、\defref{def:trace}より、
 \begin{equation*}
   (-1)^{n-1} \tr(A) x^{n-1}
 \end{equation*}
@@ -142,7 +145,7 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 
 \sectionline
 
-\begin{definition}{特性多項式}
+\begin{definition*}{特性多項式}
   $A$を正方行列、$x$を変数として、
   \begin{equation*}
     \Phi_A(x) = \det(xE - A)
@@ -150,22 +153,22 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
   とおく
 
   これを\keyword{特性多項式}あるいは\keyword{固有多項式}と呼ぶ
-\end{definition}
+\end{definition*}
 
-\begin{theorem}{特性多項式の構造}
+\begin{theorem*}{特性多項式の構造}
   $A$を$n$次正方行列とすると、特性多項式は、次のような$n$次多項式である
   \begin{equation*}
     \Phi_A(x) = x^n - \tr(A) x^{n-1} + \cdots + (-1)^n \det(A)
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
-\begin{definition}{特性方程式}
+\begin{definition*}{特性方程式}
   特性多項式$\Phi_A(x)$の根を求める方程式
   \begin{equation*}
     \Phi_A(x) = 0
   \end{equation*}
   を、\keyword{特性方程式}あるいは\keyword{固有方程式}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{固有値の重複度}
@@ -192,9 +195,9 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 
 このように、「何回同じ解が現れるか？」を数えたものを\keyword{重複度}という
 
-\begin{definition}{方程式の解の重複度}
+\begin{definition*}{方程式の解の重複度}
   多項式$f(x)$で表される方程式$f(x) = 0$において、$f(x)$が$(x-\alpha)^m$で割り切れるが、$(x-\alpha)^{m+1}$では割り切れないような定数$\alpha$と自然数$m$が存在するとき、$\alpha$はこの方程式の\keyword{$m$重解}あるいは\keyword{$m$重根}であるといい、$m$を$\alpha$の\keyword{重複度}と呼ぶ
-\end{definition}
+\end{definition*}
 
 上の定義は難しく聞こえるが、「ちょうど$m$回だけ$(x-\alpha)$がかかっている」ということの言い換えにすぎない
 
@@ -229,13 +232,13 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 \end{equation*}
 と因数分解できることは、\keyword{代数学の基本定理}によって保証されている
 
-\begin{theorem}{代数学の基本定理}
+\begin{theorem*}{代数学の基本定理}
   定数でない任意の1変数多項式は、複素計数の1次式の積に分解できる
-\end{theorem}
+\end{theorem*}
 
 そこで、固有値の\keyword{重複度}を次のように定義する
 
-\begin{definition}{固有値の重複度}\label{def:algebraic-multiplicity}
+\begin{definition}{固有値の重複度}{algebraic-multiplicity}
   特性多項式を因数分解して、
   \begin{equation*}
     \Phi_A(x) = (x- \alpha_1)^{k_1}\cdots (x - \alpha_s)^{k_s}
@@ -257,11 +260,11 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
 \section{相似な行列の特性多項式}
 \marginnote{\refbookF p269〜271 \\ \refbookA p190〜191}
 
-\hyperref[thm:determinant-multiplicativity]{行列式の乗法性}により、正方行列$A,\,B$が、ある正則行列$P$に対して
+\thmref{thm:determinant-multiplicativity}より、正方行列$A,\,B$が、ある正則行列$P$に対して
 \begin{equation*}
   B = P^{-1}AP
 \end{equation*}
-となる（$A$と$B$が\hyperref[def:similar-matrices]{相似}である）ならば、次のように$A$と$B$の特性多項式は一致する
+となる（$A$と$B$が\defref{def:similar-matrices}である）ならば、次のように$A$と$B$の特性多項式は一致する
 \begin{align*}
   \det(xE - B) & = \det(xE - P^{-1}AP)       \\
                & = \det(xPP^{-1} - P^{-1}AP) \\
@@ -272,13 +275,13 @@ $(-1)^n$は$x$に依存しない定数であり、方程式の解の集合を変
                & = \det(xE - A)
 \end{align*}
 
-\begin{theorem}{相似な行列の特性多項式}\label{thm:char-poly-of-similar-matrices}
+\begin{theorem}{相似な行列の特性多項式}{char-poly-of-similar-matrices}
   相似な行列の特性多項式は一致する
 \end{theorem}
 
 この事実は、すなわち次の事実を意味する
 
-\begin{theorem}{相似な行列の固有値}\label{thm:eigenvalues-of-similar-matrices}
+\begin{theorem}{相似な行列の固有値}{eigenvalues-of-similar-matrices}
   相似な行列の固有値は重複度も含めて一致する
 \end{theorem}
 
@@ -290,17 +293,17 @@ $n$次元正方行列$A = (a_{ij})$の特性多項式が、
 \end{equation*}
 であることを思い出すと、次のことがいえる
 
-\begin{theorem}{相似な行列のトレースと行列式}
+\begin{theorem*}{相似な行列のトレースと行列式}
   $A$と$B$が相似ならば、
   \begin{align*}
     \tr(A)  & = \tr(B)  \\
     \det(A) & = \det(B)
   \end{align*}
-\end{theorem}
+\end{theorem*}
 
 \br
 
-さらに、$A$が\hyperref[def:diagonalizable]{対角化可能}であるときには、
+さらに、$A$が\defref{def:diagonalizable}であるときには、
 \begin{equation*}
   B = P^{-1}AP = \begin{pmatrix}
     \alpha_1 & 0        & \cdots & 0        \\
@@ -316,25 +319,25 @@ $n$次元正方行列$A = (a_{ij})$の特性多項式が、
 \end{align*}
 であることがわかる
 
-\begin{theorem}{対角化可能行列の固有値による不変量の表現}
+\begin{theorem*}{対角化可能行列の固有値による不変量の表現}
   行列$A$が対角化可能であるとき、
   \begin{itemize}
     \item $A$のトレースは$A$の固有値の和
     \item $A$の行列式は$A$の固有値の積
   \end{itemize}
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 
-さて、$A$と$B$が\hyperref[def:similar-matrices]{相似}であるとき、$A$と$B$は\hyperref[thm:similarity-under-basis-change]{1つの線形変換$f$を異なる基底によって表現}して得られた行列であるという関係にある
+さて、$A$と$B$が\defref{def:similar-matrices}であるとき、\thmref{thm:similarity-under-basis-change}より、$A$と$B$は1つの線形変換$f$を異なる基底によって表現して得られた行列であるという関係にある
 
 \br
 
 このとき、$A$と$B$の特性多項式が一致するということは、次のように言い換えられる
 
-\begin{theorem}{特性多項式の基底不変性}
+\begin{theorem*}{特性多項式の基底不変性}
   線形空間$V$の線形変換$f$に対して、$V$のある基底に関する表現行列$A$の特性多項式$\Phi_A(x)$は、基底の選び方によらず$f$のみによって決まる
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{対角化可能な行列の特性多項式}
@@ -368,13 +371,13 @@ $A$が$P$によって対角化されたとして、
 
 つまり、対角成分として現れた数たち$c_1,\ldots,c_n$は、重複度を含めて、特性多項式$\Phi_A(x)$の根と一致する
 
-\begin{theorem}{対角化と特性多項式の根}
+\begin{theorem*}{対角化と特性多項式の根}
   対角化可能な行列$A$を対角化して得られる対角行列の対角成分たちは、重複度を含めて特性多項式の根と一致する
-\end{theorem}
+\end{theorem*}
 
-また、\hyperref[thm:diagonalizable-iff-n-indep-eigenvectors]{対角化可能性と固有ベクトルの線型独立性}の証明過程を振り返ると、次のようにまとめられる
+また、\thmref{thm:diagonalizable-iff-n-indep-eigenvectors}の証明過程を振り返ると、次のようにまとめられる
 
-\begin{theorem}{対角化行列の列ベクトルと固有ベクトルの対応}\label{thm:diagonalization-columns-are-eigenvectors}
+\begin{theorem}{対角化行列の列ベクトルと固有ベクトルの対応}{diagonalization-columns-are-eigenvectors}
   対角化可能な行列$A$を対角化する正則行列$P$の列ベクトルはすべて$A$の固有ベクトルであり、固有値$\alpha_i$のものが$k_i$個ある
 
   ここで、$k_i$は$\alpha_i$の重複度である

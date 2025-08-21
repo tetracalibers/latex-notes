@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,44 +11,44 @@
 
 体$\mathbb{C}$上の計量空間において、内積を保つ線形変換を\keyword{ユニタリ変換}という
 
-\begin{definition}{ユニタリ変換}
+\begin{definition*}{ユニタリ変換}
   体$\mathbb{C}$上の計量空間$V$における線形変換$f$が\keyword{ユニタリ変換}であるとは、任意の$\vb*{u},\,\vb*{v} \in V$に対し、
   \begin{equation*}
     (f(\vb*{u}),f(\vb*{v})) = (\vb*{u},\vb*{v})
   \end{equation*}
   が成り立つことである
-\end{definition}
+\end{definition*}
 
 体$\mathbb{R}$上のユニタリ変換は、\keyword{直交変換}と呼ばれる
 
 \subsection{ユニタリ変換の表現行列}
 
-ユニタリ行列の性質である\hyperref[thm:unitary-characterized-by-inner-product-invariance]{内積不変性}
+ユニタリ行列の性質である\thmref{thm:unitary-characterized-by-inner-product-invariance}より、
 \begin{equation*}
   (A\vb*{u}, A\vb*{v}) = (\vb*{u}, \vb*{v})
 \end{equation*}
-から、ユニタリ変換の表現行列は\keyword{ユニタリ行列}であることがわかる
+が成り立つため、ユニタリ変換の表現行列は\keyword{ユニタリ行列}であることがわかる
 
-\begin{theorem}{ユニタリ変換とユニタリ行列表現}
+\begin{theorem*}{ユニタリ変換とユニタリ行列表現}
   計量空間上の線形変換$f$がユニタリ変換であることと、$f$の表現行列$A$がユニタリ行列であることは同値である
-\end{theorem}
+\end{theorem*}
 
 このことから、ユニタリ行列の性質は、ユニタリ変換の性質として言い換えることができる
 
 \subsection{ユニタリ変換とノルム}
 
-ユニタリ行列の\hyperref[thm:unitary-characterized-by-norm-invariance]{ノルム不変性}から、
+\thmref{thm:unitary-characterized-by-norm-invariance}から、
 \begin{shaded}
   ユニタリ変換はベクトルの長さを変えない変換
 \end{shaded}
 でもあることがわかる
 
-\begin{theorem}{ユニタリ変換とノルム保存性}
+\begin{theorem*}{ユニタリ変換とノルム保存性}
   計量空間$V$における線形変換を$f$がユニタリ変換であることと、任意の$\vb*{v} \in V$に対し
   \begin{equation*}
     \|f(\vb*{v})\| = \|\vb*{v}\|
   \end{equation*}
   が成り立つことは同値である
-\end{theorem}
+\end{theorem*}
 
 \end{document}

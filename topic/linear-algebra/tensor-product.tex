@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{テンソル積}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:factorization} % 前の章
+}{}
+
+\chapter{テンソル積}\label{ch:tensor-product}
 
 \subfile{./tensor-product/bilinear-map}
 %\subfile{./tensor-product/universality}

@@ -8,9 +8,9 @@
 
 行列$A=(a_{ij})$に対し、その成分の行と列の位置を交換してできる行列を\keyword{転置行列}という
 
-\begin{definition}{転置行列}
+\begin{definition*}{転置行列}
   $A = (a_{ij})$を$m \times n$型行列とするとき、$(i,j)$成分が$a_{ji}$である$n \times m$型行列を$A$の\keyword{転置行列}と呼び、$\transpose{A}$と表す
-\end{definition}
+\end{definition*}
 
 文字$t$を左肩に書くのは、右肩に書くと$t$乗に見えてしまうからである
 
@@ -39,7 +39,7 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 
 \keyword{転置}は「行と列の入れ替え」であるので、明らかに次が成り立つ
 
-\begin{theorem}{転置操作の反復不変性}\label{thm:transpose-involution}
+\begin{theorem}{転置操作の反復不変性}{transpose-involution}
   $\transpose{A}$に対して、転置をもう一度して得られる行列は$A$と一致する
   \begin{equation*}
     {}^t ({}^t A) = {}^t\transpose{A} = A
@@ -48,7 +48,7 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 
 \sectionline
 
-\begin{theorem}{転置と行列積の順序反転性}\label{thm:transpose-of-product}
+\begin{theorem}{転置と行列積の順序反転性}{transpose-of-product}
   行列$A,\,B$の積$AB$が定義できるとき、
   \begin{equation*}
     {}^t (AB) = \transpose{B} \transpose{A}
@@ -61,7 +61,7 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 
 \sectionline
 
-\begin{theorem}{行列の和に対する転置の分配性}\label{thm:transpose-distributes-over-sum}
+\begin{theorem}{行列の和に対する転置の分配性}{transpose-distributes-over-sum}
   $A$と$B$が同じ型の行列であるとき、
   \begin{equation*}
     {}^t(A + B) = {}^t A + {}^t B
@@ -78,18 +78,18 @@ $t$乗と区別しつつ、右肩に書く流儀として、$A^T$と書く場合
 
 正方行列$A$が「転置しても元と変わらない」としたら、$A$の成分は左上から右下にかけての対角線に関して\keyword{対称}（$a_{ij} = a_{ji}$）になっている
 
-\begin{definition}{対称行列}\label{def:symmetric-matrix}
+\begin{definition}{対称行列}{symmetric-matrix}
   正方行列$A$が次を満たすとき、$A$を\keyword{対称行列}という
   \begin{equation*}
     \transpose{A} = A
   \end{equation*}
 \end{definition}
 
-\begin{definition}{交代行列}
+\begin{definition*}{交代行列}
   正方行列$A$が次を満たすとき、$A$を\keyword{交代行列}という
   \begin{equation*}
     \transpose{A} = -A
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 \end{document}

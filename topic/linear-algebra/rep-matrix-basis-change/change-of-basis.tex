@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -32,7 +35,7 @@ $V = \mathbb{R}^n$とし、標準基底$\mathcal{E}$によって行列$A$で表�
 
 \br
 
-$B$を定める原理は、\hyperref[sec:construction-of-matrix-rep]{表現行列の構成}で議論したように、
+$B$を定める原理は、\secref{sec:construction-of-matrix-rep}で議論したように、
 \begin{equation*}
   (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) B
 \end{equation*}
@@ -45,14 +48,14 @@ $B$を定める原理は、\hyperref[sec:construction-of-matrix-rep]{表現行�
 \end{equation*}
 とおくとき、次に示すように$P$は正則行列である
 
-\begin{theorem}{基底変換行列の正則性}
+\begin{theorem*}{基底変換行列の正則性}
   基底の変換行列は正則行列である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $P$の列ベクトルは基底であるため、線形独立である
 
-  \hyperref[thm:invertible-iff-col-indep]{列ベクトルの線型独立性による正則の判定}で示したように、正則行列であることは、列ベクトルが線形独立であることと同値である $\qed$
+  \thmref{thm:invertible-iff-col-indep}で示したように、正則行列であることは、列ベクトルが線形独立であることと同値である $\qed$
 \end{proof}
 
 また、$B$を決める式
@@ -133,13 +136,13 @@ $V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{
 
 この意味で、$P$を基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の\keyword{基底変換行列}と呼ぶ
 
-\begin{theorem}{線形空間の基底変換行列}
+\begin{theorem*}{線形空間の基底変換行列}
   $V$を線形空間とし、$\mathcal{V} = \{\vb*{v}_i\}_{i=1}^n,\, \mathcal{V}' = \{\vb*{v}'_i\}_{i=1}^n$を$V$の基底とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列$P$は、
   \begin{equation*}
     (\vb*{v}'_1, \ldots, \vb*{v}'_n) = (\vb*{v}_1, \ldots, \vb*{v}_n) P
   \end{equation*}
   により定まる
-\end{theorem}
+\end{theorem*}
 
 この行列$P$は、座標写像を介して考えると、次の可換図式で定まるものである
 
@@ -161,7 +164,7 @@ $V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{
 
 一方、この行列$P$はベクトルの成分表示の変換に用いることもできる
 
-\begin{theorem}{座標ベクトルの変換則}\label{thm:coordinate-change-rule}
+\begin{theorem}{座標ベクトルの変換則}{coordinate-change-rule}
   基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とし、ベクトル$\vb*{a} \in V$の$\mathcal{V},\, \mathcal{V}'$に関する座標ベクトルをそれぞれ$\vb*{x},\, \vb*{x}'$とするとき、
   \begin{equation*}
     \vb*{x} = P \vb*{x}'
@@ -214,7 +217,7 @@ $V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{
 
   どちらも$(\vb*{v}_1, \ldots, \vb*{v}_n)$との積の形、すなわち$\vb*{v}_1, \ldots, \vb*{v}_n$の線形結合として表されている
 
-  ここで、基底$\vb*{v}_1, \ldots, \vb*{v}_n$の線型独立性から、その\hyperref[thm:lin-indep-iff-unique-lincomb]{線形結合は一意的である}ので、係数比較ができて、
+  ここで、\thmref{thm:lin-indep-iff-unique-lincomb}より、基底$\vb*{v}_1, \ldots, \vb*{v}_n$の線型独立性から、その線形結合は一意的であるので、係数比較ができて、
   \begin{equation*}
     \begin{pmatrix}
       x_1    \\
@@ -305,7 +308,7 @@ $V$の基底$\mathcal{V}$と$W$の基底$\mathcal{W}$に関する$f$の表現行
 \end{equation*}
 が得られる
 
-\begin{theorem}{基底変換に伴う表現行列の変換}\label{thm:change-of-representation-matrix}
+\begin{theorem}{基底変換に伴う表現行列の変換}{change-of-representation-matrix}
   線形写像$f\colon V \to W$の基底$\mathcal{V},\, \mathcal{W}$に関する表現行列を$A$とし、同じ線形写像$f$の別な基底$\mathcal{V}',\, \mathcal{W}'$に関する表現行列を$B$とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とすると、
   \begin{equation*}
     B = Q^{-1} A P
@@ -321,7 +324,7 @@ $V$の基底$\mathcal{V}$と$W$の基底$\mathcal{W}$に関する$f$の表現行
 \end{equation*}
 が成り立つ
 
-\begin{theorem}{基底変換に伴う表現行列の変換（線形変換の場合）}\label{thm:similarity-under-basis-change}
+\begin{theorem}{基底変換に伴う表現行列の変換（線形変換の場合）}{similarity-under-basis-change}
   線形変換$f\colon V \to V$の基底$\mathcal{V}$に関する表現行列を$A$とし、同じ線形変換$f$の別な基底$\mathcal{V}'$に関する表現行列を$B$とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とすると、
   \begin{equation*}
     B = P^{-1} A P

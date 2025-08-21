@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,7 +11,7 @@
 
 次の性質により、以後議論する行列式の性質が列に対して成り立つなら、行に対しても成り立つといえるようになる
 
-\begin{theorem}{行列式の対称性}\label{thm:determinant-transpose-invariance}
+\begin{theorem}{行列式の対称性}{determinant-transpose-invariance}
   \begin{equation*}
     \det({}^t A) = \det(A)
   \end{equation*}
@@ -34,7 +37,7 @@
 
   \br
 
-  ここで、$\rho = \sigma^{-1}$とおくと、$\sigma = \rho^{-1}$であり、\hyperref[thm:sign-of-inverse-permutation]{逆置換の符号}から$\sgn(\sigma) = \sgn(\rho^{-1}) = \sgn(\rho)$であるから、
+  ここで、$\rho = \sigma^{-1}$とおくと、$\sigma = \rho^{-1}$であり、\thmref{thm:sign-of-inverse-permutation}から$\sgn(\sigma) = \sgn(\rho^{-1}) = \sgn(\rho)$であるから、
   \begin{equation*}
     \det({}^t A) = \sum_{\rho \in S_n} \sgn(\rho) \prod_{j=1}^n a_{j,\rho(j)}  = \det(A)
   \end{equation*}
@@ -44,12 +47,12 @@
 
 \sectionline
 
-\begin{theorem}{行列式の列についての交代性}
+\begin{theorem*}{行列式の列についての交代性}
   行列$A = (\vb*{a}_1, \ldots, \vb*{a}_n)$において、2つの列を入れ替えた行列を作ると、その行列の行列式の値は、元の行列$A$の行列式の値の$(-1)$倍になる
   \begin{multline*}
     \det(\vb*{a}_1, \ldots, \vb*{a}_i, \ldots, \vb*{a}_j, \ldots, \vb*{a}_n) \\= -\det(\vb*{a}_1, \ldots, \vb*{a}_j, \ldots, \vb*{a}_i, \ldots, \vb*{a}_n) \\ (1 \leq i < j \leq n)
   \end{multline*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   元々の行列$A$の行列式の各項が、
@@ -67,7 +70,7 @@
     f(\tau) = \sgn(\tau) a_{\tau(1),1} \cdots a_{\tau(i),i} \cdots a_{\tau(j),j} \cdots a_{\tau(n),n}
   \end{equation*}
 
-  このとき、\hyperref[thm:sum-invariance-under-permutation-action]{置換群の左右作用に対する和の不変性}より、
+  このとき、\thmref{thm:sum-invariance-under-permutation-action}より、
   \begin{equation*}
     \sum_{\sigma \in S_n} f(\sigma) = \sum_{\sigma \in S_n} f(\sigma\sigma_0) = \sum_{\tau \in S_n} f(\tau)
   \end{equation*}
@@ -75,7 +78,7 @@
 
   \br
 
-  さらに、\hyperref[thm:sign-multiplicativity]{置換の符号の乗法性}より、
+  さらに、\thmref{thm:sign-multiplicativity}より、
   \begin{equation*}
     \sgn(\tau) = \sgn(\sigma) \sgn(\sigma_0) = -\sgn(\sigma)
   \end{equation*}
@@ -89,14 +92,14 @@
 
 \sectionline
 
-\begin{theorem}{行列式の列についての多重線形性}
+\begin{theorem*}{行列式の列についての多重線形性}
   行列式を列の関数とみたとき、この関数は、どの列についても線形である
   \begin{multline*}
     \det(\vb*{a}_1,\ldots,\alpha\vb*{u} + \beta\vb*{v}, \ldots, \vb*{a}_n) \\
     = \alpha\det(\vb*{a}_1,\ldots,\vb*{u},\ldots,\vb*{a}_n) \\
     + \beta\det(\vb*{a}_1,\ldots,\vb*{v},\ldots,\vb*{a}_n)
   \end{multline*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $\sigma \in S_n$に対応する各項について、
@@ -120,11 +123,11 @@
 
 \sectionline
 
-\hyperref[thm:determinant-transpose-invariance]{行列式の対称性}より、次の定理も得られる
+\thmref{thm:determinant-transpose-invariance}より、次の定理も得られる
 
-\begin{theorem}{行列式の行についての多重線形性と交代性}
+\begin{theorem*}{行列式の行についての多重線形性と交代性}
   行列式は行に関しても多重線形性と交代性をもつ
-\end{theorem}
+\end{theorem*}
 
 以降、列に対して成り立つ性質は行に対しても成り立つとし、列の場合のみを記載する
 
@@ -132,7 +135,7 @@
 \section{行列式の値が零になる条件}
 \marginnote{\refbookF p118}
 
-\begin{theorem}{列の重複による行列式の零化}\label{thm:det-zero-if-columns-repeat}
+\begin{theorem}{列の重複による行列式の零化}{det-zero-if-columns-repeat}
   $A = (\vb*{a}_1, \ldots, \vb*{a}_n)$の$n$個の列の中に、まったく同じものがあれば、
   \begin{equation*}
     \det(A) = 0
@@ -166,13 +169,13 @@
 
 \sectionline
 
-\begin{theorem}{列ベクトルの線形従属性による行列式の零化}
+\begin{theorem*}{列ベクトルの線形従属性による行列式の零化}
   $A = (\vb*{a}_1, \ldots, \vb*{a}_n)$の$n$個の列ベクトルが線形従属であるとすれば、
   \begin{equation*}
     \det(A) = 0
   \end{equation*}
   となる
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   列ベクトルのうち1つ$\vb*{a}_i$が、残りのいくつかの線型結合で表されるとすると、
@@ -193,7 +196,7 @@
 
 この定理の対偶をとることにより、次の定理が得られる
 
-\begin{theorem}{非零行列式による列ベクトルの線形独立性}\label{thm:lin-indep-if-det-nonzero}
+\begin{theorem}{非零行列式による列ベクトルの線形独立性}{lin-indep-if-det-nonzero}
   $A = (\vb*{a}_1, \ldots, \vb*{a}_n)$の行列式の値が0でないならば、$A$の$n$個の列ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$は線形独立である
 \end{theorem}
 
@@ -203,22 +206,22 @@
 
 行列式の性質から、行列の列や行に関する基本変形と行列式の関係が見えてくる
 
-\begin{theorem}{基本変形と行列式の関係}
+\begin{theorem*}{基本変形と行列式の関係}
   \begin{enumerate}[label=\romanlabel]
     \item 列（行）を交換すると行列式の符号が交換される
     \item 列（行）を定数倍すると、行列式の値も定数倍される
     \item 列（行）に他の列（行）の定数倍を加えても行列式の値は変化しない
   \end{enumerate}
-\end{theorem}
+\end{theorem*}
 
 (\romannum{i})は行列式の交代性、(\romannum{ii})は多重線形性であり、(\romannum{iii})は次の定理によって示される
 
-\begin{theorem}{列の掃き出しに関する不変性}
+\begin{theorem*}{列の掃き出しに関する不変性}
   $i \neq j$のとき、
   \begin{multline*}
     \det(\ldots, \vb*{a}_i + c \vb*{a}_j,\ldots, \vb*{a}_j \ldots) \\= \det(\ldots, \vb*{a}_i,\ldots, \vb*{a}_j \ldots)
   \end{multline*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   行列式の多重線形性より、

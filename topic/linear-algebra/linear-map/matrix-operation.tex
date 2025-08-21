@@ -5,7 +5,7 @@
 \sectionline
 \section{行列の積}
 
-\begin{theorem}{線形写像の合成}\label{thm:linear-map-composition}
+\begin{theorem}{線形写像の合成}{linear-map-composition}
   $\mathbb{R}^n$から$\mathbb{R}^m$への線形写像$g$と、$\mathbb{R}^m$から$\mathbb{R}^l$への線形写像$f$が与えられているとき、これらを合成して得られる写像
   \begin{equation*}
     f \circ g\colon \mathbb{R}^n \xrightarrow{g} \mathbb{R}^m \xrightarrow{f} \mathbb{R}^l
@@ -89,20 +89,20 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
 
 \sectionline
 
-\begin{theorem}{単位行列との積}
+\begin{theorem*}{単位行列との積}
   $A$を$m \times n$型とするとき、次が成り立つ
   \begin{align*}
     E_mA & = A \\
     AE_n & = A
   \end{align*}
-\end{theorem}
+\end{theorem*}
 
-\begin{theorem}{零行列との積}
+\begin{theorem*}{零行列との積}
   $A$を$m \times n$型とするとき、次が成り立つ
   \begin{equation*}
     O_m A = A O_n = O_{m,n}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 
@@ -123,25 +123,25 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
 
 $A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, j)$成分を足すことで行列の和$A + B$を定める
 
-\begin{theorem}{分配法則}
+\begin{theorem*}{分配法則}
   積が定義できるとき、
   \begin{align*}
     A(B + C) & = AB + AC \\
     (B + C)A & = BA + CA
   \end{align*}
-\end{theorem}
+\end{theorem*}
 
-\begin{theorem}{行列の積とスカラー倍の性質}
+\begin{theorem*}{行列の積とスカラー倍の性質}
   行列$A,\,B$の積$AB$が定義できるとき、つまり$A$の列の個数と$B$の行の個数が同じであるとき、$c \in \mathbb{R}$に対して
   \begin{equation*}
     (cA)B = A(cB) = c(AB)
   \end{equation*}
   が成り立つ
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 
-\begin{theorem}{線形写像の和}
+\begin{theorem*}{線形写像の和}
   $f,g\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とし、
   \begin{equation*}
     h(\vb*{v}) = f(\vb*{v}) + g(\vb*{v}) \quad (\vb*{v} \in \mathbb{R}^n)
@@ -151,7 +151,7 @@ $A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, 
   また、$f,g$の表現行列を$A,B$とするとき、$h$の表現行列は$A + B$である
 
   なお、$h = f + g$と書き、$f,g$の\keyword{和}と呼ぶ
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \todo{\refbookA p59 （問2.5）}
@@ -160,12 +160,12 @@ $A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, 
 \sectionline
 \section{行列の積の結合法則}
 
-\begin{theorem}{積の結合法則}
+\begin{theorem*}{積の結合法則}
   積$AB, \, BC$がともに定義できるとき、
   \begin{equation*}
     (AB)C = A(BC)
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}[写像による証明]
   $A,\,B, \, C$がそれぞれ$q \times m, \, m \times n, \, n \times p$型行列だとする

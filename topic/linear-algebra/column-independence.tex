@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{線型独立な列ベクトルと階数}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:linear-equation-and-rank} % 前の章
+}{}
+
+\chapter{線型独立な列ベクトルと階数}\label{ch:column-independence}
 
 \subfile{./column-independence/finite-dependency}
 \subfile{./column-independence/row-operation-and-independence}

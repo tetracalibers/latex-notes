@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,7 +11,7 @@
 
 スペクトル分解の拡張である特異値分解では、任意の行列がその\keyword{特異値}と\keyword{特異ベクトル}によって表せる
 
-\begin{definition}{特異値と特異ベクトル}
+\begin{definition*}{特異値と特異ベクトル}
   零行列ではない任意の$m \times n$行列$A$に対して、
   \begin{equation*}
     A\vb*{v}       = \sigma \vb*{u}, \quad
@@ -20,7 +23,7 @@
     \item \keyword{右特異ベクトル}：$n$次元ベクトル$\vb*{v} \, (\neq \vb*{0})$
   \end{itemize}
   を合わせて\keyword{特異ベクトル}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \subsection{特異ベクトルと固有ベクトルの関係}
 
@@ -47,7 +50,7 @@
 \begin{equation*}
   A A^\top \vb*{u} = \sigma^2 \vb*{u} , \quad A^\top A \vb*{v} = \sigma^2 \vb*{v}
 \end{equation*}
-ここで、$A$は任意の長方行列だが、\hyperref[thm:symmetric-products-of-any-matrix]{$A A^\top$と$A^\top A$は対称行列}となる
+ここで、$A$は任意の長方行列だが、\thmref{thm:symmetric-products-of-any-matrix}より、$A A^\top$と$A^\top A$は対称行列となる
 
 \br
 
@@ -56,7 +59,7 @@
   \item 左特異ベクトル$\vb*{u}$は$m$次対称行列$A A^\top$の固有ベクトル
   \item 右特異ベクトル$\vb*{v}$は$n$次対称行列$A^\top A$の固有ベクトル
 \end{itemize}
-であり、特異値の2乗$\sigma^2$は\hyperref[thm:svd-singular-value-vector-correspondence]{$A A^\top, A^\top A$共通の固有値}である
+であり、\thmref{thm:svd-singular-value-vector-correspondence}より、特異値の2乗$\sigma^2$は$A A^\top, A^\top A$共通の固有値である
 
 \subsection{特異ベクトルの正規直交化}
 
@@ -66,6 +69,6 @@ $A$の特異値を$\sigma_1 \geq \cdots \geq \sigma_r > 0$とする
 
 \br
 
-対応する$r$本の左特異ベクトル$\vb*{u}_1, \ldots, \vb*{u}_r$と$r$本の右特異ベクトル$\vb*{v}_1, \ldots, \vb*{v}_r$は、どちらも\hyperref[sec:orthogonalization-eigenvectors-symmetric]{対称行列の固有ベクトルであるから、それぞれを正規直交系に}選ぶことができる
+対応する$r$本の左特異ベクトル$\vb*{u}_1, \ldots, \vb*{u}_r$と$r$本の右特異ベクトル$\vb*{v}_1, \ldots, \vb*{v}_r$は、どちらも対称行列の固有ベクトルであるから、\secref{sec:orthogonalization-eigenvectors-symmetric}で述べたように、それぞれを正規直交系に選ぶことができる
 
 \end{document}

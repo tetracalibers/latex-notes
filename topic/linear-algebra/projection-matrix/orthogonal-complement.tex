@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 \begin{document}
 
 \sectionline
@@ -14,20 +17,20 @@
 
 計量空間の部分空間に直交するベクトルの集合を、\keyword{直交補空間}という。
 
-\begin{definition}{直交補空間}
+\begin{definition*}{直交補空間}
   計量空間$V$の部分空間$W$に対し、$W$の\keyword{直交補空間}$W^\perp$を次のように定義する。
   \begin{equation*}
     W^\perp \coloneq \{ \vb*{v} \in V \mid \forall \vb*{w} \in W, (\vb*{v}, \vb*{w}) = 0 \}
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 \subsection{直交補空間は$V$の部分空間}
 
 直交補空間もまた、計量空間の部分空間になっている。
 
-\begin{theorem}{直交補空間の部分空間性}
+\begin{theorem*}{直交補空間の部分空間性}
   計量空間$V$の部分空間$W$の直交補空間$W^\perp$は、計量空間$V$の部分空間である。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 和について}
@@ -57,12 +60,12 @@
 
 \br
 
-\begin{theorem}{直交補空間を用いた計量空間の分解}
+\begin{theorem*}{直交補空間を用いた計量空間の分解}
   計量空間$V$の部分空間$W$に対して、
   \begin{equation*}
     V = W + W^\perp
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $W = \{ \vb*{o} \}$の場合は、任意の$\vb*{v} \in V$に対して$\vb*{o}$との内積は0になることから、$W^\perp$は$V$全体となる。
@@ -120,14 +123,14 @@
 
 \br
 
-さらに、次の定理が成り立つことで、単なる空間の和ではなく、\hyperref[def:direct-sum]{直和}として分解できることがわかる。
+さらに、次の定理が成り立つことで、\defref{def:direct-sum}より、単なる空間の和ではなく、直和として分解できることがわかる。
 
-\begin{theorem}{直交補空間との交わり}
+\begin{theorem*}{直交補空間との交わり}
   計量空間$V$の部分空間$W$に対して、
   \begin{equation*}
     W \cap W^\perp = \{ \vb*{o} \}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $\vb*{a} \in W \cap W^\perp$とすると、$\vb*{a} \in W$かつ$\vb*{a} \in W^\perp$である。
@@ -165,18 +168,18 @@
   \item $V = W + W^\perp$
   \item $W \cap W^\perp = \{ \vb*{o} \}$
 \end{enumerate}
-計量空間$V$は部分空間$W$とその直交補空間$W^\perp$の\hyperref[thm:direct-sum-equiv]{直和として分解}できる。
+\thmref{thm:direct-sum-equiv}より、計量空間$V$は部分空間$W$とその直交補空間$W^\perp$の直和として分解できる。
 
 \br
 
-よって、\hyperref[thm:dim-direct-sum]{直和の次元公式}より、次の定理が従う。
+よって、\thmref{thm:dim-direct-sum}より、次の定理が従う。
 
-\begin{theorem}{直交補空間と次元}
+\begin{theorem*}{直交補空間と次元}
   計量空間$V$の部分空間$W$に対して、
   \begin{equation*}
     \dim V = \dim W + \dim W^\perp
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{直交補空間の性質}
@@ -184,7 +187,7 @@
 
 \subsection{直交補空間の直交補空間はもとの空間}
 
-\begin{theorem}{部分空間の双直交補と元空間の一致}\label{thm:double-orthogonal-complement}
+\begin{theorem}{部分空間の双直交補と元空間の一致}{double-orthogonal-complement}
   計量空間$V$の部分空間$W$に対して、次が成り立つ。
   \begin{equation*}
     (W^\perp)^\perp = W

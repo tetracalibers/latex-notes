@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -232,23 +235,23 @@
 
 このような行列式の展開を一般化したものが、\keyword{余因子展開}である
 
-\begin{definition}{余因子}
+\begin{definition*}{余因子}
   $n$次正方行列$A = (a_{ij})$から、第$i$行と第$j$列を取り除いて$(n-1)$次の正方行列$\Delta_{ij}$を作り、その行列式に符号$(-1)^{i+j}$をかけたものを、$A$の$(i,j)$\keyword{余因子}と呼び、$\tilde{a}_{ij}$と書く
   \begin{equation*}
     \tilde{a}_{ij} = (-1)^{i+j} \det(\Delta_{ij})
   \end{equation*}
-\end{definition}
+\end{definition*}
 
-\begin{theorem}{余因子展開}
+\begin{theorem*}{余因子展開}
   $\det(A)$は次のように\keyword{余因子展開}できる
   \begin{description}
     \item[第$j$列に関する展開]~\\ $\det(A) = \tilde{a}_{1j} a_{1j} + \tilde{a}_{2j} a_{2j} + \cdots + \tilde{a}_{nj} a_{nj}$
     \item[第$i$行に関する展開]~\\ $\det(A) = \tilde{a}_{i1} a_{i1} + \tilde{a}_{i2} a_{i2} + \cdots + \tilde{a}_{in} a_{in}$
   \end{description}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  列に関する展開だけを示せば、行の方は\hyperref[thm:determinant-transpose-invariance]{行列式の対称性}よりしたがう
+  列に関する展開だけを示せば、行の方は\thmref{thm:determinant-transpose-invariance}よりしたがう
 
   \br
 

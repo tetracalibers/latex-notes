@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,7 +11,7 @@
 
 $n$個の与えられた$n$次実ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$に対して、ある実数が定まるとき、これを$F(\vb*{a}_1, \ldots, \vb*{a}_n)$と表すことにする
 
-\begin{theorem}{多重線形性と交代性による行列式の特徴づけ}\label{thm:determinant-characterization-by-properties}
+\begin{theorem}{多重線形性と交代性による行列式の特徴づけ}{determinant-characterization-by-properties}
   写像$F\colon \mathbb{R}^n \times \cdots \times \mathbb{R}^n \to \mathbb{R}$が多重線形性と交代性を満たすならば、
   \begin{equation*}
     F(\vb*{a}_1, \ldots, \vb*{a}_n) = F(\vb*{e}_1, \ldots, \vb*{e}_n) \det(\vb*{a}_1, \ldots, \vb*{a}_n)
@@ -26,7 +29,7 @@ $n$個の与えられた$n$次実ベクトル$\vb*{a}_1, \ldots, \vb*{a}_n$に�
 
   \br
 
-  ここで、\hyperref[thm:det-zero-if-columns-repeat]{交代性から導かれる定理}より、$(i_1, \ldots, i_n)$に同じ添字が2つ以上ある場合には$F(\vb*{e}_{i_1}, \ldots, \vb*{e}_{i_n}) = 0$である
+  ここで、\thmref{thm:det-zero-if-columns-repeat}より、$(i_1, \ldots, i_n)$に同じ添字が2つ以上ある場合には$F(\vb*{e}_{i_1}, \ldots, \vb*{e}_{i_n}) = 0$である
 
   したがって、この和は$(i_1, \ldots, i_n)$がすべて異なる場合、すなわち$(i_1, \ldots, i_n)$が$(1, \ldots, n)$の置換である場合にのみ寄与する
 

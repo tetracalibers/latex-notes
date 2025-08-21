@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -16,7 +19,7 @@
 
 \subsection{ベクトルの「影」}
 
-\hyperref[sec:inner-product-similarity]{内積の幾何学的解釈}は、次のような図で内積の意味を捉えようとするものだった。
+\secref{sec:inner-product-similarity}は、次のような図で内積の意味を捉えようとするものだった。
 
 \begin{center}
   \begin{tikzpicture}[scale=2.5]
@@ -53,7 +56,7 @@
   \end{tikzpicture}
 \end{center}
 
-\hyperref[def:angle-between-vectors]{ベクトル$\vb*{u}, \vb*{v}$のなす角$\theta$}を用いると、$\vb*{v}$の$\vb*{u}$との内積は次のように表すことができる。
+\defref{def:angle-between-vectors}より、$\vb*{u}, \vb*{v}$のなす角$\theta$を用いると、$\vb*{v}$の$\vb*{u}$との内積は次のように表すことができる。
 \begin{equation*}
   \braket{\vb*{u}|\vb*{v}} = \|\vb*{u}\| \|\vb*{v}\| \cos \theta
 \end{equation*}
@@ -146,7 +149,7 @@ $\vb*{p}$は$\vb*{u}$と平行であることから、スカラー$k$を用い�
   (\vb*{v} - k \vb*{u}, \vb*{u}) = 0
 \end{equation*}
 
-\hyperref[def:inner-product-axioms]{内積の双線形性}を用いて展開すると、
+\defref{def:inner-product-axioms}のうち、内積の双線形性を用いて展開すると、
 \begin{gather*}
   (\vb*{v}, \vb*{u}) - k (\vb*{u}, \vb*{u}) = 0 \\
   \therefore \quad k \| \vb*{u} \|^2 = (\vb*{v}, \vb*{u})
@@ -166,21 +169,21 @@ $\vb*{p}$は$\vb*{u}$と平行であることから、スカラー$k$を用い�
 
 ここまでの話をまとめておこう。
 
-\begin{definition}{正射影}
+\begin{definition*}{正射影}
   $\vb*{o}$でないベクトル$\vb*{u}$が与えられているとき、ベクトル$\vb*{v}$に対し、
   \begin{enumerate}[label=\romanlabel]
     \item $\vb*{p}$が$\vb*{u}$と平行
     \item $\vb*{v - p}$が$\vb*{u}$と直交
   \end{enumerate}
   という条件を満たすベクトル$\vb*{p}$を、$\vb*{v}$の$\vb*{u}$への\keyword{正射影}という。
-\end{definition}
+\end{definition*}
 
-\begin{theorem}{正射影の公式}
+\begin{theorem*}{正射影の公式}
   ベクトル$\vb*{v}$の$\vb*{u}$への正射影$\vb*{p}$は、次のように表される。
   \begin{equation*}
     \vb*{p} = \frac{(\vb*{v}, \vb*{u})}{\|\vb*{u}\|^2} \vb*{u}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{正射影を測る観測装置}\label{sec:orthogonal-projection-measurement}
 

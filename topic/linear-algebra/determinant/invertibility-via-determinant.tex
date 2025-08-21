@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,11 +11,11 @@
 
 行列式は、正則性の判定にも利用できる
 
-\begin{theorem}{正則性と行列式の非零性}
+\begin{theorem*}{正則性と行列式の非零性}
   \begin{equation*}
     A\text{が正則行列} \Longleftrightarrow \det(A) \neq 0
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{$\Longrightarrow$}
@@ -34,15 +37,15 @@
   \end{subpattern}
 
   \begin{subpattern}{$\Longleftarrow$}
-    \hyperref[thm:lin-indep-if-det-nonzero]{$\det(A) \neq 0$であることから、行列$A$の列ベクトルは線型独立}である
+    \thmref{thm:lin-indep-if-det-nonzero}より、$\det(A) \neq 0$であることから、行列$A$の列ベクトルは線型独立である
 
-    そして、\hyperref[thm:invertible-iff-col-indep]{$A$の列ベクトルが線型独立であることと、$A$が正則であることは同値}である $\qed$
+    そして、\thmref{thm:invertible-iff-col-indep}より、$A$の列ベクトルが線型独立であることと、$A$が正則であることは同値である $\qed$
   \end{subpattern}
 \end{proof}
 
 この定理の派生として、行列式を次の形で使うことが多い
 
-\begin{theorem}{消去法の原理}\label{thm:homogeneous-solution-iff-det-zero}
+\begin{theorem}{消去法の原理}{homogeneous-solution-iff-det-zero}
   $A$を正方行列とするとき、
   \begin{equation*}
     A\vb*{x} = \vb*{0}\text{に非自明解が存在する} \Longleftrightarrow \det(A) = 0

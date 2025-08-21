@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -16,7 +19,7 @@
 \end{shaded}
 となるような$\vb*{0}$以外のベクトルだった
 
-\begin{definition}{固有値と固有ベクトル}
+\begin{definition*}{固有値と固有ベクトル}
   体$K$上の線形空間$V$上の線形変換$f\colon V \to V$に対して、
   \begin{equation*}
     f(\vb*{a}) = \lambda \vb*{a} \quad (\vb*{a} \neq \vb*{0})
@@ -24,13 +27,13 @@
   となるベクトル$\vb*{a} \in V$が存在するとき、このようなスカラー$\lambda \in K$を、線形変換$f$の\keyword{固有値}という
 
   また、このようなベクトル$\vb*{a}$を、$f$の固有値$\lambda$に属する\keyword{固有ベクトル}という
-\end{definition}
+\end{definition*}
 
 線形変換$f$の表現行列を$A$とすると、これは正方行列であり、$f(\vb*{a}) = A\vb*{a}$と表せる
 
 よって、固有値と固有ベクトルの定義は、次のようにも書ける
 
-\begin{definition}{行列の固有値と固有ベクトル}
+\begin{definition*}{行列の固有値と固有ベクトル}
   正方行列$A$に対して、
   \begin{equation*}
     A\vb*{a} = \lambda \vb*{a} \quad (\vb*{a} \neq \vb*{0})
@@ -38,15 +41,15 @@
   となるベクトル$\vb*{a}$とスカラー$\lambda$が存在するとき、このようなスカラー$\lambda$を行列$A$の\keyword{固有値}という
 
   また、このようなベクトル$\vb*{a}$を、行列$A$の固有値$\lambda$に属する\keyword{固有ベクトル}という
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{異なる固有値に属する固有ベクトル}
 \marginnote{\refbookA p186〜187 \\ \refbookF p265〜266}
 
-\begin{theorem}{異なる固有値に属する固有ベクトルの非一致性}
+\begin{theorem*}{異なる固有値に属する固有ベクトルの非一致性}
   異なる固有値$\alpha_i,\, \alpha_j \, (\alpha_i \neq \alpha_j)$に属する固有ベクトル$\vb*{p}_i, \vb*{p}_j$は異なるベクトルである
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   固有値と固有ベクトルの定義より、
@@ -78,7 +81,7 @@
 
 この定理を発展させて、次のことがいえる
 
-\begin{theorem}{異なる固有値に属する固有ベクトルの線型独立性}\label{thm:eigenvectors-of-distinct-eigenvalues-are-independent}
+\begin{theorem}{異なる固有値に属する固有ベクトルの線型独立性}{eigenvectors-of-distinct-eigenvalues-are-independent}
   $\alpha_1, \alpha_2, \ldots, \alpha_k$が行列$A$の相異なる固有値であるとすると、それぞれに属する固有ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_k$は線型独立である
 \end{theorem}
 
@@ -134,7 +137,7 @@
 \section{固有ベクトルによる行列の対角化}
 \marginnote{\refbookA p184〜185 \\ \refbookF p264〜265、p267}
 
-\hyperref[sec:1d-invariant-subspaces]{一次元不変部分空間}に関する議論で見たように、
+\secref{sec:1d-invariant-subspaces}で見たように、
 \begin{equation*}
   f(\vb*{a}_i) = \lambda_i \vb*{a}_i \quad (i = 1, \dots, n)
 \end{equation*}
@@ -161,9 +164,9 @@
 
 \br
 
-たとえば基底を$A$の固有ベクトルに変換した際に、この\hyperref[thm:similarity-under-basis-change]{線形変換$f$の表現行列が$P^{-1}AP$に変化する}として、この行列$P^{-1}AP$が対角行列となる場合が、$A$が\keyword{対角化}できるということである
+たとえば基底を$A$の固有ベクトルに変換した際に、\thmref{thm:similarity-under-basis-change}より、この線形変換$f$の表現行列が$P^{-1}AP$に変化するとして、この行列$P^{-1}AP$が対角行列となる場合が、$A$が\keyword{対角化}できるということである
 
-\begin{definition}{対角化可能}\label{def:diagonalizable}
+\begin{definition}{対角化可能}{diagonalizable}
   与えられた正方行列$A$が適当な正則行列$P$により
   \begin{equation*}
     P^{-1}AP = \begin{pNiceArray}{cccc}[margin]
@@ -180,7 +183,7 @@
 
 行列$A$の固有ベクトルからなる基底が存在すれば、$A$は\keyword{対角化可能}である、ということを定式化しよう
 
-\begin{theorem}{対角化可能性と固有ベクトルの線型独立性}\label{thm:diagonalizable-iff-n-indep-eigenvectors}
+\begin{theorem}{対角化可能性と固有ベクトルの線型独立性}{diagonalizable-iff-n-indep-eigenvectors}
   $n$次元正方行列$A$が対角化可能であるための必要十分条件は、線型独立な$n$個の$A$の固有ベクトルが存在することである
 \end{theorem}
 
@@ -192,7 +195,7 @@
     \end{equation*}
     仮定より$\vb*{a}_i$は線型独立であり、一次元部分空間$\{ c \vb*{a}_i \mid c \in K \}$は$\vb*{a}_i$によって張られる空間である
 
-    よって、$\vb*{a}_i$を基底として用いることができるので、\hyperref[sec:1d-invariant-subspaces]{一次元不変部分空間}に関する議論で見たように、$A$は対角行列で表現できる $\qed$
+    よって、$\vb*{a}_i$を基底として用いることができるので、\secref{sec:1d-invariant-subspaces}に関する議論で見たように、$A$は対角行列で表現できる $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries $A$は対角化可能 $\Longrightarrow$ 線型独立な$A$の固有ベクトルが存在}
@@ -235,13 +238,13 @@
 
     これはすなわち、$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$がそれぞれの固有値$\alpha_1, \alpha_2, \ldots, \alpha_n$に属する$A$の固有ベクトルであることを意味する
 
-    さらに、\hyperref[thm:invertible-iff-col-indep]{$P$は正則であるため、その列ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$は線型独立}である $\qed$
+    さらに、\thmref{thm:invertible-iff-col-indep}より、$P$は正則であるため、その列ベクトル$\vb*{p}_1, \vb*{p}_2, \ldots, \vb*{p}_n$は線型独立である $\qed$
   \end{subpattern}
 \end{proof}
 
-この定理と、\hyperref[thm:eigenvectors-of-distinct-eigenvalues-are-independent]{異なる固有値に属する固有ベクトルの線型独立性}から、次の定理が得られる
+この定理と、\thmref{thm:eigenvectors-of-distinct-eigenvalues-are-independent}から、次の定理が得られる
 
-\begin{theorem}{固有値の相異性と対角化可能性}\label{thm:distinct-eigenvalues-imply-diagonalizable}
+\begin{theorem}{固有値の相異性と対角化可能性}{distinct-eigenvalues-imply-diagonalizable}
   $n$次正方行列$A$が異なる$n$個の固有値$\alpha_1, \ldots, \alpha_n$をもつならば、$A$は対角化可能である
 
   すなわち、ある$n$次正則行列$P$によって、

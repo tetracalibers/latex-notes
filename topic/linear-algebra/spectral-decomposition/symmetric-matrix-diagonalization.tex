@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -20,7 +23,7 @@ $n$次対称行列$A$の列の任意の線形結合
 
 \br
 
-$A$の$n$個の固有値のうち、0でないものの個数を$r$とすれば、$A$の\hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解の式}において、$\lambda_{r+1}, \ldots, \lambda_n = 0$とおいて、
+$A$の$n$個の固有値のうち、0でないものの個数を$r$とすれば、\thmref{thm:spectral-decomposition-symmetric}による$A$のスペクトル分解の式において、$\lambda_{r+1}, \ldots, \lambda_n = 0$とおいて、
 \begin{align*}
   A\vb*{c} & = \lambda_1\vb*{u}_1\vb*{u}_1^\top\vb*{c} + \cdots + \lambda_r\vb*{u}_r\vb*{u}_r^\top\vb*{c}     \\
            & = \lambda_1(\vb*{u}_1^\top\vb*{c})\vb*{u}_1 + \cdots + \lambda_r(\vb*{u}_r^\top\vb*{c})\vb*{u}_r
@@ -29,7 +32,7 @@ $A$の$n$個の固有値のうち、0でないものの個数を$r$とすれば�
 
 \br
 
-\hyperref[thm:orthogonal-set-is-independent]{互いに直交するベクトルは線型独立}であることから、
+\thmref{thm:orthogonal-set-is-independent}より、互いに直交するベクトルは線型独立であることから、
 \begin{itemize}
   \item $\vb*{a}_1, \ldots, \vb*{a}_n$の張る部分空間（線形結合の集合）の次元は$r$である
   \item $n$本の列のうち、$r$本しか線型独立ではない
@@ -38,9 +41,9 @@ $A$の$n$個の固有値のうち、0でないものの個数を$r$とすれば�
 
 \br
 
-行列$A$の\hyperref[thm:rank-equals-max-indep-cols]{$n$本の列のうち、線型独立なものの個数}を$A$の\keyword{ランク}あるいは\keyword{階数}というので、次のことがいえる
+\thmref{thm:rank-equals-max-indep-cols}より、行列$A$の$n$本の列のうち、線型独立なものの個数を$A$の\keyword{ランク}あるいは\keyword{階数}というので、次のことがいえる
 
-\begin{theorem}{対称行列における階数と非零固有値の個数}\label{thm:rank-nonzero-eigenvalues-symmetric}
+\begin{theorem}{対称行列における階数と非零固有値の個数}{rank-nonzero-eigenvalues-symmetric}
   $A$を対称行列とするとき、$\rank(A)$は、$A$の非零の固有値の個数に等しい
 \end{theorem}
 
@@ -91,11 +94,11 @@ $A$は対称行列であるから、行についても同じことがいえる
     \vb*{u}_1 & \cdots & \vb*{u}_n
   \end{pmatrix}
 \end{equation*}
-は、\hyperref[thm:unitary-iff-columns-orthonormal]{列が正規直交系をなす}ことから\keyword{直交行列}である
+は、\thmref{thm:unitary-iff-columns-orthonormal}より、列が正規直交系をなすことから\keyword{直交行列}である
 
 \br
 
-そして、$U$が直交行列であれば、その\hyperref[thm:transpose-of-orthogonal]{転置$U^\top$も直交行列}である
+そして、$U$が直交行列であれば、\thmref{thm:transpose-of-orthogonal}より、その転置$U^\top$も直交行列である
 
 それゆえ、直交行列の行も正規直交系をなす
 

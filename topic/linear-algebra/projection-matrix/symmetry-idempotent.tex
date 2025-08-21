@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,12 +11,12 @@
 
 「一度射影した点をもう一度射影しても変化しない」という性質は、次のような数式として表現できる
 
-\begin{theorem}{射影行列の冪等性}
+\begin{theorem*}{射影行列の冪等性}
   射影行列$P_{\mathcal{U}}$は\keyword{冪等}である
   \begin{equation*}
     P_{\mathcal{U}}^2 = P_{\mathcal{U}}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{align*}
@@ -37,29 +40,29 @@
 
 次の性質は、射影が直交射影であることを示すものである
 
-\begin{theorem}{射影行列の対称性}
+\begin{theorem*}{射影行列の対称性}
   射影行列$P_{\mathcal{U}}$は、対称行列である
   \begin{equation*}
     P_{\mathcal{U}}^\top = P_{\mathcal{U}}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{equation*}
     P_{\mathcal{U}}^\top = \left( \sum_{i=1}^{r} \vb*{u}_i\vb*{u}_i^\top \right)^\top
   \end{equation*}
 
-  \hyperref[thm:transpose-distributes-over-sum]{和の転置は転置の和}であることを用いて、
+  \thmref{thm:transpose-distributes-over-sum}より、和の転置は転置の和であることを用いて、
   \begin{equation*}
     P_{\mathcal{U}}^\top = \sum_{i=1}^{r} (\vb*{u}_i\vb*{u}_i^\top)^\top
   \end{equation*}
 
-  また、\hyperref[thm:transpose-of-product]{積の転置は転置の積だが、積の順序が入れ替わる}ことに注意して、
+  また、\thmref{thm:transpose-of-product}より、積の転置は転置の積だが、積の順序が入れ替わることに注意して、
   \begin{equation*}
     P_{\mathcal{U}}^\top = \sum_{i=1}^{r} (\vb*{u}_i^\top)^\top \vb*{u}_i^\top
   \end{equation*}
 
-  \hyperref[thm:transpose-involution]{転置の転置をとると元に戻る}ので、
+  \thmref{thm:transpose-involution}より、転置の転置をとると元に戻るので、
   \begin{equation*}
     P_{\mathcal{U}}^\top = \sum_{i=1}^{r} \vb*{u}_i \vb*{u}_i^\top = P_{\mathcal{U}}
   \end{equation*}
@@ -70,14 +73,14 @@
 
 射影行列は冪等かつ対称であるが、その逆も成り立つ
 
-\begin{theorem}{対称性と冪等性による射影行列の特徴づけ}
+\begin{theorem*}{対称性と冪等性による射影行列の特徴づけ}
   対称かつ冪等な行列は、ある部分空間への射影行列となる
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  $n$次対称行列$P$は、$n$個の\hyperref[thm:eigenvalues-of-hermitian-are-real]{実数の固有値}$\lambda_1,\ldots,\lambda_n$を持つ
+  \thmref{thm:eigenvalues-of-hermitian-are-real}より、$n$次対称行列$P$は、$n$個の実数の固有値$\lambda_1,\ldots,\lambda_n$を持つ
 
-  これらに属する固有ベクトルを$\vb*{u}_1, \ldots, \vb*{u}_n$とすると、$\vb*{u}_i$は\hyperref[thm:hermitian-eigenvectors-orthogonality]{互いに直交}する
+  これらに属する固有ベクトルを$\vb*{u}_1, \ldots, \vb*{u}_n$とすると、\thmref{thm:hermitian-eigenvectors-orthogonality}より、$\vb*{u}_i$は互いに直交する
 
   \br
 

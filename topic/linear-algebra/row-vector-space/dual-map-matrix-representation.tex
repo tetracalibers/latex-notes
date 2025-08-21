@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -10,13 +13,13 @@
 
 このことから、双対写像は\keyword{転置写像}とも呼ばれる。
 
-\begin{theorem}{双対写像の行列表現}
+\begin{theorem*}{双対写像の行列表現}
   $V,W$を有限次元の線形空間とし、$f\colon V \to W$を線型写像とする。また、$\dim V = n, \dim W = m$とする。
   
   $V$の基底$\vb*{v}_1,\ldots,\vb*{v}_n$、$W$の基底$\vb*{w}_1, \ldots, \vb*{w}_m$を選び、これらの双対基底をそれぞれ$\phi_1, \ldots, \phi_n$、$\psi_1, \ldots, \psi_m$とする。
 
   このとき、$\{\vb*{v}_i \}$、$\{ \vb*{w}_j\}$に関する$f$の表現行列を$A$とすると、$\{ \psi_j \}, \{ \phi_i \}$に関する$f^*$の表現行列は${}^tA$によって与えられる。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $f$の双対写像$f^*$は次のように定義される。
@@ -26,7 +29,7 @@
   
   \br
   
-  \hyperref[sec:construction-of-matrix-rep]{表現行列の構成}より、$f \colon V \to W$の表現行列$A$は次のように表される。
+  \secref{sec:construction-of-matrix-rep}より、$f \colon V \to W$の表現行列$A$は次のように表される。
   \begin{equation*}
     f(\vb*{v}_i) = \sum_{j=1}^m a_{ji} \vb*{w}_j \quad (1 \leq i \leq n)
   \end{equation*}

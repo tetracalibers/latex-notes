@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -15,17 +18,17 @@
 
 \br
 
-\begin{definition}{正定値行列}
+\begin{definition*}{正定値行列}
   $A$をエルミート行列（対称行列）とし、任意のベクトル$\vb*{x} \in \mathbb{C}^n$（$\vb*{x} \in \mathbb{R}^n$）に対して、
   \begin{equation*}
     (A\vb*{x}, \vb*{x}) > 0
   \end{equation*}
   が成り立つとき、$A$は\keyword{正定値行列}であるという
-\end{definition}
+\end{definition*}
 
-\begin{theorem}{正定値性と固有値の正実性}
+\begin{theorem*}{正定値性と固有値の正実性}
   エルミート行列$A$が正定値行列であることと、$A$のすべての固有値が正の実数であることは同値である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 正定値行列 $\Longrightarrow$ 固有値が正}
@@ -65,7 +68,7 @@
       \end{pmatrix} U^*
     \end{equation*}
 
-    \hyperref[thm:inner-product-adjoint-form]{随伴による内積の表現}より、
+    \thmref{thm:inner-product-adjoint-form}より、
     \begin{equation*}
       (A\vb*{x}, \vb*{x}) = \vb*{x}^* A \vb*{x} = \vb*{x}^* U D U^* \vb*{x}
     \end{equation*}
@@ -105,34 +108,34 @@
 
 半正定値行列は、正定値行列の条件に等号を含むようにしたものである
 
-\begin{definition}{半正定値行列}
+\begin{definition*}{半正定値行列}
   $A$をエルミート行列（対称行列）とし、任意のベクトル$\vb*{x} \in \mathbb{C}^n$（$\vb*{x} \in \mathbb{R}^n$）に対して、
   \begin{equation*}
     (A\vb*{x}, \vb*{x}) \geq 0
   \end{equation*}
   が成り立つとき、$A$は\keyword{半正定値行列}であるという
-\end{definition}
+\end{definition*}
 
-\begin{theorem}{半正定値性と固有値の非負実性}
+\begin{theorem*}{半正定値性と固有値の非負実性}
   エルミート行列$A$が半正定値行列であることと、$A$のすべての固有値が非負の実数であることは同値である
-\end{theorem}
+\end{theorem*}
 
 \sectionline
 \section{対称行列を構成する行列積}
 \marginnote{\refbookI p29}
 
-\hyperref[thm:spectral-decomposition-symmetric]{スペクトル分解}は対称行列に対するものだったが、これを任意の長方行列に拡張したものが\keyword{特異値分解}である
+\thmref{thm:spectral-decomposition-symmetric}を任意の長方行列に拡張したものが\keyword{特異値分解}である
 
 \br
 
 対称行列から任意の行列へ議論を拡張するにあたって、次の定理が重要となる
 
-\begin{theorem}{自身の随伴行列との積で構成されるエルミート行列}
+\begin{theorem*}{自身の随伴行列との積で構成されるエルミート行列}
   $A$を任意の複素行列（長方行列）とするとき、$A^* A$および$AA^*$はエルミート行列である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:adjoint-of-product]{積をエルミート行列にすると順序が入れ替わる}ことに注意して、
+  \thmref{thm:adjoint-of-product}より、積をエルミート行列にすると順序が入れ替わることに注意して、
   \begin{equation*}
     (A^* A)^* = A^* (A^*)^* = A^* A
   \end{equation*}
@@ -151,7 +154,7 @@
 
 $A$を実行列とすれば、次が成り立つ
 
-\begin{theorem}{自身の転置行列との積で構成される対称行列}\label{thm:symmetric-products-of-any-matrix}
+\begin{theorem}{自身の転置行列との積で構成される対称行列}{symmetric-products-of-any-matrix}
   $A$を任意の実行列（長方行列）とするとき、$A^\top A$および$AA^\top$は対称行列である
 \end{theorem}
 
@@ -159,9 +162,9 @@ $A$を実行列とすれば、次が成り立つ
 
 $A^* A$および$AA^*$という形の行列には、さらに固有値に関する重要な性質がある
 
-\begin{theorem}{自身の随伴行列との積で構成される半正値行列}
+\begin{theorem*}{自身の随伴行列との積で構成される半正値行列}
   任意の行列$A$に対して、$AA^*$および$A^*A$はともに半正値行列である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   エルミート行列$AA^*$の固有ベクトルを$\vb*{u}$とし、その固有値を$\lambda \in \mathbb{C}$とすると、
@@ -172,7 +175,7 @@ $A^* A$および$AA^*$という形の行列には、さらに固有値に関す�
   \begin{equation*}
     (\vb*{u}, AA^* \vb*{u}) = \lambda (\vb*{u}, \vb*{u}) = \lambda \|\vb*{u}\|^2
   \end{equation*}
-  この左辺は、\hyperref[thm:adjoint-identity]{随伴公式}を用いて、
+  この左辺は、\thmref{thm:adjoint-identity}を用いて、
   \begin{equation*}
     \begin{WithArrows}
       (\vb*{u}, AA^* \vb*{u}) & = (\vb*{u}, A(A^*\vb*{u})) \Arrow{外側の$A$に\\ 随伴公式を適用}  \\
@@ -203,7 +206,7 @@ $A^* A$および$AA^*$という形の行列には、さらに固有値に関す�
 
 \br
 
-\begin{theorem}{特異値と左右特異ベクトルの対応関係}\label{thm:svd-singular-value-vector-correspondence}
+\begin{theorem}{特異値と左右特異ベクトルの対応関係}{svd-singular-value-vector-correspondence}
   $A$を$O$でない任意の行列とするとき、$A^\top A$と$AA^\top$は共通の正の固有値$\sigma^2$を持ち、それぞれの固有ベクトル$\vb*{u},\vb*{v}$は次の関係を満たす
   \begin{equation*}
     A \vb*{v} = \sigma \vb*{u}, \quad A^\top \vb*{u} = \sigma \vb*{v}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -53,7 +56,7 @@
   x_2 & = \frac{\braket{\vb*{u}_2|\vb*{x}}}{\braket{\vb*{u}_2|\vb*{u}_2}}
 \end{align*}
 
-\begin{theorem}{直交基底によるベクトルの展開}\label{thm:vector-expansion-by-orthogonal-basis}
+\begin{theorem}{直交基底によるベクトルの展開}{vector-expansion-by-orthogonal-basis}
   計量空間$V$の直交基底$\vb*{u}_1, \ldots, \vb*{u}_n$に対して、任意のベクトル$\vb*{v} \in V$は
   \begin{equation*}
     \vb*{v} = \sum_{i=1}^n \frac{(\vb*{v}, \vb*{u}_i)}{(\vb*{u}_i, \vb*{u}_i)} \vb*{u}_i
@@ -103,7 +106,7 @@
   x_2 & = \braket{\vb*{u}_2|\vb*{x}}
 \end{align*}
 
-\begin{theorem}{正規直交基底によるベクトルの展開}\label{thm:expansion-in-orthonormal-basis}
+\begin{theorem}{正規直交基底によるベクトルの展開}{expansion-in-orthonormal-basis}
   計量空間$V$の正規直交基底$\vb*{u}_1, \ldots, \vb*{u}_n$に対して、任意のベクトル$\vb*{v} \in V$は
   \begin{equation*}
     \vb*{v} = \sum_{i=1}^n (\vb*{v}, \vb*{u}_i) \vb*{u}_i
@@ -116,7 +119,7 @@
   \begin{equation*}
     (\vb*{u}_i,\vb*{u}_i) = \|\vb*{u}_i\|^2 = 1
   \end{equation*}
-  であることを用いると、\hyperref[thm:vector-expansion-by-orthogonal-basis]{直交基底によるベクトルの展開式}において分母が1となり、この形が得られる。 $\qed$
+  であることを用いると、\thmref{thm:vector-expansion-by-orthogonal-basis}において分母が1となり、この形が得られる。 $\qed$
 \end{proof}
 
 \end{document}

@@ -1,10 +1,18 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{写像と集合}
+\ifSubfilesClassLoaded{%
+  \appendix
+  \setcounter{chapter}{0} % Appendix A にしたいとき
+}{}
+
+\chapter{写像と集合}\label{ch:mapping}
 
 \subfile{./mapping/mapping-and-function}
 \subfile{./mapping/image-and-preimage}

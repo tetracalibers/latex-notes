@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -20,17 +23,17 @@ $\alpha$が$A$の固有値ならば、方程式
 
 核空間は$V$の部分空間であり、これを固有値$\alpha$の\keyword{固有空間}と呼ぶ
 
-\begin{definition}{固有空間}
+\begin{definition*}{固有空間}
   $\alpha$が$A$の固有値であるとき、
   \begin{equation*}
     W(\alpha) = \Ker(\alpha E - A)
   \end{equation*}
   を固有値$\alpha$の\keyword{固有空間}と呼ぶ
-\end{definition}
+\end{definition*}
 
 \subsection{固有空間の次元}
 
-\begin{theorem}{固有空間の次元と固有値の重複度}\label{thm:geom-mult-leq-alg-mult}
+\begin{theorem}{固有空間の次元と固有値の重複度}{geom-mult-leq-alg-mult}
   $A$の固有値$\alpha_i$の重複度$k_i$と、固有空間$W(\alpha_i)$の次元$\dim W(\alpha_i)$に対し、次の不等式が成立する
   \begin{equation*}
     \dim W(\alpha_i) \leq k_i \quad (1 \leq i \leq s)
@@ -40,7 +43,7 @@ $\alpha$が$A$の固有値ならば、方程式
 \begin{proof}
   $W(\alpha_i)$の基底$\vb*{v}_1,\ldots,\vb*{v}_m$をとる
 
-  $\vb*{v}_1,\ldots,\vb*{v}_m,\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$が$K^n$の基底となるように、$n-m$個のベクトル$\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$を追加して\hyperref[thm:basis-extension]{基底を延長}する
+  \thmref{thm:basis-extension}より、$\vb*{v}_1,\ldots,\vb*{v}_m,\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$が$K^n$の基底となるように、$n-m$個のベクトル$\vb*{v}_{m+1},\ldots,\vb*{v}_{n}$を追加して基底を延長できる
 
   \br
 
@@ -66,7 +69,7 @@ $\alpha$が$A$の固有値ならば、方程式
             \end{pmatrix}
   \end{align*}
 
-  基底の線型独立性より、\hyperref[thm:invertible-iff-col-indep]{線型独立な列ベクトルを並べた行列$P$は正則}であるので、
+  基底の線型独立性と\thmref{thm:invertible-iff-col-indep}より、$P$は正則であるので、
   \begin{equation*}
     P^{-1}AP = \begin{pmatrix}
       \alpha_iE_m & B \\
@@ -119,8 +122,8 @@ $W(\alpha)$の基底を構成するベクトルの個数は、固有値$\alpha$�
 
 以上をふまえると、前述の定理は、特性方程式の視点で次のように言い換えられる
 
-\begin{theorem}{固有値の重複度と固有ベクトルの最大数}
+\begin{theorem*}{固有値の重複度と固有ベクトルの最大数}
   正方行列$A$の特性方程式$\Phi_A(x) = 0$が$x=\alpha$を$k$重解にもつとき、固有値$\alpha$に属する線型独立な固有ベクトルは、$k$個以下しかとれない
-\end{theorem}
+\end{theorem*}
 
 \end{document}

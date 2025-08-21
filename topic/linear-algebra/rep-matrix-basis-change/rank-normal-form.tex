@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,7 +11,7 @@
 
 線形写像に対して、うまく基底を選ぶと、表現行列を\keyword{階数標準形}にできる
 
-\begin{theorem}{線形写像の階数標準形}
+\begin{theorem*}{線形写像の階数標準形}
   線形写像$f\colon V \to W$に対し、$r = \rank(f)$とするとき、$V,W$のある基底に関する$f$の表現行列が次の形になる
   \begin{equation*}
     \begin{pmatrix}
@@ -16,7 +19,7 @@
       O   & O
     \end{pmatrix}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $V$の基底を次のように分けて構成する
@@ -25,11 +28,11 @@
     \item $\Ker(f)$に属さないが、$f$によって像を生成するベクトル（これは$f$によって非零に写る）
   \end{enumerate}
 
-  $V,W$の次元をそれぞれ$n,m$とすると、\hyperref[thm:rank-nullity-theorem]{線形写像の次元定理}より、$\Ker(f)$の次元は$n - r$である
+  $V,W$の次元をそれぞれ$n,m$とすると、\thmref{thm:rank-nullity-theorem}より、$\Ker(f)$の次元は$n - r$である
 
   そこで、$\Ker(f) \subset V$の基底を$\vb*{u}_1,\ldots,\vb*{u}_{n-r}$とする
 
-  さらに、$\vb*{v}_1,\ldots,\vb*{v}_r \in V$を、$\vb*{v}_1,\ldots,\vb*{v}_r,\vb*{u}_1,\ldots,\vb*{u}_{n-r}$が$V$の基底になるように選ぶ（\hyperref[thm:basis-extension]{基底の延長}）
+  さらに、\thmref{thm:basis-extension}によって、$\vb*{v}_1,\ldots,\vb*{v}_r \in V$を、$\vb*{v}_1,\ldots,\vb*{v}_r,\vb*{u}_1,\ldots,\vb*{u}_{n-r}$が$V$の基底になるように選ぶ
 
   \br
 
@@ -120,15 +123,15 @@
 
 \sectionline
 
-\hyperref[thm:change-of-representation-matrix]{基底変換に伴う表現行列の変換}の原理を用いて、先ほどの定理を行列の言葉で表すことができる
+\thmref{thm:change-of-representation-matrix}を用いて、先ほどの定理を行列の言葉で表すことができる
 
 \br
 
 線形写像$f\colon V \to W$の基底$\mathcal{V},\, \mathcal{W}$に関する表現行列を$A$とし、同じ線形写像$f$の別な基底$\mathcal{V}',\, \mathcal{W}'$に関する表現行列を階数標準形を$B$とする
 
-このとき、\hyperref[thm:rank-normal-form-by-regular-matrices]{正則行列による階数標準形の構成}より、それぞれの基底変換行列$P,Q$は行変形、列変形に対応する正則行列である
+このとき、\thmref{thm:rank-normal-form-by-regular-matrices}より、それぞれの基底変換行列$P,Q$は行変形、列変形に対応する正則行列である
 
-\begin{theorem}{表現行列の階数標準形}
+\begin{theorem*}{表現行列の階数標準形}
   $m\times n$型行列$A$に対し、それぞれ$n,m$次の正則行列$P,Q$が存在して、
   \begin{equation*}
     Q^{-1} A P = \begin{pmatrix}
@@ -139,6 +142,6 @@
   となる
 
   ここで、$r = \rank(A)$である
-\end{theorem}
+\end{theorem*}
 
 \end{document}

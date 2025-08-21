@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{部分空間の双対性}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:row-vector-space} % 前の章
+}{}
+
+\chapter{部分空間の双対性}\label{ch:subspace-duality}
 
 \subfile{./subspace-duality/kernel-row-perp}
 \subfile{./subspace-duality/annihilator}

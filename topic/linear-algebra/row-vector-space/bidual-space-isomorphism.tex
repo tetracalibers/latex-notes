@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -59,8 +62,8 @@ $\vb*{v} \in V$を固定したとき、任意の線形汎関数（$V^*$の元）
 
 \begin{handout}[補足：$\Phi_{\vb*{v}}$の線形性]
   $\phi_1, \phi_2 \in V^*$、$c_1, c_2 \in \mathbb{R}$とする。
-  
-  $\phi_1, \phi_2$は線形写像であるので、\hyperref[def:linear-map-addition-scalar]{線形写像の和とスカラー倍の定義}より、
+
+  $\phi_1, \phi_2$は線形写像であるので、\defref{def:linear-map-addition-scalar}より、
   \begin{align*}
     \Phi_{\vb*{v}}(c_1 \phi_1 + c_2 \phi_2) &= (c_1\phi_1 + c_2\phi_2)(\vb*{v}) \\
     &= c_1\phi_1(\vb*{v}) + c_2\phi_2(\vb*{v}) \\
@@ -110,21 +113,21 @@ $\vb*{v} \in V$を固定したとき、任意の線形汎関数（$V^*$の元）
 
 $\iota \colon V \to (V^*)^*$は線形写像であるので、$\iota$が線形同型写像であることを示せば、$V$と$(V^*)^*$の同型が導かれる。
 
-そのためには、\hyperref[def:linear-isomorphism]{$\iota$の全単射性を証明できればよい}。
+そのためには、\defref{def:linear-isomorphism}より、$\iota$の全単射性を証明できればよい。
 
 \subsection{双対空間の分離性}
 
 特に$\iota$が単射であることを示すために、次の定理を用いる。
 
-\begin{theorem}{双対空間の分離性}\label{thm:dual-space-separation}
+\begin{theorem}{双対空間の分離性}{dual-space-separation}
   有限次元線形空間$V$において、任意の$\vb*{v} \in V$で$\vb*{v} \neq \vb*{o}$ならば、$\phi(\vb*{v}) \neq 0$となるような線形汎関数$\phi \in V^*$が存在する。
 \end{theorem}
 
 \begin{proof}
-  $\vb*{v} \neq \vb*{o}$より、\hyperref[thm:single-vec-indep-iff-nonzero]{$\vb*{v}$は線型独立}である。
-  
-  よって、\hyperref[thm:basis-extension]{基底の延長}により、$\vb*{v}$を含む$V$の基底$\{ \vb*{v}, \vb*{v}_2, \dots, \vb*{v}_n \}$を選ぶことができる。
-  
+  \thmref{thm:single-vec-indep-iff-nonzero}より、$\vb*{v} \neq \vb*{o}$は線型独立である。
+
+  よって、\thmref{thm:basis-extension}により、$\vb*{v}$を含む$V$の基底$\{ \vb*{v}, \vb*{v}_2, \dots, \vb*{v}_n \}$を選ぶことができる。
+
   \br
   
   この基底に対応する双対基底${\phi_1, \phi_2, \dots, \phi_n} \subset V^*$を考えると、それぞれの$\phi_i$は、次の性質をもつ。
@@ -137,9 +140,9 @@ $\iota \colon V \to (V^*)^*$は線形写像であるので、$\iota$が線形同
 
 \subsection{再双対空間との同型}
 
-\begin{theorem}{再双対空間との自然な同型}
+\begin{theorem*}{再双対空間との自然な同型}
   $V$が有限次元ならば、$\iota \colon V \to (V^*)^*$は線形同型である。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 写像$\iota$は単射}
@@ -152,8 +155,8 @@ $\iota \colon V \to (V^*)^*$は線形写像であるので、$\iota$が線形同
     この仮定は、すべての線形汎関数が$\vb*{v}$を0に写すことを意味する。
     
     \br
-    
-    ここで、$\vb*{v} \neq \vb*{o}$とすると、\hyperref[thm:dual-space-separation]{双対空間の分離性}より、$\phi(\vb*{v}) \neq 0$となるような線形汎関数$\phi$が存在する。
+
+    ここで、$\vb*{v} \neq \vb*{o}$とすると、\thmref{thm:dual-space-separation}より、$\phi(\vb*{v}) \neq 0$となるような線形汎関数$\phi$が存在する。
 
     これは$\iota(\vb*{v}) = 0$という仮定と矛盾するので、$\iota(\vb*{v}) = 0$のもとでは、$\vb*{v} = \vb*{o}$でなければならない。
     
@@ -163,16 +166,16 @@ $\iota \colon V \to (V^*)^*$は線形写像であるので、$\iota$が線形同
     \begin{equation*}
       \iota(\vb*{v}) = 0 \Longrightarrow \vb*{v} = \vb*{o}
     \end{equation*}
-    となり、これは\hyperref[thm:injective-zero-test]{線形写像$\iota$が単射}であることを示している。$\qed$
+    \thmref{thm:injective-zero-test}より、これは線形写像$\iota$が単射であることを示している。$\qed$
   \end{subpattern}
   
   \begin{subpattern}{\bfseries 写像$\iota$は全射}
-    \hyperref[thm:dual-basis-dimension]{双対空間の次元}を考えると、
+    \thmref{thm:dual-basis-dimension}を考えると、
     \begin{equation*}
       \dim (V^*)^* = \dim V^* = \dim V
     \end{equation*}
-    
-    $\iota$が単射であることから$\Ker(\iota) = \{ \vb*{o} \}$なので、\hyperref[thm:rank-nullity-theorem]{線形写像の次元定理}より、$\dim (V^*)^* = \dim V$は$\iota \colon V \to (V^*)^*$が全射であることを示している。$\qed$
+
+    $\iota$が単射であることから$\Ker(\iota) = \{ \vb*{o} \}$なので、\thmref{thm:rank-nullity-theorem}より、$\dim (V^*)^* = \dim V$は$\iota \colon V \to (V^*)^*$が全射であることを示している。$\qed$
   \end{subpattern}
 \end{proof}
 

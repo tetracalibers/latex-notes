@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{行列の階数と解の性質}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:elementary-matrix} % 前の章
+}{}
+
+\chapter{行列の階数と解の性質}\label{ch:linear-equation-and-rank}
 
 \subfile{./linear-equation-and-rank/equation-solutions}
 \subfile{./linear-equation-and-rank/solution-parametric-form}

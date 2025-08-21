@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -14,13 +17,13 @@
 \end{enumerate}
 という手順で定まる値である
 
-\begin{definition}{行列式}
+\begin{definition*}{行列式}
   $n$次正方行列$A = (a_{ij})$に対して、
   \begin{equation*}
     \sum_{\sigma \in S_n} \sgn(\sigma) \prod_{i=1}^n a_{i,\sigma(i)}
   \end{equation*}
   で定められる値を$A$の\keyword{行列式}と呼び、$|A|$あるいは$\det(A)$と表記する
-\end{definition}
+\end{definition*}
 
 \sectionline
 \section{三角行列の行列式}
@@ -28,7 +31,7 @@
 
 \keyword{三角行列}の場合、各列から1つずつ、0でない成分を重複なく選び出す方法は、対角成分をすべて選ぶしかない
 
-\begin{theorem}{三角行列の行列式}\label{thm:det-of-triangular-matrix}
+\begin{theorem}{三角行列の行列式}{det-of-triangular-matrix}
   三角行列の行列式は、対角成分の積である
   \begin{equation*}
     \left|\begin{matrix}
@@ -74,7 +77,7 @@
     \end{equation*}
     である必要がある
 
-    そして、この条件を満たす置換は、\hyperref[thm:identity-permutation-characterized-by-monotonicity]{恒等置換しか存在しない}ので、
+    そして、この条件を満たす置換は、\thmref{thm:identity-permutation-characterized-by-monotonicity}より、恒等置換しか存在しないので、
     \begin{equation*}
       \sigma(i) = i
     \end{equation*}
@@ -92,7 +95,7 @@
     \end{equation*}
     である必要がある
 
-    そして、この条件を満たす置換も、\hyperref[thm:identity-permutation-characterized-by-monotonicity]{恒等置換しか存在しない}ので、上三角行列の場合と同様の結果が得られる $\qed$
+    そして、この条件を満たす置換も、\thmref{thm:identity-permutation-characterized-by-monotonicity}より、恒等置換しか存在しないので、上三角行列の場合と同様の結果が得られる $\qed$
   \end{subpattern}
 \end{proof}
 
@@ -100,7 +103,7 @@
 
 \keyword{対角行列}は、上三角行列でもあり下三角行列でもあるので、上の定理の特別な場合として次が成り立つ
 
-\begin{theorem}{対角行列の行列式}
+\begin{theorem*}{対角行列の行列式}
   対角行列の行列式は、対角成分の積である
   \begin{equation*}
     \left|\begin{matrix}
@@ -111,15 +114,15 @@
        &                  &        &                  & a_{nn}
     \end{matrix}\right| = a_{11} a_{22} \cdots a_{nn}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 特に、対角成分がすべて1の場合が\keyword{単位行列}である
 
-\begin{theorem}{単位行列の行列式}
+\begin{theorem*}{単位行列の行列式}
   単位行列の行列式は1である
   \begin{equation*}
     | E | = 1
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \end{document}

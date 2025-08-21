@@ -1,12 +1,15 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
 \section{線形代数における鳩の巣原理}
 \marginnote{\refbookA p102〜103}
 
-\begin{theorem}{線形代数における鳩の巣原理の抽象版}\label{thm:abstract-linear-pigeonhole}
+\begin{theorem}{線形代数における鳩の巣原理の抽象版}{abstract-linear-pigeonhole}
   $V,\,W$を同じ次元の線形空間とするとき、線形写像$f\colon V \to W$に関して、次はすべて同値である
   \begin{enumerate}[label=\romanlabel]
     \item $f$は単射
@@ -45,7 +48,7 @@
 
   \br
 
-  線形変換$g$に対して、\hyperref[thm:linear-pigeonhole]{線形代数における鳩の巣原理}より、
+  線形変換$g$に対して、\thmref{thm:linear-pigeonhole}より、
   \begin{equation*}
     g\text{が単射} \Longleftrightarrow g\text{が全射} \Longleftrightarrow g\text{が全単射}
   \end{equation*}
@@ -59,7 +62,7 @@
 
   最後に、階数に関する条件を示す
 
-  \hyperref[sec:image-and-surjectivity]{像空間と全射性の関係}により、$f$が全射であることは、$\Im(f) = W$と同値であるから、
+  \secref{sec:image-and-surjectivity}により、$f$が全射であることは、$\Im(f) = W$と同値であるから、
   \begin{equation*}
     \dim \Im(f) = \dim W
   \end{equation*}
@@ -76,7 +79,7 @@
 
 次の事実は、数の一致で空間の一致が結論できる有用な結果である
 
-\begin{theorem}{次元の一致による部分空間の一致判定}\label{thm:equal-dim-implies-equal-subspace}
+\begin{theorem}{次元の一致による部分空間の一致判定}{equal-dim-implies-equal-subspace}
   2つの線型空間について、$V \subset W$ならば、
   \begin{equation*}
     \dim V = \dim W \Longrightarrow V = W
@@ -96,11 +99,11 @@
   \begin{equation*}
     \iota(\vb*{v}) = \vb*{0} \Longleftrightarrow \vb*{v} = \vb*{0}
   \end{equation*}
-  したがって、\hyperref[thm:injective-zero-test]{零ベクトルへの写像による単射性の判定}より、$\iota$は単射である
+  したがって、\thmref{thm:injective-zero-test}より、$\iota$は単射である
 
   \br
 
-  また、$\iota$が単射であることと、仮定$\dim V = \dim W$を合わせると、\hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}より、$\iota$は全射であることがわかる
+  また、$\iota$が単射であることと、仮定$\dim V = \dim W$を合わせると、\thmref{thm:abstract-linear-pigeonhole}より、$\iota$は全射であることがわかる
 
   \br
 
@@ -111,7 +114,7 @@
 
 \sectionline
 
-\begin{theorem}{次元による部分空間の比較}
+\begin{theorem*}{次元による部分空間の比較}
   $K^n$の部分空間$V,\,W$について、$V \subseteq W$ならば、
   \begin{equation*}
     \dim V \leq \dim W
@@ -119,10 +122,10 @@
   が成り立つ
 
   等号が成立するのは、$V = W$のときに限る
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  $V \subseteq W$であることから、\hyperref[thm:basis-extension]{基底の延長}により、$V$の基底を延長して$W$の基底にできるので、
+  $V \subseteq W$であることから、\thmref{thm:basis-extension}により、$V$の基底を延長して$W$の基底にできるので、
   \begin{equation*}
     \dim V \leq \dim W
   \end{equation*}
@@ -130,26 +133,26 @@
 
   \br
 
-  等号が成立する場合については、前述の\hyperref[thm:equal-dim-implies-equal-subspace]{次元の一致による部分空間の一致判定}を参照 $\qed$
+  等号が成立する場合については、前述の\thmref{thm:equal-dim-implies-equal-subspace}を参照 $\qed$
 \end{proof}
 
 \sectionline
 \section{核空間・像空間の次元}
 \marginnote{\refbookC p83〜84}
 
-\begin{theorem}{線形写像の単射性と核の次元}
+\begin{theorem*}{線形写像の単射性と核の次元}
   線形写像$f\colon V \to W$について、
   \begin{equation*}
     f\text{が単射} \Longleftrightarrow \dim \Ker(f) = 0
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:injective-iff-trivial-kernel]{線形写像の単射性と核の関係}より、$f$が単射であることは次と同値である
+  \thmref{thm:injective-iff-trivial-kernel}より、$f$が単射であることは次と同値である
   \begin{equation*}
     \Ker(f) = \{ \vb*{0} \}
   \end{equation*}
-  \hyperref[def:dimension-of-vector-space]{次元の定義}より、$\{ \vb*{0} \}$の次元は0であるので、
+  \defref{def:dimension-of-vector-space}より、$\{ \vb*{0} \}$の次元は0であるので、
   \begin{equation*}
     \dim \Ker(f) = 0
   \end{equation*}
@@ -158,15 +161,15 @@
 
 \sectionline
 
-\begin{theorem}{線形写像の全射性と像の次元}
+\begin{theorem*}{線形写像の全射性と像の次元}
   線形写像$f\colon V \to W$について、
   \begin{equation*}
     f\text{が全射} \Longleftrightarrow \dim \Im(f) = \dim W
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:abstract-linear-pigeonhole]{線形代数における鳩の巣原理の抽象版}の主張そのものである $\qed$
+  \thmref{thm:abstract-linear-pigeonhole}の主張そのものである $\qed$
 \end{proof}
 
 \end{document}

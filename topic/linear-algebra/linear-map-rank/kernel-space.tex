@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -22,7 +25,7 @@ $\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしま�
 
 \subsection{核空間と一般解のパラメータ表示}
 
-\hyperref[sec:reinterpretation-of-parametric-solution]{解のパラメータ表示の再解釈}で述べたように、$A\vb*{x} = \vb*{b}$の解をすべて見つけるには、
+\secref{sec:reinterpretation-of-parametric-solution}で述べたように、$A\vb*{x} = \vb*{b}$の解をすべて見つけるには、
 \begin{enumerate}
   \item 1つの解（特殊解）$\vb*{x}_0$を見つける
   \item $A\vb*{x} = \vb*{o}$の一般解を求める
@@ -34,9 +37,9 @@ $\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしま�
 
 このことを$\Ker A$を用いて定式化できる。
 
-\begin{theorem}{特殊解と核の元による別解の構成}
+\begin{theorem*}{特殊解と核の元による別解の構成}
   $\vb*{x}_0$が$A\vb*{x} = \vb*{b}$の解であるとき、$\Ker A$に属する任意のベクトル$\vb*{u}$を用いて、$\vb*{x}_0 + \vb*{u}$もまた$A\vb*{x} = \vb*{b}$の解となる。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $\vb*{x}_0$が$A\vb*{x} = \vb*{b}$の解であることから、
@@ -62,9 +65,9 @@ $\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしま�
 
 そして、どんな解もこの方法で作ることができる。
 
-\begin{theorem}{特殊解と核空間による一般解の構成}
+\begin{theorem*}{特殊解と核空間による一般解の構成}
   $A\vb*{x} = \vb*{b}$を満たす1つの解$\vb*{x}_0$が見つかれば、$A\vb*{x} = \vb*{b}$の一般解は、$A\vb*{x} = \vb*{o}$の一般解$\vb*{u}$を用いて、$\vb*{x}_0 + \vb*{u}$と表される。
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
   $A\vb*{x} = \vb*{b}$の1つの解を$\vb*{x}_0$、もう1つの解を$\vb*{x}_1$とおくと、
@@ -104,9 +107,9 @@ $\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしま�
 
 ここで、$c_1, \ldots, c_d$は任意であるので、この式は斉次形方程式$A\vb*{x} = \vb*{o}$の基本解のパラメータ表示そのものである。
 
-\begin{theorem}{斉次形方程式の基本解と核空間の基底}
+\begin{theorem*}{斉次形方程式の基本解と核空間の基底}
   $A$を$m \times n$型行列とし、$\vb*{u}_1, \dots, \vb*{u}_d$を$A\vb*{x} = \vb*{o}$の基本解とするとき、$\{ \vb*{u}_1, \dots, \vb*{u}_d \}$は$\Ker A$の基底である。
-\end{theorem}
+\end{theorem*}
 
 言い換えると、$\Ker A$の元$\vb*{u}$は、$A\vb*{x} = \vb*{o}$の基本解$\vb*{u}_1,\dots,\vb*{u}_d$を使ってパラメータ表示できる。
 
@@ -124,7 +127,7 @@ $\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしま�
 
 \br
 
-斉次形方程式$A\vb*{x} = \vb*{o}$の主変数を$x_{i_1}, \dots, x_{i_r}$、自由変数を$x_{j_1}, \dots, x_{j_d}$とすると、解のパラメータの空間は\hyperref[def:coordinate-subspace]{座標部分空間}$\mathbb{R}^{\{ j_1, \dots, j_d \}}$である。
+斉次形方程式$A\vb*{x} = \vb*{o}$の主変数を$x_{i_1}, \dots, x_{i_r}$、自由変数を$x_{j_1}, \dots, x_{j_d}$とすると、解のパラメータの空間は\defref{def:coordinate-subspace}$\mathbb{R}^{\{ j_1, \dots, j_d \}}$である。
 
 \br
 
@@ -136,7 +139,7 @@ $\Ker A$すなわち$\Ker f$とは、$f$によって$\vb*{o}$に写ってしま�
 
 \subsection{核空間の次元と解の自由度}\label{sec:nullity-solution-degrees}
 
-$\vb*{b} = \vb*{o}$でない一般の連立方程式$A\vb*{x} = \vb*{b}$においても、\hyperref[sec:degrees-of-freedom]{基本解の個数$d$は解の自由度}であり、$\vb*{u}_1, \ldots, \vb*{u}_d$は$\Ker A$の基底をなすため、
+$\vb*{b} = \vb*{o}$でない一般の連立方程式$A\vb*{x} = \vb*{b}$においても、\secref{sec:degrees-of-freedom}で述べたように、{基本解の個数$d$は解の自由度}であり、$\vb*{u}_1, \ldots, \vb*{u}_d$は$\Ker A$の基底をなすため、
 \begin{emphabox}
   \begin{spacebox}
     \begin{center}

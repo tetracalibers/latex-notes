@@ -1,11 +1,14 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
 \section{擬似逆行列による解}
 
-\hyperref[sec:pseudoinverse-projection]{ムーア・ペンローズの擬似逆行列と直交射影行列}は、次のような関係で結ばれていた。
+\secref{sec:pseudoinverse-projection}より、ムーア・ペンローズの擬似逆行列と直交射影行列は、次のような関係で結ばれていた。
 \begin{equation*}
   A^+ A = P_{\mathcal{V}}, \quad A A^+ = P_{\mathcal{U}}
 \end{equation*}
@@ -14,7 +17,7 @@
 
 \subsection{最小二乗解}
 
-\hyperref[thm:least-squares-projection]{最小二乗解と列空間への直交射影の関係}より、最小二乗解は次の条件を満たすものだった。
+\thmref{thm:least-squares-projection}より、最小二乗解は次の条件を満たすものだった。
 \begin{equation*}
   A \vb*{x} = P_{\mathcal{U}} \vb*{b}
 \end{equation*}
@@ -37,7 +40,7 @@
 
 \subsection{最小ノルム解}
 
-\hyperref[thm:min-norm-solution-projection]{最小ノルム解と行空間への直交射影の関係}より、最小ノルム解は次の条件を満たすものだった。
+\thmref{thm:min-norm-solution-projection}より、最小ノルム解は次の条件を満たすものだった。
 \begin{equation*}
   \vb*{x} = P_{\mathcal{V}} \vb*{x}_0
 \end{equation*}
@@ -67,13 +70,13 @@
 
 \br
 
-また、\hyperref[thm:pseudoinverse-of-invertible]{$A$が正則な場合は$A^+ = A^{-1}$}となるので、$\vb*{x} = A^{-1} \vb*{b}$という逆行列を用いた解の表現も包括していることがわかる。
+また、\thmref{thm:pseudoinverse-of-invertible}より、$A$が正則な場合は$A^+ = A^{-1}$となるので、$\vb*{x} = A^{-1} \vb*{b}$という逆行列を用いた解の表現も包括していることがわかる。
 
-\begin{theorem}{擬似逆行列による線形方程式の解}
+\begin{theorem*}{擬似逆行列による線形方程式の解}
   $A$のムーア・ペンローズ擬似逆行列$A^+$を用いると、線形方程式$A\vb*{x} = \vb*{b}$の解は次のように表される。
   \begin{equation*}
     \vb*{x} = A^+ \vb*{b}
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \end{document}

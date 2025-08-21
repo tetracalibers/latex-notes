@@ -14,9 +14,9 @@
 
 つまり、行階段行列の主成分の個数$r$は、零行でない行の数と一致する。
 
-\begin{definition}{行列の階数}
+\begin{definition*}{行列の階数}
   行列$A$を行階段行列に変形したとき、零行でない行の個数を$A$の\keyword{階数}あるいは\keyword{ランク}といい、$\rank A$と書く。
-\end{definition}
+\end{definition*}
 
 零行でない行の個数は、既約行階段行列まで変形しなくても、行階段行列の時点で読み取れることに注意しよう。
 
@@ -44,7 +44,7 @@ $A$が$m \times n$型ならば、行は$m$個なので、$\rank A$は0以上$m$�
 
 したがって、次の重要な評価が成り立つ。
 
-\begin{theorem}{行列の階数の範囲}\label{thm:rank-bounds}
+\begin{theorem}{行列の階数の範囲}{rank-bounds}
   $m \times n$型の行列$A$の階数に対して、次の不等式が成り立つ。
   \begin{equation*}
     0 \leq \rank(A) \leq \min(m,n)

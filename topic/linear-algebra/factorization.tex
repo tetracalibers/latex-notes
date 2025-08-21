@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{行列の因子分解}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:fitting-space} % 前の章
+}{}
+
+\chapter{行列の因子分解}\label{ch:factorization}
 
 
 \end{document}

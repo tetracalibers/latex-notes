@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -8,9 +11,9 @@
 
 複素正方行列$A$の転置行列において、各成分をその共役複素数に置き換えた行列を\keyword{随伴行列}という
 
-\begin{definition}{随伴行列}
+\begin{definition*}{随伴行列}
   複素正方行列$A = (a_{ij})$に対し、$\overline{a_{ji}}$を$(i,j)$成分にもつ行列${}^t\overline{A}$を$A$の\keyword{随伴行列}といい、$A^*$と表す
-\end{definition}
+\end{definition*}
 
 実数$x$の複素共役は$\overline{x} = x$であるので、$A$が実行列のときは、
 \begin{equation*}
@@ -24,9 +27,11 @@
 
 \subsection{転置と似た性質}
 
-\hyperref[thm:transpose-involution]{転置を二回行うと元に戻る}ことと同様に、次が成り立つ
+\thmref{thm:transpose-involution}より、転置を二回行うと元に戻る。
 
-\begin{theorem}{随伴行列の自己反転性}\label{thm:adjoint-involution}
+このことと同様に、次が成り立つ
+
+\begin{theorem}{随伴行列の自己反転性}{adjoint-involution}
   複素正方行列$A$に対し、随伴行列を二回とると元に戻る
   \begin{equation*}
     (A^*)^* = A
@@ -60,7 +65,7 @@
 
 \br
 
-\begin{theorem}{積に対するエルミート共役の順序反転性}\label{thm:adjoint-of-product}
+\begin{theorem}{積に対するエルミート共役の順序反転性}{adjoint-of-product}
   複素行列$A\,B$の積$AB$が定義できるとき、
   \begin{equation*}
     (AB)^* = B^* A^*
@@ -73,21 +78,21 @@
 
 \subsection{随伴による内積の表現}
 
-\hyperref[def:standard-inner-product-Cn]{標準内積}は、随伴を用いて表現することもできる
+\defref{def:standard-inner-product-Cn}は、随伴を用いて表現することもできる
 
-\begin{theorem}{随伴による標準内積の表現}\label{thm:inner-product-adjoint-form}
+\begin{theorem}{随伴による標準内積の表現}{inner-product-adjoint-form}
   \begin{equation*}
     (\vb*{a},\vb*{b}) = \vb*{b}^* \cdot \vb*{a}
   \end{equation*}
 \end{theorem}
 
 \begin{proof}
-  \hyperref[thm:standard-inner-product-symmetry]{標準内積の対称性}より、
+  \thmref{thm:standard-inner-product-symmetry}より、
   \begin{equation*}
     (\vb*{a},\vb*{b}) = \overline{(\vb*{b},\vb*{a})}
   \end{equation*}
 
-  ここで、右辺の\hyperref[thm:inner-product-as-transpose-product]{内積を転置を用いて表す}と、
+  ここで、\thmref{thm:inner-product-as-transpose-product}より、右辺の内積を転置を用いて表すと、
   \begin{equation*}
     \overline{(\vb*{b},\vb*{a})} = \overline{\vb*{b}^\top \cdot \overline{\vb*{a}}} = \overline{\vb*{b}^\top} \cdot \overline{\overline{\vb*{a}}} = \vb*{b}^* \cdot \vb*{a}
   \end{equation*}
@@ -101,9 +106,9 @@
 
 \subsection{随伴公式}
 
-随伴行列と\hyperref[def:standard-inner-product-Cn]{標準内積}は、次のような関係で結ばれる
+随伴行列と\defref{def:standard-inner-product-Cn}は、次のような関係で結ばれる
 
-\begin{theorem}{随伴公式}\label{thm:adjoint-identity}
+\begin{theorem}{随伴公式}{adjoint-identity}
   複素行列$A$と計量空間上のベクトル$\vb*{u},\,\vb*{v}$に対し、
   \begin{equation*}
     (A\vb*{u}, \vb*{v}) = (\vb*{u}, A^*\vb*{v})
@@ -111,11 +116,11 @@
 \end{theorem}
 
 \begin{proof}
-  \hyperref[thm:inner-product-as-transpose-product]{転置を用いて内積を表す}と、
+  \thmref{thm:inner-product-as-transpose-product}より、転置を用いて内積を表すと、
   \begin{equation*}
     (A\vb*{u},\vb*{v}) = {}^t(A\vb*{u}) \overline{\vb*{v}}
   \end{equation*}
-  \hyperref[thm:transpose-of-product]{転置と行列積の順序反転性}より、${}^t(A\vb*{u}) = {}^t\vb*{u} \transpose{A}$なので、
+  \thmref{thm:transpose-of-product}より、${}^t(A\vb*{u}) = {}^t\vb*{u} \transpose{A}$なので、
   \begin{equation*}
     (A\vb*{u},\vb*{v}) = ({}^t\vb*{u} \transpose{A}) \overline{\vb*{v}}
   \end{equation*}

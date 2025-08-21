@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{特異値と特異値分解}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:spectral-decomposition} % 前の章
+}{}
+
+\chapter{特異値と特異値分解}\label{ch:singular-value-decomposition}
 
 \subfile{./singular-value-decomposition/positive-definite-matrix}
 \subfile{./singular-value-decomposition/singular-value}

@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -116,12 +119,12 @@ $f_A^*(\phi)\colon \mathbb{R}^n \to \mathbb{R}$に$\vb*{v} \in \mathbb{R}^n$を�
 
 この関係は、ペアリングの記号を用いて書くと対称性がわかりやすい。
 
-\begin{theorem}{数ベクトル空間における双対写像とペアリング}
+\begin{theorem*}{数ベクトル空間における双対写像とペアリング}
   $\phi \in (\mathbb{R}^m)^*, \vb*{v} \in \mathbb{R}^n$に対して、次の関係が成り立つ。
   \begin{equation*}
     \langle f_A^*(\phi), \vb*{v} \rangle = \langle \phi, f_A(\vb*{v}) \rangle
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \subsection{一般の線形空間の場合}
 
@@ -147,7 +150,7 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
   \end{tikzcd}
 \end{equation*}
 
-\hyperref[thm:linear-map-composition]{線形写像の合成もまた線形写像になる}ので、$\varphi \circ f$は$V$上の線形汎関数である。
+\thmref{thm:linear-map-composition}より、線形写像の合成もまた線形写像になるので、$\varphi \circ f$は$V$上の線形汎関数である。
 
 これを$f^*(\varphi) \in V^*$と書くことにする。
 \begin{equation*}
@@ -168,7 +171,7 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
 \begin{handout}[補足：$f^*$の線形性]
   $\varphi_1, \varphi_2 \in W^*$と$c_1, c_2 \in \mathbb{R}$とする。
   
-  $\varphi_1, \varphi_2$は線形写像であるので、\hyperref[def:linear-map-addition-scalar]{線形写像の和とスカラー倍の定義}より、
+  $\varphi_1, \varphi_2$は線形写像であるので、\defref{def:linear-map-addition-scalar}より、
   \begin{align*}
     f^*(c_1 \varphi_1 + c_2 \varphi_2)(\vb*{v}) &= (c_1 \varphi_1 + c_2 \varphi_2)f(\vb*{v}) \\
     &= c_1 \varphi_1(f(\vb*{v})) + c_2 \varphi_2(f(\vb*{v})) \\
@@ -192,12 +195,12 @@ $W$上の線形汎関数を$\varphi \in W^*$とすると、次のような関係
 として定めることができる。
 $f^*$を$f$の\keyword{双対写像}という。
 
-\begin{definition}{双対写像}
+\begin{definition*}{双対写像}
   $V,W$を線形空間とし、$f \colon V \to W$を線形写像とするとき、$f$の\keyword{双対写像}$f^* \colon W^* \to V^*$を次のように定義する。
   \begin{equation*}
     f^*(\varphi) \coloneq \varphi \circ f \quad (\varphi \in W^*)
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 $f^*(\varphi)\colon V \to \mathbb{R}$に$\vb*{v} \in V$を入力すると、次の関係が導かれる。
 \begin{equation*}
@@ -205,11 +208,11 @@ $f^*(\varphi)\colon V \to \mathbb{R}$に$\vb*{v} \in V$を入力すると、次�
 \end{equation*}
 つまり、$\vb*{v}$に$f^*(\varphi)$を作用させることと、$\varphi$に$f(\vb*{v})$を作用させることは同じである。
 
-\begin{theorem}{双対写像とペアリング}
+\begin{theorem*}{双対写像とペアリング}
   $\varphi \in W^*, \vb*{v} \in V$に対して、次の関係が成り立つ。
   \begin{equation*}
     \langle f^*(\varphi), \vb*{v} \rangle = \langle \varphi, f(\vb*{v}) \rangle
   \end{equation*}
-\end{theorem}
+\end{theorem*}
 
 \end{document}

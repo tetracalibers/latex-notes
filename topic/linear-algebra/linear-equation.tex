@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{連立一次方程式と掃き出し法}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:diagonal-matrix} % 前の章
+}{}
+
+\chapter{連立一次方程式と掃き出し法}\label{ch:linear-equation}
 
 \subfile{./linear-equation/forward-and-inverse-problems}
 \subfile{./linear-equation/matrix-representation}

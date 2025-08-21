@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -23,12 +26,12 @@
 
 \subsection{単射の定義とイメージ}
 
-\begin{definition}{単射}
+\begin{definition*}{単射}
   写像$f\colon X \to Y$が\keyword{単射}であるとは、$X$の任意の要素$x_1, x_2$に対して、次が成り立つことをいう。
   \begin{equation*}
     f(x_1) = f(x_2) \implies x_1 = x_2
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 この条件の対偶をとると、
 \begin{equation*}
@@ -113,11 +116,11 @@
   \end{tikzpicture}
 \end{center}
 
-また、単射は\hyperref[def:preimage-of-element]{終域の元の逆像}を用いて定義することもできる。
+また、単射は\defref{def:preimage-of-element}を用いて定義することもできる。
 
-\begin{definition}{単射（逆像による定義）}
+\begin{definition*}{単射（逆像による定義）}
   写像$f\colon X \to Y$が\keyword{単射}であるとは、任意の$y \in Y$に対し、逆像$f^{-1}(y)$の元の個数が$1$以下であることをいう。
-\end{definition}
+\end{definition*}
 
 $y$の逆像は、$f$によって$y$に写るような$x \in X$の集合である。
 
@@ -125,12 +128,12 @@ $y$の逆像は、$f$によって$y$に写るような$x \in X$の集合であ�
 
 \subsection{全射の定義とイメージ}
 
-\begin{definition}{全射}
+\begin{definition*}{全射}
   写像$f\colon X \to Y$が\keyword{全射}であるとは、$f$の像$f(X)$が$Y$に一致することをいう。
   \begin{equation*}
     f(X) = Y
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 $X$から$Y$への写像$f$が\keyword{全射}であるとは、
 \begin{emphabox}
@@ -207,9 +210,9 @@ $X$から$Y$への写像$f$が\keyword{全射}であるとは、
   \placeholder{再編予定（\refbookS p23）}
 \end{mindflow}
 
-\begin{definition}{全単射}
+\begin{definition*}{全単射}
   写像$f$が\keyword{全単射}であるとは、$f$が単射かつ全射であることをいう。
-\end{definition}
+\end{definition*}
 
 単射と全射は、それぞれ次の条件を満たす性質だった。
 \begin{itemize}

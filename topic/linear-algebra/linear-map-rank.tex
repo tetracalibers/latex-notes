@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{線形写像の階数}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:subspace-basis-and-dim} % 前の章
+}{}
+
+\chapter{線形写像の階数}\label{ch:linear-map-rank}
 
 \subfile{./linear-map-rank/column-space}
 \subfile{./linear-map-rank/column-space-basis}

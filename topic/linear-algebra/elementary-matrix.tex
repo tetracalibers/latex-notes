@@ -1,10 +1,17 @@
 \documentclass[../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr,refcount} % 親のラベルを読む
+\externaldocument{../../.tex_intermediates/topic_linear-algebra} % 親の .aux を参照（パスは環境に合わせて）
+
 % ---
 
 \begin{document}
 
-\chapter{基本変形と基本行列}
+\ifSubfilesClassLoaded{%
+  \setcounterref{chapter}{ch:invertible-transform-inverse-matrix} % 前の章
+}{}
+
+\chapter{基本変形と基本行列}\label{ch:elementary-matrix}
 
 \subfile{./elementary-matrix/elementary-matrix-from-row}
 \subfile{./elementary-matrix/elementary-matrix-from-column}

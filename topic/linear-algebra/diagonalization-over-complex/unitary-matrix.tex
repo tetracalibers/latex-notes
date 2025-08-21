@@ -1,12 +1,15 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
 \section{ユニタリ行列と直交行列}
 \marginnote{\refbookF p275〜276、p279〜282 \\ \refbookA p204}
 
-\begin{definition}{ユニタリ行列}\label{def:unitary-matrix}
+\begin{definition}{ユニタリ行列}{unitary-matrix}
   複素正方行列$A$が次を満たすとき、$A$を\keyword{ユニタリ行列}という
   \begin{equation*}
     A^* = A^{-1}
@@ -17,7 +20,7 @@
 
 2つのベクトルそれぞれにユニタリ行列を左からかけても、それらの内積は変わらない
 
-\begin{theorem}{ユニタリ行列の特徴づけとしての内積不変性}\label{thm:unitary-characterized-by-inner-product-invariance}
+\begin{theorem}{ユニタリ行列の特徴づけとしての内積不変性}{unitary-characterized-by-inner-product-invariance}
   $n$次複素行列$A$がユニタリ行列であることと、任意の$\vb*{u},\,\vb*{v} \in \mathbb{C}^n$に対し、
   \begin{equation*}
     (A\vb*{u}, A\vb*{v}) = (\vb*{u}, \vb*{v})
@@ -79,7 +82,7 @@
 
 ユニタリ行列を左からかけても、ベクトルのノルムは変わらない
 
-\begin{theorem}{ユニタリ行列の特徴づけとしてのノルム不変性}\label{thm:unitary-characterized-by-norm-invariance}
+\begin{theorem}{ユニタリ行列の特徴づけとしてのノルム不変性}{unitary-characterized-by-norm-invariance}
   $n$次複素行列$A$がユニタリ行列であることと、任意の$\vb*{v} \in \mathbb{C}^n$に対し、
   \begin{equation*}
     \|A\vb*{v}\| = \|\vb*{v}\|
@@ -117,12 +120,12 @@ $A$が実正方行列のときは、
 \end{equation*}
 となり、このような$A$は\keyword{直交行列}と呼ばれる
 
-\begin{definition}{直交行列}
+\begin{definition*}{直交行列}
   実正方行列$A$が次を満たすとき、$A$を\keyword{直交行列}という
   \begin{equation*}
     {}^t A = A^{-1}
   \end{equation*}
-\end{definition}
+\end{definition*}
 
 直交行列という名前の由来は、次のように考えられる
 
@@ -166,7 +169,7 @@ $A$を$n$個の列ベクトルを横一列に並べたものとみなし、
 
 この事実は、複素行列に対しても成立する
 
-\begin{theorem}{ユニタリ行列の列ベクトルの直交正規性}\label{thm:unitary-iff-columns-orthonormal}
+\begin{theorem}{ユニタリ行列の列ベクトルの直交正規性}{unitary-iff-columns-orthonormal}
   複素正方行列$A$を$A = (\vb*{a}_1, \ldots, \vb*{a}_n)$と列ベクトル分解するとき、
   \begin{equation*}
     A\text{がユニタリ行列} \Longleftrightarrow (\vb*{a}_i, \vb*{a}_j) = \delta_{ij}
@@ -211,12 +214,12 @@ $A$を$n$個の列ベクトルを横一列に並べたものとみなし、
 
 \subsection{ユニタリ行列と随伴・転置}
 
-\begin{theorem}{ユニタリ行列の随伴不変性}
+\begin{theorem*}{ユニタリ行列の随伴不変性}
   ユニタリ行列$U$の随伴行列$U^*$もユニタリ行列である
-\end{theorem}
+\end{theorem*}
 
 \begin{proof}
-  \hyperref[thm:adjoint-involution]{随伴行列を二回とると元に戻る}ので、
+  \thmref{thm:adjoint-involution}より、随伴行列を二回とると元に戻るので、
   \begin{equation*}
     (U^*)^* = U
   \end{equation*}
@@ -240,7 +243,7 @@ $A$を$n$個の列ベクトルを横一列に並べたものとみなし、
 
 上の定理は、実行列の世界では、次の定理に対応する
 
-\begin{theorem}{直交行列の転置不変性}\label{thm:transpose-of-orthogonal}
+\begin{theorem}{直交行列の転置不変性}{transpose-of-orthogonal}
   直交行列$Q$の転置行列${}^tQ$も直交行列である
 \end{theorem}
 
