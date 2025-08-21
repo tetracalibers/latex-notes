@@ -9,7 +9,7 @@
   ],
   "tasks": [
     {
-      "label": "linalg: latexmk chapter (targets prompt)",
+      "label": "linalg: build chapter (targets prompt)",
       "type": "shell",
       "command": "npx",
       "args": [
