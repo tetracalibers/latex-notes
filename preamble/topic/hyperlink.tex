@@ -25,11 +25,18 @@
 \newcommand{\thmref}[1]{%
   \hyperref[#1]{\texttt{theorem \autoref*{#1}「\nameref*{#1}」}}%
 }
-\newcommand{\defref}[1]{%
-  \hyperref[#1]{\texttt{def \autoref*{#1}「\nameref*{#1}」}}%
-}
 \newcommand{\secref}[1]{%
   \hyperref[#1]{\texttt{\nameref*{#1}{\small[第\ref*{#1}章]}}}%
+}
+
+\NewDocumentCommand\defref{o m}{
+  \IfNoValueTF{#1}
+    {
+      \hyperref[#2]{\texttt{def \autoref*{#2}「\nameref*{#2}」}}
+    }
+    {
+      \hyperref[#2]{\texttt{#1{\footnotesize（def \autoref*{#2}）}}}
+    }
 }
 
 \usepackage{xr-hyper}
