@@ -6,30 +6,10 @@
 \begin{document}
 
 \sectionline
-\section{線形同型}
+\section{同型写像による観測}
 \marginnote{
   \refweb{線形代数の基礎のキソ}{https://www1.econ.hit-u.ac.jp/kawahira/courses/kiso/01-senkei.pdf}
 }
-
-線形写像$f\colon U \to V$が全単射であるとき、$f$を\keywordJE{同型写像}{isomorphism}という。
-
-\br
-
-全単射性から、$U$のベクトル全体と$V$のベクトル全体の間に一対一の対応がつく。
-
-また、線形性より、和・スカラー倍といった基本的な演算も対応がつく。
-
-\br
-
-これより、$V$は$U$を$f$という精巧なレンズで観測した像であり、実体は同じものだとも考えられる。
-
-\subsection{同型写像による観測}
-
-同型写像はふたつのベクトル空間を移しあう精巧なレンズである。
-
-たとえば同型写像$f\colon U \to V$があるとき、$V$の性質や出来事を$U$の性質や出来事として「観測」することができる。
-
-\br
 
 われわれは地図上の距離を何cmか測って、実際の距離を割り出すことがある。
 
@@ -38,18 +18,6 @@
 \br
 
 このような考え方は、\keyword{引き戻し}や\keyword{押し出し}といった概念として数学に深く根付いている。
-
-\sectionline
-\section{同型と同一視}
-\marginnote{\refbookS p42〜43}
-
-$V$と$W$が同型なら、$V$と$W$は線型空間としては本質的に同じものと考えることができる。
-
-$W$が未知の線型空間でも、既知の線型空間$V$と同型なら、$W$のことも$V$と同じようによくわかることになる。
-
-\br
-
-既知の線型空間として、数ベクトル空間$K^n$を考えることが多い。
 
 \sectionline
 \section{基底を写す線形写像}
@@ -124,7 +92,11 @@ $W$が未知の線型空間でも、既知の線型空間$V$と同型なら、$W
 \marginnote{\refbookS p42}
 
 \begin{mindflow}
-  座標写像と絡めて考えれば理解できそう
+  \begin{itemize}
+    \item 座標写像と絡めて考えれば理解できそう
+    \item \url{https://chatgpt.com/c/68a7e03b-a458-832c-a18b-c40ae25f938a}
+    \item \url{https://www1.econ.hit-u.ac.jp/kawahira/courses/kiso/01-senkei.pdf} 1.5.1
+  \end{itemize}
 \end{mindflow}
 
 $V$を線型空間とするとき、$\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとは、$\vb*{v}_1, \ldots, \vb*{v}_n$が定める線形写像$f\colon K^n \to V$が\keyword{同型}であるということである。
