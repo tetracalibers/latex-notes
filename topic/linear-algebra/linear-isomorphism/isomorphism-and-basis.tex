@@ -1,0 +1,24 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{線形同型写像と基底}
+\marginnote{\refbookC p94}
+
+\begin{theorem*}{線形同型写像による基底の保存}
+  線形同型写像$f$によって、部分空間の基底は基底に写る
+\end{theorem*}
+
+\begin{proof}
+  \thmref{thm:injective-preserves-independence}ことから、$f$の単射性により、基底の線型独立性が保たれる
+
+  また、$f$の全射性により、基底の生成性も保たれる
+
+  よって、$f$によって基底は基底に写る $\qed$
+\end{proof}
+
+\end{document}
