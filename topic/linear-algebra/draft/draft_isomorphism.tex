@@ -1,6 +1,43 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
+
+\sectionline
+\section{線形同型}
+\marginnote{
+  \refweb{線形代数の基礎のキソ}{https://www1.econ.hit-u.ac.jp/kawahira/courses/kiso/01-senkei.pdf}
+}
+
+線形写像$f\colon U \to V$が全単射であるとき、$f$を\keywordJE{同型写像}{isomorphism}という。
+
+\br
+
+全単射性から、$U$のベクトル全体と$V$のベクトル全体の間に一対一の対応がつく。
+
+また、線形性より、和・スカラー倍といった基本的な演算も対応がつく。
+
+\br
+
+これより、$V$は$U$を$f$という精巧なレンズで観測した像であり、実体は同じものだとも考えられる。
+
+\subsection{同型写像による観測}
+
+同型写像はふたつのベクトル空間を移しあう精巧なレンズである。
+
+たとえば同型写像$f\colon U \to V$があるとき、$V$の性質や出来事を$U$の性質や出来事として「観測」することができる。
+
+\br
+
+われわれは地図上の距離を何cmか測って、実際の距離を割り出すことがある。
+
+これは地図$V$と実際の地形$U$の精巧な対応（同型写像）$f$をもとに、$V$の性質を$U$の性質とみなして距離の「観測」を行っているのである。
+
+\br
+
+このような考え方は、\keyword{引き戻し}や\keyword{押し出し}といった概念として数学に深く根付いている。
 
 \sectionline
 \section{同型と同一視}
@@ -127,6 +164,14 @@ $\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldot
   \end{enumerate}
 \end{theorem*}
 
+\begin{mindflow}
+  \begin{itemize}
+    \item \thmref{thm:injective-preserves-independence}
+    \item \secref{sec:image-and-surjectivity}
+    \item \url{https://chatgpt.com/c/68a82263-450c-8322-b3b9-3072769d8ac2}
+  \end{itemize}
+\end{mindflow}
+
 \begin{equation*}
   \begin{tikzcd}[every label/.append style = {font = \small}]
     K_n \arrow[r,"g"]\arrow[rd, "f \circ g"'] & V \arrow[d,"f"]\\
@@ -136,10 +181,29 @@ $\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldot
 
 \sectionline
 \section{todo}
+\marginnote{\refbookS p44}
+
+% \refbookS 系2.1.8.1
+\begin{theorem*}{todo}
+  $V$を$n$次元線形空間とする。
+  同型写像$f\colon K^n \to V$に対し、$V$の基底$f(\vb*{e}_1), \ldots, f(\vb*{e}_n)$を対応させる写像は同型である。
+  \begin{equation*}
+    \{\text{同型} K^n \to V \} \to \{ V\text{の基底}\}
+  \end{equation*}
+\end{theorem*}
+
+\begin{mindflow}
+  \begin{itemize}
+    \item \url{https://chatgpt.com/c/68a8e1ee-e9c8-8327-8cf3-5511d2916f03}
+  \end{itemize}
+\end{mindflow}
+
+\sectionline
+\section{todo}
 \marginnote{\refbookS p43}
 
 % \refbookS 例2.1.6.1
-\begin{theorem*}{todo}
+\begin{theorem}{数ベクトル空間の標準埋め込みと部分空間の同型}{standard-embedding-subspace}
   $m \leq n$を自然数とし、$K^n$の部分空間$W$を次のように定める。
   \begin{equation*}
     W = \left\{ \begin{pmatrix}
@@ -158,16 +222,36 @@ $\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldot
       \vb*{x}_1 \\ \vdots \\ \vb*{x}_m \\ 0 \\ \vdots \\ 0
     \end{pmatrix}
   \end{equation*}
-\end{theorem*}
+\end{theorem}
+
+\begin{mindflow}
+  \begin{itemize}
+    \item 部分空間の定義時に、「入れものの空間のことはあまり意識せずに…」と書いたが、その根拠となるのがこの同型？
+    \item \url{https://chatgpt.com/c/68a54b60-b3f8-8333-a900-aea35036832a}
+  \end{itemize}
+\end{mindflow}
 
 この同型$K^m \to W$により、部分空間$W \subset K^n$を$K^m$と同一視できる。
 
+\sectionline
+\section{todo}
+\marginnote{\refbookS p44}
+
+% \refbookS 系2.1.8.2
+\begin{theorem*}{todo}
+  $V$を$n$次元線形空間とし、$W$を$V$の$m$次元部分空間とする。
+  \thmref{thm:standard-embedding-subspace}の同型により、$K^m$を$K^n$の部分空間と同一視する。
+  このとき、次が成り立つ。
+  \begin{enumerate}[label=\romanlabel]
+    \item 同型$f\colon K^n \to V$で、$f(K^m) = W$を満たすものが存在する
+    \item \defref[制限]{def:restriction-of-map}$f|_{K^m}\colon K^m \to W$は同型である
+  \end{enumerate}
+\end{theorem*}
+
 \begin{mindflow}
-  部分空間の定義時に、「入れものの空間のことはあまり意識せずに…」と書いたが、その根拠となるのがこの同型？
-  
-  以下も参照：
-  
-  \url{https://chatgpt.com/c/68a54b60-b3f8-8333-a900-aea35036832a}
+  \begin{itemize}
+    \item \url{https://chatgpt.com/c/68a8f174-667c-832a-b72c-473d5daf885f}
+  \end{itemize}
 \end{mindflow}
 
 \end{document}
