@@ -7,18 +7,52 @@
 
 \sectionline
 \section{線形同型写像と基底}
-\marginnote{\refbookC p94}
+\marginnote{\refbookC p94 \\ \refbookS p44}
 
-\begin{theorem*}{線形同型写像による基底の保存}
-  線形同型写像$f$によって、部分空間の基底は基底に写る
+線形写像$f\colon V \to W$において、$f$が同型写像であることと、$f$が$V$の基底を$W$の基底に写すことは同値である。
+
+\br
+
+基底によって、その線形空間のすべての元（ベクトル）を一意的に表すことができる。
+
+そのため、基底の像がまた基底になることは、
+\begin{enumerate}[label=\romanlabel]
+  \item $f$では作れないベクトルが$W$に残ることはない（$f$の像が$W$を張る）
+  \item 異なるベクトルが同じベクトルに潰れることがない（$f$の像は線形従属にはならない）
+\end{enumerate}
+ということを意味する。
+
+ここで、(\romannum{i})は\keyword{全射}の条件、(\romannum{ii})は\keyword{単射}の条件を表しているので、基底の像がまた基底になるなら、$f$は全単射すなわち同型写像となる。
+
+\br
+
+逆に、同型写像は基底を基底に写す写像となる。
+
+% \refbookS 命題2.1.7
+\begin{theorem*}{基底の像による線形同型の判定}
+  $V$を線形空間とし、$\vb*{v}_1, \ldots, \vb*{v}_n$を$V$の基底とする。
+  線形写像$f \colon V \to W$に対し、次の条件は同値である。
+  \begin{enumerate}[label=\romanlabel]
+    \item $f\colon V \to W$は同型である
+    \item $f(\vb*{v}_1), \ldots, f(\vb*{v}_n)$は$W$の基底をなす
+  \end{enumerate}
 \end{theorem*}
 
 \begin{proof}
-  \thmref{thm:injective-preserves-independence}ことから、$f$の単射性により、基底の線型独立性が保たれる
+  \begin{subpattern}{(\romannum{i}) $\Longrightarrow$ (\romannum{ii})}
+    このとき、$f$は単射でもあり、全射でもある。
+    
+    \thmref{thm:injective-preserves-independence}ことから、$f$の単射性により、基底の線型独立性が保たれる。
 
-  また、$f$の全射性により、基底の生成性も保たれる
+    また、\thmref{thm:surjective-iff-full-image}より、$f$の全射性は、$f$の像が$W$を張ることを意味する。
 
-  よって、$f$によって基底は基底に写る $\qed$
+    よって、$f$による像は$W$の基底をなす。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{(\romannum{ii}) $\Longrightarrow$ (\romannum{i})}
+    % https://chatgpt.com/c/68a82263-450c-8322-b3b9-3072769d8ac2
+    \todo{}
+  \end{subpattern}
 \end{proof}
 
 \end{document}
