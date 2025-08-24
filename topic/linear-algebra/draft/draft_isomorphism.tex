@@ -31,77 +31,6 @@
   \end{itemize}
 \end{mindflow}
 
-$V$を線型空間とするとき、$\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとは、$\vb*{v}_1, \ldots, \vb*{v}_n$が定める線形写像$f\colon K^n \to V$が\keyword{同型}であるということである。
-
-\br
-
-$\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldots, \vb*{v}_n$が定める線形写像$f\colon K^n \to V$を、基底$\vb*{v}_1, \ldots, \vb*{v}_n$が定める同型という。
-
-\br
-
-どんな線型空間$V$でも、$V$の基底があれば、数ベクトル空間から$V$への同型が定まるため、$V$の元を数ベクトルを使って表すことができる。
-
-\begin{emphabox}
-  \begin{spacebox}
-    \begin{center}
-      $V$の基底を\keywordJE{とる}{take}ことで、\\
-      $V$の元を数ベクトルを使って表すことができる
-    \end{center}
-  \end{spacebox}
-\end{emphabox}
-
-\sectionline
-\section{todo}
-\marginnote{\refbookS p44}
-
-\begin{mindflow}
-  「線形同型写像による基底の保存」の逆も成り立つことを示すのがこの定理
-\end{mindflow}
-
-% \refbookS 命題2.1.7
-\begin{theorem*}{todo}
-  $V$を線形空間とし、$\vb*{v}_1, \ldots, \vb*{v}_n$を$V$の基底とする。
-  線形写像$f \colon V \to W$に対し、次の条件は同値である。
-  \begin{enumerate}[label=\romanlabel]
-    \item $f\colon V \to W$は同型である
-    \item $f(\vb*{v}_1), \ldots, f(\vb*{v}_n)$は$W$の基底をなす
-  \end{enumerate}
-\end{theorem*}
-
-\begin{mindflow}
-  \begin{itemize}
-    \item \thmref{thm:injective-preserves-independence}
-    \item \secref{sec:image-and-surjectivity}
-    \item \url{https://chatgpt.com/c/68a82263-450c-8322-b3b9-3072769d8ac2}
-  \end{itemize}
-\end{mindflow}
-
-\begin{equation*}
-  \begin{tikzcd}[every label/.append style = {font = \small}]
-    K_n \arrow[r,"g"]\arrow[rd, "f \circ g"'] & V \arrow[d,"f"]\\
-    & W
-  \end{tikzcd}
-\end{equation*}
-
-\sectionline
-\section{todo}
-\marginnote{\refbookS p44}
-
-% \refbookS 系2.1.8.1
-\begin{theorem*}{todo}
-  $V$を$n$次元線形空間とする。
-  同型写像$f\colon K^n \to V$に対し、$V$の基底$f(\vb*{e}_1), \ldots, f(\vb*{e}_n)$を対応させる写像は同型である。
-  \begin{equation*}
-    \{\text{同型} K^n \to V \} \to \{ V\text{の基底}\}
-  \end{equation*}
-\end{theorem*}
-
-\begin{mindflow}
-  \begin{itemize}
-    \item \url{https://chatgpt.com/c/68a8e1ee-e9c8-8327-8cf3-5511d2916f03}
-  \end{itemize}
-\end{mindflow}
-
 \sectionline
 \section{todo}
 \marginnote{\refbookS p43}
@@ -148,7 +77,7 @@ $\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldot
   このとき、次が成り立つ。
   \begin{enumerate}[label=\romanlabel]
     \item 同型$f\colon K^n \to V$で、$f(K^m) = W$を満たすものが存在する
-    \item \defref[制限]{def:restriction-of-map}$f|_{K^m}\colon K^m \to W$は同型である
+    \item \defref*{def:restriction-of-map}$f|_{K^m}\colon K^m \to W$は同型である
   \end{enumerate}
 \end{theorem*}
 

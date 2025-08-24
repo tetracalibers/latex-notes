@@ -1,0 +1,140 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{基底が定める同型と成分表示}
+\marginnote{\refbookS p42、p44}
+
+同型を選ぶことは、基底を選ぶことと同値である。
+
+\br
+
+同型写像$f\colon K^n \to V$を1つ選ぶと、\thmref{thm:isomorphism-iff-basis-mapped}より、その像$\{ f(\vb*{e}_1), \ldots, f(\vb*{e}_n) \}$は$V$の基底を成す。
+
+逆に、$V$の基底$\{ \vb*{v}_1, \ldots, \vb*{v}_n \}$を1つ選ぶと、$\vb*{e}_i \mapsto \vb*{v}_i$と定めることで、同型写像$f\colon K^n \to V$が一意的に定まる。
+
+\br
+
+つまり、基底を選ぶことは、$V$に\keyword{座標}を入れて$V \cong K^n$とみなすことにほかならない。
+
+\br
+
+ここで、次の定理により、未知の同型写像$f\colon K^n \to V$に関する議論を、\keyword{座標写像}による議論に帰着させることができる。
+
+\begin{theorem}{基底に基づく座標写像と同型写像の同一視}{isomorphism-as-coordinate-map}
+  任意の同型写像$f\colon K^n \to V$は、$V$のある基底$\mathcal{V}$に対する座標写像$\Phi_{\mathcal{V}}$そのものである。
+\end{theorem}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries $f$が同型 $\Longrightarrow$ $f$は座標写像}
+    任意の同型写像$f\colon K^n \to V$をとる。
+    
+    $f$は同型であるから、\thmref{thm:isomorphism-iff-basis-mapped}より、$f$は$K^n$の基底を$V$の基底に写す。
+    
+    そこで、$\mathcal{V} = \{ \vb*{v}_1, \ldots, \vb*{v}_n \}$を、$K^n$の標準基底の像として定める。
+    \begin{equation*}
+      \vb*{v}_i = f(\vb*{e}_i) \quad (i=1,\dots,n)
+    \end{equation*}
+    
+    このとき、任意の$\vb*{x} = (x_1,\dots,x_n) \in K^n$について、
+    \begin{equation*}
+      f(x) = f\left( \sum_{i=1}^n x_i \vb*{e}_i \right) = \sum_{i=1}^n x_i f(\vb*{e}_i) = \sum_{i=1}^n x_i \vb*{v}_i = \Phi_{\mathcal{V}}(x)
+    \end{equation*}
+    が成り立つことから、$f = \Phi_{\mathcal{V}}$である。$\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries $f$が座標写像 $\Longrightarrow$ $f$は同型}
+    \thmref{thm:coordinate-map-isomorphism}から成り立つ。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{同型と基底の対応}
+
+基底を選ぶことは、$V$に座標を入れて$V \cong K^n$とみなすことにほかならない。
+
+このことは、次の定理として示すことができる。
+
+% \refbookS 系2.1.8.1
+\begin{theorem*}{同型と基底の対応}
+  $V$を$n$次元線形空間、$K^n$の標準基底を$\{ \vb*{e}_1, \ldots, \vb*{e}_n \}$とする。
+
+  同型写像$\Phi\colon K^n \to V$に対し、$V$の基底を対応させる写像は同型である。
+  \begin{equation*}
+  \begin{array}{cccc}\Theta  \colon & \bigl\{ \text{同型} K^n \to V \bigr\} & \longrightarrow & \bigl\{ V\text{の基底}\bigr \} \\ & \rotatebox{90}{$\in$} & & \rotatebox{90}{$\in$} \\ & f & \longmapsto & \bigl\{f(\vb*{e}_1), \ldots, f(\vb*{e}_n)\bigr\} \end{array}
+\end{equation*}
+\end{theorem*}
+
+\begin{proof}
+  $V$の基底を$\mathcal{V}$と表記する。
+  
+  $\Theta$の定義より、次のように書ける。
+  \begin{equation*}
+    \Theta(f) = \bigl\{f(\vb*{e}_1), \ldots, f(\vb*{e}_n)\bigr\} = \mathcal{V}
+  \end{equation*}
+  
+  \br
+
+  \thmref{thm:isomorphism-as-coordinate-map}より、同型写像$f\colon K^n \to V$を座標写像$\Phi_{\mathcal{V}}$とみなしても一般性を失わない。
+
+  \br
+  
+  そこで、写像$\Psi$を、$V$の基底に対して座標関数$\Phi_{\mathcal{V}}$を対応させる写像として定める。
+  \begin{equation*}
+    \Psi\colon \bigl\{ V\text{の基底} \bigr\} \rightarrow \bigl\{ \text{同型} K^n \to V \bigr\}
+  \end{equation*}
+  すなわち、次のように書ける。
+  \begin{equation*}
+    \Psi(\mathcal{V}) = \Phi_{\mathcal{V}} = f
+  \end{equation*}
+  
+  \br
+
+  $\Theta$と$\Psi$が互いに逆写像であることを示せば、$\Theta$が同型（可逆）であることが従う。
+  
+  \br
+  
+  まず、任意の$\mathcal{V} = \{ \vb*{v}_1, \ldots, \vb*{v}_n \}$に対し、
+  \begin{align*}
+    (\Theta \circ \Psi)(\mathcal{V}) &= \Theta(\Psi(\mathcal{V})) = \Theta(\Phi_{\mathcal{V}}) \\
+    &= \{ \Phi_{\mathcal{V}}(\vb*{e}_1), \ldots, \Phi_{\mathcal{V}}(\vb*{e}_n) \} = \{ \vb*{v}_1, \ldots, \vb*{v}_n \} = \mathcal{V}
+  \end{align*}
+  となるので、$\Theta \circ \Psi$は恒等写像である。
+  
+  \br
+
+  また、任意の$f \colon K^n \to V$に対し、
+  \begin{equation*}
+    (\Psi \circ \Theta)(f) = \Psi(\Theta(f))
+    = \Psi(\mathcal{V}) = \Phi_{\mathcal{V}} = f
+  \end{equation*}
+  となるので、$\Psi \circ \Theta$も恒等写像である。
+  
+  \br
+  
+  したがって、\defref{def:inverse-map-by-identity}より、$\Theta$と$\Psi$は互いに逆写像である。
+  
+  このことから、$\Theta$は同型であることがいえる。 $\qed$
+\end{proof}
+
+\subsection{基底が定める同型}
+
+$\vb*{v}_1, \ldots, \vb*{v}_n \in V$が基底であるとき、$\vb*{v}_1, \ldots, \vb*{v}_n$が定める線形写像$f\colon K^n \to V$を、\keyword{基底}$\vb*{v}_1, \ldots, \vb*{v}_n$が\keyword{定める同型}という。
+
+\br
+
+どんな線型空間$V$でも、$V$の基底があれば、数ベクトル空間から$V$への同型が定まるため、$V$の元を数ベクトルを使って表すことができる。
+
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      $V$の基底を\keywordJE{とる}{take}ことで、\\
+      $V$の元を数ベクトルを使って表すことができる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+\end{document}
