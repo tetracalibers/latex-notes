@@ -1,5 +1,8 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
@@ -349,7 +352,18 @@ $\vb*{y} = A\vb*{x}$を方程式と捉えると、(\romannum{i})は解の一意�
 \begin{equation*}
   \Im f = W
 \end{equation*}
-という条件と同値である
+という条件と同値である。
+
+\br
+
+ここでは直感的な説明からこの条件を導いたが、実際この条件は\defref*{def:surjective-map}の定義そのものである。
+
+\begin{theorem}{線形写像の全射性と像の関係}{surjective-iff-full-image}
+  $f\colon V \to W$を線形写像とするとき、
+  \begin{equation*}
+    f\text{が全射} \Longleftrightarrow \Im f = W
+  \end{equation*}
+\end{theorem}
 
 \subsection{単射・全射との離れ具合}
 
