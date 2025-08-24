@@ -1,0 +1,99 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{座標写像による数ベクトル空間との同型}
+\marginnote{\refbookA p101 \\ \refbookC p94〜95 \\ \refbookS p42、44}
+
+$K^n$の\keyword{座標}$(x_1,\dots,x_n)$を、次のように$V$のベクトルに送り込む写像$\Phi$を考える。
+\begin{equation*}
+  \Phi(x_1,\dots,x_n) = x_1 \vb*{v}_1 + \cdots + x_n \vb*{v}_n
+\end{equation*}
+
+ここで、$K^n$の座標$(x_1,\dots,x_n)$は、標準基底$\{ \vb*{e}_1, \dots, \vb*{e}_n \}$を用いたベクトルの成分表示として考えている。（\secref{sec:orthogonal-coordinates-standard-basis}）
+
+\begin{mindflow}
+  \todo{座標写像が線形写像であること}
+\end{mindflow}
+
+\begin{definition}{座標写像}{coordinate-mapping}
+  $V$を線形空間とし、$\mathcal{V} = \{ \vb*{v}_1, \dots, \vb*{v}_n \}$を$V$の基底とする。
+
+  このとき、$K^n$から$V$への線形写像$\Phi_{\mathcal{V}}\colon K^n \to V$を次のように定める。
+  \begin{equation*}
+    \Phi_{\mathcal{V}}(x_1,\dots,x_n) = \sum_{i=1}^n x_i \vb*{v}_i \quad (x_i \in K)
+  \end{equation*}
+  この写像$\Phi_{\mathcal{V}}$を$\mathcal{V}$で定まる\keyword{座標写像}という。
+\end{definition}
+
+\begin{theorem}{座標写像の線形同型性}{coordinate-map-isomorphism}
+  \defref*{def:coordinate-mapping}は線形同型写像である。
+\end{theorem}
+
+\begin{proof}
+  $K^n$の座標$(x_1,\dots,x_n)$を$\vb*{x}$と表記し、
+  線形写像$\Phi_{\mathcal{V}}$が全単射であることを示す。
+
+  \begin{subpattern}{\bfseries 単射であること}
+    基底$\{ \vb*{v}_1,\dots, \vb*{v}_n \}$の線型独立性は、次の条件を満たすことである。
+    \begin{equation*}
+      \sum_{i=1}^n x_i \vb*{v}_i = \vb*{o} \Longrightarrow x_i = 0 \quad (i=1,\dots,n)
+    \end{equation*}
+
+    $\Phi_{\mathcal{V}}$の定義をふまえると、上の条件は、次のように書ける。
+    \begin{equation*}
+      \Phi_{\mathcal{V}}(\vb*{x}) = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
+    \end{equation*}
+
+    よって、\thmref{thm:injective-zero-test}より、$\Phi_{\mathcal{V}}$は単射である $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 全射であること}
+    基底の定義より、$\{ \vb*{v}_1, \dots, \vb*{v}_n \}$は$V$を生成する。
+    \begin{equation*}
+      \langle \vb*{v}_1, \dots, \vb*{v}_n \rangle = V
+    \end{equation*}
+    
+    $\Phi_{\mathcal{V}}$の定義をふまえると、$\Phi_{\mathcal{V}}$は$\vb*{v}_1, \dots, \vb*{v}_n$の線形結合全体、すなわち\defref*{def:span-of-vectors}を像として持つ。
+    \begin{equation*}
+      \Im \Phi_{\mathcal{V}} = \langle \vb*{v}_1, \dots, \vb*{v}_n \rangle
+    \end{equation*}
+    
+    よって、
+    \begin{equation*}
+      V = \Im(\Phi_{\mathcal{V}})
+    \end{equation*}
+    が成り立つため、\thmref{thm:surjective-iff-full-image}より、$\Phi_{\mathcal{V}}$は全射である。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{数ベクトル空間との同型}
+
+\thmref{thm:coordinate-map-isomorphism}を部分空間の線形同型に関して言い換えると、次のような主張になる。
+
+\begin{theorem}{有限次元部分空間と数ベクトル空間の線形同型性}{subspace-isomorphic-to-Kn}
+  任意の部分空間$V$は、次元の等しい数ベクトル空間$K^n$と線形同型である。
+\end{theorem}
+
+このことはつまり、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      和とスカラー倍だけに着目すれば、\\
+      どんな部分空間も数ベクトル空間と「同じ」
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+ということを意味する。
+
+\br
+
+この同型により、部分空間に\keyword{座標}を与えることができる。
+
+そしてその座標によって、ベクトルの\keyword{成分表示}が得られる。
+
+\end{document}

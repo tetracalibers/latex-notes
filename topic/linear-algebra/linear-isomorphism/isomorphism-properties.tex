@@ -1,0 +1,95 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{線形同型の性質}
+\marginnote{\refbookC p93〜94}
+
+ここでは、線形同型写像の恒等写像、逆写像、合成写像との関係を述べる
+
+\subsection{線形同型と恒等写像}
+
+\begin{theorem*}{恒等写像の線形同型性}
+  恒等写像は線形同型写像である
+\end{theorem*}
+
+\begin{proof}
+  恒等写像は明らかに全単射であり、線形写像でもあるため、線形同型写像である $\qed$
+\end{proof}
+
+この事実は、部分空間の線形同型に関して次のように言い換えられる
+
+\begin{theorem*}{部分空間の自己同型性}
+  部分空間$V$は$V$自身と線形同型である
+
+  すなわち、
+  \begin{equation*}
+    V \cong V
+  \end{equation*}
+\end{theorem*}
+
+\subsection{線形同型と逆写像}
+
+\begin{theorem*}{線形同型写像の逆写像}
+  線形同型写像の逆写像は線形同型写像である
+\end{theorem*}
+
+\begin{proof}
+  \todo{\refbookC p93〜94}
+\end{proof}
+
+この事実は、部分空間の線形同型に関して次のように言い換えられる
+
+\begin{theorem*}{線形同型性の対称性}
+  部分空間$V$が部分空間$W$と線形同型なら、$W$は$V$と線形同型である
+
+  すなわち、
+  \begin{equation*}
+    V \cong W \Longrightarrow W \cong V
+  \end{equation*}
+\end{theorem*}
+
+\subsection{線形同型と合成写像}
+
+\begin{theorem*}{線形同型写像の合成}
+  線形同型写像の合成は線形同型写像である
+\end{theorem*}
+
+\begin{proof}
+  \todo{\refbookC p94}
+\end{proof}
+
+この事実は、部分空間の線形同型に関して次のように言い換えられる
+
+\begin{theorem*}{線形同型性の推移性}
+  部分空間$V$が部分空間$W$と線形同型で、$W$が部分空間$U$と線形同型ならば、$V$は$U$と線形同型である
+
+  すなわち、
+  \begin{equation*}
+    V \cong W \land W \cong U \Longrightarrow V \cong U
+  \end{equation*}
+\end{theorem*}
+
+\sectionline
+
+ここまでで登場した、部分空間の線形同型に関する性質をまとめると、
+
+\begin{theorem*}{線形同型の同値関係としての性質}
+  \begin{enumerate}[label=\romanlabel]
+    \item $V \cong V$
+    \item $V \cong W \Longrightarrow W \cong V$
+    \item $V \cong W \land W \cong U \Longrightarrow V \cong U$
+  \end{enumerate}
+\end{theorem*}
+
+となり、これらは、
+\begin{shaded}
+  同型$\cong$が等号$=$と同じ性質をもつ
+\end{shaded}
+ことを意味している
+
+\end{document}
