@@ -16,12 +16,16 @@ $K^n$の\keyword{座標}$(x_1,\dots,x_n)$を、次のように$V$のベクトル
 
 ここで、$K^n$の座標$(x_1,\dots,x_n)$は、標準基底$\{ \vb*{e}_1, \dots, \vb*{e}_n \}$を用いたベクトルの成分表示として考えている。（\secref{sec:orthogonal-coordinates-standard-basis}）
 
+\begin{mindflow}
+  \todo{座標写像が線形写像であること}
+\end{mindflow}
+
 \begin{definition}{座標写像}{coordinate-mapping}
   $V$を線形空間とし、$\mathcal{V} = \{ \vb*{v}_1, \dots, \vb*{v}_n \}$を$V$の基底とする。
 
   このとき、$K^n$から$V$への線形写像$\Phi_{\mathcal{V}}\colon K^n \to V$を次のように定める。
   \begin{equation*}
-    \Phi_{\mathcal{V}}(x_1,\dots,x_n) = \sum_{i=1}^n x_i \vb*{v}_i \quad (x_i \in K^n)
+    \Phi_{\mathcal{V}}(x_1,\dots,x_n) = \sum_{i=1}^n x_i \vb*{v}_i \quad (x_i \in K)
   \end{equation*}
   この写像$\Phi_{\mathcal{V}}$を$\mathcal{V}$で定まる\keyword{座標写像}という。
 \end{definition}
