@@ -6,7 +6,7 @@
 \begin{document}
 
 \sectionline
-\section{線形同型写像と基底}
+\section{同型写像の像と基底}
 \marginnote{\refbookC p94 \\ \refbookS p44}
 
 線形写像$f\colon V \to W$において、$f$が同型写像であることと、$f$が$V$の基底を$W$の基底に写すことは同値である。
@@ -29,14 +29,14 @@
 逆に、同型写像は基底を基底に写す写像となる。
 
 % \refbookS 命題2.1.7
-\begin{theorem*}{基底の像による線形同型の判定}
+\begin{theorem}{基底の像が基底となることと同型性}{isomorphism-iff-basis-mapped}
   $V$を線形空間とし、$\vb*{v}_1, \ldots, \vb*{v}_n$を$V$の基底とする。
   線形写像$f \colon V \to W$に対し、次の条件は同値である。
   \begin{enumerate}[label=\romanlabel]
     \item $f\colon V \to W$は同型である
     \item $f(\vb*{v}_1), \ldots, f(\vb*{v}_n)$は$W$の基底をなす
   \end{enumerate}
-\end{theorem*}
+\end{theorem}
 
 \begin{proof}
   \begin{subpattern}{(\romannum{i}) $\Longrightarrow$ (\romannum{ii})}
