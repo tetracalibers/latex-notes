@@ -31,12 +31,8 @@
 
 \NewDocumentCommand\defref{o m}{
   \IfNoValueTF{#1}
-    {
-      \hyperref[#2]{\texttt{def \autoref*{#2}「\nameref*{#2}」}}
-    }
-    {
-      \hyperref[#2]{\texttt{#1{\footnotesize（def \autoref*{#2}）}}}
-    }
+    {\hyperref[#2]{\texttt{def \autoref*{#2}「\nameref*{#2}」}}}
+    {\hyperref[#2]{\texttt{#1{\footnotesize（def \autoref*{#2}）}}}}
 }
 
 \usepackage{xr-hyper}
