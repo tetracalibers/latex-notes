@@ -4,7 +4,9 @@
 
 \sectionline
 \section{行列の積}
+\marginnote{\refbookA p56〜61}
 
+% \refbookA 命題2.2.1
 \begin{theorem}{線形写像の合成}{linear-map-composition}
   $\mathbb{R}^n$から$\mathbb{R}^m$への線形写像$g$と、$\mathbb{R}^m$から$\mathbb{R}^l$への線形写像$f$が与えられているとき、これらを合成して得られる写像
   \begin{equation*}
@@ -14,7 +16,24 @@
 \end{theorem}
 
 \begin{proof}
-  \todo{\refbookA p56 （問2.2）}
+  任意の$\vb*{a},\vb*{b} \in \mathbb{R}^n$とスカラー$c_1,c_2 \in \mathbb{R}$について、次の合成写像を考える。
+  \begin{equation*}
+    (f \circ g)(c_1\vb*{a}+c_2\vb*{b}) = f\bigl(g(c_1\vb*{a}+c_2\vb*{b})\bigr)
+  \end{equation*}
+  $g$の線形性より、
+  \begin{equation*}
+    g(c_1\vb*{a}+c_2\vb*{b}) = c_1 g(\vb*{a}) + c_2 g(\vb*{b})
+  \end{equation*}
+  これを$f$に適用すると、$f$の線形性より、
+  \begin{align*}
+    f\bigl(c_1 g(\vb*{a}) + c_2 g(\vb*{b})\bigr) &= c_1 f(g(\vb*{a})) + c_2 f(g(\vb*{b})) \\
+    &= c_1(f \circ g)(\vb*{a}) + c_2(f \circ g)(\vb*{b})
+  \end{align*}
+  したがって、
+  \begin{equation*}
+    (f \circ g)(c_1\vb*{a}+c_2\vb*{b}) = c_1(f \circ g)(\vb*{a}) + c_2(f \circ g)(\vb*{b})
+  \end{equation*}
+  が成り立つことから、$f \circ g \colon \mathbb{R}^n \to \mathbb{R}^l$は線形写像である。 $\qed$
 \end{proof}
 
 $f$と$g$の表現行列をそれぞれ$A = (a_{ij}), \, B = (b_{ij})$とする
