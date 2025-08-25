@@ -3,54 +3,87 @@
 \begin{document}
 
 \sectionline
-\section{線形写像の定義}
-\marginnote{\refbookA p2 \\ \refbookS p38〜39}
+\section{線形写像と線形性}
+\marginnote{
+  \refbookA p2 \\ \refbookS p38〜39 \\
+  \refweb{線形代数の基礎のキソ}{https://www1.econ.hit-u.ac.jp/kawahira/courses/kiso/01-senkei.pdf}
+}
+
+写像$f \colon K^n \to K^m$が与えられたとき、これは$K^n$の出来事、構造、その他もろもろの情報を$K^m$に投影していると考えられる。
+
+このとき、その「写り方」にはどのような性質を期待するべきであろうか？
+
+\br
+
+ベクトルには、和とスカラー倍という2つの演算が備わっていた。
+
+そして、和とスカラー倍の組み合わせが、線形結合として重要な役割を果たしている。
+
+\br
+
+そのため、写った先でも、ベクトルどうしの和・定数倍に関する関係式が保存されるという状況が望ましい。
 
 \begin{definition*}{線形写像と線形性}
-  写像$f\colon \mathbb{R}^n \to \mathbb{R}^m$が\keywordJE{線形写像}{linear mapping}であるとは、次の条件を満たすことをいう。
+  写像$f\colon K^n \to K^m$が\keywordJE{線形写像}{linear mapping}であるとは、次の条件を満たすことをいう。
   \begin{enumerate}[label=\romanlabel]
-    \item 任意の$c \in \mathbb{R} , \, \vb*{v} \in \mathbb{R}^n$に対して、$f(c\vb*{v}) = cf(\vb*{v})$
-    \item 任意の$\vb*{u}, \vb*{v} \in \mathbb{R}^n$に対して、$f(\vb*{u} + \vb*{v}) = f(\vb*{u}) + f(\vb*{v})$
+    \item 任意の$c \in K , \, \vb*{v} \in K^n$に対して、$f(c\vb*{v}) = cf(\vb*{v})$
+    \item 任意の$\vb*{u}, \vb*{v} \in K^n$に対して、$f(\vb*{u} + \vb*{v}) = f(\vb*{u}) + f(\vb*{v})$
   \end{enumerate}
   これらの性質を写像$f$の\keyword{線形性}という。
 
-  また、$m=n$のとき、線形写像$f\colon \mathbb{R}^n \to \mathbb{R}^n$を$\mathbb{R}^n$の\keywordJE{線形変換}{linear transformation}という。
+  また、$m=n$のとき、線形写像$f\colon K^n \to K^n$を$K^n$の\keywordJE{線形変換}{linear transformation}という。
 \end{definition*}
 
-\keyword{線形変換}は空間$\mathbb{R}^n$からそれ自身への写像なので、$\mathbb{R}^n$内において「ベクトルが変化している」（あるいは$f$が空間$\mathbb{R}^n$に\keyword{作用}している）ニュアンスとみることができる
-
-\sectionline
-
-$f\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とするとき、(\romannum{i})より、
+$f$が線形写像であれば、たとえば$c_1 \vb*{u} + c_2 \vb*{v}$を$f$で写したときに、
 \begin{equation*}
-  f(0 \cdot \vb*{v}) = 0 \cdot f(\vb*{v})
+  f(c_1 \vb*{u} + c_2 \vb*{v}) = c_1 f(\vb*{u}) + c_2 f(\vb*{v})
 \end{equation*}
-なので、
+というように、ベクトル$\vb*{u},\vb*{v}$を$f$で写したものに置き換えただけで、線形結合の形はそのまま保たれる。
+
+\subsection{比例関数の一般化}
+
+線形写像のひとつの解釈として、「\keyword{比例関数}の一般化」という考え方もできる。
+
+\br
+
+$m=n=1$の場合の線形写像$f\colon \mathbb{R} \to \mathbb{R}$は、単に数と数を対応させているので、（写像というより）関数である。
+このとき、線形性(\romannum{i})から、
 \begin{equation*}
-  f(\vb*{o}) = \vb*{o}
+  f(c) = f(c \cdot 1) = c \cdot f(1) \quad (c \in \mathbb{R})
 \end{equation*}
-が成り立つ
-
-\begin{theorem*}{零ベクトルの像}
-  零ベクトルは線形写像によって零ベクトルに写される
-\end{theorem*}
-
-\sectionline
-
-$m=n=1$のときは、線形写像$f\colon \mathbb{R}^1 \to \mathbb{R}^1$は、通常の意味の関数である
-
-このとき、\romannum{i}の性質から、
-\begin{equation*}
-  f(c) = f(c \cdot 1) = c \cdot f(1) \quad (c \in \mathbb{R} = \mathbb{R}^1)
-\end{equation*}
-が成り立つので、$a = f(1) \in \mathbb{R}$とおくと、
+が成り立つので、$a = f(1) \in \mathbb{R}$とおくと、次のように書ける。
 \begin{equation*}
   f(x) = ax
 \end{equation*}
-と書ける
 
 \begin{theorem}{一次元線形写像と比例関数の同一性}{linear-map-R1-is-proportional}
-  線形写像$f\colon \mathbb{R}^1 \to \mathbb{R}^1$は、$a$を\keyword{比例定数}とする\keyword{比例関数}である
+  線形写像$f\colon \mathbb{R} \to \mathbb{R}$は、$a$を\keyword{比例定数}とする\keyword{比例関数}である。
 \end{theorem}
+
+もっとも簡単な関数である比例関数が満たすべき性質を抽象化し、高次元の世界で実現しているのが線形写像だとも考えられる。
+
+\subsection{線形写像による零ベクトルの像}
+
+$f\colon \mathbb{K}^n \to \mathbb{K}^m$を線形写像とするとき、線形性(\romannum{i})より、
+\begin{equation*}
+  f(0 \cdot \vb*{v}) = 0 \cdot f(\vb*{v})
+\end{equation*}
+よって、次が成り立つ。
+\begin{equation*}
+  f(\vb*{o}) = \vb*{o}
+\end{equation*}
+
+\begin{theorem*}{零ベクトルの像}
+  零ベクトルは線形写像によって零ベクトルに写される。
+\end{theorem*}
+
+\subsection{局所的な線形写像}
+
+線形写像は「局所的には」ありふれている。
+
+\br
+
+たとえば、あらゆる微分可能な関数は、あらゆる場所で「線形写像＋誤差」と局所的に表現される。
+局所的に線形写像として近似するのが微分ともいえる。
 
 \end{document}
