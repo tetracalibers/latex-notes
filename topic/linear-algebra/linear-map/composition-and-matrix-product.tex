@@ -1,10 +1,17 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
-\section{行列の積}
+\section{行列の積と線形写像の合成}
 \marginnote{\refbookA p56〜61}
+
+\begin{mindflow}
+  \placeholder{再編予定}
+\end{mindflow}
 
 % \refbookA 命題2.2.1
 \begin{theorem}{線形写像の合成}{linear-map-composition}
@@ -137,47 +144,7 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
 
 \todo{\refbookA p58 （例2.2.3, 2.2.4）}
 
-\sectionline
-\section{行列の和とスカラー倍}
-
-$A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, j)$成分を足すことで行列の和$A + B$を定める
-
-\begin{theorem*}{分配法則}
-  積が定義できるとき、
-  \begin{align*}
-    A(B + C) & = AB + AC \\
-    (B + C)A & = BA + CA
-  \end{align*}
-\end{theorem*}
-
-\begin{theorem*}{行列の積とスカラー倍の性質}
-  行列$A,\,B$の積$AB$が定義できるとき、つまり$A$の列の個数と$B$の行の個数が同じであるとき、$c \in \mathbb{R}$に対して
-  \begin{equation*}
-    (cA)B = A(cB) = c(AB)
-  \end{equation*}
-  が成り立つ
-\end{theorem*}
-
-\sectionline
-
-\begin{theorem*}{線形写像の和}
-  $f,g\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とし、
-  \begin{equation*}
-    h(\vb*{v}) = f(\vb*{v}) + g(\vb*{v}) \quad (\vb*{v} \in \mathbb{R}^n)
-  \end{equation*}
-  により写像$h\colon \mathbb{R}^n \to \mathbb{R}^m$を定めるとき、$h$も線形写像である
-
-  また、$f,g$の表現行列を$A,B$とするとき、$h$の表現行列は$A + B$である
-
-  なお、$h = f + g$と書き、$f,g$の\keyword{和}と呼ぶ
-\end{theorem*}
-
-\begin{proof}
-  \todo{\refbookA p59 （問2.5）}
-\end{proof}
-
-\sectionline
-\section{行列の積の結合法則}
+\subsection{行列の積の結合法則}
 
 \begin{theorem*}{積の結合法則}
   積$AB, \, BC$がともに定義できるとき、
@@ -257,53 +224,5 @@ $A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, 
   A^3 & = AAA
 \end{align*}
 などのように書く
-
-\sectionline
-\section{行列の区分け}
-\marginnote{\refbookA p64}
-
-行列を
-\begin{equation*}
-  A = \begin{pmatrix}
-    A_{11} & A_{12} \\
-    A_{21} & A_{22}
-  \end{pmatrix}
-\end{equation*}
-のようなブロック型に区分けして計算することがよくある
-
-\br
-
-$A$が$m \times n$型のとき、$m = m_1 + m_2, \, n = n_1 + n_2$として、$A_{ij}$は$m_i \times n_j$型である
-
-\br
-
-また、$B$が$n \times l$型で、$n = n_1 + n_2, \, l = l_1 + l_2$と区分けして
-\begin{equation*}
-  B = \begin{pmatrix}
-    B_{11} & B_{12} \\
-    B_{21} & B_{22}
-  \end{pmatrix}
-\end{equation*}
-とするとき、
-\begin{align*}
-  AB & = \begin{pmatrix}
-           A_{11} & A_{12} \\
-           A_{21} & A_{22}
-         \end{pmatrix} \begin{pmatrix}
-                         B_{11} & B_{12} \\
-                         B_{21} & B_{22}
-                       \end{pmatrix}                             \\
-     & = \begin{pmatrix}
-           A_{11}B_{11} + A_{12}B_{21} & A_{11}B_{12} + A_{12}B_{22} \\
-           A_{21}B_{11} + A_{22}B_{21} & A_{21}B_{12} + A_{22}B_{22}
-         \end{pmatrix}
-\end{align*}
-のように$A_{ij}$などが行列の成分であるかのようにして（ただし積の順序は変えずに）積が計算できる
-
-ここで、$A$の列の区分けと$B$の行の区分けの仕方が同じであることが必要である
-
-\br
-
-3つ以上のブロックに分ける場合も同様である
 
 \end{document}
