@@ -6,27 +6,31 @@
 \begin{document}
 
 \sectionline
-\section{行列とベクトルの積}
+\section{行列から定まる線形写像}\label{sec:linear-map-from-matrix}
 \marginnote{\refbookA p24}
 
-\begin{mindflow}
-  \placeholder{再編予定}
-\end{mindflow}
-
-行列とベクトルの積$A\vb*{v}$を考えるとき、ほとんどの場合は、$A$が1つ与えられていて$\vb*{v}$がいろいろ動くという意識が強い
-
-それは、行列$A$のことを、ベクトルを与えて別なベクトルを作る
+\secref{sec:matrix-linear-map-notation}では、線形写像$f$による像$f(\vb*{v})$を、行列$A$を用いて次のように表した。
 \begin{equation*}
-  \text{入力ベクトル} \vb*{v} \rightarrow \text{出力ベクトル} A\vb*{v}
+  f(\vb*{v}) = \fitLabelMath[Rhodamine][carnationpink]{A}{\small 操作}\dlinelabelmath[Cerulean]{\vb*{v}}{\small 引数}
 \end{equation*}
-という装置、すなわち\keyword{写像}だとみなすことである
+
+このように、行列とベクトルの積$A\vb*{v}$を考えるとき、「$A$が1つ与えられていて$\vb*{v}$がいろいろ動く」と解釈することが多い。
+
+\br
+
+これは、行列$A$のことを、ベクトルを与えて別なベクトルを作る装置、すなわち\keyword{写像}だとみなすことである。
+\begin{equation*}
+  \text{\bfseries 入力ベクトル} \vb*{v} \xrightarrow{\, A \times \,} \text{\bfseries 出力ベクトル} A\vb*{v}
+\end{equation*}
+
+次の定理は、この「行列$A$を左からかける」という操作が、\keyword{線形写像}であることを示している。
 
 % \refbookA 命題1.4.3
 \begin{theorem}{行列とベクトルの積の性質}{matrix-vector-product-linear}
-  $A, B$を$m \times n$型行列、$\vb*{u}, \vb*{v} \in K^n$、$c \in K$とするとき、次が成り立つ
+  $A, B$を$m \times n$型行列、$\vb*{u}, \vb*{v} \in K^n$、$c \in K$とするとき、次が成り立つ。
   \begin{enumerate}[label=\romanlabel]
     \item $A(\vb*{u} + \vb*{v}) = A\vb*{u} + A\vb*{v}$
-    \item $A(c\vb*{v}) = cA\vb*{v}$
+    \item $A(c\vb*{v}) = c(A\vb*{v})$
   \end{enumerate}
 \end{theorem}
 
@@ -45,9 +49,57 @@
       A(c\vb*{v})
       = \sum_{j=1}^n (cv_j) \vb*{a}_j
       = c \sum_{j=1}^n v_j \vb*{a}_j
-      = cA\vb*{v}
+      = c(A\vb*{v})
     \end{equation*}
   \end{subpattern}
 \end{proof}
+
+\subsection{行列から線形写像を作る}
+
+\secref{sec:matrix-linear-map-notation}で線形写像$f$から行列$A$を作ったのとは逆に、任意の行列から線形写像を作ることもできる。
+
+\begin{theorem}{行列から定まる線形写像}{linear-map-from-matrix}
+  $m \times n$型行列$A$に対して、
+  \begin{equation*}
+    f_A(\vb*{v}) = A\vb*{v} \quad (\vb*{v} \in K^n)
+  \end{equation*}
+  によって写像$f_A\colon K^n \to K^m$を定めれば、$f_A$は線形写像である。
+\end{theorem}
+
+\begin{proof}
+  $\vb*{u}, \vb*{v} \in K^n$、$c \in K$とする。
+  
+  \thmref{thm:matrix-vector-product-linear}より、
+  \begin{gather*}
+    f_A(\vb*{u} + \vb*{v}) = A(\vb*{u} + \vb*{v}) = A\vb*{u} + A\vb*{v} = f_A(\vb*{u}) + f_A(\vb*{v}) \\
+    f_A(c\vb*{v}) = A(c\vb*{v}) = cA\vb*{v} = cf_A(\vb*{v})
+  \end{gather*}
+  が成り立つので、$f_A$は線形写像である。$\qed$
+\end{proof}
+
+\subsection{行列と線形写像の対応}
+
+ここまでの議論をまとめると、行列$A$と線形写像$f_A$の間には、次のような関係がある。
+
+\begin{itemize}
+  \item 行列$A$が与えられれば、線形写像$f_A$が定まる
+  \item 線形写像$f_A$が与えられれば、行列$A$が定まる
+\end{itemize}
+
+このように、行列$A$と線形写像$f_A$は一対一に対応している。
+
+このことから、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      行列$A$と線形写像$f_A$は「同じ」ものを表す
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+とみなして議論を進めることも多い。
+
+\br
+
+この同一視の根拠は、\secref{sec:matrix-A-map-isomorphism}でより厳密に議論する。
 
 \end{document}

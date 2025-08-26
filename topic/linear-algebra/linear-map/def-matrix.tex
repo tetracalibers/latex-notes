@@ -33,7 +33,7 @@ $K^n$の任意のベクトル$\vb*{v}$は、基本ベクトル（標準基底）
 
 よって、$f$自体は、基本ベクトルの像$f(\vb*{e}_1),\ldots,f(\vb*{e}_n)$だけで決まってしまう。
 
-\subsection{行列：線形写像の簡略記法}
+\subsection{行列：線形写像の簡略記法}\label{sec:matrix-linear-map-notation}
 \marginnote{
   \refweb{行列式(Determinant)の歴史と導出}{https://kinakomoti321.hatenablog.com/entry/2025/04/10/225230}
 }
@@ -76,7 +76,16 @@ $A$は、縦ベクトルを横に並べたものなので、結局は縦横に�
 \begin{equation*}
   f(\vb*{v}) = \fitLabelMath[Rhodamine][carnationpink]{A}{\small 操作}\dlinelabelmath[Cerulean]{\vb*{v}}{\small 引数}
 \end{equation*}
+
 このとき、行列$A$は線形写像$f$の\keyword{表現行列}と呼ばれる。
+
+\br
+
+線形写像$f$は基本ベクトルの像$f(\vb*{e}_1),\ldots,f(\vb*{e}_n)$だけで決まるのだから、これらを並べたものとして表現行列$A$を定めれば、$f$は表現行列$A$だけで決まることになる。
+
+\br
+
+このことは、比例関数が比例定数$a$だけで決まることの高次元版ともいえる。
 
 \sectionline
 \section{行列の定義}
@@ -203,5 +212,14 @@ $m \times n$型行列$A$は、$n$次元の行ベクトルを縦に$m$個並べ�
   \end{pmatrix}
 \end{equation*}
 と書くこともできる。
+
+\subsection{行列全体の集合}
+
+$n$次元数ベクトル全体の集合を$K^n$と書くのと同様に、$m \times n$型行列全体の集合を$M_{mn}(K)$と書くことがある。
+
+\begin{itemize}
+  \item \keyword{実数}を縦横に並べた$m \times n$型行列の集合は、$M_{mn}(\mathbb{R})$と表す。
+  \item \keyword{複素数}を縦横に並べた$m \times n$型行列の集合は、$M_{mn}(\mathbb{C})$と表す。
+\end{itemize}
 
 \end{document}
