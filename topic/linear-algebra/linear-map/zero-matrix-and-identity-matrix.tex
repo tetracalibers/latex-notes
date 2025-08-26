@@ -24,6 +24,13 @@ $m \times n$型であることを明示するために$O_{m,n}$と書くこと�
 
 また、$n$次正方行列の場合は、$O_n$と書く
 
+\begin{theorem*}{零行列との積}
+  $A$を$m \times n$型とするとき、次が成り立つ
+  \begin{equation*}
+    O_m A = A O_n = O_{m,n}
+  \end{equation*}
+\end{theorem*}
+
 \sectionline
 
 \begin{definition*}{恒等写像と単位行列}
@@ -44,5 +51,13 @@ $m \times n$型であることを明示するために$O_{m,n}$と書くこと�
 \end{definition*}
 
 単位行列は正方行列であり、$n$次であることを明示したいときは$E_n$と書く
+
+\begin{theorem*}{単位行列との積}
+  $A$を$m \times n$型とするとき、次が成り立つ
+  \begin{align*}
+    E_mA & = A \\
+    AE_n & = A
+  \end{align*}
+\end{theorem*}
 
 \end{document}

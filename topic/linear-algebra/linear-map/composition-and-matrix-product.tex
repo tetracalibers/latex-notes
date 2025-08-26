@@ -7,23 +7,21 @@
 
 \sectionline
 \section{行列の積と線形写像の合成}
-\marginnote{\refbookA p56〜61}
+\marginnote{\refbookA p56〜61 \\ \refbookS p48〜49}
 
-\begin{mindflow}
-  \placeholder{再編予定}
-\end{mindflow}
+行列の積は、線形写像の\defref*{def:composition-of-maps}を表すものとして定義される。
 
 % \refbookA 命題2.2.1
 \begin{theorem}{線形写像の合成}{linear-map-composition}
-  $\mathbb{R}^n$から$\mathbb{R}^m$への線形写像$g$と、$\mathbb{R}^m$から$\mathbb{R}^l$への線形写像$f$が与えられているとき、これらを合成して得られる写像
+  $K^n$から$K^m$への線形写像$g$と、$K^m$から$K^l$への線形写像$f$が与えられているとき、これらを合成して得られる写像
   \begin{equation*}
-    f \circ g\colon \mathbb{R}^n \xrightarrow{g} \mathbb{R}^m \xrightarrow{f} \mathbb{R}^l
+    f \circ g\colon K^n \xrightarrow{g} K^m \xrightarrow{f} K^l
   \end{equation*}
-  は、$\mathbb{R}^n$から$\mathbb{R}^l$への線形写像である
+  は、$K^n$から$K^l$への線形写像である。
 \end{theorem}
 
 \begin{proof}
-  任意の$\vb*{a},\vb*{b} \in \mathbb{R}^n$とスカラー$c_1,c_2 \in \mathbb{R}$について、次の合成写像を考える。
+  任意の$\vb*{a},\vb*{b} \in K^n$とスカラー$c_1,c_2 \in K$について、次の合成写像を考える。
   \begin{equation*}
     (f \circ g)(c_1\vb*{a}+c_2\vb*{b}) = f\bigl(g(c_1\vb*{a}+c_2\vb*{b})\bigr)
   \end{equation*}
@@ -43,40 +41,49 @@
   が成り立つことから、$f \circ g \colon \mathbb{R}^n \to \mathbb{R}^l$は線形写像である。 $\qed$
 \end{proof}
 
-$f$と$g$の表現行列をそれぞれ$A = (a_{ij}), \, B = (b_{ij})$とする
+\subsection{線形写像の合成の表現行列}
 
-$A$は$l \times m$型、$B$は$m \times n$型の行列である
-
-\br
-
-このとき、$f \circ g$は$l \times n$型行列で表現される
-
-それを$C$と書くことにして、その成分を計算しよう
-
-そのためには、基本ベクトルの写り先を見ればよい
+$f$と$g$の表現行列をそれぞれ$A = (a_{ij}), B = (b_{ij})$とする。
 
 \br
 
-$B$を列ベクトルに分解して$B = (\vb*{b}_1, \vb*{b}_2, \dots, \vb*{b}_n)$と書くとき、
+$A$は$l \times m$型、$B$は$m \times n$型の行列である。
+
+このとき、$f \circ g$は$l \times n$型行列で表現される。
+\begin{equation*}
+  \underset{\eqnmarkbox[cyan]{_dim_m}{l} \times \eqnmarkbox[magenta]{dim_n1}{m}}{A} \cdot \underset{\eqnmarkbox[magenta]{dim_n2}{m} \times \eqnmarkbox[cyan]{_dim_1}{n}}{B} = \underset{\eqnmarkbox[cyan]{_dim_m}{l} \times \eqnmarkbox[cyan]{_dim_1}{n}}{AB}
+\end{equation*}
+\annotatetwo{below}{dim_n1}{dim_n2}{\bfseries\scriptsize 同じ}
+
+\br
+
+$f \circ g$の表現行列を$C$と書くことにして、その成分を計算しよう。
+
+そのためには、基本ベクトルの写り先を見ればよい。
+
+\br
+
+$B$を列ベクトルに分解して$B = \begin{pmatrix}\vb*{b}_1 & \cdots & \vb*{b}_n\end{pmatrix}$と書くとき、
 \begin{equation*}
   (f \circ g)(\vb*{e}_j) = f(g(\vb*{e}_j)) = f(\vb*{b}_j) = A \vb*{b}_j \quad (1 \leq j \leq n)
 \end{equation*}
-なので、
+なので、基本ベクトルの写り先を並べた行列は次のようになる。
 \begin{equation*}
-  C = (A\vb*{b}_1, A\vb*{b}_2, \dots, A\vb*{b}_n)
+  C = \begin{pmatrix} A\vb*{b}_1 & \cdots & A\vb*{b}_n \end{pmatrix}
 \end{equation*}
-となる
 
-$C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
+\br
+
+これより、$C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
 \begin{equation*}
-  c_{ij} = a_{i1} b_{1j} + a_{i2} b_{2j} + \cdots + a_{im} b_{mj} = \sum_{k=1}^m a_{ik} b_{kj}
+  c_{ij} = a_{i1} b_{1j} + \cdots + a_{im} b_{mj} = \sum_{k=1}^m a_{ik} b_{kj}
 \end{equation*}
-により与えられる
+により与えられる。
 
-つまり、$C$の$(i, j)$成分を計算するときは、$A$の第$i$行、$B$の第$j$列だけを見ればよい
+\br
 
+つまり、$C$の$(i, j)$成分を計算するときは、$A$の第$i$行、$B$の第$j$列だけを見ればよい。
 \tikzset{highlight/.style={rectangle,
-      fill=CarnationPink!30,
       rounded corners,
       fit=#1}}
 \begin{equation*}
@@ -86,12 +93,12 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
     \SubMatrix({7-2}{last-6})
     \SubMatrix({7-7}{last-last})
     \begin{tikzpicture}
-      \node [highlight = (9-2) (9-6), inner sep=4pt] { } ;
-      \node [highlight = (2-9) (6-9), inner sep=3pt] { } ;
-      \node [highlight = (9-9), shape=circle, inner sep=2pt, fill=Rhodamine!35] {} ;
+      \node [highlight = (9-2) (9-6), inner sep=4pt, fill=carnationpink!50] { } ;
+      \node [highlight = (2-9) (6-9), inner sep=3pt, fill=SkyBlue!40] { } ;
+      \node [highlight = (9-9), shape=circle, inner sep=2pt, fill=Orchid!40] {} ;
     \end{tikzpicture}
     \Body
-     &        &        &        &        &        &        &        & j\text{\bfseries 列}                   \\
+     &        &        &        &        &        &        &        & \textcolor{Cerulean}{j\text{\bfseries 列}}                   \\
      &        &        &        &        &        & b_{11} & \Cdots & b_{1j}              & \Cdots & b_{1n} \\
      &        &        &        &        &        & \Vdots &        & \Vdots              &        & \Vdots \\
      &        &        &        &        &        &        &        & b_{kj}                                \\
@@ -99,130 +106,75 @@ $C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
      &        &        &        &        &        & b_{n1} & \Cdots & b_{mj}              & \Cdots & b_{mn} \\[3mm]
      & a_{11} & \Cdots &        &        & a_{1m}                                                           \\
      & \Vdots &        &        &        & \Vdots &        &        & \Vdots                                \\
-    i\text{\bfseries 行}
+    \textcolor{Rhodamine}{i\text{\bfseries 行}}
      & a_{i1} & \Cdots & a_{ik} & \Cdots & a_{im} & \Cdots &        & c_{ij}                                \\
      & \Vdots &        &        &        & \Vdots                                                           \\
      & a_{n1} & \Cdots &        &        & a_{nm}                                                           \\
     \CodeAfter
-    \tikz \draw[CarnationPink, thick, <->, shorten >=0.5em, shorten <=0.5em](9-4.north) to[bend left] (4-9.west);
-    \tikz \path [decoration={text along path, text={{$\displaystyle\sum_{k=1}^m a_{ik} b_{kj}$}{}}, text color=Rhodamine, text align=center, raise=4ex}, decorate](9-4.north) to [bend left] (4-9.west);
+    \tikz \draw[Orchid, very thick, <->, shorten >=0.5em, shorten <=0.5em](9-4.north) to[bend left] (4-9.west);
+    \tikz \path [decoration={text along path, text={{$\displaystyle\sum_{k=1}^m a_{ik} b_{kj}$}{}}, text color=Orchid, text align=center, raise=4ex}, decorate](9-4.north) to [bend left] (4-9.west);
   \end{NiceArray}
 \end{equation*}
 
 \br
 
-このようにして得られた$l \times n$型行列$C$を$AB$と書き、$A$と$B$の\keyword{積}と呼ぶ
+このようにして得られた$l \times n$型行列$C$を$AB$と書き、$A$と$B$の\keyword{積}と定義する。
 
-\sectionline
+\subsection{行列の積の可換性}
 
-\begin{theorem*}{単位行列との積}
-  $A$を$m \times n$型とするとき、次が成り立つ
-  \begin{align*}
-    E_mA & = A \\
-    AE_n & = A
-  \end{align*}
-\end{theorem*}
-
-\begin{theorem*}{零行列との積}
-  $A$を$m \times n$型とするとき、次が成り立つ
-  \begin{equation*}
-    O_m A = A O_n = O_{m,n}
-  \end{equation*}
-\end{theorem*}
-
-\sectionline
-
-2つの行列の積が順番に依らない場合、2つの行列は\keyword{可換}であるという
+2つの行列の積が順番に依らない場合、2つの行列は\keywordJE{可換}{commutative}であるという。
 
 \br
 
-一般には、2つの行列は可換であるとは限らない
+一般には、2つの行列は可換であるとは限らない。
 
-つまり、$AB$と$BA$は一般には異なる
+つまり、$AB$と$BA$は一般には異なる。
 
-\br
-
-\todo{\refbookA p58 （例2.2.3, 2.2.4）}
+\begin{mindflow}
+  % \refbookA p58 （例2.2.3, 2.2.4）
+  \todo{可換な例と可換でない例を示す}
+\end{mindflow}
 
 \subsection{行列の積の結合法則}
 
-\begin{theorem*}{積の結合法則}
-  積$AB, \, BC$がともに定義できるとき、
+次の結合法則により、$(AB)C$や$A(BC)$を表すとき、括弧を書かずに単に$ABC$と書いても問題ない。
+行列の個数が増えても同様である。
+
+\begin{theorem*}{行列の積の結合法則}
+  行列の積$AB, BC$がともに定義できるとき、次が成り立つ。
   \begin{equation*}
     (AB)C = A(BC)
   \end{equation*}
 \end{theorem*}
 
-\begin{proof}[写像による証明]
-  $A,\,B, \, C$がそれぞれ$q \times m, \, m \times n, \, n \times p$型行列だとする
+\begin{proof}
+  $A,B, C$をそれぞれ$q \times m, \, m \times n, \, n \times p$型行列とする。
 
-  線形写像の合成
+  このとき、線形写像の合成
   \begin{equation*}
     \mathbb{R}^p \xrightarrow{h} \mathbb{R}^n \xrightarrow{g} \mathbb{R}^m \xrightarrow{f} \mathbb{R}^q
   \end{equation*}
-  を考え、$f,\, g, \, h$の表現行列をそれぞれ$A, \, B, \, C$とする
+  を考え、$f,g,h$の表現行列をそれぞれ$A,B,C$とする。
+  
+  \br
 
-  一般的な写像の合成の性質として、
+  \thmref{thm:composition-associativity}より、
   \begin{equation*}
     (f \circ g) \circ h = f \circ (g \circ h)
   \end{equation*}
-  が成り立つから、
+  が成り立つことから、
   \begin{equation*}
     (AB)C = A(BC)
   \end{equation*}
-  がしたがう $\qed$
+  がしたがう。 $\qed$
 \end{proof}
 
-\begin{proof}[積の計算規則による証明]
-  $AB$の$(i,l)$成分は、
-  \begin{equation*}
-    (AB)_{il} = \sum_{k=1}^m a_{ik} b_{kl}
-  \end{equation*}
-  これを用いて、
-  \begin{align*}
-    ((AB)C)_{ij} & = \sum_{l=1}^n (AB)_{il} c_{lj}                                 \\
-                 & = \sum_{l=1}^n \left( \sum_{k=1}^m a_{ik} b_{kl} \right) c_{lj}
-  \end{align*}
+\subsection{行列のべき乗}
 
-  $i,\,j$はいま固定されているので、和には関係がない
-
-  動いているのは$k,\,l$だけ
-
-  \br
-
-  ここで、次の書き換えができる
-  \begin{align*}
-    \sum_{l=1}^n \left( \sum_{k=1}^m a_{ik} b_{kl} \right) c_{lj} & = \sum_{l=1}^n \left(\sum_{k=1}^m a_{ik} b_{kl} c_{lj} \right) \\
-                                                                  & = \sum_{l=1}^n \sum_{k=1}^m a_{ik} b_{kl} c_{lj}
-  \end{align*}
-  $\displaystyle\sum_{l=1}^n$の右にある式は$l$に関する和をとる前のものなので、$l$は止まっていると考えてよく、単純な分配法則を使っている
-
-  また、括弧がなくても、$k$に関する和を先にとって、その後で$l$に関する和をとっていると読むことができる
-
-  \br
-
-  このとき、和の順番は交換してもよいので、
-  \begin{align*}
-    \sum_{l=1}^n \sum_{k=1}^m a_{ik} b_{kl} c_{lj} & = \sum_{k=1}^m \sum_{l=1}^n a_{ik} b_{kl} c_{lj}                \\
-                                                   & = \sum_{k=1}^m a_{ik} \left( \sum_{l=1}^n b_{kl} c_{lj} \right) \\
-                                                   & = \sum_{k=1}^m a_{ik} (BC)_{kj}
-  \end{align*}
-  先ほどと同様に、$\displaystyle\sum_{k=1}^m$の右では$k$は止まっていると考えている
-
-  そして、この結果は、$A(BC)$の$(i, j)$である $\qed$
-\end{proof}
-
-結合法則が成り立つことが示されたので、$(AB)C$または$A(BC)$を表すとき、括弧を書かずに単に$ABC$と書いても問題ない
-
-行列の個数が増えても同様である
-
-\br
-
-また、$A$が正方行列の場合は、
+$A$が正方行列の場合は、$A$どうしの積を次のように書く。
 \begin{align*}
   A^2 & = AA  \\
   A^3 & = AAA
 \end{align*}
-などのように書く
 
 \end{document}

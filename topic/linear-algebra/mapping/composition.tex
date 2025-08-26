@@ -4,6 +4,9 @@
 
 \sectionline
 \section{合成写像}
+\marginnote{
+  \refweb{合成関数(合成写像)の定義と性質～注意点を添えて～}{https://mathlandscape.com/composite-function/}
+}
 
 対応づける操作を続けて行うことは、写像の\keyword{合成}として定義される。
 
@@ -64,12 +67,42 @@
   }
 \end{center}
 
-\begin{definition*}{合成写像}
+\begin{definition}{合成写像}{composition-of-maps}
   2つの写像$f\colon X \to Y, g\colon Y \to Z$が与えられたとき、$X$の元に対して$Z$の元を対応させる$X$から$Z$への写像を$f$と$g$の\keyword{合成写像}といい、$g \circ f$と表す。
   \begin{equation*}
     (g \circ f)(x) = g(f(x))
   \end{equation*}
-\end{definition*}
+\end{definition}
+
+\subsection{写像の合成の性質}
+
+\begin{theorem}{写像の合成の結合法則}{composition-associativity}
+  \begin{equation*}
+    h \circ (g \circ f) = (h \circ g) \circ f
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $f\colon X\to Y, \, g\colon Y\to Z, \, h\colon Z\to W$とする。
+  
+  任意の$x\in X$に対して、
+  \begin{equation*}
+    \bigl(h\circ (g\circ f)\bigr)(x)
+    = h\bigl((g\circ f)(x)\bigr)
+    = h\bigl(g(f(x))\bigr)
+  \end{equation*}
+  一方で、
+  \begin{equation*}
+    \bigl((h\circ g)\circ f\bigr)(x)
+    = (h\circ g)\bigl(f(x)\bigr)
+    = h\bigl(g(f(x))\bigr)
+  \end{equation*}
+  したがって、任意の$x\in X$について両辺が一致するので、
+  \begin{equation*}
+    h\circ (g\circ f) = (h\circ g)\circ f
+  \end{equation*}
+  が成り立つ。 $\qed$
+\end{proof}
 
 \subsection{単射な写像の合成}
 
