@@ -1,0 +1,180 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{行列の積と線形写像の合成}
+\marginnote{\refbookA p56〜61 \\ \refbookS p48〜49}
+
+行列の積は、線形写像の\defref*{def:composition-of-maps}を表すものとして定義される。
+
+% \refbookA 命題2.2.1
+\begin{theorem}{線形写像の合成}{linear-map-composition}
+  $K^n$から$K^m$への線形写像$g$と、$K^m$から$K^l$への線形写像$f$が与えられているとき、これらを合成して得られる写像
+  \begin{equation*}
+    f \circ g\colon K^n \xrightarrow{g} K^m \xrightarrow{f} K^l
+  \end{equation*}
+  は、$K^n$から$K^l$への線形写像である。
+\end{theorem}
+
+\begin{proof}
+  任意の$\vb*{a},\vb*{b} \in K^n$とスカラー$c_1,c_2 \in K$について、次の合成写像を考える。
+  \begin{equation*}
+    (f \circ g)(c_1\vb*{a}+c_2\vb*{b}) = f\bigl(g(c_1\vb*{a}+c_2\vb*{b})\bigr)
+  \end{equation*}
+  $g$の線形性より、
+  \begin{equation*}
+    g(c_1\vb*{a}+c_2\vb*{b}) = c_1 g(\vb*{a}) + c_2 g(\vb*{b})
+  \end{equation*}
+  これを$f$に適用すると、$f$の線形性より、
+  \begin{align*}
+    f\bigl(c_1 g(\vb*{a}) + c_2 g(\vb*{b})\bigr) &= c_1 f(g(\vb*{a})) + c_2 f(g(\vb*{b})) \\
+    &= c_1(f \circ g)(\vb*{a}) + c_2(f \circ g)(\vb*{b})
+  \end{align*}
+  したがって、
+  \begin{equation*}
+    (f \circ g)(c_1\vb*{a}+c_2\vb*{b}) = c_1(f \circ g)(\vb*{a}) + c_2(f \circ g)(\vb*{b})
+  \end{equation*}
+  が成り立つことから、$f \circ g \colon \mathbb{R}^n \to \mathbb{R}^l$は線形写像である。 $\qed$
+\end{proof}
+
+\subsection{線形写像の合成の表現行列}
+
+$f$と$g$の表現行列をそれぞれ$A = (a_{ij}), B = (b_{ij})$とする。
+
+\br
+
+$A$は$l \times m$型、$B$は$m \times n$型の行列である。
+
+このとき、$f \circ g$は$l \times n$型行列で表現される。
+\begin{equation*}
+  \underset{\eqnmarkbox[cyan]{_dim_m}{l} \times \eqnmarkbox[magenta]{dim_n1}{m}}{A} \cdot \underset{\eqnmarkbox[magenta]{dim_n2}{m} \times \eqnmarkbox[cyan]{_dim_1}{n}}{B} = \underset{\eqnmarkbox[cyan]{_dim_m}{l} \times \eqnmarkbox[cyan]{_dim_1}{n}}{AB}
+\end{equation*}
+\annotatetwo{below}{dim_n1}{dim_n2}{\bfseries\scriptsize 同じ}
+
+\br
+
+$f \circ g$の表現行列を$C$と書くことにして、その成分を計算しよう。
+
+そのためには、基本ベクトルの写り先を見ればよい。
+
+\br
+
+$B$を列ベクトルに分解して$B = \begin{pmatrix}\vb*{b}_1 & \cdots & \vb*{b}_n\end{pmatrix}$と書くとき、
+\begin{equation*}
+  (f \circ g)(\vb*{e}_j) = f(g(\vb*{e}_j)) = f(\vb*{b}_j) = A \vb*{b}_j \quad (1 \leq j \leq n)
+\end{equation*}
+なので、基本ベクトルの写り先を並べた行列は次のようになる。
+\begin{equation*}
+  C = \begin{pmatrix} A\vb*{b}_1 & \cdots & A\vb*{b}_n \end{pmatrix}
+\end{equation*}
+
+\br
+
+これより、$C$の$(i, j)$成分は$A\vb*{b}_j$の第$i$成分なので、
+\begin{equation*}
+  c_{ij} = a_{i1} b_{1j} + \cdots + a_{im} b_{mj} = \sum_{k=1}^m a_{ik} b_{kj}
+\end{equation*}
+により与えられる。
+
+\br
+
+つまり、$C$の$(i, j)$成分を計算するときは、$A$の第$i$行、$B$の第$j$列だけを見ればよい。
+\tikzset{highlight/.style={rectangle,
+      rounded corners,
+      fit=#1}}
+\begin{equation*}
+  \begin{NiceArray}{*{6}{c}@{\hspace{6mm}}*{5}{c}}[nullify-dots]
+    \CodeBefore [create-cell-nodes]
+    \SubMatrix({2-7}{6-last})
+    \SubMatrix({7-2}{last-6})
+    \SubMatrix({7-7}{last-last})
+    \begin{tikzpicture}
+      \node [highlight = (9-2) (9-6), inner sep=4pt, fill=carnationpink!50] { } ;
+      \node [highlight = (2-9) (6-9), inner sep=3pt, fill=SkyBlue!40] { } ;
+      \node [highlight = (9-9), shape=circle, inner sep=2pt, fill=Orchid!40] {} ;
+    \end{tikzpicture}
+    \Body
+     &        &        &        &        &        &        &        & \textcolor{Cerulean}{j\text{\bfseries 列}}                   \\
+     &        &        &        &        &        & b_{11} & \Cdots & b_{1j}              & \Cdots & b_{1n} \\
+     &        &        &        &        &        & \Vdots &        & \Vdots              &        & \Vdots \\
+     &        &        &        &        &        &        &        & b_{kj}                                \\
+     &        &        &        &        &        &        &        & \Vdots                                \\
+     &        &        &        &        &        & b_{n1} & \Cdots & b_{mj}              & \Cdots & b_{mn} \\[3mm]
+     & a_{11} & \Cdots &        &        & a_{1m}                                                           \\
+     & \Vdots &        &        &        & \Vdots &        &        & \Vdots                                \\
+    \textcolor{Rhodamine}{i\text{\bfseries 行}}
+     & a_{i1} & \Cdots & a_{ik} & \Cdots & a_{im} & \Cdots &        & c_{ij}                                \\
+     & \Vdots &        &        &        & \Vdots                                                           \\
+     & a_{n1} & \Cdots &        &        & a_{nm}                                                           \\
+    \CodeAfter
+    \tikz \draw[Orchid, very thick, <->, shorten >=0.5em, shorten <=0.5em](9-4.north) to[bend left] (4-9.west);
+    \tikz \path [decoration={text along path, text={{$\displaystyle\sum_{k=1}^m a_{ik} b_{kj}$}{}}, text color=Orchid, text align=center, raise=4ex}, decorate](9-4.north) to [bend left] (4-9.west);
+  \end{NiceArray}
+\end{equation*}
+
+\br
+
+このようにして得られた$l \times n$型行列$C$を$AB$と書き、$A$と$B$の\keyword{積}と定義する。
+
+\subsection{行列の積の可換性}
+
+2つの行列の積が順番に依らない場合、2つの行列は\keywordJE{可換}{commutative}であるという。
+
+\br
+
+一般には、2つの行列は可換であるとは限らない。
+
+つまり、$AB$と$BA$は一般には異なる。
+
+\begin{mindflow}
+  % \refbookA p58 （例2.2.3, 2.2.4）
+  \todo{可換な例と可換でない例を示す}
+\end{mindflow}
+
+\subsection{行列の積の結合法則}
+
+次の結合法則により、$(AB)C$や$A(BC)$を表すとき、括弧を書かずに単に$ABC$と書いても問題ない。
+行列の個数が増えても同様である。
+
+\begin{theorem*}{行列の積の結合法則}
+  行列の積$AB, BC$がともに定義できるとき、次が成り立つ。
+  \begin{equation*}
+    (AB)C = A(BC)
+  \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+  $A,B, C$をそれぞれ$q \times m, \, m \times n, \, n \times p$型行列とする。
+
+  このとき、線形写像の合成
+  \begin{equation*}
+    \mathbb{R}^p \xrightarrow{h} \mathbb{R}^n \xrightarrow{g} \mathbb{R}^m \xrightarrow{f} \mathbb{R}^q
+  \end{equation*}
+  を考え、$f,g,h$の表現行列をそれぞれ$A,B,C$とする。
+  
+  \br
+
+  \thmref{thm:composition-associativity}より、
+  \begin{equation*}
+    (f \circ g) \circ h = f \circ (g \circ h)
+  \end{equation*}
+  が成り立つことから、
+  \begin{equation*}
+    (AB)C = A(BC)
+  \end{equation*}
+  がしたがう。 $\qed$
+\end{proof}
+
+\subsection{行列のべき乗}
+
+$A$が正方行列の場合は、$A$どうしの積を次のように書く。
+\begin{align*}
+  A^2 & = AA  \\
+  A^3 & = AAA
+\end{align*}
+
+\end{document}

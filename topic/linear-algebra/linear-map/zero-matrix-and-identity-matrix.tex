@@ -1,0 +1,108 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{零行列と単位行列}
+\marginnote{\refbookA p50 \\ \refbookS p39}
+
+ここでは、最も単純な線形写像とその表現行列について述べる。
+
+\subsection{零写像と零行列}
+
+$f\colon K^n \to K^m$を、すべての$\vb*{v} \in K^n$に対して$f(\vb*{v}) = \vb*{o}$と定めたものは線形写像である。
+これを\keywordJE{零写像}{zero mapping}という。
+
+\begin{theorem*}{零写像の線形性}
+  零写像は線形写像である。
+\end{theorem*}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    任意の$\vb*{u},\vb*{v}\in K^n$に対し、次の2式が成り立つ。
+    \begin{gather*}
+      f(\vb*{u}+\vb*{v})=\vb*{o} \\
+      f(\vb*{u})+f(\vb*{v})=\vb*{o}+\vb*{o}=\vb*{o}
+    \end{gather*}
+    したがって、
+    \begin{equation*}
+      f(\vb*{u}+\vb*{v})=f(\vb*{u})+f(\vb*{v})
+    \end{equation*}
+    である。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries スカラー倍について}
+    任意の$c \in K$と$\vb*{v}\in K^n$に対し、次の2式が成り立つ。
+    \begin{gather*}
+      f(c\vb*{v})=\vb*{o} \\
+      c f(\vb*{v})=c \cdot \vb*{o}=\vb*{o}
+    \end{gather*}
+    したがって、
+    \begin{equation*}
+      f(c\vb*{v})=c f(\vb*{v})
+    \end{equation*}
+    である。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
+零写像の表現行列は、すべての成分が0である行列である。
+
+これを\keywordJE{零行列}{zero matrix}といい、$O$で表す。
+
+\br
+
+$m \times n$型であることを明示したい場合は、$O_{m,n}$と書くこともある。
+
+また、$n$次正方行列の場合は、$O_n$と書く。
+
+\subsection{恒等写像と単位行列}
+
+$f\colon K^n \to K^m$を、すべての$\vb*{v} \in K^n$に対して$f(\vb*{v}) = \vb*{v}$と定めたものは線形写像である。
+これは\defref*{def:identity-map}であり、$f = \id_{K^n}$と書く。
+
+\begin{theorem*}{恒等写像の線形性}
+  恒等写像は線形写像である。
+\end{theorem*}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    任意の$\vb*{u},\vb*{v}\in K^n$に対して、
+    \begin{equation*}
+      f(\vb*{u}+\vb*{v})=\vb*{u}+\vb*{v}=f(\vb*{u})+f(\vb*{v})
+    \end{equation*}
+    が成り立つ。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries スカラー倍について}
+    任意の$c\in K$と$\vb*{v}\in K^n$に対して、
+    \begin{equation*}
+      f(c\vb*{v})=c\vb*{v}=cf(\vb*{v})
+    \end{equation*}
+    が成り立つ。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
+恒等写像の表現行列は、$f(\vb*{e}_j) = \vb*{e}_j$より、次のような形になる。
+\begin{equation*}
+  E = \begin{pmatrix}
+    \vb*{e}_1 & \cdots & \vb*{e}_n
+  \end{pmatrix} = \begin{pmatrix}
+      1      & 0      & \dots  & 0      \\
+      0      & 1      & \dots  & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \dots  & 1
+    \end{pmatrix}
+\end{equation*}
+
+このような行列を\keywordJE{単位行列}{unit matrix}といい、$E$で表す。
+
+単位行列は正方行列であり、$n$次正方行列であることを明示したいときは$E_n$と書く。
+
+\end{document}

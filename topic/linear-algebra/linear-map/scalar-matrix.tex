@@ -1,0 +1,151 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{スカラー行列と行列のスカラー倍}
+\marginnote{\refbookA p51、p59 \\ \refbookS p39、p48}
+
+零行列と単位行列は、次の\keywordJE{スカラー行列}{scalar matrix}の特別な場合である。
+\begin{equation*}
+  C = \begin{pmatrix}
+      c      & 0      & \dots  & 0      \\
+      0      & c      & \dots  & 0      \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0      & 0      & \dots  & c
+    \end{pmatrix} \quad (c \in K)
+\end{equation*}
+
+$c=0$の場合が零行列、$c=1$の場合が単位行列となる。
+
+\subsection{対角成分}
+
+スカラー行列において、$c$が並んでいる部分は\keyword{対角成分}と呼ばれる。
+
+\br
+
+一般に、\keywordJE{対角成分}{diagonal entry}とは、正方行列において、左上から右下に向かう対角線上にある成分のことをいう。
+\begin{equation*}
+  \begin{pNiceArray}{>{\strut}cccc}% <-- % mandatory
+   [margin, extra-margin=2pt,no-cell-nodes]
+    \cellcolor{carnationpink!60}a_{11} & a_{12} & a_{13} & a_{14} \\
+    a_{21} & \cellcolor{carnationpink!60}a_{22} & a_{23} & a_{24} \\
+    a_{31} & a_{32} & \cellcolor{carnationpink!60}a_{33} & a_{34} \\
+    a_{41} & a_{42} & a_{43} & \cellcolor{carnationpink!60}a_{44}
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+対角成分の添字に着目すると、$a_{11}, a_{22}, a_{33}, a_{44}$のように、行番号と列番号が等しい成分であることがわかる。
+そこで、対角成分は次のように定義される。
+
+\begin{definition*}{対角成分}
+  正方行列$A = (a_{ij})$において、$i=j$となる成分$a_{ii}$を$A$の\keyword{対角成分}という。
+\end{definition*}
+
+\subsection{スカラー行列との積}
+
+行列$A$にスカラー行列$C$をかけると、$A$のすべての成分が$c$倍される。
+
+行列$A$のすべての成分を$c$倍した行列を、行列$A$の\keyword{スカラー倍}といい、$cA$と表す。
+
+\begin{theorem*}{スカラー行列による積とスカラー倍の一致}
+  行列$A$にスカラー行列をかけることは、$A$をスカラー倍することと同じである。
+\end{theorem*}
+
+\begin{proof}
+  スカラー行列$C = (c_{ij})$は、対角成分が$c$、それ以外の成分が$0$である正方行列なので、各成分は次のように書ける。
+  \begin{equation*}
+    c_{ij} = \begin{cases}
+      c & (i = j) \\
+      0 & (i \neq j)
+    \end{cases}
+  \end{equation*}
+  
+  $C$と$A$の積$CA$の$(i,j)$成分は、
+  \begin{equation*}
+    (CA)_{ij} = \sum_{k=1}^{n} c_{ik} a_{kj}
+  \end{equation*}
+  ここで、$c_{ik}$は$i=k$のとき$c$、それ以外のとき$0$なので、$i=k$の場合の項だけが残って、
+  \begin{equation*}
+    (CA)_{ij} = \sum_{k=1}^{n} c_{ii} a_{ij} = c a_{ij}
+  \end{equation*}
+  として、$A$のすべての成分が$c$倍されたものが$CA$となる。$\qed$
+\end{proof}
+
+\br
+
+この定理の特別な場合として、次のことがいえる。
+\begin{itemize}
+  \item $c=0$の場合のスカラー行列（\keyword{零行列}）をかけると、$A$のすべての成分が$0$になる
+  \item $c=1$の場合のスカラー行列（\keyword{単位行列}）をかけても、$A$の成分は変化しない
+\end{itemize}
+
+これらは、次の2つの定理としてまとめられる。
+
+\begin{theorem*}{零行列との積}
+  零行列をかけると、すべての成分が0になる。
+  
+  すなわち、$A$を$m \times n$型とするとき、次が成り立つ。
+  \begin{equation*}
+    O_m A = A O_n = O_{m,n}
+  \end{equation*}
+\end{theorem*}
+
+\begin{theorem*}{単位行列との積}
+  単位行列をかけても、行列は変わらない。
+  
+  すなわち、$A$を$m \times n$型とするとき、次が成り立つ。
+  \begin{equation*}
+    E_m A = A E_n = A
+  \end{equation*}
+\end{theorem*}
+
+\subsection{行列のスカラー倍の性質}
+
+\begin{theorem*}{行列の積とスカラー倍の性質}
+  行列$A,B$の積$AB$が定義できる（$A$の列の個数と$B$の行の個数が同じである）とき、$c \in K$に対して次が成り立つ。
+  \begin{equation*}
+    (cA)B = A(cB) = c(AB)
+  \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+  $A\in M_{m,r}(K),\,B\in M_{r,n}(K)$とし、$AB$が定義されているとする。
+  
+  $1\le i\le m,\,1\le j\le n$について成分を比較する。
+  
+  \br
+  
+  まず、
+  \begin{equation*}
+    \bigl((cA)B\bigr)_{ij}=\sum_{k=1}^{r}(c\,a_{ik})\,b_{kj}
+    =c\sum_{k=1}^{r}a_{ik}b_{kj}
+    =c\,(AB)_{ij}
+  \end{equation*}
+  が成り立つ。同様に、
+  \begin{equation*}
+    \bigl(A(cB)\bigr)_{ij}=\sum_{k=1}^{r}a_{ik}\,(c\,b_{kj})
+    =c\sum_{k=1}^{r}a_{ik}b_{kj}
+    =c\,(AB)_{ij}
+  \end{equation*}
+  を得る。
+  
+  \br
+  
+  以上より、任意の$i,j$で
+  \begin{equation*}
+    \bigl((cA)B\bigr)_{ij}=\bigl(A(cB)\bigr)_{ij}=c\,(AB)_{ij}
+  \end{equation*}
+  であるから、
+  \begin{equation*}
+    (cA)B=A(cB)=c(AB)
+  \end{equation*}
+  が成り立つ。$\qed$
+\end{proof}
+
+\end{document}

@@ -1,95 +1,225 @@
 \documentclass[../../../topic_linear-algebra]{subfiles}
 
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
 \begin{document}
 
 \sectionline
-\section{行列の導入}
-\marginnote{\refbookA 1.4}
+\section{線形写像の記述と行列}\label{sec:matrix-description-linear-map}
+%\marginnote{}
 
-長方形に並んだ数の集まりを
+$K^n$の任意のベクトル$\vb*{v}$は、基本ベクトル（標準基底）の線型結合として次のように書ける。
+\begin{equation*}
+  \vb*{v} = \begin{pmatrix}
+    v_1 \\
+    \vdots \\
+    v_n
+  \end{pmatrix} = v_1 \vb*{e}_1 + \cdots + v_n \vb*{e}_n
+  = \sum_{j=1}^n v_j \vb*{e}_j 
+\end{equation*}
+
+この$\vb*{v}$に、線形写像$f$を作用させると、$f$の線形性より、
+\begin{equation*}
+  f(\vb*{v})
+  = v_1 f(\vb*{e}_1) + \cdots + v_n f(\vb*{e}_n)
+  = \sum_{j=1}^n v_j f(\vb*{e}_j)
+\end{equation*}
+
+ここで、$v_1, \ldots, v_n$は$\vb*{v}$の成分なので、$f$の引数にどんなベクトルを入れるかによって変わる部分である。
+\begin{equation*}
+  f(\vb*{v}) = \dlinelabelmath[Cerulean]{v_1}{\small 引数} \fitLabelMath[Rhodamine][carnationpink]{f(\vb*{e}_1)}{\small $f$の構成要素} + \cdots + \dlinelabelmath[Cerulean]{v_n}{\small 引数} \fitLabelMath[Rhodamine][carnationpink]{f(\vb*{e}_n)}{\small $f$の構成要素}
+\end{equation*}
+
+よって、$f$自体は、基本ベクトルの像$f(\vb*{e}_1),\ldots,f(\vb*{e}_n)$だけで決まってしまう。
+
+\subsection{行列：線形写像の簡略記法}\label{sec:matrix-linear-map-notation}
+\marginnote{
+  \refweb{行列式(Determinant)の歴史と導出}{https://kinakomoti321.hatenablog.com/entry/2025/04/10/225230}
+}
+
+$f$の構成要素（$f$が表す操作）と$f$の引数（$f$の操作対象）を分離して、もっと簡潔に書けないか？ということを考える。
+
+\br
+
+基本ベクトル$\vb*{e}_1, \ldots, \vb*{e}_n$が、$f$によって$\vb*{a}_1, \ldots, \vb*{a}_n$というベクトルに写るとしよう。
+
+すなわち、$f(\vb*{e}_j) = \vb*{a}_j$と書き直して、
+\begin{equation*}
+  f(\vb*{v}) = v_1 \vb*{a}_1 + \cdots + v_n \vb*{a}_n
+\end{equation*}
+
+ここで、基本ベクトルの像$\vb*{a}_1, \ldots, \vb*{a}_n$を横に並べたものを$A$とおく。
 \begin{equation*}
   A = \begin{pmatrix}
-    a_{11} & a_{12} & \dots  & a_{1n} \\
-    a_{21} & a_{22} & \dots  & a_{2n} \\
-    \vdots & \vdots & \ddots & \vdots \\
-    a_{m1} & a_{m2} & \dots  & a_{mn}
+    \vb*{a}_1 & \cdots & \vb*{a}_n
   \end{pmatrix}
 \end{equation*}
-などと書き、\keyword{行列}と呼ぶ
+
+$A$は、縦ベクトルを横に並べたものなので、結局は縦横に数を並べたものになっている。
+
+このような、縦横に数を並べたものを\keywordJE{行列}{matrix}という。
 
 \br
 
-横の数字の並びを\keyword{行}、縦の数字の並びを\keyword{列}と呼ぶ
+そして、次のような演算の規則を定める。
 
-$A$は$m$個の行と$n$個の列をもつ行列である
+\begin{definition*}{行列とベクトルの積}
+  行列$A = \begin{pmatrix} \vb*{a}_1 & \cdots & \vb*{a}_n \end{pmatrix}$と$\vb*{v} \in K^n$との\keyword{積}を次のように定める。
+  \begin{equation*}
+    A\vb*{v} = v_1 \vb*{a}_1 + \cdots + v_n \vb*{a}_n
+  \end{equation*}
+  ここで、$v_i$は$\vb*{v}$の第$i$成分である。
+\end{definition*}
+
+行列とベクトルの積を用いると、$f(\vb*{v})$は次のように簡潔に書ける。
+\begin{equation*}
+  f(\vb*{v}) = \fitLabelMath[Rhodamine][carnationpink]{A}{\small 操作}\dlinelabelmath[Cerulean]{\vb*{v}}{\small 引数}
+\end{equation*}
+
+このとき、行列$A$は線形写像$f$の\keyword{表現行列}と呼ばれる。
 
 \br
 
-第$i$行、第$j$列にある数字を$a_{ij}$と表し、これを$(i, j)$\keyword{成分}と呼ぶ
+線形写像$f$は基本ベクトルの像$f(\vb*{e}_1),\ldots,f(\vb*{e}_n)$だけで決まるのだから、これらを並べたものとして表現行列$A$を定めれば、$f$は表現行列$A$だけで決まることになる。
 
 \br
 
-行が$m$個、列が$n$個の行列は、\keyword{$m$行$n$列の行列}、あるいは\keyword{$m \times n$型の行列}であるという
-
-$n \times n$型の場合、行列は正方形なので$n$次\keyword{正方行列}と呼ぶ
+このことは、比例関数が比例定数$a$だけで決まることの高次元版ともいえる。
 
 \sectionline
+\section{行列の定義}
+\marginnote{\refbookA 1.4}
 
-$A$の成分から第$j$列だけを取り出して$\mathbb{R}^m$のベクトルとしたものが
+前節で述べたように、線形写像の簡略記法として生まれたものが、\keyword{行列}である。
+
+ここでは、行列についての用語をいくつか定義する。
+
+\subsection{行列：縦横に数を並べたもの}
+
+縦ベクトルは数を縦に並べたもの、横ベクトルは数を横に並べたものだった。
+
+縦横に数を並べたものは\keyword{行列}といい、たとえば次のように書く。
+\begin{equation*}
+  \tikzset{highlight/.style={rectangle,
+                           rounded corners = 1mm,
+                           opacity=0.6,
+                           fit=#1
+                           }}
+  A = \begin{pNiceArray}{cccc}[last-col, first-row, create-medium-nodes]
+    \CodeBefore[create-cell-nodes]
+      \begin{tikzpicture}
+        \node[fill=SkyBlue!60, highlight=(1-2) (last-2)]{};
+        \node[fill=carnationpink!80, highlight=(2-1) (2-last)]{};
+      \end{tikzpicture}
+    \Body
+    & \text{\bfseries \textcolor{Cerulean}{列}}  &        &        & \\
+    a_{11} & a_{12} & \dots  & a_{1n} \\
+    a_{21} & a_{22} & \dots  & a_{2n} & \text{\bfseries \textcolor{Rhodamine}{行}} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{m1} & a_{m2} & \dots  & a_{mn}
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+横の数字の並びを\keyword[Rhodamine]{行}、縦の数字の並びを\keyword[Cerulean]{列}という。
+
+\subsection{行列の型}
+
+$A$は、$m$個の行と$n$個の列をもつ行列である。
+
+行が$m$個、列が$n$個の行列を、\keyword{$m$行$n$列の行列}、あるいは\keyword{$m \times n$型行列}という。
+
+\br
+
+$m =n$の場合、すなわち$n \times n$型行列は、正方形状に数を並べたものなので\keyword{$n$次正方行列}という。
+
+\subsection{行列の成分}
+
+第$i$行、第$j$列にある数を$a_{ij}$と表し、これを\keyword{$(i, j)$成分}という。
+
+\begin{equation*}
+  \tikzset{highlight/.style={rectangle,
+  opacity=0.6,
+                           rounded corners = 1mm,
+                           fit=#1
+                           }}
+  A = \begin{pNiceArray}{ccccc}[create-medium-nodes, last-col, first-row]
+    \CodeBefore[create-cell-nodes]
+      \begin{tikzpicture}
+        \node[fill=SkyBlue!60, highlight=(1-3) (last-3)]{};
+        \node[fill=carnationpink!80, highlight=(3-1) (3-last)]{};
+      \end{tikzpicture}
+    \Body
+                   &      & \textcolor{Cerulean}{j}     &       & \\
+      a_{11} & \dots & a_{1j} & \dots & a_{1n} \\
+      \vdots &       & \vdots &       & \vdots \\
+      a_{i1} & \dots & a_{ij} & \dots & a_{in} & \textcolor{Rhodamine}{i} \\
+      \vdots &       & \vdots &       & \vdots \\
+      a_{m1} & \dots & a_{mj} & \dots & a_{mn}
+  \end{pNiceArray}
+\end{equation*}
+
+\br
+
+行列$A$を、$a_{ij}$成分の集まりとして、次のように略記することもある。
+\begin{equation*}
+  A = (a_{ij})
+\end{equation*}
+
+\subsection{行列の列ベクトル}
+
+行列$A$から、第$j$列だけを取り出して$K^m$のベクトルとしたものは、
 \begin{equation*}
   \vb*{a}_j = \begin{pmatrix}
     a_{1j} \\
     a_{2j} \\
     \vdots \\
     a_{mj}
-  \end{pmatrix} \quad (1 \leq i \leq n)
+  \end{pmatrix}
 \end{equation*}
-であり、これを$A$の$j$番目の\keyword{列ベクトル}という
+であり、これを$A$の$j$番目の\keyword{列ベクトル}という。
 
 \br
 
-$A$は、これらを横に並べたものという意味で
+$m \times n$型行列$A$は、$m$次元の列ベクトルを横に$n$個並べたものという意味で、
 \begin{equation*}
-  A = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)
+  A = \begin{pmatrix}
+    \vb*{a}_1 & \cdots & \vb*{a}_n
+  \end{pmatrix}
 \end{equation*}
-と書くことができる
+と書くこともできる。
 
-\sectionline
+\subsection{行列の行ベクトル}
 
-\begin{definition*}{行列とベクトルの積}
-  $m \times n$型の行列$A = (\vb*{a}_1, \vb*{a}_2, \dots, \vb*{a}_n)$と$\vb*{v} \in \mathbb{R}^n$との\keyword{積}を
-  \begin{equation*}
-    A\vb*{v} = v_1 \vb*{a}_1 + v_2 \vb*{a}_2 + \cdots + v_n \vb*{a}_n
-  \end{equation*}
-  により定める
-
-  ここで、$v_i$は$\vb*{v}$の第$i$成分である
-\end{definition*}
-
-$A\vb*{v}$を考えるとき、ほとんどの場合は、$A$が1つ与えられていて$\vb*{v}$がいろいろ動くという意識が強い
-
-それは、行列$A$のことを、ベクトルを与えて別なベクトルを作る
+行列$A$から、第$i$行だけを取り出して$K^n$のベクトルとしたものは、
 \begin{equation*}
-  \text{入力ベクトル} \vb*{v} \rightarrow \text{出力ベクトル} A\vb*{v}
+  \vb*{a}_i = \begin{pmatrix}
+    a_{i1} & a_{i2} & \cdots & a_{in}
+  \end{pmatrix}
 \end{equation*}
-という装置、すなわち\keyword{写像}だとみなすことである
+であり、これを$A$の$i$番目の\keyword{行ベクトル}という。
 
-\sectionline
+\br
 
-\begin{definition*}{行列のスカラー倍}
-  $A$を行列、$c$をスカラーとするとき、$A$のすべての成分を$c$倍して得られる行列を$cA$とする
-\end{definition*}
+$m \times n$型行列$A$は、$n$次元の行ベクトルを縦に$m$個並べたものという意味で、
+\begin{equation*}
+  A = \begin{pmatrix}
+    \vb*{a}_1 \\
+    \vdots \\
+    \vb*{a}_m
+  \end{pmatrix}
+\end{equation*}
+と書くこともできる。
 
-\begin{theorem*}{行列とベクトルの積の性質}
-  $A, \, B$を$m \times n$型行列、$\vb*{u}, \, \vb*{v} \in \mathbb{R}^n$、$c \in \mathbb{R}$とするとき、次が成り立つ
-  \begin{enumerate}[label=\romanlabel]
-    \item $A(\vb*{u} + \vb*{v}) = A\vb*{u} + A\vb*{v}$
-    \item $A(c\vb*{v}) = cA\vb*{v}$
-  \end{enumerate}
-\end{theorem*}
+\subsection{行列全体の集合}
 
-\begin{proof}
-  \todo{\refbookA p24（命題1.4.3）}
-\end{proof}
+$n$次元数ベクトル全体の集合を$K^n$と書くのと同様に、$m \times n$型行列全体の集合を$M_{mn}(K)$と書くことがある。
+
+\begin{itemize}
+  \item \keyword{実数}を縦横に並べた$m \times n$型行列の集合は、$M_{mn}(\mathbb{R})$と表す。
+  \item \keyword{複素数}を縦横に並べた$m \times n$型行列の集合は、$M_{mn}(\mathbb{C})$と表す。
+\end{itemize}
 
 \end{document}

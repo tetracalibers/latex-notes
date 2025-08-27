@@ -1,0 +1,41 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{行列の和と線形写像の和}
+\marginnote{\refbookA p59}
+
+\begin{mindflow}
+  \placeholder{再編予定}
+\end{mindflow}
+
+$A, \, B$がともに$m \times n$型行列であるとき、それぞれの$(i, j)$成分を足すことで行列の和$A + B$を定める
+
+\begin{theorem*}{分配法則}
+  積が定義できるとき、
+  \begin{align*}
+    A(B + C) & = AB + AC \\
+    (B + C)A & = BA + CA
+  \end{align*}
+\end{theorem*}
+
+\sectionline
+
+\begin{theorem*}{線形写像の和}
+  $f,g\colon \mathbb{R}^n \to \mathbb{R}^m$を線形写像とし、
+  \begin{equation*}
+    h(\vb*{v}) = f(\vb*{v}) + g(\vb*{v}) \quad (\vb*{v} \in \mathbb{R}^n)
+  \end{equation*}
+  により写像$h\colon \mathbb{R}^n \to \mathbb{R}^m$を定めるとき、$h$も線形写像である
+
+  また、$f,g$の表現行列を$A,B$とするとき、$h$の表現行列は$A + B$である
+
+  なお、$h = f + g$と書き、$f,g$の\keyword{和}と呼ぶ
+\end{theorem*}
+
+\begin{proof}
+  \todo{\refbookA p59 （問2.5）}
+\end{proof}
+
+\end{document}
