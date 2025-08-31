@@ -1,0 +1,75 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{一般の基底に関するベクトルの成分表示}
+\marginnote{\refbookA p10 \\ \refbookC p95}
+
+\secref{sec:basis-induced-isomorphism}でも簡単に述べたように、（有限次元）線形空間の元は、基底を使えば数ベクトルで表すことができる。
+
+\br
+
+$V$を線形空間とし、$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{v}_n\}$をその基底とすると、任意の$\vb*{v} \in V$は、
+\begin{equation*}
+  \vb*{v} = \sum_{i=1}^n x_i \vb*{v}_i
+\end{equation*}
+と一意的に書ける。
+
+\br
+
+このとき、$x_i$を縦に並べた数ベクトルを、基底$\mathcal{V}$に関する$\vb*{v}$の\keyword{座標ベクトル}という。
+\begin{equation*}
+  \vb*{x} = \begin{pmatrix}
+    x_1 \\
+    \vdots \\
+    x_n
+  \end{pmatrix} \in K^n
+\end{equation*}
+
+すると$\vb*{v}$は、基底$\mathcal{V}$と、この座標ベクトル$\vb*{x}$の各成分との線形結合で表されるといえる。
+
+\br
+
+数ベクトルの表記に倣って$\vb*{v}$を\keyword{成分表示}する際は、基底$\mathcal{V}$に関する成分（座標）であることを明示するために、次のように右下に$\mathcal{V}$を添えて書き表すことにする。
+\begin{equation*}
+  \vb*{v} = \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}_{\mathcal{V}} \in V
+\end{equation*}
+
+\subsection{座標写像の逆写像}
+
+ある基底$\mathcal{V}$に関する座標ベクトルは、\defref*{def:coordinate-mapping}の\defref*{def:inverse-mapping}を用いて表すことができる。
+
+\br
+
+座標写像$\Phi_{\mathcal{V}}$は、$K^n$の座標$\vb*{x}$から$V$の元$\vb*{v}$を得る線形写像として定義された。
+\begin{equation*}
+  \Phi_{\mathcal{V}}(\vb*{x}) = \vb*{v}
+\end{equation*}
+
+\thmref{thm:coordinate-map-isomorphism}より、座標写像は全単射（可逆）であるので、その逆写像を定義できる。
+
+座標写像の逆写像$\Phi_{\mathcal{V}}^{-1}$は、$\vb*{v} \in V$から、その基底$\mathcal{V}$に関する座標ベクトル$\vb*{x}$を得る線形写像となる。
+\begin{equation*}
+  \Phi^{-1}_\mathcal{V}(\vb*{v}) = \vb*{x}
+\end{equation*}
+
+すなわち、
+\begin{equation*}
+  \Phi^{-1}_\mathcal{V}(\vb*{v}) = \begin{pmatrix}
+    x_1    \\
+    \vdots \\
+    x_n
+  \end{pmatrix}
+  \in K^n
+\end{equation*}
+として、座標ベクトルを表すことができる。
+
+\end{document}
