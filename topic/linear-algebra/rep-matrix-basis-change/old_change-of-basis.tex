@@ -1,0 +1,327 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{数ベクトル空間の基底変換行列}
+\marginnote{\refbookA p108〜109 \\ \refbookF p225}
+
+\begin{mindflow}
+  \placeholder{再編予定}
+\end{mindflow}
+
+$V = \mathbb{R}^n$とし、標準基底$\mathcal{E}$によって行列$A$で表現される線形変換を$f$とする
+
+別な基底$\mathcal{V}$によって$f$を表現する行列を$B$とするとき、$B$をどうやって計算すればよいかを考える
+
+\br
+
+$B$を定める原理は、\secref{sec:construction-of-matrix-rep}で議論したように、
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) B
+\end{equation*}
+
+ここで、$\vb*{v}_i$や$f(\vb*{v}_i)$は$\mathbb{R}^n$の元なので、$(f(\vb*{v}_1), \ldots, f(\vb*{v}_n))$や$(\vb*{v}_1, \ldots, \vb*{v}_n)$は$n$次の正方行列であるとみなせる
+
+そこで、
+\begin{equation*}
+  P = (\vb*{v}_1, \ldots, \vb*{v}_n)
+\end{equation*}
+とおくとき、次に示すように$P$は正則行列である
+
+\begin{theorem*}{基底変換行列の正則性}
+  基底の変換行列は正則行列である
+\end{theorem*}
+
+\begin{proof}
+  $P$の列ベクトルは基底であるため、線形独立である
+
+  \thmref{thm:invertible-iff-col-indep}で示したように、正則行列であることは、列ベクトルが線形独立であることと同値である $\qed$
+\end{proof}
+
+また、$B$を決める式
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) B
+\end{equation*}
+の左辺は、次のように書ける
+\begin{align*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) & = (A\vb*{v}_1, \ldots, A\vb*{v}_n) \\
+                                       & = A (\vb*{v}_1, \ldots, \vb*{v}_n) \\
+                                       & = A P
+\end{align*}
+
+よって、$B$を決める式は、
+\begin{equation*}
+  AP = PB
+\end{equation*}
+となり、$P$は正則である（逆行列が存在する）ので、両辺に左から$P^{-1}$をかけて、
+\begin{equation*}
+  B = P^{-1} A P
+\end{equation*}
+が得られる
+
+\br
+
+行列$P$は、標準基底$\mathcal{E}$から基底$\mathcal{V}$への\keyword{基底変換行列}と呼ばれる
+
+\sectionline
+\section{線形空間の基底変換行列}
+\marginnote{\refbookA p110〜111 \\ \refbookF p215〜219}
+
+\begin{mindflow}
+  \placeholder{再編予定}
+\end{mindflow}
+
+$V$を線形空間とし、$V$の基底$\mathcal{V} = \{\vb*{v}_1, \ldots, \vb*{v}_n\}$を別な基底$\mathcal{V}' = \{\vb*{v}'_1, \ldots, \vb*{v}'_n\}$に取り替えることを考える
+
+\br
+
+このとき、$\{\vb*{v}_1, \ldots, \vb*{v}_n\}$が$V$の基底であることから、$V$の元である$\vb*{v}'_1, \ldots, \vb*{v}'_n$は、$\{\vb*{v}_1, \ldots, \vb*{v}_n\}$の線形結合で表される
+
+そこで、
+\begin{equation*}
+  \vb*{v}'_i = p_{1i} \vb*{v}_1 + p_{2i} \vb*{v}_2 + \cdots + p_{ni} \vb*{v}_n
+\end{equation*}
+すなわち、
+\begin{equation*}
+  (\vb*{v}'_1, \ldots, \vb*{v}'_n) = (\vb*{v}_1, \ldots, \vb*{v}_n) (p_{ij})
+\end{equation*}
+とおく
+
+\br
+
+このとき、写像$f\colon V \to V$を
+\begin{equation*}
+  \left\{
+  \begin{array}{rcl}
+    f(\vb*{v}_1) & = & \vb*{v}'_1 \\
+    f(\vb*{v}_2) & = & \vb*{v}'_2 \\
+    \vdots       &   & \vdots     \\
+    f(\vb*{v}_n) & = & \vb*{v}'_n
+  \end{array}
+  \right.
+\end{equation*}
+を満たすものとして定義する
+
+これはすなわち、基底$\mathcal{V}$を構成するそれぞれのベクトルを、基底$\mathcal{V}'$を構成するベクトルに順に写す線形変換であり、
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n) ) = (\vb*{v}'_1, \ldots, \vb*{v}'_n)
+\end{equation*}
+を満たすものである
+
+\br
+
+すると、行列$P = (p_{ij})$を定める式は、
+\begin{equation*}
+  (f(\vb*{v}_1), \ldots, f(\vb*{v}_n)) = (\vb*{v}_1, \ldots, \vb*{v}_n) P
+\end{equation*}
+と書ける
+
+よって、$P$は基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$を表す線形写像$f$の表現行列である
+
+この意味で、$P$を基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の\keyword{基底変換行列}と呼ぶ
+
+\begin{theorem*}{線形空間の基底変換行列}
+  $V$を線形空間とし、$\mathcal{V} = \{\vb*{v}_i\}_{i=1}^n,\, \mathcal{V}' = \{\vb*{v}'_i\}_{i=1}^n$を$V$の基底とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列$P$は、
+  \begin{equation*}
+    (\vb*{v}'_1, \ldots, \vb*{v}'_n) = (\vb*{v}_1, \ldots, \vb*{v}_n) P
+  \end{equation*}
+  により定まる
+\end{theorem*}
+
+この行列$P$は、座標写像を介して考えると、次の可換図式で定まるものである
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[dd, "P\cdot"] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] & \\
+    & V \\
+    \mathbb{R}^n \arrow[ru,"{\Phi_{\mathcal{V}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+つまり、$P$は、
+\begin{equation*}
+  \Phi_{\mathcal{V}}^{-1} \circ \Phi_{\mathcal{V}'} \colon \mathbb{R}^n \to \mathbb{R}^n
+\end{equation*}
+の標準基底に関する表現行列である
+
+\sectionline
+
+一方、この行列$P$はベクトルの成分表示の変換に用いることもできる
+
+\begin{theorem}{座標ベクトルの変換則}{coordinate-change-rule}
+  基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とし、ベクトル$\vb*{a} \in V$の$\mathcal{V},\, \mathcal{V}'$に関する座標ベクトルをそれぞれ$\vb*{x},\, \vb*{x}'$とするとき、
+  \begin{equation*}
+    \vb*{x} = P \vb*{x}'
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\begin{proof}
+  ベクトル$\vb*{a}$の2種類の基底$\vb*{v}_1, \ldots, \vb*{v}_n$と$\vb*{v}'_1, \ldots, \vb*{v}'_n$に関する成分
+  \begin{equation*}
+    \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix},\quad
+    \begin{pmatrix}
+      x'_1   \\
+      x'_2   \\
+      \vdots \\
+      x'_n
+    \end{pmatrix}
+  \end{equation*}
+  を考えると、$\vb*{a}$の2通りの表現
+  \begin{align*}
+    \vb*{a} & = x_1 \vb*{v}_1 + x_2 \vb*{v}_2 + \cdots + x_n \vb*{v}_n \\
+            & = (\vb*{v}_1, \ldots, \vb*{v}_n) \begin{pmatrix}
+                                                 x_1    \\
+                                                 x_2    \\
+                                                 \vdots \\
+                                                 x_n
+                                               \end{pmatrix}
+  \end{align*}
+  \begin{align*}
+    \vb*{a} & = x'_1 \vb*{v}'_1 + x'_2 \vb*{v}'_2 + \cdots + x'_n \vb*{v}'_n \\
+            & = (\vb*{v}'_1, \ldots, \vb*{v}'_n) \begin{pmatrix}
+                                                   x'_1   \\
+                                                   x'_2   \\
+                                                   \vdots \\
+                                                   x'_n
+                                                 \end{pmatrix}              \\
+            & = (\vb*{v}_1, \ldots, \vb*{v}_n) P \begin{pmatrix}
+                                                   x'_1   \\
+                                                   x'_2   \\
+                                                   \vdots \\
+                                                   x'_n
+                                                 \end{pmatrix}
+  \end{align*}
+  が得られる
+
+  どちらも$(\vb*{v}_1, \ldots, \vb*{v}_n)$との積の形、すなわち$\vb*{v}_1, \ldots, \vb*{v}_n$の線形結合として表されている
+
+  ここで、\thmref{thm:lin-indep-iff-unique-lincomb}より、基底$\vb*{v}_1, \ldots, \vb*{v}_n$の線型独立性から、その線形結合は一意的であるので、係数比較ができて、
+  \begin{equation*}
+    \begin{pmatrix}
+      x_1    \\
+      x_2    \\
+      \vdots \\
+      x_n
+    \end{pmatrix} = P \begin{pmatrix}
+      x'_1   \\
+      x'_2   \\
+      \vdots \\
+      x'_n
+    \end{pmatrix}
+  \end{equation*}
+  が成り立つ $\qed$
+\end{proof}
+
+\sectionline
+\section{基底変換による表現行列の変化}
+\marginnote{\refbookA p112〜113 \\ \refbookF p215、p223〜225}
+
+\begin{mindflow}
+  \placeholder{再編予定}
+\end{mindflow}
+
+$f\colon V \to W$を線形写像とする
+
+\begin{equation*}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & W
+  \end{tikzcd}
+\end{equation*}
+
+$V$の基底$\mathcal{V}$と$W$の基底$\mathcal{W}$に関する$f$の表現行列を$A$とする
+
+\begin{equation*}
+  \begin{tikzcd}
+    V \arrow[r,"f"] & W \\
+    \mathbb{R}^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A\cdot"] & \mathbb{R}^m \arrow[u,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+また、$V$の基底$\mathcal{V}'$と$W$の基底$\mathcal{W}'$に基底を変えるとき、$f$の表現行列を$B$とする
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[d,"{\Phi_{\mathcal{V}'}}"] \arrow[r,"B\cdot"] & \mathbb{R}^m \arrow[d,"{\Phi_{\mathcal{W}'}}"] \\
+    V \arrow[r,"f"] & W
+  \end{tikzcd}
+\end{equation*}
+
+基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とするとき、次の可換図式で整理できる
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[dd,"P\cdot"] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] \arrow[rrr,"B\cdot"] &&& \mathbb{R}^m \arrow[dd,"Q\cdot"] \arrow[ld,"{\Phi_{\mathcal{W}'}}"] \\
+    & V \arrow[r,"f"] & W & \\
+    \mathbb{R}^n \arrow[ru,"{\Phi_{\mathcal{V}}}"] \arrow[rrr,"A\cdot"] &&& \mathbb{R}^m \arrow[lu,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+ここで、行列$A$によって表現される写像を$F_A$、他の行列についても同様に表すと、
+
+\begin{equation*}
+  \begin{tikzcd}
+    \mathbb{R}^n \arrow[dd,"F_P"] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] \arrow[rrr,"F_B"] &&& \mathbb{R}^m \arrow[dd,"F_Q"] \arrow[ld,"{\Phi_{\mathcal{W}'}}"] \\
+    & V \arrow[r,"f"] & W & \\
+    \mathbb{R}^n \arrow[ru,"{\Phi_{\mathcal{V}}}"] \arrow[rrr,"F_A"] &&& \mathbb{R}^m \arrow[lu,"{\Phi_{\mathcal{W}}}"]
+  \end{tikzcd}
+\end{equation*}
+
+このとき、左上の$\mathbb{R}^n$から右下の$\mathbb{R}^m$への写像は、
+\begin{equation*}
+  F_A \circ F_P,\quad F_Q \circ F_B
+\end{equation*}
+という2通りの表現ができる
+
+すなわち、
+\begin{equation*}
+  F_A \circ F_P = F_Q \circ F_B
+\end{equation*}
+
+合成写像は行列の積に対応するので、
+\begin{equation*}
+  AP = QB
+\end{equation*}
+
+ここで、$Q$は$\mathbb{R}^m \to \mathbb{R}^m$の標準基底に関する表現行列であるから、正則行列である
+
+そこで、左から$Q^{-1}$をかけて、
+\begin{equation*}
+  B = Q^{-1} AP
+\end{equation*}
+が得られる
+
+\begin{theorem}{基底変換に伴う表現行列の変換}{change-of-representation-matrix}
+  線形写像$f\colon V \to W$の基底$\mathcal{V},\, \mathcal{W}$に関する表現行列を$A$とし、同じ線形写像$f$の別な基底$\mathcal{V}',\, \mathcal{W}'$に関する表現行列を$B$とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とすると、
+  \begin{equation*}
+    B = Q^{-1} A P
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\sectionline
+
+実用上は$V=W$である場合が特に重要で、この場合には$P=Q$とすることができるので、
+\begin{equation*}
+  B = P^{-1} A P
+\end{equation*}
+が成り立つ
+
+\begin{theorem}{基底変換に伴う表現行列の変換（線形変換の場合）}{similarity-under-basis-change}
+  線形変換$f\colon V \to V$の基底$\mathcal{V}$に関する表現行列を$A$とし、同じ線形変換$f$の別な基底$\mathcal{V}'$に関する表現行列を$B$とするとき、基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とすると、
+  \begin{equation*}
+    B = P^{-1} A P
+  \end{equation*}
+  が成り立つ
+\end{theorem}
+
+\end{document}
