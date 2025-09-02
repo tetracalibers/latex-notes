@@ -1,0 +1,47 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{基底変換による座標ベクトルの変化}
+\marginnote{\refbookS p60〜61 \\ \refbookA p110〜111 \\ \refbookF p215〜219}
+
+基底変換行列$P$は、ベクトルの成分表示の変換に用いることもできる。
+
+次の定理は、$P$を定めた図式\eqref{eq:basis-change-diagram}において、線形空間の元の対応を考えると一目瞭然である。
+
+\begin{theorem}{座標ベクトルの変換則}{coordinate-change-rule}
+  基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とし、ベクトル$\vb*{v} \in V$の$\mathcal{V},\, \mathcal{V}'$に関する座標ベクトルをそれぞれ$\vb*{x},\, \vb*{x}'$とするとき、次が成り立つ。
+  \begin{equation*}
+    \vb*{x} = P \vb*{x}'
+  \end{equation*}
+\end{theorem}
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.4\columnwidth}
+    \caption*{\bfseries 線形空間の対応}
+    \begin{equation*}
+      \begin{tikzcd}[every label/.append style = {font = \small}]
+        K^n \arrow[dd, "P\times"'] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] & \\
+        & V \\
+        K^n \arrow[ru,"{\Phi_{\mathcal{V}}}"']
+      \end{tikzcd}
+    \end{equation*}
+  \end{minipage}
+  \begin{minipage}{0.4\columnwidth}
+    \caption*{\bfseries 線形空間の元の対応}
+    \begin{equation*}
+      \begin{tikzcd}[every label/.append style = {font = \small}]
+        \vb*{x}' \arrow[dd,mapsto, "P\times"'] \arrow[rd,mapsto,"{\Phi_{\mathcal{V}'}}"] & \\
+        & \vb*{v} \\
+        \vb*{x} \arrow[ru,mapsto,"{\Phi_{\mathcal{V}}}"']
+      \end{tikzcd}
+    \end{equation*}
+  \end{minipage}
+\end{figure}
+
+\end{document}
