@@ -69,4 +69,20 @@ $f\colon V \to W$を線形写像とし、$V,W$の基底$\mathcal{V},\mathcal{W}$
   \end{equation*}
 \end{theorem}
 
+\subsection{線形変換の表現行列の変換則}
+
+実用上は$V=W$である場合が特に重要で、この場合には$P=Q$とすることができるので、次が成り立つ。
+\begin{equation*}
+  B = P^{-1} A P
+\end{equation*}
+
+\begin{theorem}{線形変換の表現行列の基底変換則}{similarity-under-basis-change}
+  線形変換$f\colon V \to V$の基底$\mathcal{V}$に関する表現行列を$A$とし、同じ線形変換$f$の別な基底$\mathcal{V}'$に関する表現行列を$B$とする。
+  
+  基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$とすると、$B$は次のように表される。
+  \begin{equation*}
+    B = P^{-1} A P
+  \end{equation*}
+\end{theorem}
+
 \end{document}
