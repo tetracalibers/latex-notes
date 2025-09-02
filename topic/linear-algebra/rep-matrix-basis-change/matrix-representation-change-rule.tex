@@ -1,0 +1,72 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{基底変換による表現行列の変化}
+\marginnote{\refbookS p60〜61 \\ \refbookA p112〜113 \\ \refbookF p215、p223〜225}
+
+基底を取り替えたときに線形写像の表現行列がどのように変わるかは、基底変換行列を使って計算できる。
+
+\subsection{線形写像の表現行列の変換則}
+
+$V, W$をそれぞれ$n,m$次元線型空間とする。
+
+$f\colon V \to W$を線形写像とし、$V,W$の基底$\mathcal{V},\mathcal{W}$に関する$f$の表現行列を$A$とする。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \small}]
+    V \arrow[r,"f"] & W \\
+    K^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"A\times"] & K^m \arrow[u,"{\Phi_{\mathcal{W}}}"']
+  \end{tikzcd}
+\end{equation*}
+
+また、別な基底$\mathcal{V}', \mathcal{W}'$によって$f$を表現する行列を$B$とする。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \small}]
+    K^n \arrow[d,"{\Phi_{\mathcal{V}'}}"'] \arrow[r,"B\times"] & K^m \arrow[d,"{\Phi_{\mathcal{W}'}}"] \\
+    V \arrow[r,"f"] & W
+  \end{tikzcd}
+\end{equation*}
+
+\br
+
+このとき、$B$をどうやって計算すればよいかを考えたい。
+
+\br
+
+基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とするとき、次の可換図式で整理できる。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \small}]
+    K^n \arrow[dd,"P\times"'] \arrow[rd,"{\Phi_{\mathcal{V}'}}"] \arrow[rrr,"B\times"] &&& K^m \arrow[dd,"Q\times"] \arrow[ld,"{\Phi_{\mathcal{W}'}}"'] \\
+    & V \arrow[r,"f"] & W & \\
+    K^n \arrow[ru,"{\Phi_{\mathcal{V}}}"] \arrow[rrr,"A\times"] &&& K^m \arrow[lu,"{\Phi_{\mathcal{W}}}"']
+  \end{tikzcd}
+\end{equation*}
+
+\br
+
+ここで、左上の$K^n$から右下の$K^m$への線形写像を考えると、次の等式が成り立つ。
+\begin{equation*}
+  AP = QB
+\end{equation*}
+
+\thmref{thm:change-of-basis-matrix-invertible}より、$P,Q$は正則行列である。
+
+そこで、左から$Q^{-1}$をかけることで、次の式を得る。
+\begin{equation*}
+  Q^{-1}AP = B
+\end{equation*}
+
+\begin{theorem}{線形写像の表現行列の基底変換則}{change-of-representation-matrix}
+  線形写像$f\colon V \to W$の基底$\mathcal{V},\mathcal{W}$に関する表現行列を$A$とし、同じ線形写像$f$の別な基底$\mathcal{V}', \mathcal{W}'$に関する表現行列を$B$とする。
+  
+  基底変換$\mathcal{V} \rightharpoonup \mathcal{V}'$の変換行列を$P$、$\mathcal{W} \rightharpoonup \mathcal{W}'$の変換行列を$Q$とすると、$B$は次のように表される。
+  \begin{equation*}
+    B = Q^{-1} A P
+  \end{equation*}
+\end{theorem}
+
+\end{document}
