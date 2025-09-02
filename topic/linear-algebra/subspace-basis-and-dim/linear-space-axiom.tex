@@ -1,0 +1,49 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\begin{document}
+
+\sectionline
+\section{抽象化された線形空間}
+\marginnote{\refbookS p6〜7 \\ \refbookH p158〜163 \\ \refbookC p143〜166 \\ \refbookG p25〜27}
+
+線形代数の理論は、線型独立性や線形写像を基礎にしている。
+
+\br
+
+これらは線形結合、すなわちベクトルの\keyword{和}と\keyword{スカラー倍}を用いて定義された。
+
+任意のベクトルは線形結合で表され、線形写像は線形結合を保つ写像として定義される。
+
+\br
+
+そこで、和とスカラー倍が定義された集合なら、線形写像の理論を適用できるのではないか？という発想が生まれる。
+
+あえて抽象的に議論することで、多項式、関数、数列なども、線形代数の枠組みで扱うことができるようになる。
+
+\subsection{線形空間の公理}
+
+和とスカラー倍が定義された一般の集合を、\keywordJE{線形空間}{linear space}として定義する。
+
+\br
+
+そして、その集合の元を\keywordJE{ベクトル}{vector}と呼ぶ。
+
+和とスカラー倍が定義されていれば、数ベクトルと同様に、線形結合によりその元を表すことができるからだ。
+
+この意味で、線形空間は\keywordJE{ベクトル空間}{vector space}と呼ばれることもある。
+
+\begin{definition}{線形空間の公理}{vector-space-axioms}
+  集合$V$が\keyword{$K$線型空間}（あるいは\keyword{$K$上の線形空間}）であるとは、$V$に加法と、$K$の元によるスカラー倍が定義されていて、次の条件が満たされていることである。
+  \begin{enumerate}[label=\romanlabel]
+    \item 交換法則：$\vb*{a} + \vb*{b} = \vb*{b} + \vb*{a}$
+    \item 結合法則：$(\vb*{a} + \vb*{b}) + \vb*{c} = \vb*{a} + (\vb*{b} + \vb*{c})$、$k(l\vb*{a}) = (kl)\vb*{a}$
+    \item 分配法則：$k(\vb*{a} + \vb*{b}) = k\vb*{a} + k\vb*{b}$、$(k + l)\vb*{a} = k\vb*{a} + l\vb*{a}$
+    \item $1 \vb*{a} = \vb*{a}$（$1$は体$K$の乗法に関する単位元）
+    \item 零元の存在：$\vb*{o}$と書かれる特別な元が存在し、任意の$\vb*{a} \in V$に対して$\vb*{a} + \vb*{o} = \vb*{a}$
+    \item 和に関する逆元の存在：任意の$\vb*{a} \in V$に対して$-\vb*{a}$と書かれる特別な元が存在し、$\vb*{a} + (-\vb*{a}) = (-\vb*{a}) + \vb*{a} = \vb*{o}$
+  \end{enumerate}
+\end{definition}
+
+線形空間は必ず零元を含むことから、線形空間は\keywordJE{空集合}{empty set}ではないことに注意しよう。
+
+\end{document}

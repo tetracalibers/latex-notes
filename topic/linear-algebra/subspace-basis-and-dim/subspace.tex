@@ -6,47 +6,65 @@
 \begin{document}
 
 \sectionline
-\section{線形部分空間}
-\marginnote{\refbookA p93〜94、p99}
+\section{部分空間}
+\marginnote{\refbookS p17〜18 \\ \refbookA p93〜94、p99}
 
-$m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバーしきれない写像を表していた。
+$m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバーしきれない写像を表していた。（\secref{sec:linear-map-m-greater-n}）
 
 つまり、写った結果が空間の一部、\keyword{部分空間}になるということである。
 
 \br
 
-そこで、$\mathbb{R}^n$の部分集合であって、ベクトル演算で閉じた集合について考える。
+そこで、線型空間$V$の部分集合であって、それ自体もまた線形空間になるような集合について考える。
 これは、原点を含む直線や平面などを一般化した概念である。
 
-\begin{definition*}{線形部分空間}
-  $\mathbb{R}^n$のベクトルからなる空集合でない集合$V$は、次が成り立つとき\keyword{線形部分空間}あるいは簡単に\keyword{部分空間}であるという。
+\begin{definition*}{部分空間}
+  $V$を線形空間とする。
+  $W$が$V$の\keywordJE{部分空間}{subspace}であるとは、$W$が$V$の部分集合であり、次の条件を満たすことをいう。
   \begin{enumerate}[label=\romanlabel]
-    \item すべての$\vb*{u}, \vb*{v} \in V$に対して$\vb*{u} + \vb*{v} \in V$が成り立つ
-    \item すべての$c \in \mathbb{R},\,\vb*{u} \in V$に対して$c \vb*{u} \in V$が成り立つ
+    \item 任意の$\vb*{u}, \vb*{v} \in W$に対して、$\vb*{u} + \vb*{v} \in W$
+    \item 任意の$\vb*{u} \in W$、任意のスカラー$c$に対して、$c \vb*{u} \in W$
+    \item $V$の零元$\vb*{o}$は$W$の元
   \end{enumerate}
 \end{definition*}
 
-入れものの空間$\mathbb{R}^n$のことはあまり意識せずに、集合$V$とそのベクトル演算に着目して、ある$\mathbb{R}^n$の線形部分空間のことを単に\keyword{線形空間}と呼ぶこともある。
+条件(\romannum{i})を満たすことを、$W$は加法で\keywordJE{閉じている}{closed}という。
 
-\subsection{$\mathbb{R}^n$自身も部分空間}
+条件(\romannum{ii})を満たすことを、$W$はスカラー倍で\keyword{閉じている}という。
 
-たとえば、$\mathbb{R}^n$自身は明らかに$\mathbb{R}^n$の部分空間である。
+\br
 
-\subsection{$n-1$次平面は部分空間}
+また、空集合は条件(\romannum{i})、(\romannum{ii})は満たすが、条件(\romannum{iii})を満たさない。
 
-たとえば$\mathbb{R}^3$において座標を$(x, y, z)$とするとき、$xy$平面は$\mathbb{R}^3$の部分空間である。
+\defref{def:vector-space-axioms}には零元の存在が含まれているため、空集合は線型空間ではない。
 
-\begin{definition}{座標部分空間}{coordinate-subspace}
-  $\{1, 2, \dots, n\}$の部分集合$I$に対して、$x_i \, (i \in I)$以外の座標がすべて0である部分集合は$\mathbb{R}^n$の部分集合である。
+空集合を排除するために、条件(\romannum{iii})が必須となる。
 
-  このようなものを\keyword{座標部分空間}といい、$\mathbb{R}^I$と書く。
-  \begin{equation*}
-    \mathbb{R}^I = \langle \vb*{e}_i \mid i \in I \rangle
-  \end{equation*}
-  と表すこともできる。
-\end{definition}
+\br
 
-\subsection{零ベクトルだけからなる部分集合も部分空間}
+入れものの空間$V$のことはあまり意識せずに、集合$W$とそのベクトル演算に着目して、ある$V$の線形部分空間のことを単に\keyword{線形空間}と呼ぶこともある。
+
+\subsection{部分空間の図示}
+
+部分空間を視覚的に表すには、箱を使うと便利である。
+
+\begin{center}
+  \begin{tikzpicture}[node distance=3cm]
+    \node [subspace, rectangle split draw splits=false, label=above:{$V$}, draw=carnationpink, thick, rectangle split part fill={carnationpink!50, SkyBlue!50}]        (A)    {\phantom{$\vb*{a}$} \nodepart{second} $W$};
+    \node [subspace, rectangle split draw splits=false, right of=A, label=above:{$V$}, draw=carnationpink, thick, rectangle split part fill={carnationpink!50, SkyBlue!50}]    (B)    {$\vb*{a}$ \nodepart{second} $\vb*{b}$};
+  \end{tikzpicture}
+\end{center}
+
+\begin{itemize}
+  \item 左図：$V$の部分空間が$W$である
+  \item 右図：$\vb*{a},\vb*{b} \in V$が、$\vb*{b} \in W$であり$\vb*{a} \notin W$である
+\end{itemize}
+
+\subsection{部分空間の例：$V$自身}
+
+$V \supseteq V$であり、$V$は線形空間であるから、$V$自身も$V$の部分空間といえる。
+
+\subsection{部分空間の例：零ベクトルだけからなる集合}
 
 零ベクトル$\vb*{o}$だけからなる部分集合$\{ \vb*{o} \}$も部分空間である。
 
@@ -62,7 +80,21 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
   よって部分空間は必ず$\vb*{o}$を含む。 $\qed$
 \end{proof}
 
-\subsection{線形写像の像は部分空間}
+\subsection{部分空間の例：$n-1$次平面}
+
+たとえば、$\mathbb{R}^3$において座標を$(x, y, z)$とするとき、$xy$平面は$\mathbb{R}^3$の部分空間である。
+
+\begin{definition}{座標部分空間}{coordinate-subspace}
+  $\{1, 2, \dots, n\}$の部分集合$I$に対して、$x_i \, (i \in I)$以外の座標がすべて0である部分集合は$\mathbb{R}^n$の部分集合である。
+
+  このようなものを\keyword{座標部分空間}といい、$\mathbb{R}^I$と書く。
+  \begin{equation*}
+    \mathbb{R}^I = \langle \vb*{e}_i \mid i \in I \rangle
+  \end{equation*}
+  と表すこともできる。
+\end{definition}
+
+\subsection{部分空間の例：線形写像の像}
 \marginnote{\refbookC p82}
 
 \begin{theorem*}{線形写像の像は部分空間}
@@ -93,8 +125,8 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
   \end{subpattern}
 \end{proof}
 
-\subsection{線形写像の核は部分空間}
-\marginnote{\refbookC p71〜72}
+\subsection{部分空間の例：線形写像の核}
+\marginnote{\refbookC p71〜72、p82}
 
 \begin{theorem}{部分空間の零ベクトルと線形写像}{linear-map-zero-preserving}
   部分空間$V,\,W$の間の線形写像$f\colon V \to W$に対して、$V$の零ベクトルを$\vb*{o}_V$、$W$の零ベクトルを$\vb*{o}_W$とすると、
@@ -129,7 +161,7 @@ $m > n$の場合、$m \times n$型行列$A$は、写し先の空間をカバー�
   となり、目標としていた式が示された。 $\qed$
 \end{proof}
 
-\marginnote{\refbookC p82}
+\br
 
 \begin{theorem*}{線形写像の核は部分空間}
   線形写像$f\colon V \to W$の核$\Ker(f)$は$V$の部分空間である。
