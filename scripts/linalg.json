@@ -23,7 +23,7 @@
   "triangularization",
   "projection-matrix",
   "affine-space",
-  "abstract-linear-space",
+  "homomorphism-space",
   "generalized-eigenspace",
   "row-vector-space",
   "subspace-duality",
