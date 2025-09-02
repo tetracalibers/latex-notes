@@ -1,0 +1,148 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{一般の基底に関する表現行列}
+\marginnote{\refbookS p56〜58 \\ \refbookA p104〜106 \\ \refbookC p95〜96}
+
+数ベクトル空間の間の線形写像は行列によって表すことができ、線形写像とその表現行列を対応づけて考えることができた。（\secref{sec:matrix-A-map-isomorphism}）
+
+では、一般の線形空間の間の線形写像についてはどうだろうか？
+
+\br
+
+結論から言うと、有限次元の線形空間であれば、一般の線形空間の線形写像も、基底を使えば行列で表すことができる。
+
+これから述べるように、座標写像による同型を用いることで、数ベクトル空間の間の線形写像に帰着させて考えればよい。
+
+\subsection{線形写像の座標表現}
+
+$V,W$をそれぞれ次元が$n,m$の線形空間とし、$f$を$V$から$W$への線形写像とする。
+
+また、$\mathcal{V}, \mathcal{W}$をそれぞれ$V,\,W$の基底とする。
+
+\br
+
+このとき、それぞれの基底について座標写像を定義できる。
+\begin{equation*}
+  \Phi_{\mathcal{V}}\colon K^n \to V, \quad
+  \Phi_{\mathcal{W}}\colon K^m \to W
+\end{equation*}
+
+$K^n, K^m, V, W$とその間の線形写像の関係を、次のような\keyword{図式}で整理しておこう。
+\begin{center}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \arrow[r,"f"] & W \\
+    K^n \arrow[u,"{\Phi_{\mathcal{V}}}"] & K^m \arrow[u,"{\Phi_{\mathcal{W}}}"']
+  \end{tikzcd}
+\end{center}
+
+\br
+
+さて、座標写像$\Phi_{\mathcal{V}}, \Phi_{\mathcal{W}}$は線形同型（全単射）であるので、逆写像を定義できる。
+
+そこで、$\Phi_{\mathcal{W}}$の矢印を逆にたどることで、$K^n$から$K^m$への写像を考えることができる。
+\begin{center}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \arrow[r,"f"] & W \arrow[d,"{\Phi_{\mathcal{W}}^{-1}}"] \\
+    K^n \arrow[u,"{\Phi_{\mathcal{V}}}"] & K^m
+  \end{tikzcd}
+\end{center}
+
+これはすなわち、$\Phi_{\mathcal{W}}$の逆写像を用いて、次のような合成写像を作ったということである。
+\begin{equation}\label{eq:coordinate-rep-of-f}
+  \Phi_\mathcal{W}^{-1} \circ f \circ \Phi_\mathcal{V} \colon K^n \to K^m
+\end{equation}
+
+この合成写像は、数ベクトル空間$K^n$から$K^m$への線形写像なので、$m \times n$型行列$A$により表現される。
+
+この行列$A$を、基底$\mathcal{V}, \mathcal{W}$に関する$f$の\keywordJE{行列表示}{matrix presentation}、あるいは$f$の\keywordJE{表現行列}{matrix representing $f$}という。
+
+\begin{mindflow}
+  % \refbookS p58
+  \note{後の章で、線形写像にその行列表示を対応させる写像は同型であることを示す}
+\end{mindflow}
+
+このように、$V$から$W$への線形写像$f$は、数ベクトル空間との線形同型写像（座標写像）を合成することにより、数ベクトル空間の間の線形写像（$A$倍写像）と考えることができる。
+
+\subsection{行列と線形写像の同一視}
+
+また、\thmref{thm:subspace-isomorphic-to-Kn}より、線形空間$V,W$はそれぞれ次元の等しい数ベクトル空間$K^n,K^m$と同型である。
+
+\br
+
+このことから、$V$から$W$への線型写像$f$を、$K^n$から$K^m$への$A$倍写像と同一視できると考えることもできる。
+\begin{center}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \arrow[r,"f"] & W \\
+    K^n \arrow[u,"\cong"] \arrow[r,"A \times"] & K^m \arrow[u,"\cong"']
+  \end{tikzcd}
+\end{center}
+
+\br
+
+しかし、数ベクトル空間との同型は、基底によって定まる座標写像から導かれているため、基底に依存して成り立っていることに注意しよう。
+つまり、
+\begin{emphabox}
+  \begin{spacebox}
+    \begin{center}
+      基底$\mathcal{V},\mathcal{W}$を固定して考えるときは、$f$と$A$を同一視できる
+    \end{center}
+  \end{spacebox}
+\end{emphabox}
+
+線形写像の\keyword{表現行列}は、基底$\mathcal{V},\mathcal{W}$を固定することで決まる、線形写像の「成分表示」と解釈することができる。
+
+\subsection{合成写像の一致を表す可換図式}
+
+$f\colon V \to W$の$\mathcal{V},\mathcal{W}$に関する行列表示が$A$であることは、次の図式によって整理される。
+（ここで、$f_A$は$A$倍写像を表す。）
+
+\begin{equation}\label{eq:diagram-coordinate-representation}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \arrow[r,"f"] & W \\
+    K^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"f_A"] & K^m \arrow[u,"{\Phi_{\mathcal{W}}}"']
+  \end{tikzcd}
+\end{equation}
+
+\br
+
+この図式から、$K^n$から$W$への経路は2通りあることが読み取れる。
+\begin{itemize}
+  \item $\Phi_{\mathcal{V}}$と$f$を辿るルート（$f \circ \Phi_{\mathcal{V}}$）
+  \item $f_A$と$\Phi_{\mathcal{W}}$を辿るルート（$\Phi_{\mathcal{W}} \circ f_A$）
+\end{itemize}
+
+ここで、前節で定義した合成写像$K^n \to K^m$の式\eqref{eq:coordinate-rep-of-f}を思い出すと、
+\begin{equation*}
+  f_A\colon \Phi_\mathcal{W}^{-1} \circ f \circ \Phi_\mathcal{V}
+\end{equation*}
+であるので、次が成り立つ。
+\begin{align*}
+  \Phi_{\mathcal{W}} \circ f_A &= \Phi_{\mathcal{W}} \circ \Phi_\mathcal{W}^{-1} \circ f \circ \Phi_\mathcal{V} \\
+  &= f \circ \Phi_\mathcal{V}
+\end{align*}
+
+すなわち、$K^n$から$W$への2通りの写像は一致する。
+\begin{equation*}
+  \Phi_{\mathcal{W}} \circ f_A = f \circ \Phi_\mathcal{V}
+\end{equation*}
+
+このように、図式の左下から右上への2通りの合成写像が一致するという意味で、図式\eqref{eq:diagram-coordinate-representation}は\keywordJE{可換}{commutative}であるという。
+
+\br
+
+可換な図式を\keywordJE{可換図式}{commutative diagram}といい、図式の中に$\circlearrowleft$を書くことで可換を明示することも多い。
+\begin{equation*}
+  \begin{tikzcd}[every label/.append style = {font = \normalsize}]
+    V \arrow[r,"f" name=U] & W \\
+    K^n \arrow[u,"{\Phi_{\mathcal{V}}}"] \arrow[r,"f_A"' name=D] & K^m \arrow[u,"{\Phi_{\mathcal{W}}}"']
+    \arrow[to path={(U) node[midway] {$\circlearrowleft$}  (D)}]{}
+  \end{tikzcd}
+\end{equation*}
+
+\end{document}

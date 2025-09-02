@@ -16,10 +16,6 @@ $K^n$の\keyword{座標}$(x_1,\dots,x_n)$を、次のように$V$のベクトル
 
 ここで、$K^n$の座標$(x_1,\dots,x_n)$は、標準基底$\{ \vb*{e}_1, \dots, \vb*{e}_n \}$を用いたベクトルの成分表示として考えている。（\secref{sec:orthogonal-coordinates-standard-basis}）
 
-\begin{mindflow}
-  \todo{座標写像が線形写像であること}
-\end{mindflow}
-
 \begin{definition}{座標写像}{coordinate-mapping}
   $V$を線形空間とし、$\mathcal{V} = \{ \vb*{v}_1, \dots, \vb*{v}_n \}$を$V$の基底とする。
 
@@ -30,8 +26,42 @@ $K^n$の\keyword{座標}$(x_1,\dots,x_n)$を、次のように$V$のベクトル
   この写像$\Phi_{\mathcal{V}}$を$\mathcal{V}$で定まる\keyword{座標写像}という。
 \end{definition}
 
+\br
+
+\begin{theorem*}{座標写像の線形性}
+  座標写像は線形写像である。
+\end{theorem*}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    任意の$\vb*{x}=(x_1,\dots,x_n),\,\vb*{y}=(y_1,\dots,y_n)\in K^n$について、
+    \begin{align*}
+      \Phi_{\mathcal{V}}(\vb*{x}+\vb*{y})
+      &=\Phi_{\mathcal{V}}(x_1+y_1,\dots,x_n+y_n) \\
+      &=\sum_{i=1}^{n}(x_i+y_i)\vb*{v}_i
+      =\sum_{i=1}^{n}x_i\vb*{v}_i+\sum_{i=1}^{n}y_i\vb*{v}_i \\
+      &=\Phi_{\mathcal{V}}(\vb*{x})+\Phi_{\mathcal{V}}(\vb*{y})
+    \end{align*}
+    が成り立つ。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries スカラー倍について}
+    任意の$c\in K$と$\vb*{x}=(x_1,\dots,x_n)\in K^n$について、
+    \begin{align*}
+      \Phi_{\mathcal{V}}(c\vb*{x})
+      &=\Phi_{\mathcal{V}}(cx_1,\dots,cx_n) \\
+      &=\sum_{i=1}^{n}(c x_i)\vb*{v}_i
+      =c\sum_{i=1}^{n}x_i\vb*{v}_i \\
+      &=c\,\Phi_{\mathcal{V}}(\vb*{x})
+    \end{align*}
+    が成り立つ。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\br
+
 \begin{theorem}{座標写像の線形同型性}{coordinate-map-isomorphism}
-  \defref*{def:coordinate-mapping}は線形同型写像である。
+  座標写像は線形同型写像である。
 \end{theorem}
 
 \begin{proof}
@@ -49,7 +79,7 @@ $K^n$の\keyword{座標}$(x_1,\dots,x_n)$を、次のように$V$のベクトル
       \Phi_{\mathcal{V}}(\vb*{x}) = \vb*{o} \Longrightarrow \vb*{x} = \vb*{o}
     \end{equation*}
 
-    よって、\thmref{thm:injective-zero-test}より、$\Phi_{\mathcal{V}}$は単射である $\qed$
+    よって、\thmref{thm:injective-zero-test}より、$\Phi_{\mathcal{V}}$は単射である。 $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries 全射であること}

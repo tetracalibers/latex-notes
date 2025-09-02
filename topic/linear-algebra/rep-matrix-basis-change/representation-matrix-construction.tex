@@ -1,0 +1,139 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{表現行列を定める規則}\label{sec:construction-of-matrix-rep}
+\marginnote{
+  \refbookA p105 \\ \refbookC p96〜97 \\
+  \refweb{【表現行列】線形写像の行列表示を詳しく}{https://mathlandscape.com/map-matrix/}
+}
+
+線形写像$f\colon V \to W$、$V$の基底$\mathcal{V}$、$W$の基底$\mathcal{W}$が与えられたとき、$f$の表現行列$A$は具体的にどのような規則で構成できるだろうか。
+
+\br
+
+\secref{sec:matrix-description-linear-map}で述べたように、数ベクトル空間の間の線形写像を定める行列は、標準基底$\vb*{e}_j$の$f$による像
+\begin{equation*}
+  f(\vb*{e}_j) = \vb*{a}_j = \begin{pmatrix}
+    a_{1j} \\
+    \vdots \\
+    a_{mj}
+  \end{pmatrix} \quad (1 \leq j \leq n)
+\end{equation*}
+を横に並べたもの、すなわち、
+\begin{equation*}
+  \begin{pmatrix}
+    f(\vb*{e}_1) & \cdots & f(\vb*{e}_n)
+  \end{pmatrix} = \begin{pmatrix}
+    \vb*{a}_1 & \cdots & \vb*{a}_n
+  \end{pmatrix} = A
+\end{equation*}
+として構成された。
+
+\br
+
+このような表現行列の構成を、一般の線形空間$V,W$の基底$\mathcal{V}, \mathcal{W}$に関して一般化しよう。
+
+\br
+
+$V, W$をそれぞれ$m,n$次元線形空間とし、それらの基底を$\mathcal{V} = \{ \vb*{v}_1, \ldots, \vb*{v}_m \}$、$\mathcal{W} = \{ \vb*{w}_1, \ldots, \vb*{w}_n \}$と定める。
+
+\br
+
+このとき、$\vb*{a}_j$は座標写像$\Phi_{\mathcal{W}}$によって、次のように$W$に写される。
+\begin{equation*}
+  \Phi_{\mathcal{W}}(\vb*{a}_j) = \sum_{i=1}^m a_{ij} \vb*{w}_i \quad (1 \leq j \leq n)
+\end{equation*}
+
+また、$\vb*{e}_j$は座標写像$\Phi_{\mathcal{V}}$によって、
+\begin{equation*}
+  \Phi_{\mathcal{V}}(\vb*{e}_j) = \sum_{i=1}^n e_{ij} \vb*{v}_i \quad (1 \leq j \leq n)
+\end{equation*}
+のように$V$に写されるが、これは$\vb*{v}_j$そのものである。
+
+\br
+
+\begin{handout}[補足：$\Phi_{\mathcal{V}}(\vb*{e}_j) = \vb*{v}_j$の確認]
+  たとえば、$j=1$のときは、次のようになる。
+  \begin{equation*}
+    \Phi_{\mathcal{V}}(\vb*{e}_1) = \sum_{i=1}^n e_{i1} \vb*{v}_i = \vb*{v}_1
+  \end{equation*}
+\end{handout}
+
+\br
+
+よって、$\vb*{e}_j \mapsto \vb*{a}_j$という写像は、
+\begin{equation*}
+  \vb*{v}_j \mapsto \Phi_{\mathcal{W}}(\vb*{a}_j)
+\end{equation*}
+という$V$から$W$への写像$f$に対応する。
+\begin{equation}
+  \begin{tikzcd}[every label/.append style = {font = \small}]
+    \vb*{v}_j \arrow[r,mapsto,"f"] & \vb*{w}_j \\
+    \vb*{e}_j \arrow[u,mapsto,"{\Phi_{\mathcal{V}}}"] \arrow[r,mapsto,"A \times"] & \vb*{a}_j \arrow[u,mapsto,"{\Phi_{\mathcal{W}}}"']
+  \end{tikzcd}
+\end{equation}
+
+\br
+
+記号を書き換えると、
+\begin{equation*}
+  f(\vb*{v}_j) = \Phi_{\mathcal{W}}(\vb*{a}_j) = \sum_{i=1}^m a_{ij} \vb*{w}_i
+\end{equation*}
+となり、これで$\vb*{v}_j$の写り先が決まったので、\thmref{thm:linear-map-determined-by-basis}より$f$を定めることができる。
+\begin{align*}
+  f(\vb*{v}_1) &= a_{11}\vb*{w}_1 + a_{12}\vb*{w}_2 + \cdots + a_{1n}\vb*{w}_n \\
+  f(\vb*{v}_2) &= a_{21}\vb*{w}_1 + a_{22}\vb*{w}_2 + \cdots + a_{2n}\vb*{w}_n \\
+  & \ldots \\
+  f(\vb*{v}_m) &= a_{m1}\vb*{w}_1 + a_{m2}\vb*{w}_2 + \cdots + a_{mn}\vb*{w}_n
+\end{align*}
+
+上の$m$個の式をまとめて、次のように書くことができる。
+\begin{equation*}
+  \begin{pmatrix}
+    f(\vb*{v}_1) & \cdots & f(\vb*{v}_m)
+  \end{pmatrix} 
+  = \begin{pmatrix}
+    \vb*{w}_1 & \cdots & \vb*{w}_n
+  \end{pmatrix} \begin{pmatrix} 
+  a_{11} & a_{12} & \dots  & a_{1n} \\
+  a_{21} & a_{22} & \dots  & a_{2n} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  a_{m1} & a_{m2} & \dots  & a_{mn}
+\end{pmatrix} 
+\end{equation*}
+
+\br
+
+このときの行列$A = (a_{ij})$が、$f$の\keyword{表現行列}あるいは\keyword{行列表示}と呼ばれるものとなる。
+\begin{equation*}
+  \begin{pmatrix}
+    f(\vb*{v}_1) & \cdots & f(\vb*{v}_m)
+  \end{pmatrix} = \begin{pmatrix}
+    \vb*{w}_1 & \cdots & \vb*{w}_n
+  \end{pmatrix} A
+\end{equation*}
+
+\br
+
+\begin{theorem}{線形写像の行列表現の構成}{matrix-representation-construction}
+  $V, W$をそれぞれ$m,n$次元線形空間とし、それらの基底を$\{ \vb*{v}_1, \ldots, \vb*{v}_m \}$、$\{ \vb*{w}_1, \ldots, \vb*{w}_n \}$と定める。
+  このとき、線形写像$f\colon V \to W$の表現行列$A$は、次式を満たすものとして構成される。
+  \begin{equation*}
+    \begin{pmatrix}
+      f(\vb*{v}_1) & \cdots & f(\vb*{v}_m)
+    \end{pmatrix} = \begin{pmatrix}
+      \vb*{w}_1 & \cdots & \vb*{w}_n
+    \end{pmatrix} A
+  \end{equation*}
+\end{theorem}
+
+\br
+
+行列表示を使えば、線形空間と線形写像についての問題を、ベクトルと行列についての問題に帰着させて解くことができる。
+
+\end{document}
