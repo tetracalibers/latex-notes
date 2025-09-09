@@ -1,0 +1,175 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{部分空間の和の次元}
+\marginnote{\refbookR p54〜55 \\ \refbookA p103 \\ \refbookC p39〜41 \\ \refbookF 235〜236}
+
+部分空間の和（和空間）を考える上で、部分空間の共通部分が重要だと述べたのは、和空間の次元を考える際に、共通部分の次元が関わってくるからである。
+
+\br
+
+次のように、$V$の部分空間$U, W$の和空間の次元（基底をなすベクトルの個数）を考えるときは、共通部分の基底が重複して数えられてしまうため、共通部分の次元を引く必要がある。
+
+% \refbookR 定理5.3
+\begin{theorem}{部分空間の和の次元}{dimension-of-sum-of-subspaces}
+  $V$を$K$上の有限次元線形空間とし、$U, W$を$V$の部分空間とする。
+  
+  このとき、次が成り立つ。
+  \begin{equation*}
+    \dim(U + W) = \dim U + \dim W - \dim(U \cap W)
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  $\dim U = n, \, \dim W = m$とする。
+
+  \br
+
+  $U \cap W$の基底$\mathcal{V} = \{ \vb*{v}_1,\dots, \vb*{v}_d \}$をとる。
+
+  これを\thmref{thm:basis-extension}に基づいて、$U$の基底
+  \begin{equation*}
+    \mathcal{V} \cup \{ \vb*{u}_1, \dots, \vb*{u}_{n-d} \}
+  \end{equation*}
+  に延長する。
+
+  同様に、$\mathcal{V}$を$W$の基底
+  \begin{equation*}
+    \mathcal{V} \cup \{ \vb*{w}_1, \dots, \vb*{w}_{m-d} \}
+  \end{equation*}
+  に延長する。
+
+  \br
+
+  このとき、$\vb*{v}_1, \dots, \vb*{v}_d, \vb*{u}_1, \dots, \vb*{u}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$が$W_1 + W_2$の基底になることを示す。
+
+  \begin{subpattern}{\bfseries $U+W$を生成すること}
+    $\vb*{u} \in U, \, \vb*{w} \in W$とすると、それぞれ基底の線形結合で表すことができる。
+    \begin{align*}
+      \vb*{u} & = \sum_{i=1}^d a_i \vb*{v}_i + \sum_{j=1}^{n-d} b_j \vb*{u}_j \\
+      \vb*{w} & = \sum_{i=1}^d c_i \vb*{v}_i + \sum_{k=1}^{m-d} d_k \vb*{w}_k
+    \end{align*}
+
+    \br
+
+    $U+W$の任意の元は、$\vb*{u} + \vb*{w}$と書けるので、
+    \begin{equation*}
+      \vb*{u} + \vb*{w} = \sum_{i=1}^d (a_i + c_i) \vb*{v}_i + \sum_{j=1}^{n-d} b_j \vb*{u}_j + \sum_{k=1}^{m-d} d_k \vb*{w}_k
+    \end{equation*}
+    となり、$\{ \vb*{v}_1, \dots, \vb*{v}_d, \vb*{u}_1, \dots, \vb*{u}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d} \}$の線形結合で表せる。 $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries 線型独立であること}
+    $\vb*{v}_1, \dots, \vb*{v}_d, \vb*{u}_1, \dots, \vb*{u}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$が線型独立であることを示すために、次のような線形関係式を考える。
+    \begin{equation*}
+      \sum_{i=1}^d c_i \vb*{v}_i + \sum_{j=1}^{n-d} c_{d+j} \vb*{u}_j + \sum_{k=1}^{m-d} c_{d+n-d+k} \vb*{w}_k = \vb*{0}
+    \end{equation*}
+
+    ここで、$c_i \in K$はスカラーである。
+
+    \br
+
+    この式を$U$と$W$の基底の線型結合として考えると、$U$の基底$\vb*{v}_i, \, \vb*{u}_j$に関する部分と$W$の基底$\vb*{v}_i, \, \vb*{w}_k$に関する部分がそれぞれ線形独立であるため、結局どの項においても$c_i = 0$である必要がある。
+
+    \br
+
+    よって、$\vb*{v}_1, \dots, \vb*{v}_d, \vb*{u}_1, \dots, \vb*{u}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$は線型独立である。 $\qed$
+  \end{subpattern}
+
+  \br
+
+  以上より、$\vb*{v}_1, \dots, \vb*{v}_d, \vb*{u}_1, \dots, \vb*{u}_{n-d}, \vb*{w}_1, \dots, \vb*{w}_{m-d}$は$U + W$の基底をなす。
+
+  \br
+
+  この基底をなすベクトルの個数（次元）について考えると、
+  \begin{align*}
+    \dim(U + W) & = d + (n - d) + (m - d) \\
+                & = n + m - d
+  \end{align*}
+  ここで、$d = \dim(U \cap W)$なので、
+  \begin{equation*}
+    \dim(U + W) = \dim U + \dim W - \dim(U \cap W)
+  \end{equation*}
+  と書き換えられ、目的の式が得られた。 $\qed$
+\end{proof}
+
+\subsection{複数の部分空間の場合}
+
+より一般に、複数の部分空間$W_1, \ldots, W_n$の和の次元も考えることができる。
+
+$n=2$の場合が、先ほど示した
+\begin{equation*}
+  \dim(W_1 + W_2) = \dim W_1 + \dim W_2 - \dim(W_1 \cap W_2)
+\end{equation*}
+であり、数学的帰納法を用いることにより、次の定理として一般化できる。
+
+% \refbookR 定理5.4
+\begin{theorem*}{部分空間の和の次元（一般の場合）}
+  $V$を$K$上の有限次元線形空間とし、$W_1, \ldots, W_n$を$V$の部分空間とする。
+
+  このとき、次が成り立つ。
+  \begin{multline*}
+    \dim(W_1 + \cdots + W_n) \\
+    = \sum_{i=1}^n \dim W_i - \sum_{i=2}^n \dim \left( (W_1 + \cdots + W_{i-1}) \cap W_i \right)
+  \end{multline*}
+\end{theorem*}
+
+\begin{proof}
+  $n = 2$のとき、\thmref{thm:dimension-of-sum-of-subspaces}より、定理は成り立つ。
+  
+  \br
+  
+  $n = k \geq 2$のとき、定理が成り立つと仮定する。
+
+  このとき、$U_j = W_1 + \cdots + W_j$とおくと、$U_j$は$V$の部分空間であるから、\thmref{thm:dimension-of-sum-of-subspaces}より、
+  \begin{align*}
+    \dim(W_1+\cdots+W_{k+1})
+    &= \dim(U_k + W_{k+1}) \\
+    &= \dim U_k + \dim W_{k+1} - \dim(U_k \cap W_{k+1})
+  \end{align*}
+  
+  ここで、帰納法の仮定より、
+  \begin{equation*}
+    \dim U_k
+=\sum_{i=1}^k \dim W_i
+ -\sum_{i=2}^k
+   \dim\bigl((W_1+\cdots+W_{i-1})\cap W_i\bigr)
+  \end{equation*}
+  であるから、これを代入すると、
+  \begin{align*}
+    &\quad \dim(W_1+\cdots+W_{k+1}) \\
+    &= \sum_{i=1}^k \dim W_i -\sum_{i=2}^k \dim\bigl((W_1+\cdots+W_{i-1})\cap W_i\bigr) \\
+    &\qquad + \dim W_{k+1} - \dim(U_k \cap W_{k+1}) \\
+    &= \sum_{i=1}^k \dim W_i -\sum_{i=2}^k \dim\bigl((W_1+\cdots+W_{i-1})\cap W_i\bigr) \\
+    &\qquad + \dim W_{k+1} - \dim(\bigl(W_1 + \cdots + W_k\bigr) \cap W_{k+1})
+  \end{align*}
+  
+  ここで現れた和の項は、次のようにまとめることができる。
+  \begin{equation*}
+    \sum_{i=1}^{k+1} \dim W_i = \sum_{i=1}^{k} \dim W_i + \dim W_{k+1}
+  \end{equation*}
+  
+  また、共通部分の項は、次のようにまとめることができる。
+  \begin{multline*}
+    \sum_{i=2}^{k+1} \dim\bigl((W_1+\cdots+W_{i-1})\cap W_i\bigr) \\
+= \underbrace{\sum_{i=2}^{k} \dim\bigl((W_1+\cdots+W_{i-1})\cap W_i\bigr)}_{\text{もともとの和}} \\
++ \underbrace{\dim\bigl((W_1+\cdots+W_k)\cap W_{k+1}\bigr)}_{i=k+1\text{項}}
+  \end{multline*}
+  
+  よって、
+  \begin{multline*}
+    \dim(W_1+\cdots+W_{k+1}) \\
+    = \sum_{i=1}^{k+1} \dim W_i - \sum_{i=2}^{k+1} \dim\bigl((W_1+\cdots+W_{i-1})\cap W_i\bigr)
+  \end{multline*}
+  となり、$n = k + 1$のときも定理が成り立つ。
+  
+  数学的帰納法により、定理は任意の$n \geq 2$について成り立つことが示された。 $\qed$
+\end{proof}
+
+\end{document}

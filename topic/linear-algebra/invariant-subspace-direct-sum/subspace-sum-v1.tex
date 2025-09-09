@@ -1,0 +1,89 @@
+\documentclass[../../../topic_linear-algebra]{subfiles}
+
+\usepackage{xr-hyper}
+\externaldocument{../../../.tex_intermediates/topic_linear-algebra}
+
+\begin{document}
+
+\sectionline
+\section{部分空間の和}
+\marginnote{\refbookS p20〜21 \\ \refbookR p47〜48 \\ \refbookC p22〜23 \\ \refbookF p231〜232 \\ \refbookG p6}
+
+ある線形空間を、複数の線形空間の「和」に分解して考えることが、この章の一つめの主題である。
+
+\br
+
+まずは素朴に、2つの部分空間$U, W$の\keyword{和}$U + W$を考える。
+
+これは、$U$の元と$W$の元を足し合わせた全ての元からなる集合である。
+
+\begin{theorem*}{部分空間の和の部分空間性}
+  $U,W$が$V$の部分空間であるとき、\keywordJE{和}{sum}$U + W$は$V$の部分空間である。
+  \begin{equation*}
+    U + W = \{ \vb*{u} + \vb*{w} \mid \vb*{u} \in U, \vb*{w} \in W \}
+  \end{equation*}
+\end{theorem*}
+
+\begin{proof}
+  \begin{subpattern}{\bfseries 和について}
+    $\vb*{a}_1, \vb*{a}_2 \in U, \, \vb*{b}_1, \vb*{b}_2 \in W$とする。
+
+    $U$と$W$は部分空間なので、部分空間の定義より、
+    \begin{equation*}
+      \vb*{a}_1 + \vb*{a}_2 \in U, \quad \vb*{b}_1 + \vb*{b}_2 \in W
+    \end{equation*}
+
+    一方、和空間の定義より、$\vb*{a}_1 + \vb*{b}_1,\, \vb*{a}_2 + \vb*{b}_2$はそれぞれ$U+W$の元である。
+
+    これらの元の和をとったときに、その和も$U + W$に属していれば、和空間は和について閉じているといえる。
+    \begin{equation*}
+      (\vb*{a}_1 + \vb*{b}_1) + (\vb*{a}_2 + \vb*{b}_2) = (\vb*{a}_1 + \vb*{a}_2) + (\vb*{b}_1 + \vb*{b}_2)
+                                                        \in U + W
+    \end{equation*}
+    上式で、和空間は和について閉じていることが示された。 $\qed$
+  \end{subpattern}
+
+  \begin{subpattern}{\bfseries スカラー倍について}
+    $\vb*{a} \in U, \, \vb*{b} \in W$と$c \in K$をとる。
+
+    $U$と$W$は部分空間なので、部分空間の定義より、
+    \begin{equation*}
+      c \vb*{a} \in U, \quad
+      c \vb*{b} \in W
+    \end{equation*}
+
+    一方、和空間の定義より、$\vb*{a} + \vb*{b}$は$U + W$の元である。
+
+    この元をスカラー倍したときに、そのスカラー倍も$U + W$に属していれば、和空間はスカラー倍について閉じているといえる。
+    \begin{equation*}
+      c(\vb*{a} + \vb*{b}) = c \vb*{a} + c \vb*{b}
+                           \in U + W
+    \end{equation*}
+    上式で、和空間はスカラー倍について閉じていることが示された。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries 零元の存在}
+    $U$と$W$は部分空間なので、零元が存在する。
+    \begin{equation*}
+      \vb*{o} \in U, \quad \vb*{o} \in W
+    \end{equation*}
+    よって、
+    \begin{equation*}
+      \vb*{o} = \vb*{o} + \vb*{o} \in U + W
+    \end{equation*}
+    より、和空間にも零元が存在することが示された。 $\qed$
+  \end{subpattern}
+\end{proof}
+
+\subsection{複数の部分空間の場合}
+
+より一般に、複数の部分空間$W_1, \ldots, W_n$の\keyword{和}も部分空間となる。
+
+\begin{theorem*}{部分空間の和の部分空間性（一般の場合）}
+  $W_1, \ldots, W_n$が$V$の部分空間であるとき、\keywordJE{和}{sum}$W_1 + \ldots + W_n$は$V$の部分空間である。
+  \begin{equation*}
+    W_1 + \ldots + W_n = \{ \vb*{w}_1 + \ldots + \vb*{w}_n \mid \vb*{w}_i \in W_i \}
+  \end{equation*}
+\end{theorem*}
+
+\end{document}
