@@ -4,23 +4,22 @@
 
 \sectionline
 \section{部分空間の共通部分}
-\marginnote{\refbookC p22}
+\marginnote{\refbookS p20〜21 \\ \refbookC p22}
 
-\begin{mindflow}
-  \placeholder{再編予定（\refbookS p20〜21）}
-\end{mindflow}
+部分空間の和について考える上で、部分空間の\keyword{共通部分}も重要となる。
 
-与えられた部分空間から、新しく部分空間を作ることができる
-
-\begin{theorem*}{線形部分空間の共通部分は部分空間}
-  $U,\,W$を体$K$上の$V$の部分空間とするとき、\keyword{共通部分}$U \cap W$は$V$の部分空間である
+\begin{theorem*}{部分空間の共通部分の部分空間性}
+  $U,W$が$V$の部分空間であるとき、\keywordJE{共通部分}{intersection}$U \cap W$は$V$の部分空間である。
+  \begin{equation*}
+    U \cap W = \{ \vb*{v} \mid \vb*{v} \in U, \vb*{v} \in W \}
+  \end{equation*}
 \end{theorem*}
 
 \begin{proof}
   \begin{subpattern}{\bfseries 和について}
-    $\vb*{a}, \vb*{b} \in U \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$U$と$W$の両方に属していることになる
+    $\vb*{a}, \vb*{b} \in U \cap W$とすると、共通部分の定義より、$\vb*{a}$と$\vb*{b}$はどちらも$U$と$W$の両方に属していることになる。
 
-    つまり、$\vb*{a}, \vb*{b} \in U$かつ$\vb*{a}, \vb*{b} \in W$である
+    つまり、$\vb*{a}, \vb*{b} \in U$かつ$\vb*{a}, \vb*{b} \in W$である。
 
     \br
 
@@ -30,22 +29,41 @@
       \vb*{a} + \vb*{b} & \in W
     \end{align*}
 
-    $\vb*{a} + \vb*{b}$が$U$と$W$の両方に属していることから、$\vb*{a} + \vb*{b}$は$U \cap W$に属する
+    $\vb*{a} + \vb*{b}$が$U$と$W$の両方に属していることから、$\vb*{a} + \vb*{b}$は$U \cap W$に属する。
 
-    よって、$U \cap W$は和について閉じている $\qed$
+    よって、$U \cap W$は和について閉じている。 $\qed$
   \end{subpattern}
 
   \begin{subpattern}{\bfseries スカラー倍について}
-    $\vb*{a} \in U \cap W$と$c \in K$をとる
+    $\vb*{a} \in U \cap W$と$c \in K$をとる。
 
-    共通部分の定義より、$\vb*{a}$は$U$と$W$の両方に属しているので、部分空間の定義より
+    共通部分の定義より、$\vb*{a}$は$U$と$W$の両方に属しているので、部分空間の定義より、
     \begin{align*}
       c \vb*{a} & \in U \\
       c \vb*{a} & \in W
     \end{align*}
 
-    よって、$c \vb*{a}$は$U \cap W$に属するため、$U \cap W$はスカラー倍について閉じている $\qed$
+    よって、$c \vb*{a}$は$U \cap W$に属するため、$U \cap W$はスカラー倍について閉じている。 $\qed$
+  \end{subpattern}
+  
+  \begin{subpattern}{\bfseries 零元の存在}
+    $U$と$W$は部分空間なので、零元が存在する。
+    \begin{equation*}
+      \vb*{o} \in U, \quad \vb*{o} \in W
+    \end{equation*}
+    よって、$\vb*{o}$は$U$と$W$の両方に属しているので、共通部分にも零元が存在する。 $\qed$
   \end{subpattern}
 \end{proof}
+
+\subsection{複数の部分空間の場合}
+
+複数の部分空間$W_1, \ldots, W_n$の\keyword{共通部分}も同様に考えることができる。
+
+\begin{theorem*}{部分空間の共通部分の部分空間性（一般の場合）}
+  $W_1, \ldots, W_n$が$V$の部分空間であるとき、\keywordJE{共通部分}{intersection}$W_1 \cap \ldots \cap W_n$は$V$の部分空間である。
+  \begin{equation*}
+    W_1 \cap \ldots \cap W_n = \{ \vb*{w} \mid \vb*{w} \in W_i \text{ for all } i \}
+  \end{equation*}
+\end{theorem*}
 
 \end{document}
